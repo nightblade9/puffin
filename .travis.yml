@@ -1,0 +1,14 @@
+dist: xenial
+language: csharp
+solution: Puffin.sln
+mono: none
+dotnet: 3.1.100
+# Before/Install steps from: https://stackoverflow.com/questions/37048232/how-to-build-a-monogame-c-sharp-project-on-travis-ci
+before_install:
+  - wget https://github.com/MonoGame/MonoGame/releases/download/v3.7.1/monogame-sdk.run
+  - chmod 777 monogame-sdk.run
+install:
+  - sudo apt-get install -qq monodevelop libopenal-dev ttf-mscorefonts-installer gtk-sharp2; # install needed packages for the monogame sdk
+  - echo Y | sudo ./monogame-sdk.run # install monogame sdk
+script:
+  - dotnet test --verbosity normal
