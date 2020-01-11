@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Puffin.CommandLineInterface
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Puffin.CommandLineInterface.UnitTests", "Puffin.CommandLineInterface.UnitTests\Puffin.CommandLineInterface.UnitTests.csproj", "{B8476ED6-595A-4FB9-B738-846FF5F2273D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Puffin.Core", "Puffin.Core\Puffin.Core.csproj", "{62C0B50F-195F-41BB-B79C-87E1872B0026}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,5 +46,17 @@ Global
 		{B8476ED6-595A-4FB9-B738-846FF5F2273D}.Release|x64.Build.0 = Release|Any CPU
 		{B8476ED6-595A-4FB9-B738-846FF5F2273D}.Release|x86.ActiveCfg = Release|Any CPU
 		{B8476ED6-595A-4FB9-B738-846FF5F2273D}.Release|x86.Build.0 = Release|Any CPU
+		{62C0B50F-195F-41BB-B79C-87E1872B0026}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62C0B50F-195F-41BB-B79C-87E1872B0026}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62C0B50F-195F-41BB-B79C-87E1872B0026}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{62C0B50F-195F-41BB-B79C-87E1872B0026}.Debug|x64.Build.0 = Debug|Any CPU
+		{62C0B50F-195F-41BB-B79C-87E1872B0026}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{62C0B50F-195F-41BB-B79C-87E1872B0026}.Debug|x86.Build.0 = Debug|Any CPU
+		{62C0B50F-195F-41BB-B79C-87E1872B0026}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62C0B50F-195F-41BB-B79C-87E1872B0026}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62C0B50F-195F-41BB-B79C-87E1872B0026}.Release|x64.ActiveCfg = Release|Any CPU
+		{62C0B50F-195F-41BB-B79C-87E1872B0026}.Release|x64.Build.0 = Release|Any CPU
+		{62C0B50F-195F-41BB-B79C-87E1872B0026}.Release|x86.ActiveCfg = Release|Any CPU
+		{62C0B50F-195F-41BB-B79C-87E1872B0026}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
