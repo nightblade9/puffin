@@ -9,19 +9,17 @@ namespace Puffin.Core.Ecs
     {
         private Dictionary<Type, Component> components = new Dictionary<Type, Component>();
 
-        public void Add(Component component)
+        public void Set(Component component)
         {
             var type = component.GetType();
-            this.Remove(type);
+            this.Remove(type); // Remove if present, may trigger event
+            this.components[type] = component;
         }
 
-        public void Remove(Type type)
+        public void Remove<T>() where T : Component
         {
-            if (this.components.ContainsKey(type))
-            {
-                this.components[type] = null;
-                // Signal: component removed
-            }
+            var type = typeof(T);
+            this.Remove(type);
         }
 
         public T GetIfHas<T>() where T : Component
@@ -33,6 +31,15 @@ namespace Puffin.Core.Ecs
             }
 
             return null;
+        }
+
+        private void Remove(Type componentType)
+        {
+            if (this.components.ContainsKey(componentType))
+            {
+                this.components[componentType] = null;
+                // Signal: component removed
+            }
         }
     }
 }
