@@ -9,11 +9,12 @@ namespace Puffin.Core.Ecs
     {
         private Dictionary<Type, Component> components = new Dictionary<Type, Component>();
 
-        public void Set(Component component)
+        public Entity Set(Component component)
         {
             var type = component.GetType();
             this.Remove(type); // Remove if present, may trigger event
             this.components[type] = component;
+            return this; // for chaining calls
         }
 
         public void Remove<T>() where T : Component

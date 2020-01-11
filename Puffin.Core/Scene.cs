@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Puffin.Core.Drawing;
 using Puffin.Core.Ecs;
 using Puffin.Core.Ecs.Components;
