@@ -11,3 +11,9 @@ Cross-platform 2D C# game engine. This project is under heavy development.
 - Runs and makes games for Linux, Windows, and Mac
 - Easy to get started and low learning-curve
 - Leverage your existing C# skills and the .NET ecosystem
+
+# Getting Started
+
+TODO: we should try to automate these things.
+
+- Install the latest MonoGame
