@@ -1,29 +1,33 @@
 ﻿using System.Collections.Generic;
 using Puffin.Core.Drawing;
 using Puffin.Core.Ecs;
-using Puffin.Core.Ecs.Components;
+using Puffin.Core.Ecs.Systems;
 
 namespace Puffin.Core
 {     
     public class Scene
     {
-        private List<Entity> entities = new List<Entity>();
+        // TODO: move into a container thing
+        private ISystem[] systems = new ISystem[0];
+
+        public Scene(params ISystem[] systems)
+        {
+            this.systems = systems;
+        }
 
         public void Add(Entity entity)
         {
-            this.entities.Add(entity);
+            foreach (var system in this.systems)
+            {
+                system.OnAddEntity(entity);
+            }
         }
 
-        // TODO: goes into the rendering system
         public void OnUpdate(IDrawingSurface drawingSurface)
         {
-            foreach (var entity in this.entities)
+            foreach (var system in this.systems)
             {
-                SpriteComponent sprite = entity.GetIfHas<SpriteComponent>();
-                if (sprite != null)
-                {
-                    drawingSurface.Draw(sprite);
-                }
+                system.OnUpdate();
             }
         }
     }
