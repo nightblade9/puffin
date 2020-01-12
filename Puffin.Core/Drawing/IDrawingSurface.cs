@@ -1,9 +1,10 @@
-using Puffin.Core.Ecs.Components;
+using Puffin.Core.Ecs;
 
 namespace Puffin.Core.Drawing
 {
     public interface IDrawingSurface
     {
-        void Draw(SpriteComponent sprite);
+        void AddEntity(Entity entity);
+        void DrawAll();
     }
 }

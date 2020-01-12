@@ -31,9 +31,7 @@ namespace Puffin.Core.UnitTests
             system.OnUpdate();
 
             // Assert
-            drawingSurface.Verify(d => d.Draw(s1));
-            drawingSurface.Verify(d => d.Draw(s2));
-            drawingSurface.Verify(d => d.Draw(It.IsAny<SpriteComponent>()), Times.Exactly(2));
+            drawingSurface.Verify(d => d.DrawAll(), Times.Once());
         }
     }
 }

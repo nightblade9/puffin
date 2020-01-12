@@ -7,8 +7,12 @@ namespace MonoGame
         [STAThread]
         static void Main()
         {
-            using (var game = new Game1())
+            // Is it this? Is it `var game = new MonoGameDrawingSystem()`?
+            // Something else?
+            using (var game = new Scene(new MonoGameDrawingSystem()))
+            {
                 game.Run();
+            }
         }
     }
 }
