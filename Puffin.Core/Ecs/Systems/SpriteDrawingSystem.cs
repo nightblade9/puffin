@@ -19,16 +19,13 @@ namespace Puffin.Core.Ecs.Systems
             if (entity.GetIfHas<SpriteComponent>() != null)
             {
                 this.entities.Add(entity);
+                this.drawingSurface.AddEntity(entity);
             }
         }
 
         public void OnUpdate()
         {
-            foreach (var entity in this.entities)
-            {
-                var sprite = entity.GetIfHas<SpriteComponent>();
-                drawingSurface.Draw(sprite);
-            }
+            this.drawingSurface.DrawAll();
         }
     }
 }
