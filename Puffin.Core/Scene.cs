@@ -1,4 +1,5 @@
-﻿using Puffin.Core.Ecs;
+﻿using System.Collections.Generic;
+using Puffin.Core.Ecs;
 using Puffin.Core.Ecs.Systems;
 
 namespace Puffin.Core
@@ -6,17 +7,33 @@ namespace Puffin.Core
     public class Scene
     {
         private ISystem[] systems = new ISystem[0];
+        private List<Entity> entities = new List<Entity>();
 
         public void Initialize(params ISystem[] systems)
         {
             this.systems = systems;
+
+            // If called after AddEntity, add entities we know about
+            foreach (var entity in this.entities)
+            {
+                foreach (var system in this.systems)
+                {
+                    system.OnAddEntity(entity);
+                }
+            }
         }
 
         public void Add(Entity entity)
         {
-            foreach (var system in this.systems)
+            this.entities.Add(entity);
+            
+            // if initialized, notify systems
+            if (this.systems.Length > 0)
             {
-                system.OnAddEntity(entity);
+                foreach (var system in this.systems)
+                {
+                    system.OnAddEntity(entity);
+                }
             }
         }
 
