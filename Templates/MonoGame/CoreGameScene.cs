@@ -6,6 +6,6 @@ public class CoreGameScene : Scene
 {
     public CoreGameScene()
     {
-        this.Add(new Entity().Set(new SpriteComponent("Icon.bmp")));
+        this.Add(new Entity().Set(new SpriteComponent("Bird.png")));
     }
 }
