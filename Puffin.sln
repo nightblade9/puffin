@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Puffin.Core.UnitTests", "Pu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Puffin.Infrastructure.MonoGame", "Puffin.Infrastructure.MonoGame\Puffin.Infrastructure.MonoGame.csproj", "{3BF349A2-C548-400C-9821-1BBCF901728E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{16945E8F-3F0A-4E2B-92FE-2389563EA0D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGame", "Templates\MonoGame\MyGame.csproj", "{61382389-B80A-4AA9-8B5A-94CAB9C94589}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,5 +90,20 @@ Global
 		{3BF349A2-C548-400C-9821-1BBCF901728E}.Release|x64.Build.0 = Release|Any CPU
 		{3BF349A2-C548-400C-9821-1BBCF901728E}.Release|x86.ActiveCfg = Release|Any CPU
 		{3BF349A2-C548-400C-9821-1BBCF901728E}.Release|x86.Build.0 = Release|Any CPU
+		{61382389-B80A-4AA9-8B5A-94CAB9C94589}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61382389-B80A-4AA9-8B5A-94CAB9C94589}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61382389-B80A-4AA9-8B5A-94CAB9C94589}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{61382389-B80A-4AA9-8B5A-94CAB9C94589}.Debug|x64.Build.0 = Debug|Any CPU
+		{61382389-B80A-4AA9-8B5A-94CAB9C94589}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{61382389-B80A-4AA9-8B5A-94CAB9C94589}.Debug|x86.Build.0 = Debug|Any CPU
+		{61382389-B80A-4AA9-8B5A-94CAB9C94589}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61382389-B80A-4AA9-8B5A-94CAB9C94589}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61382389-B80A-4AA9-8B5A-94CAB9C94589}.Release|x64.ActiveCfg = Release|Any CPU
+		{61382389-B80A-4AA9-8B5A-94CAB9C94589}.Release|x64.Build.0 = Release|Any CPU
+		{61382389-B80A-4AA9-8B5A-94CAB9C94589}.Release|x86.ActiveCfg = Release|Any CPU
+		{61382389-B80A-4AA9-8B5A-94CAB9C94589}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{61382389-B80A-4AA9-8B5A-94CAB9C94589} = {16945E8F-3F0A-4E2B-92FE-2389563EA0D5}
 	EndGlobalSection
 EndGlobal

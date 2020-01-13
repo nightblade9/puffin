@@ -1,5 +1,4 @@
-﻿using Puffin.Core.Drawing;
-using Puffin.Core.Ecs;
+﻿using Puffin.Core.Ecs;
 using Puffin.Core.Ecs.Systems;
 
 namespace Puffin.Core

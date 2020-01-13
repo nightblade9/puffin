@@ -37,7 +37,7 @@ namespace Puffin.Infrastructure.MonoGame
             foreach (var sprite in this.fileNameToTextureMap.Values)
             {
                 // TODO: draw at the appropriate coordinates
-                this.spriteBatch.Draw(sprite, new Vector2(0, 0));
+                this.spriteBatch.Draw(sprite, new Vector2(0, 0), Color.White);
             }
             
             this.spriteBatch.End();

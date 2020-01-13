@@ -36,4 +36,8 @@
     <PackageReference Include="MonoGame.Content.Builder" Version="3.7.*" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Puffin.Infrastructure.MonoGame\Puffin.Infrastructure.MonoGame.csproj" />
+  </ItemGroup>
+
 </Project>
