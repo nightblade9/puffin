@@ -23,9 +23,8 @@ namespace Puffin.Infrastructure.MonoGame
 
         public void ShowScene(Scene s)
         {
-            // TODO: dispose old system if it exists + disposable
-
             var drawingSurface = new MonoGameDrawingSurface(this.GraphicsDevice, spriteBatch);
+
             var systems = new ISystem[]
             {
                 new DrawingSystem(drawingSurface),

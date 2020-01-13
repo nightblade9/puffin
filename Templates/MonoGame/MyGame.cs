@@ -7,8 +7,10 @@ namespace MonoGame
 {
     public class MyGame : PuffinGame
     {
-        public MyGame()
+        override protected void Initialize()
         {
+            // TODO: don't use references to source for Puffin.Infrastructure.MonoGame!
+            this.ShowScene(new CoreGameScene());
         }
     }
 }
