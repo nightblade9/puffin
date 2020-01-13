@@ -4,12 +4,12 @@ using Puffin.Core.Ecs.Components;
 
 namespace Puffin.Core.Ecs.Systems
 {
-    public class SpriteDrawingSystem : ISystem
+    public class DrawingSystem : ISystem
     {
         private IDrawingSurface drawingSurface;
         private IList<Entity> entities = new List<Entity>();
         
-        public SpriteDrawingSystem(IDrawingSurface drawingSurface)
+        public DrawingSystem(IDrawingSurface drawingSurface)
         {
             this.drawingSurface = drawingSurface;
         }

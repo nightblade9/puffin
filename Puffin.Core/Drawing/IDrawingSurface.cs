@@ -4,7 +4,7 @@ namespace Puffin.Core.Drawing
 {
     public interface IDrawingSurface
     {
-        void AddEntity(Entity entity);
         void DrawAll();
+        void AddEntity(Entity entity);
     }
 }
