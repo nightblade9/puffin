@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
-namespace Puffin.Core.MonoGame
+namespace Puffin.Infrastructure.MonoGame
 {
     public class MonoGameDrawingSurface : Game, IDrawingSurface
     {
