@@ -6,10 +6,9 @@ namespace Puffin.Core
 {     
     public class Scene
     {
-        // TODO: move into a container thing
         private ISystem[] systems = new ISystem[0];
 
-        public Scene(params ISystem[] systems)
+        public void Initialize(params ISystem[] systems)
         {
             this.systems = systems;
         }
@@ -22,7 +21,7 @@ namespace Puffin.Core
             }
         }
 
-        public void OnUpdate(IDrawingSurface drawingSurface)
+        public void OnUpdate()
         {
             foreach (var system in this.systems)
             {
