@@ -44,6 +44,25 @@ namespace Puffin.Core.UnitTests.Ecs
 
             Assert.That(e.GetIfHas<StringComponent>(), Is.Null);
         }
+
+        [Test]
+        public void MoveSetsEntityCoordinates()
+        {
+            var e = new Entity();
+            e.Move(1, 2);
+            e.Move(200, 140);
+
+            Assert.That(e.X, Is.EqualTo(200));
+            Assert.That(e.Y, Is.EqualTo(140));
+        }
+
+        [Test]
+        public void MoveReturnsEntity()
+        {
+            var e = new Entity();
+            var e2 = e.Move(100, 182);
+            Assert.That(e2, Is.EqualTo(e));
+        }
     }
 
     // TODO: delete later
