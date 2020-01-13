@@ -19,7 +19,8 @@ namespace Puffin.Core.UnitTests
             var e1 = new Entity();
             var e2 = new Entity();
             
-            var scene = new Scene(drawingSystem.Object, audioSystem.Object);
+            var scene = new Scene();
+            scene.Initialize(drawingSystem.Object, audioSystem.Object);
 
             // Act
             scene.Add(e1);
@@ -36,10 +37,11 @@ namespace Puffin.Core.UnitTests
             var drawingSystem = new Mock<ISystem>();
             var audioSystem = new Mock<ISystem>();
             
-            var scene = new Scene(drawingSystem.Object, audioSystem.Object);
+            var scene = new Scene();
+            scene.Initialize(drawingSystem.Object, audioSystem.Object);
 
             // Act
-            scene.OnUpdate(new Mock<IDrawingSurface>().Object);
+            scene.OnUpdate();
 
             // Assert
             drawingSystem.Verify(d => d.OnUpdate(), Times.Once());

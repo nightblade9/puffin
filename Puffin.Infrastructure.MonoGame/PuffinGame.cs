@@ -1,4 +1,7 @@
+using Puffin.Core;
 using Puffin.Core.Drawing;
+using Puffin.Core.Ecs.Systems;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
@@ -9,12 +12,28 @@ namespace Puffin.Infrastructure.MonoGame
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
+        private Scene currentScene;
 
         public PuffinGame()
         {
             this.graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+        }
+
+        public void ShowScene(Scene s)
+        {
+            // TODO: dispose old system if it exists + disposable
+
+            var drawingSurface = new MonoGameDrawingSurface(this.GraphicsDevice, spriteBatch);
+            var systems = new ISystem[]
+            {
+                new DrawingSystem(drawingSurface),
+            };
+
+            s.Initialize(systems);
+
+            this.currentScene = s;
         }
 
         protected override void Initialize()
@@ -26,22 +45,26 @@ namespace Puffin.Infrastructure.MonoGame
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            drawingSurface  = new MonoGameDrawingSurface(spriteBatch);
+            // Not used since we currently load sprites outside the pipeline 
         }
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+            //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            //   Exit();
 
             // TODO: Add your update logic here
-
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
             // TODO: Add your drawing code here
+            if (this.currentScene != null)
+            {
+                this.currentScene.OnUpdate();
+            }
+
             base.Draw(gameTime);
         }
     }

@@ -1,7 +1,9 @@
+using Puffin.Core.Ecs;
 using Puffin.Core.Drawing;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Puffin.Infrastructure.MonoGame
 {
@@ -13,27 +15,39 @@ namespace Puffin.Infrastructure.MonoGame
         private IList<Entity> entities = new List<Entity>();
         
         // TODO: maybe content pipeline is a good thing, amirite? If so, use LoadContent to load sprites
-        
+        private GraphicsDevice graphics;
+        private SpriteBatch spriteBatch;
+
+        public MonoGameDrawingSurface(GraphicsDevice graphics, SpriteBatch spriteBatch)
+        {
+            this.graphics = graphics;
+            this.spriteBatch = spriteBatch;
+        }
+
+        public void AddEntity(Entity entity)
+        {
+            this.entities.Add(entity);
+        }
 
         public void DrawAll()
         {
-            GraphicsDevice.Clear(Color.DarkSalmon);
+            this.graphics.Clear(Color.DarkSalmon);
             this.spriteBatch.Begin();
 
             foreach (var sprite in this.fileNameToTextureMap.Values)
             {
                 // TODO: draw at the appropriate coordinates
-                this.spriteBatch.Draw(sprite, Vector2.ZERO);
+                this.spriteBatch.Draw(sprite, new Vector2(0, 0));
             }
             
             this.spriteBatch.End();
         }
 
-        private var LoadImage(string fileName)
+        private Texture2D LoadImage(string fileName)
         {
-            using (var stream = File.Open(fileName, FileMode.Read))
+            using (var stream = File.Open(fileName, FileMode.Open))
             {
-                var texture = Texture2D.FromStream(Game.GraphicsDevice, stream);
+                var texture = Texture2D.FromStream(this.graphics, stream);
                 return texture;
             }
         }

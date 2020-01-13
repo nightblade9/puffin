@@ -22,7 +22,7 @@ namespace Puffin.Core.UnitTests
             var e3 = new Entity(); // No sprite
 
             var drawingSurface = new Mock<IDrawingSurface>();
-            var system = new SpriteDrawingSystem(drawingSurface.Object);
+            var system = new DrawingSystem(drawingSurface.Object);
             system.OnAddEntity(e1);
             system.OnAddEntity(e2);
             system.OnAddEntity(e3);
