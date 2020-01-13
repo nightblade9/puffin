@@ -31,7 +31,7 @@ namespace Puffin.Infrastructure.MonoGame
 
         public void DrawAll()
         {
-            this.graphics.Clear(Color.DarkSalmon);
+            this.graphics.Clear(Color.DarkSlateGray);
             this.spriteBatch.Begin();
 
             foreach (var sprite in this.fileNameToTextureMap.Values)
