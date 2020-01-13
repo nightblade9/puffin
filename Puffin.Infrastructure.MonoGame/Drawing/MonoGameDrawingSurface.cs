@@ -1,4 +1,5 @@
 using Puffin.Core.Ecs;
+using Puffin.Core.Ecs.Components;
 using Puffin.Core.Drawing;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -27,6 +28,12 @@ namespace Puffin.Infrastructure.MonoGame
         public void AddEntity(Entity entity)
         {
             this.entities.Add(entity);
+            var sprite = entity.GetIfHas<SpriteComponent>();
+            
+            if (sprite != null)
+            {
+                this.fileNameToTextureMap[sprite.FileName] = this.LoadImage(sprite.FileName);
+            }
         }
 
         public void DrawAll()
