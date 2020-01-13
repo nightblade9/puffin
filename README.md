@@ -14,6 +14,9 @@ Cross-platform 2D C# game engine. This project is under heavy development.
 
 # Getting Started
 
-TODO: we should try to automate these things.
+- Clone this repository (binaries are not available yet)
+- Build it by running `dotnet build`. Note: you will need .NET SDK 3.1 and MonoGame.
+- Run `dotnet run --project Puffin.CommandLineInterface` to build a new project template
+- Type `cd NewPuffin` and `dotnet run` to build/run the template project
 
-- Install the latest MonoGame
+You should be greeted with an empty screen with a placeholder image.
