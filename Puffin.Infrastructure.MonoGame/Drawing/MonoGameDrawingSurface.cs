@@ -41,10 +41,13 @@ namespace Puffin.Infrastructure.MonoGame
             this.graphics.Clear(Color.DarkSlateGray);
             this.spriteBatch.Begin();
 
-            foreach (var sprite in this.fileNameToTextureMap.Values)
+            foreach (var entity in this.entities)
             {
-                // TODO: draw at the appropriate coordinates
-                this.spriteBatch.Draw(sprite, new Vector2(0, 0), Color.White);
+                var component = entity.GetIfHas<SpriteComponent>();
+                var sprite = fileNameToTextureMap[component.FileName];
+                // TODO: creating a new Vector2 each time is a bad idea.
+                // But, having entity X/Y and leaking MonoGame into Puffin.Core is also a bad idea.
+                this.spriteBatch.Draw(sprite, new Vector2(entity.X, entity.Y), Color.White);
             }
             
             this.spriteBatch.End();

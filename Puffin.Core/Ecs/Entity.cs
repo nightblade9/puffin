@@ -1,12 +1,14 @@
 using System;
 using System.Collections.Generic;
-
 using Puffin.Core.Ecs.Components;
 
 namespace Puffin.Core.Ecs
 {
     public class Entity
     {
+        public int X { get; set; }
+        public int Y { get; set; }
+
         private Dictionary<Type, Component> components = new Dictionary<Type, Component>();
 
         public Entity Set(Component component)
@@ -32,6 +34,13 @@ namespace Puffin.Core.Ecs
             }
 
             return null;
+        }
+
+        public Entity Move(int x, int y)
+        {
+            this.X = x;
+            this.Y = y;
+            return this;
         }
 
         private void Remove(Type componentType)
