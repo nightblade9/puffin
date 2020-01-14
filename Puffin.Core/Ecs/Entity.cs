@@ -4,7 +4,12 @@ using Puffin.Core.Ecs.Components;
 
 namespace Puffin.Core.Ecs
 {
-    public class Entity
+    /// <summary>
+    /// An entity; it holds components, which dictate behaviour (eg. add a
+    // SpriteComponent to display a sprite wherever this entity is).
+    /// Entities can only hold one component of each type.
+    /// </summary>
+    public class Entity : IDisposable
     {
         private Dictionary<Type, Component> components = new Dictionary<Type, Component>();
         private int x = 0;
@@ -26,6 +31,11 @@ namespace Puffin.Core.Ecs
                 this.TriggerOnPositionCallbacks();
             }
         }
+
+        /// <summary>
+        /// Set/add a component on this entity. If this entity already had a 
+        /// component of this type, this new component replaces the old one.
+        /// </summary>
         public Entity Set(Component component)
         {
             var type = component.GetType();
@@ -63,6 +73,12 @@ namespace Puffin.Core.Ecs
             return this;
         }
 
+        public void Dispose()
+        {
+            // Remove callbacks so stuff can be GCed.
+            this.OnPositionChangeCallbacks.Clear();
+        }
+
         private void Remove(Type componentType)
         {
             if (this.components.ContainsKey(componentType))
@@ -72,6 +88,9 @@ namespace Puffin.Core.Ecs
             }
         }
 
+        /// <summary>
+        /// Triggers any subscribed callbacks that should fire when our position changes.
+        /// </summary>
         private void TriggerOnPositionCallbacks()
         {
             foreach (var callback in this.OnPositionChangeCallbacks)
