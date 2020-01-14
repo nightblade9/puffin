@@ -1,10 +1,8 @@
 using Puffin.Core;
-using Puffin.Core.Drawing;
 using Puffin.Core.Ecs.Systems;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
 
 namespace Puffin.Infrastructure.MonoGame
 {
