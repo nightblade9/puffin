@@ -8,7 +8,7 @@ public class CoreGameScene : Scene
     {
         this.Add(
             new Entity()
-            .Set(new SpriteComponent("Bird.png"))
+            .Set(new SpriteComponent("tilemap.png", 32, 32))
             .Move(300, 200));
     }
 }

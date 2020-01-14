@@ -44,7 +44,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             foreach (var entity in this.entities)
             {
                 var monoGameSprite = entitySprites[entity];
-                this.spriteBatch.Draw(monoGameSprite.Texture, monoGameSprite.Position, Color.White);
+                this.spriteBatch.Draw(monoGameSprite.Texture, monoGameSprite.Position, monoGameSprite.Region, Color.White);
             }
             
             this.spriteBatch.End();
