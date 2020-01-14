@@ -11,5 +11,4 @@ install:
   - sudo apt-get install -qq monodevelop libopenal-dev ttf-mscorefonts-installer gtk-sharp2; # install needed packages for the monogame sdk
   - echo Y | sudo ./monogame-sdk.run # install monogame sdk
 script:
-  - dotnet build # also builds stuff that doesn't have tests
   - dotnet test --verbosity normal
