@@ -9,18 +9,17 @@ namespace Puffin.Core.Ecs
     // SpriteComponent to display a sprite wherever this entity is).
     /// Entities can only hold one component of each type.
     /// </summary>
-    public class Entity : IDisposable
+    public class Entity
     {
         private Dictionary<Type, Component> components = new Dictionary<Type, Component>();
         private int x = 0;
         private int y = 0;
-        private List<Action<int, int>> OnPositionChangeCallbacks = new List<Action<int, int>>();
 
         public int X {
             get { return x; }
             set { 
                 x = value;
-                this.TriggerOnPositionCallbacks();
+                EventBus.LatestInstance.Broadcast("entity position changed", this);
             }
         }
 
@@ -28,7 +27,7 @@ namespace Puffin.Core.Ecs
             get { return y; }
             set { 
                 y = value;
-                this.TriggerOnPositionCallbacks();
+                EventBus.LatestInstance.Broadcast("entity position changed", this);
             }
         }
 
@@ -61,34 +60,12 @@ namespace Puffin.Core.Ecs
             return null;
         }
 
-        public void AddPositionChangeCallback(Action<int, int> callback)
-        {
-            this.OnPositionChangeCallbacks.Add(callback);
-        }
-
-        public void Dispose()
-        {
-            // Remove callbacks so stuff can be GCed.
-            this.OnPositionChangeCallbacks.Clear();
-        }
-
         private void Remove(Type componentType)
         {
             if (this.components.ContainsKey(componentType))
             {
                 this.components[componentType] = null;
                 // Signal: component removed
-            }
-        }
-
-        /// <summary>
-        /// Triggers any subscribed callbacks that should fire when our position changes.
-        /// </summary>
-        private void TriggerOnPositionCallbacks()
-        {
-            foreach (var callback in this.OnPositionChangeCallbacks)
-            {
-                callback.Invoke(this.X, this.Y);
             }
         }
     }

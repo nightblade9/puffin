@@ -57,16 +57,17 @@ namespace Puffin.Core.UnitTests.Ecs
         }
 
         [Test]
-        public void SettingXOrYTriggersSetCallbacks()
+        public void SettingXOrYBroadcastsEvent()
         {
             var timesCalledBack = 0;
             var callbackX = 0;
             var callbackY = 0;
 
             var e = new Entity();
-            e.AddPositionChangeCallback((x, y) => {
-                callbackX = x;
-                callbackY = y;
+            new EventBus().Subscribe("entity position changed", data => {
+                var e = data as Entity;
+                callbackX = e.X;
+                callbackY = e.Y;
                 timesCalledBack++;
             });
 
