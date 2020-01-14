@@ -22,6 +22,11 @@ namespace Puffin.Infrastructure.MonoGame
 
         public void ShowScene(Scene s)
         {
+            if (this.currentScene != null)
+            {
+                this.currentScene.Dispose();
+            }
+            
             var drawingSurface = new MonoGameDrawingSurface(this.GraphicsDevice, spriteBatch);
 
             var systems = new ISystem[]

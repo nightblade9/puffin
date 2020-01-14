@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Puffin.Core.Ecs;
 using Puffin.Core.Ecs.Systems;
 
 namespace Puffin.Core
 {     
-    public class Scene
+    public class Scene : IDisposable
     {
         private ISystem[] systems = new ISystem[0];
         private List<Entity> entities = new List<Entity>();
@@ -42,6 +43,14 @@ namespace Puffin.Core
             foreach (var system in this.systems)
             {
                 system.OnUpdate();
+            }
+        }
+
+        public void Dispose()
+        {
+            foreach (var entity in this.entities)
+            {
+                entity.Dispose();
             }
         }
     }
