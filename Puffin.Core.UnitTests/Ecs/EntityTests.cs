@@ -57,14 +57,6 @@ namespace Puffin.Core.UnitTests.Ecs
         }
 
         [Test]
-        public void MoveReturnsEntity()
-        {
-            var e = new Entity();
-            var e2 = e.Move(100, 182);
-            Assert.That(e2, Is.EqualTo(e));
-        }
-
-        [Test]
         public void SettingXOrYTriggersSetCallbacks()
         {
             var timesCalledBack = 0;
