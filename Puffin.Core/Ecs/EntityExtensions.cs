@@ -1,3 +1,5 @@
+using Puffin.Core.Ecs.Components;
+
 namespace Puffin.Core.Ecs
 {
     public static class EntityExtensions
@@ -6,6 +8,12 @@ namespace Puffin.Core.Ecs
         {
             entity.X = x;
             entity.Y = y;
+            return entity;
+        }
+
+        public static Entity Image(this Entity entity, string imageFile)
+        {
+            entity.Set(new SpriteComponent(imageFile));
             return entity;
         }
     }
