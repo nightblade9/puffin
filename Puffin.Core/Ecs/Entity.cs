@@ -6,11 +6,26 @@ namespace Puffin.Core.Ecs
 {
     public class Entity
     {
-        public int X { get; set; }
-        public int Y { get; set; }
-
         private Dictionary<Type, Component> components = new Dictionary<Type, Component>();
+        private int x = 0;
+        private int y = 0;
+        private List<Action<int, int>> OnPositionChangeCallbacks = new List<Action<int, int>>();
 
+        public int X {
+            get { return x; }
+            set { 
+                x = value;
+                this.TriggerOnPositionCallbacks();
+            }
+        }
+
+        public int Y {
+            get { return y; }
+            set { 
+                y = value;
+                this.TriggerOnPositionCallbacks();
+            }
+        }
         public Entity Set(Component component)
         {
             var type = component.GetType();
@@ -36,6 +51,11 @@ namespace Puffin.Core.Ecs
             return null;
         }
 
+        public void AddPositionChangeCallback(Action<int, int> callback)
+        {
+            this.OnPositionChangeCallbacks.Add(callback);
+        }
+
         public Entity Move(int x, int y)
         {
             this.X = x;
@@ -49,6 +69,14 @@ namespace Puffin.Core.Ecs
             {
                 this.components[componentType] = null;
                 // Signal: component removed
+            }
+        }
+
+        private void TriggerOnPositionCallbacks()
+        {
+            foreach (var callback in this.OnPositionChangeCallbacks)
+            {
+                callback.Invoke(this.X, this.Y);
             }
         }
     }

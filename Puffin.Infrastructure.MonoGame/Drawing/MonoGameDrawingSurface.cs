@@ -31,7 +31,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             if (sprite != null)
             {
                 var texture = this.LoadImage(sprite.FileName);
-                var monoGameSprite = new MonoGameSprite(texture);
+                var monoGameSprite = new MonoGameSprite(entity, texture);
                 entitySprites[entity] = monoGameSprite;
             }
         }
@@ -44,7 +44,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             foreach (var entity in this.entities)
             {
                 var monoGameSprite = entitySprites[entity];
-                this.spriteBatch.Draw(monoGameSprite.Texture, new Vector2(entity.X, entity.Y), Color.White);
+                this.spriteBatch.Draw(monoGameSprite.Texture, monoGameSprite.Position, Color.White);
             }
             
             this.spriteBatch.End();
