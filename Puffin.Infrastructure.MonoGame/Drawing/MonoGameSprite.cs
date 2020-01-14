@@ -23,7 +23,14 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             var sprite = parent.GetIfHas<SpriteComponent>();
             if (sprite.FrameWidth > 0 && sprite.FrameHeight > 0)
             {
+                // Spritesheet
                 this.Region = new Rectangle(0, 0, sprite.FrameWidth, sprite.FrameHeight);
+                EventBus.LatestInstance.Subscribe("spritesheet frame index changed", (s) => {
+                    if (s == sprite)
+                    {
+                        this.Region = new Rectangle(sprite.FrameIndex * sprite.FrameWidth, 0, sprite.FrameWidth, sprite.FrameHeight);
+                    }
+                });
             }
             else if (sprite.FrameWidth == 0 && sprite.FrameHeight == 0)
             {

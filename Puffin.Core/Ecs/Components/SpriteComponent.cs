@@ -1,3 +1,5 @@
+using System;
+
 namespace Puffin.Core.Ecs.Components
 {
     public class SpriteComponent : Component
@@ -13,6 +15,29 @@ namespace Puffin.Core.Ecs.Components
         /// The height of a frame of the sprite (if it's a spritesheet), or zero if not a spritesheet.
         /// </summary>
         public readonly int FrameHeight;
+
+        private int frameIndex = 0;
+
+        public int FrameIndex
+        { 
+            get { return this.frameIndex; }
+            set
+            {
+                if (this.FrameWidth == 0 || this.FrameHeight == 0)
+                {
+                    throw new ArgumentException("Can't set frame index without a frame width/height");
+                }
+
+                if (value < 0)
+                {
+                    throw new ArgumentException("Frame index must be non-negative");
+                }
+
+                this.frameIndex = value;
+                
+                EventBus.LatestInstance.Broadcast("spritesheet frame index changed", this);
+            }
+        }
 
         public SpriteComponent(string fileName)
         {

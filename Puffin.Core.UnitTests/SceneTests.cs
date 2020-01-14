@@ -52,6 +52,7 @@ namespace Puffin.Core.UnitTests
             drawingSystem.Verify(d => d.OnAddEntity(e2), Times.Once());
         }
 
+        [Test]
         public void OnUpdateCallsOnUpdateOnSystems()
         {
             // Arrange
@@ -68,5 +69,21 @@ namespace Puffin.Core.UnitTests
             drawingSystem.Verify(d => d.OnUpdate(), Times.Once());
             drawingSystem.Verify(d => d.OnUpdate(), Times.Once());
         }
+
+        [Test]
+        public void OnUpdateCallsSceneUpdate()
+        {
+            // Arrange
+            bool calledUpdate = false;
+            var scene = new Mock<Scene>() { CallBase = true };
+            scene.Setup(s => s.Update()).Callback(() => calledUpdate = true);
+
+            // Act
+            scene.Object.OnUpdate();
+
+            // Assert
+            Assert.That(calledUpdate, Is.True);
+        }
+
     }
 }

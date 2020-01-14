@@ -5,7 +5,7 @@ namespace Puffin.Core.Ecs
 {
     public class EventBus : IDisposable
     {
-        public static EventBus LatestInstance { get; private set; }
+        public static EventBus LatestInstance { get; private set; } = new EventBus();
 
         // event name => callbacks. Each callback has an optional parameter (data).
         private IDictionary<string, List<Action<object>>> subscribers = new Dictionary<string, List<Action<object>>>();
