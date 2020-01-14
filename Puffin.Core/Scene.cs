@@ -48,6 +48,11 @@ namespace Puffin.Core
 
         public void Dispose()
         {
+            if (EventBus.LatestInstance != null)
+            {
+                EventBus.LatestInstance.Dispose();
+            }
+            
             foreach (var entity in this.entities)
             {
                 entity.Dispose();
