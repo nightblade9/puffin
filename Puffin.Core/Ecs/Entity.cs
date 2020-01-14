@@ -66,13 +66,6 @@ namespace Puffin.Core.Ecs
             this.OnPositionChangeCallbacks.Add(callback);
         }
 
-        public Entity Move(int x, int y)
-        {
-            this.X = x;
-            this.Y = y;
-            return this;
-        }
-
         public void Dispose()
         {
             // Remove callbacks so stuff can be GCed.
