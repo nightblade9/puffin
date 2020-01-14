@@ -22,11 +22,12 @@ namespace Puffin.Core.UnitTests.Ecs
             // Arrange
             var bus = new EventBus();
             var wasCalled = new bool[2];
-            bus.Subscribe("call it", (data) => wasCalled[0] = true);
-            bus.Subscribe("call it", (data) => wasCalled[1] = true);
+            bus.Subscribe(EventBusSignal.EntityPositionChanged, (data) => wasCalled[0] = true);
+            bus.Subscribe(EventBusSignal.SpriteSheetFrameIndexChanged, (data) => wasCalled[1] = true);
 
             // Act
-            bus.Broadcast("call it");
+            bus.Broadcast(EventBusSignal.EntityPositionChanged);
+            bus.Broadcast(EventBusSignal.SpriteSheetFrameIndexChanged);
 
             // Assert
             Assert.That(wasCalled[0], Is.True);
@@ -41,13 +42,13 @@ namespace Puffin.Core.UnitTests.Ecs
             var wasCalled = new bool[2];
             Action<object> setSecondValue = (data) => wasCalled[1] = true;
 
-            bus.Subscribe("call it", (data) => wasCalled[0] = true);
+            bus.Subscribe(EventBusSignal.EntityPositionChanged, (data) => wasCalled[0] = true);
             
-            bus.Subscribe("call it", setSecondValue);
-            bus.Unsubscribe("call it", setSecondValue);
+            bus.Subscribe(EventBusSignal.EntityPositionChanged, setSecondValue);
+            bus.Unsubscribe(EventBusSignal.EntityPositionChanged, setSecondValue);
 
             // Act
-            bus.Broadcast("call it");
+            bus.Broadcast(EventBusSignal.EntityPositionChanged);
 
             // Assert
             Assert.That(wasCalled[0], Is.True);

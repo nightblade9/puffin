@@ -10,10 +10,12 @@ namespace Puffin.Core.UnitTests.Ecs
         [Test]
         public void MoveSetsEntityCoordinatesAndBroadcastsEvent()
         {
+            new EventBus();
+            
             // Arrange
             var e = new Entity();
             var callbackCalled = false;
-            new EventBus().Subscribe("entity position changed", (data) => callbackCalled = (data == e));
+            new EventBus().Subscribe(EventBusSignal.EntityPositionChanged, (data) => callbackCalled = (data == e));
 
             // Act
             e.Move(1, 2);

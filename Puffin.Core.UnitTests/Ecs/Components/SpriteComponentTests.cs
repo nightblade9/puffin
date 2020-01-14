@@ -28,7 +28,7 @@ namespace Puffin.Core.UnitTests.Ecs.Components
             // Arrange
             var component = new SpriteComponent("galaxy.png", 32, 32);
             var called = false;
-            new EventBus().Subscribe("spritesheet frame index changed", (data) => called = true);
+            new EventBus().Subscribe(EventBusSignal.SpriteSheetFrameIndexChanged, (data) => called = true);
 
             // Act
             component.FrameIndex = 3;
