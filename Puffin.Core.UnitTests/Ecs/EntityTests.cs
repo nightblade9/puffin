@@ -64,7 +64,7 @@ namespace Puffin.Core.UnitTests.Ecs
             var callbackY = 0;
 
             var e = new Entity();
-            new EventBus().Subscribe("entity position changed", data => {
+            new EventBus().Subscribe(EventBusSignal.EntityPositionChanged, data => {
                 var e = data as Entity;
                 callbackX = e.X;
                 callbackY = e.Y;

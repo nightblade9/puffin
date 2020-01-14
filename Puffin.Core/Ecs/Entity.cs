@@ -19,7 +19,7 @@ namespace Puffin.Core.Ecs
             get { return x; }
             set { 
                 x = value;
-                EventBus.LatestInstance.Broadcast("entity position changed", this);
+                EventBus.LatestInstance.Broadcast(EventBusSignal.EntityPositionChanged, this);
             }
         }
 
@@ -27,7 +27,7 @@ namespace Puffin.Core.Ecs
             get { return y; }
             set { 
                 y = value;
-                EventBus.LatestInstance.Broadcast("entity position changed", this);
+                EventBus.LatestInstance.Broadcast(EventBusSignal.EntityPositionChanged, this);
             }
         }
 

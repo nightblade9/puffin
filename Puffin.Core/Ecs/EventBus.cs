@@ -8,14 +8,14 @@ namespace Puffin.Core.Ecs
         public static EventBus LatestInstance { get; private set; } = new EventBus();
 
         // event name => callbacks. Each callback has an optional parameter (data).
-        private IDictionary<string, List<Action<object>>> subscribers = new Dictionary<string, List<Action<object>>>();
+        private IDictionary<EventBusSignal, List<Action<object>>> subscribers = new Dictionary<EventBusSignal, List<Action<object>>>();
 
         public EventBus()
         {
             LatestInstance = this;
         }
 
-        public void Broadcast(string signal, object data = null)
+        public void Broadcast(EventBusSignal signal, object data = null)
         {
             if (subscribers.ContainsKey(signal))
             {
@@ -27,7 +27,7 @@ namespace Puffin.Core.Ecs
             }
         }
 
-        public void Subscribe(string signal, Action<object> callback)
+        public void Subscribe(EventBusSignal signal, Action<object> callback)
         {
             if (!subscribers.ContainsKey(signal))
             {
@@ -37,7 +37,7 @@ namespace Puffin.Core.Ecs
             subscribers[signal].Add(callback);
         }
 
-        public void Unsubscribe(string signal, Action<object> callback)
+        public void Unsubscribe(EventBusSignal signal, Action<object> callback)
         {
             if (subscribers.ContainsKey(signal))
             {

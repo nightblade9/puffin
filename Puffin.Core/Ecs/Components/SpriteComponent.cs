@@ -35,7 +35,7 @@ namespace Puffin.Core.Ecs.Components
 
                 this.frameIndex = value;
                 
-                EventBus.LatestInstance.Broadcast("spritesheet frame index changed", this);
+                EventBus.LatestInstance.Broadcast(EventBusSignal.SpriteSheetFrameIndexChanged, this);
             }
         }
 
