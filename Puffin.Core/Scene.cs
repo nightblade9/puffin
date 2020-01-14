@@ -66,11 +66,9 @@ namespace Puffin.Core
             {
                 EventBus.LatestInstance.Dispose();
             }
-            
-            foreach (var entity in this.entities)
-            {
-                entity.Dispose();
-            }
+
+            // Reset EventBus.LatestIntance
+            new EventBus();
         }
     }
 }

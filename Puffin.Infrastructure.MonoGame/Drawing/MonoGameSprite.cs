@@ -15,7 +15,13 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
         public MonoGameSprite(Entity parent, Texture2D texture)
         {
             this.Texture = texture;
-            parent.AddPositionChangeCallback((x, y) => this.Position = new Vector2(x, y));
+            EventBus.LatestInstance.Subscribe("entity position changed", (data) => {
+                if (data == parent)
+                {
+                    this.Position = new Vector2(parent.X, parent.Y);
+                }
+            });
+
             // Get initial position set correctly
             this.Position = new Vector2(parent.X, parent.Y);
 

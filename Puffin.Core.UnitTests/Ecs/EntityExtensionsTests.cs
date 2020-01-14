@@ -8,14 +8,18 @@ namespace Puffin.Core.UnitTests.Ecs
     public class EntityExtensionsTests
     {
         [Test]
-        public void MoveSetsEntityCoordinatesAndTriggersCallback()
+        public void MoveSetsEntityCoordinatesAndBroadcastsEvent()
         {
+            // Arrange
             var e = new Entity();
             var callbackCalled = false;
-            e.AddPositionChangeCallback((x, y) => callbackCalled = true);
+            new EventBus().Subscribe("entity position changed", (data) => callbackCalled = (data == e));
+
+            // Act
             e.Move(1, 2);
             e.Move(200, 140);
 
+            // Assert
             Assert.That(e.X, Is.EqualTo(200));
             Assert.That(e.Y, Is.EqualTo(140));
             Assert.That(callbackCalled, Is.True);
