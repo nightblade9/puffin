@@ -6,14 +6,12 @@ using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Puffin.Infrastructure.MonoGame
+namespace Puffin.Infrastructure.MonoGame.Drawing
 {
     public class MonoGameDrawingSurface : IDrawingSurface
     {
-        // Optimization: keep one sprite per filename, not per instance. If players ever write code
-        // that modifies a sprite, it will affect all the other entities that use that sprite file.
-        private Dictionary<string, Texture2D> fileNameToTextureMap = new Dictionary<string, Texture2D>();
         private IList<Entity> entities = new List<Entity>();
+        private IDictionary<Entity, MonoGameSprite> entitySprites = new Dictionary<Entity, MonoGameSprite>();
         
         // TODO: maybe content pipeline is a good thing, amirite? If so, use LoadContent to load sprites
         private GraphicsDevice graphics;
@@ -32,7 +30,9 @@ namespace Puffin.Infrastructure.MonoGame
             
             if (sprite != null)
             {
-                this.fileNameToTextureMap[sprite.FileName] = this.LoadImage(sprite.FileName);
+                var texture = this.LoadImage(sprite.FileName);
+                var monoGameSprite = new MonoGameSprite(texture);
+                entitySprites[entity] = monoGameSprite;
             }
         }
 
@@ -43,11 +43,8 @@ namespace Puffin.Infrastructure.MonoGame
 
             foreach (var entity in this.entities)
             {
-                var component = entity.GetIfHas<SpriteComponent>();
-                var sprite = fileNameToTextureMap[component.FileName];
-                // TODO: creating a new Vector2 each time is a bad idea.
-                // But, having entity X/Y and leaking MonoGame into Puffin.Core is also a bad idea.
-                this.spriteBatch.Draw(sprite, new Vector2(entity.X, entity.Y), Color.White);
+                var monoGameSprite = entitySprites[entity];
+                this.spriteBatch.Draw(monoGameSprite.Texture, new Vector2(entity.X, entity.Y), Color.White);
             }
             
             this.spriteBatch.End();
