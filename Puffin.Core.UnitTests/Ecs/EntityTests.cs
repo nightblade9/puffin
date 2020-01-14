@@ -63,6 +63,30 @@ namespace Puffin.Core.UnitTests.Ecs
             var e2 = e.Move(100, 182);
             Assert.That(e2, Is.EqualTo(e));
         }
+
+        [Test]
+        public void SettingXOrYTriggersSetCallbacks()
+        {
+            var timesCalledBack = 0;
+            var callbackX = 0;
+            var callbackY = 0;
+
+            var e = new Entity();
+            e.AddPositionChangeCallback((x, y) => {
+                callbackX = x;
+                callbackY = y;
+                timesCalledBack++;
+            });
+
+            // Act/Assert
+            e.X = 100;
+            Assert.That(timesCalledBack, Is.EqualTo(1));
+            Assert.That(callbackX, Is.EqualTo(100));
+
+            e.Y = 293;
+            Assert.That(timesCalledBack, Is.EqualTo(2));
+            Assert.That(callbackY, Is.EqualTo(293));
+        }
     }
 
     // TODO: delete later
