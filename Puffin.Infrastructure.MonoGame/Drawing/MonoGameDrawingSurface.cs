@@ -8,6 +8,9 @@ using System.IO;
 
 namespace Puffin.Infrastructure.MonoGame.Drawing
 {
+    /// <summary>
+    /// A drawing surface for MonoGame (a wrapper around SpriteBatch).
+    /// </summary>
     public class MonoGameDrawingSurface : IDrawingSurface
     {
         private IList<Entity> entities = new List<Entity>();
