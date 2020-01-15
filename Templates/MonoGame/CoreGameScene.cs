@@ -5,18 +5,27 @@ using Puffin.Core.Ecs.Components;
 
 public class CoreGameScene : Scene
 {
-    private Entity entity;
+    private Entity tilemapEntity;
+    private Entity textLabel;
 
     public CoreGameScene()
     {
-                this.Add(new Entity()
-            .Set(new TextLabelComponent("Hi, mom!")));
+        this.tilemapEntity = new Entity()
+            .Set(new SpriteComponent("tilemap.png", 32, 32))
+            .Move(300, 200);
+        
+        this.Add(tilemapEntity);
+
+        this.textLabel = new Entity().Set(new TextLabelComponent("(0, 0)"));
+
+        this.Add(textLabel);
     }
 
     override public void Update()
     {
         var index = DateTime.Now.Second % 4;
-        //entity.GetIfHas<SpriteComponent>().FrameIndex = index;
-        Console.WriteLine(this.MouseCoordinates.ToString());
+        tilemapEntity.GetIfHas<SpriteComponent>().FrameIndex = index;
+        
+        this.textLabel.GetIfHas<TextLabelComponent>().Text = $"Mouse: {this.MouseCoordinates.ToString()}";
     }
 }
