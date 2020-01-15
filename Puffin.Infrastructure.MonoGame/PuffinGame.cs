@@ -4,6 +4,7 @@ using Puffin.Infrastructure.MonoGame.Drawing;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Puffin.Infrastructure.MonoGame.IO;
 
 namespace Puffin.Infrastructure.MonoGame
 {
@@ -34,7 +35,7 @@ namespace Puffin.Infrastructure.MonoGame
                 new DrawingSystem(drawingSurface),
             };
 
-            s.Initialize(systems);
+            s.Initialize(systems, new MonoGameMouseProvider());
 
             this.currentScene = s;
         }

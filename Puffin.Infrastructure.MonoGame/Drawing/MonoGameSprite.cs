@@ -15,7 +15,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
         public MonoGameSprite(Entity parent, Texture2D texture)
         {
             this.Texture = texture;
-            EventBus.LatestInstance.Subscribe("entity position changed", (data) => {
+            EventBus.LatestInstance.Subscribe(EventBusSignal.EntityPositionChanged, (data) => {
                 if (data == parent)
                 {
                     this.Position = new Vector2(parent.X, parent.Y);
@@ -31,7 +31,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             {
                 // Spritesheet
                 this.Region = new Rectangle(0, 0, sprite.FrameWidth, sprite.FrameHeight);
-                EventBus.LatestInstance.Subscribe("spritesheet frame index changed", (s) => {
+                EventBus.LatestInstance.Subscribe(EventBusSignal.SpriteSheetFrameIndexChanged, (s) => {
                     if (s == sprite)
                     {
                         this.Region = new Rectangle(sprite.FrameIndex * sprite.FrameWidth, 0, sprite.FrameWidth, sprite.FrameHeight);
