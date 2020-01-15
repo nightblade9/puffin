@@ -9,17 +9,14 @@ public class CoreGameScene : Scene
 
     public CoreGameScene()
     {
-        this.entity = new Entity()
-            .Set(new SpriteComponent("tilemap.png", 32, 32))
-            .Move(300, 200);
-
-        this.Add(this.entity);
+                this.Add(new Entity()
+            .Set(new TextLabelComponent("Hi, mom!")));
     }
 
     override public void Update()
     {
         var index = DateTime.Now.Second % 4;
-        entity.GetIfHas<SpriteComponent>().FrameIndex = index;
+        //entity.GetIfHas<SpriteComponent>().FrameIndex = index;
         Console.WriteLine(this.MouseCoordinates.ToString());
     }
 }

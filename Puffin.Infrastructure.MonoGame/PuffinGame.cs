@@ -8,10 +8,11 @@ using Puffin.Infrastructure.MonoGame.IO;
 
 namespace Puffin.Infrastructure.MonoGame
 {
-    public abstract class PuffinGame : Game
+    public class PuffinGame : Game
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
+        private SpriteFont defaultFont;
         private Scene currentScene;
 
         public PuffinGame()
@@ -28,7 +29,7 @@ namespace Puffin.Infrastructure.MonoGame
                 this.currentScene.Dispose();
             }
             
-            var drawingSurface = new MonoGameDrawingSurface(this.GraphicsDevice, spriteBatch);
+            var drawingSurface = new MonoGameDrawingSurface(this.GraphicsDevice, spriteBatch, this.defaultFont);
 
             var systems = new ISystem[]
             {
@@ -40,7 +41,10 @@ namespace Puffin.Infrastructure.MonoGame
             this.currentScene = s;
         }
 
-        abstract protected void Ready();
+        virtual protected void Ready()
+        {
+
+        }
 
         protected override void Initialize()
         {
@@ -52,6 +56,8 @@ namespace Puffin.Infrastructure.MonoGame
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             // Not used since we currently load sprites outside the pipeline
+            this.defaultFont = Content.Load<SpriteFont>("OpenSans");
+
             this.Ready();
         }
 

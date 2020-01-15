@@ -13,6 +13,8 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
     /// </summary>
     public class MonoGameDrawingSurface : IDrawingSurface
     {
+        private readonly SpriteFont defaultFont;
+
         private IList<Entity> entities = new List<Entity>();
         private IDictionary<Entity, MonoGameSprite> entitySprites = new Dictionary<Entity, MonoGameSprite>();
         
@@ -20,15 +22,15 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
         private GraphicsDevice graphics;
         private SpriteBatch spriteBatch;
 
-        public MonoGameDrawingSurface(GraphicsDevice graphics, SpriteBatch spriteBatch)
+        public MonoGameDrawingSurface(GraphicsDevice graphics, SpriteBatch spriteBatch, SpriteFont defaultFont)
         {
             this.graphics = graphics;
             this.spriteBatch = spriteBatch;
+            this.defaultFont = defaultFont;
         }
 
         public void AddEntity(Entity entity)
         {
-            this.entities.Add(entity);
             var sprite = entity.GetIfHas<SpriteComponent>();
             
             if (sprite != null)
@@ -36,6 +38,11 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
                 var texture = this.LoadImage(sprite.FileName);
                 var monoGameSprite = new MonoGameSprite(entity, texture);
                 entitySprites[entity] = monoGameSprite;
+                this.entities.Add(entity);
+            }
+            else if (entity.GetIfHas<TextLabelComponent>() != null)
+            {
+                this.entities.Add(entity);
             }
         }
 
@@ -46,8 +53,19 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
 
             foreach (var entity in this.entities)
             {
-                var monoGameSprite = entitySprites[entity];
-                this.spriteBatch.Draw(monoGameSprite.Texture, monoGameSprite.Position, monoGameSprite.Region, Color.White);
+                if (entitySprites.ContainsKey(entity))
+                {
+                    var monoGameSprite = entitySprites[entity];
+                    this.spriteBatch.Draw(monoGameSprite.Texture, monoGameSprite.Position, monoGameSprite.Region, Color.White);
+                }
+
+                var text = entity.GetIfHas<TextLabelComponent>();
+                if (text != null)
+                {
+                    // Creating a new Vector2 every frame is bad. Text labels are rare, though, so it might be OK.
+                    // TODO: refactor position out of MonoGameSprite and make it generic for an entity instead....
+                    this.spriteBatch.DrawString(defaultFont, text.Text, new Vector2(entity.X, entity.Y), Color.White);
+                }
             }
             
             this.spriteBatch.End();
