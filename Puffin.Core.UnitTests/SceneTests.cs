@@ -2,6 +2,7 @@ using Moq;
 using NUnit.Framework;
 using Puffin.Core.Ecs;
 using Puffin.Core.Ecs.Systems;
+using Puffin.Core.IO;
 
 namespace Puffin.Core.UnitTests
 {
@@ -19,7 +20,7 @@ namespace Puffin.Core.UnitTests
             var e2 = new Entity();
             
             var scene = new Scene();
-            scene.Initialize(drawingSystem.Object, audioSystem.Object);
+            scene.Initialize(new ISystem[] { drawingSystem.Object, audioSystem.Object }, null);
 
             // Act
             scene.Add(e1);
@@ -45,7 +46,7 @@ namespace Puffin.Core.UnitTests
             scene.Add(e2);
 
             // Act
-            scene.Initialize(drawingSystem.Object, audioSystem.Object);
+            scene.Initialize(new ISystem[] { drawingSystem.Object, audioSystem.Object }, null);
             
             // Assert
             drawingSystem.Verify(d => d.OnAddEntity(e1), Times.Once());
@@ -59,7 +60,7 @@ namespace Puffin.Core.UnitTests
             var audioSystem = new Mock<ISystem>();
             
             var scene = new Scene();
-            scene.Initialize(drawingSystem.Object, audioSystem.Object);
+            scene.Initialize(new ISystem[] { drawingSystem.Object, audioSystem.Object }, null);
 
             // Act
             scene.OnUpdate();
@@ -67,6 +68,19 @@ namespace Puffin.Core.UnitTests
             // Assert
             drawingSystem.Verify(d => d.OnUpdate(), Times.Once());
             drawingSystem.Verify(d => d.OnUpdate(), Times.Once());
+        }
+
+        [Test]
+        public void MouseCoordinatesReturnsCoordinatesFromMouseProvider()
+        {
+            var expectedCoordinates = new System.Tuple<int, int>(123, 21);
+            var mouseProvider = new Mock<IMouseProvider>();
+            mouseProvider.Setup(m => m.MouseCoordinates).Returns(expectedCoordinates);
+
+            var scene = new Scene();
+            scene.Initialize(new ISystem[0], mouseProvider.Object);
+
+            Assert.That(scene.MouseCoordinates, Is.EqualTo(expectedCoordinates));
         }
     }
 }
