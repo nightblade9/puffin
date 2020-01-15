@@ -20,5 +20,6 @@ public class CoreGameScene : Scene
     {
         var index = DateTime.Now.Second % 4;
         entity.GetIfHas<SpriteComponent>().FrameIndex = index;
+        Console.WriteLine(this.MouseCoordinates.ToString());
     }
 }
