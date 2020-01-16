@@ -1,6 +1,6 @@
 namespace Puffin.Core.Ecs
 {
-    public enum EventBusSignal
+    enum EventBusSignal
     {
         EntityPositionChanged,
         SpriteSheetFrameIndexChanged,
