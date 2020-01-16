@@ -2,7 +2,7 @@ using Puffin.Core.Ecs;
 
 namespace Puffin.Core.Drawing
 {
-    public interface IDrawingSurface
+    interface IDrawingSurface
     {
         void DrawAll();
         void AddEntity(Entity entity);
