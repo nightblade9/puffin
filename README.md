@@ -1,4 +1,4 @@
-# Puffin Engine
+# Puffin
 
 [![Build Status](https://travis-ci.org/nightblade9/puffin-engine.svg?branch=master)](https://travis-ci.org/nightblade9/puffin-engine)
 
