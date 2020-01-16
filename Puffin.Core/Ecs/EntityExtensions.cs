@@ -1,6 +1,7 @@
 using System;
 using Puffin.Core.Ecs.Components;
 using Puffin.Core.IO;
+using Ninject;
 
 namespace Puffin.Core.Ecs
 {
@@ -31,9 +32,9 @@ namespace Puffin.Core.Ecs
             return entity;
         }
 
-        public static Entity Mouse(this Entity entity, IMouseProvider mouseProvider, Action onClick, int width, int height)
+        public static Entity Mouse(this Entity entity, Action onClick, int width, int height)
         {
-            // TODO: DI for mouse provider (singleton instance)
+            var mouseProvider = DependencyInjection.Kernel.Get<IMouseProvider>();
             entity.Set(new MouseComponent(entity, mouseProvider, onClick, width, height));
             return entity;
         }
