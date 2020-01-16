@@ -4,5 +4,6 @@ namespace Puffin.Core.Ecs
     {
         EntityPositionChanged,
         SpriteSheetFrameIndexChanged,
+        MouseClicked,
     }
 }

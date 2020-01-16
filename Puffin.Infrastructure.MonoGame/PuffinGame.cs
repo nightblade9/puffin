@@ -5,6 +5,7 @@ using Puffin.Infrastructure.MonoGame.Drawing;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Puffin.Infrastructure.MonoGame.IO;
+using Puffin.Core.IO;
 
 namespace Puffin.Infrastructure.MonoGame
 {
@@ -14,6 +15,7 @@ namespace Puffin.Infrastructure.MonoGame
         private SpriteBatch spriteBatch;
         private SpriteFont defaultFont;
         private Scene currentScene;
+        private IMouseProvider mouseProvider;
 
         public PuffinGame()
         {
@@ -36,7 +38,8 @@ namespace Puffin.Infrastructure.MonoGame
                 new DrawingSystem(drawingSurface),
             };
 
-            s.Initialize(systems, new MonoGameMouseProvider());
+            this.mouseProvider = new MonoGameMouseProvider();
+            s.Initialize(systems, this.mouseProvider);
 
             this.currentScene = s;
         }
@@ -67,6 +70,7 @@ namespace Puffin.Infrastructure.MonoGame
             //   Exit();
 
             // TODO: Add your update logic here
+            this.mouseProvider.Update();
             base.Update(gameTime);
         }
 

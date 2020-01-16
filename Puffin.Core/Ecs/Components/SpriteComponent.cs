@@ -39,7 +39,8 @@ namespace Puffin.Core.Ecs.Components
             }
         }
 
-        public SpriteComponent(string fileName)
+        public SpriteComponent(Entity parent, string fileName)
+        : base(parent)
         {
             this.FileName = fileName;
         }
@@ -47,8 +48,8 @@ namespace Puffin.Core.Ecs.Components
         /// <summary>
         /// Used to construct a spritesheet, by passing in the frame width/height.
         /// </summary>
-        public SpriteComponent(string spritesheetFileName, int frameWidth, int frameHeight)
-        : this(spritesheetFileName)
+        public SpriteComponent(Entity parent, string spritesheetFileName, int frameWidth, int frameHeight)
+        : this(parent, spritesheetFileName)
         {
             this.FrameWidth = frameWidth;
             this.FrameHeight = frameHeight;
