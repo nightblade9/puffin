@@ -1,7 +1,18 @@
+using System;
+
 namespace Puffin.Core.Ecs.Components
 {
     public class Component
     {
-        // TODO: perhaps we need a reference to the owning entity, perhaps not
+        protected readonly Entity Parent;
+
+        public Component(Entity parent)
+        {
+            if (parent == null)
+            {
+                throw new NullReferenceException(nameof(parent));
+            }
+            this.Parent = parent;
+        }
     }
 }

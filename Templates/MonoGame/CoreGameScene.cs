@@ -2,6 +2,7 @@ using System;
 using Puffin.Core;
 using Puffin.Core.Ecs;
 using Puffin.Core.Ecs.Components;
+using Puffin.Infrastructure.MonoGame.IO;
 
 public class CoreGameScene : Scene
 {
@@ -10,21 +11,24 @@ public class CoreGameScene : Scene
 
     public CoreGameScene()
     {
+        this.textLabel = new Entity().Label("(0, 0)");
+        this.Add(textLabel);
+
         this.tilemapEntity = new Entity()
-            .Set(new SpriteComponent("tilemap.png", 32, 32))
-            .Move(300, 200);
+            .Spritesheet("tilemap.png", 32, 32)
+            .Move(300, 200)
+            .Mouse(() => {
+                tilemapEntity.GetIfHas<SpriteComponent>().FrameIndex++;
+                tilemapEntity.GetIfHas<SpriteComponent>().FrameIndex %= 4;
+            }, 32, 32);
         
         this.Add(tilemapEntity);
-
-        this.textLabel = new Entity().Set(new TextLabelComponent("(0, 0)"));
-
-        this.Add(textLabel);
     }
 
     override public void Update()
     {
-        var index = DateTime.Now.Second % 4;
-        tilemapEntity.GetIfHas<SpriteComponent>().FrameIndex = index;
+        // var index = DateTime.Now.Second % 4;
+        // tilemapEntity.GetIfHas<SpriteComponent>().FrameIndex = index;
         
         this.textLabel.GetIfHas<TextLabelComponent>().Text = $"Mouse: {this.MouseCoordinates.ToString()}";
     }
