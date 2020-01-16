@@ -13,6 +13,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
         public Rectangle Region { get; private set; }
 
         public MonoGameSprite(Entity parent, Texture2D texture)
+        : base(parent)
         {
             this.Texture = texture;
             EventBus.LatestInstance.Subscribe(EventBusSignal.EntityPositionChanged, (data) => {
