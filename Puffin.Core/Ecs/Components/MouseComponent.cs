@@ -1,6 +1,7 @@
 using System;
 using Puffin.Core.Ecs.Components;
 using Puffin.Core.IO;
+using Ninject;
 
 namespace Puffin.Core.Ecs
 {
@@ -15,14 +16,18 @@ namespace Puffin.Core.Ecs
         private readonly int width = 0;
         private readonly int height = 0;
 
-        public MouseComponent(Entity parent, IMouseProvider mouseProvider, Action onClickCallback, int width, int height)
+        /// <summary>
+        /// Creates a mouse component (receives clicks and triggers a callback).
+        /// Width and height indicate the clickable area (relative to the origin of the entity).
+        /// </summary>
+        public MouseComponent(Entity parent, Action onClickCallback, int width, int height)
         : base(parent)
         {
-            this.mouseProvider = mouseProvider;
             this.width = width;
             this.height = height;
             this.onClickCallback = onClickCallback;
             EventBus.LatestInstance.Subscribe(EventBusSignal.MouseClicked, this.onMouseClicked);
+            this.mouseProvider = DependencyInjection.Kernel.Get<IMouseProvider>();
         }
 
         private void onMouseClicked(object data)

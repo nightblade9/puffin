@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Puffin.Infrastructure.MonoGame.IO;
 using Puffin.Core.IO;
+using Ninject;
 
 namespace Puffin.Infrastructure.MonoGame
 {
@@ -22,6 +23,9 @@ namespace Puffin.Infrastructure.MonoGame
             this.graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+
+            DependencyInjection.Kernel.Bind(typeof(IMouseProvider)).To(typeof(MonoGameMouseProvider)).InSingletonScope();
+            this.mouseProvider = DependencyInjection.Kernel.Get<IMouseProvider>();
         }
 
         public void ShowScene(Scene s)
@@ -38,7 +42,6 @@ namespace Puffin.Infrastructure.MonoGame
                 new DrawingSystem(drawingSurface),
             };
 
-            this.mouseProvider = new MonoGameMouseProvider();
             s.Initialize(systems, this.mouseProvider);
 
             this.currentScene = s;

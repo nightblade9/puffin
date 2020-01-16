@@ -1,6 +1,5 @@
 using System;
 using Puffin.Core.Ecs.Components;
-using Puffin.Core.IO;
 
 namespace Puffin.Core.Ecs
 {
@@ -31,10 +30,9 @@ namespace Puffin.Core.Ecs
             return entity;
         }
 
-        public static Entity Mouse(this Entity entity, IMouseProvider mouseProvider, Action onClick, int width, int height)
+        public static Entity Mouse(this Entity entity, Action onClick, int width, int height)
         {
-            // TODO: DI for mouse provider (singleton instance)
-            entity.Set(new MouseComponent(entity, mouseProvider, onClick, width, height));
+            entity.Set(new MouseComponent(entity, onClick, width, height));
             return entity;
         }
     }
