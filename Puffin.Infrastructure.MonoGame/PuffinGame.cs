@@ -24,7 +24,7 @@ namespace Puffin.Infrastructure.MonoGame
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
-            DependencyInjection.Kernel.Bind(typeof(IMouseProvider)).To(typeof(MonoGameMouseProvider)).InSingletonScope();
+            DependencyInjection.Kernel.Bind<IMouseProvider>().To<MonoGameMouseProvider>().InSingletonScope();
             this.mouseProvider = DependencyInjection.Kernel.Get<IMouseProvider>();
         }
 
