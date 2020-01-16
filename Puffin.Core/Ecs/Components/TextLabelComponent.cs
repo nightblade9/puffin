@@ -4,7 +4,8 @@ namespace Puffin.Core.Ecs.Components
     {
         public string Text { get; set; } = "";
 
-        public TextLabelComponent(string text)
+        public TextLabelComponent(Entity parent, string text)
+        : base(parent)
         {
             this.Text = text;
         }

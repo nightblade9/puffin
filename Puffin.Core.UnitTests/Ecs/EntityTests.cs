@@ -87,6 +87,7 @@ namespace Puffin.Core.UnitTests.Ecs
     {
         public string Value { get; set; }
         public StringComponent(string value)
+        : base(new Entity())
         {
             this.Value = value;
         }

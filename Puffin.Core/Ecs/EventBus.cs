@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Puffin.Core.Ecs
 {
-    public class EventBus : IDisposable
+    class EventBus : IDisposable
     {
         public static EventBus LatestInstance { get; private set; } = new EventBus();
 

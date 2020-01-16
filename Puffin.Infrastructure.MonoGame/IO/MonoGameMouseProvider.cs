@@ -1,16 +1,33 @@
 using System;
 using Microsoft.Xna.Framework.Input;
+using Puffin.Core.Ecs;
 using Puffin.Core.IO;
 
 namespace Puffin.Infrastructure.MonoGame.IO
 {
     public class MonoGameMouseProvider : IMouseProvider
     {
-        public Tuple<int, int> MouseCoordinates {
-            get {
+        private MouseState previousState;
+
+        public Tuple<int, int> MouseCoordinates
+        {
+            get
+            {
                 var state = Mouse.GetState();
                 return new Tuple<int, int>(state.X, state.Y);
             }
+        }
+
+        public void Update()
+        {
+            var mouseState = Mouse.GetState();
+
+            if (mouseState.LeftButton == ButtonState.Pressed && previousState.LeftButton != ButtonState.Pressed)
+            {
+                EventBus.LatestInstance.Broadcast(EventBusSignal.MouseClicked, null);
+            }
+
+            this.previousState = mouseState;
         }
     }
 }
