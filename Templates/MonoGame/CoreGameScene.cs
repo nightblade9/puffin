@@ -17,7 +17,8 @@ public class CoreGameScene : Scene
         this.tilemapEntity = new Entity()
             .Spritesheet("tilemap.png", 32, 32)
             .Move(300, 200)
-            .Mouse(new MonoGameMouseProvider(), () => {
+            // TODO: make mouse provider DI
+            .Mouse(() => {
                 tilemapEntity.GetIfHas<SpriteComponent>().FrameIndex++;
                 tilemapEntity.GetIfHas<SpriteComponent>().FrameIndex %= 4;
             }, 32, 32);
