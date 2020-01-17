@@ -23,6 +23,8 @@ public class CoreGameScene : Scene
             }, 32, 32);
         
         this.Add(tilemapEntity);
+
+        this.OnMouseClick = () => textLabel.GetIfHas<TextLabelComponent>().Text = $"Mouse: {this.MouseCoordinates}";
     }
 
     override public void Update()
@@ -30,6 +32,6 @@ public class CoreGameScene : Scene
         // var index = DateTime.Now.Second % 4;
         // tilemapEntity.GetIfHas<SpriteComponent>().FrameIndex = index;
         
-        this.textLabel.GetIfHas<TextLabelComponent>().Text = $"Mouse: {this.MouseCoordinates.ToString()}";
+        //this.textLabel.GetIfHas<TextLabelComponent>().Text = $"Mouse: {this.MouseCoordinates.ToString()}";
     }
 }
