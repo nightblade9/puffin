@@ -3,6 +3,7 @@ using Puffin.Core;
 using Puffin.Core.Ecs;
 using Puffin.Core.Ecs.Components;
 using Puffin.Infrastructure.MonoGame.IO;
+using Puffin.UI.Controls;
 
 public class CoreGameScene : Scene
 {
@@ -23,6 +24,14 @@ public class CoreGameScene : Scene
             }, 32, 32);
         
         this.Add(tilemapEntity);
+
+        //this.OnMouseClick = () => textLabel.GetIfHas<TextLabelComponent>().Text = $"Mouse: {this.MouseCoordinates}";
+
+        this.Add(
+            new Button("Click me!",
+                () => textLabel.GetIfHas<TextLabelComponent>().Text = "WOW!!")
+            .Move(500, 100)
+        );
     }
 
     override public void Update()
@@ -30,6 +39,6 @@ public class CoreGameScene : Scene
         // var index = DateTime.Now.Second % 4;
         // tilemapEntity.GetIfHas<SpriteComponent>().FrameIndex = index;
         
-        this.textLabel.GetIfHas<TextLabelComponent>().Text = $"Mouse: {this.MouseCoordinates.ToString()}";
+        //this.textLabel.GetIfHas<TextLabelComponent>().Text = $"Mouse: {this.MouseCoordinates.ToString()}";
     }
 }

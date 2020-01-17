@@ -98,5 +98,21 @@ namespace Puffin.Core.UnitTests
 
             Assert.That(scene.MouseCoordinates, Is.EqualTo(expectedCoordinates));
         }
+
+        [Test]
+        public void OnMouseClickFiresOnMouseClickEvent()
+        {
+            // Arrange
+            var eventBus = new EventBus();
+            var called = false;
+            var scene = new Scene();
+            scene.OnMouseClick = () => called = true;
+
+            // Act
+            eventBus.Broadcast(EventBusSignal.MouseClicked);
+
+            // Assert
+            Assert.That(called, Is.True);
+        }
     }
 }

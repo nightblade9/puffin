@@ -8,11 +8,19 @@ namespace Puffin.Core
 {     
     public class Scene : IDisposable
     {
+        // public for testability; would be protected otherwise
+        public Action OnMouseClick;
+
         private IMouseProvider mouseProvider;
         private ISystem[] systems = new ISystem[0];
         private List<Entity> entities = new List<Entity>();
 
         public Tuple<int, int> MouseCoordinates { get { return this.mouseProvider.MouseCoordinates; }}
+
+        public Scene()
+        {
+            EventBus.LatestInstance.Subscribe(EventBusSignal.MouseClicked, onMouseClick);
+        }
 
         public void Initialize(ISystem[] systems, IMouseProvider mouseProvider)
         {
@@ -26,7 +34,7 @@ namespace Puffin.Core
                 {
                     system.OnAddEntity(entity);
                 }
-            }
+            }            
         }
 
         public void Add(Entity entity)
@@ -74,6 +82,14 @@ namespace Puffin.Core
 
             // Reset EventBus.LatestIntance
             new EventBus();
+        }
+
+        private void onMouseClick(object data)
+        {
+            if (this.OnMouseClick != null)
+            {
+                this.OnMouseClick.Invoke();
+            }
         }
     }
 }
