@@ -5,14 +5,14 @@ namespace Puffin.UI.Controls
 {
     public class Button : Entity
     {
-        private Action onClick;
+        private const int SPRITE_WIDTH = 128;
+        private const int SPRITE_HEIGHT = 48;
 
         public Button(string text, Action onClick)
         {
-            this.onClick = onClick;
-            // Set sprite to some sprite thing
-            // Set label caption to text
-            // Set mouse component and bind to click event
+            this.Sprite("Content/Puffin/UI/Button.png");
+            this.Label(text);
+            this.Mouse(onClick, SPRITE_WIDTH, SPRITE_HEIGHT);
         }
     }
 }

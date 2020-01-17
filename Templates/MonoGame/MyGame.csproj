@@ -38,6 +38,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Puffin.Infrastructure.MonoGame\Puffin.Infrastructure.MonoGame.csproj" />
+    <ProjectReference Include="..\..\Puffin.UI\Puffin.UI.csproj" />
   </ItemGroup>
 
 </Project>
