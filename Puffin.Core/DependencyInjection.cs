@@ -7,7 +7,7 @@ namespace Puffin.Core
     {
         public static StandardKernel Kernel = new StandardKernel();
 
-        public static void Reset()
+        internal static void Reset()
         {
             Kernel = new StandardKernel();
         }
