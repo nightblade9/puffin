@@ -1,12 +1,20 @@
+using Moq;
 using NUnit.Framework;
 using Puffin.Core.Ecs;
 using Puffin.Core.Ecs.Components;
+using Puffin.Core.IO;
 
 namespace Puffin.Core.UnitTests.Ecs
 {
     [TestFixture]
     public class EntityExtensionsTests
     {
+        [TearDown]
+        public void ResetDependencyInjectionBindings()
+        {
+            DependencyInjection.Reset();
+        }
+
         [Test]
         public void MoveSetsEntityCoordinatesAndBroadcastsEvent()
         {
@@ -56,6 +64,32 @@ namespace Puffin.Core.UnitTests.Ecs
             var label = e.GetIfHas<TextLabelComponent>();
             Assert.That(label, Is.Not.Null);
             Assert.That(label.Text, Is.EqualTo("hi!"));
+        }
+
+        public void MouseSetsMouseComponent()
+        {
+            var provider = new Mock<IMouseProvider>();
+            DependencyInjection.Kernel.Bind<IMouseProvider>().ToConstant(provider.Object);
+
+            var e = new Entity();
+            Assert.That(e.GetIfHas<MouseComponent>(), Is.Null);
+
+            e.Mouse(null, 32, 32);
+            Assert.That(e.GetIfHas<MouseComponent>(), Is.Not.Null);
+        }
+
+        [Test]
+        public void KeyboardSetsKeyboardComponent()
+        {
+            // Depends on default mapping for PuffinGame.
+            var provider = new Mock<IKeyboardProvider>();
+            DependencyInjection.Kernel.Bind<IKeyboardProvider>().ToConstant(provider.Object);
+
+            var e = new Entity();
+            Assert.That(e.GetIfHas<KeyboardComponent>(), Is.Null);
+
+            e.Keyboard();
+            Assert.That(e.GetIfHas<KeyboardComponent>(), Is.Not.Null);
         }
     }
 }
