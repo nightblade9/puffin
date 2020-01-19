@@ -15,12 +15,15 @@ Cross-platform 2D C# game engine. This project is under heavy development.
 
 # Getting Started
 
-- Clone this repository (NuGet packages are not available yet)
+- Add this repository as a `git submodule` within your project (NuGet packages are not available yet)
 - Build it by running `dotnet build`. Note: you will need .NET SDK 3.1 and MonoGame.
-- Run `dotnet run --project Puffin.CommandLineInterface` to build a new project template
-- Type `cd NewPuffin` and `dotnet run` to build/run the template project
+- Copy/paste `Templates/MonoGame` into the root of your repo
+- Go to the repo root and add references to Puffin:
+    - `dotnet add MyGame.csproj reference puffin/Puffin.Core`
+    - `dotnet add MyGame.csproj reference puffin/Puffin.UI` (if you want buttons/etc.)
+- Type `dotnet run` or press F5 in VSCode to verify it works
 
-You should be greeted with an empty screen with a placeholder image.
+You should be greeted with an empty screen with an image.
 
 ## Creating Your First Screen
 
