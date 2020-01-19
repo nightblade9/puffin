@@ -9,6 +9,8 @@ namespace Puffin.Core.Ecs
     /// A component with makes an entity clickable.
     public class MouseComponent : Component
     {
+        // To avoid having an `Update` method on the component, we rely on events.
+
         private readonly IMouseProvider mouseProvider;
         private readonly Action onClickCallback;
         
