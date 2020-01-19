@@ -37,5 +37,11 @@ namespace Puffin.Core.Ecs
             entity.Set(new MouseComponent(entity, onClick, width, height));
             return entity;
         }
+
+        public static Entity Keyboard(this Entity entity)
+        {
+            entity.Set(new KeyboardComponent(entity));
+            return entity;
+        }
     }
 }

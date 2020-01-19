@@ -7,19 +7,38 @@ using Microsoft.Xna.Framework.Graphics;
 using Puffin.Infrastructure.MonoGame.IO;
 using Puffin.Core.IO;
 using Ninject;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework.Input;
 
 namespace Puffin.Infrastructure.MonoGame
 {
     public class PuffinGame : Game
     {
+        /// <summary>
+        /// A mapping of in-game actions to the (MonoGame) keyboard keys that map to them.
+        /// PuffinGame ships with default mappings for all actions; you can override these
+        /// to change keyboard bindings, or expose them in a UI and allow users to arbitrarily
+        /// override keyboard mappings (for accessibility).
+        /// <summary>
+        public Dictionary<PuffinAction, List<Keys>> actionToKeys = new Dictionary<PuffinAction, List<Keys>>() {
+            { PuffinAction.Up, new List<Keys>() { Keys.W, Keys.Up } },
+            { PuffinAction.Down, new List<Keys>() { Keys.S, Keys.Down } },
+            { PuffinAction.Left, new List<Keys>() { Keys.A, Keys.Left } },
+            { PuffinAction.Right, new List<Keys>() { Keys.D, Keys.Right } },
+        };
+
+        public static PuffinGame LatestInstance;
+
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private SpriteFont defaultFont;
         private Scene currentScene;
         private IMouseProvider mouseProvider;
 
+
         public PuffinGame()
         {
+            PuffinGame.LatestInstance = this;
             this.graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
