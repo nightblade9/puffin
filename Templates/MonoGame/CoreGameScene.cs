@@ -9,12 +9,14 @@ public class CoreGameScene : Scene
 {
     private Entity tilemapEntity;
     private Entity textLabel;
+    private Entity bird;
 
     public CoreGameScene()
     {
-        this.textLabel = new Entity().Label("(0, 0)");
+        this.textLabel = new Entity().Label("No keys held down").Move(300, 170);
         this.Add(textLabel);
 
+        /*
         this.tilemapEntity = new Entity()
             .Spritesheet("tilemap.png", 32, 32)
             .Move(300, 200)
@@ -31,7 +33,10 @@ public class CoreGameScene : Scene
             new Button("Click me!",
                 () => textLabel.GetIfHas<TextLabelComponent>().Text = "WOW!!")
             .Move(500, 100)
-        );
+        );*/
+
+        this.bird = new Entity().Sprite("Bird.png").Keyboard().Move(300, 200);
+        this.Add(this.bird);
     }
 
     override public void Update()
@@ -39,6 +44,28 @@ public class CoreGameScene : Scene
         // var index = DateTime.Now.Second % 4;
         // tilemapEntity.GetIfHas<SpriteComponent>().FrameIndex = index;
         
-        //this.textLabel.GetIfHas<TextLabelComponent>().Text = $"Mouse: {this.MouseCoordinates.ToString()}";
+        var label = this.textLabel.GetIfHas<TextLabelComponent>();
+        var keyboard = this.bird.GetIfHas<KeyboardComponent>();
+        var text = "";
+
+        if (keyboard.IsActionDown(Puffin.Core.IO.PuffinAction.Up))
+        {
+            text += "Up ";
+        }
+        if (keyboard.IsActionDown(Puffin.Core.IO.PuffinAction.Down))
+        {
+            text += "Down ";
+        }
+        if (keyboard.IsActionDown(Puffin.Core.IO.PuffinAction.Left))
+        {
+            text += "Left ";
+        }
+        if (keyboard.IsActionDown(Puffin.Core.IO.PuffinAction.Right))
+        {
+            text += "Right ";
+        }
+
+        label.Text = text;
+
     }
 }

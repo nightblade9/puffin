@@ -34,6 +34,7 @@ namespace Puffin.Infrastructure.MonoGame
         private SpriteFont defaultFont;
         private Scene currentScene;
         private IMouseProvider mouseProvider;
+        private IKeyboardProvider keyboardProvider;
 
 
         public PuffinGame()
@@ -45,6 +46,9 @@ namespace Puffin.Infrastructure.MonoGame
 
             DependencyInjection.Kernel.Bind<IMouseProvider>().To<MonoGameMouseProvider>().InSingletonScope();
             this.mouseProvider = DependencyInjection.Kernel.Get<IMouseProvider>();
+
+            DependencyInjection.Kernel.Bind<IKeyboardProvider>().To<MonoGameKeyboardProvider>().InSingletonScope();
+            this.keyboardProvider = DependencyInjection.Kernel.Get<IKeyboardProvider>();
         }
 
         public void ShowScene(Scene s)
