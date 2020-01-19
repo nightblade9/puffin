@@ -1,10 +1,8 @@
 # Puffin
 
-Cross-platform 2D C# game engine. This project is under heavy development.
+[![Build Status](https://travis-ci.org/nightblade9/puffin.svg?branch=master)](https://travis-ci.org/nightblade9/puffin-engine)
 
-**Builds:**
-- Master: [![Build Status](https://travis-ci.org/nightblade9/puffin.svg?branch=master)](https://travis-ci.org/nightblade9/puffin-engine)
-- Dev: [![Build Status](https://travis-ci.org/nightblade9/puffin.svg?branch=dev)](https://travis-ci.org/nightblade9/puffin-engine)
+Cross-platform 2D C# game engine. This project is under heavy development.
 
 # Why Use Puffin?
 
