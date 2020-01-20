@@ -1,3 +1,4 @@
+using System;
 using Microsoft.Xna.Framework.Input;
 using Puffin.Core.IO;
 
@@ -5,9 +6,10 @@ namespace Puffin.Infrastructure.MonoGame.IO
 {
     /// <summary>
     /// An implementation of IKeyboardProvider using MonoGame's Keyboard class.
+    /// </summary>
     public class MonoGameKeyboardProvider : IKeyboardProvider
     {
-        public bool IsActionDown(PuffinAction action)
+        public bool IsActionDown(Enum action)
         {
             var keyboard = Keyboard.GetState();
             var keysForAction = PuffinGame.LatestInstance.actionToKeys[action];

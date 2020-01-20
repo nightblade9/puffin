@@ -34,5 +34,27 @@ namespace Puffin.Core.UnitTests.Ecs
             Assert.That(component.IsActionDown(PuffinAction.Down), Is.False);
             Assert.That(component.IsActionDown(PuffinAction.Right), Is.False);
         }
+
+        [Test]
+        public void IsKeyDownReturnsTrueForCustomEnums()
+        {
+            var provider = new Mock<IKeyboardProvider>();
+            DependencyInjection.Kernel.Bind<IKeyboardProvider>().ToConstant(provider.Object);
+
+            provider.Setup(p => p.IsActionDown(CustomAction.Proceed)).Returns(true);
+            provider.Setup(p => p.IsActionDown(CustomAction.Cancel)).Returns(false);
+
+            var component = new KeyboardComponent(new Entity());
+
+            // Act/Assert
+            Assert.That(component.IsActionDown(CustomAction.Proceed), Is.True);
+            Assert.That(component.IsActionDown(CustomAction.Cancel), Is.False);
+        }
+
+        enum CustomAction
+        {
+            Proceed,
+            Cancel,
+        }
     }
 }
