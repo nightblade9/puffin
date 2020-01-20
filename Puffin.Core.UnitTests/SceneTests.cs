@@ -166,5 +166,26 @@ namespace Puffin.Core.UnitTests
             // Assert
             Assert.That(scene.IsActionDown(PuffinAction.Left), Is.True);
         }
+
+        [Test]
+        public void DrawCallsAddToFps()
+        {
+            // Arrange
+            var drawingSystem = new Mock<DrawingSystem>().Object;
+            var scene = new Scene();
+            scene.Initialize(new ISystem[] { drawingSystem }, null, null);
+
+            // Act
+            scene.OnDraw(TimeSpan.Zero);
+            scene.OnDraw(TimeSpan.Zero);
+            scene.OnDraw(TimeSpan.Zero);
+
+            // TODO: swap this out with an injected time provider
+            System.Threading.Thread.Sleep(1000);
+            scene.OnUpdate(TimeSpan.Zero);
+
+            // Assert
+            Assert.That(scene.Fps, Is.GreaterThan(0));
+        }
     }
 }
