@@ -12,10 +12,10 @@ namespace Puffin.Core.Ecs
     public class Entity
     {
         private Dictionary<Type, Component> components = new Dictionary<Type, Component>();
-        private int x = 0;
-        private int y = 0;
+        private float x = 0;
+        private float y = 0;
 
-        public int X {
+        public float X {
             get { return x; }
             set { 
                 x = value;
@@ -23,7 +23,7 @@ namespace Puffin.Core.Ecs
             }
         }
 
-        public int Y {
+        public float Y {
             get { return y; }
             set { 
                 y = value;

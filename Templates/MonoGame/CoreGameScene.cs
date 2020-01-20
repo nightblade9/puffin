@@ -6,7 +6,6 @@ namespace MyGame
 {
     public class CoreGameScene : Scene
     {
-        private Entity tilemapEntity;
         private Entity textLabel;
         private Entity bird;
 
@@ -34,7 +33,11 @@ namespace MyGame
                 .Move(500, 100)
             );*/
 
-            this.bird = new Entity().Sprite("Bird.png").Keyboard().Move(300, 200);
+            this.bird = new Entity()
+                .Spritesheet("Charspore.png", 64, 64)
+                .Keyboard().Move(300, 200)
+                .FourWayMovement(200);
+                
             this.Add(this.bird);
         }
 

@@ -63,6 +63,8 @@ namespace Puffin.Infrastructure.MonoGame
 
             var systems = new ISystem[]
             {
+                new FourWayMovementSystem(),
+                // Draw last
                 new DrawingSystem(drawingSurface),
             };
 
@@ -106,7 +108,8 @@ namespace Puffin.Infrastructure.MonoGame
             // TODO: Add your drawing code here
             if (this.currentScene != null)
             {
-                this.currentScene.OnUpdate();
+                // TODO: pass in <= 150ms increments if too much time elapsed
+                this.currentScene.OnUpdate(gameTime.ElapsedGameTime);
             }
 
             base.Draw(gameTime);

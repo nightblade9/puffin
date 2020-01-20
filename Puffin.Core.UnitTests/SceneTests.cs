@@ -1,3 +1,4 @@
+using System;
 using Moq;
 using NUnit.Framework;
 using Puffin.Core.Ecs;
@@ -70,11 +71,11 @@ namespace Puffin.Core.UnitTests
             scene.Initialize(new ISystem[] { drawingSystem.Object, audioSystem.Object }, null, null);
 
             // Act
-            scene.OnUpdate();
+            scene.OnUpdate(TimeSpan.Zero);
 
             // Assert
-            drawingSystem.Verify(d => d.OnUpdate(), Times.Once());
-            drawingSystem.Verify(d => d.OnUpdate(), Times.Once());
+            drawingSystem.Verify(d => d.OnUpdate(TimeSpan.Zero), Times.Once());
+            drawingSystem.Verify(d => d.OnUpdate(TimeSpan.Zero), Times.Once());
         }
 
         [Test]
@@ -86,7 +87,7 @@ namespace Puffin.Core.UnitTests
             scene.Setup(s => s.Update()).Callback(() => calledUpdate = true);
 
             // Act
-            scene.Object.OnUpdate();
+            scene.Object.OnUpdate(TimeSpan.Zero);
 
             // Assert
             Assert.That(calledUpdate, Is.True);

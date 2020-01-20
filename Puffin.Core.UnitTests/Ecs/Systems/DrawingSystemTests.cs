@@ -1,14 +1,13 @@
+using System;
 using Moq;
 using NUnit.Framework;
 using Puffin.Core.Drawing;
-using Puffin.Core.Ecs;
-using Puffin.Core.Ecs.Components;
 using Puffin.Core.Ecs.Systems;
 
 namespace Puffin.Core.UnitTests
 {
     [TestFixture]
-    public class SpriteDrawingSystemTests
+    public class DrawingSystemTests
     {
         [Test]
         public void OnUpdateCallsDrawAll()
@@ -18,7 +17,7 @@ namespace Puffin.Core.UnitTests
             var system = new DrawingSystem(drawingSurface.Object);
 
             // Act
-            system.OnUpdate();
+            system.OnUpdate(TimeSpan.Zero);
 
             // Assert
             drawingSurface.Verify(d => d.DrawAll(), Times.Once());
