@@ -11,12 +11,17 @@ namespace Puffin.Core
     {
         // public for testability; would be protected otherwise
         public Action OnMouseClick;
+        public float Fps { get; private set; }
 
         private IMouseProvider mouseProvider;
         private IKeyboardProvider keyboardProvider;
         private ISystem[] systems = new ISystem[0];
         private DrawingSystem drawingSystem;
         private List<Entity> entities = new List<Entity>();
+        
+        // A date and a number of draw calls to calculate FPS
+        private DateTime lastFpsUpdate = DateTime.Now;
+        private int drawsSinceLastFpsCount = 0;
 
         public Tuple<int, int> MouseCoordinates { get { return this.mouseProvider.MouseCoordinates; }}
 
@@ -67,6 +72,15 @@ namespace Puffin.Core
                 system.OnUpdate(elapsed);
             }
 
+            var timeDiff = (DateTime.Now - lastFpsUpdate).TotalSeconds;
+            if (timeDiff >= 1)
+            {
+                this.Fps = (float)(drawsSinceLastFpsCount / timeDiff);
+                this.drawsSinceLastFpsCount = 0;
+                this.lastFpsUpdate = DateTime.Now;
+                Console.WriteLine($"{Fps} fps");
+            }
+
             this.Update();
         }
 
@@ -75,6 +89,7 @@ namespace Puffin.Core
         /// </summary>
         public void OnDraw(TimeSpan elapsed)
         {
+            drawsSinceLastFpsCount++;
             this.drawingSystem.OnDraw(elapsed);
         }
 
