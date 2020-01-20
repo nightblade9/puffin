@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Puffin.Core.Ecs;
 using Puffin.Core.Ecs.Systems;
 using Puffin.Core.IO;
@@ -14,6 +15,7 @@ namespace Puffin.Core
         private IMouseProvider mouseProvider;
         private IKeyboardProvider keyboardProvider;
         private ISystem[] systems = new ISystem[0];
+        private DrawingSystem drawingSystem;
         private List<Entity> entities = new List<Entity>();
 
         public Tuple<int, int> MouseCoordinates { get { return this.mouseProvider.MouseCoordinates; }}
@@ -23,9 +25,11 @@ namespace Puffin.Core
             EventBus.LatestInstance.Subscribe(EventBusSignal.MouseClicked, onMouseClick);
         }
 
-        public void Initialize(ISystem[] systems, IMouseProvider mouseProvider, IKeyboardProvider keyboardProvider)
+        public void Initialize(ISystem[] systems,IMouseProvider mouseProvider, IKeyboardProvider keyboardProvider)
         {
+            this.drawingSystem = systems.Single(s => s is DrawingSystem) as DrawingSystem;
             this.systems = systems;
+            
             this.mouseProvider = mouseProvider;
             this.keyboardProvider = keyboardProvider;
 
@@ -64,6 +68,14 @@ namespace Puffin.Core
             }
 
             this.Update();
+        }
+
+        /// <summary>
+        /// Internal method that calls `Draw` on the drawing system.
+        /// </summary>
+        public void OnDraw(TimeSpan elapsed)
+        {
+            this.drawingSystem.OnDraw(elapsed);
         }
 
         /// <summary>
