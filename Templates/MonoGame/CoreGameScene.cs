@@ -64,7 +64,7 @@ namespace MyGame
                 text += "Right ";
             }
 
-            if (keyboard.IsActionDown(CustomAction.Next))
+            if (this.IsActionDown(CustomAction.Next))
             {
                 text = "NEXT!!!!";
             }

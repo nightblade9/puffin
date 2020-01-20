@@ -6,12 +6,13 @@ using Puffin.Core.IO;
 
 namespace Puffin.Core
 {     
-    public class Scene : IDisposable
+    public class Scene : IKeyboardProvider, IDisposable
     {
         // public for testability; would be protected otherwise
         public Action OnMouseClick;
 
         private IMouseProvider mouseProvider;
+        private IKeyboardProvider keyboardProvider;
         private ISystem[] systems = new ISystem[0];
         private List<Entity> entities = new List<Entity>();
 
@@ -22,10 +23,11 @@ namespace Puffin.Core
             EventBus.LatestInstance.Subscribe(EventBusSignal.MouseClicked, onMouseClick);
         }
 
-        public void Initialize(ISystem[] systems, IMouseProvider mouseProvider)
+        public void Initialize(ISystem[] systems, IMouseProvider mouseProvider, IKeyboardProvider keyboardProvider)
         {
             this.systems = systems;
             this.mouseProvider = mouseProvider;
+            this.keyboardProvider = keyboardProvider;
 
             // If called after AddEntity, add entities we know about
             foreach (var entity in this.entities)
@@ -62,6 +64,11 @@ namespace Puffin.Core
             }
 
             this.Update();
+        }
+
+        public bool IsActionDown(Enum action)
+        {
+            return this.keyboardProvider.IsActionDown(action);
         }
 
         /// <summary>
