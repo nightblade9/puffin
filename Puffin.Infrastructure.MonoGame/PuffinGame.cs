@@ -38,7 +38,7 @@ namespace Puffin.Infrastructure.MonoGame
         private IKeyboardProvider keyboardProvider;
 
 
-        public PuffinGame()
+        public PuffinGame(int gameWidth, int gameHeight)
         {
             PuffinGame.LatestInstance = this;
             this.graphics = new GraphicsDeviceManager(this);
@@ -50,6 +50,9 @@ namespace Puffin.Infrastructure.MonoGame
 
             DependencyInjection.Kernel.Bind<IKeyboardProvider>().To<MonoGameKeyboardProvider>().InSingletonScope();
             this.keyboardProvider = DependencyInjection.Kernel.Get<IKeyboardProvider>();
+
+            this.graphics.PreferredBackBufferWidth = gameWidth;
+            this.graphics.PreferredBackBufferHeight = gameHeight;
         }
 
         public void ShowScene(Scene s)
