@@ -9,6 +9,7 @@ using Puffin.Core.IO;
 using Ninject;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace Puffin.Infrastructure.MonoGame
 {
@@ -20,7 +21,7 @@ namespace Puffin.Infrastructure.MonoGame
         /// to change keyboard bindings, or expose them in a UI and allow users to arbitrarily
         /// override keyboard mappings (for accessibility).
         /// <summary>
-        public Dictionary<PuffinAction, List<Keys>> actionToKeys = new Dictionary<PuffinAction, List<Keys>>() {
+        public Dictionary<Enum, List<Keys>> actionToKeys = new Dictionary<Enum, List<Keys>>() {
             { PuffinAction.Up, new List<Keys>() { Keys.W, Keys.Up } },
             { PuffinAction.Down, new List<Keys>() { Keys.S, Keys.Down } },
             { PuffinAction.Left, new List<Keys>() { Keys.A, Keys.Left } },

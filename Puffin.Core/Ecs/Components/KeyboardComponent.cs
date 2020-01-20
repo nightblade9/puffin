@@ -1,9 +1,15 @@
 using Puffin.Core.Ecs.Components;
 using Puffin.Core.IO;
 using Ninject;
+using System;
 
 namespace Puffin.Core.Ecs
 {
+    /// <summary>
+    /// A keyboard component; provides information about which actions are being pressed.
+    /// Actions are a simple enum that map to one or more keyboard keys. 
+    /// For examples, see the Puffin documentation or unit tests.
+    /// </summary>
     public class KeyboardComponent : Component
     {
         private IKeyboardProvider provider;
@@ -13,7 +19,11 @@ namespace Puffin.Core.Ecs
             this.provider = DependencyInjection.Kernel.Get<IKeyboardProvider>();
         }
 
-        public bool IsActionDown(PuffinAction action)
+        /// <summary>
+        /// Returns true if any of the keys mapped to this action are currently pressed down.
+        /// Returns false otherwise.
+        /// </summary>
+        public bool IsActionDown(Enum action)
         {
             return this.provider.IsActionDown(action);
         }

@@ -41,7 +41,7 @@ this.Add(
 
 This creates a new entity, adds a `SpriteComponent` to it which should appear with the image of `Bird.png`, and adds the entity to the screen. When the game runs, it renders that entity at its position.
 
-# Controls
+# UI Controls
 
 Puffin includes a separate `Puffin.UI` assembly which includes UI controls. Note that they rely on images in `Content/Puffin/UI` to work.
 
@@ -56,3 +56,34 @@ var button = new Button("Click me!", () => this.points++).Move(16, 16);
 This creates a button with the caption `Click me!` Clicking the button increments the local variable `points` by one. The button sits at `(16, 16)` on screen.
 
 To reskin the button, change the `Content/Puffin/UI/Button.png` image to something else. Note that you cannot yet resize the image.
+
+# Keyboard Handling
+
+For keyboard input, Puffin doesn't expose key-press information directly; instead, it exposes information about `PuffinAction`s. Each `PuffinAction` maps to one or more keys (eg. by default, the `W` key maps to `PuffinAction.Up`).
+
+This allows developers/players to arbitrarily rebind actions keys without rewriting lots of code.
+
+## Creating Custom Actions
+
+To create your own custom actions, simply create a new `Enum` and add actions to your game constructor, like so:
+
+```csharp
+// MyGame.cs
+class MyGame : PuffinGame {
+
+    public enum CustomAction {
+        Next,
+        Previous,
+    }
+
+    public MyGame() {
+        this.actionToKeys[CustomAction.Next] = new List<Keys>()
+        {
+            Keys.Space,
+            Keys.Enter,
+        };
+    }
+}
+```
+
+This allows you to write code like `entity.GetIfHas<KeyboardComponent>().IsKeyDown(CustomAction.Next)`, which would return `true` if either the space or enter keys are currently held down.
