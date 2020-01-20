@@ -91,5 +91,20 @@ namespace Puffin.Core.UnitTests.Ecs
             e.Keyboard();
             Assert.That(e.GetIfHas<KeyboardComponent>(), Is.Not.Null);
         }
+
+        [Test]
+        public void FourWayMovementAddsFourWayMovementComponent()
+        {
+            // Depends on default mapping for PuffinGame.
+            var provider = new Mock<IKeyboardProvider>();
+            DependencyInjection.Kernel.Bind<IKeyboardProvider>().ToConstant(provider.Object);
+
+            var e = new Entity();
+            e.FourWayMovement(210);
+            
+            var actual = e.GetIfHas<FourWayMovementComponent>();
+            Assert.That(actual, Is.Not.Null);
+            Assert.That(actual.Speed, Is.EqualTo(210));
+        }
     }
 }

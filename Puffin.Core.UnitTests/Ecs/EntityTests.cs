@@ -60,8 +60,8 @@ namespace Puffin.Core.UnitTests.Ecs
         public void SettingXOrYBroadcastsEvent()
         {
             var timesCalledBack = 0;
-            var callbackX = 0;
-            var callbackY = 0;
+            float callbackX = 0;
+            float callbackY = 0;
 
             var e = new Entity();
             new EventBus().Subscribe(EventBusSignal.EntityPositionChanged, data => {

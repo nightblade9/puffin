@@ -56,16 +56,19 @@ namespace Puffin.Core
         /// <summary>
         /// Internal method that calls `Update` on all systems in this scene.
         /// </summary>
-        public void OnUpdate()
+        public void OnUpdate(TimeSpan elapsed)
         {
             foreach (var system in this.systems)
             {
-                system.OnUpdate();
+                system.OnUpdate(elapsed);
             }
 
             this.Update();
         }
 
+        /// <summary>
+        /// Return true if any of a specific action's keys are pressed.
+        /// </summary>        
         public bool IsActionDown(Enum action)
         {
             return this.keyboardProvider.IsActionDown(action);

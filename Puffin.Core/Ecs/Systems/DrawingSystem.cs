@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Puffin.Core.Drawing;
 using Puffin.Core.Ecs.Components;
@@ -23,7 +24,8 @@ namespace Puffin.Core.Ecs.Systems
             }
         }
 
-        public void OnUpdate()
+        // TODO: do this on Draw instead of Update
+        public void OnUpdate(TimeSpan elapsed)
         {
             this.drawingSurface.DrawAll();
         }
