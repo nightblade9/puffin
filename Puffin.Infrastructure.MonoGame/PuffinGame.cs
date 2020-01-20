@@ -67,7 +67,6 @@ namespace Puffin.Infrastructure.MonoGame
             var systems = new ISystem[]
             {
                 new FourWayMovementSystem(),
-                // Draw last
                 new DrawingSystem(drawingSurface),
             };
 
@@ -76,6 +75,9 @@ namespace Puffin.Infrastructure.MonoGame
             this.currentScene = s;
         }
 
+        /// <summary>
+        /// Called when your game is ready to run (graphics initialized, etc.)
+        /// </summary>
         virtual protected void Ready()
         {
 
@@ -98,23 +100,16 @@ namespace Puffin.Infrastructure.MonoGame
 
         protected override void Update(GameTime gameTime)
         {
-            //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-            //   Exit();
-
-            // TODO: Add your update logic here
             this.mouseProvider.Update();
+            this.keyboardProvider.Update();
+            this.currentScene?.OnUpdate(gameTime.ElapsedGameTime);
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            // TODO: Add your drawing code here
-            if (this.currentScene != null)
-            {
-                // TODO: pass in <= 150ms increments if too much time elapsed
-                this.currentScene.OnUpdate(gameTime.ElapsedGameTime);
-            }
-
+            // TODO: pass in <= 150ms increments if too much time elapsed
+            this.currentScene?.OnDraw(gameTime.ElapsedGameTime);
             base.Draw(gameTime);
         }
     }

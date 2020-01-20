@@ -5,17 +5,20 @@ using Puffin.Core.Ecs.Components;
 
 namespace Puffin.Core.Ecs.Systems
 {
-    class DrawingSystem : ISystem
+    public class DrawingSystem : ISystem
     {
         private IDrawingSurface drawingSurface;
         private IList<Entity> entities = new List<Entity>();
         
+        // For unit testing
+        internal DrawingSystem() { }
+
         public DrawingSystem(IDrawingSurface drawingSurface)
         {
             this.drawingSurface = drawingSurface;
         }
 
-        public void OnAddEntity(Entity entity)
+        public virtual void OnAddEntity(Entity entity)
         {
             if (entity.GetIfHas<SpriteComponent>() != null || entity.GetIfHas<TextLabelComponent>() != null)
             {
@@ -24,8 +27,12 @@ namespace Puffin.Core.Ecs.Systems
             }
         }
 
-        // TODO: do this on Draw instead of Update
-        public void OnUpdate(TimeSpan elapsed)
+        public virtual void OnUpdate(TimeSpan elapsed)
+        {
+            
+        }
+        
+        public virtual void OnDraw(TimeSpan elapsed)
         {
             this.drawingSurface.DrawAll();
         }

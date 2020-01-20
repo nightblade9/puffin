@@ -10,14 +10,14 @@ namespace Puffin.Core.UnitTests
     public class DrawingSystemTests
     {
         [Test]
-        public void OnUpdateCallsDrawAll()
+        public void OnDrawCallsDrawAll()
         {
             // Arrange
             var drawingSurface = new Mock<IDrawingSurface>();
             var system = new DrawingSystem(drawingSurface.Object);
 
             // Act
-            system.OnUpdate(TimeSpan.Zero);
+            system.OnDraw(TimeSpan.Zero);
 
             // Assert
             drawingSurface.Verify(d => d.DrawAll(), Times.Once());

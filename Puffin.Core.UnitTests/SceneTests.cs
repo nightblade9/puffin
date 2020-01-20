@@ -17,10 +17,21 @@ namespace Puffin.Core.UnitTests
         }
 
         [Test]
+        public void InitializeThrowsIfDrawingSystemIsMissing()
+        {
+            var audioSystem = new Mock<ISystem>();
+            var scene = new Scene();
+            
+            Assert.Throws<InvalidOperationException>(() => scene.Initialize(
+                new ISystem[] { audioSystem.Object },
+                new Mock<IMouseProvider>().Object, new Mock<IKeyboardProvider>().Object));
+        }
+
+        [Test]
         public void AddCallsOnAddEntityOnSystems()
         {
             // Arrange
-            var drawingSystem = new Mock<ISystem>();
+            var drawingSystem = new Mock<DrawingSystem>();
             var audioSystem = new Mock<ISystem>();
 
             var e1 = new Entity();
@@ -42,7 +53,7 @@ namespace Puffin.Core.UnitTests
         public void InitializeCallsOnAddEntityOnSystems()
         {
             // Arrange
-            var drawingSystem = new Mock<ISystem>();
+            var drawingSystem = new Mock<DrawingSystem>();
             var audioSystem = new Mock<ISystem>();
 
             var e1 = new Entity();
@@ -64,7 +75,7 @@ namespace Puffin.Core.UnitTests
         public void OnUpdateCallsOnUpdateOnSystems()
         {
             // Arrange
-            var drawingSystem = new Mock<ISystem>();
+            var drawingSystem = new Mock<DrawingSystem>();
             var audioSystem = new Mock<ISystem>();
             
             var scene = new Scene();
@@ -94,14 +105,33 @@ namespace Puffin.Core.UnitTests
         }
 
         [Test]
+        public void OnDrawCallsDrawOnDrawingSystem()
+        {
+            // Arrange
+            var elapsed = TimeSpan.FromMilliseconds(153);
+            var drawingSystem = new Mock<DrawingSystem>();
+            var scene = new Scene();
+            scene.Initialize(new ISystem[] { drawingSystem.Object },
+                new Mock<IMouseProvider>().Object, new Mock<IKeyboardProvider>().Object);
+
+            // Act
+            scene.OnDraw(elapsed);
+
+            // Assert
+            drawingSystem.Verify(d => d.OnDraw(elapsed), Times.Once());
+        }
+
+        [Test]
         public void MouseCoordinatesReturnsCoordinatesFromMouseProvider()
         {
             var expectedCoordinates = new System.Tuple<int, int>(123, 21);
             var mouseProvider = new Mock<IMouseProvider>();
             mouseProvider.Setup(m => m.MouseCoordinates).Returns(expectedCoordinates);
+            var bus = new EventBus();
+            var drawingSystem = new Mock<DrawingSystem>();
 
             var scene = new Scene();
-            scene.Initialize(new ISystem[0], mouseProvider.Object, null);
+            scene.Initialize(new ISystem[] { drawingSystem.Object }, mouseProvider.Object, null);
 
             Assert.That(scene.MouseCoordinates, Is.EqualTo(expectedCoordinates));
         }
@@ -128,9 +158,10 @@ namespace Puffin.Core.UnitTests
             // Arrange
             var keyboardProvider = new Mock<IKeyboardProvider>();
             keyboardProvider.Setup(k => k.IsActionDown(PuffinAction.Left)).Returns(true);
+            var drawingSystem = new Mock<DrawingSystem>().Object;
 
             var scene = new Scene();
-            scene.Initialize(new ISystem[0], null, keyboardProvider.Object);
+            scene.Initialize(new ISystem[] { drawingSystem }, null, keyboardProvider.Object);
 
             // Assert
             Assert.That(scene.IsActionDown(PuffinAction.Left), Is.True);
