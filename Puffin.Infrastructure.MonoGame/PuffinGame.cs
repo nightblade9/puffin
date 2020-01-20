@@ -66,7 +66,7 @@ namespace Puffin.Infrastructure.MonoGame
                 new DrawingSystem(drawingSurface),
             };
 
-            s.Initialize(systems, this.mouseProvider);
+            s.Initialize(systems, this.mouseProvider, this.keyboardProvider);
 
             this.currentScene = s;
         }

@@ -9,6 +9,12 @@ namespace Puffin.Core.UnitTests
     [TestFixture]
     public class SceneTests
     {
+        [TearDown]
+        public void ResetDependencyInjection()
+        {
+            DependencyInjection.Reset();
+        }
+
         [Test]
         public void AddCallsOnAddEntityOnSystems()
         {
@@ -20,7 +26,7 @@ namespace Puffin.Core.UnitTests
             var e2 = new Entity();
             
             var scene = new Scene();
-            scene.Initialize(new ISystem[] { drawingSystem.Object, audioSystem.Object }, null);
+            scene.Initialize(new ISystem[] { drawingSystem.Object, audioSystem.Object }, null, null);
 
             // Act
             scene.Add(e1);
@@ -46,7 +52,7 @@ namespace Puffin.Core.UnitTests
             scene.Add(e2);
 
             // Act
-            scene.Initialize(new ISystem[] { drawingSystem.Object, audioSystem.Object }, null);
+            scene.Initialize(new ISystem[] { drawingSystem.Object, audioSystem.Object }, null, null);
             
             // Assert
             drawingSystem.Verify(d => d.OnAddEntity(e1), Times.Once());
@@ -61,7 +67,7 @@ namespace Puffin.Core.UnitTests
             var audioSystem = new Mock<ISystem>();
             
             var scene = new Scene();
-            scene.Initialize(new ISystem[] { drawingSystem.Object, audioSystem.Object }, null);
+            scene.Initialize(new ISystem[] { drawingSystem.Object, audioSystem.Object }, null, null);
 
             // Act
             scene.OnUpdate();
@@ -94,7 +100,7 @@ namespace Puffin.Core.UnitTests
             mouseProvider.Setup(m => m.MouseCoordinates).Returns(expectedCoordinates);
 
             var scene = new Scene();
-            scene.Initialize(new ISystem[0], mouseProvider.Object);
+            scene.Initialize(new ISystem[0], mouseProvider.Object, null);
 
             Assert.That(scene.MouseCoordinates, Is.EqualTo(expectedCoordinates));
         }
@@ -113,6 +119,20 @@ namespace Puffin.Core.UnitTests
 
             // Assert
             Assert.That(called, Is.True);
+        }
+
+        [Test]
+        public void IsActionDownReturnsValueFromKeyboardProvider()
+        {
+            // Arrange
+            var keyboardProvider = new Mock<IKeyboardProvider>();
+            keyboardProvider.Setup(k => k.IsActionDown(PuffinAction.Left)).Returns(true);
+
+            var scene = new Scene();
+            scene.Initialize(new ISystem[0], null, keyboardProvider.Object);
+
+            // Assert
+            Assert.That(scene.IsActionDown(PuffinAction.Left), Is.True);
         }
     }
 }
