@@ -1,9 +1,7 @@
 using System;
 using Moq;
 using NUnit.Framework;
-using Puffin.Core.Drawing;
 using Puffin.Core.Ecs;
-using Puffin.Core.Ecs.Components;
 using Puffin.Core.Ecs.Systems;
 using Puffin.Core.IO;
 

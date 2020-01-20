@@ -6,7 +6,7 @@ namespace MyGame
 {
     public class MyGame : PuffinGame
     {
-        public MyGame()
+        public MyGame() : base(960, 540)
         {
             this.actionToKeys[CustomAction.Next] = new List<Keys>()
             {
