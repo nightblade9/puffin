@@ -15,21 +15,9 @@ namespace Puffin.Core.Ecs
         private float x = 0;
         private float y = 0;
 
-        public float X {
-            get { return x; }
-            set { 
-                x = value;
-                EventBus.LatestInstance.Broadcast(EventBusSignal.EntityPositionChanged, this);
-            }
-        }
+        public float X { get; set; }
 
-        public float Y {
-            get { return y; }
-            set { 
-                y = value;
-                EventBus.LatestInstance.Broadcast(EventBusSignal.EntityPositionChanged, this);
-            }
-        }
+        public float Y { get; set; }
 
         /// <summary>
         /// Set/add a component on this entity. If this entity already had a 

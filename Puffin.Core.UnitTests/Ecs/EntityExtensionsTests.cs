@@ -16,14 +16,12 @@ namespace Puffin.Core.UnitTests.Ecs
         }
 
         [Test]
-        public void MoveSetsEntityCoordinatesAndBroadcastsEvent()
+        public void MoveSetsEntityCoordinates()
         {
             new EventBus();
             
             // Arrange
             var e = new Entity();
-            var callbackCalled = false;
-            new EventBus().Subscribe(EventBusSignal.EntityPositionChanged, (data) => callbackCalled = (data == e));
 
             // Act
             e.Move(1, 2);
@@ -32,7 +30,6 @@ namespace Puffin.Core.UnitTests.Ecs
             // Assert
             Assert.That(e.X, Is.EqualTo(200));
             Assert.That(e.Y, Is.EqualTo(140));
-            Assert.That(callbackCalled, Is.True);
         }
 
         [Test]

@@ -1,3 +1,4 @@
+using System;
 using Puffin.Core;
 using Puffin.Core.Ecs;
 using Puffin.Core.Ecs.Components;
@@ -6,73 +7,13 @@ namespace MyGame
 {
     public class CoreGameScene : Scene
     {
-        private Entity textLabel;
-        private Entity bird;
-
+        private Random random = new Random();
         public CoreGameScene()
         {
-            this.textLabel = new Entity().Label("No keys held down").Move(300, 170);
-            this.Add(textLabel);
-
-            /*
-            this.tilemapEntity = new Entity()
-                .Spritesheet("tilemap.png", 32, 32)
-                .Move(300, 200)
-                .Mouse(() => {
-                    tilemapEntity.GetIfHas<SpriteComponent>().FrameIndex++;
-                    tilemapEntity.GetIfHas<SpriteComponent>().FrameIndex %= 4;
-                }, 32, 32);
-            
-            this.Add(tilemapEntity);
-
-            //this.OnMouseClick = () => textLabel.GetIfHas<TextLabelComponent>().Text = $"Mouse: {this.MouseCoordinates}";
-
-            this.Add(
-                new Button("Click me!",
-                    () => textLabel.GetIfHas<TextLabelComponent>().Text = "WOW!!")
-                .Move(500, 100)
-            );*/
-
-            this.bird = new Entity()
-                .Spritesheet("Charspore.png", 64, 64)
-                .Keyboard().Move(300, 200)
-                .FourWayMovement(200);
-                
-            this.Add(this.bird);
-        }
-
-        override public void Update()
-        {
-            // var index = DateTime.Now.Second % 4;
-            // tilemapEntity.GetIfHas<SpriteComponent>().FrameIndex = index;
-            
-            var label = this.textLabel.GetIfHas<TextLabelComponent>();
-            var keyboard = this.bird.GetIfHas<KeyboardComponent>();
-            var text = "";
-
-            if (keyboard.IsActionDown(Puffin.Core.IO.PuffinAction.Up))
+            for (var i = 0; i < 2500; i++)
             {
-                text += "Up ";
+                this.Add(new Entity().Spritesheet("Charspore.png", 64, 64).Move(random.Next(960), random.Next(540)));
             }
-            if (keyboard.IsActionDown(Puffin.Core.IO.PuffinAction.Down))
-            {
-                text += "Down ";
-            }
-            if (keyboard.IsActionDown(Puffin.Core.IO.PuffinAction.Left))
-            {
-                text += "Left ";
-            }
-            if (keyboard.IsActionDown(Puffin.Core.IO.PuffinAction.Right))
-            {
-                text += "Right ";
-            }
-
-            if (this.IsActionDown(CustomAction.Next))
-            {
-                text = "NEXT!!!!";
-            }
-
-            label.Text = text;
         }
     }
 }

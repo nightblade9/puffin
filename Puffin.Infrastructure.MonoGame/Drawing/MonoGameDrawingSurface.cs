@@ -53,17 +53,16 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
 
             foreach (var entity in this.entities)
             {
+                // TODO: iterating over entitySprites.Values might be faster. Profile and test.
                 if (entitySprites.ContainsKey(entity))
                 {
                     var monoGameSprite = entitySprites[entity];
-                    this.spriteBatch.Draw(monoGameSprite.Texture, monoGameSprite.Position, monoGameSprite.Region, Color.White);
+                    this.spriteBatch.Draw(monoGameSprite.Texture, new Vector2(entity.X, entity.Y), monoGameSprite.Region, Color.White);
                 }
 
                 var text = entity.GetIfHas<TextLabelComponent>();
                 if (text != null)
                 {
-                    // Creating a new Vector2 every frame is bad. Text labels are rare, though, so it might be OK.
-                    // TODO: refactor position out of MonoGameSprite and make it generic for an entity instead....
                     this.spriteBatch.DrawString(defaultFont, text.Text, new Vector2(entity.X, entity.Y), Color.White);
                 }
             }
