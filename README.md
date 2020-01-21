@@ -87,3 +87,9 @@ class MyGame : PuffinGame {
 ```
 
 This allows you to write code like `entity.GetIfHas<KeyboardComponent>().IsKeyDown(CustomAction.Next)`, which would return `true` if either the space or enter keys are currently held down.
+
+# Is Puffin Slow?
+
+I ran a simple MonoGame project and an analogous Puffin project, where I render as many copies of a sprite as possible until the FPS drops from 60 to 50.
+
+Both MonoGame and Puffin exhibit similar performance characteristics; on my test machine, MonoGame reached around 2200 sprites, while Puffin reached around 2000-2100 sprites.
