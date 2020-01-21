@@ -15,28 +15,16 @@ namespace Puffin.Core.Ecs
         /// The size of area that we check for overlaps. This can be bigger or smaller than the sprite,
         /// or maybe the entity has no sprite at all.
         /// </summary>
-        internal readonly Tuple<int, int> Size;
+        internal readonly Tuple<int, int> Size = new Tuple<int, int>(0, 0);
 
         /// <summary>
         /// The offset of this overlap component relative to the origin of the entity. For example, if you have a
         // 32x32 sprite and want a 48x48 overlap centered on the sprite, you would set this to (-8, -8).
-        internal readonly Tuple<int, int> Offset;
+        internal readonly Tuple<int, int> Offset = new Tuple<int, int>(0, 0);
         private readonly IList<Entity> currentlyOverlapping = new List<Entity>();
 
         private Action<Entity> onStartOverlap;
         private Action<Entity> onStopOverlap;
-
-        public OverlapComponent(Entity parent, int width, int height)
-        : this(parent, width, height, 0, 0)
-        {
-            this.Size = new Tuple<int, int>(width, height);
-        }
-
-        public OverlapComponent(Entity parent, int width, int height, int offsetX, int offsetY)
-        : this(parent, width, height, offsetX, offsetY, null, null)
-        {
-            this.Offset = new Tuple<int, int>(offsetX, offsetY);
-        }
 
         /// <summary>
         /// Creates a mouse component (receives clicks and triggers a callback).
@@ -44,9 +32,11 @@ namespace Puffin.Core.Ecs
         /// Offsets indicate this component's offset relative to the origin of the entity.
         /// The overlap callbacks trigger when an entity newly starts/stop overlapping with us.
         /// </summary>
-        public OverlapComponent(Entity parent, int width, int height, int offsetX, int offsetY, Action<Entity> onStartOverlap, Action<Entity> onStopOverlap)
+        public OverlapComponent(Entity parent, int width, int height, int offsetX = 0, int offsetY = 0, Action<Entity> onStartOverlap = null, Action<Entity> onStopOverlap = null)
         : base(parent)
         {
+            this.Size = new Tuple<int, int>(width, height);
+            this.Offset = new Tuple<int, int>(offsetX, offsetY);
             this.onStartOverlap = onStartOverlap;
             this.onStopOverlap = onStopOverlap;
         }
