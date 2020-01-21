@@ -9,22 +9,12 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
     public class MonoGameSprite : Component
     {
         public Texture2D Texture { get; private set; }
-        public Vector2 Position { get; private set; }
         public Rectangle Region { get; private set; }
 
         public MonoGameSprite(Entity parent, Texture2D texture)
         : base(parent)
         {
             this.Texture = texture;
-            EventBus.LatestInstance.Subscribe(EventBusSignal.EntityPositionChanged, (data) => {
-                if (data == parent)
-                {
-                    this.Position = new Vector2(parent.X, parent.Y);
-                }
-            });
-
-            // Get initial position set correctly
-            this.Position = new Vector2(parent.X, parent.Y);
 
             // if it's a spritesheet, note the rectangle.
             var sprite = parent.GetIfHas<SpriteComponent>();
@@ -32,7 +22,8 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             {
                 // Spritesheet
                 this.Region = new Rectangle(0, 0, sprite.FrameWidth, sprite.FrameHeight);
-                EventBus.LatestInstance.Subscribe(EventBusSignal.SpriteSheetFrameIndexChanged, (s) => {
+                EventBus.LatestInstance.Subscribe(EventBusSignal.SpriteSheetFrameIndexChanged, (s) =>
+                {
                     if (s == sprite)
                     {
                         this.Region = new Rectangle(sprite.FrameIndex * sprite.FrameWidth, 0, sprite.FrameWidth, sprite.FrameHeight);
