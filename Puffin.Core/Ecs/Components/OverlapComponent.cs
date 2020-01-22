@@ -21,10 +21,10 @@ namespace Puffin.Core.Ecs
         /// The offset of this overlap component relative to the origin of the entity. For example, if you have a
         // 32x32 sprite and want a 48x48 overlap centered on the sprite, you would set this to (-8, -8).
         internal readonly Tuple<int, int> Offset = new Tuple<int, int>(0, 0);
-        private readonly IList<Entity> currentlyOverlapping = new List<Entity>();
+        internal readonly IList<Entity> CurrentlyOverlapping = new List<Entity>();
 
-        private Action<Entity> onStartOverlap;
-        private Action<Entity> onStopOverlap;
+        internal Action<Entity> OnStartOverlap;
+        internal Action<Entity> OnStopOverlap;
 
         /// <summary>
         /// Creates a mouse component (receives clicks and triggers a callback).
@@ -37,64 +37,8 @@ namespace Puffin.Core.Ecs
         {
             this.Size = new Tuple<int, int>(width, height);
             this.Offset = new Tuple<int, int>(offsetX, offsetY);
-            this.onStartOverlap = onStartOverlap;
-            this.onStopOverlap = onStopOverlap;
-        }
-
-        public bool WasOverlapping(Entity target)
-        {
-            return this.currentlyOverlapping.Contains(target);
-        }
-
-        public bool IsOverlapping(Entity target)
-        {
-            var targetOverlap = target.GetIfHas<OverlapComponent>();
-            if (targetOverlap == null)
-            {
-                return false;
-            }
-
-            var left = this.Parent.X + this.Offset.Item1;
-            var right = left + this.Size.Item1;
-            var top = this.Parent.Y + this.Offset.Item2;
-            var bottom = top + this.Size.Item2;
-
-            var targetLeft = target.X + targetOverlap.Offset.Item1;
-            var targetRight = targetLeft + targetOverlap.Size.Item1;
-            var targetTop = target.Y + targetOverlap.Offset.Item2;
-            var targetBottom = targetTop + targetOverlap.Size.Item2;
-
-            // Pilfered from MonoGame: https://github.com/MonoGame/MonoGame/blob/6f34eb393aa0ac005888d74c5c4c6ab5615fdc8c/MonoGame.Framework/Rectangle.cs#L398
-            return targetLeft < right &&
-                left < targetRight &&
-                targetTop < bottom &&
-                top < targetBottom;
-        }
-
-        public void StartedOverlapping(Entity target)
-        {
-            if (!this.currentlyOverlapping.Contains(target))
-            {
-                this.currentlyOverlapping.Add(target);
-
-                if (this.onStartOverlap != null)
-                {
-                    this.onStartOverlap.Invoke(target);
-                }
-            }
-        }
-
-        public void StoppedOverlapping(Entity target)
-        {
-            if (this.currentlyOverlapping.Contains(target))
-            {
-                this.currentlyOverlapping.Remove(target);
-
-                if (this.onStopOverlap != null)
-                {
-                    this.onStopOverlap.Invoke(target);
-                }
-            }
+            this.OnStartOverlap = onStartOverlap;
+            this.OnStopOverlap = onStopOverlap;
         }
     }
 }
