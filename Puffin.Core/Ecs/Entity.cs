@@ -12,8 +12,6 @@ namespace Puffin.Core.Ecs
     public class Entity
     {
         private Dictionary<Type, Component> components = new Dictionary<Type, Component>();
-        private float x = 0;
-        private float y = 0;
 
         public float X { get; set; }
 
