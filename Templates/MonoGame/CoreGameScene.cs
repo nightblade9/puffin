@@ -7,13 +7,29 @@ namespace MyGame
 {
     public class CoreGameScene : Scene
     {
-        private Random random = new Random();
+
         public CoreGameScene()
         {
-            for (var i = 0; i < 2500; i++)
-            {
-                this.Add(new Entity().Spritesheet("Charspore.png", 64, 64).Move(random.Next(960), random.Next(540)));
-            }
+            var player = new Entity().FourWayMovement(100)
+                .Sprite("Content/square-white.png")
+                .Overlap(32, 32)
+                .Move(300, 300);
+
+            var stove = new Entity().Label("").Sprite("Content/square-red.png").Move(200, 200);
+            stove.Overlap(64, 64, -16, -16,
+                    (e) => {
+                        if (e == player) {
+                            stove.GetIfHas<TextLabelComponent>().Text = "Stove";
+                        }
+                    },
+                    (e) => {
+                        if (e == player) {
+                            stove.GetIfHas<TextLabelComponent>().Text = "";
+                        }
+                    });
+
+            this.Add(player);
+            this.Add(stove);
         }
     }
 }
