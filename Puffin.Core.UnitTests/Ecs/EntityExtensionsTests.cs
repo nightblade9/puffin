@@ -3,6 +3,7 @@ using Moq;
 using NUnit.Framework;
 using Puffin.Core.Ecs;
 using Puffin.Core.Ecs.Components;
+using Puffin.Core.Ecs.Systems;
 using Puffin.Core.IO;
 
 namespace Puffin.Core.UnitTests.Ecs
@@ -126,7 +127,7 @@ namespace Puffin.Core.UnitTests.Ecs
             Assert.That(o2.Offset.Item2, Is.EqualTo(15));
 
             var o3 = new Entity().Overlap(16, 17, 18, 19, onStart).GetIfHas<OverlapComponent>();
-            o3.StartedOverlapping(new Entity().Overlap(100, 100));
+            OverlapSystem.StartedOverlapping(o3, new Entity().Overlap(100, 100));
 
             Assert.That(o3, Is.Not.Null);
             Assert.That(o3.Size.Item1, Is.EqualTo(16));
@@ -137,8 +138,8 @@ namespace Puffin.Core.UnitTests.Ecs
 
             var o4 = new Entity().Overlap(1, 7, 1, 9, onStart, onStop).GetIfHas<OverlapComponent>();
             var e = new Entity().Overlap(200, 50);
-            o4.StartedOverlapping(e);
-            o4.StoppedOverlapping(e);
+            OverlapSystem.StartedOverlapping(o4, e);
+            OverlapSystem.StoppedOverlapping(o4, e);
 
             Assert.That(o4, Is.Not.Null);
             Assert.That(o4.Size.Item1, Is.EqualTo(1));
