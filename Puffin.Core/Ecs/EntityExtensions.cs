@@ -16,7 +16,7 @@ namespace Puffin.Core.Ecs
         }
 
         /// <summary>
-        /// Loads the specified image and adds it as a sprite to the entity.
+        /// Loads the specified image as a sprite on an entity.
         /// </summary>
         public static Entity Sprite(this Entity entity, string imageFile)
         {
@@ -25,7 +25,7 @@ namespace Puffin.Core.Ecs
         }
 
         /// <summary>
-        /// Loads and adds the specified image as a spritesheet to the entity.
+        /// Loads and adds the specified image as a spritesheet to an entity.
         /// </summary>
         public static Entity Spritesheet(this Entity entity, string imageFile, int frameWidth, int frameHeight)
         {
@@ -34,7 +34,7 @@ namespace Puffin.Core.Ecs
         }
 
         /// <summary>
-        /// Adds a label with the specified text to the entity.
+        /// Adds a label with the specified text to an entity.
         /// </summary>        
         public static Entity Label(this Entity entity, string text)
         {
@@ -43,7 +43,7 @@ namespace Puffin.Core.Ecs
         }
 
         /// <summary>
-        /// Adds a mouse component to the entity with the specified on-click callback.
+        /// Allows an entity to handle mouse events; the specified callback will be invoked on every click.
         /// The width and height define the clickable area (relative to the origin of the entity).
         /// </summary>
         public static Entity Mouse(this Entity entity, Action onClick, int width, int height)
@@ -53,7 +53,7 @@ namespace Puffin.Core.Ecs
         }
 
         /// <summary>
-        /// Adds a keyboard component to the entity so it can respond to actions/keys.
+        /// Exposes a method that allows an entity to check/respond to actions/keys.
         /// </summary>
         public static Entity Keyboard(this Entity entity)
         {
@@ -62,8 +62,8 @@ namespace Puffin.Core.Ecs
         }
         
         /// <summary>
-        /// Adds a `FourWayMovement` component to the entity with the specified speed.
-        /// (Speed is in pixels per second.)
+        /// Makes the entity move in four directions in response to WASD or arrow keys.
+        /// The entity moves at the specified speed, in pixels per second.
         /// </summary>
         public static Entity FourWayMovement(this Entity entity, int speed)
         {
@@ -71,23 +71,46 @@ namespace Puffin.Core.Ecs
             return entity;
         }
 
+        /// <summary>
+        /// Causes an entity to trigger overlap events with other entities that have an overlap component.
+        /// Width/height are the overlap area of this entity, relative to the origin.
+        /// </summary>
         public static Entity Overlap(this Entity entity, int width, int height)
         {
             entity.Set(new OverlapComponent(entity, width, height));
             return entity;
         }
 
+        /// <summary>
+        /// Causes an entity to trigger overlap events with other entities that have an overlap component.
+        /// Width/height are the overlap area of this entity, relative to the origin.
+        /// Offset coordinates specify the offset of the overlap region relative to the origin of the entity.
+        /// </summary>
         public static Entity Overlap(this Entity entity, int width, int height, int offsetX, int offsetY)
         {
             entity.Set(new OverlapComponent(entity, width, height, offsetX, offsetY));
             return entity;
         }
 
+        /// <summary>
+        /// Causes an entity to trigger overlap events with other entities that have an overlap component.
+        /// Width/height are the overlap area of this entity, relative to the origin.
+        /// Offset coordinates specify the offset of the overlap region relative to the origin of the entity.
+        /// onStartOverlap triggers whenever another entity with an overlap component starts overlapping this entity.
+        /// </summary>
         public static Entity Overlap(this Entity entity, int width, int height, int offsetX, int offsetY, Action<Entity> onStartOverlap)
         {
             entity.Set(new OverlapComponent(entity, width, height, offsetX, offsetY, onStartOverlap));
             return entity;
         }
+
+        /// <summary>
+        /// Causes an entity to trigger overlap events with other entities that have an overlap component.
+        /// Width/height are the overlap area of this entity, relative to the origin.
+        /// Offset coordinates specify the offset of the overlap region relative to the origin of the entity.
+        /// onStartOverlap triggers whenever another entity with an overlap component starts overlapping this entity.
+        /// onStopOverlap triggers whenever another entity with an overlap component stops overlapping overlaps this entity.
+        /// </summary>
 
         public static Entity Overlap(this Entity entity, int width, int height, int offsetX, int offsetY, Action<Entity> onStartOverlap, Action<Entity> onStopOverlap)
         {
