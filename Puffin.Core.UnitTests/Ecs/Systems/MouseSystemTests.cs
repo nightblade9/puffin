@@ -1,14 +1,14 @@
 using System;
-using System.Collections.Generic;
 using Moq;
 using NUnit.Framework;
 using Puffin.Core.Ecs;
+using Puffin.Core.Ecs.Systems;
 using Puffin.Core.IO;
 
 namespace Puffin.Core.UnitTests.Ecs
 {
     [TestFixture]
-    public class MouseComponentTests
+    public class MouseSystemTests
     {
         [TearDown]
         public void ResetDependencyInjectionBindings()
@@ -28,32 +28,42 @@ namespace Puffin.Core.UnitTests.Ecs
         [TestCase(66, 61)]
         public void OnClickCallbackDoesNotFireIfClickIsOutOfBounds(int clickedX, int clickedY)
         {
+            // Arrange
             var mouseProvider = new Mock<IMouseProvider>();
             DependencyInjection.Kernel.Bind<IMouseProvider>().ToConstant(mouseProvider.Object);
 
             var eventBus = new EventBus();
-            var entity = new Entity().Move(20, 10);
             var callbackFired = false;
-            var component = new MouseComponent(entity, () => callbackFired = true, 32, 32);
-
+            var entity = new Entity().Move(20, 10).Mouse(() => callbackFired = true, 32, 32);
+            var system = new MouseSystem();
+            system.OnAddEntity(entity);
             mouseProvider.Setup(m => m.MouseCoordinates).Returns(new Tuple<int, int>(clickedX, clickedY));
+
+            // Act
             eventBus.Broadcast(EventBusSignal.MouseClicked, null);
+
+            // Assert
             Assert.That(callbackFired, Is.False);
         }
 
         [Test]
         public void OnClickCallbackFiresIfClickIsInBounds()
         {
+            // Arrange
             var mouseProvider = new Mock<IMouseProvider>();
             DependencyInjection.Kernel.Bind<IMouseProvider>().ToConstant(mouseProvider.Object);
 
             var eventBus = new EventBus();
-            var entity = new Entity().Move(77, 88);
             var callbackFired = false;
-            var component = new MouseComponent(entity, () => callbackFired = true, 32, 32);
-
+            var entity = new Entity().Move(77, 88).Mouse(() => callbackFired = true, 32, 32);
             mouseProvider.Setup(m => m.MouseCoordinates).Returns(new Tuple<int, int>(90, 90));
+            var system = new MouseSystem();
+            system.OnAddEntity(entity);
+
+            // Act
             eventBus.Broadcast(EventBusSignal.MouseClicked, null);
+            
+            // Assert
             Assert.That(callbackFired, Is.True);
         }
     }
