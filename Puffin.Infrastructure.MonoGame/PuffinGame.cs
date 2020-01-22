@@ -70,6 +70,7 @@ namespace Puffin.Infrastructure.MonoGame
             {
                 new FourWayMovementSystem(),
                 new OverlapSystem(),
+                new MouseSystem(),
                 new DrawingSystem(drawingSurface),
             };
 

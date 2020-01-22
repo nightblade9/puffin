@@ -12,12 +12,10 @@ namespace Puffin.Core.Ecs
     {
         // To avoid having an `Update` method on the component, we rely on events.
 
-        private readonly IMouseProvider provider;
-        private readonly Action onClickCallback;
-        
+        internal readonly Action OnClickCallback;
         // Clickable area width/height
-        private readonly int width = 0;
-        private readonly int height = 0;
+        internal readonly int Width = 0;
+        internal readonly int Height = 0;
 
         /// <summary>
         /// Creates a mouse component (receives clicks and triggers a callback).
@@ -26,24 +24,9 @@ namespace Puffin.Core.Ecs
         public MouseComponent(Entity parent, Action onClickCallback, int width, int height)
         : base(parent)
         {
-            this.width = width;
-            this.height = height;
-            this.onClickCallback = onClickCallback;
-            EventBus.LatestInstance.Subscribe(EventBusSignal.MouseClicked, this.onMouseClicked);
-            this.provider = DependencyInjection.Kernel.Get<IMouseProvider>();
-        }
-
-        private void onMouseClicked(object data)
-        {
-            // TODO: move this into mouse system
-            var clickedX = provider.MouseCoordinates.Item1;
-            var clickedY = provider.MouseCoordinates.Item2;
-
-            if (clickedX >= this.Parent.X && clickedY >= this.Parent.Y &&
-                clickedX <= this.Parent.X + this.width && clickedY <= this.Parent.Y + this.height)
-                {
-                    this.onClickCallback.Invoke();
-                }
+            this.Width = width;
+            this.Height = height;
+            this.OnClickCallback = onClickCallback;
         }
     }
 }
