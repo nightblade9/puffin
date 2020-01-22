@@ -70,5 +70,29 @@ namespace Puffin.Core.Ecs
             entity.Set(new FourWayMovementComponent(entity, speed));
             return entity;
         }
+
+        public static Entity Overlap(this Entity entity, int width, int height)
+        {
+            entity.Set(new OverlapComponent(entity, width, height));
+            return entity;
+        }
+
+        public static Entity Overlap(this Entity entity, int width, int height, int offsetX, int offsetY)
+        {
+            entity.Set(new OverlapComponent(entity, width, height, offsetX, offsetY));
+            return entity;
+        }
+
+        public static Entity Overlap(this Entity entity, int width, int height, int offsetX, int offsetY, Action<Entity> onStartOverlap)
+        {
+            entity.Set(new OverlapComponent(entity, width, height, offsetX, offsetY, onStartOverlap));
+            return entity;
+        }
+
+        public static Entity Overlap(this Entity entity, int width, int height, int offsetX, int offsetY, Action<Entity> onStartOverlap, Action<Entity> onStopOverlap)
+        {
+            entity.Set(new OverlapComponent(entity, width, height, offsetX, offsetY, onStartOverlap, onStopOverlap));
+            return entity;
+        }
     }
 }

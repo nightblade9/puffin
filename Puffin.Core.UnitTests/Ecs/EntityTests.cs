@@ -55,31 +55,6 @@ namespace Puffin.Core.UnitTests.Ecs
             Assert.That(e.X, Is.EqualTo(200));
             Assert.That(e.Y, Is.EqualTo(140));
         }
-
-        [Test]
-        public void SettingXOrYBroadcastsEvent()
-        {
-            var timesCalledBack = 0;
-            float callbackX = 0;
-            float callbackY = 0;
-
-            var e = new Entity();
-            new EventBus().Subscribe(EventBusSignal.EntityPositionChanged, data => {
-                var e = data as Entity;
-                callbackX = e.X;
-                callbackY = e.Y;
-                timesCalledBack++;
-            });
-
-            // Act/Assert
-            e.X = 100;
-            Assert.That(timesCalledBack, Is.EqualTo(1));
-            Assert.That(callbackX, Is.EqualTo(100));
-
-            e.Y = 293;
-            Assert.That(timesCalledBack, Is.EqualTo(2));
-            Assert.That(callbackY, Is.EqualTo(293));
-        }
     }
 
     // TODO: delete later

@@ -7,6 +7,7 @@ namespace Puffin.Core.Ecs
 {
     /// <summary>
     /// A component with makes an entity clickable.
+    /// </summary>
     public class MouseComponent : Component
     {
         // To avoid having an `Update` method on the component, we rely on events.
@@ -34,6 +35,7 @@ namespace Puffin.Core.Ecs
 
         private void onMouseClicked(object data)
         {
+            // TODO: move this into mouse system
             var clickedX = provider.MouseCoordinates.Item1;
             var clickedY = provider.MouseCoordinates.Item2;
 
