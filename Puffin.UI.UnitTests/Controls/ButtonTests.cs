@@ -3,6 +3,7 @@ using NUnit.Framework;
 using Puffin.Core;
 using Puffin.Core.Ecs;
 using Puffin.Core.Ecs.Components;
+using Puffin.Core.Ecs.Systems;
 using Puffin.Core.IO;
 using Puffin.UI.Controls;
 
@@ -29,6 +30,8 @@ namespace Puffin.UI.UnitTests.Controls
 
             var clicked = false;
             var button = new Button("click me!", () => clicked = true);
+            var mouseSystem = new MouseSystem();
+            mouseSystem.OnAddEntity(button);
 
             // Act
             eventBus.Broadcast(EventBusSignal.MouseClicked, null);
