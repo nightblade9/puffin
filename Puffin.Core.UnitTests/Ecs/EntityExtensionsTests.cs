@@ -1,3 +1,4 @@
+using System;
 using Moq;
 using NUnit.Framework;
 using Puffin.Core.Ecs;
@@ -16,14 +17,12 @@ namespace Puffin.Core.UnitTests.Ecs
         }
 
         [Test]
-        public void MoveSetsEntityCoordinatesAndBroadcastsEvent()
+        public void MoveSetsEntityCoordinates()
         {
             new EventBus();
             
             // Arrange
             var e = new Entity();
-            var callbackCalled = false;
-            new EventBus().Subscribe(EventBusSignal.EntityPositionChanged, (data) => callbackCalled = (data == e));
 
             // Act
             e.Move(1, 2);
@@ -32,7 +31,6 @@ namespace Puffin.Core.UnitTests.Ecs
             // Assert
             Assert.That(e.X, Is.EqualTo(200));
             Assert.That(e.Y, Is.EqualTo(140));
-            Assert.That(callbackCalled, Is.True);
         }
 
         [Test]
@@ -105,6 +103,50 @@ namespace Puffin.Core.UnitTests.Ecs
             var actual = e.GetIfHas<FourWayMovementComponent>();
             Assert.That(actual, Is.Not.Null);
             Assert.That(actual.Speed, Is.EqualTo(210));
+        }
+
+        [Test]
+        public void OverlapSetsAllProperties()
+        {
+            var numStarts = 0;
+            var stopped = false;
+            Action<Entity> onStart = (e) => numStarts++;
+            Action<Entity> onStop = (e) => stopped = true;
+
+            var o1 = new Entity().Overlap(10, 11).GetIfHas<OverlapComponent>();
+            Assert.That(o1, Is.Not.Null);
+            Assert.That(o1.Size.Item1, Is.EqualTo(10));
+            Assert.That(o1.Size.Item2, Is.EqualTo(11));
+
+            var o2 = new Entity().Overlap(12, 13, 14, 15).GetIfHas<OverlapComponent>();
+            Assert.That(o2, Is.Not.Null);
+            Assert.That(o2.Size.Item1, Is.EqualTo(12));
+            Assert.That(o2.Size.Item2, Is.EqualTo(13));
+            Assert.That(o2.Offset.Item1, Is.EqualTo(14));
+            Assert.That(o2.Offset.Item2, Is.EqualTo(15));
+
+            var o3 = new Entity().Overlap(16, 17, 18, 19, onStart).GetIfHas<OverlapComponent>();
+            o3.StartedOverlapping(new Entity().Overlap(100, 100));
+
+            Assert.That(o3, Is.Not.Null);
+            Assert.That(o3.Size.Item1, Is.EqualTo(16));
+            Assert.That(o3.Size.Item2, Is.EqualTo(17));
+            Assert.That(o3.Offset.Item1, Is.EqualTo(18));
+            Assert.That(o3.Offset.Item2, Is.EqualTo(19));
+            Assert.That(numStarts, Is.EqualTo(1));
+
+            var o4 = new Entity().Overlap(1, 7, 1, 9, onStart, onStop).GetIfHas<OverlapComponent>();
+            var e = new Entity().Overlap(200, 50);
+            o4.StartedOverlapping(e);
+            o4.StoppedOverlapping(e);
+
+            Assert.That(o4, Is.Not.Null);
+            Assert.That(o4.Size.Item1, Is.EqualTo(1));
+            Assert.That(o4.Size.Item2, Is.EqualTo(7));
+            Assert.That(o4.Offset.Item1, Is.EqualTo(1));
+            Assert.That(o4.Offset.Item2, Is.EqualTo(9));
+            Assert.That(numStarts, Is.EqualTo(2));
+            Assert.That(stopped, Is.True);
         }
     }
 }
