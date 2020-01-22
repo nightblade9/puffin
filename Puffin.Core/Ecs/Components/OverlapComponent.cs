@@ -54,22 +54,21 @@ namespace Puffin.Core.Ecs
                 return false;
             }
 
-            // TODO: can we delegate this to MonoGame's Rectangle classes? Pretty please?
-            // TODO: refactor and create variables for "absolute" top-left/bottom-right/etc. corners for this + other
+            var left = this.Parent.X + this.Offset.Item1;
+            var right = left + this.Size.Item1;
+            var top = this.Parent.Y + this.Offset.Item2;
+            var bottom = top + this.Size.Item2;
 
-            // We are out of range: either we're above/below or we're left/right of the target.
-            if ((this.Parent.X < target.X - targetOverlap.Offset.Item1 || this.Parent.Y < target.Y - targetOverlap.Offset.Item2) ||
-                (this.Parent.X - this.Offset.Item1 > target.X - targetOverlap.Offset.Item1 + targetOverlap.Size.Item1) ||
-                (this.Parent.Y - this.Offset.Item2 > target.Y - targetOverlap.Offset.Item2 + targetOverlap.Size.Item2))
-            {
-                return false;
-            }
+            var targetLeft = target.X + targetOverlap.Offset.Item1;
+            var targetRight = targetLeft + targetOverlap.Size.Item1;
+            var targetTop = target.Y + targetOverlap.Offset.Item2;
+            var targetBottom = targetTop + targetOverlap.Size.Item2;
 
-            // https://tutorialedge.net/gamedev/aabb-collision-detection-tutorial/
-            return ((this.Parent.X - this.Offset.Item1 < target.X - targetOverlap.Offset.Item1 + targetOverlap.Size.Item1) &&
-                (this.Parent.X - this.Offset.Item1 + this.Size.Item1 > target.X - targetOverlap.Offset.Item1) &&
-                (this.Parent.Y - this.Offset.Item2 < target.Y - targetOverlap.Offset.Item2 + targetOverlap.Size.Item2) &&
-                (this.Parent.Y - this.Offset.Item2 + this.Size.Item2 > target.Y - targetOverlap.Offset.Item2));
+            // Pilfered from MonoGame: https://github.com/MonoGame/MonoGame/blob/6f34eb393aa0ac005888d74c5c4c6ab5615fdc8c/MonoGame.Framework/Rectangle.cs#L398
+            return targetLeft < right &&
+                left < targetRight &&
+                targetTop < bottom &&
+                top < targetBottom;
         }
 
         public void StartedOverlapping(Entity target)

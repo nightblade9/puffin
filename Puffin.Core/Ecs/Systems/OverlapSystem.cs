@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Puffin.Core.Ecs.Components;
 
 namespace Puffin.Core.Ecs.Systems
 {
