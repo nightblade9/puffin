@@ -15,11 +15,8 @@ namespace Puffin.Core.UnitTests.Ecs.Systems
             var e2Called = false;
 
             // Arrange
-            var e1 = new Entity().Move(16, 16);
-            e1.Set(new OverlapComponent(e1, 32, 32, 0, 0, (o) => e1Called = true, null));
-
-            var e2 = new Entity();
-            e2.Set(new OverlapComponent(e2, 40, 40, 0, 0, (o) => e2Called = true, null));
+            var e1 = new Entity().Move(16, 16).Overlap(32, 32, 0, 0, (o) => e1Called = true, null);
+            var e2 = new Entity().Overlap(40, 40, 0, 0, (o) => e2Called = true, null);
 
             var system = new OverlapSystem();
             system.OnAddEntity(e1);
@@ -40,11 +37,8 @@ namespace Puffin.Core.UnitTests.Ecs.Systems
             var e2Called = false;
 
             // Arrange
-            var e1 = new Entity().Move(16, 16);
-            e1.Set(new OverlapComponent(e1, 32, 32, 0, 0, null, (o) => e1Called = true));
-            
-            var e2 = new Entity();
-            e2.Set(new OverlapComponent(e2, 40, 40, 0, 0, null, (o) => e2Called = true));
+            var e1 = new Entity().Move(16, 16).Overlap(32, 32, 0, 0, null, (o) => e1Called = true);
+            var e2 = new Entity().Overlap(40, 40, 0, 0, null, (o) => e2Called = true);
 
             var system = new OverlapSystem();
             system.OnAddEntity(e1);
