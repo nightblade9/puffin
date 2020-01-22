@@ -69,6 +69,7 @@ namespace Puffin.Infrastructure.MonoGame
             var systems = new ISystem[]
             {
                 new FourWayMovementSystem(),
+                new OverlapSystem(),
                 new DrawingSystem(drawingSurface),
             };
 
