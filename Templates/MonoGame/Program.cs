@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MonoGame
+namespace MyGame
 {
     public static class Program
     {
