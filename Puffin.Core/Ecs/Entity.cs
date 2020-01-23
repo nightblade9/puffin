@@ -6,7 +6,7 @@ namespace Puffin.Core.Ecs
 {
     /// <summary>
     /// An entity; it holds components, which dictate behaviour (eg. add a
-    // SpriteComponent to display a sprite wherever this entity is).
+    /// SpriteComponent to display a sprite wherever this entity is).
     /// Entities can only hold one component of each type.
     /// </summary>
     public class Entity
