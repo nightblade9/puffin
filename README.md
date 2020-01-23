@@ -93,3 +93,8 @@ This allows you to write code like `entity.GetIfHas<KeyboardComponent>().IsKeyDo
 I ran a simple MonoGame project and an analogous Puffin project, where I render as many copies of a sprite as possible until the FPS drops from 60 to 50.
 
 Both MonoGame and Puffin exhibit similar performance characteristics; on my test machine, MonoGame reached around 2200 sprites, while Puffin reached around 1900 sprites.
+
+# Development
+
+- To build `Puffin`, you need to install `MonoGame`.
+- To build documentation, download `docfx`. Run it by entering `Puffin.Docs` and running `docfx docfx.json --serve`.

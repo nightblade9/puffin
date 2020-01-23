@@ -1,0 +1,762 @@
+{
+  "homepages": [],
+  "source_base_path": "/home/nightblade/code/puffin/Puffin.Docs",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.DependencyInjection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.DependencyInjection.html",
+          "hash": "11/azcjXN1f3XsTWvVYVxw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.Drawing.IDrawingSurface.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.Drawing.IDrawingSurface.html",
+          "hash": "E3EoPgcTsxH2i5g0jmzKSg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.Drawing.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.Drawing.html",
+          "hash": "eHuDbyYJUjf2A6SpTR1jOQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.Ecs.Components.Component.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.Ecs.Components.Component.html",
+          "hash": "Cl0BF4oLr7U8ZpEW9EWCqQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.Ecs.Components.FourWayMovementComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.Ecs.Components.FourWayMovementComponent.html",
+          "hash": "5xfpYw+emW0INXrAgkY+Dw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.Ecs.Components.SpriteComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.Ecs.Components.SpriteComponent.html",
+          "hash": "23cebD6Zi9+tKzw/MrB3Pg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.Ecs.Components.TextLabelComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.Ecs.Components.TextLabelComponent.html",
+          "hash": "/25Qq0AL9HJyaDf5NPVgnA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.Ecs.Components.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.Ecs.Components.html",
+          "hash": "iZnbUZydRM04K8aLSHDXww=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.Ecs.Entity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.Ecs.Entity.html",
+          "hash": "XCt0NT0KHc16VBqNkkhbWg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.Ecs.EntityExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.Ecs.EntityExtensions.html",
+          "hash": "Jl1SaPCRKgK8iE4xQthE1Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.Ecs.KeyboardComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.Ecs.KeyboardComponent.html",
+          "hash": "/IvX6/7uzOl5TMFjscR8kw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.Ecs.MouseComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.Ecs.MouseComponent.html",
+          "hash": "lvDgtniaLqia9LyFKwrDJg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.Ecs.OverlapComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.Ecs.OverlapComponent.html",
+          "hash": "r2zpqpdBxMSAjjQqtrjb4g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.Ecs.Systems.DrawingSystem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.Ecs.Systems.DrawingSystem.html",
+          "hash": "zcUt97F8oUPdC0fUuJXhOw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.Ecs.Systems.FourWayMovementSystem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.Ecs.Systems.FourWayMovementSystem.html",
+          "hash": "wyCRhvah4O+KDl/ykBWNcQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.Ecs.Systems.ISystem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.Ecs.Systems.ISystem.html",
+          "hash": "9C4m+4O7u10sEa6JiC62Cg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.Ecs.Systems.MouseSystem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.Ecs.Systems.MouseSystem.html",
+          "hash": "s/0oe0MIIfjlyrLmlaC/Jw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.Ecs.Systems.OverlapSystem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.Ecs.Systems.OverlapSystem.html",
+          "hash": "u2oEYb/weaDa3lqfbpKRHA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.Ecs.Systems.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.Ecs.Systems.html",
+          "hash": "fSHwLt1ZaeEIncT1yR5/bA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.Ecs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.Ecs.html",
+          "hash": "Y0qIZNu75d3KxVHIucMfXQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.IO.IKeyboardProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.IO.IKeyboardProvider.html",
+          "hash": "jvItQzoK2HZoNNT4+thwMQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.IO.IMouseProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.IO.IMouseProvider.html",
+          "hash": "ESSmCfAVoANwm8RahCFOMQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.IO.PuffinAction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.IO.PuffinAction.html",
+          "hash": "/hhuH905AYFmSAA+KHv04A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.IO.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.IO.html",
+          "hash": "bpKx8SZSGvYyhfEfOMUErg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.Scene.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.Scene.html",
+          "hash": "64i6LhmK/FjFdXxikI8Gaw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.UnitTests.DrawingSystemTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.UnitTests.DrawingSystemTests.html",
+          "hash": "4bpTmuCu8DszzReZRg7Gsw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.UnitTests.Ecs.Components.SpriteComponentTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.UnitTests.Ecs.Components.SpriteComponentTests.html",
+          "hash": "eRdIJR1gAqvAOWKiuIRYDg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.UnitTests.Ecs.Components.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.UnitTests.Ecs.Components.html",
+          "hash": "UQZE8tiPl0z9DY0hCqa0fA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.UnitTests.Ecs.EntityExtensionsTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.UnitTests.Ecs.EntityExtensionsTests.html",
+          "hash": "erCs51nXbQv7ozMqop8d9g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.UnitTests.Ecs.EntityTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.UnitTests.Ecs.EntityTests.html",
+          "hash": "DOyZhNn4tyCsBqOw9Bpmhg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.UnitTests.Ecs.EventBusTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.UnitTests.Ecs.EventBusTests.html",
+          "hash": "uVBYybr7kQK7vVl2A/S2Pg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.UnitTests.Ecs.FourWayMovementComponentTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.UnitTests.Ecs.FourWayMovementComponentTests.html",
+          "hash": "cPlgK2Mvkk2gS+AAXrorCQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.UnitTests.Ecs.KeyboardComponentTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.UnitTests.Ecs.KeyboardComponentTests.html",
+          "hash": "wXaNIiuqzoKIZww4afl5CQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.UnitTests.Ecs.MouseSystemTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.UnitTests.Ecs.MouseSystemTests.html",
+          "hash": "JAXdE5qE/JjPCv/JOf0Zzg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.UnitTests.Ecs.Systems.OverlapSystemTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.UnitTests.Ecs.Systems.OverlapSystemTests.html",
+          "hash": "/M/w5orXBq1+aKPaPWyn6Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.UnitTests.Ecs.Systems.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.UnitTests.Ecs.Systems.html",
+          "hash": "ioTKDvBksMm2xD81oO8Vww=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.UnitTests.Ecs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.UnitTests.Ecs.html",
+          "hash": "pQaABYNsr36RcAGrYiqxMA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.UnitTests.FourWayMovementSystemTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.UnitTests.FourWayMovementSystemTests.html",
+          "hash": "FOllLJg8FZHZaedjIPPExw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.UnitTests.SceneTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.UnitTests.SceneTests.html",
+          "hash": "q6GbrCpo+DiGBs/HB8QedQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.UnitTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.UnitTests.html",
+          "hash": "uYCd8R+t6vvdPMbpqNO76Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.html",
+          "hash": "lR/yWir8ZPXBgg74QHQyWg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Infrastructure.MonoGame.Drawing.MonoGameDrawingSurface.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Infrastructure.MonoGame.Drawing.MonoGameDrawingSurface.html",
+          "hash": "qhnHK3HNOGki7RQu6BUfQw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Infrastructure.MonoGame.Drawing.MonoGameSprite.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Infrastructure.MonoGame.Drawing.MonoGameSprite.html",
+          "hash": "7IlW5E2HkhGyHQkoTu0yKg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Infrastructure.MonoGame.Drawing.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Infrastructure.MonoGame.Drawing.html",
+          "hash": "sjmpUdLR/7nRZ+ZpaHLivg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Infrastructure.MonoGame.IO.MonoGameKeyboardProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Infrastructure.MonoGame.IO.MonoGameKeyboardProvider.html",
+          "hash": "VnMlWqVAJHVYKEkdrJo6bQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Infrastructure.MonoGame.IO.MonoGameMouseProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Infrastructure.MonoGame.IO.MonoGameMouseProvider.html",
+          "hash": "P+WwH2A7Se9LBWgrQ8+WOA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Infrastructure.MonoGame.IO.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Infrastructure.MonoGame.IO.html",
+          "hash": "bV0SULgLXe8prbDYY7V4UQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Infrastructure.MonoGame.PuffinGame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Infrastructure.MonoGame.PuffinGame.html",
+          "hash": "SQ8iyze1PGRkL7qLjbAp0Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Infrastructure.MonoGame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Infrastructure.MonoGame.html",
+          "hash": "ASAV1XpP9O9AGFJyzgg87g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.UI.Controls.Button.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.UI.Controls.Button.html",
+          "hash": "LELuvp39563nLEmDeSG6bg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.UI.Controls.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.UI.Controls.html",
+          "hash": "doreahudsI4kCsLi1YG7Kw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.UI.UnitTests.Controls.ButtonTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.UI.UnitTests.Controls.ButtonTests.html",
+          "hash": "tmi3L/tE4qr5s86Y9zD9mg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.UI.UnitTests.Controls.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.UI.UnitTests.Controls.html",
+          "hash": "U61/mMImtqEDeJahoKaFaw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "phdh6INeMk3Xhrs4FoCT8Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "Q0XisG1s7w4e4Ngu16sqpg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "yAYE1WNKv0KXgKcc99guTQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "gB8AESyvNru97tzIZofEEg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "qznlznsjNFxy1CbvtZE7Kw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "+rHUkRZHZRi5gd1aTU6lJA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 53,
+          "skipped_file_count": 53
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 3,
+          "skipped_file_count": 3
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
