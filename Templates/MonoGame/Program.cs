@@ -9,7 +9,7 @@ namespace MyGame
         {
             // Is it this? Is it `var game = new MonoGameDrawingSystem()`?
             // Something else?
-            using (var game = new MyGame.MyGame())
+            using (var game = new MyGame())
             {
                 game.Run();
             }
