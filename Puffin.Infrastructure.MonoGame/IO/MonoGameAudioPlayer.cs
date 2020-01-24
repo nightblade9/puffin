@@ -10,7 +10,12 @@ namespace Puffin.Infrastructure.MonoGame
     internal class MonoGameAudioPlayer : IAudioPlayer
     {
         private List<Entity> entities = new List<Entity>();
-        private IDictionary<Entity, SoundEffect> entitySounds = new Dictionary<Entity, SoundEffect>();
+        private IDictionary<AudioComponent, SoundEffect> entitySounds = new Dictionary<AudioComponent, SoundEffect>();
+
+        public MonoGameAudioPlayer()
+        {
+            EventBus.LatestInstance.Subscribe(EventBusSignal.PlayAudio, this.Play);
+        }
 
         public void AddEntity(Entity entity)
         {
@@ -18,22 +23,12 @@ namespace Puffin.Infrastructure.MonoGame
             if (sound != null)
             {
                 this.entities.Add(entity);
-                this.entitySounds[entity] = LoadSound(sound.FileName);
+                this.entitySounds[sound] = LoadSound(sound.FileName);
             }
         }
 
         public void OnUpdate()
         {
-            foreach (var entity in entities)
-            {
-                var sound = entity.GetIfHas<AudioComponent>();
-                if (sound.ShouldPlay == true)
-                {
-                    sound.ShouldPlay = false;
-                    var soundEffect = entitySounds[entity];
-                    Play(soundEffect);
-                }
-            }
         }
 
         private static SoundEffect LoadSound(string fileName)
@@ -46,12 +41,15 @@ namespace Puffin.Infrastructure.MonoGame
         }
 
         // Mostly copied from https://stackoverflow.com/questions/35183043/how-do-i-play-a-sound-effect-on-monogame-for-android
-        private void Play(SoundEffect soundEffect, float volume = 1.0f, float pitch = 1.0f, bool loop = false)
+        private void Play(object data)
         {
+            var audioComponent = data as AudioComponent;
+            var soundEffect = entitySounds[audioComponent];
+            
             var soundInstance = soundEffect.CreateInstance();
-            soundInstance.IsLooped = loop;
-            soundInstance.Pitch = pitch;
-            soundInstance.Volume =  volume;
+            soundInstance.Pitch = audioComponent.Pitch;
+            //soundInstance.IsLooped = loop;
+            //soundInstance.Volume =  volume;
             soundInstance.Play();
         }
     }
