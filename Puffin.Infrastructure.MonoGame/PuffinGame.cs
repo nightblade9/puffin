@@ -75,6 +75,7 @@ namespace Puffin.Infrastructure.MonoGame
                 new FourWayMovementSystem(),
                 new OverlapSystem(),
                 new MouseSystem(),
+                new AudioSystem(new MonoGameAudioPlayer()),
                 new DrawingSystem(drawingSurface),
             };
 
