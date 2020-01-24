@@ -149,5 +149,16 @@ namespace Puffin.Core.UnitTests.Ecs
             Assert.That(numStarts, Is.EqualTo(2));
             Assert.That(stopped, Is.True);
         }
+
+        [Test]
+        public void AudioCreatesAudioComponent()
+        {
+            var e = new Entity().Audio("blue-heron.ogg");
+            
+            var actual = e.GetIfHas<AudioComponent>();
+            Assert.That(actual, Is.Not.Null);
+            Assert.That(actual.FileName, Is.EqualTo("blue-heron.ogg"));
+        }
+
     }
 }
