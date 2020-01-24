@@ -1,0 +1,461 @@
+### YamlMime:ManagedReference
+items:
+- uid: Puffin.Core.Ecs.Components.TextLabelComponent
+  commentId: T:Puffin.Core.Ecs.Components.TextLabelComponent
+  id: TextLabelComponent
+  parent: Puffin.Core.Ecs.Components
+  children:
+  - Puffin.Core.Ecs.Components.TextLabelComponent.#ctor(Puffin.Core.Ecs.Entity,System.String)
+  - Puffin.Core.Ecs.Components.TextLabelComponent.Text
+  langs:
+  - csharp
+  - vb
+  name: TextLabelComponent
+  nameWithType: TextLabelComponent
+  fullName: Puffin.Core.Ecs.Components.TextLabelComponent
+  type: Class
+  source:
+    remote:
+      path: Puffin.Core/Ecs/Components/TextLabelComponent.cs
+      branch: docs
+      repo: git@github.com:nightblade9/puffin
+    id: TextLabelComponent
+    path: ../Puffin.Core/Ecs/Components/TextLabelComponent.cs
+    startLine: 5
+  assemblies:
+  - Puffin.Core
+  namespace: Puffin.Core.Ecs.Components
+  summary: "\nA text-label component: a label with some printable text.\n"
+  example: []
+  syntax:
+    content: 'public class TextLabelComponent : Component'
+    content.vb: >-
+      Public Class TextLabelComponent
+
+          Inherits Component
+  inheritance:
+  - System.Object
+  - Puffin.Core.Ecs.Components.Component
+  inheritedMembers:
+  - Puffin.Core.Ecs.Components.Component.Parent
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Puffin.Core.Ecs.Components.TextLabelComponent.Text
+  commentId: P:Puffin.Core.Ecs.Components.TextLabelComponent.Text
+  id: Text
+  parent: Puffin.Core.Ecs.Components.TextLabelComponent
+  langs:
+  - csharp
+  - vb
+  name: Text
+  nameWithType: TextLabelComponent.Text
+  fullName: Puffin.Core.Ecs.Components.TextLabelComponent.Text
+  type: Property
+  source:
+    remote:
+      path: Puffin.Core/Ecs/Components/TextLabelComponent.cs
+      branch: docs
+      repo: git@github.com:nightblade9/puffin
+    id: Text
+    path: ../Puffin.Core/Ecs/Components/TextLabelComponent.cs
+    startLine: 7
+  assemblies:
+  - Puffin.Core
+  namespace: Puffin.Core.Ecs.Components
+  syntax:
+    content: public string Text { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Text As String
+  overload: Puffin.Core.Ecs.Components.TextLabelComponent.Text*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Puffin.Core.Ecs.Components.TextLabelComponent.#ctor(Puffin.Core.Ecs.Entity,System.String)
+  commentId: M:Puffin.Core.Ecs.Components.TextLabelComponent.#ctor(Puffin.Core.Ecs.Entity,System.String)
+  id: '#ctor(Puffin.Core.Ecs.Entity,System.String)'
+  parent: Puffin.Core.Ecs.Components.TextLabelComponent
+  langs:
+  - csharp
+  - vb
+  name: TextLabelComponent(Entity, String)
+  nameWithType: TextLabelComponent.TextLabelComponent(Entity, String)
+  fullName: Puffin.Core.Ecs.Components.TextLabelComponent.TextLabelComponent(Puffin.Core.Ecs.Entity, System.String)
+  type: Constructor
+  source:
+    remote:
+      path: Puffin.Core/Ecs/Components/TextLabelComponent.cs
+      branch: docs
+      repo: git@github.com:nightblade9/puffin
+    id: .ctor
+    path: ../Puffin.Core/Ecs/Components/TextLabelComponent.cs
+    startLine: 9
+  assemblies:
+  - Puffin.Core
+  namespace: Puffin.Core.Ecs.Components
+  syntax:
+    content: public TextLabelComponent(Entity parent, string text)
+    parameters:
+    - id: parent
+      type: Puffin.Core.Ecs.Entity
+    - id: text
+      type: System.String
+    content.vb: Public Sub New(parent As Entity, text As String)
+  overload: Puffin.Core.Ecs.Components.TextLabelComponent.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: Puffin.Core.Ecs.Components
+  commentId: N:Puffin.Core.Ecs.Components
+  name: Puffin.Core.Ecs.Components
+  nameWithType: Puffin.Core.Ecs.Components
+  fullName: Puffin.Core.Ecs.Components
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Puffin.Core.Ecs.Components.Component
+  commentId: T:Puffin.Core.Ecs.Components.Component
+  parent: Puffin.Core.Ecs.Components
+  name: Component
+  nameWithType: Component
+  fullName: Puffin.Core.Ecs.Components.Component
+- uid: Puffin.Core.Ecs.Components.Component.Parent
+  commentId: F:Puffin.Core.Ecs.Components.Component.Parent
+  parent: Puffin.Core.Ecs.Components.Component
+  name: Parent
+  nameWithType: Component.Parent
+  fullName: Puffin.Core.Ecs.Components.Component.Parent
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Puffin.Core.Ecs.Components.TextLabelComponent.Text*
+  commentId: Overload:Puffin.Core.Ecs.Components.TextLabelComponent.Text
+  name: Text
+  nameWithType: TextLabelComponent.Text
+  fullName: Puffin.Core.Ecs.Components.TextLabelComponent.Text
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Puffin.Core.Ecs.Components.TextLabelComponent.#ctor*
+  commentId: Overload:Puffin.Core.Ecs.Components.TextLabelComponent.#ctor
+  name: TextLabelComponent
+  nameWithType: TextLabelComponent.TextLabelComponent
+  fullName: Puffin.Core.Ecs.Components.TextLabelComponent.TextLabelComponent
+- uid: Puffin.Core.Ecs.Entity
+  commentId: T:Puffin.Core.Ecs.Entity
+  parent: Puffin.Core.Ecs
+  name: Entity
+  nameWithType: Entity
+  fullName: Puffin.Core.Ecs.Entity
+- uid: Puffin.Core.Ecs
+  commentId: N:Puffin.Core.Ecs
+  name: Puffin.Core.Ecs
+  nameWithType: Puffin.Core.Ecs
+  fullName: Puffin.Core.Ecs

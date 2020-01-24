@@ -1,0 +1,28 @@
+### YamlMime:ManagedReference
+items:
+- uid: Puffin.Core
+  commentId: N:Puffin.Core
+  id: Puffin.Core
+  children:
+  - Puffin.Core.Scene
+  langs:
+  - csharp
+  - vb
+  name: Puffin.Core
+  nameWithType: Puffin.Core
+  fullName: Puffin.Core
+  type: Namespace
+  assemblies:
+  - Puffin.Core
+references:
+- uid: Puffin.Core.Scene
+  commentId: T:Puffin.Core.Scene
+  parent: Puffin.Core
+  name: Scene
+  nameWithType: Scene
+  fullName: Puffin.Core.Scene
+- uid: Puffin.Core
+  commentId: N:Puffin.Core
+  name: Puffin.Core
+  nameWithType: Puffin.Core
+  fullName: Puffin.Core

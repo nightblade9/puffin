@@ -1,0 +1,614 @@
+### YamlMime:ManagedReference
+items:
+- uid: Puffin.Core.Ecs.Components.SpriteComponent
+  commentId: T:Puffin.Core.Ecs.Components.SpriteComponent
+  id: SpriteComponent
+  parent: Puffin.Core.Ecs.Components
+  children:
+  - Puffin.Core.Ecs.Components.SpriteComponent.#ctor(Puffin.Core.Ecs.Entity,System.String)
+  - Puffin.Core.Ecs.Components.SpriteComponent.#ctor(Puffin.Core.Ecs.Entity,System.String,System.Int32,System.Int32)
+  - Puffin.Core.Ecs.Components.SpriteComponent.FileName
+  - Puffin.Core.Ecs.Components.SpriteComponent.FrameHeight
+  - Puffin.Core.Ecs.Components.SpriteComponent.FrameIndex
+  - Puffin.Core.Ecs.Components.SpriteComponent.FrameWidth
+  langs:
+  - csharp
+  - vb
+  name: SpriteComponent
+  nameWithType: SpriteComponent
+  fullName: Puffin.Core.Ecs.Components.SpriteComponent
+  type: Class
+  source:
+    remote:
+      path: Puffin.Core/Ecs/Components/SpriteComponent.cs
+      branch: docs
+      repo: git@github.com:nightblade9/puffin
+    id: SpriteComponent
+    path: ../Puffin.Core/Ecs/Components/SpriteComponent.cs
+    startLine: 4
+  assemblies:
+  - Puffin.Core
+  namespace: Puffin.Core.Ecs.Components
+  syntax:
+    content: 'public class SpriteComponent : Component'
+    content.vb: >-
+      Public Class SpriteComponent
+
+          Inherits Component
+  inheritance:
+  - System.Object
+  - Puffin.Core.Ecs.Components.Component
+  inheritedMembers:
+  - Puffin.Core.Ecs.Components.Component.Parent
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Puffin.Core.Ecs.Components.SpriteComponent.FileName
+  commentId: F:Puffin.Core.Ecs.Components.SpriteComponent.FileName
+  id: FileName
+  parent: Puffin.Core.Ecs.Components.SpriteComponent
+  langs:
+  - csharp
+  - vb
+  name: FileName
+  nameWithType: SpriteComponent.FileName
+  fullName: Puffin.Core.Ecs.Components.SpriteComponent.FileName
+  type: Field
+  source:
+    remote:
+      path: Puffin.Core/Ecs/Components/SpriteComponent.cs
+      branch: docs
+      repo: git@github.com:nightblade9/puffin
+    id: FileName
+    path: ../Puffin.Core/Ecs/Components/SpriteComponent.cs
+    startLine: 6
+  assemblies:
+  - Puffin.Core
+  namespace: Puffin.Core.Ecs.Components
+  syntax:
+    content: public readonly string FileName
+    return:
+      type: System.String
+    content.vb: Public ReadOnly FileName As String
+  modifiers.csharp:
+  - public
+  - readonly
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Puffin.Core.Ecs.Components.SpriteComponent.FrameWidth
+  commentId: F:Puffin.Core.Ecs.Components.SpriteComponent.FrameWidth
+  id: FrameWidth
+  parent: Puffin.Core.Ecs.Components.SpriteComponent
+  langs:
+  - csharp
+  - vb
+  name: FrameWidth
+  nameWithType: SpriteComponent.FrameWidth
+  fullName: Puffin.Core.Ecs.Components.SpriteComponent.FrameWidth
+  type: Field
+  source:
+    remote:
+      path: Puffin.Core/Ecs/Components/SpriteComponent.cs
+      branch: docs
+      repo: git@github.com:nightblade9/puffin
+    id: FrameWidth
+    path: ../Puffin.Core/Ecs/Components/SpriteComponent.cs
+    startLine: 11
+  assemblies:
+  - Puffin.Core
+  namespace: Puffin.Core.Ecs.Components
+  summary: "\nThe width of a frame of the sprite (if it&apos;s a spritesheet), or zero if not a spritesheet.\n"
+  example: []
+  syntax:
+    content: public readonly int FrameWidth
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly FrameWidth As Integer
+  modifiers.csharp:
+  - public
+  - readonly
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Puffin.Core.Ecs.Components.SpriteComponent.FrameHeight
+  commentId: F:Puffin.Core.Ecs.Components.SpriteComponent.FrameHeight
+  id: FrameHeight
+  parent: Puffin.Core.Ecs.Components.SpriteComponent
+  langs:
+  - csharp
+  - vb
+  name: FrameHeight
+  nameWithType: SpriteComponent.FrameHeight
+  fullName: Puffin.Core.Ecs.Components.SpriteComponent.FrameHeight
+  type: Field
+  source:
+    remote:
+      path: Puffin.Core/Ecs/Components/SpriteComponent.cs
+      branch: docs
+      repo: git@github.com:nightblade9/puffin
+    id: FrameHeight
+    path: ../Puffin.Core/Ecs/Components/SpriteComponent.cs
+    startLine: 16
+  assemblies:
+  - Puffin.Core
+  namespace: Puffin.Core.Ecs.Components
+  summary: "\nThe height of a frame of the sprite (if it&apos;s a spritesheet), or zero if not a spritesheet.\n"
+  example: []
+  syntax:
+    content: public readonly int FrameHeight
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly FrameHeight As Integer
+  modifiers.csharp:
+  - public
+  - readonly
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Puffin.Core.Ecs.Components.SpriteComponent.FrameIndex
+  commentId: P:Puffin.Core.Ecs.Components.SpriteComponent.FrameIndex
+  id: FrameIndex
+  parent: Puffin.Core.Ecs.Components.SpriteComponent
+  langs:
+  - csharp
+  - vb
+  name: FrameIndex
+  nameWithType: SpriteComponent.FrameIndex
+  fullName: Puffin.Core.Ecs.Components.SpriteComponent.FrameIndex
+  type: Property
+  source:
+    remote:
+      path: Puffin.Core/Ecs/Components/SpriteComponent.cs
+      branch: docs
+      repo: git@github.com:nightblade9/puffin
+    id: FrameIndex
+    path: ../Puffin.Core/Ecs/Components/SpriteComponent.cs
+    startLine: 20
+  assemblies:
+  - Puffin.Core
+  namespace: Puffin.Core.Ecs.Components
+  syntax:
+    content: public int FrameIndex { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property FrameIndex As Integer
+  overload: Puffin.Core.Ecs.Components.SpriteComponent.FrameIndex*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Puffin.Core.Ecs.Components.SpriteComponent.#ctor(Puffin.Core.Ecs.Entity,System.String)
+  commentId: M:Puffin.Core.Ecs.Components.SpriteComponent.#ctor(Puffin.Core.Ecs.Entity,System.String)
+  id: '#ctor(Puffin.Core.Ecs.Entity,System.String)'
+  parent: Puffin.Core.Ecs.Components.SpriteComponent
+  langs:
+  - csharp
+  - vb
+  name: SpriteComponent(Entity, String)
+  nameWithType: SpriteComponent.SpriteComponent(Entity, String)
+  fullName: Puffin.Core.Ecs.Components.SpriteComponent.SpriteComponent(Puffin.Core.Ecs.Entity, System.String)
+  type: Constructor
+  source:
+    remote:
+      path: Puffin.Core/Ecs/Components/SpriteComponent.cs
+      branch: docs
+      repo: git@github.com:nightblade9/puffin
+    id: .ctor
+    path: ../Puffin.Core/Ecs/Components/SpriteComponent.cs
+    startLine: 41
+  assemblies:
+  - Puffin.Core
+  namespace: Puffin.Core.Ecs.Components
+  syntax:
+    content: public SpriteComponent(Entity parent, string fileName)
+    parameters:
+    - id: parent
+      type: Puffin.Core.Ecs.Entity
+    - id: fileName
+      type: System.String
+    content.vb: Public Sub New(parent As Entity, fileName As String)
+  overload: Puffin.Core.Ecs.Components.SpriteComponent.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Puffin.Core.Ecs.Components.SpriteComponent.#ctor(Puffin.Core.Ecs.Entity,System.String,System.Int32,System.Int32)
+  commentId: M:Puffin.Core.Ecs.Components.SpriteComponent.#ctor(Puffin.Core.Ecs.Entity,System.String,System.Int32,System.Int32)
+  id: '#ctor(Puffin.Core.Ecs.Entity,System.String,System.Int32,System.Int32)'
+  parent: Puffin.Core.Ecs.Components.SpriteComponent
+  langs:
+  - csharp
+  - vb
+  name: SpriteComponent(Entity, String, Int32, Int32)
+  nameWithType: SpriteComponent.SpriteComponent(Entity, String, Int32, Int32)
+  fullName: Puffin.Core.Ecs.Components.SpriteComponent.SpriteComponent(Puffin.Core.Ecs.Entity, System.String, System.Int32, System.Int32)
+  type: Constructor
+  source:
+    remote:
+      path: Puffin.Core/Ecs/Components/SpriteComponent.cs
+      branch: docs
+      repo: git@github.com:nightblade9/puffin
+    id: .ctor
+    path: ../Puffin.Core/Ecs/Components/SpriteComponent.cs
+    startLine: 50
+  assemblies:
+  - Puffin.Core
+  namespace: Puffin.Core.Ecs.Components
+  summary: "\nUsed to construct a spritesheet, by passing in the frame width/height.\n"
+  example: []
+  syntax:
+    content: public SpriteComponent(Entity parent, string spritesheetFileName, int frameWidth, int frameHeight)
+    parameters:
+    - id: parent
+      type: Puffin.Core.Ecs.Entity
+    - id: spritesheetFileName
+      type: System.String
+    - id: frameWidth
+      type: System.Int32
+    - id: frameHeight
+      type: System.Int32
+    content.vb: Public Sub New(parent As Entity, spritesheetFileName As String, frameWidth As Integer, frameHeight As Integer)
+  overload: Puffin.Core.Ecs.Components.SpriteComponent.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: Puffin.Core.Ecs.Components
+  commentId: N:Puffin.Core.Ecs.Components
+  name: Puffin.Core.Ecs.Components
+  nameWithType: Puffin.Core.Ecs.Components
+  fullName: Puffin.Core.Ecs.Components
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Puffin.Core.Ecs.Components.Component
+  commentId: T:Puffin.Core.Ecs.Components.Component
+  parent: Puffin.Core.Ecs.Components
+  name: Component
+  nameWithType: Component
+  fullName: Puffin.Core.Ecs.Components.Component
+- uid: Puffin.Core.Ecs.Components.Component.Parent
+  commentId: F:Puffin.Core.Ecs.Components.Component.Parent
+  parent: Puffin.Core.Ecs.Components.Component
+  name: Parent
+  nameWithType: Component.Parent
+  fullName: Puffin.Core.Ecs.Components.Component.Parent
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: Puffin.Core.Ecs.Components.SpriteComponent.FrameIndex*
+  commentId: Overload:Puffin.Core.Ecs.Components.SpriteComponent.FrameIndex
+  name: FrameIndex
+  nameWithType: SpriteComponent.FrameIndex
+  fullName: Puffin.Core.Ecs.Components.SpriteComponent.FrameIndex
+- uid: Puffin.Core.Ecs.Components.SpriteComponent.#ctor*
+  commentId: Overload:Puffin.Core.Ecs.Components.SpriteComponent.#ctor
+  name: SpriteComponent
+  nameWithType: SpriteComponent.SpriteComponent
+  fullName: Puffin.Core.Ecs.Components.SpriteComponent.SpriteComponent
+- uid: Puffin.Core.Ecs.Entity
+  commentId: T:Puffin.Core.Ecs.Entity
+  parent: Puffin.Core.Ecs
+  name: Entity
+  nameWithType: Entity
+  fullName: Puffin.Core.Ecs.Entity
+- uid: Puffin.Core.Ecs
+  commentId: N:Puffin.Core.Ecs
+  name: Puffin.Core.Ecs
+  nameWithType: Puffin.Core.Ecs
+  fullName: Puffin.Core.Ecs

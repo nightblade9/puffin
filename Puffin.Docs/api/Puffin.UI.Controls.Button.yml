@@ -1,0 +1,241 @@
+### YamlMime:ManagedReference
+items:
+- uid: Puffin.UI.Controls.Button
+  commentId: T:Puffin.UI.Controls.Button
+  id: Button
+  parent: Puffin.UI.Controls
+  children:
+  - Puffin.UI.Controls.Button.#ctor(System.String,System.Action)
+  langs:
+  - csharp
+  - vb
+  name: Button
+  nameWithType: Button
+  fullName: Puffin.UI.Controls.Button
+  type: Class
+  source:
+    remote:
+      path: Puffin.UI/Controls/Button.cs
+      branch: docs
+      repo: git@github.com:nightblade9/puffin
+    id: Button
+    path: ../Puffin.UI/Controls/Button.cs
+    startLine: 5
+  assemblies:
+  - Puffin.UI
+  namespace: Puffin.UI.Controls
+  syntax:
+    content: 'public class Button : Entity'
+    content.vb: >-
+      Public Class Button
+
+          Inherits Entity
+  inheritance:
+  - System.Object
+  - Puffin.Core.Ecs.Entity
+  inheritedMembers:
+  - Puffin.Core.Ecs.Entity.X
+  - Puffin.Core.Ecs.Entity.Y
+  - Puffin.Core.Ecs.Entity.Set(Puffin.Core.Ecs.Components.Component)
+  - Puffin.Core.Ecs.Entity.Remove``1
+  - Puffin.Core.Ecs.Entity.GetIfHas``1
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Puffin.UI.Controls.Button.#ctor(System.String,System.Action)
+  commentId: M:Puffin.UI.Controls.Button.#ctor(System.String,System.Action)
+  id: '#ctor(System.String,System.Action)'
+  parent: Puffin.UI.Controls.Button
+  langs:
+  - csharp
+  - vb
+  name: Button(String, Action)
+  nameWithType: Button.Button(String, Action)
+  fullName: Puffin.UI.Controls.Button.Button(System.String, System.Action)
+  type: Constructor
+  source:
+    remote:
+      path: Puffin.UI/Controls/Button.cs
+      branch: docs
+      repo: git@github.com:nightblade9/puffin
+    id: .ctor
+    path: ../Puffin.UI/Controls/Button.cs
+    startLine: 10
+  assemblies:
+  - Puffin.UI
+  namespace: Puffin.UI.Controls
+  syntax:
+    content: public Button(string text, Action onClick)
+    parameters:
+    - id: text
+      type: System.String
+    - id: onClick
+      type: System.Action
+    content.vb: Public Sub New(text As String, onClick As Action)
+  overload: Puffin.UI.Controls.Button.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: Puffin.UI.Controls
+  commentId: N:Puffin.UI.Controls
+  name: Puffin.UI.Controls
+  nameWithType: Puffin.UI.Controls
+  fullName: Puffin.UI.Controls
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Puffin.Core.Ecs.Entity
+  commentId: T:Puffin.Core.Ecs.Entity
+  parent: Puffin.Core.Ecs
+  name: Entity
+  nameWithType: Entity
+  fullName: Puffin.Core.Ecs.Entity
+- uid: Puffin.Core.Ecs.Entity.X
+  commentId: P:Puffin.Core.Ecs.Entity.X
+  parent: Puffin.Core.Ecs.Entity
+  name: X
+  nameWithType: Entity.X
+  fullName: Puffin.Core.Ecs.Entity.X
+- uid: Puffin.Core.Ecs.Entity.Y
+  commentId: P:Puffin.Core.Ecs.Entity.Y
+  parent: Puffin.Core.Ecs.Entity
+  name: Y
+  nameWithType: Entity.Y
+  fullName: Puffin.Core.Ecs.Entity.Y
+- uid: Puffin.Core.Ecs.Entity.Set(Puffin.Core.Ecs.Components.Component)
+  commentId: M:Puffin.Core.Ecs.Entity.Set(Puffin.Core.Ecs.Components.Component)
+  parent: Puffin.Core.Ecs.Entity
+  name: Set(Component)
+  nameWithType: Entity.Set(Component)
+  fullName: Puffin.Core.Ecs.Entity.Set(Puffin.Core.Ecs.Components.Component)
+  spec.csharp:
+  - uid: Puffin.Core.Ecs.Entity.Set(Puffin.Core.Ecs.Components.Component)
+    name: Set
+    nameWithType: Entity.Set
+    fullName: Puffin.Core.Ecs.Entity.Set
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Puffin.Core.Ecs.Components.Component
+    name: Component
+    nameWithType: Component
+    fullName: Puffin.Core.Ecs.Components.Component
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Puffin.Core.Ecs.Entity.Set(Puffin.Core.Ecs.Components.Component)
+    name: Set
+    nameWithType: Entity.Set
+    fullName: Puffin.Core.Ecs.Entity.Set
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Puffin.Core.Ecs.Components.Component
+    name: Component
+    nameWithType: Component
+    fullName: Puffin.Core.Ecs.Components.Component
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Puffin.Core.Ecs.Entity.Remove``1
+  commentId: M:Puffin.Core.Ecs.Entity.Remove``1
+  parent: Puffin.Core.Ecs.Entity
+  name: Remove<T>()
+  nameWithType: Entity.Remove<T>()
+  fullName: Puffin.Core.Ecs.Entity.Remove<T>()
+  nameWithType.vb: Entity.Remove(Of T)()
+  fullName.vb: Puffin.Core.Ecs.Entity.Remove(Of T)()
+  name.vb: Remove(Of T)()
+  spec.csharp:
+  - uid: Puffin.Core.Ecs.Entity.Remove``1
+    name: Remove<T>
+    nameWithType: Entity.Remove<T>
+    fullName: Puffin.Core.Ecs.Entity.Remove<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Puffin.Core.Ecs.Entity.Remove``1
+    name: Remove(Of T)
+    nameWithType: Entity.Remove(Of T)
+    fullName: Puffin.Core.Ecs.Entity.Remove(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Puffin.Core.Ecs.Entity.GetIfHas``1
+  commentId: M:Puffin.Core.Ecs.Entity.GetIfHas``1
+  parent: Puffin.Core.Ecs.Entity
+  name: GetIfHas<T>()
+  nameWithType: Entity.GetIfHas<T>()
+  fullName: Puffin.Core.Ecs.Entity.GetIfHas<T>()
+  nameWithType.vb: Entity.GetIfHas(Of T)()
+  fullName.vb: Puffin.Core.Ecs.Entity.GetIfHas(Of T)()
+  name.vb: GetIfHas(Of T)()
+  spec.csharp:
+  - uid: Puffin.Core.Ecs.Entity.GetIfHas``1
+    name: GetIfHas<T>
+    nameWithType: Entity.GetIfHas<T>
+    fullName: Puffin.Core.Ecs.Entity.GetIfHas<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Puffin.Core.Ecs.Entity.GetIfHas``1
+    name: GetIfHas(Of T)
+    nameWithType: Entity.GetIfHas(Of T)
+    fullName: Puffin.Core.Ecs.Entity.GetIfHas(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Puffin.Core.Ecs
+  commentId: N:Puffin.Core.Ecs
+  name: Puffin.Core.Ecs
+  nameWithType: Puffin.Core.Ecs
+  fullName: Puffin.Core.Ecs
+- uid: Puffin.UI.Controls.Button.#ctor*
+  commentId: Overload:Puffin.UI.Controls.Button.#ctor
+  name: Button
+  nameWithType: Button.Button
+  fullName: Puffin.UI.Controls.Button.Button
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Action
+  commentId: T:System.Action
+  parent: System
+  isExternal: true
+  name: Action
+  nameWithType: Action
+  fullName: System.Action

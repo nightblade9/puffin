@@ -78,16 +78,29 @@
     <h3 id="classes">Classes
   </h3>
       <h4><a class="xref" href="Puffin.Core.Ecs.Components.Component.html">Component</a></h4>
-      <section></section>
+      <section><p>A base component class. Provides a reference to the parent entity.</p>
+</section>
       <h4><a class="xref" href="Puffin.Core.Ecs.Components.FourWayMovementComponent.html">FourWayMovementComponent</a></h4>
       <section><p>Adds a component which makes the entity move in four directions in response to the keyboard.
 By default, this responds to the WASD and arrow keys; you can change these bindings
 by changing/adding more bindings in your PuffinGame instance.</p>
 </section>
+      <h4><a class="xref" href="Puffin.Core.Ecs.Components.KeyboardComponent.html">KeyboardComponent</a></h4>
+      <section><p>A keyboard component; provides information about which actions are being pressed.
+Actions are a simple enum that map to one or more keyboard keys.
+For examples, see the Puffin documentation or unit tests.</p>
+</section>
+      <h4><a class="xref" href="Puffin.Core.Ecs.Components.MouseComponent.html">MouseComponent</a></h4>
+      <section><p>A component with makes an entity clickable.</p>
+</section>
+      <h4><a class="xref" href="Puffin.Core.Ecs.Components.OverlapComponent.html">OverlapComponent</a></h4>
+      <section><p>A component for overlapping. Two entities with OverlapComponents will fire events when they overlap each other.</p>
+</section>
       <h4><a class="xref" href="Puffin.Core.Ecs.Components.SpriteComponent.html">SpriteComponent</a></h4>
       <section></section>
       <h4><a class="xref" href="Puffin.Core.Ecs.Components.TextLabelComponent.html">TextLabelComponent</a></h4>
-      <section></section>
+      <section><p>A text-label component: a label with some printable text.</p>
+</section>
 </article>
           </div>
           

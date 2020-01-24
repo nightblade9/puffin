@@ -1,0 +1,1806 @@
+### YamlMime:ManagedReference
+items:
+- uid: Puffin.Infrastructure.MonoGame.PuffinGame
+  commentId: T:Puffin.Infrastructure.MonoGame.PuffinGame
+  id: PuffinGame
+  parent: Puffin.Infrastructure.MonoGame
+  children:
+  - Puffin.Infrastructure.MonoGame.PuffinGame.#ctor(System.Int32,System.Int32)
+  - Puffin.Infrastructure.MonoGame.PuffinGame.actionToKeys
+  - Puffin.Infrastructure.MonoGame.PuffinGame.Draw(Microsoft.Xna.Framework.GameTime)
+  - Puffin.Infrastructure.MonoGame.PuffinGame.Initialize
+  - Puffin.Infrastructure.MonoGame.PuffinGame.LatestInstance
+  - Puffin.Infrastructure.MonoGame.PuffinGame.LoadContent
+  - Puffin.Infrastructure.MonoGame.PuffinGame.Ready
+  - Puffin.Infrastructure.MonoGame.PuffinGame.ShowScene(Puffin.Core.Scene)
+  - Puffin.Infrastructure.MonoGame.PuffinGame.Update(Microsoft.Xna.Framework.GameTime)
+  langs:
+  - csharp
+  - vb
+  name: PuffinGame
+  nameWithType: PuffinGame
+  fullName: Puffin.Infrastructure.MonoGame.PuffinGame
+  type: Class
+  source:
+    remote:
+      path: Puffin.Infrastructure.MonoGame/PuffinGame.cs
+      branch: docs
+      repo: git@github.com:nightblade9/puffin
+    id: PuffinGame
+    path: ../Puffin.Infrastructure.MonoGame/PuffinGame.cs
+    startLine: 19
+  assemblies:
+  - Puffin.Infrastructure.MonoGame
+  namespace: Puffin.Infrastructure.MonoGame
+  summary: "\nThe core game class, the starting-point of your application. Manages scenes.\nYou can set the size and background colour of your game.\n"
+  example: []
+  syntax:
+    content: 'public abstract class PuffinGame : Game, IDisposable'
+    content.vb: >-
+      Public MustInherit Class PuffinGame
+
+          Inherits Game
+
+          Implements IDisposable
+  inheritance:
+  - System.Object
+  - Microsoft.Xna.Framework.Game
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - Microsoft.Xna.Framework.Game.Dispose
+  - Microsoft.Xna.Framework.Game.Dispose(System.Boolean)
+  - Microsoft.Xna.Framework.Game.Exit
+  - Microsoft.Xna.Framework.Game.ResetElapsedTime
+  - Microsoft.Xna.Framework.Game.SuppressDraw
+  - Microsoft.Xna.Framework.Game.RunOneFrame
+  - Microsoft.Xna.Framework.Game.Run
+  - Microsoft.Xna.Framework.Game.Run(Microsoft.Xna.Framework.GameRunBehavior)
+  - Microsoft.Xna.Framework.Game.Tick
+  - Microsoft.Xna.Framework.Game.BeginDraw
+  - Microsoft.Xna.Framework.Game.EndDraw
+  - Microsoft.Xna.Framework.Game.BeginRun
+  - Microsoft.Xna.Framework.Game.EndRun
+  - Microsoft.Xna.Framework.Game.UnloadContent
+  - Microsoft.Xna.Framework.Game.OnExiting(System.Object,System.EventArgs)
+  - Microsoft.Xna.Framework.Game.OnActivated(System.Object,System.EventArgs)
+  - Microsoft.Xna.Framework.Game.OnDeactivated(System.Object,System.EventArgs)
+  - Microsoft.Xna.Framework.Game.LaunchParameters
+  - Microsoft.Xna.Framework.Game.Components
+  - Microsoft.Xna.Framework.Game.InactiveSleepTime
+  - Microsoft.Xna.Framework.Game.MaxElapsedTime
+  - Microsoft.Xna.Framework.Game.IsActive
+  - Microsoft.Xna.Framework.Game.IsMouseVisible
+  - Microsoft.Xna.Framework.Game.TargetElapsedTime
+  - Microsoft.Xna.Framework.Game.IsFixedTimeStep
+  - Microsoft.Xna.Framework.Game.Services
+  - Microsoft.Xna.Framework.Game.Content
+  - Microsoft.Xna.Framework.Game.GraphicsDevice
+  - Microsoft.Xna.Framework.Game.Window
+  - Microsoft.Xna.Framework.Game.Activated
+  - Microsoft.Xna.Framework.Game.Deactivated
+  - Microsoft.Xna.Framework.Game.Disposed
+  - Microsoft.Xna.Framework.Game.Exiting
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - abstract
+  - class
+  modifiers.vb:
+  - Public
+  - MustInherit
+  - Class
+- uid: Puffin.Infrastructure.MonoGame.PuffinGame.actionToKeys
+  commentId: F:Puffin.Infrastructure.MonoGame.PuffinGame.actionToKeys
+  id: actionToKeys
+  parent: Puffin.Infrastructure.MonoGame.PuffinGame
+  langs:
+  - csharp
+  - vb
+  name: actionToKeys
+  nameWithType: PuffinGame.actionToKeys
+  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.actionToKeys
+  type: Field
+  source:
+    remote:
+      path: Puffin.Infrastructure.MonoGame/PuffinGame.cs
+      branch: docs
+      repo: git@github.com:nightblade9/puffin
+    id: actionToKeys
+    path: ../Puffin.Infrastructure.MonoGame/PuffinGame.cs
+    startLine: 29
+  assemblies:
+  - Puffin.Infrastructure.MonoGame
+  namespace: Puffin.Infrastructure.MonoGame
+  syntax:
+    content: public Dictionary<Enum, List<Keys>> actionToKeys
+    return:
+      type: System.Collections.Generic.Dictionary{System.Enum,System.Collections.Generic.List{Microsoft.Xna.Framework.Input.Keys}}
+    content.vb: Public actionToKeys As Dictionary(Of  Enum, List(Of Keys))
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Puffin.Infrastructure.MonoGame.PuffinGame.LatestInstance
+  commentId: F:Puffin.Infrastructure.MonoGame.PuffinGame.LatestInstance
+  id: LatestInstance
+  parent: Puffin.Infrastructure.MonoGame.PuffinGame
+  langs:
+  - csharp
+  - vb
+  name: LatestInstance
+  nameWithType: PuffinGame.LatestInstance
+  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.LatestInstance
+  type: Field
+  source:
+    remote:
+      path: Puffin.Infrastructure.MonoGame/PuffinGame.cs
+      branch: docs
+      repo: git@github.com:nightblade9/puffin
+    id: LatestInstance
+    path: ../Puffin.Infrastructure.MonoGame/PuffinGame.cs
+    startLine: 36
+  assemblies:
+  - Puffin.Infrastructure.MonoGame
+  namespace: Puffin.Infrastructure.MonoGame
+  syntax:
+    content: public static PuffinGame LatestInstance
+    return:
+      type: Puffin.Infrastructure.MonoGame.PuffinGame
+    content.vb: Public Shared LatestInstance As PuffinGame
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Puffin.Infrastructure.MonoGame.PuffinGame.#ctor(System.Int32,System.Int32)
+  commentId: M:Puffin.Infrastructure.MonoGame.PuffinGame.#ctor(System.Int32,System.Int32)
+  id: '#ctor(System.Int32,System.Int32)'
+  parent: Puffin.Infrastructure.MonoGame.PuffinGame
+  langs:
+  - csharp
+  - vb
+  name: PuffinGame(Int32, Int32)
+  nameWithType: PuffinGame.PuffinGame(Int32, Int32)
+  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.PuffinGame(System.Int32, System.Int32)
+  type: Constructor
+  source:
+    remote:
+      path: Puffin.Infrastructure.MonoGame/PuffinGame.cs
+      branch: docs
+      repo: git@github.com:nightblade9/puffin
+    id: .ctor
+    path: ../Puffin.Infrastructure.MonoGame/PuffinGame.cs
+    startLine: 46
+  assemblies:
+  - Puffin.Infrastructure.MonoGame
+  namespace: Puffin.Infrastructure.MonoGame
+  syntax:
+    content: public PuffinGame(int gameWidth, int gameHeight)
+    parameters:
+    - id: gameWidth
+      type: System.Int32
+    - id: gameHeight
+      type: System.Int32
+    content.vb: Public Sub New(gameWidth As Integer, gameHeight As Integer)
+  overload: Puffin.Infrastructure.MonoGame.PuffinGame.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Puffin.Infrastructure.MonoGame.PuffinGame.ShowScene(Puffin.Core.Scene)
+  commentId: M:Puffin.Infrastructure.MonoGame.PuffinGame.ShowScene(Puffin.Core.Scene)
+  id: ShowScene(Puffin.Core.Scene)
+  parent: Puffin.Infrastructure.MonoGame.PuffinGame
+  langs:
+  - csharp
+  - vb
+  name: ShowScene(Scene)
+  nameWithType: PuffinGame.ShowScene(Scene)
+  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.ShowScene(Puffin.Core.Scene)
+  type: Method
+  source:
+    remote:
+      path: Puffin.Infrastructure.MonoGame/PuffinGame.cs
+      branch: docs
+      repo: git@github.com:nightblade9/puffin
+    id: ShowScene
+    path: ../Puffin.Infrastructure.MonoGame/PuffinGame.cs
+    startLine: 63
+  assemblies:
+  - Puffin.Infrastructure.MonoGame
+  namespace: Puffin.Infrastructure.MonoGame
+  syntax:
+    content: public void ShowScene(Scene s)
+    parameters:
+    - id: s
+      type: Puffin.Core.Scene
+    content.vb: Public Sub ShowScene(s As Scene)
+  overload: Puffin.Infrastructure.MonoGame.PuffinGame.ShowScene*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Puffin.Infrastructure.MonoGame.PuffinGame.Ready
+  commentId: M:Puffin.Infrastructure.MonoGame.PuffinGame.Ready
+  id: Ready
+  parent: Puffin.Infrastructure.MonoGame.PuffinGame
+  langs:
+  - csharp
+  - vb
+  name: Ready()
+  nameWithType: PuffinGame.Ready()
+  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.Ready()
+  type: Method
+  source:
+    remote:
+      path: Puffin.Infrastructure.MonoGame/PuffinGame.cs
+      branch: docs
+      repo: git@github.com:nightblade9/puffin
+    id: Ready
+    path: ../Puffin.Infrastructure.MonoGame/PuffinGame.cs
+    startLine: 88
+  assemblies:
+  - Puffin.Infrastructure.MonoGame
+  namespace: Puffin.Infrastructure.MonoGame
+  summary: "\nCalled when your game is ready to run (graphics initialized, etc.)\n"
+  example: []
+  syntax:
+    content: protected virtual void Ready()
+    content.vb: Protected Overridable Sub Ready
+  overload: Puffin.Infrastructure.MonoGame.PuffinGame.Ready*
+  modifiers.csharp:
+  - protected
+  - virtual
+  modifiers.vb:
+  - Protected
+  - Overridable
+- uid: Puffin.Infrastructure.MonoGame.PuffinGame.Initialize
+  commentId: M:Puffin.Infrastructure.MonoGame.PuffinGame.Initialize
+  id: Initialize
+  parent: Puffin.Infrastructure.MonoGame.PuffinGame
+  langs:
+  - csharp
+  - vb
+  name: Initialize()
+  nameWithType: PuffinGame.Initialize()
+  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.Initialize()
+  type: Method
+  source:
+    remote:
+      path: Puffin.Infrastructure.MonoGame/PuffinGame.cs
+      branch: docs
+      repo: git@github.com:nightblade9/puffin
+    id: Initialize
+    path: ../Puffin.Infrastructure.MonoGame/PuffinGame.cs
+    startLine: 93
+  assemblies:
+  - Puffin.Infrastructure.MonoGame
+  namespace: Puffin.Infrastructure.MonoGame
+  syntax:
+    content: protected override void Initialize()
+    content.vb: Protected Overrides Sub Initialize
+  overridden: Microsoft.Xna.Framework.Game.Initialize
+  overload: Puffin.Infrastructure.MonoGame.PuffinGame.Initialize*
+  modifiers.csharp:
+  - protected
+  - override
+  modifiers.vb:
+  - Protected
+  - Overrides
+- uid: Puffin.Infrastructure.MonoGame.PuffinGame.LoadContent
+  commentId: M:Puffin.Infrastructure.MonoGame.PuffinGame.LoadContent
+  id: LoadContent
+  parent: Puffin.Infrastructure.MonoGame.PuffinGame
+  langs:
+  - csharp
+  - vb
+  name: LoadContent()
+  nameWithType: PuffinGame.LoadContent()
+  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.LoadContent()
+  type: Method
+  source:
+    remote:
+      path: Puffin.Infrastructure.MonoGame/PuffinGame.cs
+      branch: docs
+      repo: git@github.com:nightblade9/puffin
+    id: LoadContent
+    path: ../Puffin.Infrastructure.MonoGame/PuffinGame.cs
+    startLine: 99
+  assemblies:
+  - Puffin.Infrastructure.MonoGame
+  namespace: Puffin.Infrastructure.MonoGame
+  syntax:
+    content: protected override void LoadContent()
+    content.vb: Protected Overrides Sub LoadContent
+  overridden: Microsoft.Xna.Framework.Game.LoadContent
+  overload: Puffin.Infrastructure.MonoGame.PuffinGame.LoadContent*
+  modifiers.csharp:
+  - protected
+  - override
+  modifiers.vb:
+  - Protected
+  - Overrides
+- uid: Puffin.Infrastructure.MonoGame.PuffinGame.Update(Microsoft.Xna.Framework.GameTime)
+  commentId: M:Puffin.Infrastructure.MonoGame.PuffinGame.Update(Microsoft.Xna.Framework.GameTime)
+  id: Update(Microsoft.Xna.Framework.GameTime)
+  parent: Puffin.Infrastructure.MonoGame.PuffinGame
+  langs:
+  - csharp
+  - vb
+  name: Update(GameTime)
+  nameWithType: PuffinGame.Update(GameTime)
+  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.Update(Microsoft.Xna.Framework.GameTime)
+  type: Method
+  source:
+    remote:
+      path: Puffin.Infrastructure.MonoGame/PuffinGame.cs
+      branch: docs
+      repo: git@github.com:nightblade9/puffin
+    id: Update
+    path: ../Puffin.Infrastructure.MonoGame/PuffinGame.cs
+    startLine: 108
+  assemblies:
+  - Puffin.Infrastructure.MonoGame
+  namespace: Puffin.Infrastructure.MonoGame
+  syntax:
+    content: protected override void Update(GameTime gameTime)
+    parameters:
+    - id: gameTime
+      type: Microsoft.Xna.Framework.GameTime
+    content.vb: Protected Overrides Sub Update(gameTime As GameTime)
+  overridden: Microsoft.Xna.Framework.Game.Update(Microsoft.Xna.Framework.GameTime)
+  overload: Puffin.Infrastructure.MonoGame.PuffinGame.Update*
+  modifiers.csharp:
+  - protected
+  - override
+  modifiers.vb:
+  - Protected
+  - Overrides
+- uid: Puffin.Infrastructure.MonoGame.PuffinGame.Draw(Microsoft.Xna.Framework.GameTime)
+  commentId: M:Puffin.Infrastructure.MonoGame.PuffinGame.Draw(Microsoft.Xna.Framework.GameTime)
+  id: Draw(Microsoft.Xna.Framework.GameTime)
+  parent: Puffin.Infrastructure.MonoGame.PuffinGame
+  langs:
+  - csharp
+  - vb
+  name: Draw(GameTime)
+  nameWithType: PuffinGame.Draw(GameTime)
+  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.Draw(Microsoft.Xna.Framework.GameTime)
+  type: Method
+  source:
+    remote:
+      path: Puffin.Infrastructure.MonoGame/PuffinGame.cs
+      branch: docs
+      repo: git@github.com:nightblade9/puffin
+    id: Draw
+    path: ../Puffin.Infrastructure.MonoGame/PuffinGame.cs
+    startLine: 128
+  assemblies:
+  - Puffin.Infrastructure.MonoGame
+  namespace: Puffin.Infrastructure.MonoGame
+  syntax:
+    content: protected override void Draw(GameTime gameTime)
+    parameters:
+    - id: gameTime
+      type: Microsoft.Xna.Framework.GameTime
+    content.vb: Protected Overrides Sub Draw(gameTime As GameTime)
+  overridden: Microsoft.Xna.Framework.Game.Draw(Microsoft.Xna.Framework.GameTime)
+  overload: Puffin.Infrastructure.MonoGame.PuffinGame.Draw*
+  modifiers.csharp:
+  - protected
+  - override
+  modifiers.vb:
+  - Protected
+  - Overrides
+references:
+- uid: Puffin.Infrastructure.MonoGame
+  commentId: N:Puffin.Infrastructure.MonoGame
+  name: Puffin.Infrastructure.MonoGame
+  nameWithType: Puffin.Infrastructure.MonoGame
+  fullName: Puffin.Infrastructure.MonoGame
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Microsoft.Xna.Framework.Game
+  commentId: T:Microsoft.Xna.Framework.Game
+  parent: Microsoft.Xna.Framework
+  isExternal: true
+  name: Game
+  nameWithType: Game
+  fullName: Microsoft.Xna.Framework.Game
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Microsoft.Xna.Framework.Game.Dispose
+  commentId: M:Microsoft.Xna.Framework.Game.Dispose
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: Dispose()
+  nameWithType: Game.Dispose()
+  fullName: Microsoft.Xna.Framework.Game.Dispose()
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.Dispose
+    name: Dispose
+    nameWithType: Game.Dispose
+    fullName: Microsoft.Xna.Framework.Game.Dispose
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.Dispose
+    name: Dispose
+    nameWithType: Game.Dispose
+    fullName: Microsoft.Xna.Framework.Game.Dispose
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.Xna.Framework.Game.Dispose(System.Boolean)
+  commentId: M:Microsoft.Xna.Framework.Game.Dispose(System.Boolean)
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: Dispose(Boolean)
+  nameWithType: Game.Dispose(Boolean)
+  fullName: Microsoft.Xna.Framework.Game.Dispose(System.Boolean)
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.Dispose(System.Boolean)
+    name: Dispose
+    nameWithType: Game.Dispose
+    fullName: Microsoft.Xna.Framework.Game.Dispose
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.Dispose(System.Boolean)
+    name: Dispose
+    nameWithType: Game.Dispose
+    fullName: Microsoft.Xna.Framework.Game.Dispose
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.Xna.Framework.Game.Exit
+  commentId: M:Microsoft.Xna.Framework.Game.Exit
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: Exit()
+  nameWithType: Game.Exit()
+  fullName: Microsoft.Xna.Framework.Game.Exit()
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.Exit
+    name: Exit
+    nameWithType: Game.Exit
+    fullName: Microsoft.Xna.Framework.Game.Exit
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.Exit
+    name: Exit
+    nameWithType: Game.Exit
+    fullName: Microsoft.Xna.Framework.Game.Exit
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.Xna.Framework.Game.ResetElapsedTime
+  commentId: M:Microsoft.Xna.Framework.Game.ResetElapsedTime
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: ResetElapsedTime()
+  nameWithType: Game.ResetElapsedTime()
+  fullName: Microsoft.Xna.Framework.Game.ResetElapsedTime()
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.ResetElapsedTime
+    name: ResetElapsedTime
+    nameWithType: Game.ResetElapsedTime
+    fullName: Microsoft.Xna.Framework.Game.ResetElapsedTime
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.ResetElapsedTime
+    name: ResetElapsedTime
+    nameWithType: Game.ResetElapsedTime
+    fullName: Microsoft.Xna.Framework.Game.ResetElapsedTime
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.Xna.Framework.Game.SuppressDraw
+  commentId: M:Microsoft.Xna.Framework.Game.SuppressDraw
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: SuppressDraw()
+  nameWithType: Game.SuppressDraw()
+  fullName: Microsoft.Xna.Framework.Game.SuppressDraw()
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.SuppressDraw
+    name: SuppressDraw
+    nameWithType: Game.SuppressDraw
+    fullName: Microsoft.Xna.Framework.Game.SuppressDraw
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.SuppressDraw
+    name: SuppressDraw
+    nameWithType: Game.SuppressDraw
+    fullName: Microsoft.Xna.Framework.Game.SuppressDraw
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.Xna.Framework.Game.RunOneFrame
+  commentId: M:Microsoft.Xna.Framework.Game.RunOneFrame
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: RunOneFrame()
+  nameWithType: Game.RunOneFrame()
+  fullName: Microsoft.Xna.Framework.Game.RunOneFrame()
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.RunOneFrame
+    name: RunOneFrame
+    nameWithType: Game.RunOneFrame
+    fullName: Microsoft.Xna.Framework.Game.RunOneFrame
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.RunOneFrame
+    name: RunOneFrame
+    nameWithType: Game.RunOneFrame
+    fullName: Microsoft.Xna.Framework.Game.RunOneFrame
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.Xna.Framework.Game.Run
+  commentId: M:Microsoft.Xna.Framework.Game.Run
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: Run()
+  nameWithType: Game.Run()
+  fullName: Microsoft.Xna.Framework.Game.Run()
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.Run
+    name: Run
+    nameWithType: Game.Run
+    fullName: Microsoft.Xna.Framework.Game.Run
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.Run
+    name: Run
+    nameWithType: Game.Run
+    fullName: Microsoft.Xna.Framework.Game.Run
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.Xna.Framework.Game.Run(Microsoft.Xna.Framework.GameRunBehavior)
+  commentId: M:Microsoft.Xna.Framework.Game.Run(Microsoft.Xna.Framework.GameRunBehavior)
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: Run(GameRunBehavior)
+  nameWithType: Game.Run(GameRunBehavior)
+  fullName: Microsoft.Xna.Framework.Game.Run(Microsoft.Xna.Framework.GameRunBehavior)
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.Run(Microsoft.Xna.Framework.GameRunBehavior)
+    name: Run
+    nameWithType: Game.Run
+    fullName: Microsoft.Xna.Framework.Game.Run
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Microsoft.Xna.Framework.GameRunBehavior
+    name: GameRunBehavior
+    nameWithType: GameRunBehavior
+    fullName: Microsoft.Xna.Framework.GameRunBehavior
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.Run(Microsoft.Xna.Framework.GameRunBehavior)
+    name: Run
+    nameWithType: Game.Run
+    fullName: Microsoft.Xna.Framework.Game.Run
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Microsoft.Xna.Framework.GameRunBehavior
+    name: GameRunBehavior
+    nameWithType: GameRunBehavior
+    fullName: Microsoft.Xna.Framework.GameRunBehavior
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.Xna.Framework.Game.Tick
+  commentId: M:Microsoft.Xna.Framework.Game.Tick
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: Tick()
+  nameWithType: Game.Tick()
+  fullName: Microsoft.Xna.Framework.Game.Tick()
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.Tick
+    name: Tick
+    nameWithType: Game.Tick
+    fullName: Microsoft.Xna.Framework.Game.Tick
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.Tick
+    name: Tick
+    nameWithType: Game.Tick
+    fullName: Microsoft.Xna.Framework.Game.Tick
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.Xna.Framework.Game.BeginDraw
+  commentId: M:Microsoft.Xna.Framework.Game.BeginDraw
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: BeginDraw()
+  nameWithType: Game.BeginDraw()
+  fullName: Microsoft.Xna.Framework.Game.BeginDraw()
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.BeginDraw
+    name: BeginDraw
+    nameWithType: Game.BeginDraw
+    fullName: Microsoft.Xna.Framework.Game.BeginDraw
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.BeginDraw
+    name: BeginDraw
+    nameWithType: Game.BeginDraw
+    fullName: Microsoft.Xna.Framework.Game.BeginDraw
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.Xna.Framework.Game.EndDraw
+  commentId: M:Microsoft.Xna.Framework.Game.EndDraw
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: EndDraw()
+  nameWithType: Game.EndDraw()
+  fullName: Microsoft.Xna.Framework.Game.EndDraw()
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.EndDraw
+    name: EndDraw
+    nameWithType: Game.EndDraw
+    fullName: Microsoft.Xna.Framework.Game.EndDraw
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.EndDraw
+    name: EndDraw
+    nameWithType: Game.EndDraw
+    fullName: Microsoft.Xna.Framework.Game.EndDraw
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.Xna.Framework.Game.BeginRun
+  commentId: M:Microsoft.Xna.Framework.Game.BeginRun
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: BeginRun()
+  nameWithType: Game.BeginRun()
+  fullName: Microsoft.Xna.Framework.Game.BeginRun()
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.BeginRun
+    name: BeginRun
+    nameWithType: Game.BeginRun
+    fullName: Microsoft.Xna.Framework.Game.BeginRun
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.BeginRun
+    name: BeginRun
+    nameWithType: Game.BeginRun
+    fullName: Microsoft.Xna.Framework.Game.BeginRun
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.Xna.Framework.Game.EndRun
+  commentId: M:Microsoft.Xna.Framework.Game.EndRun
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: EndRun()
+  nameWithType: Game.EndRun()
+  fullName: Microsoft.Xna.Framework.Game.EndRun()
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.EndRun
+    name: EndRun
+    nameWithType: Game.EndRun
+    fullName: Microsoft.Xna.Framework.Game.EndRun
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.EndRun
+    name: EndRun
+    nameWithType: Game.EndRun
+    fullName: Microsoft.Xna.Framework.Game.EndRun
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.Xna.Framework.Game.UnloadContent
+  commentId: M:Microsoft.Xna.Framework.Game.UnloadContent
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: UnloadContent()
+  nameWithType: Game.UnloadContent()
+  fullName: Microsoft.Xna.Framework.Game.UnloadContent()
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.UnloadContent
+    name: UnloadContent
+    nameWithType: Game.UnloadContent
+    fullName: Microsoft.Xna.Framework.Game.UnloadContent
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.UnloadContent
+    name: UnloadContent
+    nameWithType: Game.UnloadContent
+    fullName: Microsoft.Xna.Framework.Game.UnloadContent
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.Xna.Framework.Game.OnExiting(System.Object,System.EventArgs)
+  commentId: M:Microsoft.Xna.Framework.Game.OnExiting(System.Object,System.EventArgs)
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: OnExiting(Object, EventArgs)
+  nameWithType: Game.OnExiting(Object, EventArgs)
+  fullName: Microsoft.Xna.Framework.Game.OnExiting(System.Object, System.EventArgs)
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.OnExiting(System.Object,System.EventArgs)
+    name: OnExiting
+    nameWithType: Game.OnExiting
+    fullName: Microsoft.Xna.Framework.Game.OnExiting
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.EventArgs
+    name: EventArgs
+    nameWithType: EventArgs
+    fullName: System.EventArgs
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.OnExiting(System.Object,System.EventArgs)
+    name: OnExiting
+    nameWithType: Game.OnExiting
+    fullName: Microsoft.Xna.Framework.Game.OnExiting
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.EventArgs
+    name: EventArgs
+    nameWithType: EventArgs
+    fullName: System.EventArgs
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.Xna.Framework.Game.OnActivated(System.Object,System.EventArgs)
+  commentId: M:Microsoft.Xna.Framework.Game.OnActivated(System.Object,System.EventArgs)
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: OnActivated(Object, EventArgs)
+  nameWithType: Game.OnActivated(Object, EventArgs)
+  fullName: Microsoft.Xna.Framework.Game.OnActivated(System.Object, System.EventArgs)
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.OnActivated(System.Object,System.EventArgs)
+    name: OnActivated
+    nameWithType: Game.OnActivated
+    fullName: Microsoft.Xna.Framework.Game.OnActivated
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.EventArgs
+    name: EventArgs
+    nameWithType: EventArgs
+    fullName: System.EventArgs
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.OnActivated(System.Object,System.EventArgs)
+    name: OnActivated
+    nameWithType: Game.OnActivated
+    fullName: Microsoft.Xna.Framework.Game.OnActivated
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.EventArgs
+    name: EventArgs
+    nameWithType: EventArgs
+    fullName: System.EventArgs
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.Xna.Framework.Game.OnDeactivated(System.Object,System.EventArgs)
+  commentId: M:Microsoft.Xna.Framework.Game.OnDeactivated(System.Object,System.EventArgs)
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: OnDeactivated(Object, EventArgs)
+  nameWithType: Game.OnDeactivated(Object, EventArgs)
+  fullName: Microsoft.Xna.Framework.Game.OnDeactivated(System.Object, System.EventArgs)
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.OnDeactivated(System.Object,System.EventArgs)
+    name: OnDeactivated
+    nameWithType: Game.OnDeactivated
+    fullName: Microsoft.Xna.Framework.Game.OnDeactivated
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.EventArgs
+    name: EventArgs
+    nameWithType: EventArgs
+    fullName: System.EventArgs
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.OnDeactivated(System.Object,System.EventArgs)
+    name: OnDeactivated
+    nameWithType: Game.OnDeactivated
+    fullName: Microsoft.Xna.Framework.Game.OnDeactivated
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.EventArgs
+    name: EventArgs
+    nameWithType: EventArgs
+    fullName: System.EventArgs
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.Xna.Framework.Game.LaunchParameters
+  commentId: P:Microsoft.Xna.Framework.Game.LaunchParameters
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: LaunchParameters
+  nameWithType: Game.LaunchParameters
+  fullName: Microsoft.Xna.Framework.Game.LaunchParameters
+- uid: Microsoft.Xna.Framework.Game.Components
+  commentId: P:Microsoft.Xna.Framework.Game.Components
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: Components
+  nameWithType: Game.Components
+  fullName: Microsoft.Xna.Framework.Game.Components
+- uid: Microsoft.Xna.Framework.Game.InactiveSleepTime
+  commentId: P:Microsoft.Xna.Framework.Game.InactiveSleepTime
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: InactiveSleepTime
+  nameWithType: Game.InactiveSleepTime
+  fullName: Microsoft.Xna.Framework.Game.InactiveSleepTime
+- uid: Microsoft.Xna.Framework.Game.MaxElapsedTime
+  commentId: P:Microsoft.Xna.Framework.Game.MaxElapsedTime
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: MaxElapsedTime
+  nameWithType: Game.MaxElapsedTime
+  fullName: Microsoft.Xna.Framework.Game.MaxElapsedTime
+- uid: Microsoft.Xna.Framework.Game.IsActive
+  commentId: P:Microsoft.Xna.Framework.Game.IsActive
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: IsActive
+  nameWithType: Game.IsActive
+  fullName: Microsoft.Xna.Framework.Game.IsActive
+- uid: Microsoft.Xna.Framework.Game.IsMouseVisible
+  commentId: P:Microsoft.Xna.Framework.Game.IsMouseVisible
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: IsMouseVisible
+  nameWithType: Game.IsMouseVisible
+  fullName: Microsoft.Xna.Framework.Game.IsMouseVisible
+- uid: Microsoft.Xna.Framework.Game.TargetElapsedTime
+  commentId: P:Microsoft.Xna.Framework.Game.TargetElapsedTime
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: TargetElapsedTime
+  nameWithType: Game.TargetElapsedTime
+  fullName: Microsoft.Xna.Framework.Game.TargetElapsedTime
+- uid: Microsoft.Xna.Framework.Game.IsFixedTimeStep
+  commentId: P:Microsoft.Xna.Framework.Game.IsFixedTimeStep
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: IsFixedTimeStep
+  nameWithType: Game.IsFixedTimeStep
+  fullName: Microsoft.Xna.Framework.Game.IsFixedTimeStep
+- uid: Microsoft.Xna.Framework.Game.Services
+  commentId: P:Microsoft.Xna.Framework.Game.Services
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: Services
+  nameWithType: Game.Services
+  fullName: Microsoft.Xna.Framework.Game.Services
+- uid: Microsoft.Xna.Framework.Game.Content
+  commentId: P:Microsoft.Xna.Framework.Game.Content
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: Content
+  nameWithType: Game.Content
+  fullName: Microsoft.Xna.Framework.Game.Content
+- uid: Microsoft.Xna.Framework.Game.GraphicsDevice
+  commentId: P:Microsoft.Xna.Framework.Game.GraphicsDevice
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: GraphicsDevice
+  nameWithType: Game.GraphicsDevice
+  fullName: Microsoft.Xna.Framework.Game.GraphicsDevice
+- uid: Microsoft.Xna.Framework.Game.Window
+  commentId: P:Microsoft.Xna.Framework.Game.Window
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: Window
+  nameWithType: Game.Window
+  fullName: Microsoft.Xna.Framework.Game.Window
+- uid: Microsoft.Xna.Framework.Game.Activated
+  commentId: E:Microsoft.Xna.Framework.Game.Activated
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: Activated
+  nameWithType: Game.Activated
+  fullName: Microsoft.Xna.Framework.Game.Activated
+- uid: Microsoft.Xna.Framework.Game.Deactivated
+  commentId: E:Microsoft.Xna.Framework.Game.Deactivated
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: Deactivated
+  nameWithType: Game.Deactivated
+  fullName: Microsoft.Xna.Framework.Game.Deactivated
+- uid: Microsoft.Xna.Framework.Game.Disposed
+  commentId: E:Microsoft.Xna.Framework.Game.Disposed
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: Disposed
+  nameWithType: Game.Disposed
+  fullName: Microsoft.Xna.Framework.Game.Disposed
+- uid: Microsoft.Xna.Framework.Game.Exiting
+  commentId: E:Microsoft.Xna.Framework.Game.Exiting
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: Exiting
+  nameWithType: Game.Exiting
+  fullName: Microsoft.Xna.Framework.Game.Exiting
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Microsoft.Xna.Framework
+  commentId: N:Microsoft.Xna.Framework
+  isExternal: true
+  name: Microsoft.Xna.Framework
+  nameWithType: Microsoft.Xna.Framework
+  fullName: Microsoft.Xna.Framework
+- uid: System.Collections.Generic.Dictionary{System.Enum,System.Collections.Generic.List{Microsoft.Xna.Framework.Input.Keys}}
+  commentId: T:System.Collections.Generic.Dictionary{System.Enum,System.Collections.Generic.List{Microsoft.Xna.Framework.Input.Keys}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  name: Dictionary<Enum, List<Keys>>
+  nameWithType: Dictionary<Enum, List<Keys>>
+  fullName: System.Collections.Generic.Dictionary<System.Enum, System.Collections.Generic.List<Microsoft.Xna.Framework.Input.Keys>>
+  nameWithType.vb: Dictionary(Of Enum, List(Of Keys))
+  fullName.vb: System.Collections.Generic.Dictionary(Of System.Enum, System.Collections.Generic.List(Of Microsoft.Xna.Framework.Input.Keys))
+  name.vb: Dictionary(Of Enum, List(Of Keys))
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Microsoft.Xna.Framework.Input.Keys
+    name: Keys
+    nameWithType: Keys
+    fullName: Microsoft.Xna.Framework.Input.Keys
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Microsoft.Xna.Framework.Input.Keys
+    name: Keys
+    nameWithType: Keys
+    fullName: Microsoft.Xna.Framework.Input.Keys
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: Puffin.Infrastructure.MonoGame.PuffinGame
+  commentId: T:Puffin.Infrastructure.MonoGame.PuffinGame
+  parent: Puffin.Infrastructure.MonoGame
+  name: PuffinGame
+  nameWithType: PuffinGame
+  fullName: Puffin.Infrastructure.MonoGame.PuffinGame
+- uid: Puffin.Infrastructure.MonoGame.PuffinGame.#ctor*
+  commentId: Overload:Puffin.Infrastructure.MonoGame.PuffinGame.#ctor
+  name: PuffinGame
+  nameWithType: PuffinGame.PuffinGame
+  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.PuffinGame
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: Puffin.Infrastructure.MonoGame.PuffinGame.ShowScene*
+  commentId: Overload:Puffin.Infrastructure.MonoGame.PuffinGame.ShowScene
+  name: ShowScene
+  nameWithType: PuffinGame.ShowScene
+  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.ShowScene
+- uid: Puffin.Core.Scene
+  commentId: T:Puffin.Core.Scene
+  parent: Puffin.Core
+  name: Scene
+  nameWithType: Scene
+  fullName: Puffin.Core.Scene
+- uid: Puffin.Core
+  commentId: N:Puffin.Core
+  name: Puffin.Core
+  nameWithType: Puffin.Core
+  fullName: Puffin.Core
+- uid: Puffin.Infrastructure.MonoGame.PuffinGame.Ready*
+  commentId: Overload:Puffin.Infrastructure.MonoGame.PuffinGame.Ready
+  name: Ready
+  nameWithType: PuffinGame.Ready
+  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.Ready
+- uid: Microsoft.Xna.Framework.Game.Initialize
+  commentId: M:Microsoft.Xna.Framework.Game.Initialize
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: Initialize()
+  nameWithType: Game.Initialize()
+  fullName: Microsoft.Xna.Framework.Game.Initialize()
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.Initialize
+    name: Initialize
+    nameWithType: Game.Initialize
+    fullName: Microsoft.Xna.Framework.Game.Initialize
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.Initialize
+    name: Initialize
+    nameWithType: Game.Initialize
+    fullName: Microsoft.Xna.Framework.Game.Initialize
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Puffin.Infrastructure.MonoGame.PuffinGame.Initialize*
+  commentId: Overload:Puffin.Infrastructure.MonoGame.PuffinGame.Initialize
+  name: Initialize
+  nameWithType: PuffinGame.Initialize
+  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.Initialize
+- uid: Microsoft.Xna.Framework.Game.LoadContent
+  commentId: M:Microsoft.Xna.Framework.Game.LoadContent
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: LoadContent()
+  nameWithType: Game.LoadContent()
+  fullName: Microsoft.Xna.Framework.Game.LoadContent()
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.LoadContent
+    name: LoadContent
+    nameWithType: Game.LoadContent
+    fullName: Microsoft.Xna.Framework.Game.LoadContent
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.LoadContent
+    name: LoadContent
+    nameWithType: Game.LoadContent
+    fullName: Microsoft.Xna.Framework.Game.LoadContent
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Puffin.Infrastructure.MonoGame.PuffinGame.LoadContent*
+  commentId: Overload:Puffin.Infrastructure.MonoGame.PuffinGame.LoadContent
+  name: LoadContent
+  nameWithType: PuffinGame.LoadContent
+  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.LoadContent
+- uid: Microsoft.Xna.Framework.Game.Update(Microsoft.Xna.Framework.GameTime)
+  commentId: M:Microsoft.Xna.Framework.Game.Update(Microsoft.Xna.Framework.GameTime)
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: Update(GameTime)
+  nameWithType: Game.Update(GameTime)
+  fullName: Microsoft.Xna.Framework.Game.Update(Microsoft.Xna.Framework.GameTime)
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.Update(Microsoft.Xna.Framework.GameTime)
+    name: Update
+    nameWithType: Game.Update
+    fullName: Microsoft.Xna.Framework.Game.Update
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Microsoft.Xna.Framework.GameTime
+    name: GameTime
+    nameWithType: GameTime
+    fullName: Microsoft.Xna.Framework.GameTime
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.Update(Microsoft.Xna.Framework.GameTime)
+    name: Update
+    nameWithType: Game.Update
+    fullName: Microsoft.Xna.Framework.Game.Update
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Microsoft.Xna.Framework.GameTime
+    name: GameTime
+    nameWithType: GameTime
+    fullName: Microsoft.Xna.Framework.GameTime
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Puffin.Infrastructure.MonoGame.PuffinGame.Update*
+  commentId: Overload:Puffin.Infrastructure.MonoGame.PuffinGame.Update
+  name: Update
+  nameWithType: PuffinGame.Update
+  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.Update
+- uid: Microsoft.Xna.Framework.GameTime
+  commentId: T:Microsoft.Xna.Framework.GameTime
+  parent: Microsoft.Xna.Framework
+  isExternal: true
+  name: GameTime
+  nameWithType: GameTime
+  fullName: Microsoft.Xna.Framework.GameTime
+- uid: Microsoft.Xna.Framework.Game.Draw(Microsoft.Xna.Framework.GameTime)
+  commentId: M:Microsoft.Xna.Framework.Game.Draw(Microsoft.Xna.Framework.GameTime)
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: Draw(GameTime)
+  nameWithType: Game.Draw(GameTime)
+  fullName: Microsoft.Xna.Framework.Game.Draw(Microsoft.Xna.Framework.GameTime)
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.Draw(Microsoft.Xna.Framework.GameTime)
+    name: Draw
+    nameWithType: Game.Draw
+    fullName: Microsoft.Xna.Framework.Game.Draw
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Microsoft.Xna.Framework.GameTime
+    name: GameTime
+    nameWithType: GameTime
+    fullName: Microsoft.Xna.Framework.GameTime
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.Draw(Microsoft.Xna.Framework.GameTime)
+    name: Draw
+    nameWithType: Game.Draw
+    fullName: Microsoft.Xna.Framework.Game.Draw
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Microsoft.Xna.Framework.GameTime
+    name: GameTime
+    nameWithType: GameTime
+    fullName: Microsoft.Xna.Framework.GameTime
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Puffin.Infrastructure.MonoGame.PuffinGame.Draw*
+  commentId: Overload:Puffin.Infrastructure.MonoGame.PuffinGame.Draw
+  name: Draw
+  nameWithType: PuffinGame.Draw
+  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.Draw

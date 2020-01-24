@@ -3,6 +3,10 @@ using Puffin.Core.Ecs.Components;
 
 namespace Puffin.Core.Ecs
 {
+    /// <summary>
+    /// Static extensions for Entity. You can chain them together, eg.
+    /// Entity.Sprite("player.png").Move(200, 100);
+    /// </summary>
     public static class EntityExtensions
     {
         /// <summary>

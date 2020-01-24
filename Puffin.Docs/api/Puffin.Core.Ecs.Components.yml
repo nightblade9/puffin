@@ -1,0 +1,65 @@
+### YamlMime:ManagedReference
+items:
+- uid: Puffin.Core.Ecs.Components
+  commentId: N:Puffin.Core.Ecs.Components
+  id: Puffin.Core.Ecs.Components
+  children:
+  - Puffin.Core.Ecs.Components.Component
+  - Puffin.Core.Ecs.Components.FourWayMovementComponent
+  - Puffin.Core.Ecs.Components.KeyboardComponent
+  - Puffin.Core.Ecs.Components.MouseComponent
+  - Puffin.Core.Ecs.Components.OverlapComponent
+  - Puffin.Core.Ecs.Components.SpriteComponent
+  - Puffin.Core.Ecs.Components.TextLabelComponent
+  langs:
+  - csharp
+  - vb
+  name: Puffin.Core.Ecs.Components
+  nameWithType: Puffin.Core.Ecs.Components
+  fullName: Puffin.Core.Ecs.Components
+  type: Namespace
+  assemblies:
+  - Puffin.Core
+references:
+- uid: Puffin.Core.Ecs.Components.Component
+  commentId: T:Puffin.Core.Ecs.Components.Component
+  parent: Puffin.Core.Ecs.Components
+  name: Component
+  nameWithType: Component
+  fullName: Puffin.Core.Ecs.Components.Component
+- uid: Puffin.Core.Ecs.Components.FourWayMovementComponent
+  commentId: T:Puffin.Core.Ecs.Components.FourWayMovementComponent
+  name: FourWayMovementComponent
+  nameWithType: FourWayMovementComponent
+  fullName: Puffin.Core.Ecs.Components.FourWayMovementComponent
+- uid: Puffin.Core.Ecs.Components.KeyboardComponent
+  commentId: T:Puffin.Core.Ecs.Components.KeyboardComponent
+  parent: Puffin.Core.Ecs.Components
+  name: KeyboardComponent
+  nameWithType: KeyboardComponent
+  fullName: Puffin.Core.Ecs.Components.KeyboardComponent
+- uid: Puffin.Core.Ecs.Components.MouseComponent
+  commentId: T:Puffin.Core.Ecs.Components.MouseComponent
+  name: MouseComponent
+  nameWithType: MouseComponent
+  fullName: Puffin.Core.Ecs.Components.MouseComponent
+- uid: Puffin.Core.Ecs.Components.OverlapComponent
+  commentId: T:Puffin.Core.Ecs.Components.OverlapComponent
+  name: OverlapComponent
+  nameWithType: OverlapComponent
+  fullName: Puffin.Core.Ecs.Components.OverlapComponent
+- uid: Puffin.Core.Ecs.Components.SpriteComponent
+  commentId: T:Puffin.Core.Ecs.Components.SpriteComponent
+  name: SpriteComponent
+  nameWithType: SpriteComponent
+  fullName: Puffin.Core.Ecs.Components.SpriteComponent
+- uid: Puffin.Core.Ecs.Components.TextLabelComponent
+  commentId: T:Puffin.Core.Ecs.Components.TextLabelComponent
+  name: TextLabelComponent
+  nameWithType: TextLabelComponent
+  fullName: Puffin.Core.Ecs.Components.TextLabelComponent
+- uid: Puffin.Core.Ecs.Components
+  commentId: N:Puffin.Core.Ecs.Components
+  name: Puffin.Core.Ecs.Components
+  nameWithType: Puffin.Core.Ecs.Components
+  fullName: Puffin.Core.Ecs.Components

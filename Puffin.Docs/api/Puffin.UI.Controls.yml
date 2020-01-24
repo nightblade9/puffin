@@ -1,0 +1,22 @@
+### YamlMime:ManagedReference
+items:
+- uid: Puffin.UI.Controls
+  commentId: N:Puffin.UI.Controls
+  id: Puffin.UI.Controls
+  children:
+  - Puffin.UI.Controls.Button
+  langs:
+  - csharp
+  - vb
+  name: Puffin.UI.Controls
+  nameWithType: Puffin.UI.Controls
+  fullName: Puffin.UI.Controls
+  type: Namespace
+  assemblies:
+  - Puffin.UI
+references:
+- uid: Puffin.UI.Controls.Button
+  commentId: T:Puffin.UI.Controls.Button
+  name: Button
+  nameWithType: Button
+  fullName: Puffin.UI.Controls.Button
