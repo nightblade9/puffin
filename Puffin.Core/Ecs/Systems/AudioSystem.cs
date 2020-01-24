@@ -1,4 +1,3 @@
-using Puffin.Core.Drawing;
 using Puffin.Core.Ecs.Components;
 using Puffin.Core.IO;
 using System;
@@ -11,9 +10,6 @@ namespace Puffin.Core.Ecs.Systems
         private IAudioPlayer audioPlayer;
         private IList<Entity> entities = new List<Entity>();
         
-        // For unit testing
-        internal AudioSystem() { }
-
         public AudioSystem(IAudioPlayer audioPlayer)
         {
             this.audioPlayer = audioPlayer;
