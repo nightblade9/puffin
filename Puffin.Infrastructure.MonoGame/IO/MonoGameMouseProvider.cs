@@ -8,7 +8,7 @@ namespace Puffin.Infrastructure.MonoGame.IO
     /// <summary>
     /// An implementation of IMouseProvider using MonoGame's `Mouse` class.
     /// </summary>
-    public class MonoGameMouseProvider : IMouseProvider
+    class MonoGameMouseProvider : IMouseProvider
     {
         private MouseState previousState;
 
