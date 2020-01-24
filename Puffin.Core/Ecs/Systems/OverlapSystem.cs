@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Puffin.Core.Ecs.Systems
 {
-    public class OverlapSystem : ISystem
+    class OverlapSystem : ISystem
     {
         private IList<Entity> entities = new List<Entity>();
 

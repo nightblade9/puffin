@@ -4,7 +4,7 @@
       "src": [
         {
           "files": [ "**.csproj" ],
-          "exclude": [ "**/bin/**", "**/obj/**", "**/MonoGame/**"],
+          "exclude": [ "**/bin/**", "**/obj/**", "**/*Test*", "MyGame"],
           "src": ".."
         }
       ],

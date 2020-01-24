@@ -5,7 +5,7 @@ using Puffin.Core.Ecs.Components;
 
 namespace Puffin.Core.Ecs.Systems
 {
-    public class DrawingSystem : ISystem
+    class DrawingSystem : ISystem
     {
         private IDrawingSurface drawingSurface;
         private IList<Entity> entities = new List<Entity>();
