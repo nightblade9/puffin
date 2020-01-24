@@ -117,5 +117,16 @@ namespace Puffin.Core.Ecs
             entity.Set(new OverlapComponent(entity, width, height, offsetX, offsetY, onStartOverlap, onStopOverlap));
             return entity;
         }
+
+        /// <summary>
+        /// Adds an audio file to your entity; you can call it via e.GetIfHas<AudioComponent>().Play(pitch).
+        /// You should be able to play wave files and OGG files.
+        /// For more information/arguments, see the AudioComponent docs.
+        /// </summary>
+        public static Entity Audio(this Entity entity, string audioFileName)
+        {
+            entity.Set(new AudioComponent(entity, audioFileName));
+            return entity;
+        }
     }
 }
