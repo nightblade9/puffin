@@ -2,7 +2,10 @@ using System;
 
 namespace Puffin.Core.Ecs.Components
 {
-    public class Component
+    /// <summary>
+    /// A base component class. Provides a reference to the parent entity.
+    /// </summary>
+    public abstract class Component
     {
         protected readonly Entity Parent;
 

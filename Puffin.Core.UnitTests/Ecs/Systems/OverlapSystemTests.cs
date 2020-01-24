@@ -1,6 +1,7 @@
 using System;
 using NUnit.Framework;
 using Puffin.Core.Ecs;
+using Puffin.Core.Ecs.Components;
 using Puffin.Core.Ecs.Systems;
 
 namespace Puffin.Core.UnitTests.Ecs.Systems

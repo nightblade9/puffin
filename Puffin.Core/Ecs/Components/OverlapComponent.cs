@@ -1,10 +1,8 @@
 using System;
 using Puffin.Core.Ecs.Components;
-using Puffin.Core.IO;
-using Ninject;
 using System.Collections.Generic;
 
-namespace Puffin.Core.Ecs
+namespace Puffin.Core.Ecs.Components
 {
     /// <summary>
     /// A component for overlapping. Two entities with OverlapComponents will fire events when they overlap each other.

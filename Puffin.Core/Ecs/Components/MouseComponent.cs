@@ -1,9 +1,7 @@
 using System;
 using Puffin.Core.Ecs.Components;
-using Puffin.Core.IO;
-using Ninject;
 
-namespace Puffin.Core.Ecs
+namespace Puffin.Core.Ecs.Components
 {
     /// <summary>
     /// A component with makes an entity clickable.
