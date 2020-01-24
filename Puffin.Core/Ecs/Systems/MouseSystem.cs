@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Puffin.Core.Ecs.Systems
 {
-    public class MouseSystem : ISystem
+    class MouseSystem : ISystem
     {
         private readonly IMouseProvider provider;
         private readonly List<Entity> entities = new List<Entity>();

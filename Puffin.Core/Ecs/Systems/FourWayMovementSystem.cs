@@ -4,7 +4,7 @@ using Puffin.Core.Ecs.Components;
 
 namespace Puffin.Core.Ecs.Systems
 {
-    public class FourWayMovementSystem : ISystem
+    class FourWayMovementSystem : ISystem
     {
         private IList<Entity> entities = new List<Entity>();
 

@@ -5,6 +5,66 @@
   "files": [
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/MyGame.CoreGameScene.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyGame.CoreGameScene.html",
+          "hash": "QIVZXb/Njs9ECKPCWS6Orw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyGame.CustomAction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyGame.CustomAction.html",
+          "hash": "uEa10ifp2+MbSjvb8c8bGw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyGame.MyGame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyGame.MyGame.html",
+          "hash": "tdDYH9+eMAgWS2hDOjmhlA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyGame.Program.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyGame.Program.html",
+          "hash": "J2SUcNqoT2MQjXG0IKdvFg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MyGame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MyGame.html",
+          "hash": "xOUcLJjxeNdzhGmJtQx7TA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Puffin.Core.DependencyInjection.yml",
       "output": {
         ".html": {
@@ -297,187 +357,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Scene.html",
-          "hash": "64i6LhmK/FjFdXxikI8Gaw=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Core.UnitTests.DrawingSystemTests.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Core.UnitTests.DrawingSystemTests.html",
-          "hash": "4bpTmuCu8DszzReZRg7Gsw=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Core.UnitTests.Ecs.Components.SpriteComponentTests.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Core.UnitTests.Ecs.Components.SpriteComponentTests.html",
-          "hash": "eRdIJR1gAqvAOWKiuIRYDg=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Core.UnitTests.Ecs.Components.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Core.UnitTests.Ecs.Components.html",
-          "hash": "UQZE8tiPl0z9DY0hCqa0fA=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Core.UnitTests.Ecs.EntityExtensionsTests.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Core.UnitTests.Ecs.EntityExtensionsTests.html",
-          "hash": "erCs51nXbQv7ozMqop8d9g=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Core.UnitTests.Ecs.EntityTests.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Core.UnitTests.Ecs.EntityTests.html",
-          "hash": "DOyZhNn4tyCsBqOw9Bpmhg=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Core.UnitTests.Ecs.EventBusTests.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Core.UnitTests.Ecs.EventBusTests.html",
-          "hash": "uVBYybr7kQK7vVl2A/S2Pg=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Core.UnitTests.Ecs.FourWayMovementComponentTests.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Core.UnitTests.Ecs.FourWayMovementComponentTests.html",
-          "hash": "cPlgK2Mvkk2gS+AAXrorCQ=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Core.UnitTests.Ecs.KeyboardComponentTests.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Core.UnitTests.Ecs.KeyboardComponentTests.html",
-          "hash": "wXaNIiuqzoKIZww4afl5CQ=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Core.UnitTests.Ecs.MouseSystemTests.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Core.UnitTests.Ecs.MouseSystemTests.html",
-          "hash": "JAXdE5qE/JjPCv/JOf0Zzg=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Core.UnitTests.Ecs.Systems.OverlapSystemTests.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Core.UnitTests.Ecs.Systems.OverlapSystemTests.html",
-          "hash": "/M/w5orXBq1+aKPaPWyn6Q=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Core.UnitTests.Ecs.Systems.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Core.UnitTests.Ecs.Systems.html",
-          "hash": "ioTKDvBksMm2xD81oO8Vww=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Core.UnitTests.Ecs.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Core.UnitTests.Ecs.html",
-          "hash": "pQaABYNsr36RcAGrYiqxMA=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Core.UnitTests.FourWayMovementSystemTests.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Core.UnitTests.FourWayMovementSystemTests.html",
-          "hash": "FOllLJg8FZHZaedjIPPExw=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Core.UnitTests.SceneTests.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Core.UnitTests.SceneTests.html",
-          "hash": "q6GbrCpo+DiGBs/HB8QedQ=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Core.UnitTests.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Core.UnitTests.html",
-          "hash": "uYCd8R+t6vvdPMbpqNO76Q=="
+          "hash": "YpxvzB+WrmtaUhkNJtcxGg=="
         }
       },
       "is_incremental": true,
@@ -573,7 +453,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Infrastructure.MonoGame.PuffinGame.html",
-          "hash": "SQ8iyze1PGRkL7qLjbAp0Q=="
+          "hash": "T0DwefgIfsFKieGCAdSHKg=="
         }
       },
       "is_incremental": true,
@@ -616,30 +496,6 @@
       "version": ""
     },
     {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.UI.UnitTests.Controls.ButtonTests.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.UI.UnitTests.Controls.ButtonTests.html",
-          "hash": "tmi3L/tE4qr5s86Y9zD9mg=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.UI.UnitTests.Controls.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.UI.UnitTests.Controls.html",
-          "hash": "U61/mMImtqEDeJahoKaFaw=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
       "type": "Conceptual",
       "source_relative_path": "api/index.md",
       "output": {
@@ -657,7 +513,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "Q0XisG1s7w4e4Ngu16sqpg=="
+          "hash": "VuRQ3XjxemlMvEEUok2HVQ=="
         }
       },
       "is_incremental": false,
@@ -724,8 +580,8 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 53,
-          "skipped_file_count": 53
+          "total_file_count": 41,
+          "skipped_file_count": 41
         },
         "ConceptualDocumentProcessor": {
           "can_incremental": true,
