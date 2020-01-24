@@ -7,6 +7,7 @@ namespace MyGame
 {
     public class CoreGameScene : Scene
     {
+        private Random random = new Random();
 
         public CoreGameScene()
         {
@@ -14,22 +15,16 @@ namespace MyGame
                 .Sprite("Content/square-white.png")
                 .Overlap(32, 32)
                 .Move(300, 300);
+            
+            player.Set(new AudioComponent(player, "test.wav"));
 
-            var stove = new Entity().Label("").Sprite("Content/square-red.png").Move(200, 200);
-            stove.Overlap(64, 64, -16, -16,
-                    (e) => {
-                        if (e == player) {
-                            stove.GetIfHas<TextLabelComponent>().Text = "Stove";
-                        }
-                    },
-                    (e) => {
-                        if (e == player) {
-                            stove.GetIfHas<TextLabelComponent>().Text = "";
-                        }
-                    });
+            player.Mouse(() => {
+                float pitch = (float)(0.5 + (random.NextDouble() % 0.5));
+                Console.WriteLine($"Pitch={pitch}");
+                player.GetIfHas<AudioComponent>().Play(pitch);
+            }, 32, 32);
 
             this.Add(player);
-            this.Add(stove);
         }
     }
 }

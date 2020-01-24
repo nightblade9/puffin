@@ -5,16 +5,17 @@ namespace Puffin.Core.Ecs.Components
     public class AudioComponent : Component
     {
         internal readonly string FileName;
-        internal bool ShouldPlay { get; set; }
+        internal float Pitch = 1.0f;
 
         public AudioComponent(Entity parent, string fileName) : base(parent)
         {
             this.FileName = fileName;
         }
 
-        public void Play()
+        public void Play(float pitch = 1.0f)
         {
-            this.ShouldPlay = true;
+            this.Pitch = pitch;
+            EventBus.LatestInstance.Broadcast(EventBusSignal.PlayAudio, this);
         }
     }
 }
