@@ -13,7 +13,11 @@ using System;
 
 namespace Puffin.Infrastructure.MonoGame
 {
-    public class PuffinGame : Game
+    /// <summary>
+    /// The core game class, the starting-point of your application. Manages scenes.
+    /// You can set the size and background colour of your game.
+    /// </summary>
+    public abstract class PuffinGame : Game
     {
         private readonly TimeSpan MAX_UPDATE_INERVAL_MILLISECONDS = TimeSpan.FromMilliseconds(150);
 

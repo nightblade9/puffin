@@ -7,7 +7,7 @@ namespace Puffin.Infrastructure.MonoGame.IO
     /// <summary>
     /// An implementation of IKeyboardProvider using MonoGame's Keyboard class.
     /// </summary>
-    public class MonoGameKeyboardProvider : IKeyboardProvider
+    internal class MonoGameKeyboardProvider : IKeyboardProvider
     {
         public bool IsActionDown(Enum action)
         {

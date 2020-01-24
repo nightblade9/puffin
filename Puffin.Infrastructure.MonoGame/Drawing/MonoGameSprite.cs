@@ -6,7 +6,7 @@ using Puffin.Core.Ecs.Components;
 
 namespace Puffin.Infrastructure.MonoGame.Drawing
 {
-    public class MonoGameSprite : Component
+    internal class MonoGameSprite : Component
     {
         public Texture2D Texture { get; private set; }
         public Rectangle Region { get; private set; }
