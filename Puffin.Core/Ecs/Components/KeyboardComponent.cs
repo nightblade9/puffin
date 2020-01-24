@@ -1,9 +1,8 @@
-using Puffin.Core.Ecs.Components;
 using Puffin.Core.IO;
 using Ninject;
 using System;
 
-namespace Puffin.Core.Ecs
+namespace Puffin.Core.Ecs.Components
 {
     /// <summary>
     /// A keyboard component; provides information about which actions are being pressed.
