@@ -6,8 +6,12 @@ using Puffin.Core.Ecs.Systems;
 using Puffin.Core.IO;
 
 namespace Puffin.Core
-{     
-    public class Scene : IKeyboardProvider, IDisposable
+{
+    /// <summary>
+    /// A scene or screen in your game. This is where you add entities with functionality
+    /// to implement your game's logic.
+    /// </summary>
+    public class Scene : IDisposable
     {
         // public for testability; would be protected otherwise
         public Action OnMouseClick;
@@ -28,24 +32,6 @@ namespace Puffin.Core
         public Scene()
         {
             EventBus.LatestInstance.Subscribe(EventBusSignal.MouseClicked, onMouseClick);
-        }
-
-        public void Initialize(ISystem[] systems,IMouseProvider mouseProvider, IKeyboardProvider keyboardProvider)
-        {
-            this.drawingSystem = systems.Single(s => s is DrawingSystem) as DrawingSystem;
-            this.systems = systems;
-            
-            this.mouseProvider = mouseProvider;
-            this.keyboardProvider = keyboardProvider;
-
-            // If called after AddEntity, add entities we know about
-            foreach (var entity in this.entities)
-            {
-                foreach (var system in this.systems)
-                {
-                    system.OnAddEntity(entity);
-                }
-            }            
         }
 
         public void Add(Entity entity)
@@ -120,6 +106,28 @@ namespace Puffin.Core
             // Reset EventBus.LatestIntance
             new EventBus();
         }
+
+        // Separate from the constructor and internal because only we call it; subclasses of
+        // Scene don't need to know about this.
+        internal void Initialize(ISystem[] systems, IMouseProvider mouseProvider, IKeyboardProvider keyboardProvider)
+        {
+            this.drawingSystem = systems.Single(s => s is DrawingSystem) as DrawingSystem;
+            this.systems = systems;
+            
+            this.mouseProvider = mouseProvider;
+            this.keyboardProvider = keyboardProvider;
+
+            // If called after AddEntity, add entities we know about
+            foreach (var entity in this.entities)
+            {
+                foreach (var system in this.systems)
+                {
+                    system.OnAddEntity(entity);
+                }
+            }            
+        }
+
+        internal void HiMom() { }
 
         private void onMouseClick(object data)
         {
