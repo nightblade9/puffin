@@ -1,0 +1,35 @@
+### YamlMime:ManagedReference
+items:
+- uid: Puffin.Core.Ecs
+  commentId: N:Puffin.Core.Ecs
+  id: Puffin.Core.Ecs
+  children:
+  - Puffin.Core.Ecs.Entity
+  - Puffin.Core.Ecs.EntityExtensions
+  langs:
+  - csharp
+  - vb
+  name: Puffin.Core.Ecs
+  nameWithType: Puffin.Core.Ecs
+  fullName: Puffin.Core.Ecs
+  type: Namespace
+  assemblies:
+  - Puffin.Core
+references:
+- uid: Puffin.Core.Ecs.Entity
+  commentId: T:Puffin.Core.Ecs.Entity
+  parent: Puffin.Core.Ecs
+  name: Entity
+  nameWithType: Entity
+  fullName: Puffin.Core.Ecs.Entity
+- uid: Puffin.Core.Ecs.EntityExtensions
+  commentId: T:Puffin.Core.Ecs.EntityExtensions
+  parent: Puffin.Core.Ecs
+  name: EntityExtensions
+  nameWithType: EntityExtensions
+  fullName: Puffin.Core.Ecs.EntityExtensions
+- uid: Puffin.Core.Ecs
+  commentId: N:Puffin.Core.Ecs
+  name: Puffin.Core.Ecs
+  nameWithType: Puffin.Core.Ecs
+  fullName: Puffin.Core.Ecs

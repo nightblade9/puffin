@@ -5,107 +5,11 @@
   "files": [
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/MyGame.CoreGameScene.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/MyGame.CoreGameScene.html",
-          "hash": "QIVZXb/Njs9ECKPCWS6Orw=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/MyGame.CustomAction.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/MyGame.CustomAction.html",
-          "hash": "uEa10ifp2+MbSjvb8c8bGw=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/MyGame.MyGame.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/MyGame.MyGame.html",
-          "hash": "tdDYH9+eMAgWS2hDOjmhlA=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/MyGame.Program.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/MyGame.Program.html",
-          "hash": "J2SUcNqoT2MQjXG0IKdvFg=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/MyGame.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/MyGame.html",
-          "hash": "xOUcLJjxeNdzhGmJtQx7TA=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Core.DependencyInjection.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Core.DependencyInjection.html",
-          "hash": "11/azcjXN1f3XsTWvVYVxw=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Core.Drawing.IDrawingSurface.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Core.Drawing.IDrawingSurface.html",
-          "hash": "E3EoPgcTsxH2i5g0jmzKSg=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Core.Drawing.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Core.Drawing.html",
-          "hash": "eHuDbyYJUjf2A6SpTR1jOQ=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/Puffin.Core.Ecs.Components.Component.yml",
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.Component.html",
-          "hash": "Cl0BF4oLr7U8ZpEW9EWCqQ=="
+          "hash": "FKYqBP5dxEqysiW1Yg7Huw=="
         }
       },
       "is_incremental": true,
@@ -117,7 +21,43 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.FourWayMovementComponent.html",
-          "hash": "5xfpYw+emW0INXrAgkY+Dw=="
+          "hash": "4nIXxvfuPrT4Y3+o5zjhdA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.Ecs.Components.KeyboardComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.Ecs.Components.KeyboardComponent.html",
+          "hash": "P+YHxTrby4xZs7IMTq0jfw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.Ecs.Components.MouseComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.Ecs.Components.MouseComponent.html",
+          "hash": "GEdiSxe9p8yrVQlvIRSl3A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.Core.Ecs.Components.OverlapComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.Core.Ecs.Components.OverlapComponent.html",
+          "hash": "o6rtxNJEC2T0iLFZPTCViw=="
         }
       },
       "is_incremental": true,
@@ -141,7 +81,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.TextLabelComponent.html",
-          "hash": "/25Qq0AL9HJyaDf5NPVgnA=="
+          "hash": "hsAE4mIkDp0UmGehpylQZQ=="
         }
       },
       "is_incremental": true,
@@ -153,7 +93,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.html",
-          "hash": "iZnbUZydRM04K8aLSHDXww=="
+          "hash": "RyX0//MGFvavaiw0BoPb1g=="
         }
       },
       "is_incremental": true,
@@ -177,115 +117,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.EntityExtensions.html",
-          "hash": "Jl1SaPCRKgK8iE4xQthE1Q=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Core.Ecs.KeyboardComponent.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Core.Ecs.KeyboardComponent.html",
-          "hash": "/IvX6/7uzOl5TMFjscR8kw=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Core.Ecs.MouseComponent.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Core.Ecs.MouseComponent.html",
-          "hash": "lvDgtniaLqia9LyFKwrDJg=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Core.Ecs.OverlapComponent.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Core.Ecs.OverlapComponent.html",
-          "hash": "r2zpqpdBxMSAjjQqtrjb4g=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Core.Ecs.Systems.DrawingSystem.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Core.Ecs.Systems.DrawingSystem.html",
-          "hash": "zcUt97F8oUPdC0fUuJXhOw=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Core.Ecs.Systems.FourWayMovementSystem.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Core.Ecs.Systems.FourWayMovementSystem.html",
-          "hash": "wyCRhvah4O+KDl/ykBWNcQ=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Core.Ecs.Systems.ISystem.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Core.Ecs.Systems.ISystem.html",
-          "hash": "9C4m+4O7u10sEa6JiC62Cg=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Core.Ecs.Systems.MouseSystem.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Core.Ecs.Systems.MouseSystem.html",
-          "hash": "s/0oe0MIIfjlyrLmlaC/Jw=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Core.Ecs.Systems.OverlapSystem.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Core.Ecs.Systems.OverlapSystem.html",
-          "hash": "u2oEYb/weaDa3lqfbpKRHA=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Core.Ecs.Systems.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Core.Ecs.Systems.html",
-          "hash": "fSHwLt1ZaeEIncT1yR5/bA=="
+          "hash": "T8vK9no2O+coV9bGLW1zUg=="
         }
       },
       "is_incremental": true,
@@ -297,55 +129,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.html",
-          "hash": "Y0qIZNu75d3KxVHIucMfXQ=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Core.IO.IKeyboardProvider.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Core.IO.IKeyboardProvider.html",
-          "hash": "jvItQzoK2HZoNNT4+thwMQ=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Core.IO.IMouseProvider.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Core.IO.IMouseProvider.html",
-          "hash": "ESSmCfAVoANwm8RahCFOMQ=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Core.IO.PuffinAction.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Core.IO.PuffinAction.html",
-          "hash": "/hhuH905AYFmSAA+KHv04A=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Core.IO.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Core.IO.html",
-          "hash": "bpKx8SZSGvYyhfEfOMUErg=="
+          "hash": "8OUgGWY02FRTfbgG3xT0hg=="
         }
       },
       "is_incremental": true,
@@ -357,7 +141,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Scene.html",
-          "hash": "YpxvzB+WrmtaUhkNJtcxGg=="
+          "hash": "bktp9/VZkyQUQ4N9OubsUw=="
         }
       },
       "is_incremental": true,
@@ -369,79 +153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.html",
-          "hash": "lR/yWir8ZPXBgg74QHQyWg=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Infrastructure.MonoGame.Drawing.MonoGameDrawingSurface.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Infrastructure.MonoGame.Drawing.MonoGameDrawingSurface.html",
-          "hash": "qhnHK3HNOGki7RQu6BUfQw=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Infrastructure.MonoGame.Drawing.MonoGameSprite.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Infrastructure.MonoGame.Drawing.MonoGameSprite.html",
-          "hash": "7IlW5E2HkhGyHQkoTu0yKg=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Infrastructure.MonoGame.Drawing.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Infrastructure.MonoGame.Drawing.html",
-          "hash": "sjmpUdLR/7nRZ+ZpaHLivg=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Infrastructure.MonoGame.IO.MonoGameKeyboardProvider.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Infrastructure.MonoGame.IO.MonoGameKeyboardProvider.html",
-          "hash": "VnMlWqVAJHVYKEkdrJo6bQ=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Infrastructure.MonoGame.IO.MonoGameMouseProvider.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Infrastructure.MonoGame.IO.MonoGameMouseProvider.html",
-          "hash": "P+WwH2A7Se9LBWgrQ8+WOA=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Puffin.Infrastructure.MonoGame.IO.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Puffin.Infrastructure.MonoGame.IO.html",
-          "hash": "bV0SULgLXe8prbDYY7V4UQ=="
+          "hash": "mOW2NGNpWzFt7hLToivNwg=="
         }
       },
       "is_incremental": true,
@@ -453,7 +165,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Infrastructure.MonoGame.PuffinGame.html",
-          "hash": "T0DwefgIfsFKieGCAdSHKg=="
+          "hash": "iE5lPMX1/WVDJRn7fG7eAg=="
         }
       },
       "is_incremental": true,
@@ -465,7 +177,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Infrastructure.MonoGame.html",
-          "hash": "ASAV1XpP9O9AGFJyzgg87g=="
+          "hash": "DXT47vwIGy+crJ8Hbm6HpA=="
         }
       },
       "is_incremental": true,
@@ -513,7 +225,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "VuRQ3XjxemlMvEEUok2HVQ=="
+          "hash": "bDsv3FiZ5gEgDLJalvdq2Q=="
         }
       },
       "is_incremental": false,
@@ -577,11 +289,12 @@
         "skipped_file_count": 0
       },
       "processors": {
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build",
-          "total_file_count": 41,
-          "skipped_file_count": 41
+          "total_file_count": 0,
+          "skipped_file_count": 0
         },
         "ConceptualDocumentProcessor": {
           "can_incremental": true,
@@ -589,12 +302,11 @@
           "total_file_count": 3,
           "skipped_file_count": 3
         },
-        "TocDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 0,
-          "skipped_file_count": 0
+          "total_file_count": 17,
+          "skipped_file_count": 17
         }
       }
     },

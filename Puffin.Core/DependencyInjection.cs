@@ -2,7 +2,7 @@ using Ninject;
 
 namespace Puffin.Core
 {
-    public static class DependencyInjection
+    internal static class DependencyInjection
     {
         internal static StandardKernel Kernel = new StandardKernel();
 

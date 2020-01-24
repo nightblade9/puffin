@@ -73,14 +73,15 @@
   
   <h1 id="Puffin_Infrastructure_MonoGame_PuffinGame" data-uid="Puffin.Infrastructure.MonoGame.PuffinGame" class="text-break">Class PuffinGame
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>The core game class, the starting-point of your application. Manages scenes.
+You can set the size and background colour of your game.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">Microsoft.Xna.Framework.Game</span></div>
     <div class="level2"><span class="xref">PuffinGame</span></div>
-      <div class="level3"><a class="xref" href="MyGame.MyGame.html">MyGame</a></div>
   </div>
   <div classs="implements">
     <h5>Implements</h5>
@@ -213,7 +214,7 @@
   <h6><strong>Assembly</strong>: Puffin.Infrastructure.MonoGame.dll</h6>
   <h5 id="Puffin_Infrastructure_MonoGame_PuffinGame_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class PuffinGame : Game, IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class PuffinGame : Game, IDisposable</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -222,7 +223,7 @@
     <a href="https://github.com/nightblade9/puffin/new/docs/apiSpec/new?filename=Puffin_Infrastructure_MonoGame_PuffinGame__ctor_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Puffin.Infrastructure.MonoGame.PuffinGame.%23ctor(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/docs/Puffin.Infrastructure.MonoGame/PuffinGame.cs/#L43">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/docs/Puffin.Infrastructure.MonoGame/PuffinGame.cs/#L47">View Source</a>
   </span>
   <a id="Puffin_Infrastructure_MonoGame_PuffinGame__ctor_" data-uid="Puffin.Infrastructure.MonoGame.PuffinGame.#ctor*"></a>
   <h4 id="Puffin_Infrastructure_MonoGame_PuffinGame__ctor_System_Int32_System_Int32_" data-uid="Puffin.Infrastructure.MonoGame.PuffinGame.#ctor(System.Int32,System.Int32)">PuffinGame(Int32, Int32)</h4>
@@ -261,7 +262,7 @@
     <a href="https://github.com/nightblade9/puffin/new/docs/apiSpec/new?filename=Puffin_Infrastructure_MonoGame_PuffinGame_actionToKeys.md&amp;value=---%0Auid%3A%20Puffin.Infrastructure.MonoGame.PuffinGame.actionToKeys%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/docs/Puffin.Infrastructure.MonoGame/PuffinGame.cs/#L26">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/docs/Puffin.Infrastructure.MonoGame/PuffinGame.cs/#L30">View Source</a>
   </span>
   <h4 id="Puffin_Infrastructure_MonoGame_PuffinGame_actionToKeys" data-uid="Puffin.Infrastructure.MonoGame.PuffinGame.actionToKeys">actionToKeys</h4>
   <div class="markdown level1 summary"></div>
@@ -290,7 +291,7 @@
     <a href="https://github.com/nightblade9/puffin/new/docs/apiSpec/new?filename=Puffin_Infrastructure_MonoGame_PuffinGame_LatestInstance.md&amp;value=---%0Auid%3A%20Puffin.Infrastructure.MonoGame.PuffinGame.LatestInstance%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/docs/Puffin.Infrastructure.MonoGame/PuffinGame.cs/#L33">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/docs/Puffin.Infrastructure.MonoGame/PuffinGame.cs/#L37">View Source</a>
   </span>
   <h4 id="Puffin_Infrastructure_MonoGame_PuffinGame_LatestInstance" data-uid="Puffin.Infrastructure.MonoGame.PuffinGame.LatestInstance">LatestInstance</h4>
   <div class="markdown level1 summary"></div>
@@ -321,7 +322,7 @@
     <a href="https://github.com/nightblade9/puffin/new/docs/apiSpec/new?filename=Puffin_Infrastructure_MonoGame_PuffinGame_Draw_Microsoft_Xna_Framework_GameTime_.md&amp;value=---%0Auid%3A%20Puffin.Infrastructure.MonoGame.PuffinGame.Draw(Microsoft.Xna.Framework.GameTime)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/docs/Puffin.Infrastructure.MonoGame/PuffinGame.cs/#L125">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/docs/Puffin.Infrastructure.MonoGame/PuffinGame.cs/#L129">View Source</a>
   </span>
   <a id="Puffin_Infrastructure_MonoGame_PuffinGame_Draw_" data-uid="Puffin.Infrastructure.MonoGame.PuffinGame.Draw*"></a>
   <h4 id="Puffin_Infrastructure_MonoGame_PuffinGame_Draw_Microsoft_Xna_Framework_GameTime_" data-uid="Puffin.Infrastructure.MonoGame.PuffinGame.Draw(Microsoft.Xna.Framework.GameTime)">Draw(GameTime)</h4>
@@ -355,7 +356,7 @@
     <a href="https://github.com/nightblade9/puffin/new/docs/apiSpec/new?filename=Puffin_Infrastructure_MonoGame_PuffinGame_Initialize.md&amp;value=---%0Auid%3A%20Puffin.Infrastructure.MonoGame.PuffinGame.Initialize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/docs/Puffin.Infrastructure.MonoGame/PuffinGame.cs/#L90">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/docs/Puffin.Infrastructure.MonoGame/PuffinGame.cs/#L94">View Source</a>
   </span>
   <a id="Puffin_Infrastructure_MonoGame_PuffinGame_Initialize_" data-uid="Puffin.Infrastructure.MonoGame.PuffinGame.Initialize*"></a>
   <h4 id="Puffin_Infrastructure_MonoGame_PuffinGame_Initialize" data-uid="Puffin.Infrastructure.MonoGame.PuffinGame.Initialize">Initialize()</h4>
@@ -372,7 +373,7 @@
     <a href="https://github.com/nightblade9/puffin/new/docs/apiSpec/new?filename=Puffin_Infrastructure_MonoGame_PuffinGame_LoadContent.md&amp;value=---%0Auid%3A%20Puffin.Infrastructure.MonoGame.PuffinGame.LoadContent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/docs/Puffin.Infrastructure.MonoGame/PuffinGame.cs/#L96">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/docs/Puffin.Infrastructure.MonoGame/PuffinGame.cs/#L100">View Source</a>
   </span>
   <a id="Puffin_Infrastructure_MonoGame_PuffinGame_LoadContent_" data-uid="Puffin.Infrastructure.MonoGame.PuffinGame.LoadContent*"></a>
   <h4 id="Puffin_Infrastructure_MonoGame_PuffinGame_LoadContent" data-uid="Puffin.Infrastructure.MonoGame.PuffinGame.LoadContent">LoadContent()</h4>
@@ -389,7 +390,7 @@
     <a href="https://github.com/nightblade9/puffin/new/docs/apiSpec/new?filename=Puffin_Infrastructure_MonoGame_PuffinGame_Ready.md&amp;value=---%0Auid%3A%20Puffin.Infrastructure.MonoGame.PuffinGame.Ready%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/docs/Puffin.Infrastructure.MonoGame/PuffinGame.cs/#L85">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/docs/Puffin.Infrastructure.MonoGame/PuffinGame.cs/#L89">View Source</a>
   </span>
   <a id="Puffin_Infrastructure_MonoGame_PuffinGame_Ready_" data-uid="Puffin.Infrastructure.MonoGame.PuffinGame.Ready*"></a>
   <h4 id="Puffin_Infrastructure_MonoGame_PuffinGame_Ready" data-uid="Puffin.Infrastructure.MonoGame.PuffinGame.Ready">Ready()</h4>
@@ -405,7 +406,7 @@
     <a href="https://github.com/nightblade9/puffin/new/docs/apiSpec/new?filename=Puffin_Infrastructure_MonoGame_PuffinGame_ShowScene_Puffin_Core_Scene_.md&amp;value=---%0Auid%3A%20Puffin.Infrastructure.MonoGame.PuffinGame.ShowScene(Puffin.Core.Scene)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/docs/Puffin.Infrastructure.MonoGame/PuffinGame.cs/#L60">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/docs/Puffin.Infrastructure.MonoGame/PuffinGame.cs/#L64">View Source</a>
   </span>
   <a id="Puffin_Infrastructure_MonoGame_PuffinGame_ShowScene_" data-uid="Puffin.Infrastructure.MonoGame.PuffinGame.ShowScene*"></a>
   <h4 id="Puffin_Infrastructure_MonoGame_PuffinGame_ShowScene_Puffin_Core_Scene_" data-uid="Puffin.Infrastructure.MonoGame.PuffinGame.ShowScene(Puffin.Core.Scene)">ShowScene(Scene)</h4>
@@ -437,7 +438,7 @@
     <a href="https://github.com/nightblade9/puffin/new/docs/apiSpec/new?filename=Puffin_Infrastructure_MonoGame_PuffinGame_Update_Microsoft_Xna_Framework_GameTime_.md&amp;value=---%0Auid%3A%20Puffin.Infrastructure.MonoGame.PuffinGame.Update(Microsoft.Xna.Framework.GameTime)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/docs/Puffin.Infrastructure.MonoGame/PuffinGame.cs/#L105">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/docs/Puffin.Infrastructure.MonoGame/PuffinGame.cs/#L109">View Source</a>
   </span>
   <a id="Puffin_Infrastructure_MonoGame_PuffinGame_Update_" data-uid="Puffin.Infrastructure.MonoGame.PuffinGame.Update*"></a>
   <h4 id="Puffin_Infrastructure_MonoGame_PuffinGame_Update_Microsoft_Xna_Framework_GameTime_" data-uid="Puffin.Infrastructure.MonoGame.PuffinGame.Update(Microsoft.Xna.Framework.GameTime)">Update(GameTime)</h4>
@@ -481,7 +482,7 @@
                     <a href="https://github.com/nightblade9/puffin/new/docs/apiSpec/new?filename=Puffin_Infrastructure_MonoGame_PuffinGame.md&amp;value=---%0Auid%3A%20Puffin.Infrastructure.MonoGame.PuffinGame%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/nightblade9/puffin/blob/docs/Puffin.Infrastructure.MonoGame/PuffinGame.cs/#L16" class="contribution-link">View Source</a>
+                    <a href="https://github.com/nightblade9/puffin/blob/docs/Puffin.Infrastructure.MonoGame/PuffinGame.cs/#L20" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

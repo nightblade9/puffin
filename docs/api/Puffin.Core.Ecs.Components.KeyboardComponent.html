@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class TextLabelComponent
+    <title>Class KeyboardComponent
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class TextLabelComponent
+    <meta name="title" content="Class KeyboardComponent
    ">
     <meta name="generator" content="docfx 2.48.1.0">
     
@@ -68,19 +68,22 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Puffin.Core.Ecs.Components.TextLabelComponent">
+            <article class="content wrap" id="_content" data-uid="Puffin.Core.Ecs.Components.KeyboardComponent">
   
   
-  <h1 id="Puffin_Core_Ecs_Components_TextLabelComponent" data-uid="Puffin.Core.Ecs.Components.TextLabelComponent" class="text-break">Class TextLabelComponent
+  <h1 id="Puffin_Core_Ecs_Components_KeyboardComponent" data-uid="Puffin.Core.Ecs.Components.KeyboardComponent" class="text-break">Class KeyboardComponent
   </h1>
-  <div class="markdown level0 summary"><p>A text-label component: a label with some printable text.</p>
+  <div class="markdown level0 summary"><p>A keyboard component; provides information about which actions are being pressed.
+Actions are a simple enum that map to one or more keyboard keys.
+For examples, see the Puffin documentation or unit tests.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="Puffin.Core.Ecs.Components.Component.html">Component</a></div>
-    <div class="level2"><span class="xref">TextLabelComponent</span></div>
+    <div class="level2"><span class="xref">KeyboardComponent</span></div>
+      <div class="level3"><a class="xref" href="Puffin.Core.Ecs.Components.FourWayMovementComponent.html">FourWayMovementComponent</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -111,26 +114,26 @@
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Puffin.Core.Ecs.Components.html">Puffin.Core.Ecs.Components</a></h6>
   <h6><strong>Assembly</strong>: Puffin.Core.dll</h6>
-  <h5 id="Puffin_Core_Ecs_Components_TextLabelComponent_syntax">Syntax</h5>
+  <h5 id="Puffin_Core_Ecs_Components_KeyboardComponent_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class TextLabelComponent : Component</code></pre>
+    <pre><code class="lang-csharp hljs">public class KeyboardComponent : Component</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/nightblade9/puffin/new/docs/apiSpec/new?filename=Puffin_Core_Ecs_Components_TextLabelComponent__ctor_Puffin_Core_Ecs_Entity_System_String_.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Components.TextLabelComponent.%23ctor(Puffin.Core.Ecs.Entity%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/nightblade9/puffin/new/docs/apiSpec/new?filename=Puffin_Core_Ecs_Components_KeyboardComponent__ctor_Puffin_Core_Ecs_Entity_.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Components.KeyboardComponent.%23ctor(Puffin.Core.Ecs.Entity)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/docs/Puffin.Core/Ecs/Components/TextLabelComponent.cs/#L10">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/docs/Puffin.Core/Ecs/Components/KeyboardComponent.cs/#L16">View Source</a>
   </span>
-  <a id="Puffin_Core_Ecs_Components_TextLabelComponent__ctor_" data-uid="Puffin.Core.Ecs.Components.TextLabelComponent.#ctor*"></a>
-  <h4 id="Puffin_Core_Ecs_Components_TextLabelComponent__ctor_Puffin_Core_Ecs_Entity_System_String_" data-uid="Puffin.Core.Ecs.Components.TextLabelComponent.#ctor(Puffin.Core.Ecs.Entity,System.String)">TextLabelComponent(Entity, String)</h4>
+  <a id="Puffin_Core_Ecs_Components_KeyboardComponent__ctor_" data-uid="Puffin.Core.Ecs.Components.KeyboardComponent.#ctor*"></a>
+  <h4 id="Puffin_Core_Ecs_Components_KeyboardComponent__ctor_Puffin_Core_Ecs_Entity_" data-uid="Puffin.Core.Ecs.Components.KeyboardComponent.#ctor(Puffin.Core.Ecs.Entity)">KeyboardComponent(Entity)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TextLabelComponent(Entity parent, string text)</code></pre>
+    <pre><code class="lang-csharp hljs">public KeyboardComponent(Entity parent)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -147,31 +150,45 @@
         <td><span class="parametername">parent</span></td>
         <td></td>
       </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/nightblade9/puffin/new/docs/apiSpec/new?filename=Puffin_Core_Ecs_Components_KeyboardComponent_IsActionDown_System_Enum_.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Components.KeyboardComponent.IsActionDown(System.Enum)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/nightblade9/puffin/blob/docs/Puffin.Core/Ecs/Components/KeyboardComponent.cs/#L25">View Source</a>
+  </span>
+  <a id="Puffin_Core_Ecs_Components_KeyboardComponent_IsActionDown_" data-uid="Puffin.Core.Ecs.Components.KeyboardComponent.IsActionDown*"></a>
+  <h4 id="Puffin_Core_Ecs_Components_KeyboardComponent_IsActionDown_System_Enum_" data-uid="Puffin.Core.Ecs.Components.KeyboardComponent.IsActionDown(System.Enum)">IsActionDown(Enum)</h4>
+  <div class="markdown level1 summary"><p>Returns true if any of the keys mapped to this action are currently pressed down.
+Returns false otherwise.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsActionDown(Enum action)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">text</span></td>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Enum</span></td>
+        <td><span class="parametername">action</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h3 id="properties">Properties
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/nightblade9/puffin/new/docs/apiSpec/new?filename=Puffin_Core_Ecs_Components_TextLabelComponent_Text.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Components.TextLabelComponent.Text%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/docs/Puffin.Core/Ecs/Components/TextLabelComponent.cs/#L8">View Source</a>
-  </span>
-  <a id="Puffin_Core_Ecs_Components_TextLabelComponent_Text_" data-uid="Puffin.Core.Ecs.Components.TextLabelComponent.Text*"></a>
-  <h4 id="Puffin_Core_Ecs_Components_TextLabelComponent_Text" data-uid="Puffin.Core.Ecs.Components.TextLabelComponent.Text">Text</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Text { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
+  <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -181,7 +198,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><span class="xref">System.Boolean</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -194,10 +211,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/nightblade9/puffin/new/docs/apiSpec/new?filename=Puffin_Core_Ecs_Components_TextLabelComponent.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Components.TextLabelComponent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/nightblade9/puffin/new/docs/apiSpec/new?filename=Puffin_Core_Ecs_Components_KeyboardComponent.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Components.KeyboardComponent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/nightblade9/puffin/blob/docs/Puffin.Core/Ecs/Components/TextLabelComponent.cs/#L6" class="contribution-link">View Source</a>
+                    <a href="https://github.com/nightblade9/puffin/blob/docs/Puffin.Core/Ecs/Components/KeyboardComponent.cs/#L12" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
