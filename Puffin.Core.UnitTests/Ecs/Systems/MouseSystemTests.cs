@@ -66,5 +66,27 @@ namespace Puffin.Core.UnitTests.Ecs
             // Assert
             Assert.That(callbackFired, Is.True);
         }
+
+        [Test]
+        public void RemoveEntityRemovesEntity()
+        {
+            // Arrange
+            var mouseProvider = new Mock<IMouseProvider>();
+            DependencyInjection.Kernel.Bind<IMouseProvider>().ToConstant(mouseProvider.Object);
+
+            var eventBus = new EventBus();
+            var callbackFired = false;
+            var entity = new Entity().Move(77, 88).Mouse(() => callbackFired = true, 32, 32);
+            mouseProvider.Setup(m => m.MouseCoordinates).Returns(new Tuple<int, int>(90, 90));
+            var system = new MouseSystem();
+            system.OnAddEntity(entity);
+
+            // Act
+            system.OnRemoveEntity(entity);
+            eventBus.Broadcast(EventBusSignal.MouseClicked, null);
+            
+            // Assert: removed entities don't trigger callbacks.
+            Assert.That(callbackFired, Is.False);
+        }
     }
 }

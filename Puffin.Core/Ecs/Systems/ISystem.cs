@@ -6,5 +6,6 @@ namespace Puffin.Core.Ecs.Systems
     {
         void OnUpdate(TimeSpan elapsed);
         void OnAddEntity(Entity entity);
+        void OnRemoveEntity(Entity entity);
     }
 }

@@ -34,6 +34,9 @@ namespace Puffin.Core
             EventBus.LatestInstance.Subscribe(EventBusSignal.MouseClicked, onMouseClick);
         }
 
+        /// <summary>
+        /// Adds an entity to the current scene so that it starts functioning (based on its components).
+        /// </summary>
         public void Add(Entity entity)
         {
             this.entities.Add(entity);
@@ -45,6 +48,18 @@ namespace Puffin.Core
                 {
                     system.OnAddEntity(entity);
                 }
+            }
+        }
+
+        /// <summary>
+        /// Remove an entity from the scene; it will no longer be rendered, updated, etc.
+        /// </summary>
+        public void Remove(Entity entity)
+        {
+            this.entities.Remove(entity);
+            foreach (var system in this.systems)
+            {
+                system.OnRemoveEntity(entity);
             }
         }
 

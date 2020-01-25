@@ -27,6 +27,12 @@ namespace Puffin.Core.Ecs.Systems
             }
         }
 
+        public void OnRemoveEntity(Entity entity)
+        {
+            this.entities.Remove(entity);
+            this.drawingSurface.RemoveEntity(entity);
+        }
+
         public virtual void OnUpdate(TimeSpan elapsed)
         {
             
