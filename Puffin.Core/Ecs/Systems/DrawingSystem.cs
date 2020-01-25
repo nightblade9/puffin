@@ -10,9 +10,6 @@ namespace Puffin.Core.Ecs.Systems
         private IDrawingSurface drawingSurface;
         private IList<Entity> entities = new List<Entity>();
         
-        // For unit testing
-        internal DrawingSystem() { }
-
         public DrawingSystem(IDrawingSurface drawingSurface)
         {
             this.drawingSurface = drawingSurface;

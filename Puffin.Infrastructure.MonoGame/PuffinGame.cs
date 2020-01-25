@@ -10,8 +10,7 @@ using Ninject;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using System;
-using SpriteFontPlus;
-using System.IO;
+
 
 namespace Puffin.Infrastructure.MonoGame
 {
@@ -36,11 +35,10 @@ namespace Puffin.Infrastructure.MonoGame
             { PuffinAction.Right, new List<Keys>() { Keys.D, Keys.Right } },
         };
 
-        public static PuffinGame LatestInstance;
+        internal static PuffinGame LatestInstance;
 
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        private SpriteFont defaultFont;
         private Scene currentScene;
         private IMouseProvider mouseProvider;
         private IKeyboardProvider keyboardProvider;
@@ -70,7 +68,7 @@ namespace Puffin.Infrastructure.MonoGame
                 this.currentScene.Dispose();
             }
             
-            var drawingSurface = new MonoGameDrawingSurface(this.GraphicsDevice, spriteBatch, this.defaultFont);
+            var drawingSurface = new MonoGameDrawingSurface(this.GraphicsDevice, spriteBatch);
 
             var systems = new ISystem[]
             {
@@ -104,16 +102,6 @@ namespace Puffin.Infrastructure.MonoGame
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             // Not used since we currently load sprites outside the pipeline
-
-            var fontBakeResult = TtfFontBaker.Bake(
-                File.ReadAllBytes(Path.Combine("Content", "OpenSans.ttf")), 24, 1024, 1024, 
-                new[] {
-                    CharacterRange.BasicLatin,
-                    CharacterRange.Latin1Supplement,
-                    CharacterRange.LatinExtendedA,
-                    CharacterRange.Cyrillic });
-            this.defaultFont = fontBakeResult.CreateSpriteFont(this.GraphicsDevice);
-
             this.Ready();
         }
 

@@ -24,10 +24,10 @@ namespace MyGame
                 float pitch = (float)(0.5 + (random.NextDouble() % 0.5));
                 Console.WriteLine($"Pitch={pitch}");
                 player.GetIfHas<AudioComponent>().Play(pitch);
-                this.Remove(player);
-            }, 32, 32);
+                //this.Remove(player);
 
-            
+                player.GetIfHas<TextLabelComponent>().FontSize = 72;
+            }, 32, 32);
 
             this.Add(player);
         }
