@@ -1,6 +1,7 @@
 using System;
 using Moq;
 using NUnit.Framework;
+using Puffin.Core.Drawing;
 using Puffin.Core.Ecs;
 using Puffin.Core.Ecs.Systems;
 using Puffin.Core.IO;
@@ -47,6 +48,26 @@ namespace Puffin.Core.UnitTests
             // Assert
             drawingSystem.Verify(d => d.OnAddEntity(e1), Times.Once());
             drawingSystem.Verify(d => d.OnAddEntity(e2), Times.Once());
+        }
+
+        [Test]
+        public void RemoveCallsRemoveOnSystems()
+        {
+            var entity = new Entity();
+            var system = new Mock<ISystem>();
+            var drawingSurface = new Mock<IDrawingSurface>();
+            var drawingSystem = new DrawingSystem(drawingSurface.Object);
+
+            var scene = new Scene();
+            scene.Initialize(new ISystem[] { drawingSystem, system.Object }, null, null);
+            scene.Add(entity);
+
+            // Act
+            scene.Remove(entity);
+
+            // Assert
+            system.Verify(s => s.OnRemoveEntity(entity), Times.Once());
+            drawingSurface.Verify(s => s.RemoveEntity(entity), Times.Once());
         }
 
         [Test]

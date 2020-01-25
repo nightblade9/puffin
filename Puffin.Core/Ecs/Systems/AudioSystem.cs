@@ -15,7 +15,7 @@ namespace Puffin.Core.Ecs.Systems
             this.audioPlayer = audioPlayer;
         }
 
-        public virtual void OnAddEntity(Entity entity)
+        public void OnAddEntity(Entity entity)
         {
             if (entity.GetIfHas<AudioComponent>() != null)
             {
@@ -24,7 +24,13 @@ namespace Puffin.Core.Ecs.Systems
             }
         }
 
-        public virtual void OnUpdate(TimeSpan elapsed)
+        public void OnRemoveEntity(Entity entity)
+        {
+            this.entities.Remove(entity);
+            this.audioPlayer.RemoveEntity(entity);
+        }
+
+        public void OnUpdate(TimeSpan elapsed)
         {
             this.audioPlayer.OnUpdate();
         }

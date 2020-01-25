@@ -27,6 +27,16 @@ namespace Puffin.Infrastructure.MonoGame
             }
         }
 
+        public void RemoveEntity(Entity entity)
+        {
+            this.entities.Remove(entity);
+            var sound = entity.GetIfHas<AudioComponent>();
+            if (sound != null && entitySounds.ContainsKey(sound))
+            {
+                entitySounds.Remove(sound);
+            }
+        }
+
         public void OnUpdate()
         {
         }

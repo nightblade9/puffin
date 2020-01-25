@@ -16,6 +16,11 @@ namespace Puffin.Core.Ecs.Systems
             }
         }
 
+        public void OnRemoveEntity(Entity entity)
+        {
+            this.entities.Remove(entity);
+        }
+
         public void OnUpdate(TimeSpan elapsed)
         {
             foreach (var me in this.entities)

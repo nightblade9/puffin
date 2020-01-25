@@ -51,5 +51,28 @@ namespace Puffin.Core.UnitTests
             Assert.That(e2.Y, Is.EqualTo(0));
 
         }
+
+        [Test]
+        public void OnRemoveRemovesEntity()
+        {
+            var provider = new Mock<IKeyboardProvider>();
+            DependencyInjection.Kernel.Bind<IKeyboardProvider>().ToConstant(provider.Object);
+            provider.Setup(p => p.IsActionDown(PuffinAction.Up)).Returns(true);
+            provider.Setup(p => p.IsActionDown(PuffinAction.Right)).Returns(true);
+
+            var e = new Entity().FourWayMovement(100);
+            var system = new FourWayMovementSystem();
+            system.OnAddEntity(e);
+            system.OnUpdate(TimeSpan.FromSeconds(1));
+            var expectedPosition = new Tuple<float, float>(e.X, e.Y);
+
+            // Act
+            system.OnRemoveEntity(e);
+            system.OnUpdate(TimeSpan.FromSeconds(10));
+
+            // Assert: removed entities don't move
+            Assert.That(e.X, Is.EqualTo(expectedPosition.Item1));
+            Assert.That(e.Y, Is.EqualTo(expectedPosition.Item2));
+        }
     }
 }

@@ -175,5 +175,29 @@ namespace Puffin.Core.UnitTests.Ecs.Systems
             // Assert
             Assert.That(timesCalled, Is.EqualTo(1));
         }
+
+        [Test]
+        public void RemovEntityRemovesEntity()
+        {
+            var e1Called = false;
+            var e2Called = false;
+
+            // Arrange
+            var e1 = new Entity().Move(16, 16).Overlap(32, 32, 0, 0, (o) => e1Called = true, null);
+            var e2 = new Entity().Overlap(40, 40, 0, 0, (o) => e2Called = true, null);
+
+            var system = new OverlapSystem();
+            system.OnAddEntity(e1);
+            system.OnAddEntity(e2);
+
+            // Act
+            system.OnRemoveEntity(e1);
+            system.OnRemoveEntity(e2);
+            system.OnUpdate(TimeSpan.Zero);
+
+            // Assert: removed entities don't respond to events
+            Assert.That(e1Called, Is.False);
+            Assert.That(e2Called, Is.False);
+        }
     }
 }

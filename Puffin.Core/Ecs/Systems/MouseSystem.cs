@@ -25,6 +25,11 @@ namespace Puffin.Core.Ecs.Systems
             }
         }
 
+        public void OnRemoveEntity(Entity entity)
+        {
+            this.entities.Remove(entity);
+        }
+
         public void OnUpdate(TimeSpan elapsed)
         {
             // Not needed, we use the MouseClicked event to trigger checks and delegate to components
@@ -36,7 +41,9 @@ namespace Puffin.Core.Ecs.Systems
             var clickedX = provider.MouseCoordinates.Item1;
             var clickedY = provider.MouseCoordinates.Item2;
 
-            foreach (var entity in this.entities)
+            // ToArray prevents concurrent modification exceptions when we remove an entity on click.
+            // Note that the performance is OK, since this is in response to an event; not every frame.
+            foreach (var entity in this.entities.ToArray())
             {
                 var mouse = entity.GetIfHas<MouseComponent>();
 

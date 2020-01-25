@@ -9,5 +9,6 @@ namespace Puffin.Core.Drawing
     {
         void DrawAll();
         void AddEntity(Entity entity);
+        void RemoveEntity(Entity entity);
     }
 }

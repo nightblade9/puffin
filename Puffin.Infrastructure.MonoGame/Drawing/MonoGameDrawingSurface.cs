@@ -46,6 +46,12 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             }
         }
 
+        public void RemoveEntity(Entity entity)
+        {
+            this.entities.Remove(entity);
+            this.entitySprites.Remove(entity);
+        }
+
         public void DrawAll()
         {
             this.graphics.Clear(Color.DarkSlateGray);
