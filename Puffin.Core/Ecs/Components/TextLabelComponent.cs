@@ -7,10 +7,33 @@ namespace Puffin.Core.Ecs.Components
     {
         public string Text { get; set; } = "";
 
-        public TextLabelComponent(Entity parent, string text)
+        public string FontName { 
+            get { return this.fontName; }
+            set {
+                this.fontName = value;
+                EventBus.LatestInstance.Broadcast(EventBusSignal.LabelFontChanged, this);
+            }
+        }
+
+        public int FontSize { 
+            get { return this.fontSize; }
+            set {
+                // TODO: validate that it's positive?
+                this.fontSize = value;
+                EventBus.LatestInstance.Broadcast(EventBusSignal.LabelFontChanged, this);
+            }
+        }
+
+        private string fontName = "OpenSans";
+        private int fontSize = 24;
+
+        public TextLabelComponent(Entity parent, string text, string fontName = "OpenSans", int fontSize = 24)
         : base(parent)
         {
             this.Text = text;
+            this.FontName = fontName;
+            this.FontSize = fontSize;
+            EventBus.LatestInstance.Broadcast(EventBusSignal.LabelFontChanged, this);
         }
     }
 }

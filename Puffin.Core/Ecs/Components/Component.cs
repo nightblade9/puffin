@@ -7,7 +7,7 @@ namespace Puffin.Core.Ecs.Components
     /// </summary>
     public abstract class Component
     {
-        protected readonly Entity Parent;
+        internal readonly Entity Parent;
 
         public Component(Entity parent)
         {
