@@ -10,6 +10,8 @@ using Ninject;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using System;
+using SpriteFontPlus;
+using System.IO;
 
 namespace Puffin.Infrastructure.MonoGame
 {
@@ -102,7 +104,15 @@ namespace Puffin.Infrastructure.MonoGame
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             // Not used since we currently load sprites outside the pipeline
-            this.defaultFont = Content.Load<SpriteFont>("OpenSans");
+
+            var fontBakeResult = TtfFontBaker.Bake(
+                File.ReadAllBytes(Path.Combine("Content", "OpenSans.ttf")), 24, 1024, 1024, 
+                new[] {
+                    CharacterRange.BasicLatin,
+                    CharacterRange.Latin1Supplement,
+                    CharacterRange.LatinExtendedA,
+                    CharacterRange.Cyrillic });
+            this.defaultFont = fontBakeResult.CreateSpriteFont(this.GraphicsDevice);
 
             this.Ready();
         }

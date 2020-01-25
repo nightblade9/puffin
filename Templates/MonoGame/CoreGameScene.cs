@@ -15,7 +15,8 @@ namespace MyGame
             player = new Entity().FourWayMovement(100)
                 .Sprite("Content/square-white.png")
                 .Overlap(32, 32)
-                .Move(300, 300);
+                .Move(300, 300)
+                .Label("HI MOM!!!");
             
             player.Set(new AudioComponent(player, "test.wav"));
 
