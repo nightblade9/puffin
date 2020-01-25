@@ -64,9 +64,36 @@ namespace Puffin.Core
         }
 
         /// <summary>
+        /// Return true if any of a specific action's keys are pressed.
+        /// </summary>        
+        public bool IsActionDown(Enum action)
+        {
+            return this.keyboardProvider.IsActionDown(action);
+        }
+
+        /// <summary>
+        /// A method that's called every time Update is called by the game engine.
+        /// Override it to do things "every frame."
+        /// </summary>
+        public virtual void Update()
+        {
+            
+        }
+        public void Dispose()
+        {
+            if (EventBus.LatestInstance != null)
+            {
+                EventBus.LatestInstance.Dispose();
+            }
+
+            // Reset EventBus.LatestIntance
+            new EventBus();
+        }
+
+        /// <summary>
         /// Internal method that calls `Update` on all systems in this scene.
         /// </summary>
-        public void OnUpdate(TimeSpan elapsed)
+        internal void OnUpdate(TimeSpan elapsed)
         {
             foreach (var system in this.systems)
             {
@@ -88,38 +115,10 @@ namespace Puffin.Core
         /// <summary>
         /// Internal method that calls `Draw` on the drawing system.
         /// </summary>
-        public void OnDraw(TimeSpan elapsed)
+        internal void OnDraw(TimeSpan elapsed)
         {
             drawsSinceLastFpsCount++;
             this.drawingSystem.OnDraw(elapsed);
-        }
-
-        /// <summary>
-        /// Return true if any of a specific action's keys are pressed.
-        /// </summary>        
-        public bool IsActionDown(Enum action)
-        {
-            return this.keyboardProvider.IsActionDown(action);
-        }
-
-        /// <summary>
-        /// A method that's called every time Update is called by the game engine.
-        /// Override it to do things "every frame."
-        /// </summary>
-        public virtual void Update()
-        {
-            
-        }
-
-        public void Dispose()
-        {
-            if (EventBus.LatestInstance != null)
-            {
-                EventBus.LatestInstance.Dispose();
-            }
-
-            // Reset EventBus.LatestIntance
-            new EventBus();
         }
 
         // Separate from the constructor and internal because only we call it; subclasses of
@@ -141,8 +140,6 @@ namespace Puffin.Core
                 }
             }            
         }
-
-        internal void HiMom() { }
 
         private void onMouseClick(object data)
         {
