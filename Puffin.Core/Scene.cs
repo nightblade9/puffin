@@ -13,9 +13,9 @@ namespace Puffin.Core
     /// </summary>
     public class Scene : IDisposable
     {
-        // public for testability; would be protected otherwise
-        public Action OnMouseClick;
         public float Fps { get; private set; }
+        public uint BackgroundColour = 0x000000;
+        internal Action OnMouseClick;
 
         private IMouseProvider mouseProvider;
         private IKeyboardProvider keyboardProvider;
@@ -118,7 +118,7 @@ namespace Puffin.Core
         internal void OnDraw(TimeSpan elapsed)
         {
             drawsSinceLastFpsCount++;
-            this.drawingSystem.OnDraw(elapsed);
+            this.drawingSystem.OnDraw(elapsed, this.BackgroundColour);
         }
 
         // Separate from the constructor and internal because only we call it; subclasses of
