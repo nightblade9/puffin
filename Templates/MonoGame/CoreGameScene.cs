@@ -13,17 +13,18 @@ namespace MyGame
         public CoreGameScene()
         {
             player = new Entity().FourWayMovement(100)
-                .Sprite("Content/square-white.png")
+                //.Sprite("Content/square-white.png")
                 .Overlap(32, 32)
                 .Move(300, 300)
-                .Label("HI MOM!!!");
+                .Label("HI MOM!!!")
+                .Audio("test.wav");
             
-            player.Set(new AudioComponent(player, "test.wav"));
+            player.Set(new ColourComponent(player, 0xFF8800, 64, 64));
 
             player.Mouse(() => {
                 float pitch = (float)(0.5 + (random.NextDouble() % 0.5));
                 Console.WriteLine($"Pitch={pitch}");
-                player.GetIfHas<AudioComponent>().Play(pitch);
+                //player.GetIfHas<AudioComponent>().Play(pitch);
                 //this.Remove(player);
 
                 player.GetIfHas<TextLabelComponent>().FontSize = 72;

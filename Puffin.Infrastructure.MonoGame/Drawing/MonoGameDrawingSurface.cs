@@ -17,18 +17,24 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
         private readonly SpriteFont defaultFont;
 
         private IList<Entity> entities = new List<Entity>();
+
         private IDictionary<Entity, MonoGameSprite> entitySprites = new Dictionary<Entity, MonoGameSprite>();
-        private IDictionary<Entity, SpriteFont> entityFonts = new Dictionary<Entity, SpriteFont>();
-        
-        // "name, size" => font
+
+        private IDictionary<Entity, SpriteFont> entityFonts = new Dictionary<Entity, SpriteFont>();        
+        // "name, size" => font. Cache of all fonts ever seen so far.
         private IDictionary<string, SpriteFont> allFonts = new Dictionary<string, SpriteFont>();
         
-        // TODO: maybe content pipeline is a good thing, amirite? If so, use LoadContent to load sprites
-        private GraphicsDevice graphics;
-        private SpriteBatch spriteBatch;
+        private readonly GraphicsDevice graphics;
+        private readonly SpriteBatch spriteBatch;
+
+        // 1x1 white rectangle, used to draw colour components
+        private readonly Texture2D whiteRectangle;
 
         public MonoGameDrawingSurface(GraphicsDevice graphics, SpriteBatch spriteBatch)
         {
+            whiteRectangle = new Texture2D(graphics, 1, 1);
+            whiteRectangle.SetData(new[] { Color.White });
+
             this.graphics = graphics;
             this.spriteBatch = spriteBatch;
             this.defaultFont = this.LoadFont("OpenSans", 24);
@@ -63,6 +69,10 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
                 this.entities.Add(entity);
                 // TODO: load the appropriate font or specify the default font
             }
+            else if (entity.GetIfHas<ColourComponent>() != null)
+            {
+                this.entities.Add(entity);
+            }
         }
 
         public void RemoveEntity(Entity entity)
@@ -76,8 +86,17 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             this.graphics.Clear(Color.DarkSlateGray);
             this.spriteBatch.Begin();
 
+            // TODO: render in order of Z from lowest to highest
             foreach (var entity in this.entities)
             {
+                var colour = entity.GetIfHas<ColourComponent>();
+                if (colour != null)
+                {
+                    this.spriteBatch.Draw(whiteRectangle, 
+                        new Rectangle((int)entity.X, (int)entity.Y, colour.Width, colour.Height),
+                        new Color(colour.Colour + 0xFF000000));
+                }
+
                 // TODO: iterating over entitySprites.Values might be faster. Profile and test.
                 if (entitySprites.ContainsKey(entity))
                 {
