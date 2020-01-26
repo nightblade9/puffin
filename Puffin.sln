@@ -9,9 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Puffin.Core.UnitTests", "Pu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Puffin.Infrastructure.MonoGame", "Puffin.Infrastructure.MonoGame\Puffin.Infrastructure.MonoGame.csproj", "{3BF349A2-C548-400C-9821-1BBCF901728E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{16945E8F-3F0A-4E2B-92FE-2389563EA0D5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGame", "Templates\MonoGame\MyGame.csproj", "{61382389-B80A-4AA9-8B5A-94CAB9C94589}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestGame", "TestGame\TestGame.csproj", "{61382389-B80A-4AA9-8B5A-94CAB9C94589}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Puffin.UI", "Puffin.UI\Puffin.UI.csproj", "{E134AC19-9B77-432F-9C38-A40559FC9552}"
 EndProject
@@ -102,8 +100,5 @@ Global
 		{0A802F43-0BAC-4F94-9E79-06A0B73C7D0B}.Release|x64.Build.0 = Release|Any CPU
 		{0A802F43-0BAC-4F94-9E79-06A0B73C7D0B}.Release|x86.ActiveCfg = Release|Any CPU
 		{0A802F43-0BAC-4F94-9E79-06A0B73C7D0B}.Release|x86.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{61382389-B80A-4AA9-8B5A-94CAB9C94589} = {16945E8F-3F0A-4E2B-92FE-2389563EA0D5}
 	EndGlobalSection
 EndGlobal
