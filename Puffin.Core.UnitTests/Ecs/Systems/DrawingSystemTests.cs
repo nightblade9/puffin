@@ -21,7 +21,7 @@ namespace Puffin.Core.UnitTests
             system.OnDraw(TimeSpan.Zero);
 
             // Assert
-            drawingSurface.Verify(d => d.DrawAll(), Times.Once());
+            drawingSurface.Verify(d => d.DrawAll(0x000000), Times.Once());
         }
 
         [Test]

@@ -81,9 +81,9 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             this.entitySprites.Remove(entity);
         }
 
-        public void DrawAll()
+        public void DrawAll(uint backgroundColour = 0x000000)
         {
-            this.graphics.Clear(Color.DarkSlateGray);
+            this.graphics.Clear(new Color(backgroundColour + 0xFF000000));
             this.spriteBatch.Begin();
 
             // TODO: render in order of Z from lowest to highest

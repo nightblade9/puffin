@@ -12,6 +12,8 @@ namespace MyGame
 
         public CoreGameScene()
         {
+            this.BackgroundColour = 0x444444;
+            
             player = new Entity().FourWayMovement(100)
                 //.Sprite("Content/square-white.png")
                 .Overlap(32, 32)
@@ -24,6 +26,7 @@ namespace MyGame
             player.Mouse(() => {
                 float pitch = (float)(0.5 + (random.NextDouble() % 0.5));
                 Console.WriteLine($"Pitch={pitch}");
+                this.BackgroundColour = 0x882211;
                 //player.GetIfHas<AudioComponent>().Play(pitch);
                 //this.Remove(player);
 

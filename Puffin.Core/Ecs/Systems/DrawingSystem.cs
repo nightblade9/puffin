@@ -41,9 +41,9 @@ namespace Puffin.Core.Ecs.Systems
             
         }
         
-        public virtual void OnDraw(TimeSpan elapsed)
+        public virtual void OnDraw(TimeSpan elapsed, uint backgroundColour = 0x000000)
         {
-            this.drawingSurface.DrawAll();
+            this.drawingSurface.DrawAll(backgroundColour);
         }
     }
 }
