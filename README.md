@@ -20,6 +20,7 @@ Cross-platform 2D C# game engine. This project is under heavy development.
 - Go to the repo root and add references to Puffin:
     - `dotnet add MyGame.csproj reference puffin/Puffin.Core`
     - `dotnet add MyGame.csproj reference puffin/Puffin.UI` (if you want buttons/etc.)
+- Copy the `Content` directory from `StarterAssets` into your project directory
 - Type `dotnet run` or press F5 in VSCode to verify it works
 
 You should be greeted with an empty screen with an image.
