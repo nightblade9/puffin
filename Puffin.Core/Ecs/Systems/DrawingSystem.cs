@@ -15,6 +15,9 @@ namespace Puffin.Core.Ecs.Systems
             this.drawingSurface = drawingSurface;
         }
 
+        // Has no references but used in unit tests (by Moq)
+        internal DrawingSystem() { }
+
         public virtual void OnAddEntity(Entity entity)
         {
             if (

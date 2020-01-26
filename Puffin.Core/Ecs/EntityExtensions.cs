@@ -123,13 +123,23 @@ namespace Puffin.Core.Ecs
         }
 
         /// <summary>
-        /// Adds an audio file to your entity; you can call it via e.GetIfHas<AudioComponent>().Play(pitch).
+        /// Adds an audio file to an entity; you can call it via e.GetIfHas<AudioComponent>().Play(pitch).
         /// You should be able to play wave files and OGG files.
         /// For more information/arguments, see the AudioComponent docs.
         /// </summary>
         public static Entity Audio(this Entity entity, string audioFileName)
         {
             entity.Set(new AudioComponent(entity, audioFileName));
+            return entity;
+        }
+
+        /// <summary>
+        /// Adds a coloured rectangle to an entity with the specified size and colour.
+        /// The colour format is RGB, eg. 0x0088FF for a light sky blue.
+        /// </summary>
+        public static Entity Colour(this Entity entity, uint rgb, int width, int height)
+        {
+            entity.Set(new ColourComponent(entity, rgb, width, height));
             return entity;
         }
     }

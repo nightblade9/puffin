@@ -92,7 +92,7 @@ namespace Puffin.Core.UnitTests.Ecs
         }
 
         [Test]
-        public void FourWayMovementAddsFourWayMovementComponent()
+        public void FourWayMovementSetsFourWayMovementComponent()
         {
             // Depends on default mapping for PuffinGame.
             var provider = new Mock<IKeyboardProvider>();
@@ -151,13 +151,25 @@ namespace Puffin.Core.UnitTests.Ecs
         }
 
         [Test]
-        public void AudioCreatesAudioComponent()
+        public void AudioSetsAudioComponent()
         {
             var e = new Entity().Audio("blue-heron.ogg");
             
             var actual = e.GetIfHas<AudioComponent>();
             Assert.That(actual, Is.Not.Null);
             Assert.That(actual.FileName, Is.EqualTo("blue-heron.ogg"));
+        }
+
+        [Test]
+        public void ColourSetsColourComponent()
+        {
+            var e = new Entity().Colour(0x88ff00, 64, 32);
+            
+            var actual = e.GetIfHas<ColourComponent>();
+            Assert.That(actual, Is.Not.Null);
+            Assert.That(actual.Colour, Is.EqualTo(0x88ff00));
+            Assert.That(actual.Width, Is.EqualTo(64));
+            Assert.That(actual.Height, Is.EqualTo(32));
         }
 
     }
