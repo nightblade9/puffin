@@ -45,8 +45,8 @@ namespace Puffin.Infrastructure.MonoGame
         {
              using (var stream = File.Open(fileName, FileMode.Open))
             {
-                var texture = SoundEffect.FromStream(stream);
-                return texture;
+                var soundEffect = SoundEffect.FromStream(stream);
+                return soundEffect;
             }
         }
 

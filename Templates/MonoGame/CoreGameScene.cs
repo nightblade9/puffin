@@ -27,7 +27,7 @@ namespace MyGame
                 float pitch = (float)(0.5 + (random.NextDouble() % 0.5));
                 Console.WriteLine($"Pitch={pitch}");
                 this.BackgroundColour = 0x882211;
-                //player.GetIfHas<AudioComponent>().Play(pitch);
+                player.GetIfHas<AudioComponent>().Play(pitch);
                 //this.Remove(player);
 
                 player.GetIfHas<TextLabelComponent>().FontSize = 72;
