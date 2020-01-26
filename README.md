@@ -98,3 +98,13 @@ Both MonoGame and Puffin exhibit similar performance characteristics; on my test
 
 - To build `Puffin`, you need to install `MonoGame`.
 - To build documentation, download `docfx`. Run it by entering `Puffin.Docs` and running `docfx docfx.json --serve`.
+
+# Publishing your Game
+
+To create a self-contained zip (including .NET Core), you can publish your app via the usual `dotnet publish` command. For example, to make a Linux build, run `dotnet publish -c Release -r linux-x64 -o publish`.
+
+Make sure you copy all your content (sprites, sound effects, etc.) into the `publish` directory.
+
+You can also compress the directory for a smaller file-size.
+
+For a reference Powershell script, see [Ali the Android's publish.ps1 script](https://github.com/deengames/ali-the-android/blob/master/publish.ps1).
