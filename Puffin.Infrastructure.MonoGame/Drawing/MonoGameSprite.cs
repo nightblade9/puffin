@@ -6,7 +6,7 @@ using Puffin.Core.Ecs.Components;
 
 namespace Puffin.Infrastructure.MonoGame.Drawing
 {
-    internal class MonoGameSprite : Component
+    internal class MonoGameSprite : Component, IDisposable
     {
         public Texture2D Texture { get; private set; }
         public Rectangle Region { get; private set; }
@@ -39,6 +39,11 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             {
                 throw new InvalidOperationException($"Frame width/height must be positive, they are currently {sprite.FrameWidth}, {sprite.FrameHeight}");
             }
+        }
+
+        public void Dispose()
+        {
+            this.Texture.Dispose();
         }
     }
 }

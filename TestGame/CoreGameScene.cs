@@ -15,7 +15,7 @@ namespace MyGame
             this.BackgroundColour = 0x444444;
             
             player = new Entity().FourWayMovement(100)
-                //.Sprite("Content/square-white.png")
+                .Sprite("Content/Charspore.png")
                 .Overlap(32, 32)
                 .Move(300, 300)
                 .Label("HI MOM!!!")

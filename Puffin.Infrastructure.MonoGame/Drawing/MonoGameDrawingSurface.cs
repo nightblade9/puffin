@@ -6,13 +6,14 @@ using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System.IO;
 using SpriteFontPlus;
+using System;
 
 namespace Puffin.Infrastructure.MonoGame.Drawing
 {
     /// <summary>
     /// A drawing surface for MonoGame (a wrapper around SpriteBatch).
     /// </summary>
-    internal class MonoGameDrawingSurface : IDrawingSurface
+    internal class MonoGameDrawingSurface : IDrawingSurface, IDisposable
     {
         private readonly SpriteFont defaultFont;
 
@@ -78,6 +79,8 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
         public void RemoveEntity(Entity entity)
         {
             this.entities.Remove(entity);
+            var monoGameSprite = this.entitySprites[entity];
+            monoGameSprite.Dispose();
             this.entitySprites.Remove(entity);
         }
 
@@ -97,10 +100,8 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
                         new Color(colour.Colour + 0xFF000000));
                 }
 
-                // TODO: iterating over entitySprites.Values might be faster. Profile and test.
-                if (entitySprites.ContainsKey(entity))
+                foreach (var monoGameSprite in entitySprites.Values)
                 {
-                    var monoGameSprite = entitySprites[entity];
                     this.spriteBatch.Draw(monoGameSprite.Texture, new Vector2(entity.X, entity.Y), monoGameSprite.Region, Color.White);
                 }
 
@@ -118,6 +119,11 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             }
             
             this.spriteBatch.End();
+        }
+
+        public void Dispose()
+        {
+            this.whiteRectangle.Dispose();
         }
 
         private Texture2D LoadImage(string fileName)
