@@ -89,16 +89,33 @@ class MyGame : PuffinGame {
 
 This allows you to write code like `entity.GetIfHas<KeyboardComponent>().IsKeyDown(CustomAction.Next)`, which would return `true` if either the space or enter keys are currently held down.
 
-# How Fast is Puffin?
+# TileMaps
+
+If your game includes a 2D map on a grid, you can use the `Puffin.Core.TileMap` class. An example below creates a new 20x10 map of floor tiles with a border of non-walkable wall tiles.
+
+It assumes your spritesheet has a floor tile then a wall tile (from left to right). Entities need a collision component if they are not to move on solid tiles.
+
+```csharp
+var map = new TileMap(20, 10, "dungeon.png", 32, 32);
+map.Define("Floor", 0, 0);
+map.Define("Wall", 1, 0, true);
+
+for (var y = 0; y < 10; y++) {
+    for (var x = 0; x < 20; x++) {
+        if (x == 0 || y == 0 || x == 19 || y == 9) {
+            map[x, y] = "Wall";
+        } else {
+            map[x, y] = "Floor";
+        }
+    }
+}
+```
+
+# Performance
 
 I ran a simple MonoGame project and an analogous Puffin project, where I render as many copies of a sprite as possible until the FPS drops from 60 to 50.
 
 Both MonoGame and Puffin exhibit similar performance characteristics; on my test machine, MonoGame reached around 2200 sprites, while Puffin reached around 1900 sprites.
-
-# Development
-
-- To build `Puffin`, you need to install `MonoGame`.
-- To build documentation, download `docfx`. Run it by entering `Puffin.Docs` and running `docfx docfx.json --serve`.
 
 # Publishing your Game
 
@@ -108,4 +125,9 @@ Make sure you copy all your content (sprites, sound effects, etc.) into the `pub
 
 You can also compress the directory for a smaller file-size.
 
-For a reference Powershell script, see [Ali the Android's publish.ps1 script](https://github.com/deengames/ali-the-android/blob/master/publish.ps1).
+For a reference Powershell script, see [Ali the Android's publish.ps1 script](https://github.com/deengames/ali-the-android/blob/master/publish.ps1). We intend to provide a similar script in the future.
+
+# Development
+
+- To build `Puffin`, you need to install `MonoGame`.
+- To build documentation, download `docfx`. Run it by entering `Puffin.Docs` and running `docfx docfx.json --serve`.
