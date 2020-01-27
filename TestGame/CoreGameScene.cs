@@ -27,7 +27,10 @@ namespace MyGame
 
             this.Add(tileMap);
 
-            this.Add(new Entity().Colour(0xFFFFFF, 32, 32).FourWayMovement(100));
+            this.Add(new Entity().Colour(0xFFFFFF, 32, 32)
+                .FourWayMovement(100).Move(100, 100).Collide(32, 32));
+
+            this.Add(new Entity().Colour(0xFF0000, 128, 64).Move(200, 200).Collide(128, 64));
         }
     }
 }

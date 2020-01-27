@@ -8,7 +8,7 @@ using Puffin.Core.IO;
 namespace Puffin.Core.UnitTests
 {
     [TestFixture]
-    public class FourWayMovementSystemTests
+    public class MovementSystemTests
     {
         [TearDown]
         public void ResetDependencyInjectionBindings()
@@ -34,7 +34,7 @@ namespace Puffin.Core.UnitTests
             var e1 = new Entity().FourWayMovement(100);
             var e2 = new Entity().Sprite("flower.png");
 
-            var system = new FourWayMovementSystem();
+            var system = new MovementSystem();
             system.OnAddEntity(e1);
             system.OnAddEntity(e2);
 
@@ -61,7 +61,7 @@ namespace Puffin.Core.UnitTests
             provider.Setup(p => p.IsActionDown(PuffinAction.Right)).Returns(true);
 
             var e = new Entity().FourWayMovement(100);
-            var system = new FourWayMovementSystem();
+            var system = new MovementSystem();
             system.OnAddEntity(e);
             system.OnUpdate(TimeSpan.FromSeconds(1));
             var expectedPosition = new Tuple<float, float>(e.X, e.Y);

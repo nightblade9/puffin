@@ -72,7 +72,7 @@ namespace Puffin.Infrastructure.MonoGame
 
             var systems = new ISystem[]
             {
-                new FourWayMovementSystem(),
+                new MovementSystem(),
                 new OverlapSystem(),
                 new MouseSystem(),
                 new AudioSystem(new MonoGameAudioPlayer()),
