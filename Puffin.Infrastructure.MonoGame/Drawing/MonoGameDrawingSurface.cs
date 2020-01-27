@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using SpriteFontPlus;
 using System;
+using Puffin.Core.Tiles;
 
 namespace Puffin.Infrastructure.MonoGame.Drawing
 {
@@ -20,6 +21,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
         private IList<Entity> entities = new List<Entity>();
 
         private IDictionary<Entity, MonoGameSprite> entitySprites = new Dictionary<Entity, MonoGameSprite>();
+        private IDictionary<TileMap, Texture2D> tileMapSprites = new Dictionary<TileMap, Texture2D>();
 
         private IDictionary<Entity, SpriteFont> entityFonts = new Dictionary<Entity, SpriteFont>();        
         // "name, size" => font. Cache of all fonts ever seen so far.
@@ -84,12 +86,46 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             this.entitySprites.Remove(entity);
         }
 
-        public void DrawAll(uint backgroundColour = 0x000000)
+        public void AddTileMap(TileMap tileMap)
+        {
+            this.tileMapSprites[tileMap] = LoadImage(tileMap.TileImageFile);
+        }
+
+        public void RemoveTileMap(TileMap tileMap)
+        {
+            this.tileMapSprites[tileMap].Dispose();
+            this.tileMapSprites.Remove(tileMap);
+        }
+
+        public void DrawAll(uint backgroundColour)
         {
             this.graphics.Clear(new Color(backgroundColour + 0xFF000000));
             this.spriteBatch.Begin();
 
             // TODO: render in order of Z from lowest to highest
+            // Tilemaps first, I suppose
+            foreach (var tileMap in this.tileMapSprites.Keys)
+            {
+                var mapTexture = this.tileMapSprites[tileMap];
+                for (var y = 0; y < tileMap.MapHeight; y++)
+                {
+                    for (var x = 0; x < tileMap.MapWidth; x++)
+                    {
+                        var tile = tileMap[x, y];
+                        if (tile != null)
+                        {
+                            var definition = tileMap.GetDefinition(tile);
+                            spriteBatch.Draw(
+                                mapTexture,
+                                new Vector2(x * tileMap.TileWidth, y * tileMap.TileHeight),
+                                new Rectangle(definition.CellX * tileMap.TileWidth, definition.CellY * tileMap.TileHeight, tileMap.TileWidth, tileMap.TileHeight),
+                                Color.White
+                            );
+                        }
+                    }
+                }
+            }
+
             foreach (var entity in this.entities)
             {
                 var colour = entity.GetIfHas<ColourComponent>();
@@ -124,6 +160,16 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
         public void Dispose()
         {
             this.whiteRectangle.Dispose();
+
+            foreach (var sprite in this.entitySprites.Values)
+            {
+                sprite.Texture.Dispose();
+            }
+
+            foreach (var texture in this.tileMapSprites.Values)
+            {
+                texture.Dispose();
+            }
         }
 
         private Texture2D LoadImage(string fileName)

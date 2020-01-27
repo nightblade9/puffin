@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using NUnit.Framework;
 using Puffin.Core.Tiles;
@@ -55,6 +56,33 @@ namespace Puffin.Core.UnitTests.Tiles
             Assert.That(map[1, 0], Is.EqualTo("Grass"));
             Assert.That(map[1, 1], Is.EqualTo("Tree"));
             Assert.That(map[2, 2], Is.Null); // never set
+        }
+
+        [Test]
+        public void GetDefinitionGetsDefinitionDefined()
+        {
+            // Arrange
+            var map = new TileMap(60, 50, "castle.png", 64, 64);
+            map.Define("wall", 0, 0, false);
+            map.Define("wall", 10, 17, true);
+
+            // Act
+            var actual = map.GetDefinition("wall");
+
+            // Assert
+            Assert.That(actual.CellX, Is.EqualTo(10));
+            Assert.That(actual.CellY, Is.EqualTo(17));
+            Assert.That(actual.IsSolid, Is.True);
+        }
+
+        [Test]
+        public void GetDefinitionThrowsIfDefinitionIsNotDefined()
+        {
+            var map = new TileMap(60, 50, "castle.png", 64, 64);
+            map.Define("wall", 0, 0, false);
+            map.Define("wall", 10, 17, true);
+
+            Assert.Throws<ArgumentException>(() => map.GetDefinition("waterfall"));
         }
     }
 }

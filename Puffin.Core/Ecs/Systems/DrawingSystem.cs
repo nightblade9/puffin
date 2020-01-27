@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Puffin.Core.Drawing;
 using Puffin.Core.Ecs.Components;
+using Puffin.Core.Tiles;
 
 namespace Puffin.Core.Ecs.Systems
 {
@@ -36,12 +37,22 @@ namespace Puffin.Core.Ecs.Systems
             this.drawingSurface.RemoveEntity(entity);
         }
 
+        public virtual void OnAddTileMap(TileMap tileMap)
+        {
+            this.drawingSurface.AddTileMap(tileMap);
+        }
+
+        public virtual void OnRemoveTileMap(TileMap tileMap)
+        {
+            this.drawingSurface.RemoveTileMap(tileMap);
+        }
+
         public virtual void OnUpdate(TimeSpan elapsed)
         {
             
         }
         
-        public virtual void OnDraw(TimeSpan elapsed, uint backgroundColour = 0x000000)
+        public virtual void OnDraw(TimeSpan elapsed, uint backgroundColour)
         {
             this.drawingSurface.DrawAll(backgroundColour);
         }

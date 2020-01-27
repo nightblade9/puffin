@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using Puffin.Core.Ecs;
+using Puffin.Core.Tiles;
 
 namespace Puffin.Core.Drawing
 {
@@ -10,5 +12,7 @@ namespace Puffin.Core.Drawing
         void DrawAll(uint backgroundColour);
         void AddEntity(Entity entity);
         void RemoveEntity(Entity entity);
+        void AddTileMap(TileMap tileMap);
+        void RemoveTileMap(TileMap tileMap);
     }
 }

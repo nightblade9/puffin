@@ -12,11 +12,11 @@ namespace Puffin.Core.Tiles
     public class TileMap
     {
         internal readonly string TileImageFile;
-        internal readonly int MapWidth;
-        internal readonly int MapHeight;
+        internal readonly int MapWidth; // in tiles
+        internal readonly int MapHeight; // in tiles
 
-        private readonly int tileWidth;
-        private readonly int tileHeight;
+        internal readonly int TileWidth; // in pixels
+        internal readonly int TileHeight; // in pixels
 
         // List of all tile definitions, indexed by name.
         private IDictionary<string, TileDefinition> tileSet = new Dictionary<string, TileDefinition>();
@@ -34,8 +34,8 @@ namespace Puffin.Core.Tiles
             this.MapWidth = mapWidth;
             this.MapHeight = mapHeight;
             this.TileImageFile = tileImageFile;
-            this.tileWidth = tileWidth;
-            this.tileHeight = tileHeight;
+            this.TileWidth = tileWidth;
+            this.TileHeight = tileHeight;
 
             this.tileData = new string[mapWidth, mapHeight];
         }
@@ -77,6 +77,18 @@ namespace Puffin.Core.Tiles
         internal TileDefinition[] GetDefinitions()
         {
             return this.tileSet.Values.ToArray();
+        }
+
+        internal TileDefinition GetDefinition(string tileName)
+        {
+            if (this.tileSet.ContainsKey(tileName))
+            {
+                return this.tileSet[tileName];
+            }
+            else
+            {
+                throw new ArgumentException($"{tileName} isn't defined; defintiions are: {this.tileSet.Keys}");
+            }
         }
 
         internal struct TileDefinition

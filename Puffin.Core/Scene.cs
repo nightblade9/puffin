@@ -4,6 +4,7 @@ using System.Linq;
 using Puffin.Core.Ecs;
 using Puffin.Core.Ecs.Systems;
 using Puffin.Core.IO;
+using Puffin.Core.Tiles;
 
 namespace Puffin.Core
 {
@@ -14,7 +15,8 @@ namespace Puffin.Core
     public class Scene : IDisposable
     {
         public float Fps { get; private set; }
-        public uint BackgroundColour = 0x000000;
+        public uint BackgroundColour = 0x000000; // black
+
         internal Action OnMouseClick;
 
         private IMouseProvider mouseProvider;
@@ -22,7 +24,9 @@ namespace Puffin.Core
         private ISystem[] systems = new ISystem[0];
         private DrawingSystem drawingSystem;
         private List<Entity> entities = new List<Entity>();
-        
+        // Drawn in the order added
+        private List<TileMap> tileMaps = new List<TileMap>();
+
         // A date and a number of draw calls to calculate FPS
         private DateTime lastFpsUpdate = DateTime.Now;
         private int drawsSinceLastFpsCount = 0;
@@ -61,6 +65,27 @@ namespace Puffin.Core
             {
                 system.OnRemoveEntity(entity);
             }
+        }
+
+        /// <summary>
+        /// Adds a tilemap to the scene; it will be drawn. Any tiles with no value set, won't be drawn.
+        /// Note that tilemaps are drawn in the order added.
+        /// </summary>
+        public void Add(TileMap tileMap)
+        {
+            this.tileMaps.Add(tileMap);
+            if (this.drawingSystem != null)
+            {
+                this.drawingSystem.OnAddTileMap(tileMap);
+            }
+        }
+
+        /// <summary>
+        /// Removes a tilemap from the scene; it will no longer be drawn.
+        /// </summary>
+        public void Remove(TileMap tileMap)
+        {
+            this.drawingSystem.OnRemoveTileMap(tileMap);
         }
 
         /// <summary>
@@ -138,7 +163,13 @@ namespace Puffin.Core
                 {
                     system.OnAddEntity(entity);
                 }
-            }            
+            }
+
+            // Initialize tilemaps' sprites
+            foreach (var tileMap in this.tileMaps)
+            {
+                this.drawingSystem.OnAddTileMap(tileMap);
+            }
         }
 
         private void onMouseClick(object data)
