@@ -74,5 +74,39 @@ namespace Puffin.Core.UnitTests
             Assert.That(e.X, Is.EqualTo(expectedPosition.Item1));
             Assert.That(e.Y, Is.EqualTo(expectedPosition.Item2));
         }
+
+        [Test]
+        public void ProcessMovementCollidesAndStopsEntityWithTile()
+        {
+            
+        }
+
+        [TestCase(false)]
+        //[TestCase(true)]
+        public void ProcessMovementCollidesAndStopsEntityWithEntity(bool moveAndSlide)
+        {
+            var scene = new Scene();
+
+            var keyboardProvider = new Mock<IKeyboardProvider>();
+            DependencyInjection.Kernel.Bind<IKeyboardProvider>().ToConstant(keyboardProvider.Object);
+            keyboardProvider.Setup(p => p.IsActionDown(PuffinAction.Down)).Returns(true);
+            keyboardProvider.Setup(p => p.IsActionDown(PuffinAction.Right)).Returns(true);
+            
+            var system = new MovementSystem();
+            scene.Initialize(new ISystem[] { new DrawingSystem(), system }, null, keyboardProvider.Object);
+
+            var player = new Entity().FourWayMovement(100, moveAndSlide).Collide(32, 32);
+
+            scene.Add(player);
+            scene.Add(new Entity().Collide(32, 32).Move(25, 50));
+
+            // Act
+            system.OnUpdate(TimeSpan.FromSeconds(1));
+
+            // Assert
+            // Unobstructed, should reach (100, 100). Will collide on y-axis first at (25, 25).
+            Assert.That(player.X, Is.EqualTo(25));
+            Assert.That(player.Y, Is.EqualTo(25));
+        }
     }
 }
