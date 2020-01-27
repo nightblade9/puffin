@@ -75,10 +75,27 @@ namespace Puffin.Core.Ecs.Systems
                         if (collidable != entity && collidable.GetIfHas<CollisionComponent>() != null)
                         {
                             var c2 = collidable.GetIfHas<CollisionComponent>();
-                            if (isAabbCollision(entity.X, entity.Y, myCollision.Width, myCollision.Height,
+                            if (isAabbCollision(entity.X + movementComponent.IntendedMoveDeltaX, entity.Y + movementComponent.IntendedMoveDeltaY, myCollision.Width, myCollision.Height,
                                 collidable.X, collidable.Y, c2.Width, c2.Height))
                             {
-                                // Another entity occupies that space
+                                // Another entity occupies that space. Use separating axis theorem (SAT)
+                                // to see how much we can move, and then move accordingly.
+                                // dx/dy are wrong; if we're moving left, dx = my left - target right
+                                // if we're moving right, dx = target left - my right
+                                var dx = collidable.X - entity.X + movementComponent.IntendedMoveDeltaX;
+                                var dy = collidable.Y - entity.Y + movementComponent.IntendedMoveDeltaY;
+                                var vx = movementComponent.IntendedMoveDeltaX / elapsed.TotalSeconds;
+                                var vy = movementComponent.IntendedMoveDeltaY / elapsed.TotalSeconds;
+
+                                var move = Math.Min(Math.Abs(dx), Math.Abs(dy)); // move minimal space to collide
+                                var moveOnX = move == dx; // moving on X or Y?
+                                var time = moveOnX ? move / vx : move / vy;
+                                Console.WriteLine($"dx={dx} dy={dy} vx={vx} vy={vy} move={move} time={time}");
+
+                                // Comment this out and we leave a tiny gap between us and the target
+                                //entity.X += time * movementComponent.IntendedMoveDeltaX;
+                                //entity.Y += time * movementComponent.IntendedMoveDeltaY;
+
                                 movementComponent.IntendedMoveDeltaX = 0;
                                 movementComponent.IntendedMoveDeltaY = 0;
                                 return;
