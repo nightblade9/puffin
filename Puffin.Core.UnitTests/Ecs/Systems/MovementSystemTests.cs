@@ -82,8 +82,8 @@ namespace Puffin.Core.UnitTests
         }
 
         [TestCase(false)]
-        //[TestCase(true)]
-        public void ProcessMovementCollidesAndStopsEntityWithEntity(bool moveAndSlide)
+        [TestCase(true)]
+        public void ProcessMovementCollidesAndStopsEntityWithEntity(bool slideOnCollide)
         {
             var scene = new Scene();
 
@@ -95,18 +95,27 @@ namespace Puffin.Core.UnitTests
             var system = new MovementSystem();
             scene.Initialize(new ISystem[] { new DrawingSystem(), system }, null, keyboardProvider.Object);
 
-            var player = new Entity().FourWayMovement(100, moveAndSlide).Collide(32, 32);
+            var player = new Entity().FourWayMovement(100, slideOnCollide).Collide(40, 40);
 
             scene.Add(player);
-            scene.Add(new Entity().Collide(32, 32).Move(25, 50));
+            scene.Add(new Entity().Collide(50, 50).Move(25, 50));
 
             // Act
-            system.OnUpdate(TimeSpan.FromSeconds(1));
+            system.OnUpdate(TimeSpan.FromSeconds(0.2));
 
             // Assert
             // Unobstructed, should reach (100, 100). Will collide on y-axis first at (25, 25).
-            Assert.That(player.X, Is.EqualTo(25));
-            Assert.That(player.Y, Is.EqualTo(25));
+            if (slideOnCollide)
+            {
+                // Move more so it slides
+                Assert.That(player.X, Is.EqualTo(30));
+                Assert.That(player.Y, Is.EqualTo(10));
+            }
+            else
+            {
+                Assert.That(player.X, Is.EqualTo(10));
+                Assert.That(player.Y, Is.EqualTo(10));
+            }
         }
     }
 }

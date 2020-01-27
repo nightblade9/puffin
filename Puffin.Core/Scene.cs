@@ -24,6 +24,8 @@ namespace Puffin.Core
         // Drawn in the order added. Internal because needed for collision resolution.
         internal List<TileMap> TileMaps = new List<TileMap>();
 
+        private readonly int MAX_UPDATE_INERVAL_MILLISECONDS = 150;
+
         private IMouseProvider mouseProvider;
         private IKeyboardProvider keyboardProvider;
         private ISystem[] systems = new ISystem[0];
@@ -119,14 +121,25 @@ namespace Puffin.Core
             new EventBus();
         }
 
-        /// <summary>
-        /// Internal method that calls `Update` on all systems in this scene.
-        /// </summary>
+        // "Macro" method, deliver updates in chunks of <= 150ms (MAX_UPDATE_INTERVAL_MILLISECONDS).
+        // This gives our games more stability, especially with physics, or collision
+        // detection with fast speeds and/or large velocities and/or intervals.
         internal void OnUpdate(TimeSpan elapsed)
         {
-            foreach (var system in this.systems)
+            
+            var millisecondsLeft = elapsed.TotalMilliseconds;
+            while (millisecondsLeft > 0)
             {
-                system.OnUpdate(elapsed);
+                if (millisecondsLeft >= MAX_UPDATE_INERVAL_MILLISECONDS)
+                {
+                    this.OnUpdate(MAX_UPDATE_INERVAL_MILLISECONDS);
+                    millisecondsLeft -= MAX_UPDATE_INERVAL_MILLISECONDS;
+                }
+                else
+                {
+                    this.OnUpdate((int)millisecondsLeft);
+                    millisecondsLeft = 0;
+                }
             }
 
             var timeDiff = (DateTime.Now - lastFpsUpdate).TotalSeconds;
@@ -137,8 +150,6 @@ namespace Puffin.Core
                 this.lastFpsUpdate = DateTime.Now;
                 Console.WriteLine($"{Fps} fps");
             }
-
-            this.Update();
         }
 
         /// <summary>
@@ -174,6 +185,17 @@ namespace Puffin.Core
             {
                 this.drawingSystem.OnAddTileMap(tileMap);
             }
+        }
+
+        // "Micro" method, called with chunks of time <= MAX_UPDATE_INTERVAL_MILLISECONDS
+        private void OnUpdate(int elapsedMilliseconds)
+        {
+            foreach (var system in this.systems)
+            {
+                system.OnUpdate(TimeSpan.FromMilliseconds(elapsedMilliseconds));
+            }
+
+            this.Update();
         }
 
         private void onMouseClick(object data)

@@ -104,7 +104,7 @@ namespace Puffin.Core.UnitTests.Ecs
             var actual = e.GetIfHas<FourWayMovementComponent>();
             Assert.That(actual, Is.Not.Null);
             Assert.That(actual.Speed, Is.EqualTo(210));
-            Assert.That(actual.MoveAndSlide, Is.True);
+            Assert.That(actual.SlideOnCollide, Is.True);
         }
 
         [Test]
