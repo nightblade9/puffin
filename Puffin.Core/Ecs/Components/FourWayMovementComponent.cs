@@ -15,6 +15,10 @@ namespace Puffin.Core.Ecs.Components
         /// </summary>
         public int Speed { get; set; }
 
+        // Bad Puffin! Hiding internal fields in components is not cool.
+        internal float IntendedMoveDeltaX = 0;
+        internal float IntendedMoveDeltaY = 0;
+
         public FourWayMovementComponent(Entity entity, int speed) : base(entity)
         {
             this.Speed = speed;
@@ -43,8 +47,8 @@ namespace Puffin.Core.Ecs.Components
 
             var elapsedSeconds = (float)elapsed.TotalSeconds;
 
-            this.Parent.X += (vx * this.Speed * elapsedSeconds);
-            this.Parent.Y += (vy * this.Speed * elapsedSeconds);
+            this.IntendedMoveDeltaX += (vx * this.Speed * elapsedSeconds);
+            this.IntendedMoveDeltaY += (vy * this.Speed * elapsedSeconds);
         }
     }
 }

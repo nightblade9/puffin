@@ -142,5 +142,15 @@ namespace Puffin.Core.Ecs
             entity.Set(new ColourComponent(entity, rgb, width, height));
             return entity;
         }
+
+        /// <summary>
+        /// Causes an entity to collide with other collidable entities and solid tiles.
+        /// Specify the size of the collision check, relative to this entity's origin.
+        /// </summary>
+        public static Entity Collide(this Entity entity, int width, int height)
+        {
+            entity.Set(new CollisionComponent(entity, width, height));
+            return entity;
+        }
     }
 }

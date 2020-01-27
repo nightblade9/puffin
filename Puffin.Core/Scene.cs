@@ -14,18 +14,21 @@ namespace Puffin.Core
     /// </summary>
     public class Scene : IDisposable
     {
+        public static Scene LatestInstance { get; private set; }
+
         public float Fps { get; private set; }
         public uint BackgroundColour = 0x000000; // black
 
         internal Action OnMouseClick;
+
+        // Drawn in the order added. Internal because needed for collision resolution.
+        internal List<TileMap> TileMaps = new List<TileMap>();
 
         private IMouseProvider mouseProvider;
         private IKeyboardProvider keyboardProvider;
         private ISystem[] systems = new ISystem[0];
         private DrawingSystem drawingSystem;
         private List<Entity> entities = new List<Entity>();
-        // Drawn in the order added
-        private List<TileMap> tileMaps = new List<TileMap>();
 
         // A date and a number of draw calls to calculate FPS
         private DateTime lastFpsUpdate = DateTime.Now;
@@ -35,6 +38,7 @@ namespace Puffin.Core
 
         public Scene()
         {
+            Scene.LatestInstance = this;
             EventBus.LatestInstance.Subscribe(EventBusSignal.MouseClicked, onMouseClick);
         }
 
@@ -73,7 +77,7 @@ namespace Puffin.Core
         /// </summary>
         public void Add(TileMap tileMap)
         {
-            this.tileMaps.Add(tileMap);
+            this.TileMaps.Add(tileMap);
             if (this.drawingSystem != null)
             {
                 this.drawingSystem.OnAddTileMap(tileMap);
@@ -166,7 +170,7 @@ namespace Puffin.Core
             }
 
             // Initialize tilemaps' sprites
-            foreach (var tileMap in this.tileMaps)
+            foreach (var tileMap in this.TileMaps)
             {
                 this.drawingSystem.OnAddTileMap(tileMap);
             }
