@@ -69,11 +69,11 @@ namespace Puffin.Core.Ecs
         /// Makes the entity move in four directions in response to WASD or arrow keys.
         /// The entity moves at the specified speed, in pixels per second.
         /// If you want the entity to move and slide along things it collides with instead of
-        /// stopping abruptly, specify true for moveAndSlide.
+        /// stopping abruptly, specify true for slideOnCollide.
         /// </summary>
-        public static Entity FourWayMovement(this Entity entity, int speed, bool moveAndSlide = false)
+        public static Entity FourWayMovement(this Entity entity, int speed, bool slideOnCollide = false)
         {
-            entity.Set(new FourWayMovementComponent(entity, speed, moveAndSlide));
+            entity.Set(new FourWayMovementComponent(entity, speed, slideOnCollide));
             return entity;
         }
 

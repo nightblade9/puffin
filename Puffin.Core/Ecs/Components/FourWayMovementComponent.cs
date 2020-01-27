@@ -18,16 +18,17 @@ namespace Puffin.Core.Ecs.Components
         /// <summary>
         /// When we collide against something, do we slide along it instead of abruptly stopping?
         /// </summary>
-        public bool MoveAndSlide { get; set;}
+        public bool SlideOnCollide { get; set;}
 
         // Bad Puffin! Hiding internal fields in components is not cool.
+        // TODO: move these into Entity so NPCs etc. can use them too.
         internal float IntendedMoveDeltaX = 0;
         internal float IntendedMoveDeltaY = 0;
 
-        public FourWayMovementComponent(Entity entity, int speed, bool moveAndSlide = false) : base(entity)
+        public FourWayMovementComponent(Entity entity, int speed, bool slideOnCollide = false) : base(entity)
         {
             this.Speed = speed;
-            this.MoveAndSlide = moveAndSlide;
+            this.SlideOnCollide = slideOnCollide;
         }
 
         internal void OnUpdate(TimeSpan elapsed)

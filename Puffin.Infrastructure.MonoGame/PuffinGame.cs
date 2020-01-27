@@ -20,8 +20,6 @@ namespace Puffin.Infrastructure.MonoGame
     /// </summary>
     public abstract class PuffinGame : Game
     {
-        private readonly TimeSpan MAX_UPDATE_INERVAL_MILLISECONDS = TimeSpan.FromMilliseconds(150);
-
         /// <summary>
         /// A mapping of in-game actions to the (MonoGame) keyboard keys that map to them.
         /// PuffinGame ships with default mappings for all actions; you can override these
@@ -109,19 +107,7 @@ namespace Puffin.Infrastructure.MonoGame
         {
             this.mouseProvider.Update();
             this.keyboardProvider.Update();
-
-            // Deliver updates in chunks of <= 150ms (MAX_UPDATE_INTERVAL_MILLISECONDS).
-            // This gives our games more stability, especially with physics, or collision
-            // detection with fast speeds and/or large velocities and/or intervals.
-            var millisecondsLeft = TimeSpan.FromMilliseconds(gameTime.ElapsedGameTime.TotalMilliseconds);
-            while (millisecondsLeft.TotalMilliseconds > MAX_UPDATE_INERVAL_MILLISECONDS.TotalMilliseconds)
-            {
-                this.currentScene.OnUpdate(MAX_UPDATE_INERVAL_MILLISECONDS);
-                millisecondsLeft.Subtract(MAX_UPDATE_INERVAL_MILLISECONDS);
-            }
-            // Leftover milliseconds might be like, 89 or something small, maybe even zero
-            this.currentScene?.OnUpdate(millisecondsLeft);
-
+            this.currentScene.OnUpdate(gameTime.ElapsedGameTime);
             base.Update(gameTime);
         }
 
