@@ -35,7 +35,7 @@ namespace Puffin.Core.Ecs.Systems
             }
         }
 
-        private void ProcessMovement(TimeSpan elapsed, Entity entity)
+        private void ProcessMovement(TimeSpan elapsed, Entity entity, bool moveAndSlide = true)
         {
             var movementComponent = entity.GetIfHas<FourWayMovementComponent>();
                 
@@ -81,39 +81,53 @@ namespace Puffin.Core.Ecs.Systems
                             {
                                 // Another entity occupies that space. Use separating axis theorem (SAT)
                                 // to see how much we can move, and then move accordingly, resolving at whichever
-                                // axis collides first (not whichever one is the smallest diff).
+                                // axis collides first by time (not whichever one is the smallest diff).
                                 (float dx, float dy) = CalculateDxDy(entity, collidable);
                                 float vx = (float)(movementComponent.IntendedMoveDeltaX / elapsed.TotalSeconds);
                                 float vy = (float)(movementComponent.IntendedMoveDeltaY / elapsed.TotalSeconds);
                                 float tx = vx != 0 ? Math.Abs(dx / vx) : 0;
                                 float ty = vy != 0 ? Math.Abs(dy / vy) : 0;
 
-                                float time;
+                                float shortestTime = 0;
                                 if (vx != 0 && vy == 0)
                                 {
                                     // X-axis collision
-                                    time = tx;
-                                    entity.X += time * vx;
+                                    shortestTime = tx;
+                                    entity.X += shortestTime * vx;
                                     movementComponent.IntendedMoveDeltaX = 0;
                                 }
                                 else if (vx == 0 && vy != 0)
                                 {
-                                    time = ty;
-                                    entity.Y += time * vy;
+                                    shortestTime = ty;
+                                    entity.Y += shortestTime * vy;
                                     movementComponent.IntendedMoveDeltaY = 0;
                                 }
                                 else
                                 {
-                                    time = Math.Min(Math.Abs(tx), Math.Abs(ty));
-                                    entity.X += time * vx;
-                                    entity.Y += time * vy;
+                                    shortestTime = Math.Min(Math.Abs(tx), Math.Abs(ty));
+                                    entity.X += shortestTime * vx;
+                                    entity.Y += shortestTime * vy;
+
+                                    if (moveAndSlide)
+                                    {
+                                        // When pressing against an object, if you multiply by time as min(tx, ty), you get zero.
+                                        // If you multiply by component times (tx/ty), one is zero and the other is non-zero, so you slide.
+                                        
+                                        // Resolved collision on the y-axis
+                                        if (shortestTime != tx)
+                                        {
+                                            entity.X += movementComponent.IntendedMoveDeltaX;
+                                        }
+                                        // Resolved collision on the x-axis
+                                        else if (shortestTime != ty)
+                                        {
+                                            entity.Y  += movementComponent.IntendedMoveDeltaY;
+                                        }
+                                    }
 
                                     movementComponent.IntendedMoveDeltaX = 0;
                                     movementComponent.IntendedMoveDeltaY = 0;
                                 }
-
-                                Console.WriteLine($"elapsed={elapsed.TotalSeconds}; dx={dx} dy={dy} vx={vx} vy={vy} tx={tx} ty={ty}; time is {time}; resolve along {(time == tx ? "x" : "y")}-axis");
-
                                 return;
                             }
                         }
