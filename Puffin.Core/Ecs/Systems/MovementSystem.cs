@@ -35,7 +35,7 @@ namespace Puffin.Core.Ecs.Systems
             }
         }
 
-        private void ProcessMovement(TimeSpan elapsed, Entity entity, bool moveAndSlide = true)
+        private void ProcessMovement(TimeSpan elapsed, Entity entity)
         {
             var movementComponent = entity.GetIfHas<FourWayMovementComponent>();
                 
@@ -108,7 +108,7 @@ namespace Puffin.Core.Ecs.Systems
                                     entity.X += shortestTime * vx;
                                     entity.Y += shortestTime * vy;
 
-                                    if (moveAndSlide)
+                                    if (movementComponent.MoveAndSlide)
                                     {
                                         // When pressing against an object, if you multiply by time as min(tx, ty), you get zero.
                                         // If you multiply by component times (tx/ty), one is zero and the other is non-zero, so you slide.
