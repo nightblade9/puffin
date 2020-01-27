@@ -1,47 +1,33 @@
 using System;
+using System.IO;
 using Puffin.Core;
 using Puffin.Core.Ecs;
 using Puffin.Core.Ecs.Components;
+using Puffin.Core.Tiles;
 
 namespace MyGame
 {
     public class CoreGameScene : Scene
     {
-        private Random random = new Random();
-        private Entity player;
-
         public CoreGameScene()
         {
-            this.BackgroundColour = 0x444444;
-            
-            player = new Entity().FourWayMovement(100)
-                .Sprite("Content/Charspore.png")
-                .Overlap(32, 32)
-                .Move(300, 300)
-                .Label("HI MOM!!!")
-                .Audio("test.wav");
-            
-            player.Set(new ColourComponent(player, 0xFF8800, 64, 64));
+            var tileMap = new TileMap(30, 17, Path.Combine("Content", "dungeon.png"), 32, 32);
+            tileMap.Define("Floor", 0, 0);
+            tileMap.Define("Wall", 1, 0, true);
 
-            player.Mouse(() => {
-                float pitch = (float)(0.5 + (random.NextDouble() % 0.5));
-                Console.WriteLine($"Pitch={pitch}");
-                this.BackgroundColour = 0x882211;
-                player.GetIfHas<AudioComponent>().Play(pitch);
-                //this.Remove(player);
-
-                player.GetIfHas<TextLabelComponent>().FontSize = 72;
-            }, 32, 32);
-
-            this.Add(player);
-        }
-
-        override public void Update()
-        {
-            if (this.IsActionDown(CustomAction.Next))
-            {
-                this.Remove(player);
+            for (var y = 0; y < 17; y++) {
+                for (var x = 0; x < 30; x++) {
+                    if (x == 0 || y == 0 || x == 29 || y == 16) {
+                        tileMap[x, y] = "Wall";
+                    } else {
+                        tileMap[x, y] = "Floor";
+                    }
+                }
             }
+
+            this.Add(tileMap);
+
+            this.Add(new Entity().Colour(0xFFFFFF, 32, 32).FourWayMovement(100));
         }
     }
 }

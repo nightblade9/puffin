@@ -5,6 +5,7 @@ using Puffin.Core.Drawing;
 using Puffin.Core.Ecs;
 using Puffin.Core.Ecs.Systems;
 using Puffin.Core.IO;
+using Puffin.Core.Tiles;
 
 namespace Puffin.Core.UnitTests
 {
@@ -207,6 +208,65 @@ namespace Puffin.Core.UnitTests
 
             // Assert
             Assert.That(scene.Fps, Is.GreaterThan(0));
+        }
+
+        [Test]
+        public void AddAddsTileMapToDrawingSystem()
+        {
+            // Arrange
+            var isCalled = false;
+            var system = new Mock<DrawingSystem>(new Mock<IDrawingSurface>().Object);
+            var scene = new Scene();
+            scene.Initialize(new ISystem[] { system.Object }, new Mock<IMouseProvider>().Object, new Mock<IKeyboardProvider>().Object);
+            var tileMap = new TileMap(10, 5, "outdoors.png", 16, 16);
+
+            system.Setup(s => s.OnAddTileMap(tileMap)).Callback(() => isCalled = true);
+
+            // Act
+            scene.Add(tileMap);
+
+            // Assert
+            Assert.That(isCalled, Is.True);
+        }
+
+        [Test]
+        public void RemoveRemovesTileMapFromDrawingSystem()
+        {
+            // Arrange
+            var isCalled = false;
+            var system = new Mock<DrawingSystem>(new Mock<IDrawingSurface>().Object);
+            var scene = new Scene();
+            scene.Initialize(new ISystem[] { system.Object }, new Mock<IMouseProvider>().Object, new Mock<IKeyboardProvider>().Object);
+            var tileMap = new TileMap(10, 5, "outdoors.png", 16, 16);
+
+            system.Setup(s => s.OnRemoveTileMap(tileMap)).Callback(() => isCalled = true);
+            scene.Add(tileMap);
+
+            // Act
+            scene.Remove(tileMap);
+
+            // Assert
+            Assert.That(isCalled, Is.True);
+        }
+
+        [Test]
+        public void InitializeCallsOnAddTileMap()
+        {
+            // Arrange
+            var tileMap = new TileMap(10, 5, "outdoors.png", 16, 16);
+
+            var isCalled = false;
+            var system = new Mock<DrawingSystem>(new Mock<IDrawingSurface>().Object);
+            var scene = new Scene();
+            scene.Add(tileMap);
+
+            system.Setup(s => s.OnAddTileMap(tileMap)).Callback(() => isCalled = true);
+
+            // Act
+            scene.Initialize(new ISystem[] { system.Object }, new Mock<IMouseProvider>().Object, new Mock<IKeyboardProvider>().Object);
+
+            // Assert
+            Assert.That(isCalled, Is.True);
         }
     }
 }
