@@ -106,10 +106,11 @@ namespace Puffin.Core
         /// A method that's called every time Update is called by the game engine.
         /// Override it to do things "every frame."
         /// </summary>
-        public virtual void Update()
+        public virtual void Update(int elapsedMilliseconds)
         {
             
         }
+        
         public void Dispose()
         {
             if (EventBus.LatestInstance != null)
@@ -127,18 +128,20 @@ namespace Puffin.Core
         internal void OnUpdate(TimeSpan elapsed)
         {
             
-            var millisecondsLeft = elapsed.TotalMilliseconds;
-            while (millisecondsLeft > 0)
+            var secondsLeft = elapsed.TotalMilliseconds;
+            while (secondsLeft > 0)
             {
-                if (millisecondsLeft >= MAX_UPDATE_INERVAL_MILLISECONDS)
+                if (secondsLeft >= MAX_UPDATE_INERVAL_MILLISECONDS)
                 {
                     this.OnUpdate(MAX_UPDATE_INERVAL_MILLISECONDS);
-                    millisecondsLeft -= MAX_UPDATE_INERVAL_MILLISECONDS;
+                    this.Update(MAX_UPDATE_INERVAL_MILLISECONDS);
+                    secondsLeft -= MAX_UPDATE_INERVAL_MILLISECONDS;
                 }
                 else
                 {
-                    this.OnUpdate((int)millisecondsLeft);
-                    millisecondsLeft = 0;
+                    this.OnUpdate((int)secondsLeft);
+                    this.Update((int)secondsLeft);
+                    secondsLeft = 0;
                 }
             }
 
@@ -195,7 +198,7 @@ namespace Puffin.Core
                 system.OnUpdate(TimeSpan.FromMilliseconds(elapsedMilliseconds));
             }
 
-            this.Update();
+            this.Update(elapsedMilliseconds);
         }
 
         private void onMouseClick(object data)
