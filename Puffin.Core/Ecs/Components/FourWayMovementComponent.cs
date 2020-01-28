@@ -56,6 +56,11 @@ namespace Puffin.Core.Ecs.Components
 
             this.IntendedMoveDeltaX += (vx * this.Speed * elapsedSeconds);
             this.IntendedMoveDeltaY += (vy * this.Speed * elapsedSeconds);
+            if (vx != 0 && vy != 0)
+            {
+                vx = (int)(vx / Math.Sqrt(2));
+                vy = (int)(vy / Math.Sqrt(2));
+            }
         }
     }
 }
