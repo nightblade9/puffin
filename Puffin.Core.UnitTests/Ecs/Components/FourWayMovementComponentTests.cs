@@ -34,7 +34,7 @@ namespace Puffin.Core.UnitTests.Ecs
             var component = new FourWayMovementComponent(e, speed);
 
             // Act
-            component.OnUpdate(elapsed);
+            component.OnUpdate();
             
             // Assert
             Assert.That(e.IntendedMoveDeltaX, Is.EqualTo(-speed * elapsed.TotalSeconds));

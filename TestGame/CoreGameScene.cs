@@ -2,13 +2,17 @@ using System;
 using System.IO;
 using Puffin.Core;
 using Puffin.Core.Ecs;
-using Puffin.Core.Ecs.Components;
 using Puffin.Core.Tiles;
 
 namespace MyGame
 {
     public class CoreGameScene : Scene
     {
+        // Good Lord, this pattern is the pits.
+        private Entity entityToMove;
+        private const int MOVE_VELOCITY = 200;
+        private DateTime start = DateTime.Now;
+
         public CoreGameScene()
         {
             var tileMap = new TileMap(30, 17, Path.Combine("Content", "dungeon.png"), 32, 32);
@@ -28,11 +32,22 @@ namespace MyGame
             this.Add(tileMap);
 
             this.Add(new Entity().Colour(0xFFFFFF, 32, 32)
-                .Move(48, 48)
+                .Move(850, 48)
                 .FourWayMovement(100)
                 .Collide(32, 32, true));
 
             this.Add(new Entity().Colour(0xFF0000, 128, 64).Move(100, 100).Collide(128, 64));
+            this.Add(new Entity().Colour(0x884400, 128, 64).Move(150, 200).Collide(128, 64));
+
+            //entityToMove = new Entity().Colour(0x0088FF, 32, 32).Move(50, 400).Collide(32, 32, true);
+            //this.Add(entityToMove);
+        }
+
+        override public void Update(int elapsedMilliseconds)
+        {
+            float elapsedSeconds = elapsedMilliseconds/1000f;
+            // UGH, NO.
+            entityToMove?.MoveBy(MOVE_VELOCITY * elapsedSeconds, -MOVE_VELOCITY * elapsedSeconds);
         }
     }
 }
