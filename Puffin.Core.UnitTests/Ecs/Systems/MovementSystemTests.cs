@@ -162,7 +162,7 @@ namespace Puffin.Core.UnitTests
 
             // Assert: player didn't move. Faulty collision sees him resolve from the top
             // wall and move into the left wall.
-            Assert.That(player.X, Is.EqualTo(32));
+            Assert.That(player.X, Is.EqualTo(40));
             Assert.That(player.Y, Is.EqualTo(32));
         }
     }
