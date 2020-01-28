@@ -29,13 +29,19 @@ namespace Puffin.Core.Ecs
             return this; // for chaining calls
         }
 
+        /// <summary>
+        /// Removes a component of a specific type, if the entity has one of those. (Doesn't throw if not.)
+        /// </summary>
         public void Remove<T>() where T : Component
         {
             var type = typeof(T);
             this.Remove(type);
         }
 
-        public T GetIfHas<T>() where T : Component
+        /// <summary>
+        /// Get the component of the specified type, if it exists; returns null if not.
+        /// </summary>
+        public T Get<T>() where T : Component
         {
             var type = typeof(T);
             if (this.components.ContainsKey(type))
@@ -51,7 +57,6 @@ namespace Puffin.Core.Ecs
             if (this.components.ContainsKey(componentType))
             {
                 this.components[componentType] = null;
-                // Signal: component removed
             }
         }
     }

@@ -17,7 +17,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             this.Texture = texture;
 
             // if it's a spritesheet, note the rectangle.
-            var sprite = parent.GetIfHas<SpriteComponent>();
+            var sprite = parent.Get<SpriteComponent>();
             if (sprite.FrameWidth > 0 && sprite.FrameHeight > 0)
             {
                 // Spritesheet

@@ -58,7 +58,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
 
         public void AddEntity(Entity entity)
         {
-            var sprite = entity.GetIfHas<SpriteComponent>();
+            var sprite = entity.Get<SpriteComponent>();
             
             if (sprite != null)
             {
@@ -67,12 +67,12 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
                 entitySprites[entity] = monoGameSprite;
                 this.entities.Add(entity);
             }
-            else if (entity.GetIfHas<TextLabelComponent>() != null)
+            else if (entity.Get<TextLabelComponent>() != null)
             {
                 this.entities.Add(entity);
                 // TODO: load the appropriate font or specify the default font
             }
-            else if (entity.GetIfHas<ColourComponent>() != null)
+            else if (entity.Get<ColourComponent>() != null)
             {
                 this.entities.Add(entity);
             }
@@ -128,7 +128,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
 
             foreach (var entity in this.entities)
             {
-                var colour = entity.GetIfHas<ColourComponent>();
+                var colour = entity.Get<ColourComponent>();
                 if (colour != null)
                 {
                     this.spriteBatch.Draw(whiteRectangle, 
@@ -141,7 +141,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
                     this.spriteBatch.Draw(monoGameSprite.Texture, new Vector2(entity.X, entity.Y), monoGameSprite.Region, Color.White);
                 }
 
-                var text = entity.GetIfHas<TextLabelComponent>();
+                var text = entity.Get<TextLabelComponent>();
                 if (text != null)
                 {
                     if (!this.entityFonts.ContainsKey(entity))

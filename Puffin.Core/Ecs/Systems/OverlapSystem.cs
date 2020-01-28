@@ -10,7 +10,7 @@ namespace Puffin.Core.Ecs.Systems
 
         public void OnAddEntity(Entity entity)
         {
-            if (entity.GetIfHas<OverlapComponent>() != null)
+            if (entity.Get<OverlapComponent>() != null)
             {
                 this.entities.Add(entity);
             }
@@ -29,8 +29,8 @@ namespace Puffin.Core.Ecs.Systems
                 {
                     if (me != target)
                     {
-                        var myOverlap = me.GetIfHas<OverlapComponent>();
-                        var targetOverlap = target.GetIfHas<OverlapComponent>();
+                        var myOverlap = me.Get<OverlapComponent>();
+                        var targetOverlap = target.Get<OverlapComponent>();
 
                         // Case 1: is me newly-overlapping target?
                         if (IsOverlapping(me, target) && !WasOverlapping(myOverlap, target))
@@ -54,9 +54,9 @@ namespace Puffin.Core.Ecs.Systems
 
         public static bool IsOverlapping(Entity me, Entity target)
         {
-            var overlap = me.GetIfHas<OverlapComponent>();
+            var overlap = me.Get<OverlapComponent>();
 
-            var targetOverlap = target.GetIfHas<OverlapComponent>();
+            var targetOverlap = target.Get<OverlapComponent>();
             if (targetOverlap == null)
             {
                 return false;
