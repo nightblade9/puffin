@@ -106,12 +106,12 @@ namespace Puffin.Core.UnitTests
             system.OnUpdate(TimeSpan.FromSeconds(0.2));
 
             // Assert
-            // Unobstructed, should reach (100, 100). Will collide on y-axis first at (25, 25).
+            // Unobstructed, should reach (100, 100).
             if (slideOnCollide)
             {
                 // Move more so it slides
-                Assert.That(player.X, Is.EqualTo(30));
-                Assert.That(player.Y, Is.EqualTo(10));
+                Assert.That(player.X, Is.EqualTo(20));
+                Assert.That(player.Y, Is.EqualTo(0));
             }
             else
             {

@@ -17,7 +17,7 @@ namespace Puffin.Core.UnitTests.Ecs
         }
 
         [Test]
-        public void OnUpdateMovesParentProportionalToVelocityAndTimeElapsed()
+        public void OnUpdateSetsParentIntentProportionalToVelocityAndTimeElapsed()
         {
             const int speed = 100;
             var elapsed = TimeSpan.FromSeconds(2);
