@@ -29,9 +29,24 @@ namespace Puffin.Core.Ecs.Systems
 
         public void OnUpdate(TimeSpan elapsed)
         {
+            var halfElapsed = TimeSpan.FromMilliseconds(elapsed.TotalMilliseconds / 2);
+
             foreach (var entity in this.entities)
             {
-                this.ProcessMovement(elapsed, entity);
+                this.ProcessMovement(halfElapsed, entity);
+                this.ProcessMovement(halfElapsed, entity);
+            }
+
+            foreach (var entity in this.entities)
+            {
+                var movementComponent = entity.GetIfHas<FourWayMovementComponent>();
+                if (movementComponent != null)
+                {
+                    entity.X += movementComponent.IntendedMoveDeltaX;
+                    entity.Y += movementComponent.IntendedMoveDeltaY;
+                    movementComponent.IntendedMoveDeltaX = 0;
+                    movementComponent.IntendedMoveDeltaY = 0;
+                }
             }
         }
 
@@ -76,11 +91,6 @@ namespace Puffin.Core.Ecs.Systems
                         }
                     }
                 }
-
-                entity.X += movementComponent.IntendedMoveDeltaX;
-                entity.Y += movementComponent.IntendedMoveDeltaY;
-                movementComponent.IntendedMoveDeltaX = 0;
-                movementComponent.IntendedMoveDeltaY = 0;
             }
         }
 
