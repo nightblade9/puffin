@@ -16,7 +16,9 @@ namespace Puffin.Core.Ecs
         public float X { get; set; }
 
         public float Y { get; set; }
-        
+        public float VelocityX { get; set; }
+        public float VelocityY { get; set; }
+
         // Used by the collision system; when set, the entity "intends" to move to this location.
         // Pending, of course, successful collision resolution checks (if it has a collision component).
         internal float IntendedMoveDeltaX = 0;

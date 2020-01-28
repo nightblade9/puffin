@@ -20,7 +20,7 @@ namespace Puffin.Core.Ecs.Components
             this.Speed = speed;
         }
 
-        internal void OnUpdate(TimeSpan elapsed)
+        internal void OnUpdate()
         {
             var vx = 0;
             var vy = 0;
@@ -41,15 +41,8 @@ namespace Puffin.Core.Ecs.Components
                 vx = 1;
             }
 
-            var elapsedSeconds = (float)elapsed.TotalSeconds;
-
-            this.Parent.IntendedMoveDeltaX += (vx * this.Speed * elapsedSeconds);
-            this.Parent.IntendedMoveDeltaY += (vy * this.Speed * elapsedSeconds);
-            if (vx != 0 && vy != 0)
-            {
-                vx = (int)(vx / Math.Sqrt(2));
-                vy = (int)(vy / Math.Sqrt(2));
-            }
+            this.Parent.VelocityX = vx * this.Speed;
+            this.Parent.VelocityY = vy * this.Speed;
         }
     }
 }
