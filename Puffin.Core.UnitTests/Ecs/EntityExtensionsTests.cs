@@ -99,12 +99,11 @@ namespace Puffin.Core.UnitTests.Ecs
             DependencyInjection.Kernel.Bind<IKeyboardProvider>().ToConstant(provider.Object);
 
             var e = new Entity();
-            e.FourWayMovement(210, true);
+            e.FourWayMovement(210);
             
             var actual = e.Get<FourWayMovementComponent>();
             Assert.That(actual, Is.Not.Null);
             Assert.That(actual.Speed, Is.EqualTo(210));
-            Assert.That(actual.SlideOnCollide, Is.True);
         }
 
         [Test]
@@ -176,13 +175,14 @@ namespace Puffin.Core.UnitTests.Ecs
         [Test]
         public void CollideSetsCollisionComponent()
         {
-            var e = new Entity().Collide(64, 32);
+            var e = new Entity().Collide(64, 32, true);
 
             var actual = e.Get<CollisionComponent>();
             Assert.That(actual, Is.Not.Null);
             Assert.That(actual, Is.Not.Null);
             Assert.That(actual.Width, Is.EqualTo(64));
             Assert.That(actual.Height, Is.EqualTo(32));
+            Assert.That(actual.SlideOnCollide, Is.True);
         }
     }
 }

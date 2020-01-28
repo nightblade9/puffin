@@ -9,10 +9,16 @@ namespace Puffin.Core.Ecs.Components
         public readonly int Width;
         public readonly int Height;
 
-        public CollisionComponent(Entity parent, int width, int height) : base(parent)
+        /// <summary>
+        /// When we collide against something, do we slide along it instead of abruptly stopping?
+        /// </summary>
+        public bool SlideOnCollide { get; set;}
+
+        public CollisionComponent(Entity parent, int width, int height, bool slideOnCollide) : base(parent)
         {
             this.Width = width;
             this.Height = height;
+            this.SlideOnCollide = slideOnCollide;
         }
     }
 }

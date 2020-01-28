@@ -50,21 +50,16 @@ namespace Puffin.Core.Ecs.Systems
 
             foreach (var entity in this.entities)
             {
-                var movementComponent = entity.Get<FourWayMovementComponent>();
-                if (movementComponent != null)
-                {
-                    entity.X += movementComponent.IntendedMoveDeltaX;
-                    entity.Y += movementComponent.IntendedMoveDeltaY;
-                    movementComponent.IntendedMoveDeltaX = 0;
-                    movementComponent.IntendedMoveDeltaY = 0;
-                }
+                entity.X += entity.IntendedMoveDeltaX;
+                entity.Y += entity.IntendedMoveDeltaY;
+                entity.IntendedMoveDeltaX = 0;
+                entity.IntendedMoveDeltaY = 0;
             }
         }
 
         private void ProcessMovement(TimeSpan elapsed, Entity entity)
         {
-            var movementComponent = entity.Get<FourWayMovementComponent>();
-            if (movementComponent.IntendedMoveDeltaX != 0 || movementComponent.IntendedMoveDeltaY != 0)
+            if (entity.IntendedMoveDeltaX != 0 || entity.IntendedMoveDeltaY != 0)
             {
                 // If the entity has a collision component, we have to apply collision resolution.
                 if (entity.Get<CollisionComponent>() != null)
@@ -75,8 +70,8 @@ namespace Puffin.Core.Ecs.Systems
 
                     foreach (var tileMap in tileMaps)
                     {
-                        int targetTileX = (int)Math.Floor((entity.X + movementComponent.IntendedMoveDeltaX) / tileMap.TileWidth);
-                        int targetTileY = (int)(Math.Floor(entity.Y + movementComponent.IntendedMoveDeltaY) / tileMap.TileHeight);
+                        int targetTileX = (int)Math.Floor((entity.X + entity.IntendedMoveDeltaX) / tileMap.TileWidth);
+                        int targetTileY = (int)(Math.Floor(entity.Y + entity.IntendedMoveDeltaY) / tileMap.TileHeight);
                         var targetTile = tileMap.Get(targetTileX, targetTileY);
 
                         if (targetTile != null && tileMap.GetDefinition(targetTile).IsSolid)
@@ -107,21 +102,20 @@ namespace Puffin.Core.Ecs.Systems
         // of collision (stop right at the collision).
         private static void resolveAabbCollision(Entity entity, Entity collideAgainst, double elapsedSeconds)
         {
-            var movementComponent = entity.Get<FourWayMovementComponent>();
-            (var oldIntendedX, var oldIntendedY) = (movementComponent.IntendedMoveDeltaX, movementComponent.IntendedMoveDeltaY);
+            (var oldIntendedX, var oldIntendedY) = (entity.IntendedMoveDeltaX, entity.IntendedMoveDeltaY);
 
             var entityCollision = entity.Get<CollisionComponent>();
             var collideAgainstComponent = collideAgainst.Get<CollisionComponent>();
 
-            if (isAabbCollision(entity.X + movementComponent.IntendedMoveDeltaX, entity.Y + movementComponent.IntendedMoveDeltaY, entityCollision.Width, entityCollision.Height,
+            if (isAabbCollision(entity.X + entity.IntendedMoveDeltaX, entity.Y + entity.IntendedMoveDeltaY, entityCollision.Width, entityCollision.Height,
                 collideAgainst.X, collideAgainst.Y, collideAgainstComponent.Width, collideAgainstComponent.Height))
             {
                 // Another entity occupies that space. Use separating axis theorem (SAT)
                 // to see how much we can move, and then move accordingly, resolving at whichever
                 // axis collides first by time (not whichever one is the smallest diff).
                 (float xDistance, float yDistance) = CalculateAabbDistanceTo(entity, collideAgainst);
-                float xVelocity = (float)(movementComponent.IntendedMoveDeltaX / elapsedSeconds);
-                float yVelocity = (float)(movementComponent.IntendedMoveDeltaY / elapsedSeconds);
+                float xVelocity = (float)(entity.IntendedMoveDeltaX / elapsedSeconds);
+                float yVelocity = (float)(entity.IntendedMoveDeltaY / elapsedSeconds);
                 float xAxisTimeToCollide = xVelocity != 0 ? Math.Abs(xDistance / xVelocity) : 0;
                 float yAxisTimeToCollide = yVelocity != 0 ? Math.Abs(yDistance / yVelocity) : 0;
 
@@ -131,22 +125,22 @@ namespace Puffin.Core.Ecs.Systems
                 {
                     // Colliison on X-axis only
                     shortestTime = xAxisTimeToCollide;
-                    movementComponent.IntendedMoveDeltaX = shortestTime * xVelocity;                    
+                    entity.IntendedMoveDeltaX = shortestTime * xVelocity;                    
                 }
                 else if (xVelocity == 0 && yVelocity != 0)
                 {
                     // Collision on Y-axis only
                     shortestTime = yAxisTimeToCollide;
-                    movementComponent.IntendedMoveDeltaY = shortestTime * yVelocity;
+                    entity.IntendedMoveDeltaY = shortestTime * yVelocity;
                 }
                 else
                 {
                     // Collision on X and Y axis (eg. slide up against a wall)
                     shortestTime = Math.Min(Math.Abs(xAxisTimeToCollide), Math.Abs(yAxisTimeToCollide));
-                    movementComponent.IntendedMoveDeltaX = shortestTime * xVelocity;
-                    movementComponent.IntendedMoveDeltaY = shortestTime * yVelocity;
+                    entity.IntendedMoveDeltaX = shortestTime * xVelocity;
+                    entity.IntendedMoveDeltaY = shortestTime * yVelocity;
 
-                    if (movementComponent.SlideOnCollide)
+                    if (entityCollision.SlideOnCollide)
                     {
                         // Setting oldIntendedX/oldIntendedY might put us directly inside another solid thing.
                         // No worries, we resolve collisions twice, so the second iteration will catch it.
@@ -155,15 +149,15 @@ namespace Puffin.Core.Ecs.Systems
                         if (shortestTime == xAxisTimeToCollide)
                         {
                             // Slide vertically
-                            movementComponent.IntendedMoveDeltaX = 0;
-                            movementComponent.IntendedMoveDeltaY = oldIntendedY;
+                            entity.IntendedMoveDeltaX = 0;
+                            entity.IntendedMoveDeltaY = oldIntendedY;
                         }
                         // Resolved collision on the Y-axis first
                         if (shortestTime == yAxisTimeToCollide)
                         {
                             // Slide horizontally
-                            movementComponent.IntendedMoveDeltaX = oldIntendedX;
-                            movementComponent.IntendedMoveDeltaY = 0;
+                            entity.IntendedMoveDeltaX = oldIntendedX;
+                            entity.IntendedMoveDeltaY = 0;
                         }
                     }
                 }        
