@@ -1,9 +1,11 @@
 using System;
 using Moq;
 using NUnit.Framework;
+using Puffin.Core.Drawing;
 using Puffin.Core.Ecs;
 using Puffin.Core.Ecs.Systems;
 using Puffin.Core.IO;
+using Puffin.Core.Tiles;
 
 namespace Puffin.Core.UnitTests
 {
@@ -116,6 +118,52 @@ namespace Puffin.Core.UnitTests
                 Assert.That(player.X, Is.EqualTo(10));
                 Assert.That(player.Y, Is.EqualTo(10));
             }
+        }
+
+        [Test]
+        public void OnUpdateHandlesSlidingWithMultiCollisionResolutions()
+        {
+            // You're sandwiched against the corner wall. Moving up/left shouldn't
+            // resolve one collision and offset you into the wall by mistake.
+            // See: https://twitter.com/nightblade99/status/1221945460157485061
+
+            // Arrange
+            var tileMap = new TileMap(7, 7, "tiles.png", 32, 32);
+
+            tileMap.Define("Wall", 0, 0, true);
+            for (var i = 0; i < 7; i++)
+            {
+                tileMap[i, 0] = "Wall";
+                tileMap[i, 6] = "Wall";
+                tileMap[0, i] = "Wall";
+                tileMap[6, i] = "Wall";
+            }
+
+            var keyboardProvider = new Mock<IKeyboardProvider>();
+            DependencyInjection.Kernel.Bind<IKeyboardProvider>().ToConstant(keyboardProvider.Object);
+            keyboardProvider.Setup(p => p.IsActionDown(PuffinAction.Up)).Returns(true);
+            keyboardProvider.Setup(p => p.IsActionDown(PuffinAction.Left)).Returns(true);
+            
+            var system = new MovementSystem();
+            var drawingSystem = new DrawingSystem(new Mock<IDrawingSurface>().Object);
+            
+            var scene = new Scene();
+            scene.Initialize(new ISystem[] { drawingSystem, system }, null, keyboardProvider.Object);
+            scene.Add(tileMap);
+
+            var player = new Entity().Collide(32, 32)
+                .FourWayMovement(100, true)
+                .Move(40, 32); // just left of the top-left non-wall tile
+            
+            scene.Add(player);
+            
+            // Act
+            scene.OnUpdate(TimeSpan.FromSeconds(1));
+
+            // Assert: player didn't move. Faulty collision sees him resolve from the top
+            // wall and move into the left wall.
+            Assert.That(player.X, Is.EqualTo(32));
+            Assert.That(player.Y, Is.EqualTo(32));
         }
     }
 }
