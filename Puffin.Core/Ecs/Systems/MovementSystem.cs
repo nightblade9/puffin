@@ -11,10 +11,9 @@ namespace Puffin.Core.Ecs.Systems
 
         public void OnAddEntity(Entity entity)
         {
-            if (entity.Get<FourWayMovementComponent>() != null)
-            {
-                this.entities.Add(entity);
-            }
+            // This assumes all entities *want* to move. In the future, if this becomes a bottleneck, 
+            // we can separate out or somehow "tag" moving entities, so that only they are processed.
+            this.entities.Add(entity);
 
             if (entity.Get<CollisionComponent>() != null)
             {
