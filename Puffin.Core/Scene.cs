@@ -17,7 +17,7 @@ namespace Puffin.Core
         public static Scene LatestInstance { get; private set; }
 
         public float Fps { get; private set; }
-        public uint BackgroundColour = 0x000000; // black
+        public int BackgroundColour = 0x000000; // black
 
         internal Action OnMouseClick;
 

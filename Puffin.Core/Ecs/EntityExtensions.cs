@@ -19,6 +19,14 @@ namespace Puffin.Core.Ecs
             return entity;
         }
 
+        // DERP THE HERP
+        public static Entity MoveBy(this Entity entity, float dx, float dy)
+        {
+            entity.IntendedMoveDeltaX = dx;
+            entity.IntendedMoveDeltaY = dy;
+            return entity;
+        }
+
         /// <summary>
         /// Loads the specified image as a sprite on an entity.
         /// </summary>
@@ -139,7 +147,7 @@ namespace Puffin.Core.Ecs
         /// Adds a coloured rectangle to an entity with the specified size and colour.
         /// The colour format is RGB, eg. 0x0088FF for a light sky blue.
         /// </summary>
-        public static Entity Colour(this Entity entity, uint rgb, int width, int height)
+        public static Entity Colour(this Entity entity, int rgb, int width, int height)
         {
             entity.Set(new ColourComponent(entity, rgb, width, height));
             return entity;
