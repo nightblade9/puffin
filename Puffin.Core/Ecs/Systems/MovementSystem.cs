@@ -156,7 +156,6 @@ namespace Puffin.Core.Ecs.Systems
                     entity.IntendedMoveDeltaX = shortestTime * xVelocity;
                     entity.IntendedMoveDeltaY = shortestTime * yVelocity;
 
-                    Console.Write("Diagonal collision; ");
                     if (entityCollision.SlideOnCollide)
                     {
                         // Setting oldIntendedX/oldIntendedY might put us directly inside another solid thing.
@@ -165,22 +164,29 @@ namespace Puffin.Core.Ecs.Systems
                         // Resolved collision on the X-axis first
                         if (shortestTime == xAxisTimeToCollide)
                         {
-                            Console.Write("X collide; ");
                             // Slide vertically
-                            entity.IntendedMoveDeltaX = 0;                            
-                            entity.IntendedMoveDeltaY = oldIntendedY;
+                            entity.IntendedMoveDeltaX = 0;
+                            // If we're in a corner, don't resolve incorrectly; move only if we're clear on the Y-axis.
+                            // Fixes a bug where you  move a lot in the corner (left/right/left/right) and suddenly go through the wall.                     
+                            if (!isAabbCollision(entity.X, entity.Y + oldIntendedY, entityCollision.Width, entityCollision.Height,
+                                collideAgainst.X, collideAgainst.Y, collideAgainstComponent.Width, collideAgainstComponent.Height))
+                                {
+                                    entity.IntendedMoveDeltaY = oldIntendedY;
+                                }
                         }
                         // Resolved collision on the Y-axis first
                         if (shortestTime == yAxisTimeToCollide)
                         {
-                            Console.Write("Y collide; ");
                             // Slide horizontally
                             entity.IntendedMoveDeltaY = 0;
-                            entity.IntendedMoveDeltaX = oldIntendedX;
+                            // If we're in a corner, don't resolve incorrectly; move only if we're clear on the X-axis.
+                            // Fixes a bug where you  move a lot in the corner (left/right/left/right) and suddenly go through the wall.
+                            if (!isAabbCollision(entity.X + oldIntendedX, entity.Y, entityCollision.Width, entityCollision.Height,
+                                collideAgainst.X, collideAgainst.Y, collideAgainstComponent.Width, collideAgainstComponent.Height))
+                                {
+                                    entity.IntendedMoveDeltaX = oldIntendedX;
+                                }
                         }
-
-                        Console.WriteLine($"ix={entity.IntendedMoveDeltaX}, iY={entity.IntendedMoveDeltaY}; entity will be at {entity.X + entity.IntendedMoveDeltaX}, {entity.Y + entity.IntendedMoveDeltaY}");
-                        //if (entity.Y + entity.IntendedMoveDeltaY < 32) { System.Diagnostics.Debugger.Break(); }
                     }
                 }        
             }
@@ -214,9 +220,6 @@ namespace Puffin.Core.Ecs.Systems
                 dy = e1.Y - (e2.Y + targetCollision.Height);
             }
             
-            // There are cases where you can erroneously get into an invalid position, and we return the wrong
-            // value by telling you the distance is a negative value; prevent that by enforcing positive distances.
-            //return (Math.Max(dx, 0), Math.Max(dy, 0));
             return (dx, dy);
         }
 

@@ -17,7 +17,7 @@ namespace Puffin.Core.UnitTests.Ecs
         }
 
         [Test]
-        public void OnUpdateSetsParentIntentProportionalToVelocityAndTimeElapsed()
+        public void OnUpdateSetsVelocityProportionalToVelocityAndTimeElapsed()
         {
             const int speed = 100;
             var elapsed = TimeSpan.FromSeconds(2);
@@ -37,8 +37,8 @@ namespace Puffin.Core.UnitTests.Ecs
             component.OnUpdate();
             
             // Assert
-            Assert.That(e.IntendedMoveDeltaX, Is.EqualTo(-speed * elapsed.TotalSeconds));
-            Assert.That(e.IntendedMoveDeltaY, Is.EqualTo(speed * elapsed.TotalSeconds));
+            Assert.That(e.VelocityX, Is.EqualTo(-speed));
+            Assert.That(e.VelocityY, Is.EqualTo(speed));
         }
     }
 }
