@@ -52,31 +52,17 @@ namespace Puffin.Core.Ecs.Systems
 
                     foreach (var tileMap in tileMaps)
                     {
-                        // Check both top-left and bottom-right corner of the player.
-                        var intendedX = (int)((entity.X + movementComponent.IntendedMoveDeltaX) /  tileMap.TileWidth);
-                        var intendedY = (int)((entity.Y + movementComponent.IntendedMoveDeltaY) /  tileMap.TileHeight);
-                        var intendedTile = tileMap.Get(intendedX, intendedY);
-                        if (intendedTile != null && tileMap.GetDefinition(intendedTile).IsSolid)
+                        int targetTileX = (int)Math.Floor((entity.X + movementComponent.IntendedMoveDeltaX) / tileMap.TileWidth);
+                        int targetTileY = (int)(Math.Floor(entity.Y + movementComponent.IntendedMoveDeltaY) / tileMap.TileHeight);
+                        var targetTile = tileMap.Get(targetTileX, targetTileY);
+
+                        if (targetTile != null && tileMap.GetDefinition(targetTile).IsSolid)
                         {
-                            // Horrible hack: create an entity out of the tile ...
-                            var tileEntity = new Entity()
-                                .Move(intendedX * tileMap.TileWidth, intendedY * tileMap.TileHeight)
+                            var collideAgainst = new Entity()
+                                .Move(targetTileX * tileMap.TileWidth, targetTileY * tileMap.TileHeight)
                                 .Collide(tileMap.TileWidth, tileMap.TileHeight);
 
-                            resolveAabbCollision(entity, tileEntity, elapsed.TotalSeconds);
-                        }
-
-                        intendedX = (int)((entity.X + entityCollision.Width + movementComponent.IntendedMoveDeltaX) /  tileMap.TileWidth);
-                        intendedY = (int)((entity.Y + entityCollision.Height + movementComponent.IntendedMoveDeltaY) /  tileMap.TileHeight);
-                        intendedTile = tileMap.Get(intendedX, intendedY);
-                        if (intendedTile != null && tileMap.GetDefinition(intendedTile).IsSolid)
-                        {
-                            // Horrible hack: create an entity out of the tile ...
-                            var tileEntity = new Entity()
-                                .Move(intendedX * tileMap.TileWidth, intendedY * tileMap.TileHeight)
-                                .Collide(tileMap.TileWidth, tileMap.TileHeight);
-
-                            resolveAabbCollision(entity, tileEntity, elapsed.TotalSeconds);
+                            resolveAabbCollision(entity, collideAgainst, elapsed.TotalSeconds);
                         }
                     }
 
@@ -93,7 +79,6 @@ namespace Puffin.Core.Ecs.Systems
 
                 entity.X += movementComponent.IntendedMoveDeltaX;
                 entity.Y += movementComponent.IntendedMoveDeltaY;
-
                 movementComponent.IntendedMoveDeltaX = 0;
                 movementComponent.IntendedMoveDeltaY = 0;
             }
@@ -101,6 +86,8 @@ namespace Puffin.Core.Ecs.Systems
 
         private static void resolveAabbCollision(Entity entity, Entity collideAgainst, double elapsedSeconds)
         {
+            ////////////////////// TODO: just nerf IntendedMove, don't actually move.
+            
             var movementComponent = entity.GetIfHas<FourWayMovementComponent>();
             var entityCollision = entity.GetIfHas<CollisionComponent>();
             var collideAgainstComponent = collideAgainst.GetIfHas<CollisionComponent>();
@@ -118,6 +105,7 @@ namespace Puffin.Core.Ecs.Systems
                 float yAxisTimeToCollide = yVelocity != 0 ? Math.Abs(yDistance / yVelocity) : 0;
 
                 float shortestTime = 0;
+
                 if (xVelocity != 0 && yVelocity == 0)
                 {
                     // Colliison on X-axis only

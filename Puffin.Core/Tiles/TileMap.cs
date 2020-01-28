@@ -56,6 +56,10 @@ namespace Puffin.Core.Tiles
         /// </summary>
         public void Set(int cellX, int cellY, string tileName)
         {
+            if (!this.tileSet.ContainsKey(tileName))
+            {
+                throw new InvalidOperationException($"{tileName} can't be set, hasn't been defined yet.");
+            }
             this.tileData[cellX, cellY] = tileName;
         }
 
@@ -64,6 +68,11 @@ namespace Puffin.Core.Tiles
         /// </summary>
         public string Get(int cellX, int cellY)
         {
+            if (cellX < 0 || cellY < 0 || cellX >= this.MapWidth || cellY >= this.MapHeight)
+            {
+                return null;
+            }
+            
             return this.tileData[cellX, cellY];
         }
 

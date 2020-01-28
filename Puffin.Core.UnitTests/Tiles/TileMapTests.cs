@@ -9,6 +9,21 @@ namespace Puffin.Core.UnitTests.Tiles
     public class TileMapTests
     {
         [Test]
+        public void GetReturnsNullIfCellIsNotDefined()
+        {
+            var tileMap = new TileMap(10, 5, "masjid.png", 1, 1);
+            Assert.That(tileMap[10, 29], Is.Null);
+        }
+
+        [Test]
+        public void SetThrowsIfTileNameIsNotDefined()
+        {
+            var tileMap = new TileMap(10, 5, "masjid.png", 1, 1);
+            Assert.Throws<InvalidOperationException>(() => tileMap.Set(0, 0, "flower"));
+        }
+
+
+        [Test]
         public void DefineSetsAndOverridesDefinition()
         {
             // Arrange
