@@ -69,8 +69,15 @@ namespace Puffin.Core.Ecs.Systems
 
                     foreach (var tileMap in tileMaps)
                     {
-                        int targetTileX = (int)Math.Floor((entity.X + entity.IntendedMoveDeltaX) / tileMap.TileWidth);
-                        int targetTileY = (int)(Math.Floor(entity.Y + entity.IntendedMoveDeltaY) / tileMap.TileHeight);
+                        // Check the tile at the entity's position; if we're moving right/down, use the right/down edge of the entity instead
+                        // of the left/up edge of the entity.
+                        
+                        int targetTileX = (int)Math.Floor(
+                            (entity.X + (entity.IntendedMoveDeltaX > 0 ? entityCollision.Width : 0) + entity.IntendedMoveDeltaX) / tileMap.TileWidth);
+
+                        int targetTileY = (int)(Math.Floor(
+                            entity.Y + (entity.IntendedMoveDeltaY > 0 ? entityCollision.Height : 0) + entity.IntendedMoveDeltaY) / tileMap.TileHeight);
+
                         var targetTile = tileMap.Get(targetTileX, targetTileY);
 
                         if (targetTile != null && tileMap.GetDefinition(targetTile).IsSolid)
@@ -78,6 +85,8 @@ namespace Puffin.Core.Ecs.Systems
                             var collideAgainst = new Entity()
                                 .Move(targetTileX * tileMap.TileWidth, targetTileY * tileMap.TileHeight)
                                 .Collide(tileMap.TileWidth, tileMap.TileHeight);
+                            
+                            Console.WriteLine($"Checking against tile at {collideAgainst.X}, {collideAgainst.Y}");
 
                             resolveAabbCollision(entity, collideAgainst, elapsed.TotalSeconds);
                         }
@@ -124,7 +133,8 @@ namespace Puffin.Core.Ecs.Systems
                 {
                     // Colliison on X-axis only
                     shortestTime = xAxisTimeToCollide;
-                    entity.IntendedMoveDeltaX = shortestTime * xVelocity;                    
+                    entity.IntendedMoveDeltaX = shortestTime * xVelocity;
+                    Console.WriteLine($"X-axis, shorted={xAxisTimeToCollide}, y={yAxisTimeToCollide}, iX={entity.IntendedMoveDeltaX}; ex+w={entity.X + entity.IntendedMoveDeltaX + entity.Get<CollisionComponent>().Width}");
                 }
                 else if (xVelocity == 0 && yVelocity != 0)
                 {
