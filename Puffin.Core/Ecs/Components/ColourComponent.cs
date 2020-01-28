@@ -5,12 +5,12 @@ namespace Puffin.Core.Ecs.Components
     public class ColourComponent : Component
     {
         /// <summary>0xRRGGBB</summary>
-        public uint Colour = 0xFFFFFF;
+        public int Colour = 0xFFFFFF;
         public int Width { get; set; }
         public int Height { get; set; }
 
         // TODO: validate if colour is out of range
-        public ColourComponent(Entity entity, uint rgb, int width, int height)
+        public ColourComponent(Entity entity, int rgb, int width, int height)
         : base(entity)
         {
             this.Colour = rgb;

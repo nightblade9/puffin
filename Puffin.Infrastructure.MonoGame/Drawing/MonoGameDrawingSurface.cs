@@ -97,9 +97,9 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             this.tileMapSprites.Remove(tileMap);
         }
 
-        public void DrawAll(uint backgroundColour)
+        public void DrawAll(int backgroundColour)
         {
-            this.graphics.Clear(new Color(backgroundColour + 0xFF000000));
+            this.graphics.Clear(BgrToRgba(backgroundColour));
             this.spriteBatch.Begin();
 
             // TODO: render in order of Z from lowest to highest
@@ -133,7 +133,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
                 {
                     this.spriteBatch.Draw(whiteRectangle, 
                         new Rectangle((int)entity.X, (int)entity.Y, colour.Width, colour.Height),
-                        new Color(colour.Colour + 0xFF000000));
+                        BgrToRgba(colour.Colour));
                 }
 
                 foreach (var monoGameSprite in entitySprites.Values)
@@ -193,6 +193,16 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
 
             var font = fontBakeResult.CreateSpriteFont(this.graphics);
             return font;
+        }
+
+        private static Color BgrToRgba(int packed)
+        {
+            // Although we ask for 0xRRGGBB, the value we get, if we pass it directly to MonoGame,
+            // renders as 0xBBGGRR. So, convert.
+            int red = (packed >> 16) & 0xFF;
+            int green = (packed >> 8) & 0xFF;
+            int blue = (packed >> 0) & 0xFF;
+            return new Color(red, green, blue, 255);
         }
     }
 }
