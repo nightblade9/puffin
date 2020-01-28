@@ -29,10 +29,21 @@ namespace Puffin.Core.Ecs.Systems
 
         public void OnUpdate(TimeSpan elapsed)
         {
+            // Separate out updating keyboard (intention to move) with collision resolution).
+            // For cases where movement from one tile collides/resolves into another tile (eg.
+            // standing in the top-left wall corner of the map, pressing up and left together,
+            // top-tile collides/resolves into the left tile). Splitting this into two rounds
+            // of resolution fixes this.
+            //
+            // We also want to just update the intention to move once, because the first round
+            // of resolution modifies it to non-collide.
             var halfElapsed = TimeSpan.FromMilliseconds(elapsed.TotalMilliseconds / 2);
-
             foreach (var entity in this.entities)
             {
+                // Apply keyboard/intended movement
+                entity.GetIfHas<FourWayMovementComponent>()?.OnUpdate(elapsed);
+
+                // Resolve collisions twice to stabilize multi-collisions.
                 this.ProcessMovement(halfElapsed, entity);
                 this.ProcessMovement(halfElapsed, entity);
             }
@@ -53,9 +64,6 @@ namespace Puffin.Core.Ecs.Systems
         private void ProcessMovement(TimeSpan elapsed, Entity entity)
         {
             var movementComponent = entity.GetIfHas<FourWayMovementComponent>();
-                
-            movementComponent.OnUpdate(elapsed);
-
             if (movementComponent.IntendedMoveDeltaX != 0 || movementComponent.IntendedMoveDeltaY != 0)
             {
                 // If the entity has a collision component, we have to apply collision resolution.
@@ -94,6 +102,9 @@ namespace Puffin.Core.Ecs.Systems
             }
         }
 
+        // Checks for AABB collisions between entity (moving) and collideAgainst (hopefully not moving).
+        // The output is to modify the IntendedMoveX/IntendedMoveY on entity so that it will be just at the point
+        // of collision (stop right at the collision).
         private static void resolveAabbCollision(Entity entity, Entity collideAgainst, double elapsedSeconds)
         {
             var movementComponent = entity.GetIfHas<FourWayMovementComponent>();
@@ -120,7 +131,7 @@ namespace Puffin.Core.Ecs.Systems
                 {
                     // Colliison on X-axis only
                     shortestTime = xAxisTimeToCollide;
-                    movementComponent.IntendedMoveDeltaX = shortestTime * xVelocity;
+                    movementComponent.IntendedMoveDeltaX = shortestTime * xVelocity;                    
                 }
                 else if (xVelocity == 0 && yVelocity != 0)
                 {
@@ -137,6 +148,9 @@ namespace Puffin.Core.Ecs.Systems
 
                     if (movementComponent.SlideOnCollide)
                     {
+                        // Setting oldIntendedX/oldIntendedY might put us directly inside another solid thing.
+                        // No worries, we resolve collisions twice, so the second iteration will catch it.
+
                         // Resolved collision on the X-axis first
                         if (shortestTime == xAxisTimeToCollide)
                         {
@@ -152,12 +166,7 @@ namespace Puffin.Core.Ecs.Systems
                             movementComponent.IntendedMoveDeltaY = 0;
                         }
                     }
-                }
-        
-                entity.X += movementComponent.IntendedMoveDeltaX;
-                entity.Y += movementComponent.IntendedMoveDeltaY;
-                movementComponent.IntendedMoveDeltaX = 0;
-                movementComponent.IntendedMoveDeltaY = 0;
+                }        
             }
         }
 
