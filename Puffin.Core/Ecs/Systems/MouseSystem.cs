@@ -19,7 +19,7 @@ namespace Puffin.Core.Ecs.Systems
 
         public void OnAddEntity(Entity entity)
         {
-            if (entity.GetIfHas<MouseComponent>() != null)
+            if (entity.Get<MouseComponent>() != null)
             {
                 this.entities.Add(entity);
             }
@@ -45,7 +45,7 @@ namespace Puffin.Core.Ecs.Systems
             // Note that the performance is OK, since this is in response to an event; not every frame.
             foreach (var entity in this.entities.ToArray())
             {
-                var mouse = entity.GetIfHas<MouseComponent>();
+                var mouse = entity.Get<MouseComponent>();
 
                 if (clickedX >= entity.X && clickedY >= entity.Y && clickedX <= entity.X + mouse.Width && clickedY <= entity.Y + mouse.Height)
                 {

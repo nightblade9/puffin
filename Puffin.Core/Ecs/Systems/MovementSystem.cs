@@ -11,12 +11,12 @@ namespace Puffin.Core.Ecs.Systems
 
         public void OnAddEntity(Entity entity)
         {
-            if (entity.GetIfHas<FourWayMovementComponent>() != null)
+            if (entity.Get<FourWayMovementComponent>() != null)
             {
                 this.entities.Add(entity);
             }
 
-            if (entity.GetIfHas<CollisionComponent>() != null)
+            if (entity.Get<CollisionComponent>() != null)
             {
                 this.collidables.Add(entity);
             }
@@ -41,7 +41,7 @@ namespace Puffin.Core.Ecs.Systems
             foreach (var entity in this.entities)
             {
                 // Apply keyboard/intended movement
-                entity.GetIfHas<FourWayMovementComponent>()?.OnUpdate(elapsed);
+                entity.Get<FourWayMovementComponent>()?.OnUpdate(elapsed);
 
                 // Resolve collisions twice to stabilize multi-collisions.
                 this.ProcessMovement(halfElapsed, entity);
@@ -50,7 +50,7 @@ namespace Puffin.Core.Ecs.Systems
 
             foreach (var entity in this.entities)
             {
-                var movementComponent = entity.GetIfHas<FourWayMovementComponent>();
+                var movementComponent = entity.Get<FourWayMovementComponent>();
                 if (movementComponent != null)
                 {
                     entity.X += movementComponent.IntendedMoveDeltaX;
@@ -63,13 +63,13 @@ namespace Puffin.Core.Ecs.Systems
 
         private void ProcessMovement(TimeSpan elapsed, Entity entity)
         {
-            var movementComponent = entity.GetIfHas<FourWayMovementComponent>();
+            var movementComponent = entity.Get<FourWayMovementComponent>();
             if (movementComponent.IntendedMoveDeltaX != 0 || movementComponent.IntendedMoveDeltaY != 0)
             {
                 // If the entity has a collision component, we have to apply collision resolution.
-                if (entity.GetIfHas<CollisionComponent>() != null)
+                if (entity.Get<CollisionComponent>() != null)
                 {
-                    var entityCollision = entity.GetIfHas<CollisionComponent>();
+                    var entityCollision = entity.Get<CollisionComponent>();
                     // See if the entity collided with any solid tiles.
                     var tileMaps = Scene.LatestInstance.TileMaps;
 
@@ -92,9 +92,9 @@ namespace Puffin.Core.Ecs.Systems
                     // Compare against collidable entities
                     foreach (var collidable in this.collidables)
                     {
-                        if (collidable != entity && collidable.GetIfHas<CollisionComponent>() != null)
+                        if (collidable != entity && collidable.Get<CollisionComponent>() != null)
                         {
-                            var collideAgainstComponent = collidable.GetIfHas<CollisionComponent>();
+                            var collideAgainstComponent = collidable.Get<CollisionComponent>();
                             resolveAabbCollision(entity, collidable, elapsed.TotalSeconds);
                         }
                     }
@@ -107,11 +107,11 @@ namespace Puffin.Core.Ecs.Systems
         // of collision (stop right at the collision).
         private static void resolveAabbCollision(Entity entity, Entity collideAgainst, double elapsedSeconds)
         {
-            var movementComponent = entity.GetIfHas<FourWayMovementComponent>();
+            var movementComponent = entity.Get<FourWayMovementComponent>();
             (var oldIntendedX, var oldIntendedY) = (movementComponent.IntendedMoveDeltaX, movementComponent.IntendedMoveDeltaY);
 
-            var entityCollision = entity.GetIfHas<CollisionComponent>();
-            var collideAgainstComponent = collideAgainst.GetIfHas<CollisionComponent>();
+            var entityCollision = entity.Get<CollisionComponent>();
+            var collideAgainstComponent = collideAgainst.Get<CollisionComponent>();
 
             if (isAabbCollision(entity.X + movementComponent.IntendedMoveDeltaX, entity.Y + movementComponent.IntendedMoveDeltaY, entityCollision.Width, entityCollision.Height,
                 collideAgainst.X, collideAgainst.Y, collideAgainstComponent.Width, collideAgainstComponent.Height))
@@ -174,8 +174,8 @@ namespace Puffin.Core.Ecs.Systems
         // eg. if `e1` is on the left of `e2`, we want `dx` to be `e2.left - e1.right`.
         private static (float, float) CalculateAabbDistanceTo(Entity e1, Entity e2)
         {
-            var movingCollision = e1.GetIfHas<CollisionComponent>();
-            var targetCollision = e2.GetIfHas<CollisionComponent>();
+            var movingCollision = e1.Get<CollisionComponent>();
+            var targetCollision = e2.Get<CollisionComponent>();
 
             float dx = 0;
             float dy = 0;

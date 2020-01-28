@@ -17,7 +17,7 @@ namespace Puffin.Core.Ecs.Systems
 
         public void OnAddEntity(Entity entity)
         {
-            if (entity.GetIfHas<AudioComponent>() != null)
+            if (entity.Get<AudioComponent>() != null)
             {
                 this.entities.Add(entity);
                 this.audioPlayer.AddEntity(entity);

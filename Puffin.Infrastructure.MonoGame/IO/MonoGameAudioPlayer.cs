@@ -19,7 +19,7 @@ namespace Puffin.Infrastructure.MonoGame
 
         public void AddEntity(Entity entity)
         {
-            var sound = entity.GetIfHas<AudioComponent>();
+            var sound = entity.Get<AudioComponent>();
             if (sound != null)
             {
                 this.entities.Add(entity);
@@ -30,7 +30,7 @@ namespace Puffin.Infrastructure.MonoGame
         public void RemoveEntity(Entity entity)
         {
             this.entities.Remove(entity);
-            var sound = entity.GetIfHas<AudioComponent>();
+            var sound = entity.Get<AudioComponent>();
             if (sound != null && entitySounds.ContainsKey(sound))
             {
                 entitySounds.Remove(sound);

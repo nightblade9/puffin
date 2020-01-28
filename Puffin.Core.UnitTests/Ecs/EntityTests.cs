@@ -8,20 +8,20 @@ namespace Puffin.Core.UnitTests.Ecs
     public class EntityTests
     {
         [Test]
-        public void GetIfHasReturnsSetComponents()
+        public void GetReturnsSetComponents()
         {
             var expected = new StringComponent("hi");
             var e = new Entity();
             e.Set(expected);
 
-            Assert.That(e.GetIfHas<StringComponent>(), Is.EqualTo(expected));
+            Assert.That(e.Get<StringComponent>(), Is.EqualTo(expected));
         }
 
         [Test]
-        public void GetIfHasReturnsNullIfComponentIsntSet()
+        public void GetReturnsNullIfComponentIsntSet()
         {
             var e = new Entity();
-            Assert.That(e.GetIfHas<StringComponent>(), Is.Null);
+            Assert.That(e.Get<StringComponent>(), Is.Null);
         }
 
         [Test]
@@ -32,7 +32,7 @@ namespace Puffin.Core.UnitTests.Ecs
             e.Set(new StringComponent("fail"));
             e.Set(expected);
 
-            Assert.That(e.GetIfHas<StringComponent>(), Is.EqualTo(expected));
+            Assert.That(e.Get<StringComponent>(), Is.EqualTo(expected));
         }
 
         [Test]
@@ -42,7 +42,7 @@ namespace Puffin.Core.UnitTests.Ecs
             e.Set(new StringComponent("here today, gone tomorrow"));
             e.Remove<StringComponent>();
 
-            Assert.That(e.GetIfHas<StringComponent>(), Is.Null);
+            Assert.That(e.Get<StringComponent>(), Is.Null);
         }
 
         [Test]

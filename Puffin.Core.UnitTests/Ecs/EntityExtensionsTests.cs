@@ -38,7 +38,7 @@ namespace Puffin.Core.UnitTests.Ecs
         public void SpriteSetsSpriteComponent()
         {
             var e = new Entity().Sprite("moon.bmp");
-            var hasSprite = e.GetIfHas<SpriteComponent>();
+            var hasSprite = e.Get<SpriteComponent>();
             Assert.That(hasSprite, Is.Not.Null);
             Assert.That(hasSprite.FileName, Is.EqualTo("moon.bmp"));
         }
@@ -47,7 +47,7 @@ namespace Puffin.Core.UnitTests.Ecs
         public void SpritesheetSetsSpriteAndFrameSize()
         {
             var e = new Entity().Spritesheet("player.png", 48, 32);
-            var sprite = e.GetIfHas<SpriteComponent>();
+            var sprite = e.Get<SpriteComponent>();
             Assert.That(sprite, Is.Not.Null);
             Assert.That(sprite.FileName, Is.EqualTo("player.png"));
             Assert.That(sprite.FrameWidth, Is.EqualTo(48));
@@ -60,7 +60,7 @@ namespace Puffin.Core.UnitTests.Ecs
             var e = new Entity();
             e.Label("hi!");
             
-            var label = e.GetIfHas<TextLabelComponent>();
+            var label = e.Get<TextLabelComponent>();
             Assert.That(label, Is.Not.Null);
             Assert.That(label.Text, Is.EqualTo("hi!"));
         }
@@ -71,10 +71,10 @@ namespace Puffin.Core.UnitTests.Ecs
             DependencyInjection.Kernel.Bind<IMouseProvider>().ToConstant(provider.Object);
 
             var e = new Entity();
-            Assert.That(e.GetIfHas<MouseComponent>(), Is.Null);
+            Assert.That(e.Get<MouseComponent>(), Is.Null);
 
             e.Mouse(null, 32, 32);
-            Assert.That(e.GetIfHas<MouseComponent>(), Is.Not.Null);
+            Assert.That(e.Get<MouseComponent>(), Is.Not.Null);
         }
 
         [Test]
@@ -85,10 +85,10 @@ namespace Puffin.Core.UnitTests.Ecs
             DependencyInjection.Kernel.Bind<IKeyboardProvider>().ToConstant(provider.Object);
 
             var e = new Entity();
-            Assert.That(e.GetIfHas<KeyboardComponent>(), Is.Null);
+            Assert.That(e.Get<KeyboardComponent>(), Is.Null);
 
             e.Keyboard();
-            Assert.That(e.GetIfHas<KeyboardComponent>(), Is.Not.Null);
+            Assert.That(e.Get<KeyboardComponent>(), Is.Not.Null);
         }
 
         [Test]
@@ -101,7 +101,7 @@ namespace Puffin.Core.UnitTests.Ecs
             var e = new Entity();
             e.FourWayMovement(210, true);
             
-            var actual = e.GetIfHas<FourWayMovementComponent>();
+            var actual = e.Get<FourWayMovementComponent>();
             Assert.That(actual, Is.Not.Null);
             Assert.That(actual.Speed, Is.EqualTo(210));
             Assert.That(actual.SlideOnCollide, Is.True);
@@ -115,19 +115,19 @@ namespace Puffin.Core.UnitTests.Ecs
             Action<Entity> onStart = (e) => numStarts++;
             Action<Entity> onStop = (e) => stopped = true;
 
-            var o1 = new Entity().Overlap(10, 11).GetIfHas<OverlapComponent>();
+            var o1 = new Entity().Overlap(10, 11).Get<OverlapComponent>();
             Assert.That(o1, Is.Not.Null);
             Assert.That(o1.Size.Item1, Is.EqualTo(10));
             Assert.That(o1.Size.Item2, Is.EqualTo(11));
 
-            var o2 = new Entity().Overlap(12, 13, 14, 15).GetIfHas<OverlapComponent>();
+            var o2 = new Entity().Overlap(12, 13, 14, 15).Get<OverlapComponent>();
             Assert.That(o2, Is.Not.Null);
             Assert.That(o2.Size.Item1, Is.EqualTo(12));
             Assert.That(o2.Size.Item2, Is.EqualTo(13));
             Assert.That(o2.Offset.Item1, Is.EqualTo(14));
             Assert.That(o2.Offset.Item2, Is.EqualTo(15));
 
-            var o3 = new Entity().Overlap(16, 17, 18, 19, onStart).GetIfHas<OverlapComponent>();
+            var o3 = new Entity().Overlap(16, 17, 18, 19, onStart).Get<OverlapComponent>();
             OverlapSystem.StartedOverlapping(o3, new Entity().Overlap(100, 100));
 
             Assert.That(o3, Is.Not.Null);
@@ -137,7 +137,7 @@ namespace Puffin.Core.UnitTests.Ecs
             Assert.That(o3.Offset.Item2, Is.EqualTo(19));
             Assert.That(numStarts, Is.EqualTo(1));
 
-            var o4 = new Entity().Overlap(1, 7, 1, 9, onStart, onStop).GetIfHas<OverlapComponent>();
+            var o4 = new Entity().Overlap(1, 7, 1, 9, onStart, onStop).Get<OverlapComponent>();
             var e = new Entity().Overlap(200, 50);
             OverlapSystem.StartedOverlapping(o4, e);
             OverlapSystem.StoppedOverlapping(o4, e);
@@ -156,7 +156,7 @@ namespace Puffin.Core.UnitTests.Ecs
         {
             var e = new Entity().Audio("blue-heron.ogg");
             
-            var actual = e.GetIfHas<AudioComponent>();
+            var actual = e.Get<AudioComponent>();
             Assert.That(actual, Is.Not.Null);
             Assert.That(actual.FileName, Is.EqualTo("blue-heron.ogg"));
         }
@@ -166,7 +166,7 @@ namespace Puffin.Core.UnitTests.Ecs
         {
             var e = new Entity().Colour(0x88ff00, 64, 32);
             
-            var actual = e.GetIfHas<ColourComponent>();
+            var actual = e.Get<ColourComponent>();
             Assert.That(actual, Is.Not.Null);
             Assert.That(actual.Colour, Is.EqualTo(0x88ff00));
             Assert.That(actual.Width, Is.EqualTo(64));
@@ -178,7 +178,7 @@ namespace Puffin.Core.UnitTests.Ecs
         {
             var e = new Entity().Collide(64, 32);
 
-            var actual = e.GetIfHas<CollisionComponent>();
+            var actual = e.Get<CollisionComponent>();
             Assert.That(actual, Is.Not.Null);
             Assert.That(actual, Is.Not.Null);
             Assert.That(actual.Width, Is.EqualTo(64));

@@ -87,7 +87,7 @@ class MyGame : PuffinGame {
 }
 ```
 
-This allows you to write code like `entity.GetIfHas<KeyboardComponent>().IsKeyDown(CustomAction.Next)`, which would return `true` if either the space or enter keys are currently held down.
+This allows you to write code like `entity.Get<KeyboardComponent>().IsKeyDown(CustomAction.Next)`, which would return `true` if either the space or enter keys are currently held down.
 
 # TileMaps
 

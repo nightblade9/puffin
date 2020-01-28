@@ -38,14 +38,14 @@ namespace Puffin.UI.UnitTests.Controls
 
             // Assert
             Assert.That(clicked, Is.True);
-            Assert.That(button.GetIfHas<SpriteComponent>(), Is.Not.Null);
-            Assert.That(button.GetIfHas<TextLabelComponent>(), Is.Not.Null);
-            Assert.That(button.GetIfHas<MouseComponent>(), Is.Not.Null);
+            Assert.That(button.Get<SpriteComponent>(), Is.Not.Null);
+            Assert.That(button.Get<TextLabelComponent>(), Is.Not.Null);
+            Assert.That(button.Get<MouseComponent>(), Is.Not.Null);
 
-            var label = button.GetIfHas<TextLabelComponent>();
+            var label = button.Get<TextLabelComponent>();
             Assert.That(label.Text, Is.EqualTo("click me!"));
 
-            var sprite = button.GetIfHas<SpriteComponent>();
+            var sprite = button.Get<SpriteComponent>();
             Assert.That(sprite.FileName.EndsWith("Button.png"));
         }
     }
