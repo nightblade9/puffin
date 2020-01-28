@@ -71,9 +71,9 @@ namespace Puffin.Core.Ecs
         /// If you want the entity to move and slide along things it collides with instead of
         /// stopping abruptly, specify true for slideOnCollide.
         /// </summary>
-        public static Entity FourWayMovement(this Entity entity, int speed, bool slideOnCollide = false)
+        public static Entity FourWayMovement(this Entity entity, int speed)
         {
-            entity.Set(new FourWayMovementComponent(entity, speed, slideOnCollide));
+            entity.Set(new FourWayMovementComponent(entity, speed));
             return entity;
         }
 
@@ -149,9 +149,9 @@ namespace Puffin.Core.Ecs
         /// Causes an entity to collide with other collidable entities and solid tiles.
         /// Specify the size of the collision check, relative to this entity's origin.
         /// </summary>
-        public static Entity Collide(this Entity entity, int width, int height)
+        public static Entity Collide(this Entity entity, int width, int height, bool slideOnCollide = false)
         {
-            entity.Set(new CollisionComponent(entity, width, height));
+            entity.Set(new CollisionComponent(entity, width, height, slideOnCollide));
             return entity;
         }
     }

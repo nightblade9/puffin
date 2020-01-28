@@ -37,8 +37,8 @@ namespace Puffin.Core.UnitTests.Ecs
             component.OnUpdate(elapsed);
             
             // Assert
-            Assert.That(e.X, Is.EqualTo(-speed * elapsed.TotalSeconds));
-            Assert.That(e.Y, Is.EqualTo(speed * elapsed.TotalSeconds));
+            Assert.That(e.IntendedMoveDeltaX, Is.EqualTo(-speed * elapsed.TotalSeconds));
+            Assert.That(e.IntendedMoveDeltaY, Is.EqualTo(speed * elapsed.TotalSeconds));
         }
     }
 }

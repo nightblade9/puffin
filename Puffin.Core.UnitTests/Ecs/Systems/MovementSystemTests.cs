@@ -97,7 +97,7 @@ namespace Puffin.Core.UnitTests
             var system = new MovementSystem();
             scene.Initialize(new ISystem[] { new DrawingSystem(), system }, null, keyboardProvider.Object);
 
-            var player = new Entity().FourWayMovement(100, slideOnCollide).Collide(40, 40);
+            var player = new Entity().FourWayMovement(100).Collide(40, 40, slideOnCollide);
 
             scene.Add(player);
             scene.Add(new Entity().Collide(50, 50).Move(25, 50));
@@ -151,8 +151,8 @@ namespace Puffin.Core.UnitTests
             scene.Initialize(new ISystem[] { drawingSystem, system }, null, keyboardProvider.Object);
             scene.Add(tileMap);
 
-            var player = new Entity().Collide(32, 32)
-                .FourWayMovement(100, true)
+            var player = new Entity().Collide(32, 32, true)
+                .FourWayMovement(100)
                 .Move(40, 32); // just left of the top-left non-wall tile
             
             scene.Add(player);
