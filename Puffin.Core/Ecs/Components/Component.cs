@@ -3,7 +3,8 @@ using System;
 namespace Puffin.Core.Ecs.Components
 {
     /// <summary>
-    /// A base component class. Provides a reference to the parent entity.
+    /// A base component class. Don't add it to entities directly, it has no functionality
+    /// To create your own components, create subclasses of <c>Component</c>.
     /// </summary>
     public abstract class Component
     {
@@ -15,6 +16,7 @@ namespace Puffin.Core.Ecs.Components
             {
                 throw new NullReferenceException(nameof(parent));
             }
+            
             this.Parent = parent;
         }
     }

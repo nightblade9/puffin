@@ -1,7 +1,8 @@
 namespace Puffin.Core.Ecs.Components
 {
     /// <summary>
-    /// A component that can play an audio file (short or long), optionally at a modified pitch.
+    /// Allows an entity to play an audio file (short or long), optionally at a modified pitch.
+    /// You should be able to play WAV files and OGG files.
     /// </summary>
     public class AudioComponent : Component
     {

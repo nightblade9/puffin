@@ -3,12 +3,15 @@ using System;
 namespace Puffin.Core.Ecs.Components
 {
     /// <summary>
-    /// A text-label component: a label with some printable text.
+    /// Adds a text display to an entity.
     /// </summary>
     public class TextLabelComponent : Component
     {
         public string Text { get; set; } = "";
 
+        /// <summary>
+        /// The filename of the font, relative to the game directory. Changing this immediately updates the font.
+        /// </summary>
         public string FontName { 
             get { return this.fontName; }
             set {
@@ -17,6 +20,9 @@ namespace Puffin.Core.Ecs.Components
             }
         }
 
+        /// <summary>
+        /// The font size of the font. Changing this immediately updates the font.
+        /// </summary>
         public int FontSize { 
             get { return this.fontSize; }
             set {
@@ -32,6 +38,9 @@ namespace Puffin.Core.Ecs.Components
         private string fontName = "OpenSans";
         private int fontSize = 24;
 
+        /// <summary>
+        /// Creates a new text label; if not specified, the default font is 24pt OpenSans.
+        /// </summary>
         public TextLabelComponent(Entity parent, string text, string fontName = "OpenSans", int fontSize = 24)
         : base(parent)
         {

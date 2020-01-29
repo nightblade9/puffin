@@ -1,8 +1,7 @@
 namespace Puffin.Core.Ecs.Components
 {
     /// <summary>
-    /// Indicates a component shold collide with both other entities that have
-    /// collision components, as well as solid tiles.
+    /// Makes an entity collide with solid tiles and other entities that have a <c>CollisionComponent</c>
     /// </summary>
     public class CollisionComponent : Component
     {
@@ -10,10 +9,14 @@ namespace Puffin.Core.Ecs.Components
         public readonly int Height;
 
         /// <summary>
-        /// When we collide against something, do we slide along it instead of abruptly stopping?
+        /// If true, when colliding, slide in the direction of the non-colliding axis instead of abruptly stopping.
         /// </summary>
         public bool SlideOnCollide { get; set;}
 
+        /// <param name="width">The width of the collidable area, in pixels</param>
+        /// <param name="height">The height of the collidable area, in pixels</param>
+        /// <param name="slideOnCollide">If true, when colliding, slide in the direction of the non-colliding
+        /// axis instead of abruptly stopping.</param>
         public CollisionComponent(Entity parent, int width, int height, bool slideOnCollide) : base(parent)
         {
             this.Width = width;

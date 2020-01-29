@@ -1,5 +1,4 @@
 using System;
-using Puffin.Core.Ecs.Components;
 
 namespace Puffin.Core.Ecs.Components
 {
