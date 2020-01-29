@@ -11,4 +11,4 @@ Puffin is a cross-platform 2D C# game engine built on top of MonoGame. It ships 
 
 # Getting Started
 - [API reference](api/index.md)
-- [Articles and Tutorials](articles/index.md)
+- [Articles and Tutorials](articles/intro.md)
