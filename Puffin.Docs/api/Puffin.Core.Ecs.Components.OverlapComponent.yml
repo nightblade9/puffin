@@ -16,8 +16,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Components/OverlapComponent.cs
-      branch: documentation
-      repo: https://github.com/nightblade9/puffin-engine.git
+      branch: master
+      repo: https://github.com/nightblade9/puffin.git
     id: OverlapComponent
     path: ../Puffin.Core/Ecs/Components/OverlapComponent.cs
     startLine: 8
@@ -54,8 +54,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Components/OverlapComponent.cs
-      branch: documentation
-      repo: https://github.com/nightblade9/puffin-engine.git
+      branch: master
+      repo: https://github.com/nightblade9/puffin.git
     id: .ctor
     path: ../Puffin.Core/Ecs/Components/OverlapComponent.cs
     startLine: 26

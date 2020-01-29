@@ -17,8 +17,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Components/FourWayMovementComponent.cs
-      branch: documentation
-      repo: https://github.com/nightblade9/puffin-engine.git
+      branch: master
+      repo: https://github.com/nightblade9/puffin.git
     id: FourWayMovementComponent
     path: ../Puffin.Core/Ecs/Components/FourWayMovementComponent.cs
     startLine: 11
@@ -58,8 +58,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Components/FourWayMovementComponent.cs
-      branch: documentation
-      repo: https://github.com/nightblade9/puffin-engine.git
+      branch: master
+      repo: https://github.com/nightblade9/puffin.git
     id: Speed
     path: ../Puffin.Core/Ecs/Components/FourWayMovementComponent.cs
     startLine: 16
@@ -95,8 +95,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Components/FourWayMovementComponent.cs
-      branch: documentation
-      repo: https://github.com/nightblade9/puffin-engine.git
+      branch: master
+      repo: https://github.com/nightblade9/puffin.git
     id: .ctor
     path: ../Puffin.Core/Ecs/Components/FourWayMovementComponent.cs
     startLine: 18

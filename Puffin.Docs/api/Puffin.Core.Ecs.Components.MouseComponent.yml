@@ -16,8 +16,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Components/MouseComponent.cs
-      branch: documentation
-      repo: https://github.com/nightblade9/puffin-engine.git
+      branch: master
+      repo: https://github.com/nightblade9/puffin.git
     id: MouseComponent
     path: ../Puffin.Core/Ecs/Components/MouseComponent.cs
     startLine: 7
@@ -54,8 +54,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Components/MouseComponent.cs
-      branch: documentation
-      repo: https://github.com/nightblade9/puffin-engine.git
+      branch: master
+      repo: https://github.com/nightblade9/puffin.git
     id: .ctor
     path: ../Puffin.Core/Ecs/Components/MouseComponent.cs
     startLine: 20
