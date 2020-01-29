@@ -4,6 +4,9 @@ items:
   commentId: N:Puffin.Core.Ecs.Components
   id: Puffin.Core.Ecs.Components
   children:
+  - Puffin.Core.Ecs.Components.AudioComponent
+  - Puffin.Core.Ecs.Components.CollisionComponent
+  - Puffin.Core.Ecs.Components.ColourComponent
   - Puffin.Core.Ecs.Components.Component
   - Puffin.Core.Ecs.Components.FourWayMovementComponent
   - Puffin.Core.Ecs.Components.KeyboardComponent
@@ -21,6 +24,21 @@ items:
   assemblies:
   - Puffin.Core
 references:
+- uid: Puffin.Core.Ecs.Components.AudioComponent
+  commentId: T:Puffin.Core.Ecs.Components.AudioComponent
+  name: AudioComponent
+  nameWithType: AudioComponent
+  fullName: Puffin.Core.Ecs.Components.AudioComponent
+- uid: Puffin.Core.Ecs.Components.CollisionComponent
+  commentId: T:Puffin.Core.Ecs.Components.CollisionComponent
+  name: CollisionComponent
+  nameWithType: CollisionComponent
+  fullName: Puffin.Core.Ecs.Components.CollisionComponent
+- uid: Puffin.Core.Ecs.Components.ColourComponent
+  commentId: T:Puffin.Core.Ecs.Components.ColourComponent
+  name: ColourComponent
+  nameWithType: ColourComponent
+  fullName: Puffin.Core.Ecs.Components.ColourComponent
 - uid: Puffin.Core.Ecs.Components.Component
   commentId: T:Puffin.Core.Ecs.Components.Component
   parent: Puffin.Core.Ecs.Components

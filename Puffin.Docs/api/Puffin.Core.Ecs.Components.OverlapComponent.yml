@@ -16,34 +16,24 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Components/OverlapComponent.cs
-      branch: docs
-      repo: git@github.com:nightblade9/puffin
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
     id: OverlapComponent
     path: ../Puffin.Core/Ecs/Components/OverlapComponent.cs
-    startLine: 9
+    startLine: 8
   assemblies:
   - Puffin.Core
   namespace: Puffin.Core.Ecs.Components
-  summary: "\nA component for overlapping. Two entities with OverlapComponents will fire events when they overlap each other.\n"
+  summary: "\nMakes an entity check for overlap with other entities that have an <code>OverlapComponent</code>.\n"
   example: []
   syntax:
     content: 'public class OverlapComponent : Component'
     content.vb: >-
       Public Class OverlapComponent
-
           Inherits Component
   inheritance:
   - System.Object
   - Puffin.Core.Ecs.Components.Component
-  inheritedMembers:
-  - Puffin.Core.Ecs.Components.Component.Parent
-  - System.Object.Equals(System.Object)
-  - System.Object.Equals(System.Object,System.Object)
-  - System.Object.GetHashCode
-  - System.Object.GetType
-  - System.Object.MemberwiseClone
-  - System.Object.ReferenceEquals(System.Object,System.Object)
-  - System.Object.ToString
   modifiers.csharp:
   - public
   - class
@@ -64,15 +54,15 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Components/OverlapComponent.cs
-      branch: docs
-      repo: git@github.com:nightblade9/puffin
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
     id: .ctor
     path: ../Puffin.Core/Ecs/Components/OverlapComponent.cs
-    startLine: 32
+    startLine: 26
   assemblies:
   - Puffin.Core
   namespace: Puffin.Core.Ecs.Components
-  summary: "\nCreates a mouse component (receives clicks and triggers a callback).\nWidth and height indicate the overlap check area.\nOffsets indicate this component&apos;s offset relative to the origin of the entity.\nThe overlap callbacks trigger when an entity newly starts/stop overlapping with us.\n"
+  summary: "\nCreates an overlap component, which checks for overlap against other entities with overlap components.\n"
   example: []
   syntax:
     content: public OverlapComponent(Entity parent, int width, int height, int offsetX = 0, int offsetY = 0, Action<Entity> onStartOverlap = null, Action<Entity> onStopOverlap = null)
@@ -81,16 +71,22 @@ items:
       type: Puffin.Core.Ecs.Entity
     - id: width
       type: System.Int32
+      description: The width of the overlap area, in pixels.
     - id: height
       type: System.Int32
+      description: The height of the overlap area, in pixels.
     - id: offsetX
       type: System.Int32
+      description: The x-offset of the overlap area, relative to the origin of the entity.
     - id: offsetY
       type: System.Int32
+      description: The y-offset of the overlap area, relative to the origin of the entity.
     - id: onStartOverlap
       type: System.Action{Puffin.Core.Ecs.Entity}
+      description: The function to call when another entity&apos;s overlap component starts overlappin with this one, or null to do nothing.
     - id: onStopOverlap
       type: System.Action{Puffin.Core.Ecs.Entity}
+      description: The function to call when another entity&apos;s overlap component stops overlappin with this one, or null to do nothing.
     content.vb: Public Sub New(parent As Entity, width As Integer, height As Integer, offsetX As Integer = 0, offsetY As Integer = 0, onStartOverlap As Action(Of Entity) = Nothing, onStopOverlap As Action(Of Entity) = Nothing)
   overload: Puffin.Core.Ecs.Components.OverlapComponent.#ctor*
   nameWithType.vb: OverlapComponent.OverlapComponent(Entity, Int32, Int32, Int32, Int32, Action(Of Entity), Action(Of Entity))
@@ -119,291 +115,6 @@ references:
   name: Component
   nameWithType: Component
   fullName: Puffin.Core.Ecs.Components.Component
-- uid: Puffin.Core.Ecs.Components.Component.Parent
-  commentId: F:Puffin.Core.Ecs.Components.Component.Parent
-  parent: Puffin.Core.Ecs.Components.Component
-  name: Parent
-  nameWithType: Component.Parent
-  fullName: Puffin.Core.Ecs.Components.Component.Parent
-- uid: System.Object.Equals(System.Object)
-  commentId: M:System.Object.Equals(System.Object)
-  parent: System.Object
-  isExternal: true
-  name: Equals(Object)
-  nameWithType: Object.Equals(Object)
-  fullName: System.Object.Equals(System.Object)
-  spec.csharp:
-  - uid: System.Object.Equals(System.Object)
-    name: Equals
-    nameWithType: Object.Equals
-    fullName: System.Object.Equals
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: )
-    nameWithType: )
-    fullName: )
-  spec.vb:
-  - uid: System.Object.Equals(System.Object)
-    name: Equals
-    nameWithType: Object.Equals
-    fullName: System.Object.Equals
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: )
-    nameWithType: )
-    fullName: )
-- uid: System.Object.Equals(System.Object,System.Object)
-  commentId: M:System.Object.Equals(System.Object,System.Object)
-  parent: System.Object
-  isExternal: true
-  name: Equals(Object, Object)
-  nameWithType: Object.Equals(Object, Object)
-  fullName: System.Object.Equals(System.Object, System.Object)
-  spec.csharp:
-  - uid: System.Object.Equals(System.Object,System.Object)
-    name: Equals
-    nameWithType: Object.Equals
-    fullName: System.Object.Equals
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: ', '
-    nameWithType: ', '
-    fullName: ', '
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: )
-    nameWithType: )
-    fullName: )
-  spec.vb:
-  - uid: System.Object.Equals(System.Object,System.Object)
-    name: Equals
-    nameWithType: Object.Equals
-    fullName: System.Object.Equals
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: ', '
-    nameWithType: ', '
-    fullName: ', '
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: )
-    nameWithType: )
-    fullName: )
-- uid: System.Object.GetHashCode
-  commentId: M:System.Object.GetHashCode
-  parent: System.Object
-  isExternal: true
-  name: GetHashCode()
-  nameWithType: Object.GetHashCode()
-  fullName: System.Object.GetHashCode()
-  spec.csharp:
-  - uid: System.Object.GetHashCode
-    name: GetHashCode
-    nameWithType: Object.GetHashCode
-    fullName: System.Object.GetHashCode
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
-  spec.vb:
-  - uid: System.Object.GetHashCode
-    name: GetHashCode
-    nameWithType: Object.GetHashCode
-    fullName: System.Object.GetHashCode
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
-- uid: System.Object.GetType
-  commentId: M:System.Object.GetType
-  parent: System.Object
-  isExternal: true
-  name: GetType()
-  nameWithType: Object.GetType()
-  fullName: System.Object.GetType()
-  spec.csharp:
-  - uid: System.Object.GetType
-    name: GetType
-    nameWithType: Object.GetType
-    fullName: System.Object.GetType
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
-  spec.vb:
-  - uid: System.Object.GetType
-    name: GetType
-    nameWithType: Object.GetType
-    fullName: System.Object.GetType
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
-- uid: System.Object.MemberwiseClone
-  commentId: M:System.Object.MemberwiseClone
-  parent: System.Object
-  isExternal: true
-  name: MemberwiseClone()
-  nameWithType: Object.MemberwiseClone()
-  fullName: System.Object.MemberwiseClone()
-  spec.csharp:
-  - uid: System.Object.MemberwiseClone
-    name: MemberwiseClone
-    nameWithType: Object.MemberwiseClone
-    fullName: System.Object.MemberwiseClone
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
-  spec.vb:
-  - uid: System.Object.MemberwiseClone
-    name: MemberwiseClone
-    nameWithType: Object.MemberwiseClone
-    fullName: System.Object.MemberwiseClone
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
-- uid: System.Object.ReferenceEquals(System.Object,System.Object)
-  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
-  parent: System.Object
-  isExternal: true
-  name: ReferenceEquals(Object, Object)
-  nameWithType: Object.ReferenceEquals(Object, Object)
-  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
-  spec.csharp:
-  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
-    name: ReferenceEquals
-    nameWithType: Object.ReferenceEquals
-    fullName: System.Object.ReferenceEquals
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: ', '
-    nameWithType: ', '
-    fullName: ', '
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: )
-    nameWithType: )
-    fullName: )
-  spec.vb:
-  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
-    name: ReferenceEquals
-    nameWithType: Object.ReferenceEquals
-    fullName: System.Object.ReferenceEquals
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: ', '
-    nameWithType: ', '
-    fullName: ', '
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: )
-    nameWithType: )
-    fullName: )
-- uid: System.Object.ToString
-  commentId: M:System.Object.ToString
-  parent: System.Object
-  isExternal: true
-  name: ToString()
-  nameWithType: Object.ToString()
-  fullName: System.Object.ToString()
-  spec.csharp:
-  - uid: System.Object.ToString
-    name: ToString
-    nameWithType: Object.ToString
-    fullName: System.Object.ToString
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
-  spec.vb:
-  - uid: System.Object.ToString
-    name: ToString
-    nameWithType: Object.ToString
-    fullName: System.Object.ToString
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
 - uid: System
   commentId: N:System
   isExternal: true

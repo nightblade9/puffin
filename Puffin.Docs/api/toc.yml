@@ -14,6 +14,12 @@
 - uid: Puffin.Core.Ecs.Components
   name: Puffin.Core.Ecs.Components
   items:
+  - uid: Puffin.Core.Ecs.Components.AudioComponent
+    name: AudioComponent
+  - uid: Puffin.Core.Ecs.Components.CollisionComponent
+    name: CollisionComponent
+  - uid: Puffin.Core.Ecs.Components.ColourComponent
+    name: ColourComponent
   - uid: Puffin.Core.Ecs.Components.Component
     name: Component
   - uid: Puffin.Core.Ecs.Components.FourWayMovementComponent
@@ -28,6 +34,11 @@
     name: SpriteComponent
   - uid: Puffin.Core.Ecs.Components.TextLabelComponent
     name: TextLabelComponent
+- uid: Puffin.Core.Tiles
+  name: Puffin.Core.Tiles
+  items:
+  - uid: Puffin.Core.Tiles.TileMap
+    name: TileMap
 - uid: Puffin.Infrastructure.MonoGame
   name: Puffin.Infrastructure.MonoGame
   items:

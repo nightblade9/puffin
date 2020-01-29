@@ -1,0 +1,398 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class TileMap
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class TileMap
+   ">
+    <meta name="generator" content="docfx 2.48.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Puffin.Core.Tiles.TileMap">
+  
+  
+  <h1 id="Puffin_Core_Tiles_TileMap" data-uid="Puffin.Core.Tiles.TileMap" class="text-break">Class TileMap
+  </h1>
+  <div class="markdown level0 summary"><p>A 2D tilemap. Contains a tileset (defined tiles) and a spritesheet, which it uses
+to render the tiles. Define some tiles, set some tiles, and they appear on-screen.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">TileMap</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Puffin.Core.Tiles.html">Puffin.Core.Tiles</a></h6>
+  <h6><strong>Assembly</strong>: Puffin.Core.dll</h6>
+  <h5 id="Puffin_Core_Tiles_TileMap_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class TileMap</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/nightblade9/puffin-engine/new/documentation/apiSpec/new?filename=Puffin_Core_Tiles_TileMap__ctor_System_Int32_System_Int32_System_String_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Puffin.Core.Tiles.TileMap.%23ctor(System.Int32%2CSystem.Int32%2CSystem.String%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/nightblade9/puffin-engine/blob/documentation/Puffin.Core/Tiles/TileMap.cs/#L34">View Source</a>
+  </span>
+  <a id="Puffin_Core_Tiles_TileMap__ctor_" data-uid="Puffin.Core.Tiles.TileMap.#ctor*"></a>
+  <h4 id="Puffin_Core_Tiles_TileMap__ctor_System_Int32_System_Int32_System_String_System_Int32_System_Int32_" data-uid="Puffin.Core.Tiles.TileMap.#ctor(System.Int32,System.Int32,System.String,System.Int32,System.Int32)">TileMap(Int32, Int32, String, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Constructs a tilemap, given an image file name, and the size of a single tile.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TileMap(int mapWidth, int mapHeight, string tileImageFile, int tileWidth, int tileHeight)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">mapWidth</span></td>
+        <td><p>The width of the map, in tiles.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">mapHeight</span></td>
+        <td><p>The height of the map, in tiles.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tileImageFile</span></td>
+        <td><p>The image file of the spritesheet</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">tileWidth</span></td>
+        <td><p>The width of a single tile, in pixels.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">tileHeight</span></td>
+        <td><p>The height of a single tile, in pixels.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/nightblade9/puffin-engine/new/documentation/apiSpec/new?filename=Puffin_Core_Tiles_TileMap_Item_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Puffin.Core.Tiles.TileMap.Item(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/nightblade9/puffin-engine/blob/documentation/Puffin.Core/Tiles/TileMap.cs/#L86">View Source</a>
+  </span>
+  <a id="Puffin_Core_Tiles_TileMap_Item_" data-uid="Puffin.Core.Tiles.TileMap.Item*"></a>
+  <h4 id="Puffin_Core_Tiles_TileMap_Item_System_Int32_System_Int32_" data-uid="Puffin.Core.Tiles.TileMap.Item(System.Int32,System.Int32)">Item[Int32, Int32]</h4>
+  <div class="markdown level1 summary"><p>Sets the tile at a specific location, overriding the previous value at that location.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string this[int cellX, int cellY] { get; set; }</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">cellX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">cellY</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/nightblade9/puffin-engine/new/documentation/apiSpec/new?filename=Puffin_Core_Tiles_TileMap_Define_System_String_System_Int32_System_Int32_System_Boolean_.md&amp;value=---%0Auid%3A%20Puffin.Core.Tiles.TileMap.Define(System.String%2CSystem.Int32%2CSystem.Int32%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/nightblade9/puffin-engine/blob/documentation/Puffin.Core/Tiles/TileMap.cs/#L53">View Source</a>
+  </span>
+  <a id="Puffin_Core_Tiles_TileMap_Define_" data-uid="Puffin.Core.Tiles.TileMap.Define*"></a>
+  <h4 id="Puffin_Core_Tiles_TileMap_Define_System_String_System_Int32_System_Int32_System_Boolean_" data-uid="Puffin.Core.Tiles.TileMap.Define(System.String,System.Int32,System.Int32,System.Boolean)">Define(String, Int32, Int32, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Define a new tile, at specific coordinates, and specify whether it's solid or not.
+Calling this twice with the same tile name will overwrite the previous definition.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Define(string tileName, int cellX, int cellY, bool isSolid = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tileName</span></td>
+        <td><p>The name of the tile (used in <code>Set</code></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">cellX</span></td>
+        <td><p>The x-index (not pixels) of the tile in the tilesheet</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">cellY</span></td>
+        <td><p>The y-index (not pixels) of the tile in the tilesheet</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">isSolid</span></td>
+        <td><p>true if this tile should prevent collidable entities from moving onto it.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/nightblade9/puffin-engine/new/documentation/apiSpec/new?filename=Puffin_Core_Tiles_TileMap_Get_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Puffin.Core.Tiles.TileMap.Get(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/nightblade9/puffin-engine/blob/documentation/Puffin.Core/Tiles/TileMap.cs/#L73">View Source</a>
+  </span>
+  <a id="Puffin_Core_Tiles_TileMap_Get_" data-uid="Puffin.Core.Tiles.TileMap.Get*"></a>
+  <h4 id="Puffin_Core_Tiles_TileMap_Get_System_Int32_System_Int32_" data-uid="Puffin.Core.Tiles.TileMap.Get(System.Int32,System.Int32)">Get(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Get the tile at a specific location. Returns null if coordinates are out of bounds or that tile is not set.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Get(int cellX, int cellY)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">cellX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">cellY</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/nightblade9/puffin-engine/new/documentation/apiSpec/new?filename=Puffin_Core_Tiles_TileMap_Set_System_Int32_System_Int32_System_String_.md&amp;value=---%0Auid%3A%20Puffin.Core.Tiles.TileMap.Set(System.Int32%2CSystem.Int32%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/nightblade9/puffin-engine/blob/documentation/Puffin.Core/Tiles/TileMap.cs/#L61">View Source</a>
+  </span>
+  <a id="Puffin_Core_Tiles_TileMap_Set_" data-uid="Puffin.Core.Tiles.TileMap.Set*"></a>
+  <h4 id="Puffin_Core_Tiles_TileMap_Set_System_Int32_System_Int32_System_String_" data-uid="Puffin.Core.Tiles.TileMap.Set(System.Int32,System.Int32,System.String)">Set(Int32, Int32, String)</h4>
+  <div class="markdown level1 summary"><p>Set a specific tile to a defition. Throws if that definition isn't defined yet via <code>Define</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Set(int cellX, int cellY, string tileName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">cellX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">cellY</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tileName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/nightblade9/puffin-engine/new/documentation/apiSpec/new?filename=Puffin_Core_Tiles_TileMap.md&amp;value=---%0Auid%3A%20Puffin.Core.Tiles.TileMap%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/nightblade9/puffin-engine/blob/documentation/Puffin.Core/Tiles/TileMap.cs/#L11" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

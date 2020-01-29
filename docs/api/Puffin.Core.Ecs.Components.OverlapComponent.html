@@ -73,7 +73,7 @@
   
   <h1 id="Puffin_Core_Ecs_Components_OverlapComponent" data-uid="Puffin.Core.Ecs.Components.OverlapComponent" class="text-break">Class OverlapComponent
   </h1>
-  <div class="markdown level0 summary"><p>A component for overlapping. Two entities with OverlapComponents will fire events when they overlap each other.</p>
+  <div class="markdown level0 summary"><p>Makes an entity check for overlap with other entities that have an <code>OverlapComponent</code>.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -81,33 +81,6 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="Puffin.Core.Ecs.Components.Component.html">Component</a></div>
     <div class="level2"><span class="xref">OverlapComponent</span></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <a class="xref" href="Puffin.Core.Ecs.Components.Component.html#Puffin_Core_Ecs_Components_Component_Parent">Component.Parent</a>
-    </div>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetHashCode()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetType()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.MemberwiseClone()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Puffin.Core.Ecs.Components.html">Puffin.Core.Ecs.Components</a></h6>
   <h6><strong>Assembly</strong>: Puffin.Core.dll</h6>
@@ -119,17 +92,14 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/nightblade9/puffin/new/docs/apiSpec/new?filename=Puffin_Core_Ecs_Components_OverlapComponent__ctor_Puffin_Core_Ecs_Entity_System_Int32_System_Int32_System_Int32_System_Int32_System_Action_Puffin_Core_Ecs_Entity__System_Action_Puffin_Core_Ecs_Entity__.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Components.OverlapComponent.%23ctor(Puffin.Core.Ecs.Entity%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Action%7BPuffin.Core.Ecs.Entity%7D%2CSystem.Action%7BPuffin.Core.Ecs.Entity%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/nightblade9/puffin-engine/new/documentation/apiSpec/new?filename=Puffin_Core_Ecs_Components_OverlapComponent__ctor_Puffin_Core_Ecs_Entity_System_Int32_System_Int32_System_Int32_System_Int32_System_Action_Puffin_Core_Ecs_Entity__System_Action_Puffin_Core_Ecs_Entity__.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Components.OverlapComponent.%23ctor(Puffin.Core.Ecs.Entity%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Action%7BPuffin.Core.Ecs.Entity%7D%2CSystem.Action%7BPuffin.Core.Ecs.Entity%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/docs/Puffin.Core/Ecs/Components/OverlapComponent.cs/#L33">View Source</a>
+    <a href="https://github.com/nightblade9/puffin-engine/blob/documentation/Puffin.Core/Ecs/Components/OverlapComponent.cs/#L27">View Source</a>
   </span>
   <a id="Puffin_Core_Ecs_Components_OverlapComponent__ctor_" data-uid="Puffin.Core.Ecs.Components.OverlapComponent.#ctor*"></a>
   <h4 id="Puffin_Core_Ecs_Components_OverlapComponent__ctor_Puffin_Core_Ecs_Entity_System_Int32_System_Int32_System_Int32_System_Int32_System_Action_Puffin_Core_Ecs_Entity__System_Action_Puffin_Core_Ecs_Entity__" data-uid="Puffin.Core.Ecs.Components.OverlapComponent.#ctor(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Int32,System.Int32,System.Action{Puffin.Core.Ecs.Entity},System.Action{Puffin.Core.Ecs.Entity})">OverlapComponent(Entity, Int32, Int32, Int32, Int32, Action&lt;Entity&gt;, Action&lt;Entity&gt;)</h4>
-  <div class="markdown level1 summary"><p>Creates a mouse component (receives clicks and triggers a callback).
-Width and height indicate the overlap check area.
-Offsets indicate this component's offset relative to the origin of the entity.
-The overlap callbacks trigger when an entity newly starts/stop overlapping with us.</p>
+  <div class="markdown level1 summary"><p>Creates an overlap component, which checks for overlap against other entities with overlap components.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -154,32 +124,38 @@ The overlap callbacks trigger when an entity newly starts/stop overlapping with 
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">width</span></td>
-        <td></td>
+        <td><p>The width of the overlap area, in pixels.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">height</span></td>
-        <td></td>
+        <td><p>The height of the overlap area, in pixels.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">offsetX</span></td>
-        <td></td>
+        <td><p>The x-offset of the overlap area, relative to the origin of the entity.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">offsetY</span></td>
-        <td></td>
+        <td><p>The y-offset of the overlap area, relative to the origin of the entity.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Action</span>&lt;<a class="xref" href="Puffin.Core.Ecs.Entity.html">Entity</a>&gt;</td>
         <td><span class="parametername">onStartOverlap</span></td>
-        <td></td>
+        <td><p>The function to call when another entity's overlap component starts overlappin with this one, or null to do nothing.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Action</span>&lt;<a class="xref" href="Puffin.Core.Ecs.Entity.html">Entity</a>&gt;</td>
         <td><span class="parametername">onStopOverlap</span></td>
-        <td></td>
+        <td><p>The function to call when another entity's overlap component stops overlappin with this one, or null to do nothing.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -191,10 +167,10 @@ The overlap callbacks trigger when an entity newly starts/stop overlapping with 
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/nightblade9/puffin/new/docs/apiSpec/new?filename=Puffin_Core_Ecs_Components_OverlapComponent.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Components.OverlapComponent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/nightblade9/puffin-engine/new/documentation/apiSpec/new?filename=Puffin_Core_Ecs_Components_OverlapComponent.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Components.OverlapComponent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/nightblade9/puffin/blob/docs/Puffin.Core/Ecs/Components/OverlapComponent.cs/#L10" class="contribution-link">View Source</a>
+                    <a href="https://github.com/nightblade9/puffin-engine/blob/documentation/Puffin.Core/Ecs/Components/OverlapComponent.cs/#L9" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

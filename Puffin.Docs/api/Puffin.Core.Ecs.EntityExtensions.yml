@@ -5,6 +5,9 @@ items:
   id: EntityExtensions
   parent: Puffin.Core.Ecs
   children:
+  - Puffin.Core.Ecs.EntityExtensions.Audio(Puffin.Core.Ecs.Entity,System.String)
+  - Puffin.Core.Ecs.EntityExtensions.Collide(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Boolean)
+  - Puffin.Core.Ecs.EntityExtensions.Colour(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Int32)
   - Puffin.Core.Ecs.EntityExtensions.FourWayMovement(Puffin.Core.Ecs.Entity,System.Int32)
   - Puffin.Core.Ecs.EntityExtensions.Keyboard(Puffin.Core.Ecs.Entity)
   - Puffin.Core.Ecs.EntityExtensions.Label(Puffin.Core.Ecs.Entity,System.String)
@@ -26,29 +29,21 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/EntityExtensions.cs
-      branch: docs
-      repo: git@github.com:nightblade9/puffin
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
     id: EntityExtensions
     path: ../Puffin.Core/Ecs/EntityExtensions.cs
-    startLine: 9
+    startLine: 8
   assemblies:
   - Puffin.Core
   namespace: Puffin.Core.Ecs
-  summary: "\nStatic extensions for Entity. You can chain them together, eg.\nEntity.Sprite(&quot;player.png&quot;).Move(200, 100);\n"
+  summary: "\nStatic extensions for Entity. You can chain them together, eg. Entity.Sprite(&quot;player.png&quot;).Move(200, 100);\n"
   example: []
   syntax:
     content: public static class EntityExtensions
     content.vb: Public Module EntityExtensions
   inheritance:
   - System.Object
-  inheritedMembers:
-  - System.Object.Equals(System.Object)
-  - System.Object.Equals(System.Object,System.Object)
-  - System.Object.GetHashCode
-  - System.Object.GetType
-  - System.Object.MemberwiseClone
-  - System.Object.ReferenceEquals(System.Object,System.Object)
-  - System.Object.ToString
   modifiers.csharp:
   - public
   - static
@@ -71,15 +66,15 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/EntityExtensions.cs
-      branch: docs
-      repo: git@github.com:nightblade9/puffin
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
     id: Move
     path: ../Puffin.Core/Ecs/EntityExtensions.cs
-    startLine: 14
+    startLine: 13
   assemblies:
   - Puffin.Core
   namespace: Puffin.Core.Ecs
-  summary: "\nMoves an entity to the specified coordinates.\n"
+  summary: "\nImmediately moves an entity to the specified coordinates, ignoring velocity/overlap/collision/etc.\n"
   example: []
   syntax:
     content: public static Entity Move(this Entity entity, int x, int y)
@@ -118,15 +113,15 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/EntityExtensions.cs
-      branch: docs
-      repo: git@github.com:nightblade9/puffin
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
     id: Sprite
     path: ../Puffin.Core/Ecs/EntityExtensions.cs
-    startLine: 24
+    startLine: 23
   assemblies:
   - Puffin.Core
   namespace: Puffin.Core.Ecs
-  summary: "\nLoads the specified image as a sprite on an entity.\n"
+  summary: "\nAdds a sprite/image to an entity.\n"
   example: []
   syntax:
     content: public static Entity Sprite(this Entity entity, string imageFile)
@@ -163,15 +158,15 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/EntityExtensions.cs
-      branch: docs
-      repo: git@github.com:nightblade9/puffin
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
     id: Spritesheet
     path: ../Puffin.Core/Ecs/EntityExtensions.cs
-    startLine: 33
+    startLine: 32
   assemblies:
   - Puffin.Core
   namespace: Puffin.Core.Ecs
-  summary: "\nLoads and adds the specified image as a spritesheet to an entity.\n"
+  summary: "\nAdds a spritesheet/tilesheet to an entity.\n"
   example: []
   syntax:
     content: public static Entity Spritesheet(this Entity entity, string imageFile, int frameWidth, int frameHeight)
@@ -212,15 +207,15 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/EntityExtensions.cs
-      branch: docs
-      repo: git@github.com:nightblade9/puffin
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
     id: Label
     path: ../Puffin.Core/Ecs/EntityExtensions.cs
-    startLine: 42
+    startLine: 41
   assemblies:
   - Puffin.Core
   namespace: Puffin.Core.Ecs
-  summary: "\nAdds a label with the specified text to an entity.\n"
+  summary: "\nAdds a text display to an entity.\n"
   example: []
   syntax:
     content: public static Entity Label(this Entity entity, string text)
@@ -257,11 +252,11 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/EntityExtensions.cs
-      branch: docs
-      repo: git@github.com:nightblade9/puffin
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
     id: Mouse
     path: ../Puffin.Core/Ecs/EntityExtensions.cs
-    startLine: 52
+    startLine: 51
   assemblies:
   - Puffin.Core
   namespace: Puffin.Core.Ecs
@@ -306,11 +301,11 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/EntityExtensions.cs
-      branch: docs
-      repo: git@github.com:nightblade9/puffin
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
     id: Keyboard
     path: ../Puffin.Core/Ecs/EntityExtensions.cs
-    startLine: 61
+    startLine: 60
   assemblies:
   - Puffin.Core
   namespace: Puffin.Core.Ecs
@@ -349,15 +344,15 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/EntityExtensions.cs
-      branch: docs
-      repo: git@github.com:nightblade9/puffin
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
     id: FourWayMovement
     path: ../Puffin.Core/Ecs/EntityExtensions.cs
-    startLine: 71
+    startLine: 72
   assemblies:
   - Puffin.Core
   namespace: Puffin.Core.Ecs
-  summary: "\nMakes the entity move in four directions in response to WASD or arrow keys.\nThe entity moves at the specified speed, in pixels per second.\n"
+  summary: "\nAdds a component which makes the entity move in four directions in response to the keyboard.\nBy default, this responds to the WASD and arrow keys; you can change these bindings\nby changing/adding more bindings in your PuffinGame instance.\nNote that setting this overrides an entity&apos;s velocity.\n"
   example: []
   syntax:
     content: public static Entity FourWayMovement(this Entity entity, int speed)
@@ -394,15 +389,15 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/EntityExtensions.cs
-      branch: docs
-      repo: git@github.com:nightblade9/puffin
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
     id: Overlap
     path: ../Puffin.Core/Ecs/EntityExtensions.cs
-    startLine: 81
+    startLine: 83
   assemblies:
   - Puffin.Core
   namespace: Puffin.Core.Ecs
-  summary: "\nCauses an entity to trigger overlap events with other entities that have an overlap component.\nWidth/height are the overlap area of this entity, relative to the origin.\n"
+  summary: "\nCreates an overlap component, which checks for overlap against other entities with overlap components.\n"
   example: []
   syntax:
     content: public static Entity Overlap(this Entity entity, int width, int height)
@@ -411,8 +406,10 @@ items:
       type: Puffin.Core.Ecs.Entity
     - id: width
       type: System.Int32
+      description: The width of the overlap area.
     - id: height
       type: System.Int32
+      description: The height of the overlap area.
     return:
       type: Puffin.Core.Ecs.Entity
     content.vb: >-
@@ -441,15 +438,15 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/EntityExtensions.cs
-      branch: docs
-      repo: git@github.com:nightblade9/puffin
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
     id: Overlap
     path: ../Puffin.Core/Ecs/EntityExtensions.cs
-    startLine: 92
+    startLine: 96
   assemblies:
   - Puffin.Core
   namespace: Puffin.Core.Ecs
-  summary: "\nCauses an entity to trigger overlap events with other entities that have an overlap component.\nWidth/height are the overlap area of this entity, relative to the origin.\nOffset coordinates specify the offset of the overlap region relative to the origin of the entity.\n"
+  summary: "\nCreates an overlap component, which checks for overlap against other entities with overlap components.\n"
   example: []
   syntax:
     content: public static Entity Overlap(this Entity entity, int width, int height, int offsetX, int offsetY)
@@ -458,12 +455,16 @@ items:
       type: Puffin.Core.Ecs.Entity
     - id: width
       type: System.Int32
+      description: The width of the overlap area.
     - id: height
       type: System.Int32
+      description: The height of the overlap area.
     - id: offsetX
       type: System.Int32
+      description: The x-offset of the overlap area, relative to the origin of the entity.
     - id: offsetY
       type: System.Int32
+      description: The y-offset of the overlap area, relative to the origin of the entity.
     return:
       type: Puffin.Core.Ecs.Entity
     content.vb: >-
@@ -492,15 +493,15 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/EntityExtensions.cs
-      branch: docs
-      repo: git@github.com:nightblade9/puffin
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
     id: Overlap
     path: ../Puffin.Core/Ecs/EntityExtensions.cs
-    startLine: 104
+    startLine: 110
   assemblies:
   - Puffin.Core
   namespace: Puffin.Core.Ecs
-  summary: "\nCauses an entity to trigger overlap events with other entities that have an overlap component.\nWidth/height are the overlap area of this entity, relative to the origin.\nOffset coordinates specify the offset of the overlap region relative to the origin of the entity.\nonStartOverlap triggers whenever another entity with an overlap component starts overlapping this entity.\n"
+  summary: "\nCreates an overlap component, which checks for overlap against other entities with overlap components.\n"
   example: []
   syntax:
     content: public static Entity Overlap(this Entity entity, int width, int height, int offsetX, int offsetY, Action<Entity> onStartOverlap)
@@ -509,14 +510,19 @@ items:
       type: Puffin.Core.Ecs.Entity
     - id: width
       type: System.Int32
+      description: The width of the overlap area.
     - id: height
       type: System.Int32
+      description: The height of the overlap area.
     - id: offsetX
       type: System.Int32
+      description: The x-offset of the overlap area, relative to the origin of the entity.
     - id: offsetY
       type: System.Int32
+      description: The y-offset of the overlap area, relative to the origin of the entity.
     - id: onStartOverlap
       type: System.Action{Puffin.Core.Ecs.Entity}
+      description: The callback to invoke when an entity with an overlap component overlaps this one.
     return:
       type: Puffin.Core.Ecs.Entity
     content.vb: >-
@@ -548,15 +554,15 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/EntityExtensions.cs
-      branch: docs
-      repo: git@github.com:nightblade9/puffin
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
     id: Overlap
     path: ../Puffin.Core/Ecs/EntityExtensions.cs
-    startLine: 118
+    startLine: 125
   assemblies:
   - Puffin.Core
   namespace: Puffin.Core.Ecs
-  summary: "\nCauses an entity to trigger overlap events with other entities that have an overlap component.\nWidth/height are the overlap area of this entity, relative to the origin.\nOffset coordinates specify the offset of the overlap region relative to the origin of the entity.\nonStartOverlap triggers whenever another entity with an overlap component starts overlapping this entity.\nonStopOverlap triggers whenever another entity with an overlap component stops overlapping overlaps this entity.\n"
+  summary: "\nCreates an overlap component, which checks for overlap against other entities with overlap components.\n"
   example: []
   syntax:
     content: public static Entity Overlap(this Entity entity, int width, int height, int offsetX, int offsetY, Action<Entity> onStartOverlap, Action<Entity> onStopOverlap)
@@ -565,16 +571,22 @@ items:
       type: Puffin.Core.Ecs.Entity
     - id: width
       type: System.Int32
+      description: The width of the overlap area.
     - id: height
       type: System.Int32
+      description: The height of the overlap area.
     - id: offsetX
       type: System.Int32
+      description: The x-offset of the overlap area, relative to the origin of the entity.
     - id: offsetY
       type: System.Int32
+      description: The y-offset of the overlap area, relative to the origin of the entity.
     - id: onStartOverlap
       type: System.Action{Puffin.Core.Ecs.Entity}
+      description: The callback to invoke when an entity with an overlap component overlaps this one.
     - id: onStopOverlap
       type: System.Action{Puffin.Core.Ecs.Entity}
+      description: The callback to invoke when an entity with an overlap component stops overlapping this one.
     return:
       type: Puffin.Core.Ecs.Entity
     content.vb: >-
@@ -591,6 +603,156 @@ items:
   - Shared
   fullName.vb: Puffin.Core.Ecs.EntityExtensions.Overlap(Puffin.Core.Ecs.Entity, System.Int32, System.Int32, System.Int32, System.Int32, System.Action(Of Puffin.Core.Ecs.Entity), System.Action(Of Puffin.Core.Ecs.Entity))
   name.vb: Overlap(Entity, Int32, Int32, Int32, Int32, Action(Of Entity), Action(Of Entity))
+- uid: Puffin.Core.Ecs.EntityExtensions.Audio(Puffin.Core.Ecs.Entity,System.String)
+  commentId: M:Puffin.Core.Ecs.EntityExtensions.Audio(Puffin.Core.Ecs.Entity,System.String)
+  id: Audio(Puffin.Core.Ecs.Entity,System.String)
+  isExtensionMethod: true
+  parent: Puffin.Core.Ecs.EntityExtensions
+  langs:
+  - csharp
+  - vb
+  name: Audio(Entity, String)
+  nameWithType: EntityExtensions.Audio(Entity, String)
+  fullName: Puffin.Core.Ecs.EntityExtensions.Audio(Puffin.Core.Ecs.Entity, System.String)
+  type: Method
+  source:
+    remote:
+      path: Puffin.Core/Ecs/EntityExtensions.cs
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
+    id: Audio
+    path: ../Puffin.Core/Ecs/EntityExtensions.cs
+    startLine: 135
+  assemblies:
+  - Puffin.Core
+  namespace: Puffin.Core.Ecs
+  summary: "\nAllows an entity to play an audio file (short or long), optionally at a modified pitch.\nYou should be able to play WAV files and OGG files.\n"
+  example: []
+  syntax:
+    content: public static Entity Audio(this Entity entity, string audioFileName)
+    parameters:
+    - id: entity
+      type: Puffin.Core.Ecs.Entity
+    - id: audioFileName
+      type: System.String
+    return:
+      type: Puffin.Core.Ecs.Entity
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function Audio(entity As Entity, audioFileName As String) As Entity
+  overload: Puffin.Core.Ecs.EntityExtensions.Audio*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Puffin.Core.Ecs.EntityExtensions.Colour(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Int32)
+  commentId: M:Puffin.Core.Ecs.EntityExtensions.Colour(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Int32)
+  id: Colour(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Int32)
+  isExtensionMethod: true
+  parent: Puffin.Core.Ecs.EntityExtensions
+  langs:
+  - csharp
+  - vb
+  name: Colour(Entity, Int32, Int32, Int32)
+  nameWithType: EntityExtensions.Colour(Entity, Int32, Int32, Int32)
+  fullName: Puffin.Core.Ecs.EntityExtensions.Colour(Puffin.Core.Ecs.Entity, System.Int32, System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: Puffin.Core/Ecs/EntityExtensions.cs
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
+    id: Colour
+    path: ../Puffin.Core/Ecs/EntityExtensions.cs
+    startLine: 145
+  assemblies:
+  - Puffin.Core
+  namespace: Puffin.Core.Ecs
+  summary: "\nAdds a coloured rectangle to an entity.\n"
+  example: []
+  syntax:
+    content: public static Entity Colour(this Entity entity, int rgb, int width, int height)
+    parameters:
+    - id: entity
+      type: Puffin.Core.Ecs.Entity
+    - id: rgb
+      type: System.Int32
+      description: The rectangle&apos;s colour, in the format 0xRRGGBB with hex values for each pair.
+    - id: width
+      type: System.Int32
+    - id: height
+      type: System.Int32
+    return:
+      type: Puffin.Core.Ecs.Entity
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function Colour(entity As Entity, rgb As Integer, width As Integer, height As Integer) As Entity
+  overload: Puffin.Core.Ecs.EntityExtensions.Colour*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Puffin.Core.Ecs.EntityExtensions.Collide(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Boolean)
+  commentId: M:Puffin.Core.Ecs.EntityExtensions.Collide(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Boolean)
+  id: Collide(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Boolean)
+  isExtensionMethod: true
+  parent: Puffin.Core.Ecs.EntityExtensions
+  langs:
+  - csharp
+  - vb
+  name: Collide(Entity, Int32, Int32, Boolean)
+  nameWithType: EntityExtensions.Collide(Entity, Int32, Int32, Boolean)
+  fullName: Puffin.Core.Ecs.EntityExtensions.Collide(Puffin.Core.Ecs.Entity, System.Int32, System.Int32, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: Puffin.Core/Ecs/EntityExtensions.cs
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
+    id: Collide
+    path: ../Puffin.Core/Ecs/EntityExtensions.cs
+    startLine: 158
+  assemblies:
+  - Puffin.Core
+  namespace: Puffin.Core.Ecs
+  summary: "\nCauses an entity to collide with other collidable entities and solid tiles.\n"
+  example: []
+  syntax:
+    content: public static Entity Collide(this Entity entity, int width, int height, bool slideOnCollide = false)
+    parameters:
+    - id: entity
+      type: Puffin.Core.Ecs.Entity
+    - id: width
+      type: System.Int32
+      description: The width of the collidable area, in pixels
+    - id: height
+      type: System.Int32
+      description: The height of the collidable area, in pixels
+    - id: slideOnCollide
+      type: System.Boolean
+      description: >-
+        If true, when colliding, slide in the direction of the non-colliding
+
+        axis instead of abruptly stopping.
+    return:
+      type: Puffin.Core.Ecs.Entity
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function Collide(entity As Entity, width As Integer, height As Integer, slideOnCollide As Boolean = False) As Entity
+  overload: Puffin.Core.Ecs.EntityExtensions.Collide*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
 references:
 - uid: Puffin.Core.Ecs
   commentId: N:Puffin.Core.Ecs
@@ -604,285 +766,6 @@ references:
   name: Object
   nameWithType: Object
   fullName: System.Object
-- uid: System.Object.Equals(System.Object)
-  commentId: M:System.Object.Equals(System.Object)
-  parent: System.Object
-  isExternal: true
-  name: Equals(Object)
-  nameWithType: Object.Equals(Object)
-  fullName: System.Object.Equals(System.Object)
-  spec.csharp:
-  - uid: System.Object.Equals(System.Object)
-    name: Equals
-    nameWithType: Object.Equals
-    fullName: System.Object.Equals
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: )
-    nameWithType: )
-    fullName: )
-  spec.vb:
-  - uid: System.Object.Equals(System.Object)
-    name: Equals
-    nameWithType: Object.Equals
-    fullName: System.Object.Equals
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: )
-    nameWithType: )
-    fullName: )
-- uid: System.Object.Equals(System.Object,System.Object)
-  commentId: M:System.Object.Equals(System.Object,System.Object)
-  parent: System.Object
-  isExternal: true
-  name: Equals(Object, Object)
-  nameWithType: Object.Equals(Object, Object)
-  fullName: System.Object.Equals(System.Object, System.Object)
-  spec.csharp:
-  - uid: System.Object.Equals(System.Object,System.Object)
-    name: Equals
-    nameWithType: Object.Equals
-    fullName: System.Object.Equals
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: ', '
-    nameWithType: ', '
-    fullName: ', '
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: )
-    nameWithType: )
-    fullName: )
-  spec.vb:
-  - uid: System.Object.Equals(System.Object,System.Object)
-    name: Equals
-    nameWithType: Object.Equals
-    fullName: System.Object.Equals
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: ', '
-    nameWithType: ', '
-    fullName: ', '
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: )
-    nameWithType: )
-    fullName: )
-- uid: System.Object.GetHashCode
-  commentId: M:System.Object.GetHashCode
-  parent: System.Object
-  isExternal: true
-  name: GetHashCode()
-  nameWithType: Object.GetHashCode()
-  fullName: System.Object.GetHashCode()
-  spec.csharp:
-  - uid: System.Object.GetHashCode
-    name: GetHashCode
-    nameWithType: Object.GetHashCode
-    fullName: System.Object.GetHashCode
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
-  spec.vb:
-  - uid: System.Object.GetHashCode
-    name: GetHashCode
-    nameWithType: Object.GetHashCode
-    fullName: System.Object.GetHashCode
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
-- uid: System.Object.GetType
-  commentId: M:System.Object.GetType
-  parent: System.Object
-  isExternal: true
-  name: GetType()
-  nameWithType: Object.GetType()
-  fullName: System.Object.GetType()
-  spec.csharp:
-  - uid: System.Object.GetType
-    name: GetType
-    nameWithType: Object.GetType
-    fullName: System.Object.GetType
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
-  spec.vb:
-  - uid: System.Object.GetType
-    name: GetType
-    nameWithType: Object.GetType
-    fullName: System.Object.GetType
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
-- uid: System.Object.MemberwiseClone
-  commentId: M:System.Object.MemberwiseClone
-  parent: System.Object
-  isExternal: true
-  name: MemberwiseClone()
-  nameWithType: Object.MemberwiseClone()
-  fullName: System.Object.MemberwiseClone()
-  spec.csharp:
-  - uid: System.Object.MemberwiseClone
-    name: MemberwiseClone
-    nameWithType: Object.MemberwiseClone
-    fullName: System.Object.MemberwiseClone
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
-  spec.vb:
-  - uid: System.Object.MemberwiseClone
-    name: MemberwiseClone
-    nameWithType: Object.MemberwiseClone
-    fullName: System.Object.MemberwiseClone
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
-- uid: System.Object.ReferenceEquals(System.Object,System.Object)
-  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
-  parent: System.Object
-  isExternal: true
-  name: ReferenceEquals(Object, Object)
-  nameWithType: Object.ReferenceEquals(Object, Object)
-  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
-  spec.csharp:
-  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
-    name: ReferenceEquals
-    nameWithType: Object.ReferenceEquals
-    fullName: System.Object.ReferenceEquals
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: ', '
-    nameWithType: ', '
-    fullName: ', '
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: )
-    nameWithType: )
-    fullName: )
-  spec.vb:
-  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
-    name: ReferenceEquals
-    nameWithType: Object.ReferenceEquals
-    fullName: System.Object.ReferenceEquals
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: ', '
-    nameWithType: ', '
-    fullName: ', '
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: )
-    nameWithType: )
-    fullName: )
-- uid: System.Object.ToString
-  commentId: M:System.Object.ToString
-  parent: System.Object
-  isExternal: true
-  name: ToString()
-  nameWithType: Object.ToString()
-  fullName: System.Object.ToString()
-  spec.csharp:
-  - uid: System.Object.ToString
-    name: ToString
-    nameWithType: Object.ToString
-    fullName: System.Object.ToString
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
-  spec.vb:
-  - uid: System.Object.ToString
-    name: ToString
-    nameWithType: Object.ToString
-    fullName: System.Object.ToString
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -1037,3 +920,25 @@ references:
   - name: )
     nameWithType: )
     fullName: )
+- uid: Puffin.Core.Ecs.EntityExtensions.Audio*
+  commentId: Overload:Puffin.Core.Ecs.EntityExtensions.Audio
+  name: Audio
+  nameWithType: EntityExtensions.Audio
+  fullName: Puffin.Core.Ecs.EntityExtensions.Audio
+- uid: Puffin.Core.Ecs.EntityExtensions.Colour*
+  commentId: Overload:Puffin.Core.Ecs.EntityExtensions.Colour
+  name: Colour
+  nameWithType: EntityExtensions.Colour
+  fullName: Puffin.Core.Ecs.EntityExtensions.Colour
+- uid: Puffin.Core.Ecs.EntityExtensions.Collide*
+  commentId: Overload:Puffin.Core.Ecs.EntityExtensions.Collide
+  name: Collide
+  nameWithType: EntityExtensions.Collide
+  fullName: Puffin.Core.Ecs.EntityExtensions.Collide
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean

@@ -5,9 +5,11 @@ items:
   id: Entity
   parent: Puffin.Core.Ecs
   children:
-  - Puffin.Core.Ecs.Entity.GetIfHas``1
+  - Puffin.Core.Ecs.Entity.Get``1
   - Puffin.Core.Ecs.Entity.Remove``1
   - Puffin.Core.Ecs.Entity.Set(Puffin.Core.Ecs.Components.Component)
+  - Puffin.Core.Ecs.Entity.VelocityX
+  - Puffin.Core.Ecs.Entity.VelocityY
   - Puffin.Core.Ecs.Entity.X
   - Puffin.Core.Ecs.Entity.Y
   langs:
@@ -20,8 +22,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Entity.cs
-      branch: docs
-      repo: git@github.com:nightblade9/puffin
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
     id: Entity
     path: ../Puffin.Core/Ecs/Entity.cs
     startLine: 11
@@ -37,14 +39,6 @@ items:
   - System.Object
   derivedClasses:
   - Puffin.UI.Controls.Button
-  inheritedMembers:
-  - System.Object.Equals(System.Object)
-  - System.Object.Equals(System.Object,System.Object)
-  - System.Object.GetHashCode
-  - System.Object.GetType
-  - System.Object.MemberwiseClone
-  - System.Object.ReferenceEquals(System.Object,System.Object)
-  - System.Object.ToString
   extensionMethods:
   - Puffin.Core.Ecs.Entity.Puffin.Core.Ecs.EntityExtensions.Move(System.Int32,System.Int32)
   - Puffin.Core.Ecs.Entity.Puffin.Core.Ecs.EntityExtensions.Sprite(System.String)
@@ -57,6 +51,9 @@ items:
   - Puffin.Core.Ecs.Entity.Puffin.Core.Ecs.EntityExtensions.Overlap(System.Int32,System.Int32,System.Int32,System.Int32)
   - Puffin.Core.Ecs.Entity.Puffin.Core.Ecs.EntityExtensions.Overlap(System.Int32,System.Int32,System.Int32,System.Int32,System.Action{Puffin.Core.Ecs.Entity})
   - Puffin.Core.Ecs.Entity.Puffin.Core.Ecs.EntityExtensions.Overlap(System.Int32,System.Int32,System.Int32,System.Int32,System.Action{Puffin.Core.Ecs.Entity},System.Action{Puffin.Core.Ecs.Entity})
+  - Puffin.Core.Ecs.Entity.Puffin.Core.Ecs.EntityExtensions.Audio(System.String)
+  - Puffin.Core.Ecs.Entity.Puffin.Core.Ecs.EntityExtensions.Colour(System.Int32,System.Int32,System.Int32)
+  - Puffin.Core.Ecs.Entity.Puffin.Core.Ecs.EntityExtensions.Collide(System.Int32,System.Int32,System.Boolean)
   modifiers.csharp:
   - public
   - class
@@ -77,8 +74,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Entity.cs
-      branch: docs
-      repo: git@github.com:nightblade9/puffin
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
     id: X
     path: ../Puffin.Core/Ecs/Entity.cs
     startLine: 15
@@ -112,8 +109,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Entity.cs
-      branch: docs
-      repo: git@github.com:nightblade9/puffin
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
     id: Y
     path: ../Puffin.Core/Ecs/Entity.cs
     startLine: 17
@@ -127,6 +124,76 @@ items:
       type: System.Single
     content.vb: Public Property Y As Single
   overload: Puffin.Core.Ecs.Entity.Y*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Puffin.Core.Ecs.Entity.VelocityX
+  commentId: P:Puffin.Core.Ecs.Entity.VelocityX
+  id: VelocityX
+  parent: Puffin.Core.Ecs.Entity
+  langs:
+  - csharp
+  - vb
+  name: VelocityX
+  nameWithType: Entity.VelocityX
+  fullName: Puffin.Core.Ecs.Entity.VelocityX
+  type: Property
+  source:
+    remote:
+      path: Puffin.Core/Ecs/Entity.cs
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
+    id: VelocityX
+    path: ../Puffin.Core/Ecs/Entity.cs
+    startLine: 18
+  assemblies:
+  - Puffin.Core
+  namespace: Puffin.Core.Ecs
+  syntax:
+    content: public float VelocityX { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property VelocityX As Single
+  overload: Puffin.Core.Ecs.Entity.VelocityX*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Puffin.Core.Ecs.Entity.VelocityY
+  commentId: P:Puffin.Core.Ecs.Entity.VelocityY
+  id: VelocityY
+  parent: Puffin.Core.Ecs.Entity
+  langs:
+  - csharp
+  - vb
+  name: VelocityY
+  nameWithType: Entity.VelocityY
+  fullName: Puffin.Core.Ecs.Entity.VelocityY
+  type: Property
+  source:
+    remote:
+      path: Puffin.Core/Ecs/Entity.cs
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
+    id: VelocityY
+    path: ../Puffin.Core/Ecs/Entity.cs
+    startLine: 19
+  assemblies:
+  - Puffin.Core
+  namespace: Puffin.Core.Ecs
+  syntax:
+    content: public float VelocityY { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property VelocityY As Single
+  overload: Puffin.Core.Ecs.Entity.VelocityY*
   modifiers.csharp:
   - public
   - get
@@ -147,11 +214,11 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Entity.cs
-      branch: docs
-      repo: git@github.com:nightblade9/puffin
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
     id: Set
     path: ../Puffin.Core/Ecs/Entity.cs
-    startLine: 23
+    startLine: 30
   assemblies:
   - Puffin.Core
   namespace: Puffin.Core.Ecs
@@ -184,18 +251,19 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Entity.cs
-      branch: docs
-      repo: git@github.com:nightblade9/puffin
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
     id: Remove
     path: ../Puffin.Core/Ecs/Entity.cs
-    startLine: 31
+    startLine: 41
   assemblies:
   - Puffin.Core
   namespace: Puffin.Core.Ecs
+  summary: "\nRemoves a component of a specific type, if the entity has one of those. (Doesn&apos;t throw if not.)\n"
+  example: []
   syntax:
     content: >-
       public void Remove<T>()
-
           where T : Component
     typeParameters:
     - id: T
@@ -208,46 +276,47 @@ items:
   - Public
   fullName.vb: Puffin.Core.Ecs.Entity.Remove(Of T)()
   name.vb: Remove(Of T)()
-- uid: Puffin.Core.Ecs.Entity.GetIfHas``1
-  commentId: M:Puffin.Core.Ecs.Entity.GetIfHas``1
-  id: GetIfHas``1
+- uid: Puffin.Core.Ecs.Entity.Get``1
+  commentId: M:Puffin.Core.Ecs.Entity.Get``1
+  id: Get``1
   parent: Puffin.Core.Ecs.Entity
   langs:
   - csharp
   - vb
-  name: GetIfHas<T>()
-  nameWithType: Entity.GetIfHas<T>()
-  fullName: Puffin.Core.Ecs.Entity.GetIfHas<T>()
+  name: Get<T>()
+  nameWithType: Entity.Get<T>()
+  fullName: Puffin.Core.Ecs.Entity.Get<T>()
   type: Method
   source:
     remote:
       path: Puffin.Core/Ecs/Entity.cs
-      branch: docs
-      repo: git@github.com:nightblade9/puffin
-    id: GetIfHas
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
+    id: Get
     path: ../Puffin.Core/Ecs/Entity.cs
-    startLine: 37
+    startLine: 50
   assemblies:
   - Puffin.Core
   namespace: Puffin.Core.Ecs
+  summary: "\nGet the component of the specified type, if it exists; returns null if not.\n"
+  example: []
   syntax:
     content: >-
-      public T GetIfHas<T>()
-
+      public T Get<T>()
           where T : Component
     typeParameters:
     - id: T
     return:
       type: '{T}'
-    content.vb: Public Function GetIfHas(Of T As Component) As T
-  overload: Puffin.Core.Ecs.Entity.GetIfHas*
-  nameWithType.vb: Entity.GetIfHas(Of T)()
+    content.vb: Public Function Get(Of T As Component) As T
+  overload: Puffin.Core.Ecs.Entity.Get*
+  nameWithType.vb: Entity.Get(Of T)()
   modifiers.csharp:
   - public
   modifiers.vb:
   - Public
-  fullName.vb: Puffin.Core.Ecs.Entity.GetIfHas(Of T)()
-  name.vb: GetIfHas(Of T)()
+  fullName.vb: Puffin.Core.Ecs.Entity.Get(Of T)()
+  name.vb: Get(Of T)()
 references:
 - uid: Puffin.Core.Ecs
   commentId: N:Puffin.Core.Ecs
@@ -261,285 +330,6 @@ references:
   name: Object
   nameWithType: Object
   fullName: System.Object
-- uid: System.Object.Equals(System.Object)
-  commentId: M:System.Object.Equals(System.Object)
-  parent: System.Object
-  isExternal: true
-  name: Equals(Object)
-  nameWithType: Object.Equals(Object)
-  fullName: System.Object.Equals(System.Object)
-  spec.csharp:
-  - uid: System.Object.Equals(System.Object)
-    name: Equals
-    nameWithType: Object.Equals
-    fullName: System.Object.Equals
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: )
-    nameWithType: )
-    fullName: )
-  spec.vb:
-  - uid: System.Object.Equals(System.Object)
-    name: Equals
-    nameWithType: Object.Equals
-    fullName: System.Object.Equals
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: )
-    nameWithType: )
-    fullName: )
-- uid: System.Object.Equals(System.Object,System.Object)
-  commentId: M:System.Object.Equals(System.Object,System.Object)
-  parent: System.Object
-  isExternal: true
-  name: Equals(Object, Object)
-  nameWithType: Object.Equals(Object, Object)
-  fullName: System.Object.Equals(System.Object, System.Object)
-  spec.csharp:
-  - uid: System.Object.Equals(System.Object,System.Object)
-    name: Equals
-    nameWithType: Object.Equals
-    fullName: System.Object.Equals
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: ', '
-    nameWithType: ', '
-    fullName: ', '
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: )
-    nameWithType: )
-    fullName: )
-  spec.vb:
-  - uid: System.Object.Equals(System.Object,System.Object)
-    name: Equals
-    nameWithType: Object.Equals
-    fullName: System.Object.Equals
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: ', '
-    nameWithType: ', '
-    fullName: ', '
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: )
-    nameWithType: )
-    fullName: )
-- uid: System.Object.GetHashCode
-  commentId: M:System.Object.GetHashCode
-  parent: System.Object
-  isExternal: true
-  name: GetHashCode()
-  nameWithType: Object.GetHashCode()
-  fullName: System.Object.GetHashCode()
-  spec.csharp:
-  - uid: System.Object.GetHashCode
-    name: GetHashCode
-    nameWithType: Object.GetHashCode
-    fullName: System.Object.GetHashCode
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
-  spec.vb:
-  - uid: System.Object.GetHashCode
-    name: GetHashCode
-    nameWithType: Object.GetHashCode
-    fullName: System.Object.GetHashCode
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
-- uid: System.Object.GetType
-  commentId: M:System.Object.GetType
-  parent: System.Object
-  isExternal: true
-  name: GetType()
-  nameWithType: Object.GetType()
-  fullName: System.Object.GetType()
-  spec.csharp:
-  - uid: System.Object.GetType
-    name: GetType
-    nameWithType: Object.GetType
-    fullName: System.Object.GetType
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
-  spec.vb:
-  - uid: System.Object.GetType
-    name: GetType
-    nameWithType: Object.GetType
-    fullName: System.Object.GetType
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
-- uid: System.Object.MemberwiseClone
-  commentId: M:System.Object.MemberwiseClone
-  parent: System.Object
-  isExternal: true
-  name: MemberwiseClone()
-  nameWithType: Object.MemberwiseClone()
-  fullName: System.Object.MemberwiseClone()
-  spec.csharp:
-  - uid: System.Object.MemberwiseClone
-    name: MemberwiseClone
-    nameWithType: Object.MemberwiseClone
-    fullName: System.Object.MemberwiseClone
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
-  spec.vb:
-  - uid: System.Object.MemberwiseClone
-    name: MemberwiseClone
-    nameWithType: Object.MemberwiseClone
-    fullName: System.Object.MemberwiseClone
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
-- uid: System.Object.ReferenceEquals(System.Object,System.Object)
-  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
-  parent: System.Object
-  isExternal: true
-  name: ReferenceEquals(Object, Object)
-  nameWithType: Object.ReferenceEquals(Object, Object)
-  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
-  spec.csharp:
-  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
-    name: ReferenceEquals
-    nameWithType: Object.ReferenceEquals
-    fullName: System.Object.ReferenceEquals
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: ', '
-    nameWithType: ', '
-    fullName: ', '
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: )
-    nameWithType: )
-    fullName: )
-  spec.vb:
-  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
-    name: ReferenceEquals
-    nameWithType: Object.ReferenceEquals
-    fullName: System.Object.ReferenceEquals
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: ', '
-    nameWithType: ', '
-    fullName: ', '
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: )
-    nameWithType: )
-    fullName: )
-- uid: System.Object.ToString
-  commentId: M:System.Object.ToString
-  parent: System.Object
-  isExternal: true
-  name: ToString()
-  nameWithType: Object.ToString()
-  fullName: System.Object.ToString()
-  spec.csharp:
-  - uid: System.Object.ToString
-    name: ToString
-    nameWithType: Object.ToString
-    fullName: System.Object.ToString
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
-  spec.vb:
-  - uid: System.Object.ToString
-    name: ToString
-    nameWithType: Object.ToString
-    fullName: System.Object.ToString
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
 - uid: Puffin.Core.Ecs.Entity.Puffin.Core.Ecs.EntityExtensions.Move(System.Int32,System.Int32)
   commentId: M:Puffin.Core.Ecs.EntityExtensions.Move(Puffin.Core.Ecs.Entity,System.Int32,System.Int32)
   parent: Puffin.Core.Ecs.EntityExtensions
@@ -1310,6 +1100,187 @@ references:
   - name: )
     nameWithType: )
     fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Puffin.Core.Ecs.Entity.Puffin.Core.Ecs.EntityExtensions.Audio(System.String)
+  commentId: M:Puffin.Core.Ecs.EntityExtensions.Audio(Puffin.Core.Ecs.Entity,System.String)
+  parent: Puffin.Core.Ecs.EntityExtensions
+  definition: Puffin.Core.Ecs.EntityExtensions.Audio(Puffin.Core.Ecs.Entity,System.String)
+  name: Audio(String)
+  nameWithType: EntityExtensions.Audio(String)
+  fullName: Puffin.Core.Ecs.EntityExtensions.Audio(System.String)
+  spec.csharp:
+  - uid: Puffin.Core.Ecs.EntityExtensions.Audio(System.String)
+    name: Audio
+    nameWithType: EntityExtensions.Audio
+    fullName: Puffin.Core.Ecs.EntityExtensions.Audio
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Puffin.Core.Ecs.EntityExtensions.Audio(System.String)
+    name: Audio
+    nameWithType: EntityExtensions.Audio
+    fullName: Puffin.Core.Ecs.EntityExtensions.Audio
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Puffin.Core.Ecs.Entity.Puffin.Core.Ecs.EntityExtensions.Colour(System.Int32,System.Int32,System.Int32)
+  commentId: M:Puffin.Core.Ecs.EntityExtensions.Colour(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Int32)
+  parent: Puffin.Core.Ecs.EntityExtensions
+  definition: Puffin.Core.Ecs.EntityExtensions.Colour(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Int32)
+  name: Colour(Int32, Int32, Int32)
+  nameWithType: EntityExtensions.Colour(Int32, Int32, Int32)
+  fullName: Puffin.Core.Ecs.EntityExtensions.Colour(System.Int32, System.Int32, System.Int32)
+  spec.csharp:
+  - uid: Puffin.Core.Ecs.EntityExtensions.Colour(System.Int32,System.Int32,System.Int32)
+    name: Colour
+    nameWithType: EntityExtensions.Colour
+    fullName: Puffin.Core.Ecs.EntityExtensions.Colour
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Puffin.Core.Ecs.EntityExtensions.Colour(System.Int32,System.Int32,System.Int32)
+    name: Colour
+    nameWithType: EntityExtensions.Colour
+    fullName: Puffin.Core.Ecs.EntityExtensions.Colour
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Puffin.Core.Ecs.Entity.Puffin.Core.Ecs.EntityExtensions.Collide(System.Int32,System.Int32,System.Boolean)
+  commentId: M:Puffin.Core.Ecs.EntityExtensions.Collide(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Boolean)
+  parent: Puffin.Core.Ecs.EntityExtensions
+  definition: Puffin.Core.Ecs.EntityExtensions.Collide(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Boolean)
+  name: Collide(Int32, Int32, Boolean)
+  nameWithType: EntityExtensions.Collide(Int32, Int32, Boolean)
+  fullName: Puffin.Core.Ecs.EntityExtensions.Collide(System.Int32, System.Int32, System.Boolean)
+  spec.csharp:
+  - uid: Puffin.Core.Ecs.EntityExtensions.Collide(System.Int32,System.Int32,System.Boolean)
+    name: Collide
+    nameWithType: EntityExtensions.Collide
+    fullName: Puffin.Core.Ecs.EntityExtensions.Collide
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Puffin.Core.Ecs.EntityExtensions.Collide(System.Int32,System.Int32,System.Boolean)
+    name: Collide
+    nameWithType: EntityExtensions.Collide
+    fullName: Puffin.Core.Ecs.EntityExtensions.Collide
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
   - name: )
     nameWithType: )
     fullName: )
@@ -2234,6 +2205,226 @@ references:
   - name: )
     nameWithType: )
     fullName: )
+- uid: Puffin.Core.Ecs.EntityExtensions.Audio(Puffin.Core.Ecs.Entity,System.String)
+  commentId: M:Puffin.Core.Ecs.EntityExtensions.Audio(Puffin.Core.Ecs.Entity,System.String)
+  isExternal: true
+  name: Audio(Entity, String)
+  nameWithType: EntityExtensions.Audio(Entity, String)
+  fullName: Puffin.Core.Ecs.EntityExtensions.Audio(Puffin.Core.Ecs.Entity, System.String)
+  spec.csharp:
+  - uid: Puffin.Core.Ecs.EntityExtensions.Audio(Puffin.Core.Ecs.Entity,System.String)
+    name: Audio
+    nameWithType: EntityExtensions.Audio
+    fullName: Puffin.Core.Ecs.EntityExtensions.Audio
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Puffin.Core.Ecs.Entity
+    name: Entity
+    nameWithType: Entity
+    fullName: Puffin.Core.Ecs.Entity
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Puffin.Core.Ecs.EntityExtensions.Audio(Puffin.Core.Ecs.Entity,System.String)
+    name: Audio
+    nameWithType: EntityExtensions.Audio
+    fullName: Puffin.Core.Ecs.EntityExtensions.Audio
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Puffin.Core.Ecs.Entity
+    name: Entity
+    nameWithType: Entity
+    fullName: Puffin.Core.Ecs.Entity
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Puffin.Core.Ecs.EntityExtensions.Colour(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Int32)
+  commentId: M:Puffin.Core.Ecs.EntityExtensions.Colour(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Int32)
+  isExternal: true
+  name: Colour(Entity, Int32, Int32, Int32)
+  nameWithType: EntityExtensions.Colour(Entity, Int32, Int32, Int32)
+  fullName: Puffin.Core.Ecs.EntityExtensions.Colour(Puffin.Core.Ecs.Entity, System.Int32, System.Int32, System.Int32)
+  spec.csharp:
+  - uid: Puffin.Core.Ecs.EntityExtensions.Colour(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Int32)
+    name: Colour
+    nameWithType: EntityExtensions.Colour
+    fullName: Puffin.Core.Ecs.EntityExtensions.Colour
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Puffin.Core.Ecs.Entity
+    name: Entity
+    nameWithType: Entity
+    fullName: Puffin.Core.Ecs.Entity
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Puffin.Core.Ecs.EntityExtensions.Colour(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Int32)
+    name: Colour
+    nameWithType: EntityExtensions.Colour
+    fullName: Puffin.Core.Ecs.EntityExtensions.Colour
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Puffin.Core.Ecs.Entity
+    name: Entity
+    nameWithType: Entity
+    fullName: Puffin.Core.Ecs.Entity
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Puffin.Core.Ecs.EntityExtensions.Collide(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Boolean)
+  commentId: M:Puffin.Core.Ecs.EntityExtensions.Collide(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Boolean)
+  isExternal: true
+  name: Collide(Entity, Int32, Int32, Boolean)
+  nameWithType: EntityExtensions.Collide(Entity, Int32, Int32, Boolean)
+  fullName: Puffin.Core.Ecs.EntityExtensions.Collide(Puffin.Core.Ecs.Entity, System.Int32, System.Int32, System.Boolean)
+  spec.csharp:
+  - uid: Puffin.Core.Ecs.EntityExtensions.Collide(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Boolean)
+    name: Collide
+    nameWithType: EntityExtensions.Collide
+    fullName: Puffin.Core.Ecs.EntityExtensions.Collide
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Puffin.Core.Ecs.Entity
+    name: Entity
+    nameWithType: Entity
+    fullName: Puffin.Core.Ecs.Entity
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Puffin.Core.Ecs.EntityExtensions.Collide(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Boolean)
+    name: Collide
+    nameWithType: EntityExtensions.Collide
+    fullName: Puffin.Core.Ecs.EntityExtensions.Collide
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Puffin.Core.Ecs.Entity
+    name: Entity
+    nameWithType: Entity
+    fullName: Puffin.Core.Ecs.Entity
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
 - uid: Puffin.Core.Ecs.Entity.X*
   commentId: Overload:Puffin.Core.Ecs.Entity.X
   name: X
@@ -2251,6 +2442,16 @@ references:
   name: Y
   nameWithType: Entity.Y
   fullName: Puffin.Core.Ecs.Entity.Y
+- uid: Puffin.Core.Ecs.Entity.VelocityX*
+  commentId: Overload:Puffin.Core.Ecs.Entity.VelocityX
+  name: VelocityX
+  nameWithType: Entity.VelocityX
+  fullName: Puffin.Core.Ecs.Entity.VelocityX
+- uid: Puffin.Core.Ecs.Entity.VelocityY*
+  commentId: Overload:Puffin.Core.Ecs.Entity.VelocityY
+  name: VelocityY
+  nameWithType: Entity.VelocityY
+  fullName: Puffin.Core.Ecs.Entity.VelocityY
 - uid: Puffin.Core.Ecs.Entity.Set*
   commentId: Overload:Puffin.Core.Ecs.Entity.Set
   name: Set
@@ -2278,11 +2479,11 @@ references:
   name: Remove
   nameWithType: Entity.Remove
   fullName: Puffin.Core.Ecs.Entity.Remove
-- uid: Puffin.Core.Ecs.Entity.GetIfHas*
-  commentId: Overload:Puffin.Core.Ecs.Entity.GetIfHas
-  name: GetIfHas
-  nameWithType: Entity.GetIfHas
-  fullName: Puffin.Core.Ecs.Entity.GetIfHas
+- uid: Puffin.Core.Ecs.Entity.Get*
+  commentId: Overload:Puffin.Core.Ecs.Entity.Get
+  name: Get
+  nameWithType: Entity.Get
+  fullName: Puffin.Core.Ecs.Entity.Get
 - uid: '{T}'
   commentId: '!:T'
   definition: T
