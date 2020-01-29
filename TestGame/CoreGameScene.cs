@@ -29,10 +29,24 @@ namespace MyGame
 
             this.Add(tileMap);
 
-            this.Add(new Entity().Colour(0xFFFFFF, 32, 32)
+            var player = new Entity().Colour(0xFFFFFF, 32, 32)
                 .Move(850, 48)
                 .FourWayMovement(100)
-                .Collide(32, 32, true));
+                .Collide(32, 32, true);
+            
+            float total = 0;
+            player.OnUpdate((elapsed) => {
+                total += elapsed;
+                if (total >= 1000) {
+                    total = 0;
+                    player.Colour(0xFF0000, 32, 32);
+                } else if (total >= 500) {
+                    player.Colour(0x0000FF, 64, 64);
+                }
+            });
+            
+            this.Add(player);
+                
 
             this.Add(new Entity().Colour(0xFF0000, 128, 64).Move(100, 100).Collide(128, 64));
             this.Add(new Entity().Colour(0x884400, 128, 64).Move(150, 200).Collide(128, 64));

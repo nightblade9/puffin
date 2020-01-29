@@ -198,6 +198,14 @@ namespace Puffin.Core
                 system.OnUpdate(TimeSpan.FromMilliseconds(elapsedMilliseconds));
             }
 
+            foreach (var entity in this.entities)
+            {
+                foreach (var action in entity.OnUpdateActions)
+                {
+                    action.Invoke(elapsedMilliseconds);
+                }
+            }
+
             this.Update(elapsedMilliseconds);
         }
 
