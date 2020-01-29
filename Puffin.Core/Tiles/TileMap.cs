@@ -6,8 +6,7 @@ namespace Puffin.Core.Tiles
 {
     /// <summary>
     /// A 2D tilemap. Contains a tileset (defined tiles) and a spritesheet, which it uses
-    /// to render the tiles. For usage, see the docs.
-    /// Define some tiles, set some tiles, and you're golden.
+    /// to render the tiles. Define some tiles, set some tiles, and they appear on-screen.
     /// </summary>
     public class TileMap
     {
@@ -26,9 +25,12 @@ namespace Puffin.Core.Tiles
         
         /// <summary>
         /// Constructs a tilemap, given an image file name, and the size of a single tile.
-        /// Tile width/height are in pixels.
-        /// Map width/height are in tiles.
         /// </summary>
+        /// <param name="mapWidth">The width of the map, in tiles.</param>
+        /// <param name="mapHeight">The height of the map, in tiles.</param>
+        /// <param name="tileImageFile">The image file of the spritesheet</param>
+        /// <param name="tileWidth">The width of a single tile, in pixels.</param>
+        /// <param name="tileHeight">The height of a single tile, in pixels.</param>
         public TileMap(int mapWidth, int mapHeight, string tileImageFile, int tileWidth, int tileHeight)
         {
             this.MapWidth = mapWidth;
@@ -41,18 +43,20 @@ namespace Puffin.Core.Tiles
         }
 
         /// <summary>
-        /// Define a new tile, at specific coordinates, and whether it's solid or not.
-        /// Cell x/y are the coordinates of the tile (not pixels).
-        /// Solidity affects entities with a collision component.
+        /// Define a new tile, at specific coordinates, and specify whether it's solid or not.
         /// Calling this twice with the same tile name will overwrite the previous definition.
         /// </summary>
+        /// <param name="tileName">The name of the tile (used in <c>Set</c></param>
+        /// <param name="cellX">The x-index (not pixels) of the tile in the tilesheet</param>
+        /// <param name="cellY">The y-index (not pixels) of the tile in the tilesheet</param>
+        /// <param name="isSolid">true if this tile should prevent collidable entities from moving onto it.</param>
         public void Define(string tileName, int cellX, int cellY, bool isSolid = false)
         {
             this.tileSet[tileName] = new TileDefinition(tileName, cellX, cellY, isSolid);
         }
 
         /// <summary>
-        /// Set a specific tile to a defition.
+        /// Set a specific tile to a defition. Throws if that definition isn't defined yet via <c>Define</c>.
         /// </summary>
         public void Set(int cellX, int cellY, string tileName)
         {
@@ -64,7 +68,7 @@ namespace Puffin.Core.Tiles
         }
 
         /// <summary>
-        /// Get the tile at a specific location. Returns null if not set.
+        /// Get the tile at a specific location. Returns null if coordinates are out of bounds or that tile is not set.
         /// </summary>
         public string Get(int cellX, int cellY)
         {
@@ -76,13 +80,15 @@ namespace Puffin.Core.Tiles
             return this.tileData[cellX, cellY];
         }
 
+        /// <summary>
+        /// Sets the tile at a specific location, overriding the previous value at that location.
+        /// </summary>
         public string this[int cellX, int cellY]
         {
             get { return this.Get(cellX, cellY); }
             set { this.Set(cellX, cellY, value); }
         }
 
-        // For testing.
         internal TileDefinition[] GetDefinitions()
         {
             return this.tileSet.Values.ToArray();
