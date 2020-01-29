@@ -22,8 +22,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Entity.cs
-      branch: documentation
-      repo: https://github.com/nightblade9/puffin-engine.git
+      branch: master
+      repo: https://github.com/nightblade9/puffin.git
     id: Entity
     path: ../Puffin.Core/Ecs/Entity.cs
     startLine: 11
@@ -74,8 +74,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Entity.cs
-      branch: documentation
-      repo: https://github.com/nightblade9/puffin-engine.git
+      branch: master
+      repo: https://github.com/nightblade9/puffin.git
     id: X
     path: ../Puffin.Core/Ecs/Entity.cs
     startLine: 15
@@ -109,8 +109,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Entity.cs
-      branch: documentation
-      repo: https://github.com/nightblade9/puffin-engine.git
+      branch: master
+      repo: https://github.com/nightblade9/puffin.git
     id: Y
     path: ../Puffin.Core/Ecs/Entity.cs
     startLine: 17
@@ -144,8 +144,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Entity.cs
-      branch: documentation
-      repo: https://github.com/nightblade9/puffin-engine.git
+      branch: master
+      repo: https://github.com/nightblade9/puffin.git
     id: VelocityX
     path: ../Puffin.Core/Ecs/Entity.cs
     startLine: 18
@@ -179,8 +179,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Entity.cs
-      branch: documentation
-      repo: https://github.com/nightblade9/puffin-engine.git
+      branch: master
+      repo: https://github.com/nightblade9/puffin.git
     id: VelocityY
     path: ../Puffin.Core/Ecs/Entity.cs
     startLine: 19
@@ -214,8 +214,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Entity.cs
-      branch: documentation
-      repo: https://github.com/nightblade9/puffin-engine.git
+      branch: master
+      repo: https://github.com/nightblade9/puffin.git
     id: Set
     path: ../Puffin.Core/Ecs/Entity.cs
     startLine: 30
@@ -251,8 +251,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Entity.cs
-      branch: documentation
-      repo: https://github.com/nightblade9/puffin-engine.git
+      branch: master
+      repo: https://github.com/nightblade9/puffin.git
     id: Remove
     path: ../Puffin.Core/Ecs/Entity.cs
     startLine: 41
@@ -290,8 +290,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Entity.cs
-      branch: documentation
-      repo: https://github.com/nightblade9/puffin-engine.git
+      branch: master
+      repo: https://github.com/nightblade9/puffin.git
     id: Get
     path: ../Puffin.Core/Ecs/Entity.cs
     startLine: 50

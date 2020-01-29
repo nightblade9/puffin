@@ -16,8 +16,8 @@ items:
   source:
     remote:
       path: Puffin.UI/Controls/Button.cs
-      branch: documentation
-      repo: https://github.com/nightblade9/puffin-engine.git
+      branch: master
+      repo: https://github.com/nightblade9/puffin.git
     id: Button
     path: ../Puffin.UI/Controls/Button.cs
     startLine: 9
@@ -62,8 +62,8 @@ items:
   source:
     remote:
       path: Puffin.UI/Controls/Button.cs
-      branch: documentation
-      repo: https://github.com/nightblade9/puffin-engine.git
+      branch: master
+      repo: https://github.com/nightblade9/puffin.git
     id: .ctor
     path: ../Puffin.UI/Controls/Button.cs
     startLine: 19

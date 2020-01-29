@@ -26,8 +26,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Scene.cs
-      branch: documentation
-      repo: https://github.com/nightblade9/puffin-engine.git
+      branch: master
+      repo: https://github.com/nightblade9/puffin.git
     id: Scene
     path: ../Puffin.Core/Scene.cs
     startLine: 14
@@ -65,8 +65,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Scene.cs
-      branch: documentation
-      repo: https://github.com/nightblade9/puffin-engine.git
+      branch: master
+      repo: https://github.com/nightblade9/puffin.git
     id: Fps
     path: ../Puffin.Core/Scene.cs
     startLine: 22
@@ -102,8 +102,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Scene.cs
-      branch: documentation
-      repo: https://github.com/nightblade9/puffin-engine.git
+      branch: master
+      repo: https://github.com/nightblade9/puffin.git
     id: BackgroundColour
     path: ../Puffin.Core/Scene.cs
     startLine: 27
@@ -135,8 +135,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Scene.cs
-      branch: documentation
-      repo: https://github.com/nightblade9/puffin-engine.git
+      branch: master
+      repo: https://github.com/nightblade9/puffin.git
     id: MouseCoordinates
     path: ../Puffin.Core/Scene.cs
     startLine: 51
@@ -172,8 +172,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Scene.cs
-      branch: documentation
-      repo: https://github.com/nightblade9/puffin-engine.git
+      branch: master
+      repo: https://github.com/nightblade9/puffin.git
     id: .ctor
     path: ../Puffin.Core/Scene.cs
     startLine: 56
@@ -204,8 +204,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Scene.cs
-      branch: documentation
-      repo: https://github.com/nightblade9/puffin-engine.git
+      branch: master
+      repo: https://github.com/nightblade9/puffin.git
     id: Add
     path: ../Puffin.Core/Scene.cs
     startLine: 65
@@ -239,8 +239,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Scene.cs
-      branch: documentation
-      repo: https://github.com/nightblade9/puffin-engine.git
+      branch: master
+      repo: https://github.com/nightblade9/puffin.git
     id: Remove
     path: ../Puffin.Core/Scene.cs
     startLine: 82
@@ -274,8 +274,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Scene.cs
-      branch: documentation
-      repo: https://github.com/nightblade9/puffin-engine.git
+      branch: master
+      repo: https://github.com/nightblade9/puffin.git
     id: Add
     path: ../Puffin.Core/Scene.cs
     startLine: 95
@@ -309,8 +309,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Scene.cs
-      branch: documentation
-      repo: https://github.com/nightblade9/puffin-engine.git
+      branch: master
+      repo: https://github.com/nightblade9/puffin.git
     id: Remove
     path: ../Puffin.Core/Scene.cs
     startLine: 107
@@ -344,8 +344,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Scene.cs
-      branch: documentation
-      repo: https://github.com/nightblade9/puffin-engine.git
+      branch: master
+      repo: https://github.com/nightblade9/puffin.git
     id: IsActionDown
     path: ../Puffin.Core/Scene.cs
     startLine: 115
@@ -381,8 +381,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Scene.cs
-      branch: documentation
-      repo: https://github.com/nightblade9/puffin-engine.git
+      branch: master
+      repo: https://github.com/nightblade9/puffin.git
     id: Update
     path: ../Puffin.Core/Scene.cs
     startLine: 124
@@ -418,8 +418,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Scene.cs
-      branch: documentation
-      repo: https://github.com/nightblade9/puffin-engine.git
+      branch: master
+      repo: https://github.com/nightblade9/puffin.git
     id: Dispose
     path: ../Puffin.Core/Scene.cs
     startLine: 132

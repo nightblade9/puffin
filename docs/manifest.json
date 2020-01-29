@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.AudioComponent.html",
-          "hash": "fqyPwFHdgsIfse24pvOBcA=="
+          "hash": "5/8wZTyF31+RijhVBg2O5A=="
         }
       },
       "is_incremental": true,
@@ -21,7 +21,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.CollisionComponent.html",
-          "hash": "O2PkICaPCiUjmDsS6TYStA=="
+          "hash": "2LYJGQPx0wIeo4lDFGRRZQ=="
         }
       },
       "is_incremental": true,
@@ -33,7 +33,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.ColourComponent.html",
-          "hash": "3fIt1VzRVnQBlLTa0S32+w=="
+          "hash": "dYpuAGHrJMeS+tQHskn3VQ=="
         }
       },
       "is_incremental": true,
@@ -45,7 +45,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.Component.html",
-          "hash": "cuwMkScXswn6q2Br3AfOBQ=="
+          "hash": "fXVyDYoNBqejMJlGJoo/Gg=="
         }
       },
       "is_incremental": true,
@@ -57,7 +57,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.FourWayMovementComponent.html",
-          "hash": "SziMjNdI92/bisSMAOlEYg=="
+          "hash": "fzCEfrav9sDCqKdNadq37Q=="
         }
       },
       "is_incremental": true,
@@ -69,7 +69,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.KeyboardComponent.html",
-          "hash": "yPCSduMDu4Z2JPLqEcREoQ=="
+          "hash": "HpgT5O8Utf8m4rF4phB7cg=="
         }
       },
       "is_incremental": true,
@@ -81,7 +81,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.MouseComponent.html",
-          "hash": "Uw8LL7QYklDVAGGTrnQpOQ=="
+          "hash": "JmPVDwex9zi8+ksAhgRnEA=="
         }
       },
       "is_incremental": true,
@@ -93,7 +93,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.OverlapComponent.html",
-          "hash": "TFZQnW0GVo5uyn70/pgYHw=="
+          "hash": "XW5bPA+x8RS7ANgwXfB2UQ=="
         }
       },
       "is_incremental": true,
@@ -105,7 +105,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.SpriteComponent.html",
-          "hash": "DyRzE3TGK/v9nJZ3z3xNqA=="
+          "hash": "Bf3Zlz8SY24Bd/+rOS3ofA=="
         }
       },
       "is_incremental": true,
@@ -117,7 +117,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.TextLabelComponent.html",
-          "hash": "ivs6bSzvflfNNRHcmh1jTw=="
+          "hash": "F0FUqnKe31HHoCYZspHN1Q=="
         }
       },
       "is_incremental": true,
@@ -141,7 +141,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Entity.html",
-          "hash": "fHIFgf6wG5m3U6sbo5TLFg=="
+          "hash": "ONtNzhTf/Y81PFaP/pYZBw=="
         }
       },
       "is_incremental": true,
@@ -153,7 +153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.EntityExtensions.html",
-          "hash": "P+6PCuDEAlvvrFH7ElYZ1A=="
+          "hash": "fNKhUx6hspyqT35vpKfOMQ=="
         }
       },
       "is_incremental": true,
@@ -177,7 +177,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Scene.html",
-          "hash": "e9mt2lX5Pfe5MU7brdJCeg=="
+          "hash": "6U4/U5FBbOyOwB4TgVHGpw=="
         }
       },
       "is_incremental": true,
@@ -189,7 +189,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Tiles.TileMap.html",
-          "hash": "LLroxPN7S1vnlVb8LDN4EQ=="
+          "hash": "O3eqEIRosF4fVBSCb0Ltng=="
         }
       },
       "is_incremental": true,
@@ -225,7 +225,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Infrastructure.MonoGame.PuffinGame.html",
-          "hash": "SuZ9mlL+u7yxdM9cLz17AA=="
+          "hash": "ZEdXNsTmxqhrC5qO80qa8w=="
         }
       },
       "is_incremental": true,
@@ -249,7 +249,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.UI.Controls.Button.html",
-          "hash": "IQpMHosLOGQqykvFb4d2TA=="
+          "hash": "RqSFcRfSU98r2MMMwrnC+Q=="
         }
       },
       "is_incremental": true,
@@ -273,10 +273,10 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "8ayCRwbJKS7JndATPCLjng=="
+          "hash": "QzQibDvRvbvp2vpHHoiSuQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -297,7 +297,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "+XKC+R5CNVWgzo5RIrVwwQ=="
+          "hash": "1o46S+vGVvQi8veg0fkEVQ=="
         }
       },
       "is_incremental": true,
@@ -316,15 +316,18 @@
       "version": ""
     },
     {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
       "type": "Conceptual",
       "source_relative_path": "index.md",
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "FdooV48+P9nyaB0XPJyKqg=="
+          "hash": "t3PacrT48AHrRyrfEvV6qg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -349,12 +352,11 @@
         "skipped_file_count": 0
       },
       "processors": {
-        "TocDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 0,
-          "skipped_file_count": 0
+          "total_file_count": 3,
+          "skipped_file_count": 2
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
@@ -362,11 +364,12 @@
           "total_file_count": 22,
           "skipped_file_count": 22
         },
-        "ConceptualDocumentProcessor": {
-          "can_incremental": true,
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build",
-          "total_file_count": 3,
-          "skipped_file_count": 3
+          "total_file_count": 0,
+          "skipped_file_count": 0
         }
       }
     },
