@@ -4,13 +4,14 @@
       "src": [
         {
           "files": [ "**.csproj" ],
-          "exclude": [ "**/bin/**", "**/obj/**", "**/*Test*", "**/MyGame.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "**/*Test*" ],
           "src": ".."
         }
       ],
       "dest": "api",
       "disableGitFeatures": false,
-      "disableDefaultFilter": false
+      "disableDefaultFilter": false,
+      "filter": "filterConfig.yml"
     }
   ],
   "build": {
