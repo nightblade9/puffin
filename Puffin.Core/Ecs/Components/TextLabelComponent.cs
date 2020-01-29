@@ -1,3 +1,5 @@
+using System;
+
 namespace Puffin.Core.Ecs.Components
 {
     /// <summary>
@@ -18,7 +20,10 @@ namespace Puffin.Core.Ecs.Components
         public int FontSize { 
             get { return this.fontSize; }
             set {
-                // TODO: validate that it's positive?
+                if (value <= 0)
+                {
+                    throw new ArgumentException("Font size must be positive");
+                }
                 this.fontSize = value;
                 EventBus.LatestInstance.Broadcast(EventBusSignal.LabelFontChanged, this);
             }
