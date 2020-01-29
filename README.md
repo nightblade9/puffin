@@ -111,6 +111,43 @@ for (var y = 0; y < 10; y++) {
 }
 ```
 
+# Collision Detection and Response
+
+## Collision/Overlap Detection
+
+If you simply want collision detection (did two things collide? Are they overlapping?) You can add an `OverlapComponent` to your entity (`.Overlap(...)`). This allows you to specify functions when another entity with an `OverlapComponent` overlaps yours.
+
+```csharp
+var coin = new Entity().Sprite("coin.png").Overlap(40, 40, 0, 0, (e) => {
+    if (e == player) {
+        // ... play coin noise ...
+        // ... increment coins by +1
+    }
+});
+```
+
+The second set of coordinates specify an offset of the overlap, relative to the entity origin. This is useful for things like creating an overlap area larger than an entity's sprite, or noting overlap only if the player walks into the bottom part of a door:
+
+```csharp
+var door = new Entity().Sprite("door.png") // eg. 32x60 image
+    .Overlap(32, 20, 0, 40); // 32x20 overlap that's at (0, 40)
+```
+
+## Collision Response
+
+Puffin provides built-in support for AABB (axis-aligned or non-rotated bounding boxes), including high-speed ones, and is resistent to "tunneling" (high-speed, small objects going through solid walls/etc. because they move so fast).
+
+By default, Puffin checks for entity/tile collisions (with solid tiles) and entity/entity collisions (as long as both have a `CollisionComponent`):
+
+```csharp
+var player = new Entity().Colour(32, 32, 0xFFFFFF).FourWayMovement(200).Collide(32, 32, true);
+var wall = new Entity().Colour(128, 16, 0x666666).Collide(128, 16).Move(50, 50);
+```
+
+The player will collide with the wall in all directions, as well as any tiles with `solid=true` for any `TileMap` instances in the current `Scene`.
+
+The third parameter, `slideOnCollide`, if true, makes the entity slide along the object in the non-colliding direction, rather than stopping abruptly. It is useful for things like smooth character/NPC movement around solid objects.
+
 # Performance
 
 I ran a simple MonoGame project and an analogous Puffin project, where I render as many copies of a sprite as possible until the FPS drops from 60 to 50.

@@ -184,5 +184,13 @@ namespace Puffin.Core.UnitTests.Ecs
             Assert.That(actual.Height, Is.EqualTo(32));
             Assert.That(actual.SlideOnCollide, Is.True);
         }
+
+        [Test]
+        public void VelocitySetsVelocity()
+        {
+            var e = new Entity().Velocity(100, 50);
+            Assert.That(e.VelocityX, Is.EqualTo(100));
+            Assert.That(e.VelocityY, Is.EqualTo(50));
+        }
     }
 }
