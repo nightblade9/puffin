@@ -26,7 +26,7 @@ namespace Puffin.Infrastructure.MonoGame
         /// to change keyboard bindings, or expose them in a UI and allow users to arbitrarily
         /// override keyboard mappings (for accessibility).
         /// <summary>
-        public Dictionary<Enum, List<Keys>> actionToKeys = new Dictionary<Enum, List<Keys>>() {
+        public Dictionary<Enum, List<Keys>> ActionToKeys = new Dictionary<Enum, List<Keys>>() {
             { PuffinAction.Up, new List<Keys>() { Keys.W, Keys.Up } },
             { PuffinAction.Down, new List<Keys>() { Keys.S, Keys.Down } },
             { PuffinAction.Left, new List<Keys>() { Keys.A, Keys.Left } },

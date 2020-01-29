@@ -14,16 +14,26 @@ namespace Puffin.Core
     /// </summary>
     public class Scene : IDisposable
     {
-        public static Scene LatestInstance { get; private set; }
+        internal static Scene LatestInstance { get; private set; }
 
+        /// <summary>
+        /// The last recorded FPS (frames per second). This is the number of draw calls per second.
+        /// This value updates approximately every second.
+        /// </summary>
         public float Fps { get; private set; }
+
+        /// <summary>
+        /// The background colour of this scene in the format 0xRRGGBB; it is drawn before all other entities.
+        /// </summary>
         public int BackgroundColour = 0x000000; // black
 
+        // Used for a scene-only mouse click event
         internal Action OnMouseClick;
 
         // Drawn in the order added. Internal because needed for collision resolution.
         internal List<TileMap> TileMaps = new List<TileMap>();
 
+        // Break update calls that have long elapsed times into chunks of this many milliseconds.
         private readonly int MAX_UPDATE_INERVAL_MILLISECONDS = 150;
 
         private IMouseProvider mouseProvider;
@@ -36,8 +46,14 @@ namespace Puffin.Core
         private DateTime lastFpsUpdate = DateTime.Now;
         private int drawsSinceLastFpsCount = 0;
 
+        /// <summary>
+        /// The current mouse coordinates.
+        /// </summary>
         public Tuple<int, int> MouseCoordinates { get { return this.mouseProvider.MouseCoordinates; }}
 
+        /// <summary>
+        /// Creates a new, empty Scene instance.
+        /// </summary>
         public Scene()
         {
             Scene.LatestInstance = this;
@@ -111,6 +127,9 @@ namespace Puffin.Core
             
         }
         
+        /// <summary>
+        /// Disposes the scene and the event bus (so entities can be garbage-collected).
+        /// </summary>
         public void Dispose()
         {
             if (EventBus.LatestInstance != null)
@@ -155,17 +174,14 @@ namespace Puffin.Core
             }
         }
 
-        /// <summary>
-        /// Internal method that calls `Draw` on the drawing system.
-        /// </summary>
         internal void OnDraw(TimeSpan elapsed)
         {
             drawsSinceLastFpsCount++;
             this.drawingSystem.OnDraw(elapsed, this.BackgroundColour);
         }
 
-        // Separate from the constructor and internal because only we call it; subclasses of
-        // Scene don't need to know about this.
+        // Separate from the constructor and internal because only we call it; subclasses of Scene don't need to know about this.
+        /// Sets up all the systems and reports to them all the entities/tilemaps/etc.
         internal void Initialize(ISystem[] systems, IMouseProvider mouseProvider, IKeyboardProvider keyboardProvider)
         {
             this.drawingSystem = systems.Single(s => s is DrawingSystem) as DrawingSystem;
