@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.AudioComponent.html",
-          "hash": "5/8wZTyF31+RijhVBg2O5A=="
+          "hash": "3JnFnJhQ8XGpu+fg9H9ipw=="
         }
       },
       "is_incremental": true,
@@ -21,7 +21,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.CollisionComponent.html",
-          "hash": "2LYJGQPx0wIeo4lDFGRRZQ=="
+          "hash": "92b2HRmNsWBPBmqCY0JAmA=="
         }
       },
       "is_incremental": true,
@@ -33,7 +33,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.ColourComponent.html",
-          "hash": "dYpuAGHrJMeS+tQHskn3VQ=="
+          "hash": "nN/vxdZRDaJfHm6UC2qfEw=="
         }
       },
       "is_incremental": true,
@@ -45,7 +45,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.Component.html",
-          "hash": "fXVyDYoNBqejMJlGJoo/Gg=="
+          "hash": "X2ei/RH+G90A+/SkOvXDLg=="
         }
       },
       "is_incremental": true,
@@ -57,7 +57,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.FourWayMovementComponent.html",
-          "hash": "fzCEfrav9sDCqKdNadq37Q=="
+          "hash": "ugATT2q16+valQnp5Jokkg=="
         }
       },
       "is_incremental": true,
@@ -69,7 +69,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.KeyboardComponent.html",
-          "hash": "HpgT5O8Utf8m4rF4phB7cg=="
+          "hash": "kJfaS4QNj6cs5wEOdadU7w=="
         }
       },
       "is_incremental": true,
@@ -81,7 +81,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.MouseComponent.html",
-          "hash": "JmPVDwex9zi8+ksAhgRnEA=="
+          "hash": "M5Ff+20YAezrOIcfmVzfIg=="
         }
       },
       "is_incremental": true,
@@ -93,7 +93,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.OverlapComponent.html",
-          "hash": "XW5bPA+x8RS7ANgwXfB2UQ=="
+          "hash": "RTxtnyhFPhdrajTfQ3aMKA=="
         }
       },
       "is_incremental": true,
@@ -105,7 +105,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.SpriteComponent.html",
-          "hash": "Bf3Zlz8SY24Bd/+rOS3ofA=="
+          "hash": "8ES4sXJeQxN0N+qkgSQmZA=="
         }
       },
       "is_incremental": true,
@@ -117,7 +117,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.TextLabelComponent.html",
-          "hash": "F0FUqnKe31HHoCYZspHN1Q=="
+          "hash": "q9sOgevBBaOKXQH/5evILg=="
         }
       },
       "is_incremental": true,
@@ -129,7 +129,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.html",
-          "hash": "FRN2+DVga/0dlHb0dMJ70A=="
+          "hash": "DIV+d7YnDl+mhcZpbpiUQg=="
         }
       },
       "is_incremental": true,
@@ -141,7 +141,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Entity.html",
-          "hash": "ONtNzhTf/Y81PFaP/pYZBw=="
+          "hash": "qjJ7fkKegG/mPu9KCD6J5Q=="
         }
       },
       "is_incremental": true,
@@ -153,7 +153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.EntityExtensions.html",
-          "hash": "fNKhUx6hspyqT35vpKfOMQ=="
+          "hash": "1zyki0D3nVLJ7IpsaF7FEA=="
         }
       },
       "is_incremental": true,
@@ -165,7 +165,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.html",
-          "hash": "3FsHjkgqf8jaxxQx/XIdtQ=="
+          "hash": "GggH81DjXm5mA8vOq7RZzw=="
         }
       },
       "is_incremental": true,
@@ -177,7 +177,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Scene.html",
-          "hash": "6U4/U5FBbOyOwB4TgVHGpw=="
+          "hash": "JkcOCsRmCPKPtv4QJ8zykw=="
         }
       },
       "is_incremental": true,
@@ -189,7 +189,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Tiles.TileMap.html",
-          "hash": "O3eqEIRosF4fVBSCb0Ltng=="
+          "hash": "9mqa0w8PZIvUkP8/F5ZnEg=="
         }
       },
       "is_incremental": true,
@@ -201,7 +201,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Tiles.html",
-          "hash": "BpRNXWJ0b8T5VwjVyoBesw=="
+          "hash": "gr9UV/jbPkeo5Q8K4edP4A=="
         }
       },
       "is_incremental": true,
@@ -213,7 +213,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.html",
-          "hash": "mOW2NGNpWzFt7hLToivNwg=="
+          "hash": "lvSkJGKU0yQsyB6nXqEm6Q=="
         }
       },
       "is_incremental": true,
@@ -225,7 +225,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Infrastructure.MonoGame.PuffinGame.html",
-          "hash": "ZEdXNsTmxqhrC5qO80qa8w=="
+          "hash": "ELQqVPH6bUVULj3g2MDeew=="
         }
       },
       "is_incremental": true,
@@ -237,7 +237,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Infrastructure.MonoGame.html",
-          "hash": "DXT47vwIGy+crJ8Hbm6HpA=="
+          "hash": "VF5OQiArLzjF8KQ/MJpB8Q=="
         }
       },
       "is_incremental": true,
@@ -249,7 +249,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.UI.Controls.Button.html",
-          "hash": "RqSFcRfSU98r2MMMwrnC+Q=="
+          "hash": "obcoMWkIxxtWhzDTJeThuw=="
         }
       },
       "is_incremental": true,
@@ -261,7 +261,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.UI.Controls.html",
-          "hash": "l7CeMQW0waHXQuZaq6UiWQ=="
+          "hash": "bU2Wet8B4arufASb/EBguQ=="
         }
       },
       "is_incremental": true,
@@ -273,10 +273,10 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "QzQibDvRvbvp2vpHHoiSuQ=="
+          "hash": "TNmvslYc6jmh4+w+uc9lMA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -297,7 +297,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "1o46S+vGVvQi8veg0fkEVQ=="
+          "hash": "7ALXKi/F7msoiYNFURWt7g=="
         }
       },
       "is_incremental": true,
@@ -316,15 +316,12 @@
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Conceptual",
       "source_relative_path": "index.md",
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "t3PacrT48AHrRyrfEvV6qg=="
+          "hash": "fLeu6rmWnfmF5NNaDGOf7Q=="
         }
       },
       "is_incremental": false,
@@ -352,11 +349,12 @@
         "skipped_file_count": 0
       },
       "processors": {
-        "ConceptualDocumentProcessor": {
-          "can_incremental": true,
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build",
-          "total_file_count": 3,
-          "skipped_file_count": 2
+          "total_file_count": 0,
+          "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
@@ -364,12 +362,11 @@
           "total_file_count": 22,
           "skipped_file_count": 22
         },
-        "TocDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 0,
-          "skipped_file_count": 0
+          "total_file_count": 3,
+          "skipped_file_count": 2
         }
       }
     },
