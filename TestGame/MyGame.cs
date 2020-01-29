@@ -8,7 +8,7 @@ namespace MyGame
     {
         public MyGame() : base(960, 540)
         {
-            this.actionToKeys[CustomAction.Next] = new List<Keys>()
+            this.ActionToKeys[CustomAction.Next] = new List<Keys>()
             {
                 Keys.Space,
                 Keys.Enter,

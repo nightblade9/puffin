@@ -133,7 +133,7 @@ namespace Puffin.Core.Ecs
         }
 
         /// <summary>
-        /// Adds an audio file to an entity; you can call it via e.GetIfHas<AudioComponent>().Play(pitch).
+        /// Adds an audio file to an entity; you can call it via e.Get&lt;AudioComponent&gt;().Play(pitch).
         /// You should be able to play wave files and OGG files.
         /// For more information/arguments, see the AudioComponent docs.
         /// </summary>

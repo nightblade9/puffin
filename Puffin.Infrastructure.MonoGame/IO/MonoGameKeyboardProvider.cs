@@ -12,7 +12,7 @@ namespace Puffin.Infrastructure.MonoGame.IO
         public bool IsActionDown(Enum action)
         {
             var keyboard = Keyboard.GetState();
-            var keysForAction = PuffinGame.LatestInstance.actionToKeys[action];
+            var keysForAction = PuffinGame.LatestInstance.ActionToKeys[action];
 
             foreach (var key in keysForAction)
             {

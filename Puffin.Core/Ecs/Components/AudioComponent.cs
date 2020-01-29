@@ -2,6 +2,7 @@ namespace Puffin.Core.Ecs.Components
 {
     /// <summary>
     /// A component that can play an audio file (short or long), optionally at a modified pitch.
+    /// </summary>
     public class AudioComponent : Component
     {
         internal readonly string FileName;
