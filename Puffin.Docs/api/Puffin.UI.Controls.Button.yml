@@ -16,19 +16,20 @@ items:
   source:
     remote:
       path: Puffin.UI/Controls/Button.cs
-      branch: docs
-      repo: git@github.com:nightblade9/puffin
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
     id: Button
     path: ../Puffin.UI/Controls/Button.cs
-    startLine: 5
+    startLine: 9
   assemblies:
   - Puffin.UI
   namespace: Puffin.UI.Controls
+  summary: "\nCreates a clickable button backed with specified image and caption.\nBy default, uses the image in <code>Content/Puffin/UI/Button.png</code> as its image.\n"
+  example: []
   syntax:
     content: 'public class Button : Entity'
     content.vb: >-
       Public Class Button
-
           Inherits Entity
   inheritance:
   - System.Object
@@ -36,9 +37,11 @@ items:
   inheritedMembers:
   - Puffin.Core.Ecs.Entity.X
   - Puffin.Core.Ecs.Entity.Y
+  - Puffin.Core.Ecs.Entity.VelocityX
+  - Puffin.Core.Ecs.Entity.VelocityY
   - Puffin.Core.Ecs.Entity.Set(Puffin.Core.Ecs.Components.Component)
   - Puffin.Core.Ecs.Entity.Remove``1
-  - Puffin.Core.Ecs.Entity.GetIfHas``1
+  - Puffin.Core.Ecs.Entity.Get``1
   modifiers.csharp:
   - public
   - class
@@ -59,21 +62,25 @@ items:
   source:
     remote:
       path: Puffin.UI/Controls/Button.cs
-      branch: docs
-      repo: git@github.com:nightblade9/puffin
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
     id: .ctor
     path: ../Puffin.UI/Controls/Button.cs
-    startLine: 10
+    startLine: 19
   assemblies:
   - Puffin.UI
   namespace: Puffin.UI.Controls
+  summary: "\nCreates a new button.\n"
+  example: []
   syntax:
     content: public Button(string text, Action onClick)
     parameters:
     - id: text
       type: System.String
+      description: The text label on the button (if any).
     - id: onClick
       type: System.Action
+      description: The callback to trigger when the player clicks on the button.
     content.vb: Public Sub New(text As String, onClick As Action)
   overload: Puffin.UI.Controls.Button.#ctor*
   modifiers.csharp:
@@ -111,6 +118,18 @@ references:
   name: Y
   nameWithType: Entity.Y
   fullName: Puffin.Core.Ecs.Entity.Y
+- uid: Puffin.Core.Ecs.Entity.VelocityX
+  commentId: P:Puffin.Core.Ecs.Entity.VelocityX
+  parent: Puffin.Core.Ecs.Entity
+  name: VelocityX
+  nameWithType: Entity.VelocityX
+  fullName: Puffin.Core.Ecs.Entity.VelocityX
+- uid: Puffin.Core.Ecs.Entity.VelocityY
+  commentId: P:Puffin.Core.Ecs.Entity.VelocityY
+  parent: Puffin.Core.Ecs.Entity
+  name: VelocityY
+  nameWithType: Entity.VelocityY
+  fullName: Puffin.Core.Ecs.Entity.VelocityY
 - uid: Puffin.Core.Ecs.Entity.Set(Puffin.Core.Ecs.Components.Component)
   commentId: M:Puffin.Core.Ecs.Entity.Set(Puffin.Core.Ecs.Components.Component)
   parent: Puffin.Core.Ecs.Entity
@@ -178,20 +197,20 @@ references:
   - name: )
     nameWithType: )
     fullName: )
-- uid: Puffin.Core.Ecs.Entity.GetIfHas``1
-  commentId: M:Puffin.Core.Ecs.Entity.GetIfHas``1
+- uid: Puffin.Core.Ecs.Entity.Get``1
+  commentId: M:Puffin.Core.Ecs.Entity.Get``1
   parent: Puffin.Core.Ecs.Entity
-  name: GetIfHas<T>()
-  nameWithType: Entity.GetIfHas<T>()
-  fullName: Puffin.Core.Ecs.Entity.GetIfHas<T>()
-  nameWithType.vb: Entity.GetIfHas(Of T)()
-  fullName.vb: Puffin.Core.Ecs.Entity.GetIfHas(Of T)()
-  name.vb: GetIfHas(Of T)()
+  name: Get<T>()
+  nameWithType: Entity.Get<T>()
+  fullName: Puffin.Core.Ecs.Entity.Get<T>()
+  nameWithType.vb: Entity.Get(Of T)()
+  fullName.vb: Puffin.Core.Ecs.Entity.Get(Of T)()
+  name.vb: Get(Of T)()
   spec.csharp:
-  - uid: Puffin.Core.Ecs.Entity.GetIfHas``1
-    name: GetIfHas<T>
-    nameWithType: Entity.GetIfHas<T>
-    fullName: Puffin.Core.Ecs.Entity.GetIfHas<T>
+  - uid: Puffin.Core.Ecs.Entity.Get``1
+    name: Get<T>
+    nameWithType: Entity.Get<T>
+    fullName: Puffin.Core.Ecs.Entity.Get<T>
   - name: (
     nameWithType: (
     fullName: (
@@ -199,10 +218,10 @@ references:
     nameWithType: )
     fullName: )
   spec.vb:
-  - uid: Puffin.Core.Ecs.Entity.GetIfHas``1
-    name: GetIfHas(Of T)
-    nameWithType: Entity.GetIfHas(Of T)
-    fullName: Puffin.Core.Ecs.Entity.GetIfHas(Of T)
+  - uid: Puffin.Core.Ecs.Entity.Get``1
+    name: Get(Of T)
+    nameWithType: Entity.Get(Of T)
+    fullName: Puffin.Core.Ecs.Entity.Get(Of T)
   - name: (
     nameWithType: (
     fullName: (

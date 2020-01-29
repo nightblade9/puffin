@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Component
+    <title>Class AudioComponent
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Component
+    <meta name="title" content="Class AudioComponent
    ">
     <meta name="generator" content="docfx 2.48.1.0">
     
@@ -68,50 +68,43 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Puffin.Core.Ecs.Components.Component">
+            <article class="content wrap" id="_content" data-uid="Puffin.Core.Ecs.Components.AudioComponent">
   
   
-  <h1 id="Puffin_Core_Ecs_Components_Component" data-uid="Puffin.Core.Ecs.Components.Component" class="text-break">Class Component
+  <h1 id="Puffin_Core_Ecs_Components_AudioComponent" data-uid="Puffin.Core.Ecs.Components.AudioComponent" class="text-break">Class AudioComponent
   </h1>
-  <div class="markdown level0 summary"><p>A base component class. Don't add it to entities directly, it has no functionality
-To create your own components, create subclasses of <code>Component</code>.</p>
+  <div class="markdown level0 summary"><p>Allows an entity to play an audio file (short or long), optionally at a modified pitch.
+You should be able to play WAV files and OGG files.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">Component</span></div>
-      <div class="level2"><a class="xref" href="Puffin.Core.Ecs.Components.AudioComponent.html">AudioComponent</a></div>
-      <div class="level2"><a class="xref" href="Puffin.Core.Ecs.Components.CollisionComponent.html">CollisionComponent</a></div>
-      <div class="level2"><a class="xref" href="Puffin.Core.Ecs.Components.ColourComponent.html">ColourComponent</a></div>
-      <div class="level2"><a class="xref" href="Puffin.Core.Ecs.Components.KeyboardComponent.html">KeyboardComponent</a></div>
-      <div class="level2"><a class="xref" href="Puffin.Core.Ecs.Components.MouseComponent.html">MouseComponent</a></div>
-      <div class="level2"><a class="xref" href="Puffin.Core.Ecs.Components.OverlapComponent.html">OverlapComponent</a></div>
-      <div class="level2"><a class="xref" href="Puffin.Core.Ecs.Components.SpriteComponent.html">SpriteComponent</a></div>
-      <div class="level2"><a class="xref" href="Puffin.Core.Ecs.Components.TextLabelComponent.html">TextLabelComponent</a></div>
+    <div class="level1"><a class="xref" href="Puffin.Core.Ecs.Components.Component.html">Component</a></div>
+    <div class="level2"><span class="xref">AudioComponent</span></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Puffin.Core.Ecs.Components.html">Puffin.Core.Ecs.Components</a></h6>
   <h6><strong>Assembly</strong>: Puffin.Core.dll</h6>
-  <h5 id="Puffin_Core_Ecs_Components_Component_syntax">Syntax</h5>
+  <h5 id="Puffin_Core_Ecs_Components_AudioComponent_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class Component</code></pre>
+    <pre><code class="lang-csharp hljs">public class AudioComponent : Component</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/nightblade9/puffin-engine/new/documentation/apiSpec/new?filename=Puffin_Core_Ecs_Components_Component__ctor_Puffin_Core_Ecs_Entity_.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Components.Component.%23ctor(Puffin.Core.Ecs.Entity)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/nightblade9/puffin-engine/new/documentation/apiSpec/new?filename=Puffin_Core_Ecs_Components_AudioComponent__ctor_Puffin_Core_Ecs_Entity_System_String_.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Components.AudioComponent.%23ctor(Puffin.Core.Ecs.Entity%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin-engine/blob/documentation/Puffin.Core/Ecs/Components/Component.cs/#L13">View Source</a>
+    <a href="https://github.com/nightblade9/puffin-engine/blob/documentation/Puffin.Core/Ecs/Components/AudioComponent.cs/#L12">View Source</a>
   </span>
-  <a id="Puffin_Core_Ecs_Components_Component__ctor_" data-uid="Puffin.Core.Ecs.Components.Component.#ctor*"></a>
-  <h4 id="Puffin_Core_Ecs_Components_Component__ctor_Puffin_Core_Ecs_Entity_" data-uid="Puffin.Core.Ecs.Components.Component.#ctor(Puffin.Core.Ecs.Entity)">Component(Entity)</h4>
+  <a id="Puffin_Core_Ecs_Components_AudioComponent__ctor_" data-uid="Puffin.Core.Ecs.Components.AudioComponent.#ctor*"></a>
+  <h4 id="Puffin_Core_Ecs_Components_AudioComponent__ctor_Puffin_Core_Ecs_Entity_System_String_" data-uid="Puffin.Core.Ecs.Components.AudioComponent.#ctor(Puffin.Core.Ecs.Entity,System.String)">AudioComponent(Entity, String)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Component(Entity parent)</code></pre>
+    <pre><code class="lang-csharp hljs">public AudioComponent(Entity parent, string fileName)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -128,6 +121,47 @@ To create your own components, create subclasses of <code>Component</code>.</p>
         <td><span class="parametername">parent</span></td>
         <td></td>
       </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">fileName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/nightblade9/puffin-engine/new/documentation/apiSpec/new?filename=Puffin_Core_Ecs_Components_AudioComponent_Play_System_Single_.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Components.AudioComponent.Play(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/nightblade9/puffin-engine/blob/documentation/Puffin.Core/Ecs/Components/AudioComponent.cs/#L21">View Source</a>
+  </span>
+  <a id="Puffin_Core_Ecs_Components_AudioComponent_Play_" data-uid="Puffin.Core.Ecs.Components.AudioComponent.Play*"></a>
+  <h4 id="Puffin_Core_Ecs_Components_AudioComponent_Play_System_Single_" data-uid="Puffin.Core.Ecs.Components.AudioComponent.Play(System.Single)">Play(Single)</h4>
+  <div class="markdown level1 summary"><p>Plays the audio file specified in fileName` at the specified pitch.
+A pitch of 1.0 is 100% (normal); -0.75 is 25% lower, 1.25 is 25% higher.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Play(float pitch = 1F)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">pitch</span></td>
+        <td></td>
+      </tr>
     </tbody>
   </table>
 </article>
@@ -138,10 +172,10 @@ To create your own components, create subclasses of <code>Component</code>.</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/nightblade9/puffin-engine/new/documentation/apiSpec/new?filename=Puffin_Core_Ecs_Components_Component.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Components.Component%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/nightblade9/puffin-engine/new/documentation/apiSpec/new?filename=Puffin_Core_Ecs_Components_AudioComponent.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Components.AudioComponent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/nightblade9/puffin-engine/blob/documentation/Puffin.Core/Ecs/Components/Component.cs/#L9" class="contribution-link">View Source</a>
+                    <a href="https://github.com/nightblade9/puffin-engine/blob/documentation/Puffin.Core/Ecs/Components/AudioComponent.cs/#L7" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

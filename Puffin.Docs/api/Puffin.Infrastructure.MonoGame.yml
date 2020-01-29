@@ -17,12 +17,6 @@ items:
 references:
 - uid: Puffin.Infrastructure.MonoGame.PuffinGame
   commentId: T:Puffin.Infrastructure.MonoGame.PuffinGame
-  parent: Puffin.Infrastructure.MonoGame
   name: PuffinGame
   nameWithType: PuffinGame
   fullName: Puffin.Infrastructure.MonoGame.PuffinGame
-- uid: Puffin.Infrastructure.MonoGame
-  commentId: N:Puffin.Infrastructure.MonoGame
-  name: Puffin.Infrastructure.MonoGame
-  nameWithType: Puffin.Infrastructure.MonoGame
-  fullName: Puffin.Infrastructure.MonoGame

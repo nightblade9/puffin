@@ -7,14 +7,15 @@ items:
   children:
   - Puffin.Core.Scene.#ctor
   - Puffin.Core.Scene.Add(Puffin.Core.Ecs.Entity)
+  - Puffin.Core.Scene.Add(Puffin.Core.Tiles.TileMap)
+  - Puffin.Core.Scene.BackgroundColour
   - Puffin.Core.Scene.Dispose
   - Puffin.Core.Scene.Fps
   - Puffin.Core.Scene.IsActionDown(System.Enum)
   - Puffin.Core.Scene.MouseCoordinates
-  - Puffin.Core.Scene.OnDraw(System.TimeSpan)
-  - Puffin.Core.Scene.OnMouseClick
-  - Puffin.Core.Scene.OnUpdate(System.TimeSpan)
-  - Puffin.Core.Scene.Update
+  - Puffin.Core.Scene.Remove(Puffin.Core.Ecs.Entity)
+  - Puffin.Core.Scene.Remove(Puffin.Core.Tiles.TileMap)
+  - Puffin.Core.Scene.Update(System.Int32)
   langs:
   - csharp
   - vb
@@ -25,11 +26,11 @@ items:
   source:
     remote:
       path: Puffin.Core/Scene.cs
-      branch: docs
-      repo: git@github.com:nightblade9/puffin
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
     id: Scene
     path: ../Puffin.Core/Scene.cs
-    startLine: 13
+    startLine: 14
   assemblies:
   - Puffin.Core
   namespace: Puffin.Core
@@ -39,57 +40,17 @@ items:
     content: 'public class Scene : IDisposable'
     content.vb: >-
       Public Class Scene
-
           Implements IDisposable
   inheritance:
   - System.Object
   implements:
   - System.IDisposable
-  inheritedMembers:
-  - System.Object.Equals(System.Object)
-  - System.Object.Equals(System.Object,System.Object)
-  - System.Object.GetHashCode
-  - System.Object.GetType
-  - System.Object.MemberwiseClone
-  - System.Object.ReferenceEquals(System.Object,System.Object)
-  - System.Object.ToString
   modifiers.csharp:
   - public
   - class
   modifiers.vb:
   - Public
   - Class
-- uid: Puffin.Core.Scene.OnMouseClick
-  commentId: F:Puffin.Core.Scene.OnMouseClick
-  id: OnMouseClick
-  parent: Puffin.Core.Scene
-  langs:
-  - csharp
-  - vb
-  name: OnMouseClick
-  nameWithType: Scene.OnMouseClick
-  fullName: Puffin.Core.Scene.OnMouseClick
-  type: Field
-  source:
-    remote:
-      path: Puffin.Core/Scene.cs
-      branch: docs
-      repo: git@github.com:nightblade9/puffin
-    id: OnMouseClick
-    path: ../Puffin.Core/Scene.cs
-    startLine: 16
-  assemblies:
-  - Puffin.Core
-  namespace: Puffin.Core
-  syntax:
-    content: public Action OnMouseClick
-    return:
-      type: System.Action
-    content.vb: Public OnMouseClick As Action
-  modifiers.csharp:
-  - public
-  modifiers.vb:
-  - Public
 - uid: Puffin.Core.Scene.Fps
   commentId: P:Puffin.Core.Scene.Fps
   id: Fps
@@ -104,14 +65,16 @@ items:
   source:
     remote:
       path: Puffin.Core/Scene.cs
-      branch: docs
-      repo: git@github.com:nightblade9/puffin
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
     id: Fps
     path: ../Puffin.Core/Scene.cs
-    startLine: 17
+    startLine: 22
   assemblies:
   - Puffin.Core
   namespace: Puffin.Core
+  summary: "\nThe last recorded FPS (frames per second). This is the number of draw calls per second.\nThis value updates approximately every second.\n"
+  example: []
   syntax:
     content: public float Fps { get; }
     parameters: []
@@ -125,6 +88,39 @@ items:
   modifiers.vb:
   - Public
   - ReadOnly
+- uid: Puffin.Core.Scene.BackgroundColour
+  commentId: F:Puffin.Core.Scene.BackgroundColour
+  id: BackgroundColour
+  parent: Puffin.Core.Scene
+  langs:
+  - csharp
+  - vb
+  name: BackgroundColour
+  nameWithType: Scene.BackgroundColour
+  fullName: Puffin.Core.Scene.BackgroundColour
+  type: Field
+  source:
+    remote:
+      path: Puffin.Core/Scene.cs
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
+    id: BackgroundColour
+    path: ../Puffin.Core/Scene.cs
+    startLine: 27
+  assemblies:
+  - Puffin.Core
+  namespace: Puffin.Core
+  summary: "\nThe background colour of this scene in the format 0xRRGGBB; it is drawn before all other entities.\n"
+  example: []
+  syntax:
+    content: public int BackgroundColour
+    return:
+      type: System.Int32
+    content.vb: Public BackgroundColour As Integer
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
 - uid: Puffin.Core.Scene.MouseCoordinates
   commentId: P:Puffin.Core.Scene.MouseCoordinates
   id: MouseCoordinates
@@ -139,14 +135,16 @@ items:
   source:
     remote:
       path: Puffin.Core/Scene.cs
-      branch: docs
-      repo: git@github.com:nightblade9/puffin
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
     id: MouseCoordinates
     path: ../Puffin.Core/Scene.cs
-    startLine: 29
+    startLine: 51
   assemblies:
   - Puffin.Core
   namespace: Puffin.Core
+  summary: "\nThe current mouse coordinates.\n"
+  example: []
   syntax:
     content: public Tuple<int, int> MouseCoordinates { get; }
     parameters: []
@@ -174,14 +172,16 @@ items:
   source:
     remote:
       path: Puffin.Core/Scene.cs
-      branch: docs
-      repo: git@github.com:nightblade9/puffin
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
     id: .ctor
     path: ../Puffin.Core/Scene.cs
-    startLine: 31
+    startLine: 56
   assemblies:
   - Puffin.Core
   namespace: Puffin.Core
+  summary: "\nCreates a new, empty Scene instance.\n"
+  example: []
   syntax:
     content: public Scene()
     content.vb: Public Sub New
@@ -204,14 +204,16 @@ items:
   source:
     remote:
       path: Puffin.Core/Scene.cs
-      branch: docs
-      repo: git@github.com:nightblade9/puffin
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
     id: Add
     path: ../Puffin.Core/Scene.cs
-    startLine: 36
+    startLine: 65
   assemblies:
   - Puffin.Core
   namespace: Puffin.Core
+  summary: "\nAdds an entity to the current scene so that it starts functioning (based on its components).\n"
+  example: []
   syntax:
     content: public void Add(Entity entity)
     parameters:
@@ -223,72 +225,107 @@ items:
   - public
   modifiers.vb:
   - Public
-- uid: Puffin.Core.Scene.OnUpdate(System.TimeSpan)
-  commentId: M:Puffin.Core.Scene.OnUpdate(System.TimeSpan)
-  id: OnUpdate(System.TimeSpan)
+- uid: Puffin.Core.Scene.Remove(Puffin.Core.Ecs.Entity)
+  commentId: M:Puffin.Core.Scene.Remove(Puffin.Core.Ecs.Entity)
+  id: Remove(Puffin.Core.Ecs.Entity)
   parent: Puffin.Core.Scene
   langs:
   - csharp
   - vb
-  name: OnUpdate(TimeSpan)
-  nameWithType: Scene.OnUpdate(TimeSpan)
-  fullName: Puffin.Core.Scene.OnUpdate(System.TimeSpan)
+  name: Remove(Entity)
+  nameWithType: Scene.Remove(Entity)
+  fullName: Puffin.Core.Scene.Remove(Puffin.Core.Ecs.Entity)
   type: Method
   source:
     remote:
       path: Puffin.Core/Scene.cs
-      branch: docs
-      repo: git@github.com:nightblade9/puffin
-    id: OnUpdate
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
+    id: Remove
     path: ../Puffin.Core/Scene.cs
-    startLine: 53
+    startLine: 82
   assemblies:
   - Puffin.Core
   namespace: Puffin.Core
-  summary: "\nInternal method that calls `Update` on all systems in this scene.\n"
+  summary: "\nRemove an entity from the scene; it will no longer be rendered, updated, etc.\n"
   example: []
   syntax:
-    content: public void OnUpdate(TimeSpan elapsed)
+    content: public void Remove(Entity entity)
     parameters:
-    - id: elapsed
-      type: System.TimeSpan
-    content.vb: Public Sub OnUpdate(elapsed As TimeSpan)
-  overload: Puffin.Core.Scene.OnUpdate*
+    - id: entity
+      type: Puffin.Core.Ecs.Entity
+    content.vb: Public Sub Remove(entity As Entity)
+  overload: Puffin.Core.Scene.Remove*
   modifiers.csharp:
   - public
   modifiers.vb:
   - Public
-- uid: Puffin.Core.Scene.OnDraw(System.TimeSpan)
-  commentId: M:Puffin.Core.Scene.OnDraw(System.TimeSpan)
-  id: OnDraw(System.TimeSpan)
+- uid: Puffin.Core.Scene.Add(Puffin.Core.Tiles.TileMap)
+  commentId: M:Puffin.Core.Scene.Add(Puffin.Core.Tiles.TileMap)
+  id: Add(Puffin.Core.Tiles.TileMap)
   parent: Puffin.Core.Scene
   langs:
   - csharp
   - vb
-  name: OnDraw(TimeSpan)
-  nameWithType: Scene.OnDraw(TimeSpan)
-  fullName: Puffin.Core.Scene.OnDraw(System.TimeSpan)
+  name: Add(TileMap)
+  nameWithType: Scene.Add(TileMap)
+  fullName: Puffin.Core.Scene.Add(Puffin.Core.Tiles.TileMap)
   type: Method
   source:
     remote:
       path: Puffin.Core/Scene.cs
-      branch: docs
-      repo: git@github.com:nightblade9/puffin
-    id: OnDraw
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
+    id: Add
     path: ../Puffin.Core/Scene.cs
-    startLine: 75
+    startLine: 95
   assemblies:
   - Puffin.Core
   namespace: Puffin.Core
-  summary: "\nInternal method that calls `Draw` on the drawing system.\n"
+  summary: "\nAdds a tilemap to the scene; it will be drawn. Any tiles with no value set, won&apos;t be drawn.\nNote that tilemaps are drawn in the order added.\n"
   example: []
   syntax:
-    content: public void OnDraw(TimeSpan elapsed)
+    content: public void Add(TileMap tileMap)
     parameters:
-    - id: elapsed
-      type: System.TimeSpan
-    content.vb: Public Sub OnDraw(elapsed As TimeSpan)
-  overload: Puffin.Core.Scene.OnDraw*
+    - id: tileMap
+      type: Puffin.Core.Tiles.TileMap
+    content.vb: Public Sub Add(tileMap As TileMap)
+  overload: Puffin.Core.Scene.Add*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Puffin.Core.Scene.Remove(Puffin.Core.Tiles.TileMap)
+  commentId: M:Puffin.Core.Scene.Remove(Puffin.Core.Tiles.TileMap)
+  id: Remove(Puffin.Core.Tiles.TileMap)
+  parent: Puffin.Core.Scene
+  langs:
+  - csharp
+  - vb
+  name: Remove(TileMap)
+  nameWithType: Scene.Remove(TileMap)
+  fullName: Puffin.Core.Scene.Remove(Puffin.Core.Tiles.TileMap)
+  type: Method
+  source:
+    remote:
+      path: Puffin.Core/Scene.cs
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
+    id: Remove
+    path: ../Puffin.Core/Scene.cs
+    startLine: 107
+  assemblies:
+  - Puffin.Core
+  namespace: Puffin.Core
+  summary: "\nRemoves a tilemap from the scene; it will no longer be drawn.\n"
+  example: []
+  syntax:
+    content: public void Remove(TileMap tileMap)
+    parameters:
+    - id: tileMap
+      type: Puffin.Core.Tiles.TileMap
+    content.vb: Public Sub Remove(tileMap As TileMap)
+  overload: Puffin.Core.Scene.Remove*
   modifiers.csharp:
   - public
   modifiers.vb:
@@ -307,11 +344,11 @@ items:
   source:
     remote:
       path: Puffin.Core/Scene.cs
-      branch: docs
-      repo: git@github.com:nightblade9/puffin
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
     id: IsActionDown
     path: ../Puffin.Core/Scene.cs
-    startLine: 84
+    startLine: 115
   assemblies:
   - Puffin.Core
   namespace: Puffin.Core
@@ -330,33 +367,36 @@ items:
   - public
   modifiers.vb:
   - Public
-- uid: Puffin.Core.Scene.Update
-  commentId: M:Puffin.Core.Scene.Update
-  id: Update
+- uid: Puffin.Core.Scene.Update(System.Int32)
+  commentId: M:Puffin.Core.Scene.Update(System.Int32)
+  id: Update(System.Int32)
   parent: Puffin.Core.Scene
   langs:
   - csharp
   - vb
-  name: Update()
-  nameWithType: Scene.Update()
-  fullName: Puffin.Core.Scene.Update()
+  name: Update(Int32)
+  nameWithType: Scene.Update(Int32)
+  fullName: Puffin.Core.Scene.Update(System.Int32)
   type: Method
   source:
     remote:
       path: Puffin.Core/Scene.cs
-      branch: docs
-      repo: git@github.com:nightblade9/puffin
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
     id: Update
     path: ../Puffin.Core/Scene.cs
-    startLine: 93
+    startLine: 124
   assemblies:
   - Puffin.Core
   namespace: Puffin.Core
   summary: "\nA method that&apos;s called every time Update is called by the game engine.\nOverride it to do things &quot;every frame.&quot;\n"
   example: []
   syntax:
-    content: public virtual void Update()
-    content.vb: Public Overridable Sub Update
+    content: public virtual void Update(int elapsedMilliseconds)
+    parameters:
+    - id: elapsedMilliseconds
+      type: System.Int32
+    content.vb: Public Overridable Sub Update(elapsedMilliseconds As Integer)
   overload: Puffin.Core.Scene.Update*
   modifiers.csharp:
   - public
@@ -378,14 +418,16 @@ items:
   source:
     remote:
       path: Puffin.Core/Scene.cs
-      branch: docs
-      repo: git@github.com:nightblade9/puffin
+      branch: documentation
+      repo: https://github.com/nightblade9/puffin-engine.git
     id: Dispose
     path: ../Puffin.Core/Scene.cs
-    startLine: 98
+    startLine: 132
   assemblies:
   - Puffin.Core
   namespace: Puffin.Core
+  summary: "\nDisposes the scene and the event bus (so entities can be garbage-collected).\n"
+  example: []
   syntax:
     content: public void Dispose()
     content.vb: Public Sub Dispose
@@ -416,298 +458,12 @@ references:
   name: IDisposable
   nameWithType: IDisposable
   fullName: System.IDisposable
-- uid: System.Object.Equals(System.Object)
-  commentId: M:System.Object.Equals(System.Object)
-  parent: System.Object
-  isExternal: true
-  name: Equals(Object)
-  nameWithType: Object.Equals(Object)
-  fullName: System.Object.Equals(System.Object)
-  spec.csharp:
-  - uid: System.Object.Equals(System.Object)
-    name: Equals
-    nameWithType: Object.Equals
-    fullName: System.Object.Equals
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: )
-    nameWithType: )
-    fullName: )
-  spec.vb:
-  - uid: System.Object.Equals(System.Object)
-    name: Equals
-    nameWithType: Object.Equals
-    fullName: System.Object.Equals
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: )
-    nameWithType: )
-    fullName: )
-- uid: System.Object.Equals(System.Object,System.Object)
-  commentId: M:System.Object.Equals(System.Object,System.Object)
-  parent: System.Object
-  isExternal: true
-  name: Equals(Object, Object)
-  nameWithType: Object.Equals(Object, Object)
-  fullName: System.Object.Equals(System.Object, System.Object)
-  spec.csharp:
-  - uid: System.Object.Equals(System.Object,System.Object)
-    name: Equals
-    nameWithType: Object.Equals
-    fullName: System.Object.Equals
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: ', '
-    nameWithType: ', '
-    fullName: ', '
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: )
-    nameWithType: )
-    fullName: )
-  spec.vb:
-  - uid: System.Object.Equals(System.Object,System.Object)
-    name: Equals
-    nameWithType: Object.Equals
-    fullName: System.Object.Equals
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: ', '
-    nameWithType: ', '
-    fullName: ', '
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: )
-    nameWithType: )
-    fullName: )
-- uid: System.Object.GetHashCode
-  commentId: M:System.Object.GetHashCode
-  parent: System.Object
-  isExternal: true
-  name: GetHashCode()
-  nameWithType: Object.GetHashCode()
-  fullName: System.Object.GetHashCode()
-  spec.csharp:
-  - uid: System.Object.GetHashCode
-    name: GetHashCode
-    nameWithType: Object.GetHashCode
-    fullName: System.Object.GetHashCode
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
-  spec.vb:
-  - uid: System.Object.GetHashCode
-    name: GetHashCode
-    nameWithType: Object.GetHashCode
-    fullName: System.Object.GetHashCode
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
-- uid: System.Object.GetType
-  commentId: M:System.Object.GetType
-  parent: System.Object
-  isExternal: true
-  name: GetType()
-  nameWithType: Object.GetType()
-  fullName: System.Object.GetType()
-  spec.csharp:
-  - uid: System.Object.GetType
-    name: GetType
-    nameWithType: Object.GetType
-    fullName: System.Object.GetType
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
-  spec.vb:
-  - uid: System.Object.GetType
-    name: GetType
-    nameWithType: Object.GetType
-    fullName: System.Object.GetType
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
-- uid: System.Object.MemberwiseClone
-  commentId: M:System.Object.MemberwiseClone
-  parent: System.Object
-  isExternal: true
-  name: MemberwiseClone()
-  nameWithType: Object.MemberwiseClone()
-  fullName: System.Object.MemberwiseClone()
-  spec.csharp:
-  - uid: System.Object.MemberwiseClone
-    name: MemberwiseClone
-    nameWithType: Object.MemberwiseClone
-    fullName: System.Object.MemberwiseClone
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
-  spec.vb:
-  - uid: System.Object.MemberwiseClone
-    name: MemberwiseClone
-    nameWithType: Object.MemberwiseClone
-    fullName: System.Object.MemberwiseClone
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
-- uid: System.Object.ReferenceEquals(System.Object,System.Object)
-  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
-  parent: System.Object
-  isExternal: true
-  name: ReferenceEquals(Object, Object)
-  nameWithType: Object.ReferenceEquals(Object, Object)
-  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
-  spec.csharp:
-  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
-    name: ReferenceEquals
-    nameWithType: Object.ReferenceEquals
-    fullName: System.Object.ReferenceEquals
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: ', '
-    nameWithType: ', '
-    fullName: ', '
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: )
-    nameWithType: )
-    fullName: )
-  spec.vb:
-  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
-    name: ReferenceEquals
-    nameWithType: Object.ReferenceEquals
-    fullName: System.Object.ReferenceEquals
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: ', '
-    nameWithType: ', '
-    fullName: ', '
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: )
-    nameWithType: )
-    fullName: )
-- uid: System.Object.ToString
-  commentId: M:System.Object.ToString
-  parent: System.Object
-  isExternal: true
-  name: ToString()
-  nameWithType: Object.ToString()
-  fullName: System.Object.ToString()
-  spec.csharp:
-  - uid: System.Object.ToString
-    name: ToString
-    nameWithType: Object.ToString
-    fullName: System.Object.ToString
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
-  spec.vb:
-  - uid: System.Object.ToString
-    name: ToString
-    nameWithType: Object.ToString
-    fullName: System.Object.ToString
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
 - uid: System
   commentId: N:System
   isExternal: true
   name: System
   nameWithType: System
   fullName: System
-- uid: System.Action
-  commentId: T:System.Action
-  parent: System
-  isExternal: true
-  name: Action
-  nameWithType: Action
-  fullName: System.Action
 - uid: Puffin.Core.Scene.Fps*
   commentId: Overload:Puffin.Core.Scene.Fps
   name: Fps
@@ -720,6 +476,13 @@ references:
   name: Single
   nameWithType: Single
   fullName: System.Single
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
 - uid: Puffin.Core.Scene.MouseCoordinates*
   commentId: Overload:Puffin.Core.Scene.MouseCoordinates
   name: MouseCoordinates
@@ -857,23 +620,22 @@ references:
   name: Puffin.Core.Ecs
   nameWithType: Puffin.Core.Ecs
   fullName: Puffin.Core.Ecs
-- uid: Puffin.Core.Scene.OnUpdate*
-  commentId: Overload:Puffin.Core.Scene.OnUpdate
-  name: OnUpdate
-  nameWithType: Scene.OnUpdate
-  fullName: Puffin.Core.Scene.OnUpdate
-- uid: System.TimeSpan
-  commentId: T:System.TimeSpan
-  parent: System
-  isExternal: true
-  name: TimeSpan
-  nameWithType: TimeSpan
-  fullName: System.TimeSpan
-- uid: Puffin.Core.Scene.OnDraw*
-  commentId: Overload:Puffin.Core.Scene.OnDraw
-  name: OnDraw
-  nameWithType: Scene.OnDraw
-  fullName: Puffin.Core.Scene.OnDraw
+- uid: Puffin.Core.Scene.Remove*
+  commentId: Overload:Puffin.Core.Scene.Remove
+  name: Remove
+  nameWithType: Scene.Remove
+  fullName: Puffin.Core.Scene.Remove
+- uid: Puffin.Core.Tiles.TileMap
+  commentId: T:Puffin.Core.Tiles.TileMap
+  parent: Puffin.Core.Tiles
+  name: TileMap
+  nameWithType: TileMap
+  fullName: Puffin.Core.Tiles.TileMap
+- uid: Puffin.Core.Tiles
+  commentId: N:Puffin.Core.Tiles
+  name: Puffin.Core.Tiles
+  nameWithType: Puffin.Core.Tiles
+  fullName: Puffin.Core.Tiles
 - uid: Puffin.Core.Scene.IsActionDown*
   commentId: Overload:Puffin.Core.Scene.IsActionDown
   name: IsActionDown

@@ -73,7 +73,9 @@
   
   <h1 id="Puffin_UI_Controls_Button" data-uid="Puffin.UI.Controls.Button" class="text-break">Class Button
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Creates a clickable button backed with specified image and caption.
+By default, uses the image in <code>Content/Puffin/UI/Button.png</code> as its image.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -90,13 +92,19 @@
       <a class="xref" href="Puffin.Core.Ecs.Entity.html#Puffin_Core_Ecs_Entity_Y">Entity.Y</a>
     </div>
     <div>
+      <a class="xref" href="Puffin.Core.Ecs.Entity.html#Puffin_Core_Ecs_Entity_VelocityX">Entity.VelocityX</a>
+    </div>
+    <div>
+      <a class="xref" href="Puffin.Core.Ecs.Entity.html#Puffin_Core_Ecs_Entity_VelocityY">Entity.VelocityY</a>
+    </div>
+    <div>
       <a class="xref" href="Puffin.Core.Ecs.Entity.html#Puffin_Core_Ecs_Entity_Set_Puffin_Core_Ecs_Components_Component_">Entity.Set(Component)</a>
     </div>
     <div>
       <a class="xref" href="Puffin.Core.Ecs.Entity.html#Puffin_Core_Ecs_Entity_Remove__1">Entity.Remove&lt;T&gt;()</a>
     </div>
     <div>
-      <a class="xref" href="Puffin.Core.Ecs.Entity.html#Puffin_Core_Ecs_Entity_GetIfHas__1">Entity.GetIfHas&lt;T&gt;()</a>
+      <a class="xref" href="Puffin.Core.Ecs.Entity.html#Puffin_Core_Ecs_Entity_Get__1">Entity.Get&lt;T&gt;()</a>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Puffin.UI.Controls.html">Puffin.UI.Controls</a></h6>
@@ -109,14 +117,15 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/nightblade9/puffin/new/docs/apiSpec/new?filename=Puffin_UI_Controls_Button__ctor_System_String_System_Action_.md&amp;value=---%0Auid%3A%20Puffin.UI.Controls.Button.%23ctor(System.String%2CSystem.Action)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/nightblade9/puffin-engine/new/documentation/apiSpec/new?filename=Puffin_UI_Controls_Button__ctor_System_String_System_Action_.md&amp;value=---%0Auid%3A%20Puffin.UI.Controls.Button.%23ctor(System.String%2CSystem.Action)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/docs/Puffin.UI/Controls/Button.cs/#L11">View Source</a>
+    <a href="https://github.com/nightblade9/puffin-engine/blob/documentation/Puffin.UI/Controls/Button.cs/#L20">View Source</a>
   </span>
   <a id="Puffin_UI_Controls_Button__ctor_" data-uid="Puffin.UI.Controls.Button.#ctor*"></a>
   <h4 id="Puffin_UI_Controls_Button__ctor_System_String_System_Action_" data-uid="Puffin.UI.Controls.Button.#ctor(System.String,System.Action)">Button(String, Action)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Creates a new button.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -135,12 +144,14 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">text</span></td>
-        <td></td>
+        <td><p>The text label on the button (if any).</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Action</span></td>
         <td><span class="parametername">onClick</span></td>
-        <td></td>
+        <td><p>The callback to trigger when the player clicks on the button.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -152,10 +163,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/nightblade9/puffin/new/docs/apiSpec/new?filename=Puffin_UI_Controls_Button.md&amp;value=---%0Auid%3A%20Puffin.UI.Controls.Button%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/nightblade9/puffin-engine/new/documentation/apiSpec/new?filename=Puffin_UI_Controls_Button.md&amp;value=---%0Auid%3A%20Puffin.UI.Controls.Button%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/nightblade9/puffin/blob/docs/Puffin.UI/Controls/Button.cs/#L6" class="contribution-link">View Source</a>
+                    <a href="https://github.com/nightblade9/puffin-engine/blob/documentation/Puffin.UI/Controls/Button.cs/#L10" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

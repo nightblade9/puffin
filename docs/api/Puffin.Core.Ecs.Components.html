@@ -77,13 +77,25 @@
   <div class="markdown level0 remarks"></div>
     <h3 id="classes">Classes
   </h3>
+      <h4><a class="xref" href="Puffin.Core.Ecs.Components.AudioComponent.html">AudioComponent</a></h4>
+      <section><p>Allows an entity to play an audio file (short or long), optionally at a modified pitch.
+You should be able to play WAV files and OGG files.</p>
+</section>
+      <h4><a class="xref" href="Puffin.Core.Ecs.Components.CollisionComponent.html">CollisionComponent</a></h4>
+      <section><p>Makes an entity collide with solid tiles and other entities that have a <code>CollisionComponent</code></p>
+</section>
+      <h4><a class="xref" href="Puffin.Core.Ecs.Components.ColourComponent.html">ColourComponent</a></h4>
+      <section><p>Adds a coloured rectangle to an entity.</p>
+</section>
       <h4><a class="xref" href="Puffin.Core.Ecs.Components.Component.html">Component</a></h4>
-      <section><p>A base component class. Provides a reference to the parent entity.</p>
+      <section><p>A base component class. Don't add it to entities directly, it has no functionality
+To create your own components, create subclasses of <code>Component</code>.</p>
 </section>
       <h4><a class="xref" href="Puffin.Core.Ecs.Components.FourWayMovementComponent.html">FourWayMovementComponent</a></h4>
       <section><p>Adds a component which makes the entity move in four directions in response to the keyboard.
 By default, this responds to the WASD and arrow keys; you can change these bindings
-by changing/adding more bindings in your PuffinGame instance.</p>
+by changing/adding more bindings in your PuffinGame instance.
+Note that setting this overrides an entity's velocity.</p>
 </section>
       <h4><a class="xref" href="Puffin.Core.Ecs.Components.KeyboardComponent.html">KeyboardComponent</a></h4>
       <section><p>A keyboard component; provides information about which actions are being pressed.
@@ -94,12 +106,13 @@ For examples, see the Puffin documentation or unit tests.</p>
       <section><p>A component with makes an entity clickable.</p>
 </section>
       <h4><a class="xref" href="Puffin.Core.Ecs.Components.OverlapComponent.html">OverlapComponent</a></h4>
-      <section><p>A component for overlapping. Two entities with OverlapComponents will fire events when they overlap each other.</p>
+      <section><p>Makes an entity check for overlap with other entities that have an <code>OverlapComponent</code>.</p>
 </section>
       <h4><a class="xref" href="Puffin.Core.Ecs.Components.SpriteComponent.html">SpriteComponent</a></h4>
-      <section></section>
+      <section><p>Adds a sprite/image (or spritesheet/tilesheet) to an entity.</p>
+</section>
       <h4><a class="xref" href="Puffin.Core.Ecs.Components.TextLabelComponent.html">TextLabelComponent</a></h4>
-      <section><p>A text-label component: a label with some printable text.</p>
+      <section><p>Adds a text display to an entity.</p>
 </section>
 </article>
           </div>
