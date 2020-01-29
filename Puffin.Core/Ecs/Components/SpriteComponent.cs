@@ -2,8 +2,12 @@ using System;
 
 namespace Puffin.Core.Ecs.Components
 {
+    /// <summary>
+    /// Adds a sprite/image (or spritesheet/tilesheet) to an entity.
+    /// </summary>
     public class SpriteComponent : Component
     {
+        /// <summary>The image file of this component.</summary>
         public readonly string FileName;
 
         /// <summary>
@@ -18,6 +22,9 @@ namespace Puffin.Core.Ecs.Components
 
         private int frameIndex = 0;
 
+        /// <summary>
+        /// The frame index of the sprite; note that Puffin only currently supports a single row of frames.
+        /// </summary>
         public int FrameIndex
         { 
             get { return this.frameIndex; }

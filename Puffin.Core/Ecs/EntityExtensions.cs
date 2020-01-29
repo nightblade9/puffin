@@ -4,13 +4,12 @@ using Puffin.Core.Ecs.Components;
 namespace Puffin.Core.Ecs
 {
     /// <summary>
-    /// Static extensions for Entity. You can chain them together, eg.
-    /// Entity.Sprite("player.png").Move(200, 100);
+    /// Static extensions for Entity. You can chain them together, eg. Entity.Sprite("player.png").Move(200, 100);
     /// </summary>
     public static class EntityExtensions
     {
         /// <summary>
-        ///  Moves an entity to the specified coordinates.
+        ///  Immediately moves an entity to the specified coordinates, ignoring velocity/overlap/collision/etc.
         /// </summary>
         public static Entity Move(this Entity entity, int x, int y)
         {
@@ -19,16 +18,8 @@ namespace Puffin.Core.Ecs
             return entity;
         }
 
-        // DERP THE HERP
-        public static Entity MoveBy(this Entity entity, float dx, float dy)
-        {
-            entity.IntendedMoveDeltaX = dx;
-            entity.IntendedMoveDeltaY = dy;
-            return entity;
-        }
-
         /// <summary>
-        /// Loads the specified image as a sprite on an entity.
+        /// Adds a sprite/image to an entity.
         /// </summary>
         public static Entity Sprite(this Entity entity, string imageFile)
         {
@@ -37,7 +28,7 @@ namespace Puffin.Core.Ecs
         }
 
         /// <summary>
-        /// Loads and adds the specified image as a spritesheet to an entity.
+        /// Adds a spritesheet/tilesheet to an entity.
         /// </summary>
         public static Entity Spritesheet(this Entity entity, string imageFile, int frameWidth, int frameHeight)
         {
@@ -46,7 +37,7 @@ namespace Puffin.Core.Ecs
         }
 
         /// <summary>
-        /// Adds a label with the specified text to an entity.
+        /// Adds a text display to an entity.
         /// </summary>        
         public static Entity Label(this Entity entity, string text)
         {
@@ -74,10 +65,10 @@ namespace Puffin.Core.Ecs
         }
         
         /// <summary>
-        /// Makes the entity move in four directions in response to WASD or arrow keys.
-        /// The entity moves at the specified speed, in pixels per second.
-        /// If you want the entity to move and slide along things it collides with instead of
-        /// stopping abruptly, specify true for slideOnCollide.
+        /// Adds a component which makes the entity move in four directions in response to the keyboard.
+        /// By default, this responds to the WASD and arrow keys; you can change these bindings
+        /// by changing/adding more bindings in your PuffinGame instance.
+        /// Note that setting this overrides an entity's velocity.
         /// </summary>
         public static Entity FourWayMovement(this Entity entity, int speed)
         {
@@ -86,9 +77,10 @@ namespace Puffin.Core.Ecs
         }
 
         /// <summary>
-        /// Causes an entity to trigger overlap events with other entities that have an overlap component.
-        /// Width/height are the overlap area of this entity, relative to the origin.
+        /// Creates an overlap component, which checks for overlap against other entities with overlap components.
         /// </summary>
+        /// <param name="width">The width of the overlap area.</param>
+        /// <param name="height">The height of the overlap area.</param>
         public static Entity Overlap(this Entity entity, int width, int height)
         {
             entity.Set(new OverlapComponent(entity, width, height));
@@ -96,10 +88,12 @@ namespace Puffin.Core.Ecs
         }
 
         /// <summary>
-        /// Causes an entity to trigger overlap events with other entities that have an overlap component.
-        /// Width/height are the overlap area of this entity, relative to the origin.
-        /// Offset coordinates specify the offset of the overlap region relative to the origin of the entity.
+        /// Creates an overlap component, which checks for overlap against other entities with overlap components.
         /// </summary>
+        /// <param name="width">The width of the overlap area.</param>
+        /// <param name="height">The height of the overlap area.</param>
+        /// <param name="offsetX">The x-offset of the overlap area, relative to the origin of the entity.</param>
+        /// <param name="offsetY">The y-offset of the overlap area, relative to the origin of the entity.</param>
         public static Entity Overlap(this Entity entity, int width, int height, int offsetX, int offsetY)
         {
             entity.Set(new OverlapComponent(entity, width, height, offsetX, offsetY));
@@ -107,11 +101,13 @@ namespace Puffin.Core.Ecs
         }
 
         /// <summary>
-        /// Causes an entity to trigger overlap events with other entities that have an overlap component.
-        /// Width/height are the overlap area of this entity, relative to the origin.
-        /// Offset coordinates specify the offset of the overlap region relative to the origin of the entity.
-        /// onStartOverlap triggers whenever another entity with an overlap component starts overlapping this entity.
+        /// Creates an overlap component, which checks for overlap against other entities with overlap components.
         /// </summary>
+        /// <param name="width">The width of the overlap area.</param>
+        /// <param name="height">The height of the overlap area.</param>
+        /// <param name="offsetX">The x-offset of the overlap area, relative to the origin of the entity.</param>
+        /// <param name="offsetY">The y-offset of the overlap area, relative to the origin of the entity.</param>
+        /// <param name="onStartOverlap">The callback to invoke when an entity with an overlap component overlaps this one.</param>
         public static Entity Overlap(this Entity entity, int width, int height, int offsetX, int offsetY, Action<Entity> onStartOverlap)
         {
             entity.Set(new OverlapComponent(entity, width, height, offsetX, offsetY, onStartOverlap));
@@ -119,13 +115,14 @@ namespace Puffin.Core.Ecs
         }
 
         /// <summary>
-        /// Causes an entity to trigger overlap events with other entities that have an overlap component.
-        /// Width/height are the overlap area of this entity, relative to the origin.
-        /// Offset coordinates specify the offset of the overlap region relative to the origin of the entity.
-        /// onStartOverlap triggers whenever another entity with an overlap component starts overlapping this entity.
-        /// onStopOverlap triggers whenever another entity with an overlap component stops overlapping overlaps this entity.
+        /// Creates an overlap component, which checks for overlap against other entities with overlap components.
         /// </summary>
-
+        /// <param name="width">The width of the overlap area.</param>
+        /// <param name="height">The height of the overlap area.</param>
+        /// <param name="offsetX">The x-offset of the overlap area, relative to the origin of the entity.</param>
+        /// <param name="offsetY">The y-offset of the overlap area, relative to the origin of the entity.</param>
+        /// <param name="onStartOverlap">The callback to invoke when an entity with an overlap component overlaps this one.</param>
+        /// <param name="onStopOverlap">The callback to invoke when an entity with an overlap component stops overlapping this one.</param>
         public static Entity Overlap(this Entity entity, int width, int height, int offsetX, int offsetY, Action<Entity> onStartOverlap, Action<Entity> onStopOverlap)
         {
             entity.Set(new OverlapComponent(entity, width, height, offsetX, offsetY, onStartOverlap, onStopOverlap));
@@ -133,9 +130,8 @@ namespace Puffin.Core.Ecs
         }
 
         /// <summary>
-        /// Adds an audio file to an entity; you can call it via e.Get&lt;AudioComponent&gt;().Play(pitch).
-        /// You should be able to play wave files and OGG files.
-        /// For more information/arguments, see the AudioComponent docs.
+        /// Allows an entity to play an audio file (short or long), optionally at a modified pitch.
+        /// You should be able to play WAV files and OGG files.
         /// </summary>
         public static Entity Audio(this Entity entity, string audioFileName)
         {
@@ -144,9 +140,9 @@ namespace Puffin.Core.Ecs
         }
 
         /// <summary>
-        /// Adds a coloured rectangle to an entity with the specified size and colour.
-        /// The colour format is RGB, eg. 0x0088FF for a light sky blue.
+        /// Adds a coloured rectangle to an entity.
         /// </summary>
+        /// <param name="rgb">The rectangle's colour, in the format 0xRRGGBB with hex values for each pair.</param>
         public static Entity Colour(this Entity entity, int rgb, int width, int height)
         {
             entity.Set(new ColourComponent(entity, rgb, width, height));
@@ -155,8 +151,11 @@ namespace Puffin.Core.Ecs
 
         /// <summary>
         /// Causes an entity to collide with other collidable entities and solid tiles.
-        /// Specify the size of the collision check, relative to this entity's origin.
         /// </summary>
+        /// <param name="width">The width of the collidable area, in pixels</param>
+        /// <param name="height">The height of the collidable area, in pixels</param>
+        /// <param name="slideOnCollide">If true, when colliding, slide in the direction of the non-colliding
+        /// axis instead of abruptly stopping.</param>
         public static Entity Collide(this Entity entity, int width, int height, bool slideOnCollide = false)
         {
             entity.Set(new CollisionComponent(entity, width, height, slideOnCollide));
