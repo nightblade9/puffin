@@ -161,5 +161,15 @@ namespace Puffin.Core.Ecs
             entity.Set(new CollisionComponent(entity, width, height, slideOnCollide));
             return entity;
         }
+
+        /// <summary>
+        /// Sets an entity's velocity, causing it to move constantly in that direction.
+        /// </summary>
+        public static Entity Velocity(this Entity entity, int velocityX, int velocityY)
+        {
+            entity.VelocityX = velocityX;
+            entity.VelocityY = velocityY;
+            return entity;
+        }
     }
 }
