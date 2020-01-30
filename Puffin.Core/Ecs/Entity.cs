@@ -24,6 +24,8 @@ namespace Puffin.Core.Ecs
         internal float IntendedMoveDeltaX = 0;
         internal float IntendedMoveDeltaY = 0;
 
+        internal List<Action<float>> OnUpdateActions = new List<Action<float>>();
+
         /// <summary>
         /// Set/add a component on this entity. If this entity already had a 
         /// component of this type, this new component replaces the old one.
@@ -57,6 +59,17 @@ namespace Puffin.Core.Ecs
             }
 
             return null;
+        }
+
+        /// <summary>
+        /// Add a new action that should trigger every update (of game logic).
+        /// Note that you may get several updates before we redraw everything.
+        /// The action receives the elapsed time (since the last update) in
+        /// milliseconds as an input.
+        /// </summary>
+        public void OnUpdate(Action<float> action)
+        {
+            this.OnUpdateActions.Add(action);
         }
 
         private void Remove(Type componentType)

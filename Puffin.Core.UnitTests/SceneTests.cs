@@ -268,5 +268,22 @@ namespace Puffin.Core.UnitTests
             // Assert
             Assert.That(isCalled, Is.True);
         }
+
+        [Test]
+        public void UpdateCallsEntityOnUpdateActions()
+        {
+            // Arrange
+            float totalUpdatesSeconds = 0;
+            var e = new Entity();
+            e.OnUpdate((elapsed) => totalUpdatesSeconds += elapsed);
+            var scene = new Scene();
+            scene.Add(e);
+
+            // Act
+            scene.OnUpdate(TimeSpan.FromSeconds(1));
+            
+            // Assert
+            Assert.That(totalUpdatesSeconds, Is.EqualTo(1000));
+        }
     }
 }
