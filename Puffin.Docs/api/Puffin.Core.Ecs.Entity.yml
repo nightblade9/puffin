@@ -6,6 +6,7 @@ items:
   parent: Puffin.Core.Ecs
   children:
   - Puffin.Core.Ecs.Entity.Get``1
+  - Puffin.Core.Ecs.Entity.OnUpdate(System.Action{System.Single})
   - Puffin.Core.Ecs.Entity.Remove``1
   - Puffin.Core.Ecs.Entity.Set(Puffin.Core.Ecs.Components.Component)
   - Puffin.Core.Ecs.Entity.VelocityX
@@ -22,8 +23,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Entity.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: Entity
     path: ../Puffin.Core/Ecs/Entity.cs
     startLine: 11
@@ -54,6 +55,7 @@ items:
   - Puffin.Core.Ecs.Entity.Puffin.Core.Ecs.EntityExtensions.Audio(System.String)
   - Puffin.Core.Ecs.Entity.Puffin.Core.Ecs.EntityExtensions.Colour(System.Int32,System.Int32,System.Int32)
   - Puffin.Core.Ecs.Entity.Puffin.Core.Ecs.EntityExtensions.Collide(System.Int32,System.Int32,System.Boolean)
+  - Puffin.Core.Ecs.Entity.Puffin.Core.Ecs.EntityExtensions.Velocity(System.Int32,System.Int32)
   modifiers.csharp:
   - public
   - class
@@ -74,14 +76,16 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Entity.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: X
     path: ../Puffin.Core/Ecs/Entity.cs
-    startLine: 15
+    startLine: 16
   assemblies:
   - Puffin.Core
   namespace: Puffin.Core.Ecs
+  summary: "\nThe x-coordinate of this entity (positive x moves right).\n"
+  example: []
   syntax:
     content: public float X { get; set; }
     parameters: []
@@ -109,14 +113,16 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Entity.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: Y
     path: ../Puffin.Core/Ecs/Entity.cs
-    startLine: 17
+    startLine: 21
   assemblies:
   - Puffin.Core
   namespace: Puffin.Core.Ecs
+  summary: "\nThe y-coordinate of this entity (positive y moves down).\n"
+  example: []
   syntax:
     content: public float Y { get; set; }
     parameters: []
@@ -144,14 +150,16 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Entity.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: VelocityX
     path: ../Puffin.Core/Ecs/Entity.cs
-    startLine: 18
+    startLine: 26
   assemblies:
   - Puffin.Core
   namespace: Puffin.Core.Ecs
+  summary: "\nThe x-velocity of this entity, in pixels per second.\n"
+  example: []
   syntax:
     content: public float VelocityX { get; set; }
     parameters: []
@@ -179,14 +187,16 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Entity.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: VelocityY
     path: ../Puffin.Core/Ecs/Entity.cs
-    startLine: 19
+    startLine: 31
   assemblies:
   - Puffin.Core
   namespace: Puffin.Core.Ecs
+  summary: "\nThe y-velocity of this entity, in pixels per second.\n"
+  example: []
   syntax:
     content: public float VelocityY { get; set; }
     parameters: []
@@ -214,11 +224,11 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Entity.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: Set
     path: ../Puffin.Core/Ecs/Entity.cs
-    startLine: 30
+    startLine: 46
   assemblies:
   - Puffin.Core
   namespace: Puffin.Core.Ecs
@@ -251,11 +261,11 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Entity.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: Remove
     path: ../Puffin.Core/Ecs/Entity.cs
-    startLine: 41
+    startLine: 57
   assemblies:
   - Puffin.Core
   namespace: Puffin.Core.Ecs
@@ -264,6 +274,7 @@ items:
   syntax:
     content: >-
       public void Remove<T>()
+
           where T : Component
     typeParameters:
     - id: T
@@ -290,11 +301,11 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Entity.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: Get
     path: ../Puffin.Core/Ecs/Entity.cs
-    startLine: 50
+    startLine: 66
   assemblies:
   - Puffin.Core
   namespace: Puffin.Core.Ecs
@@ -303,6 +314,7 @@ items:
   syntax:
     content: >-
       public T Get<T>()
+
           where T : Component
     typeParameters:
     - id: T
@@ -317,6 +329,44 @@ items:
   - Public
   fullName.vb: Puffin.Core.Ecs.Entity.Get(Of T)()
   name.vb: Get(Of T)()
+- uid: Puffin.Core.Ecs.Entity.OnUpdate(System.Action{System.Single})
+  commentId: M:Puffin.Core.Ecs.Entity.OnUpdate(System.Action{System.Single})
+  id: OnUpdate(System.Action{System.Single})
+  parent: Puffin.Core.Ecs.Entity
+  langs:
+  - csharp
+  - vb
+  name: OnUpdate(Action<Single>)
+  nameWithType: Entity.OnUpdate(Action<Single>)
+  fullName: Puffin.Core.Ecs.Entity.OnUpdate(System.Action<System.Single>)
+  type: Method
+  source:
+    remote:
+      path: Puffin.Core/Ecs/Entity.cs
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
+    id: OnUpdate
+    path: ../Puffin.Core/Ecs/Entity.cs
+    startLine: 83
+  assemblies:
+  - Puffin.Core
+  namespace: Puffin.Core.Ecs
+  summary: "\nAdd a new action that should trigger every update (of game logic).\nNote that you may get several updates before we redraw everything.\nThe action receives the elapsed time (since the last update) in\nmilliseconds as an input.\n"
+  example: []
+  syntax:
+    content: public void OnUpdate(Action<float> action)
+    parameters:
+    - id: action
+      type: System.Action{System.Single}
+    content.vb: Public Sub OnUpdate(action As Action(Of Single))
+  overload: Puffin.Core.Ecs.Entity.OnUpdate*
+  nameWithType.vb: Entity.OnUpdate(Action(Of Single))
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: Puffin.Core.Ecs.Entity.OnUpdate(System.Action(Of System.Single))
+  name.vb: OnUpdate(Action(Of Single))
 references:
 - uid: Puffin.Core.Ecs
   commentId: N:Puffin.Core.Ecs
@@ -1280,6 +1330,61 @@ references:
     name: Boolean
     nameWithType: Boolean
     fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Puffin.Core.Ecs.Entity.Puffin.Core.Ecs.EntityExtensions.Velocity(System.Int32,System.Int32)
+  commentId: M:Puffin.Core.Ecs.EntityExtensions.Velocity(Puffin.Core.Ecs.Entity,System.Int32,System.Int32)
+  parent: Puffin.Core.Ecs.EntityExtensions
+  definition: Puffin.Core.Ecs.EntityExtensions.Velocity(Puffin.Core.Ecs.Entity,System.Int32,System.Int32)
+  name: Velocity(Int32, Int32)
+  nameWithType: EntityExtensions.Velocity(Int32, Int32)
+  fullName: Puffin.Core.Ecs.EntityExtensions.Velocity(System.Int32, System.Int32)
+  spec.csharp:
+  - uid: Puffin.Core.Ecs.EntityExtensions.Velocity(System.Int32,System.Int32)
+    name: Velocity
+    nameWithType: EntityExtensions.Velocity
+    fullName: Puffin.Core.Ecs.EntityExtensions.Velocity
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Puffin.Core.Ecs.EntityExtensions.Velocity(System.Int32,System.Int32)
+    name: Velocity
+    nameWithType: EntityExtensions.Velocity
+    fullName: Puffin.Core.Ecs.EntityExtensions.Velocity
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
     isExternal: true
   - name: )
     nameWithType: )
@@ -2425,6 +2530,74 @@ references:
   - name: )
     nameWithType: )
     fullName: )
+- uid: Puffin.Core.Ecs.EntityExtensions.Velocity(Puffin.Core.Ecs.Entity,System.Int32,System.Int32)
+  commentId: M:Puffin.Core.Ecs.EntityExtensions.Velocity(Puffin.Core.Ecs.Entity,System.Int32,System.Int32)
+  isExternal: true
+  name: Velocity(Entity, Int32, Int32)
+  nameWithType: EntityExtensions.Velocity(Entity, Int32, Int32)
+  fullName: Puffin.Core.Ecs.EntityExtensions.Velocity(Puffin.Core.Ecs.Entity, System.Int32, System.Int32)
+  spec.csharp:
+  - uid: Puffin.Core.Ecs.EntityExtensions.Velocity(Puffin.Core.Ecs.Entity,System.Int32,System.Int32)
+    name: Velocity
+    nameWithType: EntityExtensions.Velocity
+    fullName: Puffin.Core.Ecs.EntityExtensions.Velocity
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Puffin.Core.Ecs.Entity
+    name: Entity
+    nameWithType: Entity
+    fullName: Puffin.Core.Ecs.Entity
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Puffin.Core.Ecs.EntityExtensions.Velocity(Puffin.Core.Ecs.Entity,System.Int32,System.Int32)
+    name: Velocity
+    nameWithType: EntityExtensions.Velocity
+    fullName: Puffin.Core.Ecs.EntityExtensions.Velocity
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Puffin.Core.Ecs.Entity
+    name: Entity
+    nameWithType: Entity
+    fullName: Puffin.Core.Ecs.Entity
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
 - uid: Puffin.Core.Ecs.Entity.X*
   commentId: Overload:Puffin.Core.Ecs.Entity.X
   name: X
@@ -2495,3 +2668,91 @@ references:
   name: T
   nameWithType: T
   fullName: T
+- uid: Puffin.Core.Ecs.Entity.OnUpdate*
+  commentId: Overload:Puffin.Core.Ecs.Entity.OnUpdate
+  name: OnUpdate
+  nameWithType: Entity.OnUpdate
+  fullName: Puffin.Core.Ecs.Entity.OnUpdate
+- uid: System.Action{System.Single}
+  commentId: T:System.Action{System.Single}
+  parent: System
+  definition: System.Action`1
+  name: Action<Single>
+  nameWithType: Action<Single>
+  fullName: System.Action<System.Single>
+  nameWithType.vb: Action(Of Single)
+  fullName.vb: System.Action(Of System.Single)
+  name.vb: Action(Of Single)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    nameWithType: Action
+    fullName: System.Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Single
+    name: Single
+    nameWithType: Single
+    fullName: System.Single
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    nameWithType: Action
+    fullName: System.Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Single
+    name: Single
+    nameWithType: Single
+    fullName: System.Single
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    nameWithType: Action
+    fullName: System.Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    nameWithType: Action
+    fullName: System.Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )

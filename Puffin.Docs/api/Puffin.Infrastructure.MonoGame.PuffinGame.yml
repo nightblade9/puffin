@@ -23,15 +23,15 @@ items:
   source:
     remote:
       path: Puffin.Infrastructure.MonoGame/PuffinGame.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: PuffinGame
     path: ../Puffin.Infrastructure.MonoGame/PuffinGame.cs
     startLine: 20
   assemblies:
   - Puffin.Infrastructure.MonoGame
   namespace: Puffin.Infrastructure.MonoGame
-  summary: "\nThe core game class, the starting-point of your application. Manages scenes.\nYou can set the size and background colour of your game.\n"
+  summary: "\nManages scenes.  You can set the size and background colour of your game.\nSubclass this to create the entry-point to your game.\n"
   example: []
   syntax:
     content: 'public abstract class PuffinGame : Game, IDisposable'
@@ -66,8 +66,8 @@ items:
   source:
     remote:
       path: Puffin.Infrastructure.MonoGame/PuffinGame.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: ActionToKeys
     path: ../Puffin.Infrastructure.MonoGame/PuffinGame.cs
     startLine: 28
@@ -99,21 +99,25 @@ items:
   source:
     remote:
       path: Puffin.Infrastructure.MonoGame/PuffinGame.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: .ctor
     path: ../Puffin.Infrastructure.MonoGame/PuffinGame.cs
-    startLine: 44
+    startLine: 48
   assemblies:
   - Puffin.Infrastructure.MonoGame
   namespace: Puffin.Infrastructure.MonoGame
+  summary: "\nCreates a new game with the specified window size.\n"
+  example: []
   syntax:
     content: public PuffinGame(int gameWidth, int gameHeight)
     parameters:
     - id: gameWidth
       type: System.Int32
+      description: The width of the game window
     - id: gameHeight
       type: System.Int32
+      description: The height of the game window
     content.vb: Public Sub New(gameWidth As Integer, gameHeight As Integer)
   overload: Puffin.Infrastructure.MonoGame.PuffinGame.#ctor*
   modifiers.csharp:
@@ -134,14 +138,16 @@ items:
   source:
     remote:
       path: Puffin.Infrastructure.MonoGame/PuffinGame.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: ShowScene
     path: ../Puffin.Infrastructure.MonoGame/PuffinGame.cs
-    startLine: 61
+    startLine: 68
   assemblies:
   - Puffin.Infrastructure.MonoGame
   namespace: Puffin.Infrastructure.MonoGame
+  summary: "\nSwitch to a new scene instance. The current scene gets disposed.\n"
+  example: []
   syntax:
     content: public void ShowScene(Scene s)
     parameters:
@@ -167,15 +173,15 @@ items:
   source:
     remote:
       path: Puffin.Infrastructure.MonoGame/PuffinGame.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: Ready
     path: ../Puffin.Infrastructure.MonoGame/PuffinGame.cs
-    startLine: 87
+    startLine: 95
   assemblies:
   - Puffin.Infrastructure.MonoGame
   namespace: Puffin.Infrastructure.MonoGame
-  summary: "\nCalled when your game is ready to run (graphics initialized, etc.)\n"
+  summary: "\nCalled when your game is ready to run (graphics initialized, etc.)\nImplement this to add entities that load sprites, etc. for your game.\n"
   example: []
   syntax:
     content: protected virtual void Ready()
@@ -201,14 +207,16 @@ items:
   source:
     remote:
       path: Puffin.Infrastructure.MonoGame/PuffinGame.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: Initialize
     path: ../Puffin.Infrastructure.MonoGame/PuffinGame.cs
-    startLine: 92
+    startLine: 101
   assemblies:
   - Puffin.Infrastructure.MonoGame
   namespace: Puffin.Infrastructure.MonoGame
+  summary: Overridden from MonoGame, please ignore.
+  example: []
   syntax:
     content: protected override void Initialize()
     content.vb: Protected Overrides Sub Initialize
@@ -234,14 +242,16 @@ items:
   source:
     remote:
       path: Puffin.Infrastructure.MonoGame/PuffinGame.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: LoadContent
     path: ../Puffin.Infrastructure.MonoGame/PuffinGame.cs
-    startLine: 98
+    startLine: 108
   assemblies:
   - Puffin.Infrastructure.MonoGame
   namespace: Puffin.Infrastructure.MonoGame
+  summary: Overridden from MonoGame, please ignore.
+  example: []
   syntax:
     content: protected override void LoadContent()
     content.vb: Protected Overrides Sub LoadContent
@@ -267,14 +277,16 @@ items:
   source:
     remote:
       path: Puffin.Infrastructure.MonoGame/PuffinGame.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: Update
     path: ../Puffin.Infrastructure.MonoGame/PuffinGame.cs
-    startLine: 105
+    startLine: 116
   assemblies:
   - Puffin.Infrastructure.MonoGame
   namespace: Puffin.Infrastructure.MonoGame
+  summary: Overridden from MonoGame, please ignore.
+  example: []
   syntax:
     content: protected override void Update(GameTime gameTime)
     parameters:
@@ -303,14 +315,16 @@ items:
   source:
     remote:
       path: Puffin.Infrastructure.MonoGame/PuffinGame.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: Draw
     path: ../Puffin.Infrastructure.MonoGame/PuffinGame.cs
-    startLine: 113
+    startLine: 125
   assemblies:
   - Puffin.Infrastructure.MonoGame
   namespace: Puffin.Infrastructure.MonoGame
+  summary: Overridden from MonoGame, please ignore.
+  example: []
   syntax:
     content: protected override void Draw(GameTime gameTime)
     parameters:

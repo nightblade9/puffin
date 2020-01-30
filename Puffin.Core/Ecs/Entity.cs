@@ -11,18 +11,32 @@ namespace Puffin.Core.Ecs
     /// </summary>
     public class Entity
     {
-        private Dictionary<Type, Component> components = new Dictionary<Type, Component>();
-
+        /// <summary>
+        /// The x-coordinate of this entity (positive x moves right).
+        /// </summary>
         public float X { get; set; }
 
+        /// <summary>
+        /// The y-coordinate of this entity (positive y moves down).
+        /// </summary>
         public float Y { get; set; }
+
+        /// <summary>
+        /// The x-velocity of this entity, in pixels per second.
+        /// </summary>
         public float VelocityX { get; set; }
+
+        /// <summary>
+        /// The y-velocity of this entity, in pixels per second.
+        /// </summary>
         public float VelocityY { get; set; }
 
         // Used by the collision system; when set, the entity "intends" to move to this location.
         // Pending, of course, successful collision resolution checks (if it has a collision component).
         internal float IntendedMoveDeltaX = 0;
         internal float IntendedMoveDeltaY = 0;
+
+        private Dictionary<Type, Component> components = new Dictionary<Type, Component>();
 
         internal List<Action<float>> OnUpdateActions = new List<Action<float>>();
 

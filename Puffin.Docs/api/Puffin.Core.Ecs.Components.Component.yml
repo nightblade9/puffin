@@ -16,8 +16,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Components/Component.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: Component
     path: ../Puffin.Core/Ecs/Components/Component.cs
     startLine: 8
@@ -62,8 +62,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Components/Component.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: .ctor
     path: ../Puffin.Core/Ecs/Components/Component.cs
     startLine: 12
