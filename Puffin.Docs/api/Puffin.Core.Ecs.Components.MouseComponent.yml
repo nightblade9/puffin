@@ -16,8 +16,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Components/MouseComponent.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: MouseComponent
     path: ../Puffin.Core/Ecs/Components/MouseComponent.cs
     startLine: 7
@@ -30,6 +30,7 @@ items:
     content: 'public class MouseComponent : Component'
     content.vb: >-
       Public Class MouseComponent
+
           Inherits Component
   inheritance:
   - System.Object
@@ -54,8 +55,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Components/MouseComponent.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: .ctor
     path: ../Puffin.Core/Ecs/Components/MouseComponent.cs
     startLine: 20

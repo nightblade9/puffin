@@ -19,6 +19,7 @@ items:
   - Puffin.Core.Ecs.EntityExtensions.Overlap(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Int32,System.Int32,System.Action{Puffin.Core.Ecs.Entity},System.Action{Puffin.Core.Ecs.Entity})
   - Puffin.Core.Ecs.EntityExtensions.Sprite(Puffin.Core.Ecs.Entity,System.String)
   - Puffin.Core.Ecs.EntityExtensions.Spritesheet(Puffin.Core.Ecs.Entity,System.String,System.Int32,System.Int32)
+  - Puffin.Core.Ecs.EntityExtensions.Velocity(Puffin.Core.Ecs.Entity,System.Int32,System.Int32)
   langs:
   - csharp
   - vb
@@ -29,8 +30,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/EntityExtensions.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: EntityExtensions
     path: ../Puffin.Core/Ecs/EntityExtensions.cs
     startLine: 8
@@ -66,8 +67,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/EntityExtensions.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: Move
     path: ../Puffin.Core/Ecs/EntityExtensions.cs
     startLine: 13
@@ -113,8 +114,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/EntityExtensions.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: Sprite
     path: ../Puffin.Core/Ecs/EntityExtensions.cs
     startLine: 23
@@ -158,8 +159,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/EntityExtensions.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: Spritesheet
     path: ../Puffin.Core/Ecs/EntityExtensions.cs
     startLine: 32
@@ -207,8 +208,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/EntityExtensions.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: Label
     path: ../Puffin.Core/Ecs/EntityExtensions.cs
     startLine: 41
@@ -252,8 +253,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/EntityExtensions.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: Mouse
     path: ../Puffin.Core/Ecs/EntityExtensions.cs
     startLine: 51
@@ -301,8 +302,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/EntityExtensions.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: Keyboard
     path: ../Puffin.Core/Ecs/EntityExtensions.cs
     startLine: 60
@@ -344,8 +345,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/EntityExtensions.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: FourWayMovement
     path: ../Puffin.Core/Ecs/EntityExtensions.cs
     startLine: 72
@@ -389,8 +390,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/EntityExtensions.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: Overlap
     path: ../Puffin.Core/Ecs/EntityExtensions.cs
     startLine: 83
@@ -438,8 +439,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/EntityExtensions.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: Overlap
     path: ../Puffin.Core/Ecs/EntityExtensions.cs
     startLine: 96
@@ -493,8 +494,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/EntityExtensions.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: Overlap
     path: ../Puffin.Core/Ecs/EntityExtensions.cs
     startLine: 110
@@ -554,8 +555,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/EntityExtensions.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: Overlap
     path: ../Puffin.Core/Ecs/EntityExtensions.cs
     startLine: 125
@@ -618,8 +619,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/EntityExtensions.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: Audio
     path: ../Puffin.Core/Ecs/EntityExtensions.cs
     startLine: 135
@@ -663,8 +664,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/EntityExtensions.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: Colour
     path: ../Puffin.Core/Ecs/EntityExtensions.cs
     startLine: 145
@@ -713,8 +714,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/EntityExtensions.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: Collide
     path: ../Puffin.Core/Ecs/EntityExtensions.cs
     startLine: 158
@@ -747,6 +748,53 @@ items:
 
       Public Shared Function Collide(entity As Entity, width As Integer, height As Integer, slideOnCollide As Boolean = False) As Entity
   overload: Puffin.Core.Ecs.EntityExtensions.Collide*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Puffin.Core.Ecs.EntityExtensions.Velocity(Puffin.Core.Ecs.Entity,System.Int32,System.Int32)
+  commentId: M:Puffin.Core.Ecs.EntityExtensions.Velocity(Puffin.Core.Ecs.Entity,System.Int32,System.Int32)
+  id: Velocity(Puffin.Core.Ecs.Entity,System.Int32,System.Int32)
+  isExtensionMethod: true
+  parent: Puffin.Core.Ecs.EntityExtensions
+  langs:
+  - csharp
+  - vb
+  name: Velocity(Entity, Int32, Int32)
+  nameWithType: EntityExtensions.Velocity(Entity, Int32, Int32)
+  fullName: Puffin.Core.Ecs.EntityExtensions.Velocity(Puffin.Core.Ecs.Entity, System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: Puffin.Core/Ecs/EntityExtensions.cs
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
+    id: Velocity
+    path: ../Puffin.Core/Ecs/EntityExtensions.cs
+    startLine: 167
+  assemblies:
+  - Puffin.Core
+  namespace: Puffin.Core.Ecs
+  summary: "\nSets an entity&apos;s velocity, causing it to move constantly in that direction.\n"
+  example: []
+  syntax:
+    content: public static Entity Velocity(this Entity entity, int velocityX, int velocityY)
+    parameters:
+    - id: entity
+      type: Puffin.Core.Ecs.Entity
+    - id: velocityX
+      type: System.Int32
+    - id: velocityY
+      type: System.Int32
+    return:
+      type: Puffin.Core.Ecs.Entity
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function Velocity(entity As Entity, velocityX As Integer, velocityY As Integer) As Entity
+  overload: Puffin.Core.Ecs.EntityExtensions.Velocity*
   modifiers.csharp:
   - public
   - static
@@ -942,3 +990,8 @@ references:
   name: Boolean
   nameWithType: Boolean
   fullName: System.Boolean
+- uid: Puffin.Core.Ecs.EntityExtensions.Velocity*
+  commentId: Overload:Puffin.Core.Ecs.EntityExtensions.Velocity
+  name: Velocity
+  nameWithType: EntityExtensions.Velocity
+  fullName: Puffin.Core.Ecs.EntityExtensions.Velocity

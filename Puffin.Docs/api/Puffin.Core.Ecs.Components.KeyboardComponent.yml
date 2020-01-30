@@ -17,8 +17,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Components/KeyboardComponent.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: KeyboardComponent
     path: ../Puffin.Core/Ecs/Components/KeyboardComponent.cs
     startLine: 11
@@ -31,6 +31,7 @@ items:
     content: 'public class KeyboardComponent : Component'
     content.vb: >-
       Public Class KeyboardComponent
+
           Inherits Component
   inheritance:
   - System.Object
@@ -57,8 +58,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Components/KeyboardComponent.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: .ctor
     path: ../Puffin.Core/Ecs/Components/KeyboardComponent.cs
     startLine: 15
@@ -90,8 +91,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Components/KeyboardComponent.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: IsActionDown
     path: ../Puffin.Core/Ecs/Components/KeyboardComponent.cs
     startLine: 24

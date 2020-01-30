@@ -15,8 +15,8 @@ using System;
 namespace Puffin.Infrastructure.MonoGame
 {
     /// <summary>
-    /// The core game class, the starting-point of your application. Manages scenes.
-    /// You can set the size and background colour of your game.
+    /// Manages scenes.  You can set the size and background colour of your game.
+    /// Subclass this to create the entry-point to your game.
     /// </summary>
     public abstract class PuffinGame : Game
     {
@@ -41,7 +41,11 @@ namespace Puffin.Infrastructure.MonoGame
         private IMouseProvider mouseProvider;
         private IKeyboardProvider keyboardProvider;
 
-
+        /// <summary>
+        /// Creates a new game with the specified window size.
+        /// </summary>
+        /// <param name="gameWidth">The width of the game window</param>
+        /// <param name="gameHeight">The height of the game window</param>
         public PuffinGame(int gameWidth, int gameHeight)
         {
             PuffinGame.LatestInstance = this;
@@ -59,6 +63,9 @@ namespace Puffin.Infrastructure.MonoGame
             this.graphics.PreferredBackBufferHeight = gameHeight;
         }
 
+        /// <summary>
+        /// Switch to a new scene instance. The current scene gets disposed.
+        /// </summary>
         public void ShowScene(Scene s)
         {
             if (this.currentScene != null)
@@ -84,18 +91,21 @@ namespace Puffin.Infrastructure.MonoGame
 
         /// <summary>
         /// Called when your game is ready to run (graphics initialized, etc.)
+        /// Implement this to add entities that load sprites, etc. for your game.
         /// </summary>
         virtual protected void Ready()
         {
 
         }
 
+        /// <summary>Overridden from MonoGame, please ignore.</summary>
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
             base.Initialize();
         }
 
+        /// <summary>Overridden from MonoGame, please ignore.</summary>
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -103,6 +113,7 @@ namespace Puffin.Infrastructure.MonoGame
             this.Ready();
         }
 
+        /// <summary>Overridden from MonoGame, please ignore.</summary>
         protected override void Update(GameTime gameTime)
         {
             this.mouseProvider.Update();
@@ -111,6 +122,7 @@ namespace Puffin.Infrastructure.MonoGame
             base.Update(gameTime);
         }
 
+        /// <summary>Overridden from MonoGame, please ignore.</summary>
         protected override void Draw(GameTime gameTime)
         {
             // TODO: pass in <= 150ms increments if too much time elapsed

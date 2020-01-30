@@ -406,6 +406,22 @@ references:
   fullName.vb: Puffin.Core.Ecs.Entity.Get(Of T)()
   nameWithType: Entity.Get<T>()
   nameWithType.vb: Entity.Get(Of T)()
+- uid: Puffin.Core.Ecs.Entity.OnUpdate(System.Action{System.Single})
+  name: OnUpdate(Action<Single>)
+  href: api/Puffin.Core.Ecs.Entity.html#Puffin_Core_Ecs_Entity_OnUpdate_System_Action_System_Single__
+  commentId: M:Puffin.Core.Ecs.Entity.OnUpdate(System.Action{System.Single})
+  name.vb: OnUpdate(Action(Of Single))
+  fullName: Puffin.Core.Ecs.Entity.OnUpdate(System.Action<System.Single>)
+  fullName.vb: Puffin.Core.Ecs.Entity.OnUpdate(System.Action(Of System.Single))
+  nameWithType: Entity.OnUpdate(Action<Single>)
+  nameWithType.vb: Entity.OnUpdate(Action(Of Single))
+- uid: Puffin.Core.Ecs.Entity.OnUpdate*
+  name: OnUpdate
+  href: api/Puffin.Core.Ecs.Entity.html#Puffin_Core_Ecs_Entity_OnUpdate_
+  commentId: Overload:Puffin.Core.Ecs.Entity.OnUpdate
+  isSpec: "True"
+  fullName: Puffin.Core.Ecs.Entity.OnUpdate
+  nameWithType: Entity.OnUpdate
 - uid: Puffin.Core.Ecs.Entity.Remove*
   name: Remove
   href: api/Puffin.Core.Ecs.Entity.html#Puffin_Core_Ecs_Entity_Remove_
@@ -660,6 +676,19 @@ references:
   isSpec: "True"
   fullName: Puffin.Core.Ecs.EntityExtensions.Spritesheet
   nameWithType: EntityExtensions.Spritesheet
+- uid: Puffin.Core.Ecs.EntityExtensions.Velocity(Puffin.Core.Ecs.Entity,System.Int32,System.Int32)
+  name: Velocity(Entity, Int32, Int32)
+  href: api/Puffin.Core.Ecs.EntityExtensions.html#Puffin_Core_Ecs_EntityExtensions_Velocity_Puffin_Core_Ecs_Entity_System_Int32_System_Int32_
+  commentId: M:Puffin.Core.Ecs.EntityExtensions.Velocity(Puffin.Core.Ecs.Entity,System.Int32,System.Int32)
+  fullName: Puffin.Core.Ecs.EntityExtensions.Velocity(Puffin.Core.Ecs.Entity, System.Int32, System.Int32)
+  nameWithType: EntityExtensions.Velocity(Entity, Int32, Int32)
+- uid: Puffin.Core.Ecs.EntityExtensions.Velocity*
+  name: Velocity
+  href: api/Puffin.Core.Ecs.EntityExtensions.html#Puffin_Core_Ecs_EntityExtensions_Velocity_
+  commentId: Overload:Puffin.Core.Ecs.EntityExtensions.Velocity
+  isSpec: "True"
+  fullName: Puffin.Core.Ecs.EntityExtensions.Velocity
+  nameWithType: EntityExtensions.Velocity
 - uid: Puffin.Core.Scene
   name: Scene
   href: api/Puffin.Core.Scene.html

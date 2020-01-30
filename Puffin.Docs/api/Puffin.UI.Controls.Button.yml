@@ -16,8 +16,8 @@ items:
   source:
     remote:
       path: Puffin.UI/Controls/Button.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: Button
     path: ../Puffin.UI/Controls/Button.cs
     startLine: 9
@@ -30,6 +30,7 @@ items:
     content: 'public class Button : Entity'
     content.vb: >-
       Public Class Button
+
           Inherits Entity
   inheritance:
   - System.Object
@@ -42,6 +43,7 @@ items:
   - Puffin.Core.Ecs.Entity.Set(Puffin.Core.Ecs.Components.Component)
   - Puffin.Core.Ecs.Entity.Remove``1
   - Puffin.Core.Ecs.Entity.Get``1
+  - Puffin.Core.Ecs.Entity.OnUpdate(System.Action{System.Single})
   modifiers.csharp:
   - public
   - class
@@ -62,8 +64,8 @@ items:
   source:
     remote:
       path: Puffin.UI/Controls/Button.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: .ctor
     path: ../Puffin.UI/Controls/Button.cs
     startLine: 19
@@ -225,6 +227,70 @@ references:
   - name: (
     nameWithType: (
     fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Puffin.Core.Ecs.Entity.OnUpdate(System.Action{System.Single})
+  commentId: M:Puffin.Core.Ecs.Entity.OnUpdate(System.Action{System.Single})
+  parent: Puffin.Core.Ecs.Entity
+  isExternal: true
+  name: OnUpdate(Action<Single>)
+  nameWithType: Entity.OnUpdate(Action<Single>)
+  fullName: Puffin.Core.Ecs.Entity.OnUpdate(System.Action<System.Single>)
+  nameWithType.vb: Entity.OnUpdate(Action(Of Single))
+  fullName.vb: Puffin.Core.Ecs.Entity.OnUpdate(System.Action(Of System.Single))
+  name.vb: OnUpdate(Action(Of Single))
+  spec.csharp:
+  - uid: Puffin.Core.Ecs.Entity.OnUpdate(System.Action{System.Single})
+    name: OnUpdate
+    nameWithType: Entity.OnUpdate
+    fullName: Puffin.Core.Ecs.Entity.OnUpdate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Action`1
+    name: Action
+    nameWithType: Action
+    fullName: System.Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Single
+    name: Single
+    nameWithType: Single
+    fullName: System.Single
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Puffin.Core.Ecs.Entity.OnUpdate(System.Action{System.Single})
+    name: OnUpdate
+    nameWithType: Entity.OnUpdate
+    fullName: Puffin.Core.Ecs.Entity.OnUpdate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Action`1
+    name: Action
+    nameWithType: Action
+    fullName: System.Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Single
+    name: Single
+    nameWithType: Single
+    fullName: System.Single
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
   - name: )
     nameWithType: )
     fullName: )

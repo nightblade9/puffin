@@ -21,8 +21,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Components/SpriteComponent.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: SpriteComponent
     path: ../Puffin.Core/Ecs/Components/SpriteComponent.cs
     startLine: 7
@@ -35,6 +35,7 @@ items:
     content: 'public class SpriteComponent : Component'
     content.vb: >-
       Public Class SpriteComponent
+
           Inherits Component
   inheritance:
   - System.Object
@@ -59,8 +60,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Components/SpriteComponent.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: FileName
     path: ../Puffin.Core/Ecs/Components/SpriteComponent.cs
     startLine: 10
@@ -94,8 +95,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Components/SpriteComponent.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: FrameWidth
     path: ../Puffin.Core/Ecs/Components/SpriteComponent.cs
     startLine: 15
@@ -129,8 +130,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Components/SpriteComponent.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: FrameHeight
     path: ../Puffin.Core/Ecs/Components/SpriteComponent.cs
     startLine: 20
@@ -164,8 +165,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Components/SpriteComponent.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: FrameIndex
     path: ../Puffin.Core/Ecs/Components/SpriteComponent.cs
     startLine: 27
@@ -201,8 +202,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Components/SpriteComponent.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: .ctor
     path: ../Puffin.Core/Ecs/Components/SpriteComponent.cs
     startLine: 48
@@ -236,8 +237,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Components/SpriteComponent.cs
-      branch: master
-      repo: https://github.com/nightblade9/puffin.git
+      branch: documentation
+      repo: git@github.com:nightblade9/puffin
     id: .ctor
     path: ../Puffin.Core/Ecs/Components/SpriteComponent.cs
     startLine: 57
