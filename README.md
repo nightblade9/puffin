@@ -24,14 +24,12 @@ This project is currently under heavy development.
 
 - Add this repository as a `git submodule` within your project (NuGet packages are not available yet)
 - Build it by running `dotnet build`. Note: you will need .NET SDK 3.1 and MonoGame.
-- Copy/paste `Templates/MonoGame` into the root of your repo
-- Go to the repo root and add references to Puffin:
-    - `dotnet add MyGame.csproj reference puffin/Puffin.Core`
-    - `dotnet add MyGame.csproj reference puffin/Puffin.UI` (if you want buttons/etc.)
-- Copy the `Content` directory from `StarterAssets` into your project directory
-- Type `dotnet run` or press F5 in VSCode to verify it works
-
-You should be greeted with an empty screen with an image.
+- Run `dotnet new console --name MyGame` to create a new game project
+- Add the relevant references to Puffin:
+    - `dotnet add MyGame reference Puffin\Puffin.Core`
+    - `dotnet add MyGame reference Puffin\Puffin.Infrastructure.MonoGame`
+    - `dotnet add MyGame package MonoGame.Framework.DesktopGL.Core`
+- Download the `Open Sans` font from Google Fonts and add the `-Regular.ttf` to `MyGame/Content`
 
 ## Creating Your First Screen
 
@@ -39,13 +37,15 @@ Puffin uses an entity-component architecture where components represent function
 
 To add some functionality to the default screen:
 
-- Open up `MyGame.cs`. You'll see it changes the screen to `CoreGameScreen.cs` in the `Ready` function.
-- Open up `CoreGameScreen.cs`. It simply adds a new entity with a new sprite:
+- Create a new `FirstScene` class that extends `Puffin.Core.Scene`
+- Add a constructor which calls `this.Add(new Entity().Label("Hello from Puffin!"));`
+- Modify your game class to override `protected void Ready` and call `this.ShowScene(new FirstScene())`
+- Type `dotnet run` or press F5 in VSCode. It should run and you should see `Hello from Puffin!`
+
+To add an image:
 
 ```csharp
-this.Add(
-    new Entity()
-        .Add(new SpriteComponent("Bird.png")));
+this.Add(new Entity().Add(new SpriteComponent("Bird.png")));
 ```
 
 This creates a new entity, adds a `SpriteComponent` to it which should appear with the image of `Bird.png`, and adds the entity to the screen. When the game runs, it renders that entity at its position.
