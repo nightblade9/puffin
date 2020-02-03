@@ -136,18 +136,21 @@ namespace Puffin.Core.Ecs.Systems
                 float yAxisTimeToCollide = yVelocity != 0 ? Math.Abs(yDistance / yVelocity) : 0;
 
                 float shortestTime = 0;
+                string collisionAxis = "";
 
                 if (xVelocity != 0 && yVelocity == 0)
                 {
                     // Colliison on X-axis only
                     shortestTime = xAxisTimeToCollide;
                     entity.IntendedMoveDeltaX = shortestTime * xVelocity;
+                    collisionAxis = "X";
                 }
                 else if (xVelocity == 0 && yVelocity != 0)
                 {
                     // Collision on Y-axis only
                     shortestTime = yAxisTimeToCollide;
                     entity.IntendedMoveDeltaY = shortestTime * yVelocity;
+                    collisionAxis = "Y";
                 }
                 else
                 {
@@ -155,6 +158,7 @@ namespace Puffin.Core.Ecs.Systems
                     shortestTime = Math.Min(Math.Abs(xAxisTimeToCollide), Math.Abs(yAxisTimeToCollide));
                     entity.IntendedMoveDeltaX = shortestTime * xVelocity;
                     entity.IntendedMoveDeltaY = shortestTime * yVelocity;
+                    collisionAxis = shortestTime == Math.Abs(xAxisTimeToCollide) ? "X" : "Y";
 
                     if (entityCollision.SlideOnCollide)
                     {
@@ -188,7 +192,18 @@ namespace Puffin.Core.Ecs.Systems
                                 }
                         }
                     }
-                }        
+                }
+
+                // Post-collision callbacks
+                if (entityCollision.onCollide != null)
+                {
+                    entityCollision.onCollide(collideAgainst, collisionAxis);
+                }      
+
+                if (collideAgainstComponent.onCollide != null)
+                {
+                    collideAgainstComponent.onCollide(entity, collisionAxis);
+                }
             }
         }
 

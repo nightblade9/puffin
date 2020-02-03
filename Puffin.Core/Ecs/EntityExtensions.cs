@@ -163,6 +163,20 @@ namespace Puffin.Core.Ecs
         }
 
         /// <summary>
+        /// Causes an entity to collide with other collidable entities and solid tiles.
+        /// </summary>
+        /// <param name="width">The width of the collidable area, in pixels</param>
+        /// <param name="height">The height of the collidable area, in pixels</param>
+        /// <param name="onCollide">A callback to invoke when colliding against another entity. The callback
+        /// passes in the colliding entity and axis of collision ("X" or "Y") as parameters, and is invoked
+        /// after resolving the collision.</param>
+        public static Entity Collide(this Entity entity, int width, int height, Action<Entity, string> onCollide)
+        {
+            entity.Set(new CollisionComponent(entity, width, height, onCollide));
+            return entity;
+        }
+
+        /// <summary>
         /// Sets an entity's velocity, causing it to move constantly in that direction.
         /// </summary>
         public static Entity Velocity(this Entity entity, int velocityX, int velocityY)
