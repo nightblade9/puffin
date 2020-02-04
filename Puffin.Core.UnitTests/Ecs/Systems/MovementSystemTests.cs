@@ -80,7 +80,7 @@ namespace Puffin.Core.UnitTests
         [Test]
         public void ProcessMovementCollidesAndStopsEntityWithTile()
         {
-            
+            Assert.Fail();
         }
 
         [TestCase(false)]
@@ -164,6 +164,49 @@ namespace Puffin.Core.UnitTests
             // wall and move into the left wall.
             Assert.That(player.X, Is.EqualTo(40));
             Assert.That(player.Y, Is.EqualTo(32));
+        }
+        
+        [TestCase(-1, 0, "X")]
+        [TestCase(1, 0, "X")]
+        [TestCase(0, -1, "Y")]
+        [TestCase(0, 1, "Y")]
+        // Dual axes, shortest resolves first
+        [TestCase(1, 0.5f, "X")]
+        [TestCase(1, -0.5f, "X")]
+        [TestCase(-1, 0.5f, "X")]
+        [TestCase(-1, -0.5f, "X")]
+        [TestCase(0.5f, 1, "Y")]
+        [TestCase(0.5f, -1, "Y")]
+        [TestCase(-0.5f, 1, "Y")]
+        [TestCase(-0.5f, -1, "Y")]
+        public void OnUpdateTriggersCollisionAndPassesInCorrectAxis(float xDirection, float yDirection, string expectedAxis)
+        {
+            Entity actualEntity = null;
+            string actualAxis = "";
+            (int boxWidth, int boxHeight) = (48, 48);
+            (int droneWidth, int dronerHeight) = (32, 32);
+            (int xVelocity, int yVelocity) = ((int)(xDirection * 10), (int)(yDirection * 10));
+
+            // Arrange
+            new Scene();
+            var box = new Entity().Move(100, 100).Velocity(xVelocity, yVelocity)
+            .Collide(boxWidth, boxHeight, (e, s) => {
+                actualEntity = e;
+                actualAxis = s;
+            });
+
+            var drone = new Entity().Collide(droneWidth, dronerHeight, true).Move((int)(box.X - xVelocity), (int)(box.Y - yVelocity));
+
+            var system = new MovementSystem();
+            system.OnAddEntity(box);
+            system.OnAddEntity(drone);
+
+            // Act
+            system.OnUpdate(TimeSpan.FromSeconds(1.1));
+
+            // Assert
+            Assert.That(actualEntity, Is.EqualTo(drone));
+            Assert.That(actualAxis, Is.EqualTo(expectedAxis));
         }
     }
 }

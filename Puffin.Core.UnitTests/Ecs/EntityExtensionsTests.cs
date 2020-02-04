@@ -186,6 +186,16 @@ namespace Puffin.Core.UnitTests.Ecs
         }
 
         [Test]
+        public void CollideSetsOnCollisionCallback()
+        {
+            Action<Entity, string> expected = (e, s) => {};
+
+            var e = new Entity().Collide(16, 8, expected);
+            var actual = e.Get<CollisionComponent>();
+            Assert.That(actual.onCollide, Is.EqualTo(expected));
+        }
+
+        [Test]
         public void VelocitySetsVelocity()
         {
             var e = new Entity().Velocity(100, 50);
