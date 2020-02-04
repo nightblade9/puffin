@@ -57,6 +57,15 @@ references:
   commentId: T:Puffin.Core.Ecs.Components.CollisionComponent
   fullName: Puffin.Core.Ecs.Components.CollisionComponent
   nameWithType: CollisionComponent
+- uid: Puffin.Core.Ecs.Components.CollisionComponent.#ctor(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Action{Puffin.Core.Ecs.Entity,System.String})
+  name: CollisionComponent(Entity, Int32, Int32, Action<Entity, String>)
+  href: api/Puffin.Core.Ecs.Components.CollisionComponent.html#Puffin_Core_Ecs_Components_CollisionComponent__ctor_Puffin_Core_Ecs_Entity_System_Int32_System_Int32_System_Action_Puffin_Core_Ecs_Entity_System_String__
+  commentId: M:Puffin.Core.Ecs.Components.CollisionComponent.#ctor(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Action{Puffin.Core.Ecs.Entity,System.String})
+  name.vb: CollisionComponent(Entity, Int32, Int32, Action(Of Entity, String))
+  fullName: Puffin.Core.Ecs.Components.CollisionComponent.CollisionComponent(Puffin.Core.Ecs.Entity, System.Int32, System.Int32, System.Action<Puffin.Core.Ecs.Entity, System.String>)
+  fullName.vb: Puffin.Core.Ecs.Components.CollisionComponent.CollisionComponent(Puffin.Core.Ecs.Entity, System.Int32, System.Int32, System.Action(Of Puffin.Core.Ecs.Entity, System.String))
+  nameWithType: CollisionComponent.CollisionComponent(Entity, Int32, Int32, Action<Entity, String>)
+  nameWithType.vb: CollisionComponent.CollisionComponent(Entity, Int32, Int32, Action(Of Entity, String))
 - uid: Puffin.Core.Ecs.Components.CollisionComponent.#ctor(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Boolean)
   name: CollisionComponent(Entity, Int32, Int32, Boolean)
   href: api/Puffin.Core.Ecs.Components.CollisionComponent.html#Puffin_Core_Ecs_Components_CollisionComponent__ctor_Puffin_Core_Ecs_Entity_System_Int32_System_Int32_System_Boolean_
@@ -522,6 +531,15 @@ references:
   isSpec: "True"
   fullName: Puffin.Core.Ecs.EntityExtensions.Audio
   nameWithType: EntityExtensions.Audio
+- uid: Puffin.Core.Ecs.EntityExtensions.Collide(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Action{Puffin.Core.Ecs.Entity,System.String})
+  name: Collide(Entity, Int32, Int32, Action<Entity, String>)
+  href: api/Puffin.Core.Ecs.EntityExtensions.html#Puffin_Core_Ecs_EntityExtensions_Collide_Puffin_Core_Ecs_Entity_System_Int32_System_Int32_System_Action_Puffin_Core_Ecs_Entity_System_String__
+  commentId: M:Puffin.Core.Ecs.EntityExtensions.Collide(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Action{Puffin.Core.Ecs.Entity,System.String})
+  name.vb: Collide(Entity, Int32, Int32, Action(Of Entity, String))
+  fullName: Puffin.Core.Ecs.EntityExtensions.Collide(Puffin.Core.Ecs.Entity, System.Int32, System.Int32, System.Action<Puffin.Core.Ecs.Entity, System.String>)
+  fullName.vb: Puffin.Core.Ecs.EntityExtensions.Collide(Puffin.Core.Ecs.Entity, System.Int32, System.Int32, System.Action(Of Puffin.Core.Ecs.Entity, System.String))
+  nameWithType: EntityExtensions.Collide(Entity, Int32, Int32, Action<Entity, String>)
+  nameWithType.vb: EntityExtensions.Collide(Entity, Int32, Int32, Action(Of Entity, String))
 - uid: Puffin.Core.Ecs.EntityExtensions.Collide(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Boolean)
   name: Collide(Entity, Int32, Int32, Boolean)
   href: api/Puffin.Core.Ecs.EntityExtensions.html#Puffin_Core_Ecs_EntityExtensions_Collide_Puffin_Core_Ecs_Entity_System_Int32_System_Int32_System_Boolean_

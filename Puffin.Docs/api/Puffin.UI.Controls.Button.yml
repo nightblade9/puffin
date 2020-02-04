@@ -16,8 +16,8 @@ items:
   source:
     remote:
       path: Puffin.UI/Controls/Button.cs
-      branch: documentation
-      repo: git@github.com:nightblade9/puffin
+      branch: pushable_block
+      repo: https://github.com/nightblade9/puffin.git
     id: Button
     path: ../Puffin.UI/Controls/Button.cs
     startLine: 9
@@ -30,7 +30,6 @@ items:
     content: 'public class Button : Entity'
     content.vb: >-
       Public Class Button
-
           Inherits Entity
   inheritance:
   - System.Object
@@ -64,8 +63,8 @@ items:
   source:
     remote:
       path: Puffin.UI/Controls/Button.cs
-      branch: documentation
-      repo: git@github.com:nightblade9/puffin
+      branch: pushable_block
+      repo: https://github.com/nightblade9/puffin.git
     id: .ctor
     path: ../Puffin.UI/Controls/Button.cs
     startLine: 19

@@ -23,8 +23,8 @@ items:
   source:
     remote:
       path: Puffin.Infrastructure.MonoGame/PuffinGame.cs
-      branch: documentation
-      repo: git@github.com:nightblade9/puffin
+      branch: pushable_block
+      repo: https://github.com/nightblade9/puffin.git
     id: PuffinGame
     path: ../Puffin.Infrastructure.MonoGame/PuffinGame.cs
     startLine: 20
@@ -66,8 +66,8 @@ items:
   source:
     remote:
       path: Puffin.Infrastructure.MonoGame/PuffinGame.cs
-      branch: documentation
-      repo: git@github.com:nightblade9/puffin
+      branch: pushable_block
+      repo: https://github.com/nightblade9/puffin.git
     id: ActionToKeys
     path: ../Puffin.Infrastructure.MonoGame/PuffinGame.cs
     startLine: 28
@@ -99,8 +99,8 @@ items:
   source:
     remote:
       path: Puffin.Infrastructure.MonoGame/PuffinGame.cs
-      branch: documentation
-      repo: git@github.com:nightblade9/puffin
+      branch: pushable_block
+      repo: https://github.com/nightblade9/puffin.git
     id: .ctor
     path: ../Puffin.Infrastructure.MonoGame/PuffinGame.cs
     startLine: 48
@@ -138,8 +138,8 @@ items:
   source:
     remote:
       path: Puffin.Infrastructure.MonoGame/PuffinGame.cs
-      branch: documentation
-      repo: git@github.com:nightblade9/puffin
+      branch: pushable_block
+      repo: https://github.com/nightblade9/puffin.git
     id: ShowScene
     path: ../Puffin.Infrastructure.MonoGame/PuffinGame.cs
     startLine: 68
@@ -173,8 +173,8 @@ items:
   source:
     remote:
       path: Puffin.Infrastructure.MonoGame/PuffinGame.cs
-      branch: documentation
-      repo: git@github.com:nightblade9/puffin
+      branch: pushable_block
+      repo: https://github.com/nightblade9/puffin.git
     id: Ready
     path: ../Puffin.Infrastructure.MonoGame/PuffinGame.cs
     startLine: 95
@@ -207,8 +207,8 @@ items:
   source:
     remote:
       path: Puffin.Infrastructure.MonoGame/PuffinGame.cs
-      branch: documentation
-      repo: git@github.com:nightblade9/puffin
+      branch: pushable_block
+      repo: https://github.com/nightblade9/puffin.git
     id: Initialize
     path: ../Puffin.Infrastructure.MonoGame/PuffinGame.cs
     startLine: 101
@@ -242,8 +242,8 @@ items:
   source:
     remote:
       path: Puffin.Infrastructure.MonoGame/PuffinGame.cs
-      branch: documentation
-      repo: git@github.com:nightblade9/puffin
+      branch: pushable_block
+      repo: https://github.com/nightblade9/puffin.git
     id: LoadContent
     path: ../Puffin.Infrastructure.MonoGame/PuffinGame.cs
     startLine: 108
@@ -277,8 +277,8 @@ items:
   source:
     remote:
       path: Puffin.Infrastructure.MonoGame/PuffinGame.cs
-      branch: documentation
-      repo: git@github.com:nightblade9/puffin
+      branch: pushable_block
+      repo: https://github.com/nightblade9/puffin.git
     id: Update
     path: ../Puffin.Infrastructure.MonoGame/PuffinGame.cs
     startLine: 116
@@ -315,8 +315,8 @@ items:
   source:
     remote:
       path: Puffin.Infrastructure.MonoGame/PuffinGame.cs
-      branch: documentation
-      repo: git@github.com:nightblade9/puffin
+      branch: pushable_block
+      repo: https://github.com/nightblade9/puffin.git
     id: Draw
     path: ../Puffin.Infrastructure.MonoGame/PuffinGame.cs
     startLine: 125

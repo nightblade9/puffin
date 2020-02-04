@@ -17,8 +17,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Components/FourWayMovementComponent.cs
-      branch: documentation
-      repo: git@github.com:nightblade9/puffin
+      branch: pushable_block
+      repo: https://github.com/nightblade9/puffin.git
     id: FourWayMovementComponent
     path: ../Puffin.Core/Ecs/Components/FourWayMovementComponent.cs
     startLine: 11
@@ -31,7 +31,6 @@ items:
     content: 'public class FourWayMovementComponent : KeyboardComponent'
     content.vb: >-
       Public Class FourWayMovementComponent
-
           Inherits KeyboardComponent
   inheritance:
   - System.Object
@@ -59,8 +58,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Components/FourWayMovementComponent.cs
-      branch: documentation
-      repo: git@github.com:nightblade9/puffin
+      branch: pushable_block
+      repo: https://github.com/nightblade9/puffin.git
     id: Speed
     path: ../Puffin.Core/Ecs/Components/FourWayMovementComponent.cs
     startLine: 16
@@ -96,8 +95,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Components/FourWayMovementComponent.cs
-      branch: documentation
-      repo: git@github.com:nightblade9/puffin
+      branch: pushable_block
+      repo: https://github.com/nightblade9/puffin.git
     id: .ctor
     path: ../Puffin.Core/Ecs/Components/FourWayMovementComponent.cs
     startLine: 18

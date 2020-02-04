@@ -23,8 +23,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Entity.cs
-      branch: documentation
-      repo: git@github.com:nightblade9/puffin
+      branch: pushable_block
+      repo: https://github.com/nightblade9/puffin.git
     id: Entity
     path: ../Puffin.Core/Ecs/Entity.cs
     startLine: 11
@@ -55,6 +55,7 @@ items:
   - Puffin.Core.Ecs.Entity.Puffin.Core.Ecs.EntityExtensions.Audio(System.String)
   - Puffin.Core.Ecs.Entity.Puffin.Core.Ecs.EntityExtensions.Colour(System.Int32,System.Int32,System.Int32)
   - Puffin.Core.Ecs.Entity.Puffin.Core.Ecs.EntityExtensions.Collide(System.Int32,System.Int32,System.Boolean)
+  - Puffin.Core.Ecs.Entity.Puffin.Core.Ecs.EntityExtensions.Collide(System.Int32,System.Int32,System.Action{Puffin.Core.Ecs.Entity,System.String})
   - Puffin.Core.Ecs.Entity.Puffin.Core.Ecs.EntityExtensions.Velocity(System.Int32,System.Int32)
   modifiers.csharp:
   - public
@@ -76,8 +77,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Entity.cs
-      branch: documentation
-      repo: git@github.com:nightblade9/puffin
+      branch: pushable_block
+      repo: https://github.com/nightblade9/puffin.git
     id: X
     path: ../Puffin.Core/Ecs/Entity.cs
     startLine: 16
@@ -113,8 +114,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Entity.cs
-      branch: documentation
-      repo: git@github.com:nightblade9/puffin
+      branch: pushable_block
+      repo: https://github.com/nightblade9/puffin.git
     id: Y
     path: ../Puffin.Core/Ecs/Entity.cs
     startLine: 21
@@ -150,8 +151,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Entity.cs
-      branch: documentation
-      repo: git@github.com:nightblade9/puffin
+      branch: pushable_block
+      repo: https://github.com/nightblade9/puffin.git
     id: VelocityX
     path: ../Puffin.Core/Ecs/Entity.cs
     startLine: 26
@@ -187,8 +188,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Entity.cs
-      branch: documentation
-      repo: git@github.com:nightblade9/puffin
+      branch: pushable_block
+      repo: https://github.com/nightblade9/puffin.git
     id: VelocityY
     path: ../Puffin.Core/Ecs/Entity.cs
     startLine: 31
@@ -224,8 +225,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Entity.cs
-      branch: documentation
-      repo: git@github.com:nightblade9/puffin
+      branch: pushable_block
+      repo: https://github.com/nightblade9/puffin.git
     id: Set
     path: ../Puffin.Core/Ecs/Entity.cs
     startLine: 46
@@ -261,8 +262,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Entity.cs
-      branch: documentation
-      repo: git@github.com:nightblade9/puffin
+      branch: pushable_block
+      repo: https://github.com/nightblade9/puffin.git
     id: Remove
     path: ../Puffin.Core/Ecs/Entity.cs
     startLine: 57
@@ -274,7 +275,6 @@ items:
   syntax:
     content: >-
       public void Remove<T>()
-
           where T : Component
     typeParameters:
     - id: T
@@ -301,8 +301,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Entity.cs
-      branch: documentation
-      repo: git@github.com:nightblade9/puffin
+      branch: pushable_block
+      repo: https://github.com/nightblade9/puffin.git
     id: Get
     path: ../Puffin.Core/Ecs/Entity.cs
     startLine: 66
@@ -314,7 +314,6 @@ items:
   syntax:
     content: >-
       public T Get<T>()
-
           where T : Component
     typeParameters:
     - id: T
@@ -343,8 +342,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Entity.cs
-      branch: documentation
-      repo: git@github.com:nightblade9/puffin
+      branch: pushable_block
+      repo: https://github.com/nightblade9/puffin.git
     id: OnUpdate
     path: ../Puffin.Core/Ecs/Entity.cs
     startLine: 83
@@ -1331,6 +1330,116 @@ references:
     nameWithType: Boolean
     fullName: System.Boolean
     isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Puffin.Core.Ecs.Entity.Puffin.Core.Ecs.EntityExtensions.Collide(System.Int32,System.Int32,System.Action{Puffin.Core.Ecs.Entity,System.String})
+  commentId: M:Puffin.Core.Ecs.EntityExtensions.Collide(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Action{Puffin.Core.Ecs.Entity,System.String})
+  parent: Puffin.Core.Ecs.EntityExtensions
+  definition: Puffin.Core.Ecs.EntityExtensions.Collide(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Action{Puffin.Core.Ecs.Entity,System.String})
+  name: Collide(Int32, Int32, Action<Entity, String>)
+  nameWithType: EntityExtensions.Collide(Int32, Int32, Action<Entity, String>)
+  fullName: Puffin.Core.Ecs.EntityExtensions.Collide(System.Int32, System.Int32, System.Action<Puffin.Core.Ecs.Entity, System.String>)
+  nameWithType.vb: EntityExtensions.Collide(Int32, Int32, Action(Of Entity, String))
+  fullName.vb: Puffin.Core.Ecs.EntityExtensions.Collide(System.Int32, System.Int32, System.Action(Of Puffin.Core.Ecs.Entity, System.String))
+  name.vb: Collide(Int32, Int32, Action(Of Entity, String))
+  spec.csharp:
+  - uid: Puffin.Core.Ecs.EntityExtensions.Collide(System.Int32,System.Int32,System.Action{Puffin.Core.Ecs.Entity,System.String})
+    name: Collide
+    nameWithType: EntityExtensions.Collide
+    fullName: Puffin.Core.Ecs.EntityExtensions.Collide
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Action`2
+    name: Action
+    nameWithType: Action
+    fullName: System.Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Puffin.Core.Ecs.Entity
+    name: Entity
+    nameWithType: Entity
+    fullName: Puffin.Core.Ecs.Entity
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Puffin.Core.Ecs.EntityExtensions.Collide(System.Int32,System.Int32,System.Action{Puffin.Core.Ecs.Entity,System.String})
+    name: Collide
+    nameWithType: EntityExtensions.Collide
+    fullName: Puffin.Core.Ecs.EntityExtensions.Collide
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Action`2
+    name: Action
+    nameWithType: Action
+    fullName: System.Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Puffin.Core.Ecs.Entity
+    name: Entity
+    nameWithType: Entity
+    fullName: Puffin.Core.Ecs.Entity
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
   - name: )
     nameWithType: )
     fullName: )
@@ -2527,6 +2636,129 @@ references:
     nameWithType: Boolean
     fullName: System.Boolean
     isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Puffin.Core.Ecs.EntityExtensions.Collide(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Action{Puffin.Core.Ecs.Entity,System.String})
+  commentId: M:Puffin.Core.Ecs.EntityExtensions.Collide(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Action{Puffin.Core.Ecs.Entity,System.String})
+  isExternal: true
+  name: Collide(Entity, Int32, Int32, Action<Entity, String>)
+  nameWithType: EntityExtensions.Collide(Entity, Int32, Int32, Action<Entity, String>)
+  fullName: Puffin.Core.Ecs.EntityExtensions.Collide(Puffin.Core.Ecs.Entity, System.Int32, System.Int32, System.Action<Puffin.Core.Ecs.Entity, System.String>)
+  nameWithType.vb: EntityExtensions.Collide(Entity, Int32, Int32, Action(Of Entity, String))
+  fullName.vb: Puffin.Core.Ecs.EntityExtensions.Collide(Puffin.Core.Ecs.Entity, System.Int32, System.Int32, System.Action(Of Puffin.Core.Ecs.Entity, System.String))
+  name.vb: Collide(Entity, Int32, Int32, Action(Of Entity, String))
+  spec.csharp:
+  - uid: Puffin.Core.Ecs.EntityExtensions.Collide(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Action{Puffin.Core.Ecs.Entity,System.String})
+    name: Collide
+    nameWithType: EntityExtensions.Collide
+    fullName: Puffin.Core.Ecs.EntityExtensions.Collide
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Puffin.Core.Ecs.Entity
+    name: Entity
+    nameWithType: Entity
+    fullName: Puffin.Core.Ecs.Entity
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Action`2
+    name: Action
+    nameWithType: Action
+    fullName: System.Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Puffin.Core.Ecs.Entity
+    name: Entity
+    nameWithType: Entity
+    fullName: Puffin.Core.Ecs.Entity
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Puffin.Core.Ecs.EntityExtensions.Collide(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Action{Puffin.Core.Ecs.Entity,System.String})
+    name: Collide
+    nameWithType: EntityExtensions.Collide
+    fullName: Puffin.Core.Ecs.EntityExtensions.Collide
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Puffin.Core.Ecs.Entity
+    name: Entity
+    nameWithType: Entity
+    fullName: Puffin.Core.Ecs.Entity
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Action`2
+    name: Action
+    nameWithType: Action
+    fullName: System.Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Puffin.Core.Ecs.Entity
+    name: Entity
+    nameWithType: Entity
+    fullName: Puffin.Core.Ecs.Entity
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
   - name: )
     nameWithType: )
     fullName: )

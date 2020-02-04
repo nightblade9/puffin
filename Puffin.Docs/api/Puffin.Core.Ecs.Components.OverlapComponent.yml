@@ -16,8 +16,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Components/OverlapComponent.cs
-      branch: documentation
-      repo: git@github.com:nightblade9/puffin
+      branch: pushable_block
+      repo: https://github.com/nightblade9/puffin.git
     id: OverlapComponent
     path: ../Puffin.Core/Ecs/Components/OverlapComponent.cs
     startLine: 8
@@ -30,7 +30,6 @@ items:
     content: 'public class OverlapComponent : Component'
     content.vb: >-
       Public Class OverlapComponent
-
           Inherits Component
   inheritance:
   - System.Object
@@ -55,8 +54,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Components/OverlapComponent.cs
-      branch: documentation
-      repo: git@github.com:nightblade9/puffin
+      branch: pushable_block
+      repo: https://github.com/nightblade9/puffin.git
     id: .ctor
     path: ../Puffin.Core/Ecs/Components/OverlapComponent.cs
     startLine: 26

@@ -19,8 +19,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Components/TextLabelComponent.cs
-      branch: documentation
-      repo: git@github.com:nightblade9/puffin
+      branch: pushable_block
+      repo: https://github.com/nightblade9/puffin.git
     id: TextLabelComponent
     path: ../Puffin.Core/Ecs/Components/TextLabelComponent.cs
     startLine: 7
@@ -33,7 +33,6 @@ items:
     content: 'public class TextLabelComponent : Component'
     content.vb: >-
       Public Class TextLabelComponent
-
           Inherits Component
   inheritance:
   - System.Object
@@ -58,8 +57,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Components/TextLabelComponent.cs
-      branch: documentation
-      repo: git@github.com:nightblade9/puffin
+      branch: pushable_block
+      repo: https://github.com/nightblade9/puffin.git
     id: Text
     path: ../Puffin.Core/Ecs/Components/TextLabelComponent.cs
     startLine: 9
@@ -93,8 +92,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Components/TextLabelComponent.cs
-      branch: documentation
-      repo: git@github.com:nightblade9/puffin
+      branch: pushable_block
+      repo: https://github.com/nightblade9/puffin.git
     id: FontName
     path: ../Puffin.Core/Ecs/Components/TextLabelComponent.cs
     startLine: 14
@@ -130,8 +129,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Components/TextLabelComponent.cs
-      branch: documentation
-      repo: git@github.com:nightblade9/puffin
+      branch: pushable_block
+      repo: https://github.com/nightblade9/puffin.git
     id: FontSize
     path: ../Puffin.Core/Ecs/Components/TextLabelComponent.cs
     startLine: 25
@@ -167,8 +166,8 @@ items:
   source:
     remote:
       path: Puffin.Core/Ecs/Components/TextLabelComponent.cs
-      branch: documentation
-      repo: git@github.com:nightblade9/puffin
+      branch: pushable_block
+      repo: https://github.com/nightblade9/puffin.git
     id: .ctor
     path: ../Puffin.Core/Ecs/Components/TextLabelComponent.cs
     startLine: 43
