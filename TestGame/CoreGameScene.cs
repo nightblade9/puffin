@@ -26,12 +26,13 @@ namespace MyGame
             pushable.Collide(32, 32, (e, axis) => {
                 if (e == player)
                 {
-                    var vx = axis == "X" ? (int)player.VelocityX : 0;
-                    var vy = axis == "Y" ? (int)player.VelocityY : 0;
+                    var vx = axis == "X" ? (int)player.VelocityX * 2 : 0;
+                    var vy = axis == "Y" ? (int)player.VelocityY * 2 : 0;
                     pushable.Velocity(vx, vy);
                 }
             }).OnUpdate((elapsed) => {
-                pushable.Velocity(0, 0);
+                pushable.VelocityX *= 0.95f;
+                pushable.VelocityY *= 0.95f;
             });
 
             this.Add(pushable);
