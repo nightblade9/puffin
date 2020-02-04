@@ -77,10 +77,55 @@ namespace Puffin.Core.UnitTests
             Assert.That(e.Y, Is.EqualTo(expectedPosition.Item2));
         }
 
-        [Test]
-        public void ProcessMovementCollidesAndStopsEntityWithTile()
+        [TestCase(-1, 0)]
+        [TestCase(1, 0)]
+        [TestCase(0, -1)]
+        [TestCase(0, 1)]
+        // Dual axes, shortest resolves first
+        [TestCase(1, 0.5f)]
+        [TestCase(1, -0.5f)]
+        [TestCase(-1, 0.5f)]
+        [TestCase(-1, -0.5f)]
+        [TestCase(0.5f, 1)]
+        [TestCase(0.5f, -1)]
+        [TestCase(-0.5f, 1)]
+        [TestCase(-0.5f, -1)]
+        public void ProcessMovementCollidesAndStopsEntityWithTile(float xDirection, float yDirection)
         {
-            Assert.Fail();
+            // There's nothing special about entity/tile collision, but we test thoroughly anyway,
+            // because unit tests are cheap. This is a copy of the entity/entity test for axis
+            // of collision / onCollide reporting from below.
+            // Unlike the other test (box moves into drone), we flip (drone moves into box/cactus).
+            Entity actualEntity = null;
+            (int boxWidth, int boxHeight) = (48, 48);
+            (int droneWidth, int dronerHeight) = (32, 32);
+            (int xVelocity, int yVelocity) = ((int)(xDirection * 10), (int)(yDirection * 10));
+
+            // Arrange
+            var scene = new Scene();
+            var tilemap = new TileMap(10, 10, "desert.png", 25, 25);
+            tilemap.Define("Cactus", 0, 0, true);
+            // Cactus at (75, 100) (pixels)
+            tilemap.Set(3, 4, "Cactus");
+            scene.Add(tilemap);
+
+            // Note that DRONE moves into CACTUS.
+            var drone = new Entity().Collide(droneWidth, dronerHeight, (e, s) => {
+                actualEntity = e;
+            })
+            .Move(100 - xVelocity, 100 - yVelocity)
+            .Velocity(xVelocity, yVelocity);
+
+            scene.Add(drone);
+
+            var system = new MovementSystem();
+            system.OnAddEntity(drone);
+
+            // Act
+            system.OnUpdate(TimeSpan.FromSeconds(1.1));
+
+            // Assert
+            Assert.That(actualEntity, Is.Not.EqualTo(drone)); // It's CACTUS!
         }
 
         [TestCase(false)]
@@ -187,7 +232,7 @@ namespace Puffin.Core.UnitTests
             (int droneWidth, int dronerHeight) = (32, 32);
             (int xVelocity, int yVelocity) = ((int)(xDirection * 10), (int)(yDirection * 10));
 
-            // Arrange
+            // Arrange. Note that BOX moves into DRONE.
             new Scene();
             var box = new Entity().Move(100, 100).Velocity(xVelocity, yVelocity)
             .Collide(boxWidth, boxHeight, (e, s) => {
