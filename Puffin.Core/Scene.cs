@@ -96,10 +96,7 @@ namespace Puffin.Core
         public void Add(TileMap tileMap)
         {
             this.TileMaps.Add(tileMap);
-            if (this.drawingSystem != null)
-            {
-                this.drawingSystem.OnAddTileMap(tileMap);
-            }
+            this.drawingSystem?.OnAddTileMap(tileMap);
         }
 
         /// <summary>
@@ -132,10 +129,7 @@ namespace Puffin.Core
         /// </summary>
         public void Dispose()
         {
-            if (EventBus.LatestInstance != null)
-            {
-                EventBus.LatestInstance.Dispose();
-            }
+            EventBus.LatestInstance?.Dispose();
 
             // Reset EventBus.LatestIntance
             new EventBus();
@@ -227,10 +221,7 @@ namespace Puffin.Core
 
         private void onMouseClick(object data)
         {
-            if (this.OnMouseClick != null)
-            {
-                this.OnMouseClick.Invoke();
-            }
+            this.OnMouseClick?.Invoke();
         }
     }
 }
