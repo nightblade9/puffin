@@ -21,7 +21,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             if (sprite.FrameWidth > 0 && sprite.FrameHeight > 0)
             {
                 // Spritesheet
-                this.Region = new Rectangle(0, 0, sprite.FrameWidth, sprite.FrameHeight);
+                this.Region = new Rectangle(sprite.FrameIndex * sprite.FrameWidth, 0, sprite.FrameWidth, sprite.FrameHeight);
                 EventBus.LatestInstance.Subscribe(EventBusSignal.SpriteSheetFrameIndexChanged, (s) =>
                 {
                     if (s == sprite)

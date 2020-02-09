@@ -44,14 +44,15 @@ namespace Puffin.Core.UnitTests.Ecs
         }
 
         [Test]
-        public void SpritesheetSetsSpriteAndFrameSize()
+        public void SpritesheetSetsSpriteAndFrameSizeAndIndex()
         {
-            var e = new Entity().Spritesheet("player.png", 48, 32);
+            var e = new Entity().Spritesheet("player.png", 48, 32, 3);
             var sprite = e.Get<SpriteComponent>();
             Assert.That(sprite, Is.Not.Null);
             Assert.That(sprite.FileName, Is.EqualTo("player.png"));
             Assert.That(sprite.FrameWidth, Is.EqualTo(48));
             Assert.That(sprite.FrameHeight, Is.EqualTo(32));
+            Assert.That(sprite.FrameIndex, Is.EqualTo(3));
         }
 
         [Test]

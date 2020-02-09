@@ -30,9 +30,9 @@ namespace Puffin.Core.Ecs
         /// <summary>
         /// Adds a spritesheet/tilesheet to an entity.
         /// </summary>
-        public static Entity Spritesheet(this Entity entity, string imageFile, int frameWidth, int frameHeight)
+        public static Entity Spritesheet(this Entity entity, string imageFile, int frameWidth, int frameHeight, int frameIndex = 0)
         {
-            entity.Set(new SpriteComponent(entity, imageFile, frameWidth, frameHeight));
+            entity.Set(new SpriteComponent(entity, imageFile, frameWidth, frameHeight, frameIndex));            
             return entity;
         }
 
