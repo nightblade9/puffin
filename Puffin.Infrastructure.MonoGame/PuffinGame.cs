@@ -118,7 +118,7 @@ namespace Puffin.Infrastructure.MonoGame
         {
             this.mouseProvider.Update();
             this.keyboardProvider.Update();
-            this.currentScene.OnUpdate(gameTime.ElapsedGameTime);
+            this.currentScene?.OnUpdate(gameTime.ElapsedGameTime);
             base.Update(gameTime);
         }
 
