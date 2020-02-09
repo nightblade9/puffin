@@ -136,10 +136,8 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
                         BgrToRgba(colour.Colour));
                 }
 
-                foreach (var monoGameSprite in entitySprites.Values)
-                {
-                    this.spriteBatch.Draw(monoGameSprite.Texture, new Vector2(entity.X, entity.Y), monoGameSprite.Region, Color.White);
-                }
+                var monoGameSprite = this.entitySprites[entity];
+                this.spriteBatch.Draw(monoGameSprite.Texture, new Vector2(entity.X, entity.Y), monoGameSprite.Region, Color.White);
 
                 var text = entity.Get<TextLabelComponent>();
                 if (text != null)
