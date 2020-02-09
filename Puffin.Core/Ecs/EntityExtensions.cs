@@ -130,6 +130,20 @@ namespace Puffin.Core.Ecs
         }
 
         /// <summary>
+        /// Creates an overlap component, which checks for overlap against other entities with overlap components, and events for when
+        /// the mouse starts/stops overlapping this entity's overlap region.
+        /// </summary>
+        /// <param name="width">The width of the overlap area.</param>
+        /// <param name="height">The height of the overlap area.</param>
+        /// <param name="onMouseEnter">The callback to invoke when the mouse enters the region occupied by this component.</param>
+        /// <param name="onMouseExit">The callback to invoke when the mouse exits the region occupied by this component.</param>
+        public static Entity Overlap(this Entity entity, int width, int height, int offsetX, int offsetY, Action onMouseEnter, Action onMouseExit = null)
+        {
+            entity.Set(new OverlapComponent(entity, width, height, offsetX, offsetY, null, null, onMouseEnter, onMouseExit));
+            return entity;
+        }
+
+        /// <summary>
         /// Allows an entity to play an audio file (short or long), optionally at a modified pitch.
         /// You should be able to play WAV files and OGG files.
         /// </summary>

@@ -79,6 +79,7 @@ namespace Puffin.Infrastructure.MonoGame
             {
                 new MovementSystem(),
                 new OverlapSystem(),
+                new MouseOverlapSystem(this.mouseProvider),
                 new MouseSystem(),
                 new AudioSystem(new MonoGameAudioPlayer()),
                 new DrawingSystem(drawingSurface),

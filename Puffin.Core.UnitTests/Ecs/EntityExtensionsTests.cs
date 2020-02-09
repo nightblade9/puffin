@@ -148,6 +148,19 @@ namespace Puffin.Core.UnitTests.Ecs
             Assert.That(o4.Offset.Item2, Is.EqualTo(9));
             Assert.That(numStarts, Is.EqualTo(2));
             Assert.That(stopped, Is.True);
+
+            var lastCalled = "";
+            Action mouseOverlap = () => lastCalled = "start";
+            Action mouseStopOverlap = () => lastCalled = "stop";
+
+            var o5 = new Entity().Overlap(32, 32, -1, -1, mouseOverlap, mouseStopOverlap).Get<OverlapComponent>();
+            Assert.That(o5, Is.Not.Null);
+            Assert.That(o5.Size.Item1, Is.EqualTo(32));
+            Assert.That(o5.Size.Item2, Is.EqualTo(32));
+            Assert.That(o5.Offset.Item1, Is.EqualTo(-1));
+            Assert.That(o5.Offset.Item2, Is.EqualTo(-1));
+            Assert.That(o5.OnMouseEnter, Is.EqualTo(mouseOverlap));
+            Assert.That(o5.OnMouseExit, Is.EqualTo(mouseStopOverlap));
         }
 
         [Test]
