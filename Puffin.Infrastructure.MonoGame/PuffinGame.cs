@@ -33,7 +33,7 @@ namespace Puffin.Infrastructure.MonoGame
             { PuffinAction.Right, new List<Keys>() { Keys.D, Keys.Right } },
         };
 
-        internal static PuffinGame LatestInstance;
+        internal static PuffinGame LatestInstance { get; private set; }
 
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
