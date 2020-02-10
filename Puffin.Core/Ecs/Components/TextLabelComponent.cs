@@ -35,19 +35,24 @@ namespace Puffin.Core.Ecs.Components
             }
         }
 
+        internal int OffsetX = 0;
+        internal int OffsetY = 0;
+
         private string fontName = "OpenSans";
         private int fontSize = 24;
 
         /// <summary>
         /// Creates a new text label; if not specified, the default font is 24pt OpenSans.
         /// </summary>
-        public TextLabelComponent(Entity parent, string text, string fontName = "OpenSans", int fontSize = 24)
+        public TextLabelComponent(Entity parent, string text, int offsetX = 0, int offsetY = 0, string fontName = "OpenSans", int fontSize = 24)
         : base(parent)
         {
             this.Text = text;
             this.FontName = fontName;
             this.FontSize = fontSize;
             EventBus.LatestInstance.Broadcast(EventBusSignal.LabelFontChanged, this);
+            this.OffsetX = offsetX;
+            this.OffsetY = offsetY;
         }
     }
 }

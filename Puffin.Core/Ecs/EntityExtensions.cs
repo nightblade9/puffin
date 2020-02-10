@@ -39,9 +39,11 @@ namespace Puffin.Core.Ecs
         /// <summary>
         /// Adds a text display to an entity.
         /// </summary>        
-        public static Entity Label(this Entity entity, string text)
+        /// <param name="offsetX">The X-offset of the label relative to the entity's origin</param>
+        /// <param name="offsetY">The Y-offset of the label relative to the entity's origin</param>
+        public static Entity Label(this Entity entity, string text, int offsetX = 0, int offsetY = 0)
         {
-            entity.Set(new TextLabelComponent(entity, text));
+            entity.Set(new TextLabelComponent(entity, text, offsetX, offsetY));
             return entity;
         }
 
