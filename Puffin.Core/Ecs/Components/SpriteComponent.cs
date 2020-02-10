@@ -20,6 +20,11 @@ namespace Puffin.Core.Ecs.Components
         /// </summary>
         public readonly int FrameHeight;
 
+        /// <summary>
+        /// If false, doesn't display the sprite.
+        /// </summary>
+        public bool IsVisible = true;
+
         private int frameIndex = 0;
 
         /// <summary>

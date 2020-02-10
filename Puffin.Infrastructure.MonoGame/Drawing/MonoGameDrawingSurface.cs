@@ -138,7 +138,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
 
                 MonoGameSprite monoGameSprite = null;
                 this.entitySprites.TryGetValue(entity, out monoGameSprite);
-                if (monoGameSprite != null)
+                if (monoGameSprite != null && entity.Get<SpriteComponent>().IsVisible)
                 {
                     this.spriteBatch.Draw(monoGameSprite.Texture, new Vector2(entity.X, entity.Y), monoGameSprite.Region, Color.White);
                 }
