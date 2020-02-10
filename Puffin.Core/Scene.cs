@@ -170,7 +170,6 @@ namespace Puffin.Core
                 this.Fps = (float)(drawsSinceLastFpsCount / timeDiff);
                 this.drawsSinceLastFpsCount = 0;
                 this.lastFpsUpdate = DateTime.Now;
-                Console.WriteLine($"{Fps} fps");
             }
         }
 
