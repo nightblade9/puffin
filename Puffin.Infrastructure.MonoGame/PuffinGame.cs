@@ -90,10 +90,11 @@ namespace Puffin.Infrastructure.MonoGame
         /// <summary>
         /// Called when your game is ready to run (graphics initialized, etc.)
         /// Implement this to add entities that load sprites, etc. for your game.
+        /// Make sure you call <c>base.Ready</c> if you override it.
         /// </summary>
         virtual protected void Ready()
         {
-
+            this.currentScene.Ready();
         }
 
         /// <summary>Overridden from MonoGame, please ignore.</summary>

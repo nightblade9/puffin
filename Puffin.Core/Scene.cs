@@ -138,6 +138,15 @@ namespace Puffin.Core
         {
             
         }
+
+        /// <summary>
+        /// A method that's called when the application is ready. (The console is
+        /// available and all content should be available to load.)
+        /// </summary>
+        public virtual void Ready()
+        {
+
+        }
         
         /// <summary>
         /// Disposes the scene and the event bus (so entities can be garbage-collected).
