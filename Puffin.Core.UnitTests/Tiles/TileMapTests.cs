@@ -99,5 +99,33 @@ namespace Puffin.Core.UnitTests.Tiles
 
             Assert.Throws<ArgumentException>(() => map.GetDefinition("waterfall"));
         }
+
+        [Test]
+        public void SetCanSetNull()
+        {
+            // Doesn't throw
+            new TileMap(10, 10, "clouds.png", 32, 32).Set(6, 3, null);
+        }
+
+        [Test]
+        public void ClearClearsSetTiles()
+        {
+            var map = new TileMap(60, 50, "castle.png", 64, 64);
+            map.Define("wall", 0, 0, false);
+            
+            map.Set(2, 2, "wall");
+            map.Set(2, 3, "wall");
+            map.Set(3, 2, "wall");
+            map.Set(3, 3, "wall");
+
+            // Act
+            map.Clear();
+
+            // Assert
+            Assert.That(map.Get(2, 2), Is.Null);
+            Assert.That(map.Get(2, 3), Is.Null);
+            Assert.That(map.Get(3, 2), Is.Null);
+            Assert.That(map.Get(3, 3), Is.Null);
+        }
     }
 }

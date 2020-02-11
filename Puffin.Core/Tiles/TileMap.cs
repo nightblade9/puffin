@@ -18,10 +18,10 @@ namespace Puffin.Core.Tiles
         internal readonly int TileHeight; // in pixels
 
         // List of all tile definitions, indexed by name.
-        private IDictionary<string, TileDefinition> tileSet = new Dictionary<string, TileDefinition>();
+        private readonly IDictionary<string, TileDefinition> tileSet = new Dictionary<string, TileDefinition>();
     
-        // (x, y) => tile name (eg. (13, 2) => grass)
-        private string[,] tileData;
+        // (x, y) => tile name (eg. (13, 2) => grass). Null if empty/unset.
+        private readonly string[,] tileData;
         
         /// <summary>
         /// Constructs a tilemap, given an image file name, and the size of a single tile.
@@ -60,7 +60,7 @@ namespace Puffin.Core.Tiles
         /// </summary>
         public void Set(int cellX, int cellY, string tileName)
         {
-            if (!this.tileSet.ContainsKey(tileName))
+            if (tileName != null && !this.tileSet.ContainsKey(tileName))
             {
                 throw new InvalidOperationException($"{tileName} can't be set, hasn't been defined yet.");
             }
@@ -87,6 +87,20 @@ namespace Puffin.Core.Tiles
         {
             get { return this.Get(cellX, cellY); }
             set { this.Set(cellX, cellY, value); }
+        }
+
+        /// <summary>
+        /// Clears all the tiles set on this map. Doesn't remove any defined tiles.
+        /// </summary>
+        public void Clear()
+        {
+            for (var y = 0; y < this.MapHeight; y++)
+            {
+                for (var x = 0; x < this.MapWidth; x++)
+                {
+                    this.Set(x, y, null);
+                }
+            }
         }
 
         internal TileDefinition[] GetDefinitions()
