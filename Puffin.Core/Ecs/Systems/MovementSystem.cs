@@ -195,15 +195,8 @@ namespace Puffin.Core.Ecs.Systems
                 }
 
                 // Post-collision callbacks
-                if (entityCollision.onCollide != null)
-                {
-                    entityCollision.onCollide(collideAgainst, collisionAxis);
-                }      
-
-                if (collideAgainstComponent.onCollide != null)
-                {
-                    collideAgainstComponent.onCollide(entity, collisionAxis);
-                }
+                entityCollision.onCollide?.Invoke(collideAgainst, collisionAxis);
+                collideAgainstComponent.onCollide?.Invoke(entity, collisionAxis);
             }
         }
 

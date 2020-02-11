@@ -3,6 +3,7 @@ using Moq;
 using NUnit.Framework;
 using Puffin.Core.Ecs;
 using Puffin.Core.Ecs.Components;
+using Puffin.Core.Ecs.Systems;
 using Puffin.Core.IO;
 
 namespace Puffin.Core.UnitTests.Ecs
@@ -28,6 +29,7 @@ namespace Puffin.Core.UnitTests.Ecs
             DependencyInjection.Kernel.Bind<IKeyboardProvider>().ToConstant(provider.Object);
             provider.Setup(p => p.IsActionDown(PuffinAction.Down)).Returns(true);
             provider.Setup(p => p.IsActionDown(PuffinAction.Left)).Returns(true);
+            new Scene().Initialize(new ISystem[] { new Mock<DrawingSystem>().Object }, null, provider.Object);
 
             // Depends on default action bindings
             var e = new Entity();

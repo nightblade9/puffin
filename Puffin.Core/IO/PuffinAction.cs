@@ -1,6 +1,6 @@
 namespace Puffin.Core.IO
 {
-    internal enum PuffinAction
+    public enum PuffinAction
     {
 
         Up,

@@ -60,9 +60,11 @@ namespace Puffin.Core.Ecs
         /// <summary>
         /// Exposes a method that allows an entity to check/respond to actions/keys.
         /// </summary>
-        public static Entity Keyboard(this Entity entity)
+        /// <param name="onActionPressed">The function to invoke when an action's key is just pressed; the action is passed in as a parameter.</param>
+        /// <param name="onActionReleased">The function to invoke when an action's key is just released; the action is passed in as a parameter.</param>
+        public static Entity Keyboard(this Entity entity, Action<Enum> onActionPressed = null, Action<Enum> onActionReleased = null)
         {
-            entity.Set(new KeyboardComponent(entity));
+            entity.Set(new KeyboardComponent(entity, onActionPressed, onActionReleased));
             return entity;
         }
         

@@ -1,30 +1,21 @@
-using Puffin.Core.IO;
-using Ninject;
 using System;
 
 namespace Puffin.Core.Ecs.Components
 {
     /// <summary>
-    /// A keyboard component; provides information about which actions are being pressed.
-    /// Actions are a simple enum that map to one or more keyboard keys. 
-    /// For examples, see the Puffin documentation or unit tests.
+    /// A keyboard component, with handlers for actions (which map to a one or more keyboard keys).
     /// </summary>
     public class KeyboardComponent : Component
     {
-        private IKeyboardProvider provider;
+        internal Action<Enum> OnActionPressed;
+        internal Action<Enum> OnActionReleased;
 
-        public KeyboardComponent(Entity parent) : base(parent)
+        /// <param name="onActionPressed">The function to invoke when an action's key is just pressed; the action is passed in as a parameter.</param>
+        /// <param name="onActionReleased">The function to invoke when an action's key is just released; the action is passed in as a parameter.</param>
+        public KeyboardComponent(Entity parent, Action<Enum> onActionPressed = null, Action<Enum> onActionReleased = null) : base(parent)
         {
-            this.provider = DependencyInjection.Kernel.Get<IKeyboardProvider>();
-        }
-
-        /// <summary>
-        /// Returns true if any of the keys mapped to this action are currently pressed down.
-        /// Returns false otherwise.
-        /// </summary>
-        public bool IsActionDown(Enum action)
-        {
-            return this.provider.IsActionDown(action);
+            this.OnActionPressed = onActionPressed;
+            this.OnActionReleased = onActionReleased;
         }
     }
 }
