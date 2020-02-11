@@ -6,5 +6,7 @@ namespace Puffin.Core.Ecs
         MouseClicked, // Clicked mouse, fire click handlers
         PlayAudio, // Play audio at a specific pitch and volume
         LabelFontChanged, // Font name/size changed, load/generate required font
+        ActionPressed,
+        ActionReleased,
     }
 }

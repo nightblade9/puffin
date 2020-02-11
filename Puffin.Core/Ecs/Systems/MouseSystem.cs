@@ -14,7 +14,7 @@ namespace Puffin.Core.Ecs.Systems
         public MouseSystem()
         {
             this.provider = DependencyInjection.Kernel.Get<IMouseProvider>();            
-            EventBus.LatestInstance.Subscribe(EventBusSignal.MouseClicked, this.onMouseClicked);
+            EventBus.LatestInstance.Subscribe(EventBusSignal.MouseClicked, this.OnMouseClicked);
         }
 
         public void OnAddEntity(Entity entity)
@@ -35,9 +35,8 @@ namespace Puffin.Core.Ecs.Systems
             // Not needed, we use the MouseClicked event to trigger checks and delegate to components
         }
 
-        private void onMouseClicked(object data)
+        private void OnMouseClicked(object data)
         {
-            // TODO: move this into mouse system
             var clickedX = provider.MouseCoordinates.Item1;
             var clickedY = provider.MouseCoordinates.Item2;
 

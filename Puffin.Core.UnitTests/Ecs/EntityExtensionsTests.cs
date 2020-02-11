@@ -81,17 +81,19 @@ namespace Puffin.Core.UnitTests.Ecs
         }
 
         [Test]
-        public void KeyboardSetsKeyboardComponent()
+        public void KeyboardSetsKeyboardComponentAndEventHandlers()
         {
             // Depends on default mapping for PuffinGame.
-            var provider = new Mock<IKeyboardProvider>();
-            DependencyInjection.Kernel.Bind<IKeyboardProvider>().ToConstant(provider.Object);
+            Action<Enum> onPress = (e) => {};
+            Action<Enum> onRelease = (f) => {};
 
-            var e = new Entity();
-            Assert.That(e.Get<KeyboardComponent>(), Is.Null);
+            // Act
+            var e = new Entity().Keyboard(onPress, onRelease);
 
-            e.Keyboard();
+            // Assert
             Assert.That(e.Get<KeyboardComponent>(), Is.Not.Null);
+            Assert.That(e.Get<KeyboardComponent>().OnActionPressed, Is.EqualTo(onPress));
+            Assert.That(e.Get<KeyboardComponent>().OnActionReleased, Is.EqualTo(onRelease));
         }
 
         [Test]

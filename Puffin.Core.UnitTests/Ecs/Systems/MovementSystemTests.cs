@@ -35,6 +35,8 @@ namespace Puffin.Core.UnitTests
 
             var e1 = new Entity().FourWayMovement(100);
             var e2 = new Entity().Sprite("flower.png");
+            
+            new Scene().Initialize(new ISystem[] { new Mock<DrawingSystem>().Object }, null, provider.Object);
 
             var system = new MovementSystem();
             system.OnAddEntity(e1);

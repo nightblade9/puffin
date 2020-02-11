@@ -187,6 +187,7 @@ namespace Puffin.Core.UnitTests
 
             // Assert
             Assert.That(scene.IsActionDown(PuffinAction.Left), Is.True);
+            Assert.That(scene.IsActionDown(PuffinAction.Right), Is.False);
         }
 
         [Test]
