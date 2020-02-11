@@ -19,8 +19,10 @@ namespace Puffin.Core.Ecs
         {
             if (subscribers.ContainsKey(signal))
             {
-                // TODO: can be done in parallel if needed
-                foreach (var subscriber in subscribers[signal])
+                // TODO: can be done in parallel if needed. Copy so if someone has
+                // a mouse-click handler that changes scenes, it doesn't throw a
+                // modified-during-enumeration exception.
+                foreach (var subscriber in subscribers[signal].ToArray())
                 {
                     subscriber.Invoke(data);
                 }

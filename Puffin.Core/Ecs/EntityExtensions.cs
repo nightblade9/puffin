@@ -30,18 +30,20 @@ namespace Puffin.Core.Ecs
         /// <summary>
         /// Adds a spritesheet/tilesheet to an entity.
         /// </summary>
-        public static Entity Spritesheet(this Entity entity, string imageFile, int frameWidth, int frameHeight)
+        public static Entity Spritesheet(this Entity entity, string imageFile, int frameWidth, int frameHeight, int frameIndex = 0)
         {
-            entity.Set(new SpriteComponent(entity, imageFile, frameWidth, frameHeight));
+            entity.Set(new SpriteComponent(entity, imageFile, frameWidth, frameHeight, frameIndex));            
             return entity;
         }
 
         /// <summary>
         /// Adds a text display to an entity.
         /// </summary>        
-        public static Entity Label(this Entity entity, string text)
+        /// <param name="offsetX">The X-offset of the label relative to the entity's origin</param>
+        /// <param name="offsetY">The Y-offset of the label relative to the entity's origin</param>
+        public static Entity Label(this Entity entity, string text, int offsetX = 0, int offsetY = 0)
         {
-            entity.Set(new TextLabelComponent(entity, text));
+            entity.Set(new TextLabelComponent(entity, text, offsetX, offsetY));
             return entity;
         }
 
@@ -58,9 +60,11 @@ namespace Puffin.Core.Ecs
         /// <summary>
         /// Exposes a method that allows an entity to check/respond to actions/keys.
         /// </summary>
-        public static Entity Keyboard(this Entity entity)
+        /// <param name="onActionPressed">The function to invoke when an action's key is just pressed; the action is passed in as a parameter.</param>
+        /// <param name="onActionReleased">The function to invoke when an action's key is just released; the action is passed in as a parameter.</param>
+        public static Entity Keyboard(this Entity entity, Action<Enum> onActionPressed = null, Action<Enum> onActionReleased = null)
         {
-            entity.Set(new KeyboardComponent(entity));
+            entity.Set(new KeyboardComponent(entity, onActionPressed, onActionReleased));
             return entity;
         }
         
@@ -126,6 +130,20 @@ namespace Puffin.Core.Ecs
         public static Entity Overlap(this Entity entity, int width, int height, int offsetX, int offsetY, Action<Entity> onStartOverlap, Action<Entity> onStopOverlap)
         {
             entity.Set(new OverlapComponent(entity, width, height, offsetX, offsetY, onStartOverlap, onStopOverlap));
+            return entity;
+        }
+
+        /// <summary>
+        /// Creates an overlap component, which checks for overlap against other entities with overlap components, and events for when
+        /// the mouse starts/stops overlapping this entity's overlap region.
+        /// </summary>
+        /// <param name="width">The width of the overlap area.</param>
+        /// <param name="height">The height of the overlap area.</param>
+        /// <param name="onMouseEnter">The callback to invoke when the mouse enters the region occupied by this component.</param>
+        /// <param name="onMouseExit">The callback to invoke when the mouse exits the region occupied by this component.</param>
+        public static Entity Overlap(this Entity entity, int width, int height, int offsetX, int offsetY, Action onMouseEnter, Action onMouseExit = null)
+        {
+            entity.Set(new OverlapComponent(entity, width, height, offsetX, offsetY, null, null, onMouseEnter, onMouseExit));
             return entity;
         }
 

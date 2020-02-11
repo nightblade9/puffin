@@ -33,7 +33,7 @@ namespace Puffin.Infrastructure.MonoGame
             { PuffinAction.Right, new List<Keys>() { Keys.D, Keys.Right } },
         };
 
-        internal static PuffinGame LatestInstance;
+        internal static PuffinGame LatestInstance { get; private set; }
 
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
@@ -76,6 +76,7 @@ namespace Puffin.Infrastructure.MonoGame
             {
                 new MovementSystem(),
                 new OverlapSystem(),
+                new MouseOverlapSystem(this.mouseProvider),
                 new MouseSystem(),
                 new AudioSystem(new MonoGameAudioPlayer()),
                 new DrawingSystem(drawingSurface),
@@ -115,7 +116,7 @@ namespace Puffin.Infrastructure.MonoGame
         {
             this.mouseProvider.Update();
             this.keyboardProvider.Update();
-            this.currentScene.OnUpdate(gameTime.ElapsedGameTime);
+            this.currentScene?.OnUpdate(gameTime.ElapsedGameTime);
             base.Update(gameTime);
         }
 

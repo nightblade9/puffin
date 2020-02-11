@@ -4,6 +4,9 @@ using Puffin.Core.Ecs.Components;
 
 namespace Puffin.Core.Ecs.Systems
 {
+    /// <summary>
+    /// Checks for entity/entity overlaps for entities with an overlap component.
+    /// </summary>
     class OverlapSystem : ISystem
     {
         private IList<Entity> entities = new List<Entity>();

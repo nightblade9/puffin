@@ -20,6 +20,11 @@ namespace Puffin.Core.Ecs.Components
         /// </summary>
         public readonly int FrameHeight;
 
+        /// <summary>
+        /// If false, doesn't display the sprite.
+        /// </summary>
+        public bool IsVisible = true;
+
         private int frameIndex = 0;
 
         /// <summary>
@@ -55,11 +60,12 @@ namespace Puffin.Core.Ecs.Components
         /// <summary>
         /// Used to construct a spritesheet, by passing in the frame width/height.
         /// </summary>
-        public SpriteComponent(Entity parent, string spritesheetFileName, int frameWidth, int frameHeight)
+        public SpriteComponent(Entity parent, string spritesheetFileName, int frameWidth, int frameHeight, int frameIndex = 0)
         : this(parent, spritesheetFileName)
         {
             this.FrameWidth = frameWidth;
             this.FrameHeight = frameHeight;
+            this.FrameIndex = frameIndex;
         }
     }
 }

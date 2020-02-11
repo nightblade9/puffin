@@ -136,7 +136,9 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
                         BgrToRgba(colour.Colour));
                 }
 
-                foreach (var monoGameSprite in entitySprites.Values)
+                MonoGameSprite monoGameSprite = null;
+                this.entitySprites.TryGetValue(entity, out monoGameSprite);
+                if (monoGameSprite != null && entity.Get<SpriteComponent>().IsVisible)
                 {
                     this.spriteBatch.Draw(monoGameSprite.Texture, new Vector2(entity.X, entity.Y), monoGameSprite.Region, Color.White);
                 }
@@ -150,7 +152,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
                     }
 
                     var font = this.entityFonts[entity];
-                    this.spriteBatch.DrawString(font, text.Text, new Vector2(entity.X, entity.Y), Color.White);
+                    this.spriteBatch.DrawString(font, text.Text, new Vector2(entity.X + text.OffsetX, entity.Y + text.OffsetY), Color.White);
                 }
             }
             

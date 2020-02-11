@@ -2,8 +2,8 @@
 
 Branch | Status
 ---|---
-`master` | [![Build Status](https://travis-ci.org/deengames-prototypes/puffin.svg?branch=master)](https://travis-ci.org/deengames-prototypes/puffin)
-`develop` | [![Build Status](https://travis-ci.org/deengames-prototypes/puffin.svg?branch=develop)](https://travis-ci.org/deengames-prototypes/puffin)
+`master` | [![Build Status](https://travis-ci.org/nightblade9/puffin.svg?branch=master)](https://travis-ci.org/nightblade9/puffin)
+`develop` | [![Build Status](https://travis-ci.org/nightblade9/puffin.svg?branch=develop)](https://travis-ci.org/nightblade9/puffin)
 
 Puffin is a cross-platform 2D C# game engine built on top of MonoGame. It ships with:
 
@@ -33,12 +33,25 @@ This project is currently under heavy development.
     - `dotnet add MyGame reference Puffin\Puffin.Infrastructure.MonoGame`
     - `dotnet add MyGame package MonoGame.Framework.DesktopGL.Core`
 - Download the `Open Sans` font from Google Fonts and add the `-Regular.ttf` to `MyGame/Content`
+- Create a new solution with `dotnet new sln --name <solution name>` and add `MyGame` and the `Puffin.Core` and `Puffin.Infrastructure.MonoGame` projects to it
 
 ## Creating Your First Screen
 
 Puffin uses an entity-component architecture where components represent functionality (like a sprite to draw or a text/label to display on-screen). Components live in "screens" which represent screens of your game (eg. main game screen, inventory screen).
 
-To add some functionality to the default screen:
+To get started, create a new game class that extends `PuffinGame` and sets the game window size:
+
+```csharp
+class MyGame : PuffinGame
+{
+    public MyGame() : base(960, 540)
+    {
+
+    }
+}
+```
+
+Next, create a new scene and add functionality to it:
 
 - Create a new `FirstScene` class that extends `Puffin.Core.Scene`
 - Add a constructor which calls `this.Add(new Entity().Label("Hello from Puffin!"));`

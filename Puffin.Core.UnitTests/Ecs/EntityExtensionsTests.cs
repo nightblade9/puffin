@@ -44,25 +44,28 @@ namespace Puffin.Core.UnitTests.Ecs
         }
 
         [Test]
-        public void SpritesheetSetsSpriteAndFrameSize()
+        public void SpritesheetSetsSpriteAndFrameSizeAndIndex()
         {
-            var e = new Entity().Spritesheet("player.png", 48, 32);
+            var e = new Entity().Spritesheet("player.png", 48, 32, 3);
             var sprite = e.Get<SpriteComponent>();
             Assert.That(sprite, Is.Not.Null);
             Assert.That(sprite.FileName, Is.EqualTo("player.png"));
             Assert.That(sprite.FrameWidth, Is.EqualTo(48));
             Assert.That(sprite.FrameHeight, Is.EqualTo(32));
+            Assert.That(sprite.FrameIndex, Is.EqualTo(3));
         }
 
         [Test]
-        public void LabelSetsTextLabelAndText()
+        public void LabelSetsTextLabelAndTextAndOffsets()
         {
             var e = new Entity();
-            e.Label("hi!");
+            e.Label("hi!", -1, 2);
             
             var label = e.Get<TextLabelComponent>();
             Assert.That(label, Is.Not.Null);
             Assert.That(label.Text, Is.EqualTo("hi!"));
+            Assert.That(label.OffsetX, Is.EqualTo(-1));
+            Assert.That(label.OffsetY, Is.EqualTo(2));
         }
 
         public void MouseSetsMouseComponent()
@@ -78,17 +81,19 @@ namespace Puffin.Core.UnitTests.Ecs
         }
 
         [Test]
-        public void KeyboardSetsKeyboardComponent()
+        public void KeyboardSetsKeyboardComponentAndEventHandlers()
         {
             // Depends on default mapping for PuffinGame.
-            var provider = new Mock<IKeyboardProvider>();
-            DependencyInjection.Kernel.Bind<IKeyboardProvider>().ToConstant(provider.Object);
+            Action<Enum> onPress = (e) => {};
+            Action<Enum> onRelease = (f) => {};
 
-            var e = new Entity();
-            Assert.That(e.Get<KeyboardComponent>(), Is.Null);
+            // Act
+            var e = new Entity().Keyboard(onPress, onRelease);
 
-            e.Keyboard();
+            // Assert
             Assert.That(e.Get<KeyboardComponent>(), Is.Not.Null);
+            Assert.That(e.Get<KeyboardComponent>().OnActionPressed, Is.EqualTo(onPress));
+            Assert.That(e.Get<KeyboardComponent>().OnActionReleased, Is.EqualTo(onRelease));
         }
 
         [Test]
@@ -148,6 +153,17 @@ namespace Puffin.Core.UnitTests.Ecs
             Assert.That(o4.Offset.Item2, Is.EqualTo(9));
             Assert.That(numStarts, Is.EqualTo(2));
             Assert.That(stopped, Is.True);
+
+            Action mouseOverlap = () => stopped = false;
+            Action mouseStopOverlap = () => stopped = true;
+            var o5 = new Entity().Overlap(32, 32, -1, -1, mouseOverlap, mouseStopOverlap).Get<OverlapComponent>();
+            Assert.That(o5, Is.Not.Null);
+            Assert.That(o5.Size.Item1, Is.EqualTo(32));
+            Assert.That(o5.Size.Item2, Is.EqualTo(32));
+            Assert.That(o5.Offset.Item1, Is.EqualTo(-1));
+            Assert.That(o5.Offset.Item2, Is.EqualTo(-1));
+            Assert.That(o5.OnMouseEnter, Is.EqualTo(mouseOverlap));
+            Assert.That(o5.OnMouseExit, Is.EqualTo(mouseStopOverlap));
         }
 
         [Test]
