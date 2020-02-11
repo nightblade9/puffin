@@ -10,7 +10,7 @@ namespace Puffin.Core
 {
     /// <summary>
     /// A scene or screen in your game. This is where you add entities with functionality
-    /// to implement your game's logic.
+    /// to implement your game's logic. Also contains event for mouse-click and key-press detection.
     /// </summary>
     public class Scene : IDisposable
     {
@@ -27,9 +27,21 @@ namespace Puffin.Core
         /// </summary>
         public int BackgroundColour = 0x000000; // black
 
-        // Used for a scene-only mouse click event
-        internal Action OnMouseClick;
+        /// <summary>
+        /// A scene-wide mouse-click handler that fires whever a mouse click event triggers (even if entities handle it).
+        /// </summary>
+        public Action OnMouseClick;
 
+        /// <summary>
+        /// A scene-wide on-action-key-pressed handler that fires whenever a key that maps to an action is just pressed.
+        /// </summary>
+        public Action<Enum> OnActionPressed;
+
+        /// <summary>
+        /// A scene-wide on-action-key-released handler that fires whenever a key that maps to an action is just released.
+        /// </summary>
+        public Action<Enum> OnActionReleased;
+        
         // Drawn in the order added. Internal because needed for collision resolution.
         internal List<TileMap> TileMaps = new List<TileMap>();
 
@@ -57,7 +69,10 @@ namespace Puffin.Core
         public Scene()
         {
             Scene.LatestInstance = this;
-            EventBus.LatestInstance.Subscribe(EventBusSignal.MouseClicked, onMouseClick);
+            
+            EventBus.LatestInstance.Subscribe(EventBusSignal.MouseClicked, (o) => this.OnMouseClick?.Invoke());
+            EventBus.LatestInstance.Subscribe(EventBusSignal.ActionPressed, (o) => this.OnActionPressed?.Invoke(o as Enum));
+            EventBus.LatestInstance.Subscribe(EventBusSignal.ActionReleased, (o) => this.OnActionReleased?.Invoke(o as Enum));
         }
 
         /// <summary>
@@ -223,14 +238,6 @@ namespace Puffin.Core
             }
 
             this.Update(elapsedMilliseconds);
-        }
-
-        private void onMouseClick(object data)
-        {
-            if (this.OnMouseClick != null)
-            {
-                this.OnMouseClick.Invoke();
-            }
         }
     }
 }

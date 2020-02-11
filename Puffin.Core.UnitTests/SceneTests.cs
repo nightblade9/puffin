@@ -173,6 +173,52 @@ namespace Puffin.Core.UnitTests
             // Assert
             Assert.That(called, Is.True);
         }
+        
+        [Test]
+        public void OnActionPressedFiresOnActionPressedEvent()
+        {
+            // Arrange
+            var eventBus = new EventBus();
+            var called = false;
+            var actual = FakeAction.Reset;
+
+            var scene = new Scene();
+            scene.OnActionPressed = (e) =>
+            {
+                called = true;
+                actual = (FakeAction)e;
+            };
+
+            // Act
+            eventBus.Broadcast(EventBusSignal.ActionPressed, FakeAction.Clear);
+            
+            // Assert
+            Assert.That(called, Is.True);
+            Assert.That(actual, Is.EqualTo(FakeAction.Clear));
+        }
+
+        [Test]
+        public void OnActionReleasedFiresOnActionPressedEvent()
+        {
+            // Arrange
+            var eventBus = new EventBus();
+            var called = false;
+            var actual = FakeAction.Reset;
+
+            var scene = new Scene();
+            scene.OnActionReleased = (e) =>
+            {
+                called = true;
+                actual = (FakeAction)e;
+            };
+
+            // Act
+            eventBus.Broadcast(EventBusSignal.ActionReleased, FakeAction.Clear);
+            
+            // Assert
+            Assert.That(called, Is.True);
+            Assert.That(actual, Is.EqualTo(FakeAction.Clear));
+        }
 
         [Test]
         public void IsActionDownReturnsValueFromKeyboardProvider()
@@ -285,6 +331,12 @@ namespace Puffin.Core.UnitTests
             
             // Assert
             Assert.That(totalUpdatesSeconds, Is.EqualTo(1000));
+        }
+
+        enum FakeAction
+        {
+            Reset,
+            Clear,
         }
     }
 }
