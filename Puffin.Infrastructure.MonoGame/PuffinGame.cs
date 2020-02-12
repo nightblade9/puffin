@@ -85,6 +85,7 @@ namespace Puffin.Infrastructure.MonoGame
             s.Initialize(systems, this.mouseProvider, this.keyboardProvider);
 
             this.currentScene = s;
+            s.Ready();
         }
 
         /// <summary>
@@ -94,7 +95,7 @@ namespace Puffin.Infrastructure.MonoGame
         /// </summary>
         virtual protected void Ready()
         {
-            this.currentScene.Ready();
+            this.currentScene?.Ready();
         }
 
         /// <summary>Overridden from MonoGame, please ignore.</summary>
