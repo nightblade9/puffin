@@ -30,6 +30,22 @@ namespace Puffin.Core.UnitTests
         }
 
         [Test]
+        public void InitializeCallsReady()
+        {
+            // Arrange
+            var scene = new Mock<Scene>() { CallBase = true };
+            var onReadyCalled = false;
+            scene.Setup(s => s.OnReady()).Callback(() => onReadyCalled = true);
+            var displaySystem = new Mock<DrawingSystem>();
+            
+            // Act
+            scene.Object.Initialize(new ISystem[] { displaySystem.Object }, null, null);
+
+            // Assert
+            Assert.That(onReadyCalled, Is.True);
+        }
+
+        [Test]
         public void AddCallsOnAddEntityOnSystems()
         {
             // Arrange

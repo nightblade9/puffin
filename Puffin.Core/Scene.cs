@@ -140,12 +140,12 @@ namespace Puffin.Core
         }
 
         /// <summary>
-        /// A method that's called when the application is ready. (The console is
-        /// available and all content should be available to load.)
+        /// A method that's called when the game is ready to run and content can be loaded.
+        /// This includes being able to change label font sizes.
         /// </summary>
-        public virtual void Ready()
+        public virtual void OnReady()
         {
-
+            
         }
         
         /// <summary>
@@ -188,6 +188,7 @@ namespace Puffin.Core
                 this.Fps = (float)(drawsSinceLastFpsCount / timeDiff);
                 this.drawsSinceLastFpsCount = 0;
                 this.lastFpsUpdate = DateTime.Now;
+                Console.WriteLine($"{Fps} fps");
             }
         }
 
@@ -221,6 +222,8 @@ namespace Puffin.Core
             {
                 this.drawingSystem.OnAddTileMap(tileMap);
             }
+
+            this.OnReady();
         }
 
         // "Micro" method, called with chunks of time <= MAX_UPDATE_INTERVAL_MILLISECONDS
