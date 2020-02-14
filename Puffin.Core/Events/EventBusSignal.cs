@@ -1,4 +1,4 @@
-namespace Puffin.Core.Ecs
+namespace Puffin.Core.Events
 {
     enum EventBusSignal
     {

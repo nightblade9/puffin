@@ -1,4 +1,5 @@
 using Puffin.Core.Ecs.Components;
+using Puffin.Core.Events;
 using System;
 using System.Collections.Generic;
 

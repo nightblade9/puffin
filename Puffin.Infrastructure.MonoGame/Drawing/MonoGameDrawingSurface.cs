@@ -8,6 +8,7 @@ using System.IO;
 using SpriteFontPlus;
 using System;
 using Puffin.Core.Tiles;
+using Puffin.Core.Events;
 
 namespace Puffin.Infrastructure.MonoGame.Drawing
 {

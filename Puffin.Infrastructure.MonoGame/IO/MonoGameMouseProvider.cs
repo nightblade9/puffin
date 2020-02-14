@@ -1,6 +1,7 @@
 using System;
 using Microsoft.Xna.Framework.Input;
 using Puffin.Core.Ecs;
+using Puffin.Core.Events;
 using Puffin.Core.IO;
 
 namespace Puffin.Infrastructure.MonoGame.IO

@@ -2,6 +2,7 @@ using System;
 using NUnit.Framework;
 using Puffin.Core.Ecs;
 using Puffin.Core.Ecs.Components;
+using Puffin.Core.Events;
 
 namespace Puffin.Core.UnitTests.Ecs.Components
 {

@@ -4,6 +4,7 @@ using Ninject;
 using NUnit.Framework;
 using Puffin.Core.Ecs;
 using Puffin.Core.Ecs.Systems;
+using Puffin.Core.Events;
 using Puffin.Core.IO;
 
 namespace Puffin.Core.UnitTests.Ecs

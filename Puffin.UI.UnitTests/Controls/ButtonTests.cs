@@ -4,6 +4,7 @@ using Puffin.Core;
 using Puffin.Core.Ecs;
 using Puffin.Core.Ecs.Components;
 using Puffin.Core.Ecs.Systems;
+using Puffin.Core.Events;
 using Puffin.Core.IO;
 using Puffin.UI.Controls;
 
