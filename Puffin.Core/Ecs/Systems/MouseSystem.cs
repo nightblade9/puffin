@@ -1,5 +1,6 @@
 using Ninject;
 using Puffin.Core.Ecs.Components;
+using Puffin.Core.Events;
 using Puffin.Core.IO;
 using System;
 using System.Collections.Generic;

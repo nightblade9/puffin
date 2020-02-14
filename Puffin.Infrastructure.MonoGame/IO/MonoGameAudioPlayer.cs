@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework.Audio;
 using Puffin.Core.Ecs;
 using Puffin.Core.Ecs.Components;
+using Puffin.Core.Events;
 using Puffin.Core.IO;
 using System.Collections.Generic;
 using System.IO;

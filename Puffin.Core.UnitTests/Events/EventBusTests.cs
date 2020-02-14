@@ -1,8 +1,9 @@
 using System;
 using NUnit.Framework;
 using Puffin.Core.Ecs;
+using Puffin.Core.Events;
 
-namespace Puffin.Core.UnitTests.Ecs
+namespace Puffin.Core.UnitTests.Events
 {
     [TestFixture]
     public class EventBusTests

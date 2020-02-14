@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Puffin.Core.Ecs;
 using Puffin.Core.Ecs.Systems;
+using Puffin.Core.Events;
 using Puffin.Core.IO;
 using Puffin.Core.Tiles;
 
