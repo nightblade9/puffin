@@ -144,7 +144,7 @@ namespace Puffin.Core
         /// A method that's called when the game is ready to run and content can be loaded.
         /// This includes being able to change label font sizes.
         /// </summary>
-        public virtual void OnReady()
+        public virtual void Ready()
         {
             
         }
@@ -224,7 +224,7 @@ namespace Puffin.Core
                 this.drawingSystem.OnAddTileMap(tileMap);
             }
 
-            this.OnReady();
+            this.Ready();
         }
 
         // "Micro" method, called with chunks of time <= MAX_UPDATE_INTERVAL_MILLISECONDS

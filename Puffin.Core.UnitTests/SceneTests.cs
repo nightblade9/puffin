@@ -36,7 +36,7 @@ namespace Puffin.Core.UnitTests
             // Arrange
             var scene = new Mock<Scene>() { CallBase = true };
             var onReadyCalled = false;
-            scene.Setup(s => s.OnReady()).Callback(() => onReadyCalled = true);
+            scene.Setup(s => s.Ready()).Callback(() => onReadyCalled = true);
             var displaySystem = new Mock<DrawingSystem>();
             
             // Act
