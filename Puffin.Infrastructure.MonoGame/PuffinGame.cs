@@ -89,6 +89,16 @@ namespace Puffin.Infrastructure.MonoGame
         }
 
         /// <summary>
+        /// The display width of the main game window.
+        /// </summary>
+        public int Width { get { return this.graphics.PreferredBackBufferWidth; } }
+
+        /// <summary>
+        /// The display height of the main game window.
+        /// </summary>
+        public int Height { get { return this.graphics.PreferredBackBufferHeight; } }
+
+        /// <summary>
         /// Called when your game is ready to run (graphics initialized, etc.)
         /// Implement this to add entities that load sprites, etc. for your game.
         /// Make sure you call <c>base.Ready</c> if you override it.
