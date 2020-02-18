@@ -29,6 +29,15 @@ namespace Puffin.Core.Ecs
         }
 
         /// <summary>
+        /// Adds a camera component to this entity, with the specified zoom.
+        /// </summary>
+        public static Entity Camera(this Entity entity, float zoom)
+        {
+            entity.Set(new CameraComponent(entity, zoom));
+            return entity;
+        }
+
+        /// <summary>
         /// Causes an entity to collide with other collidable entities and solid tiles.
         /// </summary>
         /// <param name="width">The width of the collidable area, in pixels</param>

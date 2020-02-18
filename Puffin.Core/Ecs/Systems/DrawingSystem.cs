@@ -9,7 +9,6 @@ namespace Puffin.Core.Ecs.Systems
     class DrawingSystem : ISystem
     {
         private IDrawingSurface drawingSurface;
-        private IList<Entity> entities = new List<Entity>();
         
         public DrawingSystem(IDrawingSurface drawingSurface)
         {
@@ -24,16 +23,15 @@ namespace Puffin.Core.Ecs.Systems
             if (
                 entity.Get<SpriteComponent>() != null ||
                 entity.Get<TextLabelComponent>() != null ||
-                entity.Get<ColourComponent>() != null)
+                entity.Get<ColourComponent>() != null ||
+                entity.Get<CameraComponent>() != null)
             {
-                this.entities.Add(entity);
                 this.drawingSurface.AddEntity(entity);
             }
         }
 
         public void OnRemoveEntity(Entity entity)
         {
-            this.entities.Remove(entity);
             this.drawingSurface.RemoveEntity(entity);
         }
 

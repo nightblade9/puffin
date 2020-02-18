@@ -1,14 +1,15 @@
-using Puffin.Core.Ecs;
-using Puffin.Core.Ecs.Components;
-using Puffin.Core.Drawing;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Puffin.Core.Ecs;
+using Puffin.Core.Ecs.Components;
+using Puffin.Core.Events;
+using Puffin.Core.Drawing;
+using Puffin.Core.Tiles;
+using SpriteFontPlus;
 using System.Collections.Generic;
 using System.IO;
-using SpriteFontPlus;
 using System;
-using Puffin.Core.Tiles;
-using Puffin.Core.Events;
+using System.Linq;
 
 namespace Puffin.Infrastructure.MonoGame.Drawing
 {
@@ -20,9 +21,13 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
         private readonly SpriteFont defaultFont;
 
         private IList<Entity> entities = new List<Entity>();
+        // Redundant but allows us to select the last-added (active) camera.
+        private IList<Entity> cameras = new List<Entity>();
 
+        // TODO: This collection smells. Should we just add these things as components? But that breaks user expectations and serialization.
         private IDictionary<Entity, MonoGameSprite> entitySprites = new Dictionary<Entity, MonoGameSprite>();
         private IDictionary<TileMap, Texture2D> tileMapSprites = new Dictionary<TileMap, Texture2D>();
+        private IDictionary<Entity, MonoGameCamera> entityCameras = new Dictionary<Entity, MonoGameCamera>();
 
         private IDictionary<Entity, SpriteFont> entityFonts = new Dictionary<Entity, SpriteFont>();        
         // "name, size" => font. Cache of all fonts ever seen so far.
@@ -58,33 +63,47 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
         }
 
         public void AddEntity(Entity entity)
-        {
-            var sprite = entity.Get<SpriteComponent>();
-            
-            if (sprite != null)
+        {            
+            if (entity.Get<SpriteComponent>() != null)
             {
-                var texture = this.LoadImage(sprite.FileName);
-                var monoGameSprite = new MonoGameSprite(entity, texture);
+                var spriteComponent = entity.Get<SpriteComponent>();
+                var texture = this.LoadImage(spriteComponent.FileName);
+                var monoGameSprite = new MonoGameSprite(spriteComponent, texture);
                 entitySprites[entity] = monoGameSprite;
                 this.entities.Add(entity);
             }
-            else if (entity.Get<TextLabelComponent>() != null)
+            if (entity.Get<TextLabelComponent>() != null && !this.entities.Contains(entity))
             {
                 this.entities.Add(entity);
                 // TODO: load the appropriate font or specify the default font
             }
-            else if (entity.Get<ColourComponent>() != null)
+            if (entity.Get<ColourComponent>() != null && !this.entities.Contains(entity))
             {
                 this.entities.Add(entity);
+            }
+            if (entity.Get<CameraComponent>() != null)
+            {
+                this.cameras.Add(entity);
+                var monoGamecamera = new MonoGameCamera(this.graphics.Viewport);
+                this.entityCameras[entity] = monoGamecamera;
+
+                if (!this.entities.Contains(entity))
+                {
+                    this.entities.Add(entity);
+                }
             }
         }
 
         public void RemoveEntity(Entity entity)
         {
             this.entities.Remove(entity);
+            
             var monoGameSprite = this.entitySprites[entity];
             monoGameSprite.Dispose();
             this.entitySprites.Remove(entity);
+            
+            this.cameras.Remove(entity);
+            this.entityCameras.Remove(entity);
         }
 
         public void AddTileMap(TileMap tileMap)
@@ -101,7 +120,18 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
         public void DrawAll(int backgroundColour)
         {
             this.graphics.Clear(BgrToRgba(backgroundColour));
-            this.spriteBatch.Begin();
+
+            var lastActiveCamera = this.cameras.LastOrDefault();
+            MonoGameCamera camera = null;
+            if (lastActiveCamera != null)
+            {
+                camera = this.entityCameras[lastActiveCamera];
+                var cameraComponent = lastActiveCamera.Get<CameraComponent>();
+                // This smells. How do we synch properties?
+                camera.Zoom = new Vector2(cameraComponent.Zoom, cameraComponent.Zoom);
+            }
+
+            this.spriteBatch.Begin(transformMatrix: camera?.TransformationMatrix);
 
             // TODO: render in order of Z from lowest to highest
             // Tilemaps first, I suppose
@@ -158,6 +188,8 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             }
             
             this.spriteBatch.End();
+
+            // TODO: draw things that are UI flag/layer/etc.
         }
 
         public void Dispose()

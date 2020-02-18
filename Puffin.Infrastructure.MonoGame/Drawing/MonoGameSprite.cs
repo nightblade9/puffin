@@ -7,18 +7,16 @@ using Puffin.Core.Events;
 
 namespace Puffin.Infrastructure.MonoGame.Drawing
 {
-    internal class MonoGameSprite : Component, IDisposable
+    internal class MonoGameSprite : IDisposable
     {
         public Texture2D Texture { get; private set; }
         public Rectangle Region { get; private set; }
 
-        public MonoGameSprite(Entity parent, Texture2D texture)
-        : base(parent)
+        public MonoGameSprite(SpriteComponent sprite, Texture2D texture)
         {
             this.Texture = texture;
 
             // if it's a spritesheet, note the rectangle.
-            var sprite = parent.Get<SpriteComponent>();
             if (sprite.FrameWidth > 0 && sprite.FrameHeight > 0)
             {
                 // Spritesheet
