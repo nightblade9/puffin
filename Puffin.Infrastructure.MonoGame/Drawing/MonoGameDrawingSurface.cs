@@ -131,7 +131,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
                 camera.Zoom = new Vector2(cameraComponent.Zoom, cameraComponent.Zoom);
             }
 
-            this.spriteBatch.Begin(transformMatrix: camera?.TransformationMatrix);
+            this.spriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: camera?.TransformationMatrix);
 
             // TODO: render in order of Z from lowest to highest
             // Tilemaps first, I suppose
