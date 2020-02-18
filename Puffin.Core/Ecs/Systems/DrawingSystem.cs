@@ -20,7 +20,11 @@ namespace Puffin.Core.Ecs.Systems
 
         public virtual void OnAddEntity(Entity entity)
         {
-            if (
+            if (entity.IsUiElement)
+            {
+                this.drawingSurface.AddUiEntity(entity);
+            }
+            else if (
                 entity.Get<SpriteComponent>() != null ||
                 entity.Get<TextLabelComponent>() != null ||
                 entity.Get<ColourComponent>() != null ||

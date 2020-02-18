@@ -21,6 +21,8 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
         private readonly SpriteFont defaultFont;
 
         private IList<Entity> entities = new List<Entity>();
+        private IList<Entity> uiEntities = new List<Entity>();
+
         // Redundant but allows us to select the last-added (active) camera.
         private IList<Entity> cameras = new List<Entity>();
 
@@ -38,6 +40,16 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
 
         // 1x1 white rectangle, used to draw colour components
         private readonly Texture2D whiteRectangle;
+
+        private static Color BgrToRgba(int packed)
+        {
+            // Although we ask for 0xRRGGBB, the value we get, if we pass it directly to MonoGame,
+            // renders as 0xBBGGRR. So, convert.
+            int red = (packed >> 16) & 0xFF;
+            int green = (packed >> 8) & 0xFF;
+            int blue = (packed >> 0) & 0xFF;
+            return new Color(red, green, blue, 255);
+        }
 
         public MonoGameDrawingSurface(GraphicsDevice graphics, SpriteBatch spriteBatch)
         {
@@ -94,6 +106,11 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             }
         }
 
+        public void AddUiEntity(Entity entity)
+        {
+            this.uiEntities.Add(entity);
+        }
+
         public void RemoveEntity(Entity entity)
         {
             this.entities.Remove(entity);
@@ -104,6 +121,8 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             
             this.cameras.Remove(entity);
             this.entityCameras.Remove(entity);
+
+            this.uiEntities.Remove(entity);
         }
 
         public void AddTileMap(TileMap tileMap)
@@ -132,61 +151,12 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             }
 
             this.spriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: camera?.TransformationMatrix);
+            this.DrawTileMaps();
+            this.DrawEntities(this.entities);
+            this.spriteBatch.End();
 
-            // TODO: render in order of Z from lowest to highest
-            // Tilemaps first, I suppose
-            foreach (var tileMap in this.tileMapSprites.Keys)
-            {
-                var mapTexture = this.tileMapSprites[tileMap];
-                for (var y = 0; y < tileMap.MapHeight; y++)
-                {
-                    for (var x = 0; x < tileMap.MapWidth; x++)
-                    {
-                        var tile = tileMap[x, y];
-                        if (tile != null)
-                        {
-                            var definition = tileMap.GetDefinition(tile);
-                            spriteBatch.Draw(
-                                mapTexture,
-                                new Vector2(x * tileMap.TileWidth, y * tileMap.TileHeight),
-                                new Rectangle(definition.CellX * tileMap.TileWidth, definition.CellY * tileMap.TileHeight, tileMap.TileWidth, tileMap.TileHeight),
-                                Color.White
-                            );
-                        }
-                    }
-                }
-            }
-
-            foreach (var entity in this.entities)
-            {
-                var colour = entity.Get<ColourComponent>();
-                if (colour != null)
-                {
-                    this.spriteBatch.Draw(whiteRectangle, 
-                        new Rectangle((int)entity.X, (int)entity.Y, colour.Width, colour.Height),
-                        BgrToRgba(colour.Colour));
-                }
-
-                MonoGameSprite monoGameSprite = null;
-                this.entitySprites.TryGetValue(entity, out monoGameSprite);
-                if (monoGameSprite != null && entity.Get<SpriteComponent>().IsVisible)
-                {
-                    this.spriteBatch.Draw(monoGameSprite.Texture, new Vector2(entity.X, entity.Y), monoGameSprite.Region, Color.White);
-                }
-
-                var text = entity.Get<TextLabelComponent>();
-                if (text != null)
-                {
-                    if (!this.entityFonts.ContainsKey(entity))
-                    {
-                        this.entityFonts[entity] = this.defaultFont;
-                    }
-
-                    var font = this.entityFonts[entity];
-                    this.spriteBatch.DrawString(font, text.Text, new Vector2(entity.X + text.OffsetX, entity.Y + text.OffsetY), Color.White);
-                }
-            }
-            
+            this.spriteBatch.Begin(samplerState: SamplerState.PointClamp);
+            this.DrawEntities(this.uiEntities);
             this.spriteBatch.End();
 
             // TODO: draw things that are UI flag/layer/etc.
@@ -230,14 +200,64 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             return font;
         }
 
-        private static Color BgrToRgba(int packed)
+        private void DrawEntities(IList<Entity> entities)
         {
-            // Although we ask for 0xRRGGBB, the value we get, if we pass it directly to MonoGame,
-            // renders as 0xBBGGRR. So, convert.
-            int red = (packed >> 16) & 0xFF;
-            int green = (packed >> 8) & 0xFF;
-            int blue = (packed >> 0) & 0xFF;
-            return new Color(red, green, blue, 255);
+            foreach (var entity in entities)
+            {
+                var colour = entity.Get<ColourComponent>();
+                if (colour != null)
+                {
+                    this.spriteBatch.Draw(whiteRectangle, 
+                        new Rectangle((int)entity.X, (int)entity.Y, colour.Width, colour.Height),
+                        BgrToRgba(colour.Colour));
+                }
+
+                MonoGameSprite monoGameSprite = null;
+                this.entitySprites.TryGetValue(entity, out monoGameSprite);
+                if (monoGameSprite != null && entity.Get<SpriteComponent>().IsVisible)
+                {
+                    this.spriteBatch.Draw(monoGameSprite.Texture, new Vector2(entity.X, entity.Y), monoGameSprite.Region, Color.White);
+                }
+
+                var text = entity.Get<TextLabelComponent>();
+                if (text != null)
+                {
+                    if (!this.entityFonts.ContainsKey(entity))
+                    {
+                        this.entityFonts[entity] = this.defaultFont;
+                    }
+
+                    var font = this.entityFonts[entity];
+                    this.spriteBatch.DrawString(font, text.Text, new Vector2(entity.X + text.OffsetX, entity.Y + text.OffsetY), Color.White);
+                }
+            }
+        }
+
+        private void DrawTileMaps()
+        {
+            // TODO: render in order of Z from lowest to highest
+            // Tilemaps first, I suppose
+            foreach (var tileMap in this.tileMapSprites.Keys)
+            {
+                var mapTexture = this.tileMapSprites[tileMap];
+                for (var y = 0; y < tileMap.MapHeight; y++)
+                {
+                    for (var x = 0; x < tileMap.MapWidth; x++)
+                    {
+                        var tile = tileMap[x, y];
+                        if (tile != null)
+                        {
+                            var definition = tileMap.GetDefinition(tile);
+                            spriteBatch.Draw(
+                                mapTexture,
+                                new Vector2(x * tileMap.TileWidth, y * tileMap.TileHeight),
+                                new Rectangle(definition.CellX * tileMap.TileWidth, definition.CellY * tileMap.TileHeight, tileMap.TileWidth, tileMap.TileHeight),
+                                Color.White
+                            );
+                        }
+                    }
+                }
+            }
         }
     }
 }

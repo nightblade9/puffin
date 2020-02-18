@@ -11,6 +11,7 @@ namespace Puffin.Core.Drawing
     {
         void DrawAll(int backgroundColour);
         void AddEntity(Entity entity);
+        void AddUiEntity(Entity entity);
         void RemoveEntity(Entity entity);
         void AddTileMap(TileMap tileMap);
         void RemoveTileMap(TileMap tileMap);
