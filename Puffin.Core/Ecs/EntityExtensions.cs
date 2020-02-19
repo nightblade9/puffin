@@ -42,11 +42,13 @@ namespace Puffin.Core.Ecs
         /// </summary>
         /// <param name="width">The width of the collidable area, in pixels</param>
         /// <param name="height">The height of the collidable area, in pixels</param>
-        /// <param name="slideOnCollide">If true, when colliding, slide in the direction of the non-colliding
+        /// <param name="slideOnCollide">If true, when colliding, slide in the direction of the non-colliding</param>
+        /// <param name="xOffset">The x-offset of the collidable area relative to the origin of this entity</param>
+        /// <param name="yOffset">The y-offset of the collidable area relative to the origin of this entity</param>
         /// axis instead of abruptly stopping.</param>
-        public static Entity Collide(this Entity entity, int width, int height, bool slideOnCollide = false)
+        public static Entity Collide(this Entity entity, int width, int height, bool slideOnCollide = false, int xOffset = 0, int yOffset = 0)
         {
-            entity.Set(new CollisionComponent(entity, width, height, slideOnCollide));
+            entity.Set(new CollisionComponent(entity, width, height, slideOnCollide, xOffset, yOffset));
             return entity;
         }
 
