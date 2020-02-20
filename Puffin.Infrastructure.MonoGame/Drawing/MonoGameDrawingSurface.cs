@@ -18,13 +18,14 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
     /// </summary>
     internal class MonoGameDrawingSurface : IDrawingSurface, IDisposable
     {
+        public static MonoGameDrawingSurface LatestInstance { get; private set; }
+
         private readonly SpriteFont defaultFont;
 
         private IList<Entity> entities = new List<Entity>();
         private IList<Entity> uiEntities = new List<Entity>();
 
-        // Redundant but allows us to select the last-added (active) camera.
-        private IList<Entity> cameras = new List<Entity>();
+        internal IList<Entity> cameras = new List<Entity>();
 
         // TODO: This collection smells. Should we just add these things as components? But that breaks user expectations and serialization.
         private IDictionary<Entity, MonoGameSprite> entitySprites = new Dictionary<Entity, MonoGameSprite>();
@@ -53,6 +54,8 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
 
         public MonoGameDrawingSurface(GraphicsDevice graphics, SpriteBatch spriteBatch)
         {
+            MonoGameDrawingSurface.LatestInstance = this;
+
             whiteRectangle = new Texture2D(graphics, 1, 1);
             whiteRectangle.SetData(new[] { Color.White });
 
@@ -178,6 +181,16 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
                 }
                 this.spriteBatch.End();
             }
+        }
+
+        public MonoGameCamera GetActiveCamera()
+        {
+            var lastActiveCamera = this.cameras.LastOrDefault();
+            if (lastActiveCamera != null)
+            {
+                return this.entityCameras[lastActiveCamera];
+            }
+            return null;
         }
 
         public void Dispose()

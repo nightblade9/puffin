@@ -1,8 +1,10 @@
-using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using Puffin.Core.Ecs;
 using Puffin.Core.Events;
 using Puffin.Core.IO;
+using Puffin.Infrastructure.MonoGame.Drawing;
+using System;
+using System.Linq;
 
 namespace Puffin.Infrastructure.MonoGame.IO
 {
@@ -18,7 +20,16 @@ namespace Puffin.Infrastructure.MonoGame.IO
             get
             {
                 var state = Mouse.GetState();
-                return new Tuple<int, int>(state.X, state.Y);
+                var camera = MonoGameDrawingSurface.LatestInstance.GetActiveCamera();
+                if (camera != null)
+                {
+                    var coordinates = CoordinateSpaces.ScreenToWorld(new Vector2(state.X, state.Y), camera.InverseMatrix);
+                    return new Tuple<int, int>((int)coordinates.X, (int)coordinates.Y);
+                }
+                else
+                {
+                    return new Tuple<int, int>(state.X, state.Y);
+                }
             }
         }
 

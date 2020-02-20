@@ -2,11 +2,14 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-// Source: https://github.com/manbeardgames/manbeardgames-site-tutorials/blob/master/tutorials/2d-camera/completed-tutorial/Camera2D.cs
+// Originally copied from ManBeardGames (but later modified).
+// https://github.com/manbeardgames/manbeardgames-site-tutorials/blob/master/tutorials/2d-camera/completed-tutorial/Camera2D.cs
 namespace Puffin.Infrastructure.MonoGame.Drawing
 {
     internal class MonoGameCamera
     {
+        public static MonoGameCamera LatestInstance { get; private set; }
+
         //  The tranformation matrix of the camera
         private Matrix transformationMatrix = Matrix.Identity;
 
@@ -37,6 +40,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
         /// <param name="viewPort">The Viewport refernece for the camera</param>
         public MonoGameCamera(Viewport viewPort)
         {
+            MonoGameCamera.LatestInstance = this;
             Viewport = viewPort;
         }
 
@@ -47,6 +51,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
         /// <param name="height">The height of the viewport</param>
         public MonoGameCamera(int width, int height)
         {
+            MonoGameCamera.LatestInstance = this;
             Viewport = new Viewport();
             Viewport.Width = width;
             Viewport.Height = height;
@@ -58,7 +63,6 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
         /// </summary>
         private void UpdateMatrices()
         {
-
             //  Create a translation matrix based on the position of the camera
             var positionTranslationMatrix = Matrix.CreateTranslation(new Vector3()
             {
@@ -248,33 +252,6 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
                 //  Flag that a change has been made
                 hasChanged = true;
             }
-        }
-
-
-        /// <summary>
-        ///     Translate the given screen space xy-coordinate position
-        ///     to the equivilant world space xy-coordinate position
-        /// </summary>
-        /// <param name="position">The xy-coordinate position in screen space to translate</param>
-        /// <returns>
-        ///     The xy-coodinate position in world space
-        /// </returns>
-        public Vector2 ScreenToWorld(Vector2 position)
-        {
-            return Vector2.Transform(position, InverseMatrix);
-        }
-
-        /// <summary>
-        ///     Translates the given world space xy-coordinate position
-        ///     to the equivilant screen space xy-coordinate position
-        /// </summary>
-        /// <param name="position">The xy-coordinate position in world space to translate</param>
-        /// <returns>
-        ///     The xy-coordinate position in screen space
-        /// </returns>
-        public Vector2 WorldToScreen(Vector2 position)
-        {
-            return Vector2.Transform(position, TransformationMatrix);
         }
     }
 }
