@@ -167,6 +167,42 @@ namespace Puffin.Core.UnitTests
             }
         }
 
+        public void ProcessMovementCollidesAndTakesIntoAccountCollisionOffsets(bool slideOnCollide)
+        {
+            var scene = new Scene();
+
+            var keyboardProvider = new Mock<IKeyboardProvider>();
+            DependencyInjection.Kernel.Bind<IKeyboardProvider>().ToConstant(keyboardProvider.Object);
+            keyboardProvider.Setup(p => p.IsActionDown(PuffinAction.Down)).Returns(true);
+            keyboardProvider.Setup(p => p.IsActionDown(PuffinAction.Right)).Returns(true);
+            
+            var system = new MovementSystem();
+            scene.Initialize(new ISystem[] { new DrawingSystem(), system }, null, keyboardProvider.Object);
+
+            var player = new Entity().FourWayMovement(100).Collide(40, 40, slideOnCollide);
+
+            scene.Add(player);
+            scene.Add(new Entity().Collide(50, 50).Move(25, 50));
+
+            // Act
+            system.OnUpdate(TimeSpan.FromSeconds(0.2));
+
+            // Assert
+            // Unobstructed, should reach (100, 100).
+            if (slideOnCollide)
+            {
+                // Move more so it slides
+                Assert.That(player.X, Is.EqualTo(20));
+                Assert.That(player.Y, Is.EqualTo(0));
+            }
+            else
+            {
+                Assert.That(player.X, Is.EqualTo(10));
+                Assert.That(player.Y, Is.EqualTo(10));
+            }
+        }
+
+
         [Test]
         public void OnUpdateHandlesSlidingWithMultiCollisionResolutions()
         {
