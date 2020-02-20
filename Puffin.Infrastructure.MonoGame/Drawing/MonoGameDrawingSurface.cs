@@ -160,6 +160,24 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             this.spriteBatch.End();
 
             // TODO: draw things that are UI flag/layer/etc.
+
+            // Last: draw collision shapes
+            if (PuffinGame.LatestInstance.ShowCollisionAreas)
+            {
+                this.spriteBatch.Begin(transformMatrix: camera?.TransformationMatrix);
+                foreach (var entity in this.entities)
+                {
+                    var collider = entity.Get<CollisionComponent>();
+                    if (collider != null)
+                    {
+                        this.spriteBatch.Draw(whiteRectangle, new Rectangle(
+                            (int)entity.X + collider.XOffset, (int)entity.Y + collider.YOffset,
+                            collider.Width, collider.Height),
+                            Color.Red * 0.5f);
+                    }
+                }
+                this.spriteBatch.End();
+            }
         }
 
         public void Dispose()

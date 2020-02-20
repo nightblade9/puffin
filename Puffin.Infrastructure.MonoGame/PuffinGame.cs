@@ -35,6 +35,13 @@ namespace Puffin.Infrastructure.MonoGame
 
         internal static PuffinGame LatestInstance { get; private set; }
 
+        internal bool ShowCollisionAreas { get { return this.showCollisionAreas; } }
+
+        /// <summary>
+        /// Set this to true to render collision areas as red transparent rectangles.
+        /// </summary>
+        protected bool showCollisionAreas = false;
+
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private Scene currentScene;
