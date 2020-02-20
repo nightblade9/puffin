@@ -122,8 +122,8 @@ namespace Puffin.Core.Ecs.Systems
             var entityCollision = entity.Get<CollisionComponent>();
             var collideAgainstComponent = collideAgainst.Get<CollisionComponent>();
 
-            if (isAabbCollision(entity.X + entity.IntendedMoveDeltaX, entity.Y + entity.IntendedMoveDeltaY, entityCollision.Width, entityCollision.Height,
-                collideAgainst.X, collideAgainst.Y, collideAgainstComponent.Width, collideAgainstComponent.Height))
+            if (isAabbCollision(entity.X + entity.IntendedMoveDeltaX + entityCollision.XOffset, entity.Y + entityCollision.YOffset + entity.IntendedMoveDeltaY, entityCollision.Width, entityCollision.Height,
+                collideAgainst.X + collideAgainstComponent.XOffset, collideAgainst.Y + collideAgainstComponent.YOffset, collideAgainstComponent.Width, collideAgainstComponent.Height))
             {
                 // Another entity occupies that space. Use separating axis theorem (SAT)
                 // to see how much we can move, and then move accordingly, resolving at whichever
@@ -172,8 +172,8 @@ namespace Puffin.Core.Ecs.Systems
                             entity.IntendedMoveDeltaX = 0;
                             // If we're in a corner, don't resolve incorrectly; move only if we're clear on the Y-axis.
                             // Fixes a bug where you  move a lot in the corner (left/right/left/right) and suddenly go through the wall.                     
-                            if (!isAabbCollision(entity.X, entity.Y + oldIntendedY, entityCollision.Width, entityCollision.Height,
-                                collideAgainst.X, collideAgainst.Y, collideAgainstComponent.Width, collideAgainstComponent.Height))
+                            if (!isAabbCollision(entity.X + entityCollision.XOffset, entity.Y + entityCollision.YOffset + oldIntendedY, entityCollision.Width, entityCollision.Height,
+                                collideAgainst.X + collideAgainstComponent.XOffset, collideAgainst.Y + collideAgainstComponent.YOffset, collideAgainstComponent.Width, collideAgainstComponent.Height))
                                 {
                                     entity.IntendedMoveDeltaY = oldIntendedY;
                                 }
@@ -185,8 +185,8 @@ namespace Puffin.Core.Ecs.Systems
                             entity.IntendedMoveDeltaY = 0;
                             // If we're in a corner, don't resolve incorrectly; move only if we're clear on the X-axis.
                             // Fixes a bug where you  move a lot in the corner (left/right/left/right) and suddenly go through the wall.
-                            if (!isAabbCollision(entity.X + oldIntendedX, entity.Y, entityCollision.Width, entityCollision.Height,
-                                collideAgainst.X, collideAgainst.Y, collideAgainstComponent.Width, collideAgainstComponent.Height))
+                            if (!isAabbCollision(entity.X  + entityCollision.XOffset + oldIntendedX, entity.Y + entityCollision.YOffset, entityCollision.Width, entityCollision.Height,
+                                collideAgainst.X + collideAgainstComponent.XOffset, collideAgainst.Y + collideAgainstComponent.YOffset, collideAgainstComponent.Width, collideAgainstComponent.Height))
                                 {
                                     entity.IntendedMoveDeltaX = oldIntendedX;
                                 }
@@ -210,22 +210,22 @@ namespace Puffin.Core.Ecs.Systems
             float dx = 0;
             float dy = 0;
 
-            if (e1.X < e2.X)
+            if (e1.X + movingCollision.XOffset < e2.X  + targetCollision.XOffset)
             {
-                dx = e2.X - (e1.X + movingCollision.Width);
+                dx = e2.X + targetCollision.XOffset - (e1.X + movingCollision.XOffset + movingCollision.Width);
             }
-            else if (e1.X > e2.X)
+            else if (e1.X + movingCollision.XOffset > e2.X + targetCollision.XOffset)
             {
-                dx = e1.X - (e2.X + targetCollision.Width);
+                dx = e1.X + movingCollision.XOffset - (e2.X + targetCollision.XOffset + targetCollision.Width);
             }
             
-            if (e1.Y < e2.Y)
+            if (e1.Y + movingCollision.YOffset < e2.Y + targetCollision.YOffset)
             {
-                dy = e2.Y - (e1.Y + movingCollision.Height);
+                dy = e2.Y + targetCollision.YOffset - (e1.Y + movingCollision.YOffset + movingCollision.Height);
             }
-            else if (e1.Y > e2.Y)
+            else if (e1.Y + movingCollision.YOffset > e2.Y + targetCollision.YOffset)
             {
-                dy = e1.Y - (e2.Y + targetCollision.Height);
+                dy = e1.Y + movingCollision.YOffset - (e2.Y + targetCollision.YOffset + targetCollision.Height);
             }
             
             return (dx, dy);

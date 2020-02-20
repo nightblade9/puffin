@@ -219,5 +219,13 @@ namespace Puffin.Core.UnitTests.Ecs
             Assert.That(e.VelocityX, Is.EqualTo(100));
             Assert.That(e.VelocityY, Is.EqualTo(50));
         }
+
+        [Test]
+        public void CameraAddsCameraComponent()
+        {
+            var e = new Entity().Camera(2.5f);
+            Assert.That(e.Get<CameraComponent>(), Is.Not.Null);
+            Assert.That(e.Get<CameraComponent>().Zoom, Is.EqualTo(2.5f));
+        }
     }
 }

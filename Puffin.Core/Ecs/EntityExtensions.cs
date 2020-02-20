@@ -17,22 +17,87 @@ namespace Puffin.Core.Ecs
             entity.Y = y;
             return entity;
         }
-
+        
         /// <summary>
-        /// Adds a sprite/image to an entity.
+        /// Allows an entity to play an audio file (short or long), optionally at a modified pitch.
+        /// You should be able to play WAV files and OGG files.
         /// </summary>
-        public static Entity Sprite(this Entity entity, string imageFile)
+        public static Entity Audio(this Entity entity, string audioFileName)
         {
-            entity.Set(new SpriteComponent(entity, imageFile));
+            entity.Set(new AudioComponent(entity, audioFileName));
             return entity;
         }
 
         /// <summary>
-        /// Adds a spritesheet/tilesheet to an entity.
+        /// Adds a camera component to this entity, with the specified zoom.
         /// </summary>
-        public static Entity Spritesheet(this Entity entity, string imageFile, int frameWidth, int frameHeight, int frameIndex = 0)
+        public static Entity Camera(this Entity entity, float zoom)
         {
-            entity.Set(new SpriteComponent(entity, imageFile, frameWidth, frameHeight, frameIndex));            
+            entity.Set(new CameraComponent(entity, zoom));
+            return entity;
+        }
+
+        /// <summary>
+        /// Causes an entity to collide with other collidable entities and solid tiles.
+        /// </summary>
+        /// <param name="width">The width of the collidable area, in pixels</param>
+        /// <param name="height">The height of the collidable area, in pixels</param>
+        /// <param name="slideOnCollide">If true, when colliding, slide in the direction of the non-colliding</param>
+        /// <param name="xOffset">The x-offset of the collidable area relative to the origin of this entity</param>
+        /// <param name="yOffset">The y-offset of the collidable area relative to the origin of this entity</param>
+        /// axis instead of abruptly stopping.</param>
+        public static Entity Collide(this Entity entity, int width, int height, bool slideOnCollide = false, int xOffset = 0, int yOffset = 0)
+        {
+            entity.Set(new CollisionComponent(entity, width, height, slideOnCollide, xOffset, yOffset));
+            return entity;
+        }
+
+        /// <summary>
+        /// Causes an entity to collide with other collidable entities and solid tiles.
+        /// </summary>
+        /// <param name="width">The width of the collidable area, in pixels</param>
+        /// <param name="height">The height of the collidable area, in pixels</param>
+        /// <param name="onCollide">A callback to invoke when colliding against another entity. The callback
+        /// passes in the colliding entity and axis of collision ("X" or "Y") as parameters, and is invoked
+        /// after resolving the collision.</param>
+        public static Entity Collide(this Entity entity, int width, int height, Action<Entity, string> onCollide)
+        {
+            entity.Set(new CollisionComponent(entity, width, height, onCollide));
+            return entity;
+        }
+
+        
+
+        /// <summary>
+        /// Adds a coloured rectangle to an entity.
+        /// </summary>
+        /// <param name="rgb">The rectangle's colour, in the format 0xRRGGBB with hex values for each pair.</param>
+        public static Entity Colour(this Entity entity, int rgb, int width, int height)
+        {
+            entity.Set(new ColourComponent(entity, rgb, width, height));
+            return entity;
+        }
+
+        /// <summary>
+        /// Adds a component which makes the entity move in four directions in response to the keyboard.
+        /// By default, this responds to the WASD and arrow keys; you can change these bindings
+        /// by changing/adding more bindings in your PuffinGame instance.
+        /// Note that setting this overrides an entity's velocity.
+        /// </summary>
+        public static Entity FourWayMovement(this Entity entity, int speed)
+        {
+            entity.Set(new FourWayMovementComponent(entity, speed));
+            return entity;
+        }
+        
+        /// <summary>
+        /// Exposes a method that allows an entity to check/respond to actions/keys.
+        /// </summary>
+        /// <param name="onActionPressed">The function to invoke when an action's key is just pressed; the action is passed in as a parameter.</param>
+        /// <param name="onActionReleased">The function to invoke when an action's key is just released; the action is passed in as a parameter.</param>
+        public static Entity Keyboard(this Entity entity, Action<Enum> onActionPressed = null, Action<Enum> onActionReleased = null)
+        {
+            entity.Set(new KeyboardComponent(entity, onActionPressed, onActionReleased));
             return entity;
         }
 
@@ -54,29 +119,6 @@ namespace Puffin.Core.Ecs
         public static Entity Mouse(this Entity entity, Action onClick, int width, int height)
         {
             entity.Set(new MouseComponent(entity, onClick, width, height));
-            return entity;
-        }
-
-        /// <summary>
-        /// Exposes a method that allows an entity to check/respond to actions/keys.
-        /// </summary>
-        /// <param name="onActionPressed">The function to invoke when an action's key is just pressed; the action is passed in as a parameter.</param>
-        /// <param name="onActionReleased">The function to invoke when an action's key is just released; the action is passed in as a parameter.</param>
-        public static Entity Keyboard(this Entity entity, Action<Enum> onActionPressed = null, Action<Enum> onActionReleased = null)
-        {
-            entity.Set(new KeyboardComponent(entity, onActionPressed, onActionReleased));
-            return entity;
-        }
-        
-        /// <summary>
-        /// Adds a component which makes the entity move in four directions in response to the keyboard.
-        /// By default, this responds to the WASD and arrow keys; you can change these bindings
-        /// by changing/adding more bindings in your PuffinGame instance.
-        /// Note that setting this overrides an entity's velocity.
-        /// </summary>
-        public static Entity FourWayMovement(this Entity entity, int speed)
-        {
-            entity.Set(new FourWayMovementComponent(entity, speed));
             return entity;
         }
 
@@ -146,51 +188,22 @@ namespace Puffin.Core.Ecs
             entity.Set(new OverlapComponent(entity, width, height, offsetX, offsetY, null, null, onMouseEnter, onMouseExit));
             return entity;
         }
-
+        
         /// <summary>
-        /// Allows an entity to play an audio file (short or long), optionally at a modified pitch.
-        /// You should be able to play WAV files and OGG files.
+        /// Adds a sprite/image to an entity.
         /// </summary>
-        public static Entity Audio(this Entity entity, string audioFileName)
+        public static Entity Sprite(this Entity entity, string imageFile)
         {
-            entity.Set(new AudioComponent(entity, audioFileName));
+            entity.Set(new SpriteComponent(entity, imageFile));
             return entity;
         }
 
         /// <summary>
-        /// Adds a coloured rectangle to an entity.
+        /// Adds a spritesheet/tilesheet to an entity.
         /// </summary>
-        /// <param name="rgb">The rectangle's colour, in the format 0xRRGGBB with hex values for each pair.</param>
-        public static Entity Colour(this Entity entity, int rgb, int width, int height)
+        public static Entity Spritesheet(this Entity entity, string imageFile, int frameWidth, int frameHeight, int frameIndex = 0)
         {
-            entity.Set(new ColourComponent(entity, rgb, width, height));
-            return entity;
-        }
-
-        /// <summary>
-        /// Causes an entity to collide with other collidable entities and solid tiles.
-        /// </summary>
-        /// <param name="width">The width of the collidable area, in pixels</param>
-        /// <param name="height">The height of the collidable area, in pixels</param>
-        /// <param name="slideOnCollide">If true, when colliding, slide in the direction of the non-colliding
-        /// axis instead of abruptly stopping.</param>
-        public static Entity Collide(this Entity entity, int width, int height, bool slideOnCollide = false)
-        {
-            entity.Set(new CollisionComponent(entity, width, height, slideOnCollide));
-            return entity;
-        }
-
-        /// <summary>
-        /// Causes an entity to collide with other collidable entities and solid tiles.
-        /// </summary>
-        /// <param name="width">The width of the collidable area, in pixels</param>
-        /// <param name="height">The height of the collidable area, in pixels</param>
-        /// <param name="onCollide">A callback to invoke when colliding against another entity. The callback
-        /// passes in the colliding entity and axis of collision ("X" or "Y") as parameters, and is invoked
-        /// after resolving the collision.</param>
-        public static Entity Collide(this Entity entity, int width, int height, Action<Entity, string> onCollide)
-        {
-            entity.Set(new CollisionComponent(entity, width, height, onCollide));
+            entity.Set(new SpriteComponent(entity, imageFile, frameWidth, frameHeight, frameIndex));            
             return entity;
         }
 

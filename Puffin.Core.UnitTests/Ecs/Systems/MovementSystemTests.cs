@@ -130,8 +130,8 @@ namespace Puffin.Core.UnitTests
             Assert.That(actualEntity, Is.Not.EqualTo(drone)); // It's CACTUS!
         }
 
-        [TestCase(false)]
         [TestCase(true)]
+        [TestCase(false)]
         public void ProcessMovementCollidesAndStopsEntityWithEntity(bool slideOnCollide)
         {
             var scene = new Scene();
@@ -144,26 +144,29 @@ namespace Puffin.Core.UnitTests
             var system = new MovementSystem();
             scene.Initialize(new ISystem[] { new DrawingSystem(), system }, null, keyboardProvider.Object);
 
-            var player = new Entity().FourWayMovement(100).Collide(40, 40, slideOnCollide);
+            var player = new Entity().FourWayMovement(100).Collide(30, 30, slideOnCollide);
 
             scene.Add(player);
-            scene.Add(new Entity().Collide(50, 50).Move(25, 50));
+            scene.Add(new Entity().Collide(20, 20).Move(50, 40));
 
             // Act
-            system.OnUpdate(TimeSpan.FromSeconds(0.2));
+            system.OnUpdate(TimeSpan.FromSeconds(0.1));
+            system.OnUpdate(TimeSpan.FromSeconds(0.1));
+            system.OnUpdate(TimeSpan.FromSeconds(0.1));
+            system.OnUpdate(TimeSpan.FromSeconds(0.1));
+            system.OnUpdate(TimeSpan.FromSeconds(0.1));
 
             // Assert
-            // Unobstructed, should reach (100, 100).
             if (slideOnCollide)
             {
                 // Move more so it slides
                 Assert.That(player.X, Is.EqualTo(20));
-                Assert.That(player.Y, Is.EqualTo(0));
+                Assert.That(player.Y, Is.EqualTo(40));
             }
             else
             {
-                Assert.That(player.X, Is.EqualTo(10));
-                Assert.That(player.Y, Is.EqualTo(10));
+                Assert.That(player.X, Is.EqualTo(20));
+                Assert.That(player.Y, Is.EqualTo(20));
             }
         }
 
@@ -202,6 +205,36 @@ namespace Puffin.Core.UnitTests
             }
         }
 
+
+        [Test]
+        public void ProcessMovementCollidesAndResolvesWithCollisionOffsets()
+        {
+            var scene = new Scene();
+
+            var keyboardProvider = new Mock<IKeyboardProvider>();
+            DependencyInjection.Kernel.Bind<IKeyboardProvider>().ToConstant(keyboardProvider.Object);
+            keyboardProvider.Setup(p => p.IsActionDown(PuffinAction.Down)).Returns(true);
+            keyboardProvider.Setup(p => p.IsActionDown(PuffinAction.Right)).Returns(true);
+            
+            var system = new MovementSystem();
+            scene.Initialize(new ISystem[] { new DrawingSystem(), system }, null, keyboardProvider.Object);
+
+            var player = new Entity().FourWayMovement(100).Collide(30, 30, true, -10, -10);
+
+            scene.Add(player);
+            scene.Add(new Entity().Collide(20, 20, false, 15, 15).Move(50, 40));
+
+            // Act
+            system.OnUpdate(TimeSpan.FromSeconds(0.1));
+            system.OnUpdate(TimeSpan.FromSeconds(0.1));
+            system.OnUpdate(TimeSpan.FromSeconds(0.1));
+            system.OnUpdate(TimeSpan.FromSeconds(0.1));
+            system.OnUpdate(TimeSpan.FromSeconds(0.1));
+
+            // Assert
+            Assert.That(player.X, Is.EqualTo(40));
+            Assert.That(player.Y, Is.EqualTo(40));
+        }
 
         [Test]
         public void OnUpdateHandlesSlidingWithMultiCollisionResolutions()

@@ -36,9 +36,22 @@ namespace Puffin.Core.Ecs
         internal float IntendedMoveDeltaX = 0;
         internal float IntendedMoveDeltaY = 0;
 
+        // If true, this entity is drawn above/after everything else, and ignores the camera.
+        internal bool IsUiElement = false;
+
         private Dictionary<Type, Component> components = new Dictionary<Type, Component>();
 
         internal List<Action<float>> OnUpdateActions = new List<Action<float>>();
+
+        /// <summary>
+        /// Creates a new entity.
+        /// </summary>
+        /// <param name="isUiElement">True if we are using this entity to draw UI elements (above all other elements, and
+        /// ignoring the camera).</param>
+        public Entity(bool isUiElement = false)
+        {
+            this.IsUiElement = isUiElement;
+        }
 
         /// <summary>
         /// Set/add a component on this entity. If this entity already had a 
