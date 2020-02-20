@@ -21,7 +21,7 @@ namespace Puffin.UI.Controls
         {
             this.Sprite("Content/Puffin/UI/Button.png");
             this.Label(text);
-            this.Mouse(onClick, SPRITE_WIDTH, SPRITE_HEIGHT);
+            this.Mouse(SPRITE_WIDTH, SPRITE_HEIGHT, onClick);
         }
     }
 }
