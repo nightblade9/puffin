@@ -147,7 +147,9 @@ namespace Puffin.Core
         /// </summary>
         public virtual void Ready()
         {
-            
+            EventBus.LatestInstance.Subscribe(EventBusSignal.MouseClicked, (o) => this.OnMouseClick?.Invoke());
+            EventBus.LatestInstance.Subscribe(EventBusSignal.ActionPressed, (o) => this.OnActionPressed?.Invoke(o as Enum));
+            EventBus.LatestInstance.Subscribe(EventBusSignal.ActionReleased, (o) => this.OnActionReleased?.Invoke(o as Enum));
         }
         
         /// <summary>

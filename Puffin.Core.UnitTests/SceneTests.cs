@@ -350,6 +350,30 @@ namespace Puffin.Core.UnitTests
             Assert.That(totalUpdatesSeconds, Is.EqualTo(1000));
         }
 
+        [Test]
+        public void ReadySetsUpKeyboardEventHandlers()
+        {
+            // Arrange
+            var keyboardProvider = new Mock<IKeyboardProvider>();
+            var drawingSystem = new Mock<DrawingSystem>().Object;
+            var invoked = false;
+            var eventBus = new EventBus();
+
+            var scene = new Scene();
+            scene.OnActionPressed = (data) => invoked = true;
+            scene.Initialize(new ISystem[] { drawingSystem }, null, keyboardProvider.Object);
+            eventBus.Broadcast(PuffinAction.Down);
+
+            // Shouldn't be called yet
+            Assert.That(invoked, Is.False);
+            
+            // Call ready, which sets up event handlers
+            scene.Ready();
+            
+            eventBus.Broadcast(EventBusSignal.ActionPressed);
+            Assert.That(invoked, Is.True);
+        }
+
         enum FakeAction
         {
             Reset,
