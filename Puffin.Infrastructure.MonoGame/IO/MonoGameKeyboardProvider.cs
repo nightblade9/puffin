@@ -36,19 +36,19 @@ namespace Puffin.Infrastructure.MonoGame.IO
             // Poll for which keys are just pressed/released, and notify appropriatley
             var keyboard = Keyboard.GetState();
             
-            foreach (var puffinAction in PuffinGame.LatestInstance.ActionToKeys.Keys)
+            foreach (var gameAction in PuffinGame.LatestInstance.ActionToKeys.Keys)
             {
-                var keyList = PuffinGame.LatestInstance.ActionToKeys[puffinAction];
+                var keyList = PuffinGame.LatestInstance.ActionToKeys[gameAction];
                 foreach (var key in keyList)
                 {
                     if (keyboard.IsKeyDown(key) && !keysDown.Contains(key))
                     {
-                        EventBus.LatestInstance.Broadcast(EventBusSignal.ActionPressed, puffinAction);
+                        EventBus.LatestInstance.Broadcast(EventBusSignal.ActionPressed, gameAction);
                         keysDown.Add(key);
                     }
                     else if (!keyboard.IsKeyDown(key) && keysDown.Contains(key))
                     {
-                        EventBus.LatestInstance.Broadcast(EventBusSignal.ActionReleased, puffinAction);
+                        EventBus.LatestInstance.Broadcast(EventBusSignal.ActionReleased, gameAction);
                         keysDown.Remove(key);
                     }
                 }   
