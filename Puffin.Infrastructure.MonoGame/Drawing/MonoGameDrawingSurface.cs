@@ -118,9 +118,12 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
         {
             this.entities.Remove(entity);
             
-            var monoGameSprite = this.entitySprites[entity];
-            monoGameSprite.Dispose();
-            this.entitySprites.Remove(entity);
+            if (this.entitySprites.ContainsKey(entity))
+            {
+                var monoGameSprite = this.entitySprites[entity];
+                monoGameSprite.Dispose();
+                this.entitySprites.Remove(entity);
+            }
             
             this.cameras.Remove(entity);
             this.entityCameras.Remove(entity);
