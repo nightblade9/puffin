@@ -35,7 +35,7 @@ namespace Puffin.Core.UnitTests.Ecs
 
             var eventBus = new EventBus();
             var callbackFired = false;
-            var entity = new Entity().Move(20, 10).Mouse(32, 32, () => callbackFired = true);
+            var entity = new Entity().Move(20, 10).Mouse(() => callbackFired = true, 32, 32);
             var system = new MouseSystem();
             system.OnAddEntity(entity);
             mouseProvider.Setup(m => m.MouseCoordinates).Returns(new Tuple<int, int>(clickedX, clickedY));
@@ -56,7 +56,7 @@ namespace Puffin.Core.UnitTests.Ecs
 
             var eventBus = new EventBus();
             var callbackFired = false;
-            var entity = new Entity().Move(77, 88).Mouse(32, 32, () => callbackFired = true);
+            var entity = new Entity().Move(77, 88).Mouse(() => callbackFired = true, 32, 32);
             mouseProvider.Setup(m => m.MouseCoordinates).Returns(new Tuple<int, int>(90, 90));
             var system = new MouseSystem();
             system.OnAddEntity(entity);
@@ -77,7 +77,7 @@ namespace Puffin.Core.UnitTests.Ecs
 
             var eventBus = new EventBus();
             var callbackFired = false;
-            var entity = new Entity().Move(77, 88).Mouse(32, 32, () => callbackFired = true);
+            var entity = new Entity().Move(77, 88).Mouse(() => callbackFired = true, 32, 32);
             mouseProvider.Setup(m => m.MouseCoordinates).Returns(new Tuple<int, int>(90, 90));
             var system = new MouseSystem();
             system.OnAddEntity(entity);

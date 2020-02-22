@@ -77,7 +77,7 @@ namespace Puffin.Core.UnitTests.Ecs
             var e = new Entity();
             Assert.That(e.Get<MouseComponent>(), Is.Null);
 
-            e.Mouse(32, 32, null);
+            e.Mouse(null, 32, 32);
             Assert.That(e.Get<MouseComponent>(), Is.Not.Null);
         }
 
