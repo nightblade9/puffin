@@ -45,6 +45,7 @@ namespace Puffin.Core
         
         // Drawn in the order added. Internal because needed for collision resolution.
         internal List<TileMap> TileMaps = new List<TileMap>();
+        internal bool CalledReady = false;
 
         // Break update calls that have long elapsed times into chunks of this many milliseconds.
         private readonly int MAX_UPDATE_INERVAL_MILLISECONDS = 150;
@@ -224,7 +225,11 @@ namespace Puffin.Core
                 this.drawingSystem.OnAddTileMap(tileMap);
             }
 
-            this.Ready();
+            if (!this.CalledReady)
+            {
+                CalledReady = true;
+                this.Ready();
+            }
         }
 
         // "Micro" method, called with chunks of time <= MAX_UPDATE_INTERVAL_MILLISECONDS

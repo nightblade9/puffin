@@ -92,7 +92,11 @@ namespace Puffin.Infrastructure.MonoGame
             s.Initialize(systems, this.mouseProvider, this.keyboardProvider);
 
             this.currentScene = s;
-            s.Ready();
+            if (!s.CalledReady)
+            {
+                s.CalledReady = true;
+                s.Ready();
+            }
         }
 
         /// <summary>
