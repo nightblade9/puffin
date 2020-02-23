@@ -242,7 +242,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
                 if (colour != null)
                 {
                     this.spriteBatch.Draw(whiteRectangle, 
-                        new Rectangle((int)entity.X, (int)entity.Y, colour.Width, colour.Height),
+                        new Rectangle((int)entity.X + colour.OffsetX, (int)entity.Y + colour.OffsetY, colour.Width, colour.Height),
                         BgrToRgba(colour.Colour));
                 }
 

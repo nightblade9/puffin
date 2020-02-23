@@ -180,13 +180,15 @@ namespace Puffin.Core.UnitTests.Ecs
         [Test]
         public void ColourSetsColourComponent()
         {
-            var e = new Entity().Colour(0x88ff00, 64, 32);
+            var e = new Entity().Colour(0x88ff00, 64, 32, -17, 29);
             
             var actual = e.Get<ColourComponent>();
             Assert.That(actual, Is.Not.Null);
             Assert.That(actual.Colour, Is.EqualTo(0x88ff00));
             Assert.That(actual.Width, Is.EqualTo(64));
             Assert.That(actual.Height, Is.EqualTo(32));
+            Assert.That(actual.OffsetX, Is.EqualTo(-17));
+            Assert.That(actual.OffsetY, Is.EqualTo(29));
         }
         
         [Test]

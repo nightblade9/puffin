@@ -72,9 +72,9 @@ namespace Puffin.Core.Ecs
         /// Adds a coloured rectangle to an entity.
         /// </summary>
         /// <param name="rgb">The rectangle's colour, in the format 0xRRGGBB with hex values for each pair.</param>
-        public static Entity Colour(this Entity entity, int rgb, int width, int height)
+        public static Entity Colour(this Entity entity, int rgb, int width, int height, int offsetX = 0, int offsetY = 0)
         {
-            entity.Set(new ColourComponent(entity, rgb, width, height));
+            entity.Set(new ColourComponent(entity, rgb, width, height, offsetX, offsetY));
             return entity;
         }
 
