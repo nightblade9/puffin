@@ -6,6 +6,7 @@ using Puffin.Core.Ecs.Systems;
 using Puffin.Core.Events;
 using Puffin.Core.IO;
 using Puffin.Core.Tiles;
+using Puffin.Core.Tweens;
 
 namespace Puffin.Core
 {
@@ -55,6 +56,7 @@ namespace Puffin.Core
         private ISystem[] systems = new ISystem[0];
         private DrawingSystem drawingSystem;
         private List<Entity> entities = new List<Entity>();
+        private TweenManager tweenManager = new TweenManager();
 
         // A date and a number of draw calls to calculate FPS
         private DateTime lastFpsUpdate = DateTime.Now;
@@ -138,7 +140,7 @@ namespace Puffin.Core
         /// </summary>
         public virtual void Update(int elapsedMilliseconds)
         {
-            
+            this.tweenManager.Update(elapsedMilliseconds);
         }
 
         /// <summary>
@@ -150,6 +152,11 @@ namespace Puffin.Core
             EventBus.LatestInstance.Subscribe(EventBusSignal.MouseClicked, (o) => this.OnMouseClick?.Invoke());
             EventBus.LatestInstance.Subscribe(EventBusSignal.ActionPressed, (o) => this.OnActionPressed?.Invoke(o as Enum));
             EventBus.LatestInstance.Subscribe(EventBusSignal.ActionReleased, (o) => this.OnActionReleased?.Invoke(o as Enum));
+        }
+
+        public void TweenPosition(Entity entity, Tuple<float, float> startPosition, Tuple<float, float> endPosition, float durationSeconds)
+        {
+            this.tweenManager.TweenPosition(entity, startPosition, endPosition, durationSeconds);
         }
         
         /// <summary>
