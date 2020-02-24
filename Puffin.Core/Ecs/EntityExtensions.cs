@@ -95,9 +95,10 @@ namespace Puffin.Core.Ecs
         /// </summary>
         /// <param name="onActionPressed">The function to invoke when an action's key is just pressed; the action is passed in as a parameter.</param>
         /// <param name="onActionReleased">The function to invoke when an action's key is just released; the action is passed in as a parameter.</param>
-        public static Entity Keyboard(this Entity entity, Action<Enum> onActionPressed = null, Action<Enum> onActionReleased = null)
+        /// <param name="onActionDown">The function to invoke when an action's key is held down.</param>
+        public static Entity Keyboard(this Entity entity, Action<Enum> onActionPressed = null, Action<Enum> onActionReleased = null, Action<Enum> onActionDown = null)
         {
-            entity.Set(new KeyboardComponent(entity, onActionPressed, onActionReleased));
+            entity.Set(new KeyboardComponent(entity, onActionPressed, onActionReleased, onActionDown));
             return entity;
         }
 

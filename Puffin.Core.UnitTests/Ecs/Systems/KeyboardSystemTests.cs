@@ -28,7 +28,7 @@ namespace Puffin.Core.UnitTests.Ecs
             DependencyInjection.Kernel.Bind<IKeyboardProvider>().ToConstant(provider.Object);
 
             var eventBus = new EventBus();
-            var system = new KeyboardSystem();
+            var system = new KeyboardSystem(provider.Object);
 
             var isCalled = false;
             var entity = new Entity().Keyboard((e) => isCalled = true);
@@ -52,7 +52,7 @@ namespace Puffin.Core.UnitTests.Ecs
             DependencyInjection.Kernel.Bind<IKeyboardProvider>().ToConstant(provider.Object);
 
             var eventBus = new EventBus();
-            var system = new KeyboardSystem();
+            var system = new KeyboardSystem(provider.Object);
 
             var isCalled = false;
             var entity = new Entity().Keyboard(null, (e) => isCalled = true);
@@ -76,7 +76,7 @@ namespace Puffin.Core.UnitTests.Ecs
             DependencyInjection.Kernel.Bind<IKeyboardProvider>().ToConstant(provider.Object);
 
             var eventBus = new EventBus();
-            var system = new KeyboardSystem();
+            var system = new KeyboardSystem(provider.Object);
 
             var isCalled = false;
             var entity = new Entity().Keyboard((e) => isCalled = true);
@@ -88,6 +88,37 @@ namespace Puffin.Core.UnitTests.Ecs
 
             // Assert
             Assert.That(isCalled, Is.False);
+        }
+
+        [Test]
+        public void OnActionDownFiresWhileKeyIsPressed()
+        {
+            // Arrange
+            var eventBus = new EventBus();
+            var provider = new Mock<IKeyboardProvider>();
+            DependencyInjection.Kernel.Bind<IKeyboardProvider>().ToConstant(provider.Object);
+            var system = new KeyboardSystem(provider.Object);
+
+            var numCalls = 0;
+            var entity = new Entity().Keyboard(onActionDown: (e) => numCalls++);
+            system.OnAddEntity(entity);
+
+            // Act/Assert
+            // Initially false
+            Assert.That(numCalls, Is.EqualTo(0));
+
+            // When we call OnActionPressed, gets invoked
+            eventBus.Broadcast(EventBusSignal.ActionPressed, CustomActions.Next);
+            system.OnUpdate(TimeSpan.Zero);
+            Assert.That(numCalls, Is.EqualTo(1));
+            system.OnUpdate(TimeSpan.Zero);
+            Assert.That(numCalls, Is.EqualTo(2));
+
+            // When we call OnActionReleased, no longer invoked
+            eventBus.Broadcast(EventBusSignal.ActionReleased, CustomActions.Next);
+            system.OnUpdate(TimeSpan.Zero);
+
+            Assert.That(numCalls, Is.EqualTo(2));
         }
 
         enum CustomActions

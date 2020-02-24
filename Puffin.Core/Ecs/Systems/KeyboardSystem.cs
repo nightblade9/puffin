@@ -1,5 +1,6 @@
 using Puffin.Core.Ecs.Components;
 using Puffin.Core.Events;
+using Puffin.Core.IO;
 using System;
 using System.Collections.Generic;
 
@@ -8,9 +9,13 @@ namespace Puffin.Core.Ecs.Systems
     class KeyboardSystem : ISystem
     {
         private readonly List<Entity> entities = new List<Entity>();
+        private readonly IKeyboardProvider keyboardProvider;
+        // Keep a list of keys when they're pressed-down and remove when released
+        private readonly List<Enum> keysDown = new List<Enum>();
         
-        public KeyboardSystem()
+        public KeyboardSystem(IKeyboardProvider keyboardProvider)
         {
+            this.keyboardProvider = keyboardProvider;
             EventBus.LatestInstance.Subscribe(EventBusSignal.ActionPressed, this.OnActionPressed);
             EventBus.LatestInstance.Subscribe(EventBusSignal.ActionReleased, this.OnActionReleased);
         }
@@ -30,12 +35,23 @@ namespace Puffin.Core.Ecs.Systems
 
         public void OnUpdate(TimeSpan elapsed)
         {
-            // Not needed, we use the ActionPressed and ActionReleased events to trigger checks and delegate to components
+            foreach (var entity in this.entities)
+            {
+                var actionDownCallback = entity.Get<KeyboardComponent>()?.OnActionDown;
+                if (actionDownCallback != null)
+                {
+                    foreach (var key in this.keysDown)
+                    {
+                        actionDownCallback.Invoke(key);
+                    }
+                }
+            }
         }
 
         private void OnActionPressed(object data)
         {
             Enum action = data as Enum;
+            this.keysDown.Add(action);
             foreach (var entity in this.entities.ToArray())
             {
                 var keyComponent = entity.Get<KeyboardComponent>();
@@ -46,6 +62,7 @@ namespace Puffin.Core.Ecs.Systems
         private void OnActionReleased(object data)
         {
             Enum action = data as Enum;
+            this.keysDown.Remove(action);
             foreach (var entity in this.entities.ToArray())
             {
                 var keyComponent = entity.Get<KeyboardComponent>();

@@ -9,13 +9,16 @@ namespace Puffin.Core.Ecs.Components
     {
         internal Action<Enum> OnActionPressed;
         internal Action<Enum> OnActionReleased;
+        internal Action<Enum> OnActionDown;
 
         /// <param name="onActionPressed">The function to invoke when an action's key is just pressed; the action is passed in as a parameter.</param>
         /// <param name="onActionReleased">The function to invoke when an action's key is just released; the action is passed in as a parameter.</param>
-        public KeyboardComponent(Entity parent, Action<Enum> onActionPressed = null, Action<Enum> onActionReleased = null) : base(parent)
+        /// <param name="onActionDown">The function to invoke when an action's key is held down.</param>
+        public KeyboardComponent(Entity parent, Action<Enum> onActionPressed = null, Action<Enum> onActionReleased = null, Action<Enum> onActionDown = null) : base(parent)
         {
             this.OnActionPressed = onActionPressed;
             this.OnActionReleased = onActionReleased;
+            this.OnActionDown = onActionDown;
         }
     }
 }
