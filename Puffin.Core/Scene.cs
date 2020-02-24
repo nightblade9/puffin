@@ -138,9 +138,9 @@ namespace Puffin.Core
         /// A method that's called every time Update is called by the game engine.
         /// Override it to do things "every frame."
         /// </summary>
-        public virtual void Update(int elapsedMilliseconds)
+        public virtual void Update(float elapsedSeconds)
         {
-            this.tweenManager.Update(elapsedMilliseconds);
+            this.tweenManager.Update(elapsedSeconds);
         }
 
         /// <summary>
@@ -175,8 +175,7 @@ namespace Puffin.Core
         // detection with fast speeds and/or large velocities and/or intervals.
         internal void OnUpdate(TimeSpan elapsed)
         {
-            
-            var secondsLeft = elapsed.TotalMilliseconds;
+            var secondsLeft = (float)elapsed.TotalSeconds;
             while (secondsLeft > 0)
             {
                 if (secondsLeft >= MAX_UPDATE_INERVAL_MILLISECONDS)
@@ -187,8 +186,8 @@ namespace Puffin.Core
                 }
                 else
                 {
-                    this.OnUpdate((int)secondsLeft);
-                    this.Update((int)secondsLeft);
+                    this.OnUpdate(secondsLeft);
+                    this.Update(secondsLeft);
                     secondsLeft = 0;
                 }
             }
@@ -242,22 +241,22 @@ namespace Puffin.Core
         }
 
         // "Micro" method, called with chunks of time <= MAX_UPDATE_INTERVAL_MILLISECONDS
-        private void OnUpdate(int elapsedMilliseconds)
+        private void OnUpdate(float elapsedSeconds)
         {
             foreach (var system in this.systems)
             {
-                system.OnUpdate(TimeSpan.FromMilliseconds(elapsedMilliseconds));
+                system.OnUpdate(TimeSpan.FromSeconds(elapsedSeconds));
             }
 
             foreach (var entity in this.entities)
             {
                 foreach (var action in entity.OnUpdateActions)
                 {
-                    action.Invoke(elapsedMilliseconds);
+                    action.Invoke(elapsedSeconds);
                 }
             }
 
-            this.Update(elapsedMilliseconds);
+            this.Update(elapsedSeconds);
         }
     }
 }

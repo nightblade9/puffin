@@ -39,19 +39,19 @@ namespace Puffin.Core.Tweens
             this.IsRunning = false;
         }
 
-        public void Update(int elapsedMilliseconds)
+        public void Update(float elapsedSeconds)
         {
-            float elapsedSeconds = elapsedMilliseconds / 1000f;
+            var moveSeconds = elapsedSeconds;
             // Don't go over-time
             if (this.runningForSeconds + elapsedSeconds > this.DurationSeconds)
             {
-                elapsedSeconds = (int)(this.DurationSeconds - this.runningForSeconds);
+                moveSeconds = this.DurationSeconds - this.runningForSeconds;
             }
 
             this.Entity.X += this.Dx * elapsedSeconds;
             this.Entity.Y += this.Dy * elapsedSeconds;
             // Original value, not the nerfed value, which might be 0
-            this.runningForSeconds += (elapsedMilliseconds / 1000f);
+            this.runningForSeconds += elapsedSeconds;
 
             if (this.runningForSeconds >= this.DurationSeconds)
             {

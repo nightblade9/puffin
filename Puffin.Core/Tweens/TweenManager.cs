@@ -18,7 +18,7 @@ namespace Puffin.Core.Tweens
             this.tweens.Add(new Tween(entity, startPosition, endPosition, durationSeconds));
         }
 
-        public void Update(int elapsedMilliseconds)
+        public void Update(float elapsedSeconds)
         {
             var toRemove = new List<Tween>();
 
@@ -26,7 +26,7 @@ namespace Puffin.Core.Tweens
             {
                 if (tween.IsRunning)
                 {
-                    tween.Update(elapsedMilliseconds);
+                    tween.Update(elapsedSeconds);
                 }
                 else
                 {

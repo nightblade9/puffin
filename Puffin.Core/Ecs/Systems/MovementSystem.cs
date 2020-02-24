@@ -36,7 +36,7 @@ namespace Puffin.Core.Ecs.Systems
             //
             // We also want to just update the intention to move once, because the first round
             // of resolution modifies it to non-collide.
-            var halfElapsed = TimeSpan.FromMilliseconds(elapsed.TotalMilliseconds / 2);
+            var halfElapsed = TimeSpan.FromSeconds(elapsed.TotalSeconds / 2);
             foreach (var entity in this.entities)
             {
                 // Get keyboard/intended movement
