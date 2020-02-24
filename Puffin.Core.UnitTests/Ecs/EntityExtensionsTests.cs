@@ -88,14 +88,16 @@ namespace Puffin.Core.UnitTests.Ecs
             // Depends on default mapping for PuffinGame.
             Action<Enum> onPress = (e) => {};
             Action<Enum> onRelease = (f) => {};
+            Action<Enum> onActionDown = (g) => {};
 
             // Act
-            var e = new Entity().Keyboard(onPress, onRelease);
+            var e = new Entity().Keyboard(onPress, onRelease, onActionDown);
 
             // Assert
             Assert.That(e.Get<KeyboardComponent>(), Is.Not.Null);
             Assert.That(e.Get<KeyboardComponent>().OnActionPressed, Is.EqualTo(onPress));
             Assert.That(e.Get<KeyboardComponent>().OnActionReleased, Is.EqualTo(onRelease));
+            Assert.That(e.Get<KeyboardComponent>().OnActionDown, Is.EqualTo(onActionDown));
         }
 
         [Test]
