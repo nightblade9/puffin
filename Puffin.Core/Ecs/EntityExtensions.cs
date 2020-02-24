@@ -1,5 +1,6 @@
 using System;
 using Puffin.Core.Ecs.Components;
+using Puffin.Core.Tweening;
 
 namespace Puffin.Core.Ecs
 {
@@ -205,6 +206,15 @@ namespace Puffin.Core.Ecs
         public static Entity Spritesheet(this Entity entity, string imageFile, int frameWidth, int frameHeight, int frameIndex = 0)
         {
             entity.Set(new SpriteComponent(entity, imageFile, frameWidth, frameHeight, frameIndex));            
+            return entity;
+        }
+
+        /// <summary>
+        /// Adds a tween to an entity.
+        /// </summary>
+        public static Entity Tween(this Entity entity, Tuple<float, float> startPosition, Tuple<float, float> endPosition, float durationSeconds, Action onTweenComplete = null)
+        {
+            TweenManager.LatestInstance.TweenPosition(entity, startPosition, endPosition, durationSeconds, onTweenComplete);
             return entity;
         }
 

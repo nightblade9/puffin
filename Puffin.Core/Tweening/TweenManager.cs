@@ -2,14 +2,20 @@ using Puffin.Core.Ecs;
 using System;
 using System.Collections.Generic;
 
-namespace Puffin.Core.Tweens
+namespace Puffin.Core.Tweening
 {
     /// <summary>
     /// A class that manages tweens.
     /// </summary>
     public class TweenManager
     {
+        public static TweenManager LatestInstance { get; set; }
         private List<Tween> tweens = new List<Tween>();
+
+        public TweenManager()
+        {
+            TweenManager.LatestInstance = this;
+        }
 
         public void TweenPosition(Entity entity, Tuple<float, float> startPosition, Tuple<float, float> endPosition, float durationSeconds, Action onTweenComplete = null)
         {

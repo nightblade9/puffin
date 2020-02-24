@@ -6,7 +6,7 @@ using Puffin.Core.Ecs.Systems;
 using Puffin.Core.Events;
 using Puffin.Core.IO;
 using Puffin.Core.Tiles;
-using Puffin.Core.Tweens;
+using Puffin.Core.Tweening;
 
 namespace Puffin.Core
 {

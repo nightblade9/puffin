@@ -6,6 +6,7 @@ using Puffin.Core.Ecs.Components;
 using Puffin.Core.Ecs.Systems;
 using Puffin.Core.Events;
 using Puffin.Core.IO;
+using Puffin.Core.Tweening;
 
 namespace Puffin.Core.UnitTests.Ecs
 {
@@ -228,6 +229,21 @@ namespace Puffin.Core.UnitTests.Ecs
             var e = new Entity().Camera(2.5f);
             Assert.That(e.Get<CameraComponent>(), Is.Not.Null);
             Assert.That(e.Get<CameraComponent>().Zoom, Is.EqualTo(2.5f));
+        }
+
+        [Test]
+        public void TweenAddsInstanceToLatestTweenManager()
+        {
+            // Only way to test the tween is to see it in action
+            var manager = new TweenManager();
+            var isTweened = false;
+            var e = new Entity().Tween(new Tuple<float, float>(0, 0), new Tuple<float, float>(100, 100), 0.001f, () => isTweened = true);
+
+            manager.Update(1);
+
+            Assert.That(isTweened, Is.True);
+            Assert.That(e.X, Is.EqualTo(100));
+            Assert.That(e.Y, Is.EqualTo(100));
         }
     }
 }

@@ -1,7 +1,7 @@
 using System;
 using Puffin.Core.Ecs;
 
-namespace Puffin.Core.Tweens
+namespace Puffin.Core.Tweening
 {
     internal class Tween
     {
