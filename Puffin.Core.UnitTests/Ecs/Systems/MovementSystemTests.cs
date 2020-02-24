@@ -276,8 +276,7 @@ namespace Puffin.Core.UnitTests
             // Act
             scene.OnUpdate(TimeSpan.FromSeconds(1));
 
-            // Assert: player didn't move. Faulty collision sees him resolve from the top
-            // wall and move into the left wall.
+            // Assert: player didn't move except into the corner. Faulty collision sees him resolve from the top wall and move into the left wall.
             Assert.That(player.X, Is.EqualTo(40));
             Assert.That(player.Y, Is.EqualTo(32));
         }

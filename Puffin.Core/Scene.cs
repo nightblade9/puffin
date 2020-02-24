@@ -49,7 +49,7 @@ namespace Puffin.Core
         internal bool CalledReady = false;
 
         // Break update calls that have long elapsed times into chunks of this many milliseconds.
-        private readonly int MAX_UPDATE_INERVAL_MILLISECONDS = 150;
+        private readonly float MAX_UPDATE_INTERVAL_SECONDS = 0.150f;
 
         private IMouseProvider mouseProvider;
         private IKeyboardProvider keyboardProvider;
@@ -178,11 +178,11 @@ namespace Puffin.Core
             var secondsLeft = (float)elapsed.TotalSeconds;
             while (secondsLeft > 0)
             {
-                if (secondsLeft >= MAX_UPDATE_INERVAL_MILLISECONDS)
+                if (secondsLeft >= MAX_UPDATE_INTERVAL_SECONDS)
                 {
-                    this.OnUpdate(MAX_UPDATE_INERVAL_MILLISECONDS);
-                    this.Update(MAX_UPDATE_INERVAL_MILLISECONDS);
-                    secondsLeft -= MAX_UPDATE_INERVAL_MILLISECONDS;
+                    this.OnUpdate(MAX_UPDATE_INTERVAL_SECONDS);
+                    this.Update(MAX_UPDATE_INTERVAL_SECONDS);
+                    secondsLeft -= MAX_UPDATE_INTERVAL_SECONDS;
                 }
                 else
                 {

@@ -119,13 +119,13 @@ namespace Puffin.Core.UnitTests
             
             var scene = new Scene();
             scene.Initialize(new ISystem[] { drawingSystem.Object, audioSystem.Object }, null, null);
-            var elapsed = TimeSpan.FromMilliseconds(10);
+            var elapsed = TimeSpan.FromSeconds(10);
 
             // Act
             scene.OnUpdate(elapsed);
 
-            // Assert
-            drawingSystem.Verify(d => d.OnUpdate(elapsed), Times.Once());
+            // Assert. Called several times (in chunks/increments of 0.15s)
+            drawingSystem.Verify(d => d.OnUpdate(TimeSpan.FromMilliseconds(150)), Times.AtLeastOnce());
         }
 
         [Test]
@@ -134,10 +134,10 @@ namespace Puffin.Core.UnitTests
             // Arrange
             bool calledUpdate = false;
             var scene = new Mock<Scene>() { CallBase = true };
-            scene.Setup(s => s.Update(1)).Callback(() => calledUpdate = true);
+            scene.Setup(s => s.Update(It.IsAny<float>())).Callback(() => calledUpdate = true);
 
             // Act
-            scene.Object.OnUpdate(TimeSpan.FromMilliseconds(1));
+            scene.Object.OnUpdate(TimeSpan.FromSeconds(1));
 
             // Assert
             Assert.That(calledUpdate, Is.True);
@@ -147,7 +147,7 @@ namespace Puffin.Core.UnitTests
         public void OnDrawCallsDrawOnDrawingSystem()
         {
             // Arrange
-            var elapsed = TimeSpan.FromMilliseconds(153);
+            var elapsed = TimeSpan.FromSeconds(153);
             var drawingSystem = new Mock<DrawingSystem>();
             var scene = new Scene();
             scene.Initialize(new ISystem[] { drawingSystem.Object },
@@ -347,7 +347,7 @@ namespace Puffin.Core.UnitTests
             scene.OnUpdate(TimeSpan.FromSeconds(1));
             
             // Assert
-            Assert.That(totalUpdatesSeconds, Is.EqualTo(1000));
+            Assert.That(totalUpdatesSeconds, Is.EqualTo(1));
         }
 
         [Test]
