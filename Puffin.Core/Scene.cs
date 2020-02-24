@@ -154,9 +154,9 @@ namespace Puffin.Core
             EventBus.LatestInstance.Subscribe(EventBusSignal.ActionReleased, (o) => this.OnActionReleased?.Invoke(o as Enum));
         }
 
-        public void TweenPosition(Entity entity, Tuple<float, float> startPosition, Tuple<float, float> endPosition, float durationSeconds)
+        public void TweenPosition(Entity entity, Tuple<float, float> startPosition, Tuple<float, float> endPosition, float durationSeconds, Action onTweenComplete)
         {
-            this.tweenManager.TweenPosition(entity, startPosition, endPosition, durationSeconds);
+            this.tweenManager.TweenPosition(entity, startPosition, endPosition, durationSeconds, onTweenComplete);
         }
         
         /// <summary>

@@ -8,16 +8,18 @@ namespace Puffin.Core.Tweens
         public Entity Entity { get; private set; }
         public Tuple<float, float> StartPosition { get; private set; }
         public Tuple<float, float> EndPosition { get; private set; }
+        private Action onTweenComplete;
         public float DurationSeconds { get; private set; }
         internal bool IsRunning = false;
         private float runningForSeconds = 0;
 
-        public Tween(Entity entity, Tuple<float, float> startPosition, Tuple<float, float> endPosition, float durationSeconds)
+        public Tween(Entity entity, Tuple<float, float> startPosition, Tuple<float, float> endPosition, float durationSeconds, Action onTweenComplete = null)
         {
             this.Entity = entity;
             this.StartPosition = startPosition;
             this.EndPosition = endPosition; 
             this.DurationSeconds = durationSeconds;
+            this.onTweenComplete = onTweenComplete;
 
             this.Start();
         }
@@ -28,15 +30,22 @@ namespace Puffin.Core.Tweens
 
         public void Start()
         {
-            this.IsRunning = true;
-            this.Entity.X = this.StartPosition.Item1;
-            this.Entity.Y = this.StartPosition.Item2;
-            this.runningForSeconds = 0;
+            if (!this.IsRunning)
+            {
+                this.IsRunning = true;
+                this.Entity.X = this.StartPosition.Item1;
+                this.Entity.Y = this.StartPosition.Item2;
+                this.runningForSeconds = 0;
+            }
         }
 
         public void Stop()
         {
-            this.IsRunning = false;
+            if (this.IsRunning)
+            {
+                this.IsRunning = false;
+                this.onTweenComplete?.Invoke();
+            }
         }
 
         public void Update(float elapsedSeconds)

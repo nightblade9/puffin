@@ -11,11 +11,11 @@ namespace Puffin.Core.Tweens
     {
         private List<Tween> tweens = new List<Tween>();
 
-        public void TweenPosition(Entity entity, Tuple<float, float> startPosition, Tuple<float, float> endPosition, float durationSeconds)
+        public void TweenPosition(Entity entity, Tuple<float, float> startPosition, Tuple<float, float> endPosition, float durationSeconds, Action onTweenComplete = null)
         {
             // Only one tween at a time, sorry mate
             this.tweens.RemoveAll(t => t.Entity == entity);
-            this.tweens.Add(new Tween(entity, startPosition, endPosition, durationSeconds));
+            this.tweens.Add(new Tween(entity, startPosition, endPosition, durationSeconds, onTweenComplete));
         }
 
         public void Update(float elapsedSeconds)
