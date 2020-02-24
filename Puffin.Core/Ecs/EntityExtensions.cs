@@ -212,6 +212,11 @@ namespace Puffin.Core.Ecs
         /// <summary>
         /// Adds a tween to an entity.
         /// </summary>
+        /// <param name="entity">The entity to add the tween to.</param>
+        /// <param name="startPosition">The position to move the entity to when the tween starts.</param>
+        /// <param name="endPosition">The position the entity should occupy when the tween ends.</param>
+        /// <param name="durationSeconds">How long the tween should take, in seconds.</param>
+        /// <param name="onTweenComplete">An optional callback to invoke when the tween completes.</param>
         public static Entity Tween(this Entity entity, Tuple<float, float> startPosition, Tuple<float, float> endPosition, float durationSeconds, Action onTweenComplete = null)
         {
             TweenManager.LatestInstance.TweenPosition(entity, startPosition, endPosition, durationSeconds, onTweenComplete);

@@ -4,12 +4,9 @@ using System.Collections.Generic;
 
 namespace Puffin.Core.Tweening
 {
-    /// <summary>
-    /// A class that manages tweens.
-    /// </summary>
-    public class TweenManager
+    internal class TweenManager
     {
-        public static TweenManager LatestInstance { get; set; }
+        internal static TweenManager LatestInstance { get; set; }
         private List<Tween> tweens = new List<Tween>();
 
         public TweenManager()
