@@ -15,8 +15,9 @@ Summary:
 In the collision handler, we look at what axis the collision resolved on (X or Y). If the player collided on the X-axis, the block gets the player's X-velocity; if the player collided on the Y-axis, the block gets the player's Y-velocity.
 
 ```csharp
-public CoreGameScene()
+override public void Ready()
 {
+    base.Ready();
     var player = new Entity().Colour(0xFFFFFF, 32, 32)
         .Move(100, 100)
         .FourWayMovement(100)
