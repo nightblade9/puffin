@@ -19,7 +19,7 @@ namespace Puffin.Core.UnitTests.Tweening
         }
 
         [Test]
-        public void TweenPositionReplacesTweenForThatEntity()
+        public void TweenPositionReplacesAndStopsTweenForThatEntity()
         {
             // Only way to test is to see who's updated
             var manager = new TweenManager();
@@ -32,6 +32,7 @@ namespace Puffin.Core.UnitTests.Tweening
             manager.TweenPosition(e, new System.Tuple<float, float>(50, 40), new System.Tuple<float, float>(45, 95), 1, () => isCalled = true);
 
             // Assert
+            // We can't directly check if the first tween is stopped; all we can do is observe the current position of the entity.
             manager.Update(1);
             Assert.That(e.X, Is.EqualTo(45));
             Assert.That(e.Y, Is.EqualTo(95));

@@ -1,6 +1,7 @@
 using Puffin.Core.Ecs;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Puffin.Core.Tweening
 {
@@ -17,7 +18,12 @@ namespace Puffin.Core.Tweening
         public void TweenPosition(Entity entity, Tuple<float, float> startPosition, Tuple<float, float> endPosition, float durationSeconds, Action onTweenComplete = null)
         {
             // Only one tween at a time, sorry mate
-            this.tweens.RemoveAll(t => t.Entity == entity);
+            var toRemove = this.tweens.Where(t => t.Entity == entity);
+            foreach (var tween in toRemove)
+            {
+                tween.Stop();
+            }
+            
             this.tweens.Add(new Tween(entity, startPosition, endPosition, durationSeconds, onTweenComplete));
         }
 
