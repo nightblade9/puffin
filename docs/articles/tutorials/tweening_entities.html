@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Tutorial: Creating a Pushable Block </title>
+    <title>Tweening Entities </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Tutorial: Creating a Pushable Block ">
+    <meta name="title" content="Tweening Entities ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -67,65 +67,30 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="tutorial-creating-a-pushable-block">Tutorial: Creating a Pushable Block</h1>
+<h1 id="tweening-entities">Tweening Entities</h1>
 
-<p>In this tutorial, we create a relatively simple pushable block; the player constantly walks against the block to move it. You can use these as a basis for block puzzles, or to add a touch more interactivity to your scenes. We use a simple approach where we apply the player's velocity to the block to move it when we see a player/block collision.</p>
-<p>Puffin supports movement via the <code>.FourWayMovement</code> extension. The <code>FourWayMovementComponent</code> component listens to keyboard events and applies an appropriate velocity to the player. The collision system also supports callbacks, which trigger after resolving the collision (by moving the moving entity so it stops just at the point of collision). Combining these two, we simply add a collision callback which applies the player's velocity to the block.</p>
-<h2 id="code">Code</h2>
-<p>Summary:</p>
-<ul>
-<li>Create a movable, collidable player</li>
-<li>Create a simple block entity</li>
-<li>Add a collision handler that moves the block in the pushed direction</li>
-<li>Add an update handler that resets the block velocity to zero</li>
-</ul>
-<p>In the collision handler, we look at what axis the collision resolved on (X or Y). If the player collided on the X-axis, the block gets the player's X-velocity; if the player collided on the Y-axis, the block gets the player's Y-velocity.</p>
+<p>Puffin supports modest tweens: you can tween entity positions from one/start position to an end position over a specified duration. You can also specify an optional callback to invoke when the tween completes (good for chanining or doing things when the tween completes).</p>
+<p>You can access the tweening API via the <code>Scene</code> class (in your instances that subclass <code>Scene</code>) or via the <code>Entity</code> itself.</p>
+<h2 id="tweening-an-entity">Tweening an Entity</h2>
+<p>The sample below moves the player from <code>(100, 200)</code> to <code>(200, 300)</code> over a second, and moves the pet from <code>(800, 800)</code> to <code>(200, 300)</code> over two seconds.</p>
 <pre><code class="lang-csharp">override public void Ready()
 {
     base.Ready();
-    var player = new Entity().Colour(0xFFFFFF, 32, 32)
-        .Move(100, 100)
-        .FourWayMovement(100)
-        .Collide(32, 32, true);
-    
-    this.Add(player);
+    var playerReached = false;
+    var petMoving = true;
 
-    var pushable = new Entity().Colour(0x0000AA, 32, 32)
-        .Move(50, 50);
-    
-    pushable.Collide(32, 32, (e, collisionAxis) =&gt; {
-        if (e == player)
-        {
-            var vx = collisionAxis == &quot;X&quot; ? (int)player.VelocityX : 0;
-            var vy = collisionAxis == &quot;Y&quot; ? (int)player.VelocityY : 0;
-            pushable.Velocity(vx, vy);
-        }
-    }).OnUpdate((elapsed) =&gt; {
-        pushable.Velocity(0, 0);
-    });
-
-    this.Add(pushable);
+    this.Add(new Entity().Sprite(&quot;player.png&quot;).Tween(new Tuple&lt;int, int&gt;(100, 200), new Tuple&lt;int, int&gt;(200, 300), 1, () =&gt; playerReached = true));
+    this.Add(new Entity().Sprite(&quot;rabbit.png&quot;).Tween(new Tuple&lt;int, int&gt;(800, 800), new Tuple&lt;int, int&gt;(200, 300), 2, () =&gt; petMoving = false));
 }
 </code></pre>
-<h2 id="creating-a-sliding-block">Creating a Sliding Block</h2>
-<p>If you wanted to create a block that the player can &quot;push away&quot; and that slowly slides to a stop, you can achieve that with a couple of small changes:</p>
+<p>Some caveats and points to keep in mind:</p>
 <ul>
-<li>Set the block's velocity to some multiple of the player's velocity (eg. 2x). Increase this to push the block farther.</li>
-<li>In update, instead of setting the block velocity to zero, multiply it by a constant like <code>0.95f</code> (95%). Increase this to make the block slide farther.</li>
+<li>Tweens include <code>Start</code> function that's called automatically on start</li>
+<li>Tweens include a <code>Stop</code> function. Stopping aborts immediately - it doesn't move the entity to the end position.</li>
+<li>Every entity can have only one tween at a time (adding a new one stops/aborts the previous one).</li>
+<li>Even if the game slows down and updates slowly/infrequently, the tween won't over-shoot; it'll finish with the entity in the end position.</li>
+<li>The entity moves at a steady, linear velocity; Puffin doesn't support ease functions.</li>
 </ul>
-<p>Replace the collide/update callbacks with this:</p>
-<pre><code class="lang-csharp">pushable.Collide(32, 32, (e, axis) =&gt; {
-    if (e == player)
-    {
-        var vx = axis == &quot;X&quot; ? (int)player.VelocityX * 2 : 0;
-        var vy = axis == &quot;Y&quot; ? (int)player.VelocityY * 2 : 0;
-        pushable.Velocity(vx, vy);
-    }
-}).OnUpdate((elapsed) =&gt; {
-    pushable.VelocityX *= 0.95f;
-    pushable.VelocityY *= 0.95f;
-});
-</code></pre>
 </article>
           </div>
           
@@ -134,7 +99,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/nightblade9/puffin/blob/develop/puffin.docs/articles/tutorials/creating_a_pushable_block.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/nightblade9/puffin/blob/develop/puffin.docs/articles/tutorials/tweening_entities.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

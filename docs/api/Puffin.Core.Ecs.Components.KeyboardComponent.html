@@ -73,9 +73,7 @@
   
   <h1 id="Puffin_Core_Ecs_Components_KeyboardComponent" data-uid="Puffin.Core.Ecs.Components.KeyboardComponent" class="text-break">Class KeyboardComponent
   </h1>
-  <div class="markdown level0 summary"><p>A keyboard component; provides information about which actions are being pressed.
-Actions are a simple enum that map to one or more keyboard keys.
-For examples, see the Puffin documentation or unit tests.</p>
+  <div class="markdown level0 summary"><p>A keyboard component, with handlers for actions (which map to a one or more keyboard keys).</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -95,18 +93,18 @@ For examples, see the Puffin documentation or unit tests.</p>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/deengames-prototypes/puffin/new/clean_docs/apiSpec/new?filename=Puffin_Core_Ecs_Components_KeyboardComponent__ctor_Puffin_Core_Ecs_Entity_.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Components.KeyboardComponent.%23ctor(Puffin.Core.Ecs.Entity)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Ecs_Components_KeyboardComponent__ctor_Puffin_Core_Ecs_Entity_System_Action_System_Enum__System_Action_System_Enum__System_Action_System_Enum__.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Components.KeyboardComponent.%23ctor(Puffin.Core.Ecs.Entity%2CSystem.Action%7BSystem.Enum%7D%2CSystem.Action%7BSystem.Enum%7D%2CSystem.Action%7BSystem.Enum%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deengames-prototypes/puffin/blob/clean_docs/Puffin.Core/Ecs/Components/KeyboardComponent.cs/#L16">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/Components/KeyboardComponent.cs/#L17">View Source</a>
   </span>
   <a id="Puffin_Core_Ecs_Components_KeyboardComponent__ctor_" data-uid="Puffin.Core.Ecs.Components.KeyboardComponent.#ctor*"></a>
-  <h4 id="Puffin_Core_Ecs_Components_KeyboardComponent__ctor_Puffin_Core_Ecs_Entity_" data-uid="Puffin.Core.Ecs.Components.KeyboardComponent.#ctor(Puffin.Core.Ecs.Entity)">KeyboardComponent(Entity)</h4>
+  <h4 id="Puffin_Core_Ecs_Components_KeyboardComponent__ctor_Puffin_Core_Ecs_Entity_System_Action_System_Enum__System_Action_System_Enum__System_Action_System_Enum__" data-uid="Puffin.Core.Ecs.Components.KeyboardComponent.#ctor(Puffin.Core.Ecs.Entity,System.Action{System.Enum},System.Action{System.Enum},System.Action{System.Enum})">KeyboardComponent(Entity, Action&lt;Enum&gt;, Action&lt;Enum&gt;, Action&lt;Enum&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public KeyboardComponent(Entity parent)</code></pre>
+    <pre><code class="lang-csharp hljs">public KeyboardComponent(Entity parent, Action&lt;Enum&gt; onActionPressed = null, Action&lt;Enum&gt; onActionReleased = null, Action&lt;Enum&gt; onActionDown = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -123,56 +121,23 @@ For examples, see the Puffin documentation or unit tests.</p>
         <td><span class="parametername">parent</span></td>
         <td></td>
       </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/deengames-prototypes/puffin/new/clean_docs/apiSpec/new?filename=Puffin_Core_Ecs_Components_KeyboardComponent_IsActionDown_System_Enum_.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Components.KeyboardComponent.IsActionDown(System.Enum)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deengames-prototypes/puffin/blob/clean_docs/Puffin.Core/Ecs/Components/KeyboardComponent.cs/#L25">View Source</a>
-  </span>
-  <a id="Puffin_Core_Ecs_Components_KeyboardComponent_IsActionDown_" data-uid="Puffin.Core.Ecs.Components.KeyboardComponent.IsActionDown*"></a>
-  <h4 id="Puffin_Core_Ecs_Components_KeyboardComponent_IsActionDown_System_Enum_" data-uid="Puffin.Core.Ecs.Components.KeyboardComponent.IsActionDown(System.Enum)">IsActionDown(Enum)</h4>
-  <div class="markdown level1 summary"><p>Returns true if any of the keys mapped to this action are currently pressed down.
-Returns false otherwise.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool IsActionDown(Enum action)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
       <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
+        <td><span class="xref">System.Action</span>&lt;<span class="xref">System.Enum</span>&gt;</td>
+        <td><span class="parametername">onActionPressed</span></td>
+        <td><p>The function to invoke when an action's key is just pressed; the action is passed in as a parameter.</p>
+</td>
       </tr>
-    </thead>
-    <tbody>
       <tr>
-        <td><span class="xref">System.Enum</span></td>
-        <td><span class="parametername">action</span></td>
-        <td></td>
+        <td><span class="xref">System.Action</span>&lt;<span class="xref">System.Enum</span>&gt;</td>
+        <td><span class="parametername">onActionReleased</span></td>
+        <td><p>The function to invoke when an action's key is just released; the action is passed in as a parameter.</p>
+</td>
       </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
       <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><span class="xref">System.Action</span>&lt;<span class="xref">System.Enum</span>&gt;</td>
+        <td><span class="parametername">onActionDown</span></td>
+        <td><p>The function to invoke when an action's key is held down.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -184,10 +149,10 @@ Returns false otherwise.</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/deengames-prototypes/puffin/new/clean_docs/apiSpec/new?filename=Puffin_Core_Ecs_Components_KeyboardComponent.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Components.KeyboardComponent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Ecs_Components_KeyboardComponent.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Components.KeyboardComponent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/deengames-prototypes/puffin/blob/clean_docs/Puffin.Core/Ecs/Components/KeyboardComponent.cs/#L12" class="contribution-link">View Source</a>
+                    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/Components/KeyboardComponent.cs/#L8" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

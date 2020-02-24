@@ -74,7 +74,7 @@
   <h1 id="Puffin_Core_Scene" data-uid="Puffin.Core.Scene" class="text-break">Class Scene
   </h1>
   <div class="markdown level0 summary"><p>A scene or screen in your game. This is where you add entities with functionality
-to implement your game's logic.</p>
+to implement your game's logic. Also contains event for mouse-click and key-press detection.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -96,10 +96,10 @@ to implement your game's logic.</p>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/deengames-prototypes/puffin/new/clean_docs/apiSpec/new?filename=Puffin_Core_Scene__ctor.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Scene__ctor.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deengames-prototypes/puffin/blob/clean_docs/Puffin.Core/Scene.cs/#L57">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L73">View Source</a>
   </span>
   <a id="Puffin_Core_Scene__ctor_" data-uid="Puffin.Core.Scene.#ctor*"></a>
   <h4 id="Puffin_Core_Scene__ctor" data-uid="Puffin.Core.Scene.#ctor">Scene()</h4>
@@ -114,10 +114,10 @@ to implement your game's logic.</p>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/deengames-prototypes/puffin/new/clean_docs/apiSpec/new?filename=Puffin_Core_Scene_BackgroundColour.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.BackgroundColour%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Scene_BackgroundColour.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.BackgroundColour%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deengames-prototypes/puffin/blob/clean_docs/Puffin.Core/Scene.cs/#L28">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L30">View Source</a>
   </span>
   <h4 id="Puffin_Core_Scene_BackgroundColour" data-uid="Puffin.Core.Scene.BackgroundColour">BackgroundColour</h4>
   <div class="markdown level1 summary"><p>The background colour of this scene in the format 0xRRGGBB; it is drawn before all other entities.</p>
@@ -142,14 +142,104 @@ to implement your game's logic.</p>
       </tr>
     </tbody>
   </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Scene_OnActionPressed.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.OnActionPressed%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L40">View Source</a>
+  </span>
+  <h4 id="Puffin_Core_Scene_OnActionPressed" data-uid="Puffin.Core.Scene.OnActionPressed">OnActionPressed</h4>
+  <div class="markdown level1 summary"><p>A scene-wide on-action-key-pressed handler that fires whenever a key that maps to an action is just pressed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Action&lt;Enum&gt; OnActionPressed</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Action</span>&lt;<span class="xref">System.Enum</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Scene_OnActionReleased.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.OnActionReleased%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L45">View Source</a>
+  </span>
+  <h4 id="Puffin_Core_Scene_OnActionReleased" data-uid="Puffin.Core.Scene.OnActionReleased">OnActionReleased</h4>
+  <div class="markdown level1 summary"><p>A scene-wide on-action-key-released handler that fires whenever a key that maps to an action is just released.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Action&lt;Enum&gt; OnActionReleased</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Action</span>&lt;<span class="xref">System.Enum</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Scene_OnMouseClick.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.OnMouseClick%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L35">View Source</a>
+  </span>
+  <h4 id="Puffin_Core_Scene_OnMouseClick" data-uid="Puffin.Core.Scene.OnMouseClick">OnMouseClick</h4>
+  <div class="markdown level1 summary"><p>A scene-wide mouse-click handler that fires whever a mouse click event triggers (even if entities handle it).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Action OnMouseClick</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Action</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/deengames-prototypes/puffin/new/clean_docs/apiSpec/new?filename=Puffin_Core_Scene_Fps.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.Fps%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Scene_Fps.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.Fps%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deengames-prototypes/puffin/blob/clean_docs/Puffin.Core/Scene.cs/#L23">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L25">View Source</a>
   </span>
   <a id="Puffin_Core_Scene_Fps_" data-uid="Puffin.Core.Scene.Fps*"></a>
   <h4 id="Puffin_Core_Scene_Fps" data-uid="Puffin.Core.Scene.Fps">Fps</h4>
@@ -178,10 +268,10 @@ This value updates approximately every second.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/deengames-prototypes/puffin/new/clean_docs/apiSpec/new?filename=Puffin_Core_Scene_MouseCoordinates.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.MouseCoordinates%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Scene_MouseCoordinates.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.MouseCoordinates%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deengames-prototypes/puffin/blob/clean_docs/Puffin.Core/Scene.cs/#L52">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L68">View Source</a>
   </span>
   <a id="Puffin_Core_Scene_MouseCoordinates_" data-uid="Puffin.Core.Scene.MouseCoordinates*"></a>
   <h4 id="Puffin_Core_Scene_MouseCoordinates" data-uid="Puffin.Core.Scene.MouseCoordinates">MouseCoordinates</h4>
@@ -211,10 +301,10 @@ This value updates approximately every second.</p>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/deengames-prototypes/puffin/new/clean_docs/apiSpec/new?filename=Puffin_Core_Scene_Add_Puffin_Core_Ecs_Entity_.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.Add(Puffin.Core.Ecs.Entity)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Scene_Add_Puffin_Core_Ecs_Entity_.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.Add(Puffin.Core.Ecs.Entity)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deengames-prototypes/puffin/blob/clean_docs/Puffin.Core/Scene.cs/#L66">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L85">View Source</a>
   </span>
   <a id="Puffin_Core_Scene_Add_" data-uid="Puffin.Core.Scene.Add*"></a>
   <h4 id="Puffin_Core_Scene_Add_Puffin_Core_Ecs_Entity_" data-uid="Puffin.Core.Scene.Add(Puffin.Core.Ecs.Entity)">Add(Entity)</h4>
@@ -244,10 +334,10 @@ This value updates approximately every second.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/deengames-prototypes/puffin/new/clean_docs/apiSpec/new?filename=Puffin_Core_Scene_Add_Puffin_Core_Tiles_TileMap_.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.Add(Puffin.Core.Tiles.TileMap)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Scene_Add_Puffin_Core_Tiles_TileMap_.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.Add(Puffin.Core.Tiles.TileMap)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deengames-prototypes/puffin/blob/clean_docs/Puffin.Core/Scene.cs/#L96">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L115">View Source</a>
   </span>
   <a id="Puffin_Core_Scene_Add_" data-uid="Puffin.Core.Scene.Add*"></a>
   <h4 id="Puffin_Core_Scene_Add_Puffin_Core_Tiles_TileMap_" data-uid="Puffin.Core.Scene.Add(Puffin.Core.Tiles.TileMap)">Add(TileMap)</h4>
@@ -278,10 +368,10 @@ Note that tilemaps are drawn in the order added.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/deengames-prototypes/puffin/new/clean_docs/apiSpec/new?filename=Puffin_Core_Scene_Dispose.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Scene_Dispose.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deengames-prototypes/puffin/blob/clean_docs/Puffin.Core/Scene.cs/#L133">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L165">View Source</a>
   </span>
   <a id="Puffin_Core_Scene_Dispose_" data-uid="Puffin.Core.Scene.Dispose*"></a>
   <h4 id="Puffin_Core_Scene_Dispose" data-uid="Puffin.Core.Scene.Dispose">Dispose()</h4>
@@ -294,10 +384,10 @@ Note that tilemaps are drawn in the order added.</p>
   </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/deengames-prototypes/puffin/new/clean_docs/apiSpec/new?filename=Puffin_Core_Scene_IsActionDown_System_Enum_.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.IsActionDown(System.Enum)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Scene_IsActionDown_System_Enum_.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.IsActionDown(System.Enum)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deengames-prototypes/puffin/blob/clean_docs/Puffin.Core/Scene.cs/#L116">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L132">View Source</a>
   </span>
   <a id="Puffin_Core_Scene_IsActionDown_" data-uid="Puffin.Core.Scene.IsActionDown*"></a>
   <h4 id="Puffin_Core_Scene_IsActionDown_System_Enum_" data-uid="Puffin.Core.Scene.IsActionDown(System.Enum)">IsActionDown(Enum)</h4>
@@ -342,10 +432,27 @@ Note that tilemaps are drawn in the order added.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/deengames-prototypes/puffin/new/clean_docs/apiSpec/new?filename=Puffin_Core_Scene_Remove_Puffin_Core_Ecs_Entity_.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.Remove(Puffin.Core.Ecs.Entity)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Scene_Ready.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.Ready%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deengames-prototypes/puffin/blob/clean_docs/Puffin.Core/Scene.cs/#L83">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L150">View Source</a>
+  </span>
+  <a id="Puffin_Core_Scene_Ready_" data-uid="Puffin.Core.Scene.Ready*"></a>
+  <h4 id="Puffin_Core_Scene_Ready" data-uid="Puffin.Core.Scene.Ready">Ready()</h4>
+  <div class="markdown level1 summary"><p>A method that's called when the game is ready to run and content can be loaded.
+This includes being able to change label font sizes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void Ready()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Scene_Remove_Puffin_Core_Ecs_Entity_.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.Remove(Puffin.Core.Ecs.Entity)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L102">View Source</a>
   </span>
   <a id="Puffin_Core_Scene_Remove_" data-uid="Puffin.Core.Scene.Remove*"></a>
   <h4 id="Puffin_Core_Scene_Remove_Puffin_Core_Ecs_Entity_" data-uid="Puffin.Core.Scene.Remove(Puffin.Core.Ecs.Entity)">Remove(Entity)</h4>
@@ -375,10 +482,10 @@ Note that tilemaps are drawn in the order added.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/deengames-prototypes/puffin/new/clean_docs/apiSpec/new?filename=Puffin_Core_Scene_Remove_Puffin_Core_Tiles_TileMap_.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.Remove(Puffin.Core.Tiles.TileMap)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Scene_Remove_Puffin_Core_Tiles_TileMap_.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.Remove(Puffin.Core.Tiles.TileMap)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deengames-prototypes/puffin/blob/clean_docs/Puffin.Core/Scene.cs/#L108">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L124">View Source</a>
   </span>
   <a id="Puffin_Core_Scene_Remove_" data-uid="Puffin.Core.Scene.Remove*"></a>
   <h4 id="Puffin_Core_Scene_Remove_Puffin_Core_Tiles_TileMap_" data-uid="Puffin.Core.Scene.Remove(Puffin.Core.Tiles.TileMap)">Remove(TileMap)</h4>
@@ -408,20 +515,18 @@ Note that tilemaps are drawn in the order added.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/deengames-prototypes/puffin/new/clean_docs/apiSpec/new?filename=Puffin_Core_Scene_Update_System_Int32_.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.Update(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Scene_TweenPosition_Puffin_Core_Ecs_Entity_System_Tuple_System_Single_System_Single__System_Tuple_System_Single_System_Single__System_Single_System_Action_.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.TweenPosition(Puffin.Core.Ecs.Entity%2CSystem.Tuple%7BSystem.Single%2CSystem.Single%7D%2CSystem.Tuple%7BSystem.Single%2CSystem.Single%7D%2CSystem.Single%2CSystem.Action)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deengames-prototypes/puffin/blob/clean_docs/Puffin.Core/Scene.cs/#L125">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L157">View Source</a>
   </span>
-  <a id="Puffin_Core_Scene_Update_" data-uid="Puffin.Core.Scene.Update*"></a>
-  <h4 id="Puffin_Core_Scene_Update_System_Int32_" data-uid="Puffin.Core.Scene.Update(System.Int32)">Update(Int32)</h4>
-  <div class="markdown level1 summary"><p>A method that's called every time Update is called by the game engine.
-Override it to do things &quot;every frame.&quot;</p>
-</div>
+  <a id="Puffin_Core_Scene_TweenPosition_" data-uid="Puffin.Core.Scene.TweenPosition*"></a>
+  <h4 id="Puffin_Core_Scene_TweenPosition_Puffin_Core_Ecs_Entity_System_Tuple_System_Single_System_Single__System_Tuple_System_Single_System_Single__System_Single_System_Action_" data-uid="Puffin.Core.Scene.TweenPosition(Puffin.Core.Ecs.Entity,System.Tuple{System.Single,System.Single},System.Tuple{System.Single,System.Single},System.Single,System.Action)">TweenPosition(Entity, Tuple&lt;Single, Single&gt;, Tuple&lt;Single, Single&gt;, Single, Action)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void Update(int elapsedMilliseconds)</code></pre>
+    <pre><code class="lang-csharp hljs">public void TweenPosition(Entity entity, Tuple&lt;float, float&gt; startPosition, Tuple&lt;float, float&gt; endPosition, float durationSeconds, Action onTweenComplete)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -434,8 +539,62 @@ Override it to do things &quot;every frame.&quot;</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">elapsedMilliseconds</span></td>
+        <td><a class="xref" href="Puffin.Core.Ecs.Entity.html">Entity</a></td>
+        <td><span class="parametername">entity</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Tuple</span>&lt;<span class="xref">System.Single</span>, <span class="xref">System.Single</span>&gt;</td>
+        <td><span class="parametername">startPosition</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Tuple</span>&lt;<span class="xref">System.Single</span>, <span class="xref">System.Single</span>&gt;</td>
+        <td><span class="parametername">endPosition</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">durationSeconds</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Action</span></td>
+        <td><span class="parametername">onTweenComplete</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Scene_Update_System_Single_.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.Update(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L141">View Source</a>
+  </span>
+  <a id="Puffin_Core_Scene_Update_" data-uid="Puffin.Core.Scene.Update*"></a>
+  <h4 id="Puffin_Core_Scene_Update_System_Single_" data-uid="Puffin.Core.Scene.Update(System.Single)">Update(Single)</h4>
+  <div class="markdown level1 summary"><p>A method that's called every time Update is called by the game engine.
+Override it to do things &quot;every frame.&quot;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void Update(float elapsedSeconds)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">elapsedSeconds</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -452,10 +611,10 @@ Override it to do things &quot;every frame.&quot;</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/deengames-prototypes/puffin/new/clean_docs/apiSpec/new?filename=Puffin_Core_Scene.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Scene.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/deengames-prototypes/puffin/blob/clean_docs/Puffin.Core/Scene.cs/#L15" class="contribution-link">View Source</a>
+                    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L17" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
