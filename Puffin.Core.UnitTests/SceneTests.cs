@@ -374,6 +374,25 @@ namespace Puffin.Core.UnitTests
             Assert.That(invoked, Is.True);
         }
 
+        [Test]
+        public void TweenPositionAddsTweenToTweenManager()
+        {
+            // Only way to test is to see who's updated
+            var scene = new Scene();
+            var e = new Entity();
+            bool isCalled = false;
+            scene.Add(e);
+
+            // Act
+            scene.TweenPosition(e, new System.Tuple<float, float>(50, 40), new System.Tuple<float, float>(45, 95), 1, () => isCalled = true);
+
+            // Assert
+            scene.Update(1);
+            Assert.That(e.X, Is.EqualTo(45));
+            Assert.That(e.Y, Is.EqualTo(95));
+            Assert.That(isCalled, Is.True);
+        }
+
         enum FakeAction
         {
             Reset,

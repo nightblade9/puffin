@@ -52,20 +52,16 @@ namespace Puffin.Core.Tweening
         {
             var moveSeconds = elapsedSeconds;
             // Don't go over-time
-            if (this.runningForSeconds + elapsedSeconds > this.DurationSeconds)
+            if (this.runningForSeconds + elapsedSeconds >= this.DurationSeconds)
             {
                 moveSeconds = this.DurationSeconds - this.runningForSeconds;
-            }
-
-            this.Entity.X += this.Dx * elapsedSeconds;
-            this.Entity.Y += this.Dy * elapsedSeconds;
-            // Original value, not the nerfed value, which might be 0
-            this.runningForSeconds += elapsedSeconds;
-
-            if (this.runningForSeconds >= this.DurationSeconds)
-            {
                 this.Stop();
             }
+
+            this.Entity.X += this.Dx * (moveSeconds / this.DurationSeconds);
+            this.Entity.Y += this.Dy * (moveSeconds / this.DurationSeconds);
+            // Original value, not the nerfed value, which might be 0
+            this.runningForSeconds += elapsedSeconds;
         }
     }
 }

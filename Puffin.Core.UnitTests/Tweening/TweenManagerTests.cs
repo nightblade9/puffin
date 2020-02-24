@@ -1,0 +1,76 @@
+using System;
+using NUnit.Framework;
+using Puffin.Core.Ecs;
+using Puffin.Core.Tweening;
+
+namespace Puffin.Core.UnitTests.Tweening
+{
+    [TestFixture]
+    public class TweenManagerTests
+    {
+        [Test]
+        public void ConstructorReplacesLatestInstance()
+        {
+            var t1 = new TweenManager();
+            Assert.That(TweenManager.LatestInstance, Is.EqualTo(t1));
+
+            var t2 = new TweenManager();
+            Assert.That(TweenManager.LatestInstance, Is.EqualTo(t2));
+        }
+
+        [Test]
+        public void TweenPositionReplacesTweenForThatEntity()
+        {
+            // Only way to test is to see who's updated
+            var manager = new TweenManager();
+            var e = new Entity();
+            bool isCalled = false;
+
+            manager.TweenPosition(e, new System.Tuple<float, float>(0, 0), new System.Tuple<float, float>(100, 100), 0);
+            
+            // Act
+            manager.TweenPosition(e, new System.Tuple<float, float>(50, 40), new System.Tuple<float, float>(45, 95), 1, () => isCalled = true);
+
+            // Assert
+            manager.Update(1);
+            Assert.That(e.X, Is.EqualTo(45));
+            Assert.That(e.Y, Is.EqualTo(95));
+            Assert.That(isCalled, Is.True);
+        }
+
+        [Test]
+        public void UpdateUpdatesTween()
+        {
+            var manager = new TweenManager();
+            var e = new Entity();
+            manager.TweenPosition(e, new System.Tuple<float, float>(0, 0), new System.Tuple<float, float>(100, 200), 10);
+
+            // Act
+            manager.Update(1);
+
+            // Assert: takes 10s so we should have moved 10%
+            Assert.That(e.X, Is.EqualTo(10));
+            Assert.That(e.Y, Is.EqualTo(20));
+        }
+
+        [Test]
+        public void UpdateRemovesCompletedTweens()
+        {
+            // Test that it's not updated after removal
+            var manager = new TweenManager();
+            var e = new Entity();
+            manager.TweenPosition(e, new System.Tuple<float, float>(0, 0), new System.Tuple<float, float>(100, 200), 10);
+
+            // Act
+            manager.Update(10);
+
+            // Assert: takes 10s so we should have moved 10%
+            Assert.That(e.X, Is.EqualTo(100));
+            Assert.That(e.Y, Is.EqualTo(200));
+
+            manager.Update(999);
+            Assert.That(e.X, Is.EqualTo(100));
+            Assert.That(e.Y, Is.EqualTo(200));
+        }
+    }
+}
