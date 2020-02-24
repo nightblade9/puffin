@@ -20,10 +20,9 @@ namespace Puffin.Core.Ecs.Components
 
         /// <param name="width">The width of the collidable area, in pixels</param>
         /// <param name="height">The height of the collidable area, in pixels</param>
-        /// <param name="slideOnCollide">If true, when colliding, slide in the direction of the non-colliding</param>
-        /// <param name="xOffset">The x-offset of the collidable area relative to the origin of parent</param>
-        /// <param name="yOffset">The y-offset of the collidable area relative to the origin of parent</param>
-        /// axis instead of abruptly stopping.</param>
+        /// <param name="slideOnCollide">If true, when colliding, slide in the direction of the non-colliding axis instead of abruptly stopping</param>
+        /// <param name="xOffset">The x-offset of the collidable area relative to the origin of this entity</param>
+        /// <param name="yOffset">The y-offset of the collidable area relative to the origin of this entity</param>
         public CollisionComponent(Entity parent, int width, int height, bool slideOnCollide, int xOffset, int yOffset)
         : this(parent, width, height, null)
         {
