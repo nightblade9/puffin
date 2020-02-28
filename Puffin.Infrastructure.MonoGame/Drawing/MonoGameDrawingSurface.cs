@@ -81,11 +81,8 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
         {            
             if (entity.Get<SpriteComponent>() != null)
             {
-                var spriteComponent = entity.Get<SpriteComponent>();
-                var texture = this.LoadImage(spriteComponent.FileName);
-                var monoGameSprite = new MonoGameSprite(spriteComponent, texture);
-                entitySprites[entity] = monoGameSprite;
                 this.entities.Add(entity);
+                this.AddMonoGameSpriteFor(entity);
             }
             if (entity.Get<TextLabelComponent>() != null && !this.entities.Contains(entity))
             {
@@ -112,6 +109,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
         public void AddUiEntity(Entity entity)
         {
             this.uiEntities.Add(entity);
+            this.AddMonoGameSpriteFor(entity);
         }
 
         public void RemoveEntity(Entity entity)
@@ -208,6 +206,17 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             foreach (var texture in this.tileMapSprites.Values)
             {
                 texture.Dispose();
+            }
+        }
+
+        private void AddMonoGameSpriteFor(Entity entity)
+        {
+            if (entity.Get<SpriteComponent>() != null)
+            {
+                var spriteComponent = entity.Get<SpriteComponent>();
+                var texture = this.LoadImage(spriteComponent.FileName);
+                var monoGameSprite = new MonoGameSprite(spriteComponent, texture);
+                entitySprites[entity] = monoGameSprite;
             }
         }
 
