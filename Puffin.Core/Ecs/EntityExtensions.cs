@@ -12,7 +12,7 @@ namespace Puffin.Core.Ecs
         /// <summary>
         ///  Immediately moves an entity to the specified coordinates, ignoring velocity/overlap/collision/etc.
         /// </summary>
-        public static Entity Move(this Entity entity, int x, int y)
+        public static Entity Move(this Entity entity, float x, float y)
         {
             entity.X = x;
             entity.Y = y;

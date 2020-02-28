@@ -37,7 +37,7 @@ namespace Puffin.Core.Ecs
         internal float IntendedMoveDeltaY = 0;
 
         // If true, this entity is drawn above/after everything else, and ignores the camera.
-        internal bool IsUiElement = false;
+        internal readonly bool IsUiElement = false;
 
         private Dictionary<Type, Component> components = new Dictionary<Type, Component>();
 
