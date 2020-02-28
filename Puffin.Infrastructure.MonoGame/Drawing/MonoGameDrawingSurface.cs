@@ -238,19 +238,19 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
         {
             foreach (var entity in entities)
             {
+                MonoGameSprite monoGameSprite = null;
+                this.entitySprites.TryGetValue(entity, out monoGameSprite);
+                if (monoGameSprite != null && entity.Get<SpriteComponent>().IsVisible)
+                {
+                    this.spriteBatch.Draw(monoGameSprite.Texture, new Vector2(entity.X, entity.Y), monoGameSprite.Region, Color.White);
+                }
+
                 var colour = entity.Get<ColourComponent>();
                 if (colour != null)
                 {
                     this.spriteBatch.Draw(whiteRectangle, 
                         new Rectangle((int)entity.X + colour.OffsetX, (int)entity.Y + colour.OffsetY, colour.Width, colour.Height),
                         BgrToRgba(colour.Colour));
-                }
-
-                MonoGameSprite monoGameSprite = null;
-                this.entitySprites.TryGetValue(entity, out monoGameSprite);
-                if (monoGameSprite != null && entity.Get<SpriteComponent>().IsVisible)
-                {
-                    this.spriteBatch.Draw(monoGameSprite.Texture, new Vector2(entity.X, entity.Y), monoGameSprite.Region, Color.White);
                 }
 
                 var text = entity.Get<TextLabelComponent>();
