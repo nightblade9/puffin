@@ -1,24 +1,33 @@
+using System;
 using Puffin.Core.Ecs;
 using Puffin.Core.Ecs.Components;
 
 namespace Puffin.UI.Controls
 {
-    /// <summary>
-    /// Creates a horizontal progress bar of the specified width (inner width).
-    /// The progress bar is made up of an image, with the actual progress indicator
-    /// set by a <c>ColourComponent</c> instance.
-    /// <param name="paddingX">The X-axis padding between the image and the start of the colour/bar</param>
-    /// <param name="paddingY">The Y-axis padding between the image and the start of the colour/bar</param>
     public class HorizontalProgressBar : Entity
     {
         private const int BAR_THICKNESS = 16;
-        private readonly int paddingX = 0;
-        private readonly int paddingY = 0;
         private readonly int maxValue;
         private int value = 0;
 
+        /// <summary>
+        /// Creates a horizontal progress bar of the specified width (inner width).
+        /// The progress bar is made up of an image, with the actual progress indicator
+        /// set by a <c>ColourComponent</c> instance.
+        /// <param name="innerWidth">The width of the progress bar (progress part), not the image</param>
+        /// <param name="paddingY">The Y-axis padding between the image and the start of the colour/bar</param>
+        /// <param name="paddingY">The Y-axis padding between the image and the start of the colour/bar</param>
         public HorizontalProgressBar(string imageFileName, int barColourRgb, int innerWidth, int paddingX, int paddingY)
         {
+            if (string.IsNullOrWhiteSpace(imageFileName))
+            {
+                throw new ArgumentException(nameof(imageFileName));
+            }
+            if (innerWidth <= 0)
+            {
+                throw new ArgumentException("Please specify a positive inner-width");
+            }
+
             this.Sprite(imageFileName)
                 .Colour(barColourRgb, innerWidth, BAR_THICKNESS, paddingX, paddingY);
             
@@ -30,7 +39,15 @@ namespace Puffin.UI.Controls
         public int Value {
             get { return this.value; }
             set {
-                // TODO: validate the value is between 0 and max
+                if (value < 0)
+                {
+                    value = 0;
+                }
+                else if (value > this.maxValue)
+                {
+                    value = this.maxValue;
+                }
+
                 this.value = value;
                 this.Get<ColourComponent>().Width = this.value;
             }
