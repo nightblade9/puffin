@@ -25,7 +25,11 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
                 {
                     if (s == sprite)
                     {
-                        this.Region = new Rectangle(sprite.FrameIndex * sprite.FrameWidth, 0, sprite.FrameWidth, sprite.FrameHeight);
+                        var numColumns = texture.Width / sprite.FrameWidth;
+                        var numRows = texture.Height / sprite.FrameHeight;
+                        var xIndex = sprite.FrameIndex % numColumns;
+                        var yIndex = sprite.FrameIndex / numColumns;
+                        this.Region = new Rectangle(xIndex * sprite.FrameWidth, yIndex * sprite.FrameHeight, sprite.FrameWidth, sprite.FrameHeight);
                     }
                 });
             }

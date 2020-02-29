@@ -1,8 +1,7 @@
 using System;
-using System.IO;
 using Puffin.Core;
 using Puffin.Core.Ecs;
-using Puffin.Core.Tiles;
+using Puffin.Core.Ecs.Components;
 
 namespace MyGame
 {
@@ -10,10 +9,13 @@ namespace MyGame
     {
         private const int MOVE_VELOCITY = 200;
         private DateTime start = DateTime.Now;
+        private int updateMs = 500;
+        private DateTime latUpdate = DateTime.Now;
+        private Entity player;
 
         public CoreGameScene()
         {
-            var player = new Entity().Colour(0xFFFFFF, 32, 32)
+            this.player = new Entity().Spritesheet("Content/Charspore.png", 64, 64)
                 .Move(100, 100)
                 .FourWayMovement(100)
                 .Collide(32, 32, true);
@@ -36,6 +38,17 @@ namespace MyGame
             });
 
             this.Add(pushable);
+        }
+
+        override public void Update(float elapsedSeconds)
+        {
+            base.Update(elapsedSeconds);
+            if ((DateTime.Now - this.latUpdate).TotalMilliseconds >= updateMs)
+            {
+                this.latUpdate = DateTime.Now;
+                var sprite = this.player.Get<SpriteComponent>();
+                sprite.FrameIndex = (sprite.FrameIndex + 1) % 12;
+            }
         }
     }
 }
