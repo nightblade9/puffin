@@ -20,7 +20,7 @@ namespace MyGame
                 var action = (PuffinAction)val;
                 if (action == PuffinAction.Down)
                 {
-                    this.ShowSubScene(new SubScene());
+                    this.ShowSubScene(new SubScene(this));
                     Console.WriteLine("SHOW");
                 }
             };

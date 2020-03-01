@@ -45,8 +45,6 @@ namespace Puffin.Infrastructure.MonoGame
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private Scene currentScene;
-        private IMouseProvider mouseProvider;
-        private IKeyboardProvider keyboardProvider;
 
         /// <summary>
         /// Creates a new game with the specified window size.
@@ -114,9 +112,6 @@ namespace Puffin.Infrastructure.MonoGame
         /// <summary>Overridden from MonoGame, please ignore.</summary>
         protected override void Update(GameTime gameTime)
         {
-            this.mouseProvider.Update();
-            this.keyboardProvider.Update();
-
             // Parent scene doesn't receive updates while subscene is there.
             if (this.currentScene?.SubScene != null)
             {
@@ -155,8 +150,8 @@ namespace Puffin.Infrastructure.MonoGame
                 this.InitializeSceneSystems(subScene);
             });
 
-            this.mouseProvider = new MonoGameMouseProvider(s.EventBus);
-            this.keyboardProvider = new MonoGameKeyboardProvider(s.EventBus);
+            var mouseProvider = new MonoGameMouseProvider(s.EventBus);
+            var keyboardProvider = new MonoGameKeyboardProvider(s.EventBus);
             
             var drawingSurface = new MonoGameDrawingSurface(s.EventBus, this.GraphicsDevice, spriteBatch);
 
@@ -164,14 +159,14 @@ namespace Puffin.Infrastructure.MonoGame
             {
                 new MovementSystem(s),
                 new OverlapSystem(),
-                new MouseOverlapSystem(this.mouseProvider),
-                new MouseSystem(s.EventBus, this.mouseProvider),
-                new KeyboardSystem(s.EventBus, this.keyboardProvider),
+                new MouseOverlapSystem(mouseProvider),
+                new MouseSystem(s.EventBus, mouseProvider),
+                new KeyboardSystem(s.EventBus, keyboardProvider),
                 new AudioSystem(new MonoGameAudioPlayer(s.EventBus)),
                 new DrawingSystem(drawingSurface),
             };
 
-            s.Initialize(systems, this.mouseProvider, this.keyboardProvider);
+            s.Initialize(systems, mouseProvider, keyboardProvider);
 
             if (!s.CalledReady)
             {

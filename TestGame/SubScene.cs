@@ -12,6 +12,12 @@ namespace MyGame
         private int updateMs = 500;
         private DateTime latUpdate = DateTime.Now;
         private Entity player;
+        private Scene parent;
+
+        public SubScene(Scene parent)
+        {
+            this.parent = parent;
+        }
 
         override public void Ready()
         {
@@ -25,8 +31,7 @@ namespace MyGame
                 var action = (PuffinAction)val;
                 if (action == PuffinAction.Up)
                 {
-                    this.HideSubScene();
-                    Console.WriteLine("HIDE");
+                    parent.HideSubScene();
                 }
             };
         }

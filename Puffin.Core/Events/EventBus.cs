@@ -14,11 +14,6 @@ namespace Puffin.Core.Events
         // event name => callbacks. Each callback has an optional parameter (data).
         private IDictionary<Enum, List<Action<object>>> subscribers = new Dictionary<Enum, List<Action<object>>>();
 
-        public EventBus()
-        {
-            ;
-        }
-
         /// <summary>
         /// Broadcast a new event to all subscribers.
         /// </summary>

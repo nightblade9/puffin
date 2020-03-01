@@ -139,6 +139,8 @@ namespace Puffin.Core
         /// </summary>
         public virtual void Update(float elapsedSeconds)
         {
+            this.keyboardProvider.Update();
+            this.mouseProvider.Update();
             this.tweenManager.Update(elapsedSeconds);
         }
 
@@ -279,6 +281,7 @@ namespace Puffin.Core
             this.systems = new ISystem[0];
             this.entities.Clear();
             this.TileMaps.Clear();
+            this.EventBus.Dispose();
         }
 
         // "Micro" method, called with chunks of time <= MAX_UPDATE_INTERVAL_MILLISECONDS
