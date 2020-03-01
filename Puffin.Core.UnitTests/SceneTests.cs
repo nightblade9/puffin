@@ -148,10 +148,10 @@ namespace Puffin.Core.UnitTests
                 new Mock<IMouseProvider>().Object, new Mock<IKeyboardProvider>().Object);
 
             // Act
-            scene.OnDraw(elapsed);
+            scene.OnDraw(elapsed, true);
 
             // Assert
-            drawingSystem.Verify(d => d.OnDraw(elapsed, 0x000000), Times.Once());
+            drawingSystem.Verify(d => d.OnDraw(elapsed, 0x000000, true), Times.Once());
         }
 
         [Test]
@@ -256,9 +256,9 @@ namespace Puffin.Core.UnitTests
             scene.Initialize(new ISystem[] { drawingSystem }, null, null);
 
             // Act
-            scene.OnDraw(TimeSpan.Zero);
-            scene.OnDraw(TimeSpan.Zero);
-            scene.OnDraw(TimeSpan.Zero);
+            scene.OnDraw(TimeSpan.Zero, true);
+            scene.OnDraw(TimeSpan.Zero, true);
+            scene.OnDraw(TimeSpan.Zero, true);
 
             // TODO: swap this out with an injected time provider
             System.Threading.Thread.Sleep(1000);

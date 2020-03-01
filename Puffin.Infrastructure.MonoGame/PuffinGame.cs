@@ -70,31 +70,9 @@ namespace Puffin.Infrastructure.MonoGame
         public void ShowScene(Scene s)
         {
             this.currentScene?.Dispose();
-
-            this.mouseProvider = new MonoGameMouseProvider(s.EventBus);
-            this.keyboardProvider = new MonoGameKeyboardProvider(s.EventBus);
-            
-            var drawingSurface = new MonoGameDrawingSurface(s.EventBus, this.GraphicsDevice, spriteBatch);
-
-            var systems = new ISystem[]
-            {
-                new MovementSystem(s),
-                new OverlapSystem(),
-                new MouseOverlapSystem(this.mouseProvider),
-                new MouseSystem(s.EventBus, this.mouseProvider),
-                new KeyboardSystem(s.EventBus, this.keyboardProvider),
-                new AudioSystem(new MonoGameAudioPlayer(s.EventBus)),
-                new DrawingSystem(drawingSurface),
-            };
-
-            s.Initialize(systems, this.mouseProvider, this.keyboardProvider);
+            this.InitializeSceneSystems(s);
 
             this.currentScene = s;
-            if (!s.CalledReady)
-            {
-                s.CalledReady = true;
-                s.Ready();
-            }
         }
 
         /// <summary>
@@ -155,16 +133,51 @@ namespace Puffin.Infrastructure.MonoGame
         /// <summary>Overridden from MonoGame, please ignore.</summary>
         protected override void Draw(GameTime gameTime)
         {
+            // Always draw parent because we clear drawing surface, wanna see parent
+            // if there's a subscene.
+            this.currentScene?.OnDraw(gameTime.ElapsedGameTime, true);
+            
             // Parent scene doesn't receive draw calls while subscene is there.
-            if (this.currentScene?.SubScene != null)
+            if (this.currentScene?.SubScene != null && this.currentScene.SubScene.CalledReady)
             {
-                this.currentScene?.SubScene?.OnDraw(gameTime.ElapsedGameTime);
+                this.currentScene?.SubScene?.OnDraw(gameTime.ElapsedGameTime, false);
             }
-            else
-            {
-                this.currentScene?.OnDraw(gameTime.ElapsedGameTime);
-            }
+
             base.Draw(gameTime);
+        }
+
+        private void InitializeSceneSystems(Scene s)
+        {
+            // Weird, can't go in constructor - no eventbus
+            s.EventBus.Subscribe(EventBusSignal.SubSceneShown, (data) =>
+            {
+                var subScene = data as Scene;
+                this.InitializeSceneSystems(subScene);
+            });
+
+            this.mouseProvider = new MonoGameMouseProvider(s.EventBus);
+            this.keyboardProvider = new MonoGameKeyboardProvider(s.EventBus);
+            
+            var drawingSurface = new MonoGameDrawingSurface(s.EventBus, this.GraphicsDevice, spriteBatch);
+
+            var systems = new ISystem[]
+            {
+                new MovementSystem(s),
+                new OverlapSystem(),
+                new MouseOverlapSystem(this.mouseProvider),
+                new MouseSystem(s.EventBus, this.mouseProvider),
+                new KeyboardSystem(s.EventBus, this.keyboardProvider),
+                new AudioSystem(new MonoGameAudioPlayer(s.EventBus)),
+                new DrawingSystem(drawingSurface),
+            };
+
+            s.Initialize(systems, this.mouseProvider, this.keyboardProvider);
+
+            if (!s.CalledReady)
+            {
+                s.CalledReady = true;
+                s.Ready();
+            }
         }
     }
 }

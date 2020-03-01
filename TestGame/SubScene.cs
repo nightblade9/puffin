@@ -2,6 +2,7 @@ using System;
 using Puffin.Core;
 using Puffin.Core.Ecs;
 using Puffin.Core.Ecs.Components;
+using Puffin.Core.IO;
 
 namespace MyGame
 {
@@ -19,6 +20,15 @@ namespace MyGame
                 .FourWayMovement(100);
             
             this.Add(player);
+
+            this.OnActionPressed = (val) => {
+                var action = (PuffinAction)val;
+                if (action == PuffinAction.Up)
+                {
+                    this.HideSubScene();
+                    Console.WriteLine("HIDE");
+                }
+            };
         }
 
         override public void Update(float elapsedSeconds)

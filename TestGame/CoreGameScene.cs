@@ -7,8 +7,6 @@ namespace MyGame
 {
     public class CoreGameScene : Scene
     {
-        private bool isShowingSubScene = false;
-
         override public void Ready()
         {
             var player = new Entity().Colour(0xFF0000, 32, 32)
@@ -22,17 +20,8 @@ namespace MyGame
                 var action = (PuffinAction)val;
                 if (action == PuffinAction.Down)
                 {
-                    this.isShowingSubScene = !this.isShowingSubScene;
-                    if (isShowingSubScene)
-                    {
-                        this.ShowSubScene(new SubScene());
-                        Console.WriteLine("SHOW");
-                    }
-                    else
-                    {
-                        this.HideSubScene();
-                        Console.WriteLine("hide");
-                    }
+                    this.ShowSubScene(new SubScene());
+                    Console.WriteLine("SHOW");
                 }
             };
         }

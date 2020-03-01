@@ -142,9 +142,12 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             this.tileMapSprites.Remove(tileMap);
         }
 
-        public void DrawAll(int backgroundColour)
+        public void DrawAll(int backgroundColour, bool clearDisplay = true)
         {
-            this.graphics.Clear(BgrToRgba(backgroundColour));
+            if (clearDisplay)
+            {
+                this.graphics.Clear(BgrToRgba(backgroundColour));
+            }
 
             var lastActiveCamera = this.cameras.LastOrDefault();
             MonoGameCamera camera = null;

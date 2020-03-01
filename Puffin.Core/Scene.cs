@@ -166,7 +166,7 @@ namespace Puffin.Core
         {
             this.HideSubScene();
             this.SubScene = subScene;
-            this.SubScene.Initialize(this.systems, this.mouseProvider, this.keyboardProvider);
+            this.EventBus.Broadcast(EventBusSignal.SubSceneShown, subScene);
         }
 
         /// <summary>
@@ -221,10 +221,10 @@ namespace Puffin.Core
             }
         }
 
-        internal void OnDraw(TimeSpan elapsed)
+        internal void OnDraw(TimeSpan elapsed, bool clearDisplay)
         {
             drawsSinceLastFpsCount++;
-            this.drawingSystem.OnDraw(elapsed, this.BackgroundColour);
+            this.drawingSystem.OnDraw(elapsed, this.BackgroundColour, clearDisplay);
         }
 
         // Separate from the constructor and internal because only we call it; subclasses of Scene don't need to know about this.
