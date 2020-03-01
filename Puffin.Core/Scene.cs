@@ -161,7 +161,8 @@ namespace Puffin.Core
         }
 
         /// <summary>
-        /// Sets/displays a sub-scene. Call again with null to unset/remove.
+        /// Sets/displays a sub-scene. This scene is rendered above the current scene.
+        /// The current scene stops processing input/updates.
         /// </sumamary>
         public void ShowSubScene(Scene subScene)
         {
@@ -170,6 +171,9 @@ namespace Puffin.Core
             this.SubScene.Initialize(this.systems, this.mouseProvider, this.keyboardProvider);
         }
 
+        /// <summary>
+        /// Unsets/removes the current sub-scene. The current scene resumes receiving input/updates.
+        /// </summary>
         public void HideSubScene()
         {
             if (this.SubScene != null)

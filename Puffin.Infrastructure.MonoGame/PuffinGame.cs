@@ -141,17 +141,32 @@ namespace Puffin.Infrastructure.MonoGame
         {
             this.mouseProvider.Update();
             this.keyboardProvider.Update();
-            this.currentScene?.OnUpdate(gameTime.ElapsedGameTime);
-            this.currentScene?.SubScene?.OnUpdate(gameTime.ElapsedGameTime);
+
+            // Parent scene doesn't receive updates while subscene is there.
+            if (this.currentScene?.SubScene != null)
+            {
+                this.currentScene?.SubScene?.OnUpdate(gameTime.ElapsedGameTime);
+            }
+            else
+            {
+                this.currentScene?.OnUpdate(gameTime.ElapsedGameTime);
+            }
+
             base.Update(gameTime);
         }
 
         /// <summary>Overridden from MonoGame, please ignore.</summary>
         protected override void Draw(GameTime gameTime)
         {
-            // TODO: pass in <= 150ms increments if too much time elapsed
-            this.currentScene?.OnDraw(gameTime.ElapsedGameTime);
-            this.currentScene?.SubScene?.OnDraw(gameTime.ElapsedGameTime);
+            // Parent scene doesn't receive draw calls while subscene is there.
+            if (this.currentScene?.SubScene != null)
+            {
+                this.currentScene?.SubScene?.OnDraw(gameTime.ElapsedGameTime);
+            }
+            else
+            {
+                this.currentScene?.OnDraw(gameTime.ElapsedGameTime);
+            }
             base.Draw(gameTime);
         }
     }
