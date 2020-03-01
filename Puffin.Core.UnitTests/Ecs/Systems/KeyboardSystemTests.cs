@@ -12,12 +12,7 @@ namespace Puffin.Core.UnitTests.Ecs
     [TestFixture]
     public class KeyboardSystemTests
     {
-        [TearDown]
-        public void ResetDependencyInjectionBindings()
-        {
-            DependencyInjection.Reset();
-        }
-
+        
         [Test]
         public void OnActionPressedInvokesCallbackOnEntitiesWithKeyboardComponents()
         {
@@ -25,10 +20,9 @@ namespace Puffin.Core.UnitTests.Ecs
 
             // Not used directly, just needs a binding
             var provider = new Mock<IKeyboardProvider>();
-            DependencyInjection.Kernel.Bind<IKeyboardProvider>().ToConstant(provider.Object);
 
             var eventBus = new EventBus();
-            var system = new KeyboardSystem(provider.Object);
+            var system = new KeyboardSystem(eventBus, provider.Object);
 
             var isCalled = false;
             var entity = new Entity().Keyboard((e) => isCalled = true);
@@ -49,10 +43,9 @@ namespace Puffin.Core.UnitTests.Ecs
 
             // Not used directly, just needs a binding
             var provider = new Mock<IKeyboardProvider>();
-            DependencyInjection.Kernel.Bind<IKeyboardProvider>().ToConstant(provider.Object);
 
             var eventBus = new EventBus();
-            var system = new KeyboardSystem(provider.Object);
+            var system = new KeyboardSystem(eventBus, provider.Object);
 
             var isCalled = false;
             var entity = new Entity().Keyboard(null, (e) => isCalled = true);
@@ -73,10 +66,9 @@ namespace Puffin.Core.UnitTests.Ecs
 
             // Not used directly, just needs a binding
             var provider = new Mock<IKeyboardProvider>();
-            DependencyInjection.Kernel.Bind<IKeyboardProvider>().ToConstant(provider.Object);
 
             var eventBus = new EventBus();
-            var system = new KeyboardSystem(provider.Object);
+            var system = new KeyboardSystem(eventBus, provider.Object);
 
             var isCalled = false;
             var entity = new Entity().Keyboard((e) => isCalled = true);
@@ -96,8 +88,7 @@ namespace Puffin.Core.UnitTests.Ecs
             // Arrange
             var eventBus = new EventBus();
             var provider = new Mock<IKeyboardProvider>();
-            DependencyInjection.Kernel.Bind<IKeyboardProvider>().ToConstant(provider.Object);
-            var system = new KeyboardSystem(provider.Object);
+            var system = new KeyboardSystem(eventBus, provider.Object);
 
             var numCalls = 0;
             var entity = new Entity().Keyboard(onActionDown: (e) => numCalls++);

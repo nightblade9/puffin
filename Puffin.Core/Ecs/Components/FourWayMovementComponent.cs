@@ -26,18 +26,18 @@ namespace Puffin.Core.Ecs.Components
             var vx = 0;
             var vy = 0;
 
-            if (Scene.LatestInstance.IsActionDown(PuffinAction.Up))
+            if (this.Parent.Scene.IsActionDown(PuffinAction.Up))
             {
                 vy = -1;
-            } else if (Scene.LatestInstance.IsActionDown(PuffinAction.Down))
+            } else if (this.Parent.Scene.IsActionDown(PuffinAction.Down))
             {
                 vy = 1;
             }
 
-            if (Scene.LatestInstance.IsActionDown(PuffinAction.Left))
+            if (this.Parent.Scene.IsActionDown(PuffinAction.Left))
             {
                 vx = -1;
-            } else if (Scene.LatestInstance.IsActionDown(PuffinAction.Right))
+            } else if (this.Parent.Scene.IsActionDown(PuffinAction.Right))
             {
                 vx = 1;
             }

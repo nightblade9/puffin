@@ -9,15 +9,6 @@ namespace Puffin.Core.UnitTests.Events
     public class EventBusTests
     {
         [Test]
-        public void LatestInstanceGetsLatestInstance()
-        {
-            var b1 = new EventBus();
-            var b2 = new EventBus();
-
-            Assert.That(EventBus.LatestInstance, Is.EqualTo(b2));
-        }
-
-        [Test]
         public void BroadcastTriggersSubscribedCallbacksWithData()
         {
             // Arrange

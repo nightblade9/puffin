@@ -13,11 +13,11 @@ namespace Puffin.Core.Ecs.Systems
         // Keep a list of keys when they're pressed-down and remove when released
         private readonly List<Enum> keysDown = new List<Enum>();
         
-        public KeyboardSystem(IKeyboardProvider keyboardProvider)
+        public KeyboardSystem(EventBus eventBus, IKeyboardProvider keyboardProvider)
         {
             this.keyboardProvider = keyboardProvider;
-            EventBus.LatestInstance.Subscribe(EventBusSignal.ActionPressed, this.OnActionPressed);
-            EventBus.LatestInstance.Subscribe(EventBusSignal.ActionReleased, this.OnActionReleased);
+            eventBus.Subscribe(EventBusSignal.ActionPressed, this.OnActionPressed);
+            eventBus.Subscribe(EventBusSignal.ActionReleased, this.OnActionReleased);
         }
 
         public void OnAddEntity(Entity entity)

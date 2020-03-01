@@ -20,6 +20,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
     {
         public static MonoGameDrawingSurface LatestInstance { get; private set; }
 
+        private readonly EventBus eventBus;
         private readonly SpriteFont defaultFont;
 
         private IList<Entity> entities = new List<Entity>();
@@ -52,9 +53,10 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             return new Color(red, green, blue, 255);
         }
 
-        public MonoGameDrawingSurface(GraphicsDevice graphics, SpriteBatch spriteBatch)
+        public MonoGameDrawingSurface(EventBus eventBus, GraphicsDevice graphics, SpriteBatch spriteBatch)
         {
             MonoGameDrawingSurface.LatestInstance = this;
+            this.eventBus = eventBus;
 
             whiteRectangle = new Texture2D(graphics, 1, 1);
             whiteRectangle.SetData(new[] { Color.White });
@@ -63,7 +65,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             this.spriteBatch = spriteBatch;
             this.defaultFont = this.LoadFont("OpenSans", 24);
 
-            EventBus.LatestInstance.Subscribe(EventBusSignal.LabelFontChanged, (data) =>
+            this.eventBus.Subscribe(EventBusSignal.LabelFontChanged, (data) =>
             {
                 var component = data as TextLabelComponent;
                 var key = $"{component.FontName} {component.FontSize}";
@@ -215,7 +217,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             {
                 var spriteComponent = entity.Get<SpriteComponent>();
                 var texture = this.LoadImage(spriteComponent.FileName);
-                var monoGameSprite = new MonoGameSprite(spriteComponent, texture);
+                var monoGameSprite = new MonoGameSprite(this.eventBus, spriteComponent, texture);
                 entitySprites[entity] = monoGameSprite;
             }
         }

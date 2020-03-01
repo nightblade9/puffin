@@ -38,10 +38,12 @@ namespace Puffin.Core.Ecs
 
         // If true, this entity is drawn above/after everything else, and ignores the camera.
         internal readonly bool IsUiElement = false;
+        internal List<Action<float>> OnUpdateActions = new List<Action<float>>();
+
+        internal Scene Scene { get; set; }
 
         private Dictionary<Type, Component> components = new Dictionary<Type, Component>();
 
-        internal List<Action<float>> OnUpdateActions = new List<Action<float>>();
 
         /// <summary>
         /// Creates a new entity.

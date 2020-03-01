@@ -12,12 +12,7 @@ namespace Puffin.Core.UnitTests
     [TestFixture]
     public class MovementSystemTests
     {
-        [TearDown]
-        public void ResetDependencyInjectionBindings()
-        {
-            DependencyInjection.Reset();
-        }
-        
+                
         
         [Test]
         public void OnUpdateCallsOnUpdateOnFourWayComponents()
@@ -29,16 +24,16 @@ namespace Puffin.Core.UnitTests
             // Depends on default mapping for PuffinGame.
             // Arrange
             var provider = new Mock<IKeyboardProvider>();
-            DependencyInjection.Kernel.Bind<IKeyboardProvider>().ToConstant(provider.Object);
             provider.Setup(p => p.IsActionDown(PuffinAction.Up)).Returns(true);
             provider.Setup(p => p.IsActionDown(PuffinAction.Right)).Returns(true);
 
             var e1 = new Entity().FourWayMovement(100);
             var e2 = new Entity().Sprite("flower.png");
             
-            new Scene().Initialize(new ISystem[] { new Mock<DrawingSystem>().Object }, null, provider.Object);
+            var scene = new Scene();
+            scene.Initialize(new ISystem[] { new Mock<DrawingSystem>().Object }, null, provider.Object);
 
-            var system = new MovementSystem();
+            var system = new MovementSystem(scene);
             system.OnAddEntity(e1);
             system.OnAddEntity(e2);
 
@@ -60,12 +55,11 @@ namespace Puffin.Core.UnitTests
         public void OnRemoveRemovesEntity()
         {
             var provider = new Mock<IKeyboardProvider>();
-            DependencyInjection.Kernel.Bind<IKeyboardProvider>().ToConstant(provider.Object);
             provider.Setup(p => p.IsActionDown(PuffinAction.Up)).Returns(true);
             provider.Setup(p => p.IsActionDown(PuffinAction.Right)).Returns(true);
 
             var e = new Entity().FourWayMovement(100);
-            var system = new MovementSystem();
+            var system = new MovementSystem(new Scene());
             system.OnAddEntity(e);
             system.OnUpdate(TimeSpan.FromSeconds(1));
             var expectedPosition = new Tuple<float, float>(e.X, e.Y);
@@ -120,7 +114,7 @@ namespace Puffin.Core.UnitTests
 
             scene.Add(drone);
 
-            var system = new MovementSystem();
+            var system = new MovementSystem(scene);
             system.OnAddEntity(drone);
 
             // Act
@@ -137,11 +131,10 @@ namespace Puffin.Core.UnitTests
             var scene = new Scene();
 
             var keyboardProvider = new Mock<IKeyboardProvider>();
-            DependencyInjection.Kernel.Bind<IKeyboardProvider>().ToConstant(keyboardProvider.Object);
             keyboardProvider.Setup(p => p.IsActionDown(PuffinAction.Down)).Returns(true);
             keyboardProvider.Setup(p => p.IsActionDown(PuffinAction.Right)).Returns(true);
             
-            var system = new MovementSystem();
+            var system = new MovementSystem(scene);
             scene.Initialize(new ISystem[] { new DrawingSystem(), system }, null, keyboardProvider.Object);
 
             var player = new Entity().FourWayMovement(100).Collide(30, 30, slideOnCollide);
@@ -175,11 +168,10 @@ namespace Puffin.Core.UnitTests
             var scene = new Scene();
 
             var keyboardProvider = new Mock<IKeyboardProvider>();
-            DependencyInjection.Kernel.Bind<IKeyboardProvider>().ToConstant(keyboardProvider.Object);
             keyboardProvider.Setup(p => p.IsActionDown(PuffinAction.Down)).Returns(true);
             keyboardProvider.Setup(p => p.IsActionDown(PuffinAction.Right)).Returns(true);
             
-            var system = new MovementSystem();
+            var system = new MovementSystem(scene);
             scene.Initialize(new ISystem[] { new DrawingSystem(), system }, null, keyboardProvider.Object);
 
             var player = new Entity().FourWayMovement(100).Collide(40, 40, slideOnCollide);
@@ -212,11 +204,10 @@ namespace Puffin.Core.UnitTests
             var scene = new Scene();
 
             var keyboardProvider = new Mock<IKeyboardProvider>();
-            DependencyInjection.Kernel.Bind<IKeyboardProvider>().ToConstant(keyboardProvider.Object);
             keyboardProvider.Setup(p => p.IsActionDown(PuffinAction.Down)).Returns(true);
             keyboardProvider.Setup(p => p.IsActionDown(PuffinAction.Right)).Returns(true);
             
-            var system = new MovementSystem();
+            var system = new MovementSystem(scene);
             scene.Initialize(new ISystem[] { new DrawingSystem(), system }, null, keyboardProvider.Object);
 
             var player = new Entity().FourWayMovement(100).Collide(30, 30, true, -10, -10);
@@ -256,17 +247,16 @@ namespace Puffin.Core.UnitTests
             }
 
             var keyboardProvider = new Mock<IKeyboardProvider>();
-            DependencyInjection.Kernel.Bind<IKeyboardProvider>().ToConstant(keyboardProvider.Object);
             keyboardProvider.Setup(p => p.IsActionDown(PuffinAction.Up)).Returns(true);
             keyboardProvider.Setup(p => p.IsActionDown(PuffinAction.Left)).Returns(true);
             
-            var system = new MovementSystem();
-            var drawingSystem = new DrawingSystem(new Mock<IDrawingSurface>().Object);
-            
             var scene = new Scene();
+            var system = new MovementSystem(scene);
+            var drawingSystem = new DrawingSystem(new Mock<IDrawingSurface>().Object);
+
             scene.Initialize(new ISystem[] { drawingSystem, system }, null, keyboardProvider.Object);
             scene.Add(tileMap);
-
+            
             var player = new Entity().Collide(32, 32, true)
                 .FourWayMovement(100)
                 .Move(40, 32); // just left of the top-left non-wall tile
@@ -303,7 +293,7 @@ namespace Puffin.Core.UnitTests
             (int xVelocity, int yVelocity) = ((int)(xDirection * 10), (int)(yDirection * 10));
 
             // Arrange. Note that BOX moves into DRONE.
-            new Scene();
+            var scene = new Scene();
             var box = new Entity().Move(100, 100).Velocity(xVelocity, yVelocity)
             .Collide(boxWidth, boxHeight, (e, s) => {
                 actualEntity = e;
@@ -312,7 +302,7 @@ namespace Puffin.Core.UnitTests
 
             var drone = new Entity().Collide(droneWidth, dronerHeight, true).Move((int)(box.X - xVelocity), (int)(box.Y - yVelocity));
 
-            var system = new MovementSystem();
+            var system = new MovementSystem(scene);
             system.OnAddEntity(box);
             system.OnAddEntity(drone);
 

@@ -12,10 +12,10 @@ namespace Puffin.Core.Ecs.Systems
         private readonly IMouseProvider provider;
         private readonly List<Entity> entities = new List<Entity>();
         
-        public MouseSystem()
+        public MouseSystem(EventBus eventBus, IMouseProvider mouseProvider)
         {
-            this.provider = DependencyInjection.Kernel.Get<IMouseProvider>();            
-            EventBus.LatestInstance.Subscribe(EventBusSignal.MouseClicked, this.OnMouseClicked);
+            this.provider = mouseProvider;
+            eventBus.Subscribe(EventBusSignal.MouseClicked, this.OnMouseClicked);
         }
 
         public void OnAddEntity(Entity entity)

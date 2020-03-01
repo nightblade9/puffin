@@ -14,6 +14,12 @@ namespace Puffin.Infrastructure.MonoGame.IO
     class MonoGameMouseProvider : IMouseProvider
     {
         private MouseState previousState;
+        private readonly EventBus eventBus;
+
+        public MonoGameMouseProvider(EventBus eventBus)
+        {
+            this.eventBus = eventBus;
+        }
 
         public Tuple<int, int> MouseCoordinates
         {
@@ -39,7 +45,7 @@ namespace Puffin.Infrastructure.MonoGame.IO
 
             if (mouseState.LeftButton == ButtonState.Pressed && previousState.LeftButton != ButtonState.Pressed)
             {
-                EventBus.LatestInstance.Broadcast(EventBusSignal.MouseClicked, null);
+                this.eventBus.Broadcast(EventBusSignal.MouseClicked, null);
             }
 
             this.previousState = mouseState;

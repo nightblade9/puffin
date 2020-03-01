@@ -10,7 +10,7 @@ using Ninject;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using System;
-
+using Puffin.Core.Events;
 
 namespace Puffin.Infrastructure.MonoGame
 {
@@ -60,12 +60,6 @@ namespace Puffin.Infrastructure.MonoGame
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
-            DependencyInjection.Kernel.Bind<IMouseProvider>().To<MonoGameMouseProvider>().InSingletonScope();
-            this.mouseProvider = DependencyInjection.Kernel.Get<IMouseProvider>();
-
-            DependencyInjection.Kernel.Bind<IKeyboardProvider>().To<MonoGameKeyboardProvider>().InSingletonScope();
-            this.keyboardProvider = DependencyInjection.Kernel.Get<IKeyboardProvider>();
-
             this.graphics.PreferredBackBufferWidth = gameWidth;
             this.graphics.PreferredBackBufferHeight = gameHeight;
         }
@@ -76,17 +70,21 @@ namespace Puffin.Infrastructure.MonoGame
         public void ShowScene(Scene s)
         {
             this.currentScene?.Dispose();
+            var eventBus = new EventBus();
+
+            this.mouseProvider = new MonoGameMouseProvider(eventBus);
+            this.keyboardProvider = new MonoGameKeyboardProvider(eventBus);
             
-            var drawingSurface = new MonoGameDrawingSurface(this.GraphicsDevice, spriteBatch);
+            var drawingSurface = new MonoGameDrawingSurface(eventBus, this.GraphicsDevice, spriteBatch);
 
             var systems = new ISystem[]
             {
-                new MovementSystem(),
+                new MovementSystem(s),
                 new OverlapSystem(),
                 new MouseOverlapSystem(this.mouseProvider),
-                new MouseSystem(),
-                new KeyboardSystem(this.keyboardProvider),
-                new AudioSystem(new MonoGameAudioPlayer()),
+                new MouseSystem(eventBus, this.mouseProvider),
+                new KeyboardSystem(eventBus, this.keyboardProvider),
+                new AudioSystem(new MonoGameAudioPlayer(eventBus)),
                 new DrawingSystem(drawingSurface),
             };
 

@@ -8,6 +8,12 @@ namespace Puffin.Core.Ecs.Systems
     {
         private IList<Entity> entities = new List<Entity>();
         private IList<Entity> collidables = new List<Entity>();
+        private Scene scene;
+
+        public MovementSystem(Scene scene)
+        {
+            this.scene = scene;
+        }
 
         public void OnAddEntity(Entity entity)
         {
@@ -74,7 +80,7 @@ namespace Puffin.Core.Ecs.Systems
                 {
                     var entityCollision = entity.Get<CollisionComponent>();
                     // See if the entity collided with any solid tiles.
-                    var tileMaps = Scene.LatestInstance.TileMaps;
+                    var tileMaps = this.scene.TileMaps;
 
                     foreach (var tileMap in tileMaps)
                     {

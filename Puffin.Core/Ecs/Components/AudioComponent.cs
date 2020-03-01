@@ -23,7 +23,7 @@ namespace Puffin.Core.Ecs.Components
         public void Play(float pitch = 1.0f)
         {
             this.Pitch = pitch;
-            EventBus.LatestInstance.Broadcast(EventBusSignal.PlayAudio, this);
+            this.Parent.Scene.EventBus.Broadcast(EventBusSignal.PlayAudio, this);
         }
     }
 }

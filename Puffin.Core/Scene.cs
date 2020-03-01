@@ -16,8 +16,6 @@ namespace Puffin.Core
     /// </summary>
     public class Scene : IDisposable
     {
-        internal static Scene LatestInstance { get; private set; }
-
         /// <summary>
         /// The last recorded FPS (frames per second). This is the number of draw calls per second.
         /// This value updates approximately every second.
@@ -48,6 +46,7 @@ namespace Puffin.Core
         internal List<TileMap> TileMaps = new List<TileMap>();
         internal bool CalledReady = false;
         internal Scene SubScene; // the one and only sub-scene we can show
+        internal EventBus EventBus = new EventBus();
 
         // Break update calls that have long elapsed times into chunks of this many milliseconds.
         private readonly float MAX_UPDATE_INTERVAL_SECONDS = 0.150f;
@@ -73,11 +72,9 @@ namespace Puffin.Core
         /// </summary>
         public Scene()
         {
-            Scene.LatestInstance = this;
-            
-            EventBus.LatestInstance.Subscribe(EventBusSignal.MouseClicked, (o) => this.OnMouseClick?.Invoke());
-            EventBus.LatestInstance.Subscribe(EventBusSignal.ActionPressed, (o) => this.OnActionPressed?.Invoke(o as Enum));
-            EventBus.LatestInstance.Subscribe(EventBusSignal.ActionReleased, (o) => this.OnActionReleased?.Invoke(o as Enum));
+            this.EventBus.Subscribe(EventBusSignal.MouseClicked, (o) => this.OnMouseClick?.Invoke());
+            this.EventBus.Subscribe(EventBusSignal.ActionPressed, (o) => this.OnActionPressed?.Invoke(o as Enum));
+            this.EventBus.Subscribe(EventBusSignal.ActionReleased, (o) => this.OnActionReleased?.Invoke(o as Enum));
         }
 
         /// <summary>
@@ -86,6 +83,7 @@ namespace Puffin.Core
         public void Add(Entity entity)
         {
             this.entities.Add(entity);
+            entity.Scene = this;
             
             // if initialized, notify systems
             if (this.systems.Length > 0)
@@ -150,9 +148,9 @@ namespace Puffin.Core
         /// </summary>
         public virtual void Ready()
         {
-            EventBus.LatestInstance.Subscribe(EventBusSignal.MouseClicked, (o) => this.OnMouseClick?.Invoke());
-            EventBus.LatestInstance.Subscribe(EventBusSignal.ActionPressed, (o) => this.OnActionPressed?.Invoke(o as Enum));
-            EventBus.LatestInstance.Subscribe(EventBusSignal.ActionReleased, (o) => this.OnActionReleased?.Invoke(o as Enum));
+            this.EventBus.Subscribe(EventBusSignal.MouseClicked, (o) => this.OnMouseClick?.Invoke());
+            this.EventBus.Subscribe(EventBusSignal.ActionPressed, (o) => this.OnActionPressed?.Invoke(o as Enum));
+            this.EventBus.Subscribe(EventBusSignal.ActionReleased, (o) => this.OnActionReleased?.Invoke(o as Enum));
         }
 
         public void TweenPosition(Entity entity, Tuple<float, float> startPosition, Tuple<float, float> endPosition, float durationSeconds, Action onTweenComplete)
@@ -188,10 +186,7 @@ namespace Puffin.Core
         /// </summary>
         public void Dispose()
         {
-            EventBus.LatestInstance?.Dispose();
-
-            // Reset EventBus.LatestIntance
-            new EventBus();
+            this.EventBus?.Dispose();
         }
 
         // "Macro" method, deliver updates in chunks of <= 150ms (MAX_UPDATE_INTERVAL_MILLISECONDS).

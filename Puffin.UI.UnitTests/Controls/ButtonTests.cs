@@ -13,12 +13,6 @@ namespace Puffin.UI.UnitTests.Controls
     [TestFixture]
     public class ButtonTests
     {
-        [TearDown]
-        public void ResetDependencyInjection()
-        {
-            DependencyInjection.Reset();
-        }
-
         [Test]
         public void ButtonConstructorSetsSpriteTextAndMouseComponents()
         {
@@ -27,11 +21,10 @@ namespace Puffin.UI.UnitTests.Controls
             var mouseProvider = new Mock<IMouseProvider>();
             // Returns coordinates within the sprite (currently 128x48)
             mouseProvider.Setup(m => m.MouseCoordinates).Returns(new System.Tuple<int, int>(17, 32));
-            DependencyInjection.Kernel.Bind<IMouseProvider>().ToConstant(mouseProvider.Object);
 
             var clicked = false;
             var button = new Button("click me!", () => clicked = true);
-            var mouseSystem = new MouseSystem();
+            var mouseSystem = new MouseSystem(eventBus, mouseProvider.Object);
             mouseSystem.OnAddEntity(button);
 
             // Act

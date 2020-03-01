@@ -11,12 +11,7 @@ namespace Puffin.Core.UnitTests.Ecs
     [TestFixture]
     public class MouseSystemTests
     {
-        [TearDown]
-        public void ResetDependencyInjectionBindings()
-        {
-            DependencyInjection.Reset();
-        }
-
+        
         [TestCase(-10, 3)]
         [TestCase(31, 3)]
         [TestCase(100, -5)]
@@ -31,12 +26,11 @@ namespace Puffin.Core.UnitTests.Ecs
         {
             // Arrange
             var mouseProvider = new Mock<IMouseProvider>();
-            DependencyInjection.Kernel.Bind<IMouseProvider>().ToConstant(mouseProvider.Object);
 
             var eventBus = new EventBus();
             var callbackFired = false;
             var entity = new Entity().Move(20, 10).Mouse(() => callbackFired = true, 32, 32);
-            var system = new MouseSystem();
+            var system = new MouseSystem(eventBus, mouseProvider.Object);
             system.OnAddEntity(entity);
             mouseProvider.Setup(m => m.MouseCoordinates).Returns(new Tuple<int, int>(clickedX, clickedY));
 
@@ -52,13 +46,12 @@ namespace Puffin.Core.UnitTests.Ecs
         {
             // Arrange
             var mouseProvider = new Mock<IMouseProvider>();
-            DependencyInjection.Kernel.Bind<IMouseProvider>().ToConstant(mouseProvider.Object);
 
             var eventBus = new EventBus();
             var callbackFired = false;
             var entity = new Entity().Move(77, 88).Mouse(() => callbackFired = true, 32, 32);
             mouseProvider.Setup(m => m.MouseCoordinates).Returns(new Tuple<int, int>(90, 90));
-            var system = new MouseSystem();
+            var system = new MouseSystem(eventBus, mouseProvider.Object);
             system.OnAddEntity(entity);
 
             // Act
@@ -73,13 +66,12 @@ namespace Puffin.Core.UnitTests.Ecs
         {
             // Arrange
             var mouseProvider = new Mock<IMouseProvider>();
-            DependencyInjection.Kernel.Bind<IMouseProvider>().ToConstant(mouseProvider.Object);
 
             var eventBus = new EventBus();
             var callbackFired = false;
             var entity = new Entity().Move(77, 88).Mouse(() => callbackFired = true, 32, 32);
             mouseProvider.Setup(m => m.MouseCoordinates).Returns(new Tuple<int, int>(90, 90));
-            var system = new MouseSystem();
+            var system = new MouseSystem(eventBus, mouseProvider.Object);
             system.OnAddEntity(entity);
 
             // Act

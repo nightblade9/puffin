@@ -13,12 +13,7 @@ namespace Puffin.Core.UnitTests.Ecs
     [TestFixture]
     public class EntityExtensionsTests
     {
-        [TearDown]
-        public void ResetDependencyInjectionBindings()
-        {
-            DependencyInjection.Reset();
-        }
-
+        
         [Test]
         public void MoveSetsEntityCoordinates()
         {
@@ -73,7 +68,6 @@ namespace Puffin.Core.UnitTests.Ecs
         public void MouseSetsMouseComponent()
         {
             var provider = new Mock<IMouseProvider>();
-            DependencyInjection.Kernel.Bind<IMouseProvider>().ToConstant(provider.Object);
 
             var e = new Entity();
             Assert.That(e.Get<MouseComponent>(), Is.Null);
@@ -105,7 +99,6 @@ namespace Puffin.Core.UnitTests.Ecs
         {
             // Depends on default mapping for PuffinGame.
             var provider = new Mock<IKeyboardProvider>();
-            DependencyInjection.Kernel.Bind<IKeyboardProvider>().ToConstant(provider.Object);
 
             var e = new Entity();
             e.FourWayMovement(210);

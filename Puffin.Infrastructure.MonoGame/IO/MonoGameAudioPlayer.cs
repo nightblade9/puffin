@@ -13,9 +13,9 @@ namespace Puffin.Infrastructure.MonoGame
         private List<Entity> entities = new List<Entity>();
         private IDictionary<AudioComponent, SoundEffect> entitySounds = new Dictionary<AudioComponent, SoundEffect>();
 
-        public MonoGameAudioPlayer()
+        public MonoGameAudioPlayer(EventBus eventBus)
         {
-            EventBus.LatestInstance.Subscribe(EventBusSignal.PlayAudio, this.Play);
+            eventBus.Subscribe(EventBusSignal.PlayAudio, this.Play);
         }
 
         public void AddEntity(Entity entity)

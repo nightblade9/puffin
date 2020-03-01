@@ -11,15 +11,12 @@ namespace Puffin.Core.Events
     /// </summary>
     public class EventBus : IDisposable
     {
-        /// <summary>Returns the latest instance of the event bus. Showing a new scene creates a new event-bus.</summary>
-        public static EventBus LatestInstance { get; private set; } = new EventBus();
-
         // event name => callbacks. Each callback has an optional parameter (data).
         private IDictionary<Enum, List<Action<object>>> subscribers = new Dictionary<Enum, List<Action<object>>>();
 
         public EventBus()
         {
-            LatestInstance = this;
+            ;
         }
 
         /// <summary>

@@ -13,6 +13,12 @@ namespace Puffin.Infrastructure.MonoGame.IO
     internal class MonoGameKeyboardProvider : IKeyboardProvider
     {
         private List<Enum> keysDown = new List<Enum>();
+        private EventBus eventBus;
+
+        public MonoGameKeyboardProvider(EventBus eventBus)
+        {
+            this.eventBus = eventBus;
+        }
 
         // Used for simple checks in the scene for key-presses.
         public bool IsActionDown(Enum action)
@@ -43,12 +49,12 @@ namespace Puffin.Infrastructure.MonoGame.IO
                 {
                     if (keyboard.IsKeyDown(key) && !keysDown.Contains(key))
                     {
-                        EventBus.LatestInstance.Broadcast(EventBusSignal.ActionPressed, gameAction);
+                        this.eventBus.Broadcast(EventBusSignal.ActionPressed, gameAction);
                         keysDown.Add(key);
                     }
                     else if (!keyboard.IsKeyDown(key) && keysDown.Contains(key))
                     {
-                        EventBus.LatestInstance.Broadcast(EventBusSignal.ActionReleased, gameAction);
+                        this.eventBus.Broadcast(EventBusSignal.ActionReleased, gameAction);
                         keysDown.Remove(key);
                     }
                 }   

@@ -13,12 +13,6 @@ namespace Puffin.Core.UnitTests
     [TestFixture]
     public class SceneTests
     {
-        [TearDown]
-        public void ResetDependencyInjection()
-        {
-            DependencyInjection.Reset();
-        }
-
         [Test]
         public void InitializeThrowsIfDrawingSystemIsMissing()
         {

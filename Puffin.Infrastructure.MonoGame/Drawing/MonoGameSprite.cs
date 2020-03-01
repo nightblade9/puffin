@@ -12,7 +12,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
         public Texture2D Texture { get; private set; }
         public Rectangle Region { get; private set; }
 
-        public MonoGameSprite(SpriteComponent sprite, Texture2D texture)
+        public MonoGameSprite(EventBus eventBus, SpriteComponent sprite, Texture2D texture)
         {
             this.Texture = texture;
 
@@ -21,7 +21,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             {
                 // Spritesheet
                 this.Region = new Rectangle(sprite.FrameIndex * sprite.FrameWidth, 0, sprite.FrameWidth, sprite.FrameHeight);
-                EventBus.LatestInstance.Subscribe(EventBusSignal.SpriteSheetFrameIndexChanged, (s) =>
+                eventBus.Subscribe(EventBusSignal.SpriteSheetFrameIndexChanged, (s) =>
                 {
                     if (s == sprite)
                     {
