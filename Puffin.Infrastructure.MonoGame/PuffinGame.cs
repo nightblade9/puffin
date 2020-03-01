@@ -70,21 +70,20 @@ namespace Puffin.Infrastructure.MonoGame
         public void ShowScene(Scene s)
         {
             this.currentScene?.Dispose();
-            var eventBus = new EventBus();
 
-            this.mouseProvider = new MonoGameMouseProvider(eventBus);
-            this.keyboardProvider = new MonoGameKeyboardProvider(eventBus);
+            this.mouseProvider = new MonoGameMouseProvider(s.EventBus);
+            this.keyboardProvider = new MonoGameKeyboardProvider(s.EventBus);
             
-            var drawingSurface = new MonoGameDrawingSurface(eventBus, this.GraphicsDevice, spriteBatch);
+            var drawingSurface = new MonoGameDrawingSurface(s.EventBus, this.GraphicsDevice, spriteBatch);
 
             var systems = new ISystem[]
             {
                 new MovementSystem(s),
                 new OverlapSystem(),
                 new MouseOverlapSystem(this.mouseProvider),
-                new MouseSystem(eventBus, this.mouseProvider),
-                new KeyboardSystem(eventBus, this.keyboardProvider),
-                new AudioSystem(new MonoGameAudioPlayer(eventBus)),
+                new MouseSystem(s.EventBus, this.mouseProvider),
+                new KeyboardSystem(s.EventBus, this.keyboardProvider),
+                new AudioSystem(new MonoGameAudioPlayer(s.EventBus)),
                 new DrawingSystem(drawingSurface),
             };
 
