@@ -393,6 +393,53 @@ namespace Puffin.Core.UnitTests
             Assert.That(isCalled, Is.True);
         }
 
+        [Test]
+        public void ShowSubSceneSetsSubScene()
+        {
+            var drawingSystem = new Mock<DrawingSystem>().Object;
+            var scene = new Scene();
+            scene.Initialize(new ISystem[] { drawingSystem }, null, null);
+            var subScene = new Scene();
+            
+            scene.ShowSubScene(subScene);
+            
+            Assert.That(scene.SubScene, Is.EqualTo(subScene));
+        }
+
+        [Test]
+        public void ShowSubSceneUnsetsPreviousSubScene()
+        {
+            // Assert
+            var drawingSystem = new Mock<DrawingSystem>().Object;
+            var scene = new Scene();
+            scene.Initialize(new ISystem[] { drawingSystem }, null, null);
+            var wrongSubScene = new Scene();
+            var rightSubScene = new Scene();
+            
+            // Act
+            scene.ShowSubScene(wrongSubScene);
+            scene.ShowSubScene(rightSubScene);
+            
+            // Assert
+            Assert.That(scene.SubScene, Is.EqualTo(rightSubScene));
+        }
+
+        [Test]
+        public void HideSubSceneRemovesSubScene()
+        {
+            var drawingSystem = new Mock<DrawingSystem>().Object;
+            var scene = new Scene();
+            scene.Initialize(new ISystem[] { drawingSystem }, null, null);
+            var subScene = new Scene();
+            scene.ShowSubScene(subScene);
+            
+            // Act
+            scene.HideSubScene();
+            
+            // Assert
+            Assert.That(scene.SubScene, Is.Null);
+        }
+
         enum FakeAction
         {
             Reset,

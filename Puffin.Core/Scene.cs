@@ -47,6 +47,7 @@ namespace Puffin.Core
         // Drawn in the order added. Internal because needed for collision resolution.
         internal List<TileMap> TileMaps = new List<TileMap>();
         internal bool CalledReady = false;
+        internal Scene SubScene; // the one and only sub-scene we can show
 
         // Break update calls that have long elapsed times into chunks of this many milliseconds.
         private readonly float MAX_UPDATE_INTERVAL_SECONDS = 0.150f;
@@ -158,6 +159,25 @@ namespace Puffin.Core
         {
             this.tweenManager.TweenPosition(entity, startPosition, endPosition, durationSeconds, onTweenComplete);
         }
+
+        /// <summary>
+        /// Sets/displays a sub-scene. Call again with null to unset/remove.
+        /// </sumamary>
+        public void ShowSubScene(Scene subScene)
+        {
+            this.HideSubScene();
+            this.SubScene = subScene;
+            this.SubScene.Initialize(this.systems, this.mouseProvider, this.keyboardProvider);
+        }
+
+        public void HideSubScene()
+        {
+            if (this.SubScene != null)
+            {
+                this.SubScene.Deinitialize();
+                this.SubScene = null;
+            }
+        }
         
         /// <summary>
         /// Disposes the scene and the event bus (so entities can be garbage-collected).
@@ -238,6 +258,28 @@ namespace Puffin.Core
                 CalledReady = true;
                 this.Ready();
             }
+        }
+
+        private void Deinitialize()
+        {
+            // Called by subscenes when they die
+            foreach (var entity in this.entities)
+            {
+                foreach (var system in this.systems)
+                {
+                    system.OnRemoveEntity(entity);
+                }
+            }
+
+            // Initialize tilemaps' sprites
+            foreach (var tileMap in this.TileMaps)
+            {
+                this.drawingSystem.OnRemoveTileMap(tileMap);
+            }
+
+            this.systems = new ISystem[0];
+            this.entities.Clear();
+            this.TileMaps.Clear();
         }
 
         // "Micro" method, called with chunks of time <= MAX_UPDATE_INTERVAL_MILLISECONDS

@@ -118,6 +118,7 @@ namespace Puffin.Infrastructure.MonoGame
         virtual protected void Ready()
         {
             this.currentScene?.Ready();
+            this.currentScene?.SubScene?.Ready();
         }
 
         /// <summary>Overridden from MonoGame, please ignore.</summary>
@@ -141,6 +142,7 @@ namespace Puffin.Infrastructure.MonoGame
             this.mouseProvider.Update();
             this.keyboardProvider.Update();
             this.currentScene?.OnUpdate(gameTime.ElapsedGameTime);
+            this.currentScene?.SubScene?.OnUpdate(gameTime.ElapsedGameTime);
             base.Update(gameTime);
         }
 
@@ -149,6 +151,7 @@ namespace Puffin.Infrastructure.MonoGame
         {
             // TODO: pass in <= 150ms increments if too much time elapsed
             this.currentScene?.OnDraw(gameTime.ElapsedGameTime);
+            this.currentScene?.SubScene?.OnDraw(gameTime.ElapsedGameTime);
             base.Draw(gameTime);
         }
     }
