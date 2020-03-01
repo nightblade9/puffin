@@ -17,9 +17,13 @@ namespace Puffin.Core.UnitTests.Ecs.Components
             Assert.Throws<ArgumentException>(() => component.FrameIndex = index);
         }
 
+        [Test]
         public void FrameIndexSetterThrowsIfFrameWidthOrHeightArentSet()
         {
-            var component = new SpriteComponent(new Entity(), "galaxy.png");
+            var scene = new Scene();
+            var entity = new Entity();
+            scene.Add(entity);
+            var component = new SpriteComponent(entity, "galaxy.png");
             Assert.Throws<ArgumentException>(() => component.FrameIndex = 2323);
         }
 
@@ -27,7 +31,10 @@ namespace Puffin.Core.UnitTests.Ecs.Components
         public void FrameIndexChangeBroadcastsFrameIndexChangedEvent()
         {
             // Arrange
-            var component = new SpriteComponent(new Entity(), "galaxy.png", 32, 32);
+            var scene = new Scene();
+            var entity = new Entity();
+            scene.Add(entity);
+            var component = new SpriteComponent(entity, "galaxy.png", 32, 32);
             var called = false;
             new EventBus().Subscribe(EventBusSignal.SpriteSheetFrameIndexChanged, (data) => called = true);
 
