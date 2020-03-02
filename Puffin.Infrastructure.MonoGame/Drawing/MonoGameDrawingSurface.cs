@@ -67,15 +67,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
 
             this.eventBus.Subscribe(EventBusSignal.LabelFontChanged, (data) =>
             {
-                var component = data as TextLabelComponent;
-                var key = $"{component.FontName} {component.FontSize}";
-                if (!allFonts.ContainsKey(key))
-                {
-                    var font = this.LoadFont(component.FontName, component.FontSize);
-                    this.allFonts[key] = font;
-                }
-
-                this.entityFonts[component.Parent] = this.allFonts[key];
+                this.LoadFontFor(data as TextLabelComponent);
             });
         }
 
@@ -89,7 +81,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             if (entity.Get<TextLabelComponent>() != null && !this.entities.Contains(entity))
             {
                 this.entities.Add(entity);
-                // TODO: load the appropriate font or specify the default font
+                this.LoadFontFor(entity.Get<TextLabelComponent>());
             }
             if (entity.Get<ColourComponent>() != null && !this.entities.Contains(entity))
             {
@@ -306,6 +298,18 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
                     }
                 }
             }
+        }
+
+        private void LoadFontFor(TextLabelComponent component)
+        {
+            var key = $"{component.FontName} {component.FontSize}";
+            if (!allFonts.ContainsKey(key))
+            {
+                var font = this.LoadFont(component.FontName, component.FontSize);
+                this.allFonts[key] = font;
+            }
+
+            this.entityFonts[component.Parent] = this.allFonts[key];
         }
     }
 }

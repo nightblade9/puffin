@@ -17,7 +17,7 @@ namespace Puffin.Core.Ecs.Components
             get { return this.fontName; }
             set {
                 this.fontName = value;
-                this.Parent.Scene.EventBus.Broadcast(EventBusSignal.LabelFontChanged, this);
+                this.Parent.Scene?.EventBus.Broadcast(EventBusSignal.LabelFontChanged, this);
             }
         }
 
@@ -32,7 +32,7 @@ namespace Puffin.Core.Ecs.Components
                     throw new ArgumentException("Font size must be positive");
                 }
                 this.fontSize = value;
-                this.Parent.Scene.EventBus.Broadcast(EventBusSignal.LabelFontChanged, this);
+                this.Parent.Scene?.EventBus.Broadcast(EventBusSignal.LabelFontChanged, this);
             }
         }
 
@@ -51,7 +51,7 @@ namespace Puffin.Core.Ecs.Components
             this.Text = text;
             this.FontName = fontName;
             this.FontSize = fontSize;
-            this.Parent.Scene.EventBus.Broadcast(EventBusSignal.LabelFontChanged, this);
+            this.Parent.Scene?.EventBus.Broadcast(EventBusSignal.LabelFontChanged, this);
             this.OffsetX = offsetX;
             this.OffsetY = offsetY;
         }
