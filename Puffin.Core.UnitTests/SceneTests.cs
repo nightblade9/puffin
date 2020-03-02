@@ -112,7 +112,9 @@ namespace Puffin.Core.UnitTests
             var audioSystem = new Mock<ISystem>();
             
             var scene = new Scene();
-            scene.Initialize(new ISystem[] { drawingSystem.Object, audioSystem.Object }, null, null);
+            scene.Initialize(
+                new ISystem[] { drawingSystem.Object, audioSystem.Object },
+                new Mock<IMouseProvider>().Object, new Mock<IKeyboardProvider>().Object);
             var elapsed = TimeSpan.FromSeconds(10);
 
             // Act
@@ -173,13 +175,15 @@ namespace Puffin.Core.UnitTests
         public void OnMouseClickFiresOnMouseClickEvent()
         {
             // Arrange
-            var eventBus = new EventBus();
             var called = false;
             var scene = new Scene();
+            scene.Initialize(
+                new ISystem[] { new DrawingSystem() },
+                new Mock<IMouseProvider>().Object, new Mock<IKeyboardProvider>().Object);
             scene.OnMouseClick = () => called = true;
 
             // Act
-            eventBus.Broadcast(EventBusSignal.MouseClicked);
+            scene.EventBus.Broadcast(EventBusSignal.MouseClicked);
 
             // Assert
             Assert.That(called, Is.True);
@@ -189,11 +193,14 @@ namespace Puffin.Core.UnitTests
         public void OnActionPressedFiresOnActionPressedEvent()
         {
             // Arrange
-            var eventBus = new EventBus();
             var called = false;
             var actual = FakeAction.Reset;
 
             var scene = new Scene();
+            scene.Initialize(
+                new ISystem[] { new DrawingSystem() },
+                new Mock<IMouseProvider>().Object, new Mock<IKeyboardProvider>().Object);
+
             scene.OnActionPressed = (e) =>
             {
                 called = true;
@@ -201,7 +208,7 @@ namespace Puffin.Core.UnitTests
             };
 
             // Act
-            eventBus.Broadcast(EventBusSignal.ActionPressed, FakeAction.Clear);
+            scene.EventBus.Broadcast(EventBusSignal.ActionPressed, FakeAction.Clear);
             
             // Assert
             Assert.That(called, Is.True);
@@ -212,11 +219,14 @@ namespace Puffin.Core.UnitTests
         public void OnActionReleasedFiresOnActionPressedEvent()
         {
             // Arrange
-            var eventBus = new EventBus();
             var called = false;
             var actual = FakeAction.Reset;
 
             var scene = new Scene();
+            scene.Initialize(
+                new ISystem[] { new DrawingSystem() },
+                new Mock<IMouseProvider>().Object, new Mock<IKeyboardProvider>().Object);
+                
             scene.OnActionReleased = (e) =>
             {
                 called = true;
@@ -224,7 +234,7 @@ namespace Puffin.Core.UnitTests
             };
 
             // Act
-            eventBus.Broadcast(EventBusSignal.ActionReleased, FakeAction.Clear);
+            scene.EventBus.Broadcast(EventBusSignal.ActionReleased, FakeAction.Clear);
             
             // Assert
             Assert.That(called, Is.True);
@@ -335,6 +345,9 @@ namespace Puffin.Core.UnitTests
             var e = new Entity();
             e.OnUpdate((elapsed) => totalUpdatesSeconds += elapsed);
             var scene = new Scene();
+            scene.Initialize(
+                new ISystem[] { new DrawingSystem() },
+                new Mock<IMouseProvider>().Object, new Mock<IKeyboardProvider>().Object);
             scene.Add(e);
 
             // Act
@@ -351,20 +364,20 @@ namespace Puffin.Core.UnitTests
             var keyboardProvider = new Mock<IKeyboardProvider>();
             var drawingSystem = new Mock<DrawingSystem>().Object;
             var invoked = false;
-            var eventBus = new EventBus();
 
             var scene = new Scene();
             scene.OnActionPressed = (data) => invoked = true;
             scene.Initialize(new ISystem[] { drawingSystem }, null, keyboardProvider.Object);
-            eventBus.Broadcast(PuffinAction.Down);
+            scene.EventBus.Broadcast(PuffinAction.Down);
 
             // Shouldn't be called yet
             Assert.That(invoked, Is.False);
             
+            // Act
             // Call ready, which sets up event handlers
             scene.Ready();
+            scene.EventBus.Broadcast(EventBusSignal.ActionPressed);
             
-            eventBus.Broadcast(EventBusSignal.ActionPressed);
             Assert.That(invoked, Is.True);
         }
 
@@ -373,6 +386,10 @@ namespace Puffin.Core.UnitTests
         {
             // Only way to test is to see who's updated
             var scene = new Scene();
+            scene.Initialize(
+                new ISystem[] { new DrawingSystem() },
+                new Mock<IMouseProvider>().Object, new Mock<IKeyboardProvider>().Object);
+
             var e = new Entity();
             bool isCalled = false;
             scene.Add(e);

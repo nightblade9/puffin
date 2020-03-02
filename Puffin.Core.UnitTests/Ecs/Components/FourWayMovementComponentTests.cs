@@ -28,6 +28,9 @@ namespace Puffin.Core.UnitTests.Ecs
             // Depends on default action bindings
             var e = new Entity();
             var component = new FourWayMovementComponent(e, speed);
+            var scene = new Scene();
+            scene.Initialize(new ISystem[] { new DrawingSystem() }, new Mock<IMouseProvider>().Object, provider.Object);
+            scene.Add(e);
 
             // Act
             component.OnUpdate();

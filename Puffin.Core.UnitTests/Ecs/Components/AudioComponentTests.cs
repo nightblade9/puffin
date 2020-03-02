@@ -12,11 +12,13 @@ namespace Puffin.Core.UnitTests.Ecs.Components
         public void PlayTriggersEventBusAndSetsPitch()
         {
             // Arrange
+            var scene = new Scene();
             var isCalled = false;
-            var eventBus = new EventBus();
-            var audio = new AudioComponent(new Entity(), "buzz.wav");
+            var e = new Entity();
+            var audio = new AudioComponent(e, "buzz.wav");
+            scene.Add(e);
 
-            eventBus.Subscribe(EventBusSignal.PlayAudio, (data) => {
+            scene.EventBus.Subscribe(EventBusSignal.PlayAudio, (data) => {
                 isCalled = true;
                 var actual = data as AudioComponent;
                 Assert.That(actual.Pitch, Is.EqualTo(0.74f));

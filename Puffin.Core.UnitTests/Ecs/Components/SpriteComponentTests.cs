@@ -33,10 +33,12 @@ namespace Puffin.Core.UnitTests.Ecs.Components
             // Arrange
             var scene = new Scene();
             var entity = new Entity();
-            scene.Add(entity);
             var component = new SpriteComponent(entity, "galaxy.png", 32, 32);
+            entity.Set(component);
+            scene.Add(entity);
+
             var called = false;
-            new EventBus().Subscribe(EventBusSignal.SpriteSheetFrameIndexChanged, (data) => called = true);
+            scene.EventBus.Subscribe(EventBusSignal.SpriteSheetFrameIndexChanged, (data) => called = true);
 
             // Act
             component.FrameIndex = 3;

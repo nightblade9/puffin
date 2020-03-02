@@ -31,7 +31,9 @@ namespace Puffin.Core.UnitTests
             var e2 = new Entity().Sprite("flower.png");
             
             var scene = new Scene();
-            scene.Initialize(new ISystem[] { new Mock<DrawingSystem>().Object }, null, provider.Object);
+            scene.Initialize(new ISystem[] { new Mock<DrawingSystem>().Object }, new Mock<IMouseProvider>().Object, provider.Object);
+            scene.Add(e1);
+            scene.Add(e2);
 
             var system = new MovementSystem(scene);
             system.OnAddEntity(e1);
@@ -54,11 +56,14 @@ namespace Puffin.Core.UnitTests
         [Test]
         public void OnRemoveRemovesEntity()
         {
+            var scene = new Scene();
             var provider = new Mock<IKeyboardProvider>();
             provider.Setup(p => p.IsActionDown(PuffinAction.Up)).Returns(true);
             provider.Setup(p => p.IsActionDown(PuffinAction.Right)).Returns(true);
 
+            scene.Initialize(new ISystem[] { new DrawingSystem() }, new Mock<IMouseProvider>().Object, new Mock<IKeyboardProvider>().Object);
             var e = new Entity().FourWayMovement(100);
+            scene.Add(e);
             var system = new MovementSystem(new Scene());
             system.OnAddEntity(e);
             system.OnUpdate(TimeSpan.FromSeconds(1));
@@ -254,7 +259,7 @@ namespace Puffin.Core.UnitTests
             var system = new MovementSystem(scene);
             var drawingSystem = new DrawingSystem(new Mock<IDrawingSurface>().Object);
 
-            scene.Initialize(new ISystem[] { drawingSystem, system }, null, keyboardProvider.Object);
+            scene.Initialize(new ISystem[] { drawingSystem, system }, new Mock<IMouseProvider>().Object, keyboardProvider.Object);
             scene.Add(tileMap);
             
             var player = new Entity().Collide(32, 32, true)
