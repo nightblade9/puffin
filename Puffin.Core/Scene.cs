@@ -41,12 +41,12 @@ namespace Puffin.Core
         /// A scene-wide on-action-key-released handler that fires whenever a key that maps to an action is just released.
         /// </summary>
         public Action<Enum> OnActionReleased;
+        public EventBus EventBus = new EventBus();
         
         // Drawn in the order added. Internal because needed for collision resolution.
         internal List<TileMap> TileMaps = new List<TileMap>();
         internal bool CalledReady = false;
         internal Scene SubScene; // the one and only sub-scene we can show
-        internal EventBus EventBus = new EventBus();
 
         // Break update calls that have long elapsed times into chunks of this many milliseconds.
         private readonly float MAX_UPDATE_INTERVAL_SECONDS = 0.150f;
