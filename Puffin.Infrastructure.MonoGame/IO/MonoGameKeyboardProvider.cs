@@ -18,6 +18,13 @@ namespace Puffin.Infrastructure.MonoGame.IO
         public MonoGameKeyboardProvider(EventBus eventBus)
         {
             this.eventBus = eventBus;
+            // Bug: if you press and hold a key K on scene S1, and that transitions to
+            // scene S2 which also has an OnActionDown handler for K, you end up immediately
+            // invoking the key handler on S2 ... when, in fact, the user didn't do anything.
+            
+            // To fix this bug, when we initialize a new keyboard provider, note the state of
+            // the keyboard, and assume that's how it started?
+            this.Update(false);
         }
 
         // Used for simple checks in the scene for key-presses.
@@ -39,6 +46,11 @@ namespace Puffin.Infrastructure.MonoGame.IO
         
         public void Update()
         {
+            this.Update(true);
+        }
+
+        public void Update(bool triggerEvents)
+        {
             // Poll for which keys are just pressed/released, and notify appropriatley
             var keyboard = Keyboard.GetState();
             
@@ -49,13 +61,19 @@ namespace Puffin.Infrastructure.MonoGame.IO
                 {
                     if (keyboard.IsKeyDown(key) && !keysDown.Contains(key))
                     {
-                        this.eventBus.Broadcast(EventBusSignal.ActionPressed, gameAction);
                         keysDown.Add(key);
+                        if (triggerEvents)
+                        {
+                            this.eventBus.Broadcast(EventBusSignal.ActionPressed, gameAction);
+                        }
                     }
                     else if (!keyboard.IsKeyDown(key) && keysDown.Contains(key))
                     {
-                        this.eventBus.Broadcast(EventBusSignal.ActionReleased, gameAction);
                         keysDown.Remove(key);
+                        if (triggerEvents)
+                        {
+                            this.eventBus.Broadcast(EventBusSignal.ActionReleased, gameAction);
+                        }
                     }
                 }   
             }
