@@ -150,9 +150,6 @@ namespace Puffin.Core
         /// </summary>
         public virtual void Ready()
         {
-            this.EventBus.Subscribe(EventBusSignal.MouseClicked, (o) => this.OnMouseClick?.Invoke());
-            this.EventBus.Subscribe(EventBusSignal.ActionPressed, (o) => this.OnActionPressed?.Invoke(o as Enum));
-            this.EventBus.Subscribe(EventBusSignal.ActionReleased, (o) => this.OnActionReleased?.Invoke(o as Enum));
         }
 
         public void TweenPosition(Entity entity, Tuple<float, float> startPosition, Tuple<float, float> endPosition, float durationSeconds, Action onTweenComplete)
