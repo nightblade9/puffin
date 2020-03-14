@@ -78,10 +78,13 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
                 this.entities.Add(entity);
                 this.AddMonoGameSpriteFor(entity);
             }
-            if (entity.Get<TextLabelComponent>() != null && !this.entities.Contains(entity))
-            {
-                this.entities.Add(entity);
+            if (entity.Get<TextLabelComponent>() != null)
+            {                
                 this.LoadFontFor(entity.Get<TextLabelComponent>());
+                if (!this.entities.Contains(entity))
+                {
+                    this.entities.Add(entity);
+                }
             }
             if (entity.Get<ColourComponent>() != null && !this.entities.Contains(entity))
             {
@@ -104,6 +107,10 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
         {
             this.uiEntities.Add(entity);
             this.AddMonoGameSpriteFor(entity);
+            if (entity.Get<TextLabelComponent>() != null)
+            {                
+                this.LoadFontFor(entity.Get<TextLabelComponent>());
+            }           
         }
 
         public void RemoveEntity(Entity entity)
