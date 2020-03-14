@@ -11,8 +11,16 @@ namespace Puffin.Core.Events
     /// </summary>
     public class EventBus : IDisposable
     {
+        private static int nextId = 1;
+
         // event name => callbacks. Each callback has an optional parameter (data).
         private IDictionary<Enum, List<Action<object>>> subscribers = new Dictionary<Enum, List<Action<object>>>();
+        public readonly int Id;
+
+        public EventBus()
+        {
+            this.Id = nextId++;
+        }
 
         /// <summary>
         /// Broadcast a new event to all subscribers.
