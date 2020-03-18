@@ -249,7 +249,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
 
         private void DrawEntities(IList<Entity> entities)
         {
-            foreach (var entity in entities)
+            foreach (var entity in entities.ToArray())
             {
                 MonoGameSprite monoGameSprite = null;
                 this.entitySprites.TryGetValue(entity, out monoGameSprite);
