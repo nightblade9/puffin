@@ -26,6 +26,10 @@ namespace Puffin.Core.Ecs.Components
         /// </summary>
         public bool IsVisible = true;
 
+        // Actual image size, set on load
+        public int Width { get; internal set; }
+        public int Height { get; internal set; }
+
         private int frameIndex = 0;
 
         /// <summary>

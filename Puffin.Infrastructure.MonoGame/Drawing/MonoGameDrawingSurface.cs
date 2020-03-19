@@ -133,6 +133,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
         public void AddTileMap(TileMap tileMap)
         {
             this.tileMapSprites[tileMap] = LoadImage(tileMap.TileImageFile);
+            // we never set the width/height on the tilemap sprite that we loaded?
         }
 
         public void RemoveTileMap(TileMap tileMap)
@@ -219,6 +220,8 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             {
                 var spriteComponent = entity.Get<SpriteComponent>();
                 var texture = this.LoadImage(spriteComponent.FileName);
+                spriteComponent.Width = texture.Width;
+                spriteComponent.Height = texture.Height;
                 var monoGameSprite = new MonoGameSprite(this.eventBus, spriteComponent, texture);
                 entitySprites[entity] = monoGameSprite;
             }
