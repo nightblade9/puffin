@@ -10,6 +10,8 @@ namespace Puffin.Core.Tiles
     /// </summary>
     public class TileMap
     {
+        public int X { get; set; }
+        public int Y { get; set; }
         internal readonly string TileImageFile;
         internal readonly int MapWidth; // in tiles
         internal readonly int MapHeight; // in tiles
@@ -38,7 +40,6 @@ namespace Puffin.Core.Tiles
             this.TileImageFile = tileImageFile;
             this.TileWidth = tileWidth;
             this.TileHeight = tileHeight;
-
             this.tileData = new string[mapWidth, mapHeight];
         }
 

@@ -300,7 +300,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
                             var definition = tileMap.GetDefinition(tile);
                             spriteBatch.Draw(
                                 mapTexture,
-                                new Vector2(x * tileMap.TileWidth, y * tileMap.TileHeight),
+                                new Vector2(tileMap.X + (x * tileMap.TileWidth), tileMap.Y + (y * tileMap.TileHeight)),
                                 new Rectangle(definition.CellX * tileMap.TileWidth, definition.CellY * tileMap.TileHeight, tileMap.TileWidth, tileMap.TileHeight),
                                 Color.White
                             );
