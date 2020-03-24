@@ -43,14 +43,15 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
         // 1x1 white rectangle, used to draw colour components
         private readonly Texture2D whiteRectangle;
 
-        private static Color BgrToRgba(int packed)
+        // Alpha is from a ColourComponent, from 0 (invisible) to 1 (opaque).
+        private static Color BgrToRgba(int packedRgb, float alpha = 1)
         {
             // Although we ask for 0xRRGGBB, the value we get, if we pass it directly to MonoGame,
             // renders as 0xBBGGRR. So, convert.
-            int red = (packed >> 16) & 0xFF;
-            int green = (packed >> 8) & 0xFF;
-            int blue = (packed >> 0) & 0xFF;
-            return new Color(red, green, blue, 255);
+            int red = (packedRgb >> 16) & 0xFF;
+            int green = (packedRgb >> 8) & 0xFF;
+            int blue = (packedRgb >> 0) & 0xFF;
+            return new Color(red, green, blue, (int)(alpha * 255));
         }
 
         public MonoGameDrawingSurface(EventBus eventBus, GraphicsDevice graphics, SpriteBatch spriteBatch)
@@ -266,7 +267,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
                 {
                     this.spriteBatch.Draw(whiteRectangle, 
                         new Rectangle((int)entity.X + colour.OffsetX, (int)entity.Y + colour.OffsetY, colour.Width, colour.Height),
-                        BgrToRgba(colour.Colour));
+                        BgrToRgba(colour.Colour, colour.Alpha));
                 }
 
                 var text = entity.Get<TextLabelComponent>();
