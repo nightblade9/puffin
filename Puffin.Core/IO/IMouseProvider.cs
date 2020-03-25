@@ -6,5 +6,6 @@ namespace Puffin.Core.IO
     {
         void Update();
         Tuple<int, int> MouseCoordinates { get; }
+        Tuple<int, int> UiMouseCoordinates { get; }
     }
 }

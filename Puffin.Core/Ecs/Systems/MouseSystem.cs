@@ -38,13 +38,24 @@ namespace Puffin.Core.Ecs.Systems
 
         private void OnMouseClicked(object data)
         {
-            var clickedX = provider.MouseCoordinates.Item1;
-            var clickedY = provider.MouseCoordinates.Item2;
-
             // ToArray prevents concurrent modification exceptions when we remove an entity on click.
             // Note that the performance is OK, since this is in response to an event; not every frame.
             foreach (var entity in this.entities.ToArray())
             {
+                int clickedX;
+                int clickedY;
+
+                if (entity.IsUiElement)
+                {
+                    clickedX = provider.UiMouseCoordinates.Item1;
+                    clickedY = provider.UiMouseCoordinates.Item2;
+                }
+                else
+                {
+                    clickedX = provider.MouseCoordinates.Item1;
+                    clickedY = provider.MouseCoordinates.Item2;
+                }
+
                 var mouse = entity.Get<MouseComponent>();
 
                 if (clickedX >= entity.X && clickedY >= entity.Y && clickedX <= entity.X + mouse.Width && clickedY <= entity.Y + mouse.Height)

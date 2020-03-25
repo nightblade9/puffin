@@ -21,21 +21,32 @@ namespace Puffin.Infrastructure.MonoGame.IO
             this.eventBus = eventBus;
         }
 
+        // Mouse coordinates, taking into account the camera.
         public Tuple<int, int> MouseCoordinates
         {
             get
             {
-                var state = Mouse.GetState();
                 var camera = MonoGameDrawingSurface.LatestInstance.GetActiveCamera();
                 if (camera != null)
                 {
+                    var state = Mouse.GetState();
                     var coordinates = CoordinateSpaces.ScreenToWorld(new Vector2(state.X, state.Y), camera.InverseMatrix);
                     return new Tuple<int, int>((int)coordinates.X, (int)coordinates.Y);
                 }
                 else
                 {
-                    return new Tuple<int, int>(state.X, state.Y);
+                    return this.UiMouseCoordinates;
                 }
+            }
+        }
+
+        // Mouse coordinates, for UI entities (ignores camera).
+        public Tuple<int, int> UiMouseCoordinates
+        {
+            get
+            {
+                var state = Mouse.GetState();
+                return new Tuple<int, int>(state.X, state.Y);
             }
         }
 
