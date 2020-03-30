@@ -21,9 +21,10 @@ namespace Puffin.UI.UnitTests.Controls
             var mouseProvider = new Mock<IMouseProvider>();
             // Returns coordinates within the sprite (currently 128x48)
             mouseProvider.Setup(m => m.MouseCoordinates).Returns(new System.Tuple<int, int>(17, 32));
+            mouseProvider.Setup(m => m.UiMouseCoordinates).Returns(new System.Tuple<int, int>(19, 30));
 
             var clicked = false;
-            var button = new Button("click me!", () => clicked = true);
+            var button = new Button("click me!", 0, 0, () => clicked = true);
             var mouseSystem = new MouseSystem(eventBus, mouseProvider.Object);
             mouseSystem.OnAddEntity(button);
 
