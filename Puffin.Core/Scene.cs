@@ -66,6 +66,7 @@ namespace Puffin.Core
         /// The current mouse coordinates.
         /// </summary>
         public Tuple<int, int> MouseCoordinates { get { return this.mouseProvider.MouseCoordinates; }}
+        public Tuple<int, int> UiMouseCoordinates { get { return this.mouseProvider.UiMouseCoordinates; }}
 
         /// <summary>
         /// Creates a new, empty Scene instance.
