@@ -1,5 +1,6 @@
 using Puffin.Core.Ecs;
 using System;
+using System.IO;
 
 namespace Puffin.UI.Controls
 {
@@ -17,10 +18,10 @@ namespace Puffin.UI.Controls
         /// </summary>
         /// <param name="text">The text label on the button (if any).</param>
         /// <param name="onClick">The callback to trigger when the player clicks on the button.</param>
-        public Button(string text, Action onClick)
+        public Button(string text, int textXOffset, int textYOffset, Action onClick) : base(true)
         {
-            this.Sprite("Content/Puffin/UI/Button.png");
-            this.Label(text);
+            this.Sprite(Path.Combine("Content", "Puffin", "UI", "Button.png"));
+            this.Label(text, textXOffset, textYOffset);
             this.Mouse(onClick, SPRITE_WIDTH, SPRITE_HEIGHT);
         }
     }
