@@ -28,6 +28,11 @@ namespace Puffin.Core
         public int BackgroundColour = 0x000000; // black
 
         /// <summary>
+        /// The background image to render. Ignores camera, zoom, etc.
+        /// </summary>
+        public string Background { get; set; }
+
+        /// <summary>
         /// A scene-wide mouse-click handler that fires whever a mouse click event triggers (even if entities handle it).
         /// </summary>
         public Action OnMouseClick;
@@ -47,7 +52,6 @@ namespace Puffin.Core
         internal List<TileMap> TileMaps = new List<TileMap>();
         internal bool CalledReady = false;
         internal Scene SubScene; // the one and only sub-scene we can show
-        protected string Background { get; set; }
 
         // Break update calls that have long elapsed times into chunks of this many milliseconds.
         private readonly float MAX_UPDATE_INTERVAL_SECONDS = 0.150f;
