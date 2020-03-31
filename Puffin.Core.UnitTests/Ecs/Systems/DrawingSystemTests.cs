@@ -19,10 +19,10 @@ namespace Puffin.Core.UnitTests
             var system = new DrawingSystem(drawingSurface.Object);
 
             // Act
-            system.OnDraw(TimeSpan.Zero, 0);
+            system.OnDraw(TimeSpan.Zero, 0, "");
 
             // Assert
-            drawingSurface.Verify(d => d.DrawAll(0x000000, true), Times.Once());
+            drawingSurface.Verify(d => d.DrawAll(0x000000, "", true), Times.Once());
         }
 
         [Test]

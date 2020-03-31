@@ -153,7 +153,7 @@ namespace Puffin.Core.UnitTests
             scene.OnDraw(elapsed, true);
 
             // Assert
-            drawingSystem.Verify(d => d.OnDraw(elapsed, 0x000000, true), Times.Once());
+            drawingSystem.Verify(d => d.OnDraw(elapsed, 0x000000, null, true), Times.Once());
         }
 
         [Test]
