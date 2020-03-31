@@ -240,7 +240,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
         private SpriteFont LoadFont(string fileName, int fontSize)
         {
              var fontBakeResult = TtfFontBaker.Bake(
-                File.ReadAllBytes(Path.Combine("Content", $"{fileName}.ttf")), fontSize, 1024, 1024, 
+                File.ReadAllBytes(Path.Combine("Content", "Fonts", $"{fileName}.ttf")), fontSize, 1024, 1024, 
                 new[] {
                     CharacterRange.BasicLatin,
                     CharacterRange.Latin1Supplement,
