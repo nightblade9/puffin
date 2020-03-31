@@ -279,7 +279,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
                     }
 
                     var font = this.entityFonts[entity];
-                    this.spriteBatch.DrawString(font, text.Text, new Vector2(entity.X + text.OffsetX, entity.Y + text.OffsetY), Color.White);
+                    this.spriteBatch.DrawString(font, text.Text, new Vector2(entity.X + text.OffsetX, entity.Y + text.OffsetY), BgrToRgba(text.Colour));
                 }
             }
         }

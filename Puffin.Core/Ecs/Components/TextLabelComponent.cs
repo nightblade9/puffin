@@ -36,6 +36,9 @@ namespace Puffin.Core.Ecs.Components
             }
         }
 
+        /// <summary>The text colour, in the format 0xRRGGBB with hex values for each pair.</summary>
+        public int Colour { get; set; } = 0xFFFFFF;
+
         internal int OffsetX = 0;
         internal int OffsetY = 0;
 
