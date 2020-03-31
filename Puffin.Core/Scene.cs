@@ -47,6 +47,7 @@ namespace Puffin.Core
         internal List<TileMap> TileMaps = new List<TileMap>();
         internal bool CalledReady = false;
         internal Scene SubScene; // the one and only sub-scene we can show
+        protected string Background { get; set; }
 
         // Break update calls that have long elapsed times into chunks of this many milliseconds.
         private readonly float MAX_UPDATE_INTERVAL_SECONDS = 0.150f;
@@ -224,7 +225,7 @@ namespace Puffin.Core
         internal void OnDraw(TimeSpan elapsed, bool clearDisplay)
         {
             drawsSinceLastFpsCount++;
-            this.drawingSystem.OnDraw(elapsed, this.BackgroundColour, clearDisplay);
+            this.drawingSystem.OnDraw(elapsed, this.BackgroundColour, this.Background, clearDisplay);
         }
 
         // Separate from the constructor and internal because only we call it; subclasses of Scene don't need to know about this.

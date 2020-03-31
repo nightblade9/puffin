@@ -9,7 +9,7 @@ namespace Puffin.Core.Drawing
     /// </summary>
     interface IDrawingSurface
     {
-        void DrawAll(int backgroundColour, bool clearDisplay);
+        void DrawAll(int backgroundColour, string backgroundImage, bool clearDisplay);
         void AddEntity(Entity entity);
         void AddUiEntity(Entity entity);
         void RemoveEntity(Entity entity);

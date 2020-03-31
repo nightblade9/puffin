@@ -40,6 +40,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
         private readonly GraphicsDevice graphics;
         private readonly SpriteBatch spriteBatch;
 
+        private Texture2D backgroundSprite;
         // 1x1 white rectangle, used to draw colour components
         private readonly Texture2D whiteRectangle;
 
@@ -143,11 +144,22 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             this.tileMapSprites.Remove(tileMap);
         }
 
-        public void DrawAll(int backgroundColour, bool clearDisplay = true)
+        public void DrawAll(int backgroundColour, string backgroundImage = "", bool clearDisplay = true)
         {
             if (clearDisplay)
             {
                 this.graphics.Clear(BgrToRgba(backgroundColour));
+                if (!string.IsNullOrEmpty(backgroundImage) && this.backgroundSprite == null)
+                {
+                    this.backgroundSprite = LoadImage(backgroundImage);
+                }
+                
+                if (this.backgroundSprite != null)
+                {
+                    this.spriteBatch.Begin(samplerState: SamplerState.PointClamp);
+                    this.spriteBatch.Draw(this.backgroundSprite, Vector2.Zero, Color.White);
+                    this.spriteBatch.End();
+                }
             }
 
             var lastActiveCamera = this.cameras.LastOrDefault();
