@@ -9,6 +9,8 @@ namespace Puffin.Core.Ecs.Components
     public class TextLabelComponent : Component
     {
         public string Text { get; set; } = "";
+        // If non-zero, word wrapping is ENABLED.
+        internal int WordWrapWidth { get; set; } = 0;
 
         /// <summary>
         /// The filename of the font, relative to the game directory. Changing this immediately updates the font.
@@ -57,6 +59,14 @@ namespace Puffin.Core.Ecs.Components
             this.Parent.Scene?.EventBus.Broadcast(EventBusSignal.LabelFontChanged, this);
             this.OffsetX = offsetX;
             this.OffsetY = offsetY;
+        }
+
+        /// <summary>
+        /// Makes this text component wrap, at the specified width (in pixels); it breaks on newlines. Long words should be hyphenated.
+        /// </summary>
+        public void WordWrap(int wordWrapWidth)
+        {
+            this.WordWrapWidth = wordWrapWidth;
         }
     }
 }

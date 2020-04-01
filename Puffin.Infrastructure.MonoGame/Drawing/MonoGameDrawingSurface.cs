@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.IO;
 using System;
 using System.Linq;
+using System.Text;
 
 namespace Puffin.Infrastructure.MonoGame.Drawing
 {
@@ -291,9 +292,58 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
                     }
 
                     var font = this.entityFonts[entity];
-                    this.spriteBatch.DrawString(font, text.Text, new Vector2(entity.X + text.OffsetX, entity.Y + text.OffsetY), BgrToRgba(text.Colour));
+                    var wrappedText = text.WordWrapWidth > 0 ? WrapText(this.entityFonts[entity], text.Text, text.WordWrapWidth) : text.Text;
+                    this.spriteBatch.DrawString(font, wrappedText, new Vector2(entity.X + text.OffsetX, entity.Y + text.OffsetY), BgrToRgba(text.Colour));
                 }
             }
+        }
+
+        // Source: https://stackoverflow.com/a/39349224/8641842
+        private static string WrapText(SpriteFont font, string text, int maxLineWidth)
+        {
+            string[] words = text.Split(' ');
+            var sb = new StringBuilder();
+            float lineWidth = 0f;
+            float spaceWidth = font.MeasureString(" ").X;
+
+            foreach (string word in words)
+            {
+                Vector2 size = font.MeasureString(word);
+
+                if (word.Contains("\r"))
+                {
+                    lineWidth = 0f;
+                    sb.Append("\r \r" );
+                }
+
+                if (lineWidth + size.X < maxLineWidth )
+                {
+                    sb.Append(word + " ");
+                    lineWidth += size.X + spaceWidth;
+                }
+
+                else
+                {
+                    if (size.X > maxLineWidth )
+                    {
+                        if (sb.ToString() == " ")
+                        {
+                            sb.Append(WrapText(font, word.Insert(word.Length / 2, " ") + " ", maxLineWidth));
+                        }
+                        else
+                        {
+                            sb.Append("\n" + WrapText(font, word.Insert(word.Length / 2, " ") + " ", maxLineWidth));
+                        }
+                    }
+                    else
+                    {
+                        sb.Append("\n" + word + " ");
+                        lineWidth = size.X + spaceWidth;
+                    }
+                }
+            }
+
+            return sb.ToString();
         }
 
         private void DrawTileMaps()
