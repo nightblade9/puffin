@@ -9,6 +9,10 @@ namespace Puffin.Core.Ecs.Components
     public class TextLabelComponent : Component
     {
         public string Text { get; set; } = "";
+        
+        internal int OutlineColour;
+        internal int OutlineThickness = 0;
+
         // If non-zero, word wrapping is ENABLED.
         internal int WordWrapWidth { get; set; } = 0;
 
@@ -67,6 +71,21 @@ namespace Puffin.Core.Ecs.Components
         public void WordWrap(int wordWrapWidth)
         {
             this.WordWrapWidth = wordWrapWidth;
+        }
+
+        /// <summary>
+        /// Outline this text, in the specified colour, and thickness. Note that this is not a true outline; Puffin draws copies of the text
+        /// in the specified outline colour, displaced by outline thickness.
+        /// </summary>
+        public void Outline(int outlineColour, int outlineThickness)
+        {
+            if (outlineThickness <= 0)
+            {
+                throw new ArgumentException("Outline thickness must be positive.");
+            }
+            
+            this.OutlineColour = outlineColour;
+            this.OutlineThickness = outlineThickness;
         }
     }
 }

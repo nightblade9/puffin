@@ -293,6 +293,13 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
 
                     var font = this.entityFonts[entity];
                     var wrappedText = text.WordWrapWidth > 0 ? WrapText(this.entityFonts[entity], text.Text, text.WordWrapWidth) : text.Text;
+                    if (text.OutlineThickness > 0)
+                    {
+                        this.spriteBatch.DrawString(font, wrappedText, new Vector2(entity.X + text.OffsetX - text.OutlineThickness, entity.Y + text.OffsetY - text.OutlineThickness), BgrToRgba(text.OutlineColour));
+                        this.spriteBatch.DrawString(font, wrappedText, new Vector2(entity.X + text.OffsetX + text.OutlineThickness, entity.Y + text.OffsetY - text.OutlineThickness), BgrToRgba(text.OutlineColour));
+                        this.spriteBatch.DrawString(font, wrappedText, new Vector2(entity.X + text.OffsetX - text.OutlineThickness, entity.Y + text.OffsetY + text.OutlineThickness), BgrToRgba(text.OutlineColour));
+                        this.spriteBatch.DrawString(font, wrappedText, new Vector2(entity.X + text.OffsetX + text.OutlineThickness, entity.Y + text.OffsetY + text.OutlineThickness), BgrToRgba(text.OutlineColour));
+                    }
                     this.spriteBatch.DrawString(font, wrappedText, new Vector2(entity.X + text.OffsetX, entity.Y + text.OffsetY), BgrToRgba(text.Colour));
                 }
             }
