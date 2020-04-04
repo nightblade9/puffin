@@ -18,7 +18,7 @@ namespace Puffin.Core.Ecs.Components
 
         /// <summary>
         /// Plays the audio file specified in fileName` at the specified pitch.
-        /// A pitch of 1.0 is 100% (normal); -0.75 is 25% lower, 1.25 is 25% higher.
+        /// A pitch of 0 is 100% (normal); -1 plays at half the pitch, 1 plays at double pitch.
         /// </summary>
         public void Play(float pitch = 1.0f)
         {
