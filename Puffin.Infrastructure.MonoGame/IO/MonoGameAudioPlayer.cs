@@ -59,8 +59,8 @@ namespace Puffin.Infrastructure.MonoGame
             
             var soundInstance = soundEffect.CreateInstance();
             soundInstance.Pitch = audioComponent.Pitch;
+            soundInstance.Volume =  audioComponent.Volume;
             //soundInstance.IsLooped = loop;
-            //soundInstance.Volume =  volume;
             soundInstance.Play();
         }
     }

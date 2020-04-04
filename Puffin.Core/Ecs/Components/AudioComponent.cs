@@ -1,3 +1,4 @@
+using System;
 using Puffin.Core.Events;
 
 namespace Puffin.Core.Ecs.Components
@@ -9,7 +10,8 @@ namespace Puffin.Core.Ecs.Components
     public class AudioComponent : Component
     {
         internal readonly string FileName;
-        internal float Pitch = 1.0f;
+        internal float Pitch = 0;
+        internal float Volume = 0;
 
         public AudioComponent(Entity parent, string fileName) : base(parent)
         {
@@ -17,11 +19,23 @@ namespace Puffin.Core.Ecs.Components
         }
 
         /// <summary>
-        /// Plays the audio file specified in fileName` at the specified pitch.
-        /// A pitch of 0 is 100% (normal); -1 plays at half the pitch, 1 plays at double pitch.
+        /// Plays the audio file specified in fileName` at the specified volume and pitch.
+        /// <param name="volume">A volume of 1.0 is 100%; a volume of 0 is 0% (completely muted).
+        /// <param name="pitch">A pitch of 0 is 100% (normal); -1 plays at half the pitch, 1 plays at double pitch.</param>
         /// </summary>
-        public void Play(float pitch = 1.0f)
+        public void Play(float volume = 1.0f, float pitch = 0f)
         {
+            if (volume < 0 || volume > 1)
+            {
+                throw new ArgumentException("Volume must be in the range [0..1]");
+            }
+
+            if (pitch < -1 || pitch > 1)
+            {
+                throw new ArgumentException("Pitch must be in the range [-1..1].");
+            }
+
+            this.Volume = volume;
             this.Pitch = pitch;
             this.Parent.Scene.EventBus.Broadcast(EventBusSignal.PlayAudio, this);
         }
