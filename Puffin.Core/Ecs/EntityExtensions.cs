@@ -119,6 +119,10 @@ namespace Puffin.Core.Ecs
         /// </summary>
         public static Entity Mouse(this Entity entity, Action onClick, int width, int height)
         {
+            if (width <= 0 || height <= 0)
+            {
+                throw new ArgumentException("Width and height must be positive and non-zero.");
+            }
             entity.Set(new MouseComponent(entity, onClick, width, height));
             return entity;
         }
@@ -130,6 +134,10 @@ namespace Puffin.Core.Ecs
         /// <param name="height">The height of the overlap area.</param>
         public static Entity Overlap(this Entity entity, int width, int height)
         {
+            if (width <= 0 || height <= 0)
+            {
+                throw new ArgumentException("Width and height must be positive and non-zero.");
+            }
             entity.Set(new OverlapComponent(entity, width, height));
             return entity;
         }
@@ -143,6 +151,10 @@ namespace Puffin.Core.Ecs
         /// <param name="offsetY">The y-offset of the overlap area, relative to the origin of the entity.</param>
         public static Entity Overlap(this Entity entity, int width, int height, int offsetX, int offsetY)
         {
+            if (width <= 0 || height <= 0)
+            {
+                throw new ArgumentException("Width and height must be positive and non-zero.");
+            }
             entity.Set(new OverlapComponent(entity, width, height, offsetX, offsetY));
             return entity;
         }
@@ -157,6 +169,10 @@ namespace Puffin.Core.Ecs
         /// <param name="onStartOverlap">The callback to invoke when an entity with an overlap component overlaps this one.</param>
         public static Entity Overlap(this Entity entity, int width, int height, int offsetX, int offsetY, Action<Entity> onStartOverlap)
         {
+            if (width <= 0 || height <= 0)
+            {
+                throw new ArgumentException("Width and height must be positive and non-zero.");
+            }
             entity.Set(new OverlapComponent(entity, width, height, offsetX, offsetY, onStartOverlap));
             return entity;
         }
@@ -172,6 +188,10 @@ namespace Puffin.Core.Ecs
         /// <param name="onStopOverlap">The callback to invoke when an entity with an overlap component stops overlapping this one.</param>
         public static Entity Overlap(this Entity entity, int width, int height, int offsetX, int offsetY, Action<Entity> onStartOverlap, Action<Entity> onStopOverlap)
         {
+            if (width <= 0 || height <= 0)
+            {
+                throw new ArgumentException("Width and height must be positive and non-zero.");
+            }
             entity.Set(new OverlapComponent(entity, width, height, offsetX, offsetY, onStartOverlap, onStopOverlap));
             return entity;
         }
@@ -186,6 +206,10 @@ namespace Puffin.Core.Ecs
         /// <param name="onMouseExit">The callback to invoke when the mouse exits the region occupied by this component.</param>
         public static Entity Overlap(this Entity entity, int width, int height, int offsetX, int offsetY, Action onMouseEnter, Action onMouseExit = null)
         {
+            if (width <= 0 || height <= 0)
+            {
+                throw new ArgumentException("Width and height must be positive and non-zero.");
+            }
             entity.Set(new OverlapComponent(entity, width, height, offsetX, offsetY, null, null, onMouseEnter, onMouseExit));
             return entity;
         }
