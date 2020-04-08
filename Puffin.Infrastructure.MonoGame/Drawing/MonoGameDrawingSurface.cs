@@ -66,7 +66,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
 
             this.graphics = graphics;
             this.spriteBatch = spriteBatch;
-            this.defaultFont = this.LoadFont("OpenSans", 24);
+            this.defaultFont = this.LoadFont(PuffinGame.LatestInstance.DefaultFont, 24);
 
             this.eventBus.Subscribe(EventBusSignal.LabelFontChanged, (data) =>
             {
@@ -385,7 +385,8 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             var key = $"{component.FontName} {component.FontSize}";
             if (!allFonts.ContainsKey(key))
             {
-                var font = this.LoadFont(component.FontName, component.FontSize);
+                var fontName = string.IsNullOrWhiteSpace(component.FontName) ? PuffinGame.LatestInstance.DefaultFont : component.FontName;
+                var font = this.LoadFont(fontName, component.FontSize);
                 this.allFonts[key] = font;
             }
 

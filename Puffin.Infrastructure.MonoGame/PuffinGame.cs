@@ -32,6 +32,8 @@ namespace Puffin.Infrastructure.MonoGame
             { PuffinAction.Left, new List<Keys>() { Keys.A, Keys.Left } },
             { PuffinAction.Right, new List<Keys>() { Keys.D, Keys.Right } },
         };
+        
+        public string DefaultFont = "OpenSans";
 
         internal static PuffinGame LatestInstance { get; private set; }
 
