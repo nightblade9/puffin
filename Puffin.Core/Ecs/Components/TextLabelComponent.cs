@@ -76,10 +76,11 @@ namespace Puffin.Core.Ecs.Components
         /// <summary>
         /// Outline this text, in the specified colour, and thickness. Note that this is not a true outline; Puffin draws copies of the text
         /// in the specified outline colour, displaced by outline thickness.
+        /// Specify a thickness of 0 to remove the outline.
         /// </summary>
         public void Outline(int outlineColour, int outlineThickness)
         {
-            if (outlineThickness <= 0)
+            if (outlineThickness < 0)
             {
                 throw new ArgumentException("Outline thickness must be positive.");
             }
