@@ -177,7 +177,7 @@ namespace Puffin.Core
         /// <summary>
         /// Unsets/removes the current sub-scene. The current scene resumes receiving input/updates.
         /// </summary>
-        public void HideSubScene()
+        public virtual void HideSubScene()
         {
             if (this.SubScene != null)
             {
