@@ -40,6 +40,23 @@ namespace Puffin.Infrastructure.MonoGame
         internal bool ShowCollisionAreas { get { return this.showCollisionAreas; } }
 
         /// <summary>
+        /// Sets the game to run in full-screen mode (or not).
+        /// This can be toggled at any time in-game.
+        /// </summary>
+        protected bool IsFullScreen
+        {
+            get
+            { 
+                return this.graphics.IsFullScreen;
+            }
+            set
+            {
+                this.graphics.IsFullScreen = value;
+                this.graphics.ApplyChanges();
+            }
+        }
+
+        /// <summary>
         /// Set this to true to render collision areas as red transparent rectangles.
         /// </summary>
         protected bool showCollisionAreas = false;
