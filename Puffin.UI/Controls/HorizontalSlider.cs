@@ -10,7 +10,7 @@ namespace Puffin.UI.Controls
         private readonly int maxValue;
         private readonly int width;
         private int value = 0;
-        private const int BAR_THICKNESS = 8;
+        private const int BAR_THICKNESS = 12;
 
         /// <summary>
         /// Creates a horizontal slider of the specified size, at the specified position.
