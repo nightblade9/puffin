@@ -29,6 +29,8 @@ namespace Puffin.Core.Ecs.Components
         // Actual image size, set on load
         public int Width { get; internal set; }
         public int Height { get; internal set; }
+        public int OffsetX { get; set; }
+        public int OffsetY { get; set; }
 
         private int frameIndex = 0;
 
