@@ -99,6 +99,11 @@ namespace Puffin.Core
                     system.OnAddEntity(entity);
                 }
             }
+
+            if (this.CalledReady)
+            {
+                entity.OnReady();
+            }
         }
 
         /// <summary>
@@ -156,6 +161,10 @@ namespace Puffin.Core
         /// </summary>
         public virtual void Ready()
         {
+            foreach (var entity in this.entities)
+            {
+                entity.OnReady();
+            }
         }
 
         public void TweenPosition(Entity entity, Tuple<float, float> startPosition, Tuple<float, float> endPosition, float durationSeconds, Action onTweenComplete)

@@ -101,6 +101,11 @@ namespace Puffin.Core.Ecs
             this.OnUpdateActions.Add(action);
         }
 
+        public virtual void OnReady()
+        {
+
+        }
+
         private void Remove(Type componentType)
         {
             if (this.components.ContainsKey(componentType))
