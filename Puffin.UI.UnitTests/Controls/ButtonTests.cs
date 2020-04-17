@@ -24,7 +24,7 @@ namespace Puffin.UI.UnitTests.Controls
             mouseProvider.Setup(m => m.UiMouseCoordinates).Returns(new System.Tuple<int, int>(19, 30));
 
             var clicked = false;
-            var button = new Button("button.png", "click me!", 0, 0, () => clicked = true);
+            var button = new Button(true, "button.png", "click me!", 0, 0, () => clicked = true);
             var mouseSystem = new MouseSystem(eventBus, mouseProvider.Object);
             mouseSystem.OnAddEntity(button);
 

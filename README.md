@@ -75,7 +75,7 @@ Puffin includes a separate `Puffin.UI` assembly which includes UI controls. Note
 A button with an image, text label, and on-click event handler. To create:
 
 ```csharp
-var button = new Button("Click me!", () => this.points++).Move(16, 16);
+var button = new Button(true, "Click me!", () => this.points++).Move(16, 16);
 ```
 
 This creates a button with the caption `Click me!` Clicking the button increments the local variable `points` by one. The button sits at `(16, 16)` on screen.
