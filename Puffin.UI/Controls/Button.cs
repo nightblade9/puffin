@@ -18,7 +18,7 @@ namespace Puffin.UI.Controls
         /// </summary>
         /// <param name="text">The text label on the button (if any).</param>
         /// <param name="onClick">The callback to trigger when the player clicks on the button.</param>
-        public Button(bool isUiElement, string imagePath, string text, int textXOffset, int textYOffset, Action onClick)
+        public Button(bool isUiElement, string imagePath, string text, int textXOffset, int textYOffset, Action<int, int> onClick)
         : base(isUiElement)
         {
             this.Sprite(imagePath);

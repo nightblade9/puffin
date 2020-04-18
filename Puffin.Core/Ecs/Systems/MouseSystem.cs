@@ -60,7 +60,7 @@ namespace Puffin.Core.Ecs.Systems
 
                 if (clickedX >= entity.X && clickedY >= entity.Y && clickedX <= entity.X + mouse.Width && clickedY <= entity.Y + mouse.Height)
                 {
-                    mouse.OnClickCallback.Invoke();
+                    mouse.OnClickCallback.Invoke(clickedX, clickedY);
                 }
             }
         }

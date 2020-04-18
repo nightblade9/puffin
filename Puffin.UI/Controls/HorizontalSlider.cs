@@ -36,7 +36,13 @@ namespace Puffin.UI.Controls
                 throw new ArgumentException("Maximum value must be more than minimum value");
             }
 
-            this.Sprite(handleImageFileName).Colour(barColourRgb, width, BAR_THICKNESS);
+            this.Sprite(handleImageFileName).Colour(barColourRgb, width, BAR_THICKNESS)
+            .Mouse((x, y) =>
+            {
+                float pixelsPerValue = this.width * 1f / this.maxValue;
+                this.value = (int)Math.Round((x - this.X) / pixelsPerValue);
+                this.RepositionHandle();
+            }, width, BAR_THICKNESS);
             
             this.minValue = minValue;
             this.maxValue = maxValue;

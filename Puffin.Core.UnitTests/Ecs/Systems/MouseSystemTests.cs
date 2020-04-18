@@ -29,7 +29,7 @@ namespace Puffin.Core.UnitTests.Ecs
 
             var eventBus = new EventBus();
             var callbackFired = false;
-            var entity = new Entity().Move(20, 10).Mouse(() => callbackFired = true, 32, 32);
+            var entity = new Entity().Move(20, 10).Mouse((x, y) => callbackFired = true, 32, 32);
             var system = new MouseSystem(eventBus, mouseProvider.Object);
             system.OnAddEntity(entity);
             mouseProvider.Setup(m => m.MouseCoordinates).Returns(new Tuple<int, int>(clickedX, clickedY));
@@ -46,11 +46,18 @@ namespace Puffin.Core.UnitTests.Ecs
         {
             // Arrange
             var mouseProvider = new Mock<IMouseProvider>();
+            const int clickedX = 90;
+            const int clickedY = 91;
 
             var eventBus = new EventBus();
             var callbackFired = false;
-            var entity = new Entity().Move(77, 88).Mouse(() => callbackFired = true, 32, 32);
-            mouseProvider.Setup(m => m.MouseCoordinates).Returns(new Tuple<int, int>(90, 90));
+            var entity = new Entity().Move(77, 88).Mouse((x, y) => 
+            {
+                Assert.That(x, Is.EqualTo(clickedX));
+                Assert.That(y, Is.EqualTo(clickedY));
+                callbackFired = true;
+            }, 32, 32);
+            mouseProvider.Setup(m => m.MouseCoordinates).Returns(new Tuple<int, int>(clickedX, clickedY));
             var system = new MouseSystem(eventBus, mouseProvider.Object);
             system.OnAddEntity(entity);
 
@@ -69,7 +76,7 @@ namespace Puffin.Core.UnitTests.Ecs
 
             var eventBus = new EventBus();
             var callbackFired = false;
-            var entity = new Entity().Move(77, 88).Mouse(() => callbackFired = true, 32, 32);
+            var entity = new Entity().Move(77, 88).Mouse((x, y) => callbackFired = true, 32, 32);
             mouseProvider.Setup(m => m.MouseCoordinates).Returns(new Tuple<int, int>(90, 90));
             var system = new MouseSystem(eventBus, mouseProvider.Object);
             system.OnAddEntity(entity);
