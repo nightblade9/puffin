@@ -31,6 +31,11 @@ namespace Puffin.Core.Ecs
         /// </summary>
         public float VelocityY { get; set; }
 
+        /// <summary>
+        /// A method that's called when the entity is ready (added to the scene + sprite loaded)
+        /// </summary>
+        internal Action OnReadyAction;
+
         // Used by the collision system; when set, the entity "intends" to move to this location.
         // Pending, of course, successful collision resolution checks (if it has a collision component).
         internal float IntendedMoveDeltaX = 0;
@@ -101,9 +106,9 @@ namespace Puffin.Core.Ecs
             this.OnUpdateActions.Add(action);
         }
 
-        public virtual void OnReady()
+        public void OnReady(Action action)
         {
-
+            this.OnReadyAction = action;
         }
 
         private void Remove(Type componentType)

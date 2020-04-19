@@ -451,6 +451,49 @@ namespace Puffin.Core.UnitTests
             Assert.That(scene.SubScene, Is.Null);
         }
 
+        [Test]
+        public void ReadyCallsReadyOnEntities()
+        {
+            // Arrange
+            bool isE1Ready = false;
+            bool isE2Ready = false;
+            var e1 = new Entity();
+            e1.OnReady(() => isE1Ready = true);
+            var e2 = new Entity();
+            e2.OnReady(() => isE2Ready = true);
+
+            var scene = new Scene();
+            scene.Add(e1);
+            scene.Add(e2);
+
+            // Act
+            scene.Ready();
+
+            // Assert
+            Assert.That(isE1Ready, Is.True);
+            Assert.That(isE2Ready, Is.True);
+        }
+
+        [Test]
+        public void AddEntityCallsReadyIfSceneIsReady()
+        {
+            // Arrange
+            var scene = new Scene();
+            scene.Initialize(
+                new ISystem[] { new Mock<DrawingSystem>().Object },
+                new Mock<IMouseProvider>().Object, new Mock<IKeyboardProvider>().Object);
+
+            var isReadyCalled = false;
+            var e1 = new Entity();
+            e1.OnReady(() => isReadyCalled = true);
+
+            // Act
+            scene.Add(e1);
+
+            // Assert.
+            Assert.That(isReadyCalled, Is.True);
+        }
+
         enum FakeAction
         {
             Reset,

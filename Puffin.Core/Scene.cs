@@ -108,7 +108,7 @@ namespace Puffin.Core
 
             if (this.CalledReady)
             {
-                entity.OnReady();
+                entity.OnReadyAction?.Invoke();
             }
         }
 
@@ -169,7 +169,7 @@ namespace Puffin.Core
         {
             foreach (var entity in this.entities)
             {
-                entity.OnReady();
+                entity.OnReadyAction?.Invoke();
             }
         }
 

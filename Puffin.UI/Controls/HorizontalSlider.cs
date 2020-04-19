@@ -96,22 +96,20 @@ namespace Puffin.UI.Controls
                     }
                 }
             });
+
+            this.OnReady(() => {
+                var colour = this.Get<ColourComponent>();
+                var sprite = this.Get<SpriteComponent>();
+
+                colour.OffsetX = sprite.Width / 2;
+                colour.OffsetY = (sprite.Height - BAR_THICKNESS) / 2;
+                this.RepositionHandle();
+            });
             
             this.minValue = minValue;
             this.maxValue = maxValue;
             this.value = this.minValue;
             this.width = width;
-        }
-
-        override public void OnReady()
-        {
-            base.OnReady();
-            var colour = this.Get<ColourComponent>();
-            var sprite = this.Get<SpriteComponent>();
-
-            colour.OffsetX = sprite.Width / 2;
-            colour.OffsetY = (sprite.Height - BAR_THICKNESS) / 2;
-            this.RepositionHandle();
         }
 
         public int Value
