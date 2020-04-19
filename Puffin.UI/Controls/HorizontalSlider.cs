@@ -70,12 +70,12 @@ namespace Puffin.UI.Controls
                     else
                     {
                         // Move slider to selected location
-                        this.updateValueTo(x);
+                        this.UpdateValueTo(x);
                     }
                 }
                 else
                 {
-                    this.updateValueTo(x);
+                    this.UpdateValueTo(x);
                 }
             },
             () => {
@@ -92,7 +92,7 @@ namespace Puffin.UI.Controls
 
                     if (mouseX >= this.X && mouseX <= this.X + this.Get<ColourComponent>().Width)
                     {
-                        this.updateValueTo(mouseX);
+                        this.UpdateValueTo(mouseX);
                     }
                 }
             });
@@ -130,7 +130,7 @@ namespace Puffin.UI.Controls
             }
         }
 
-        private void updateValueTo(int mouseX)
+        private void UpdateValueTo(int mouseX)
         {
             float pixelsPerValue = this.width * 1f / this.maxValue;
             this.Value = (int)Math.Round((mouseX - this.X) / pixelsPerValue);
