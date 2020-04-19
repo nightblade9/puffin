@@ -45,7 +45,13 @@ namespace Puffin.Core.Ecs
         internal readonly bool IsUiElement = false;
         internal List<Action<float>> OnUpdateActions = new List<Action<float>>();
 
-        internal Scene Scene { get; set; }
+        protected internal Scene Scene { get; set; }
+        
+        /// <summary>
+        /// Draw the colour entity under the sprite entity, instead of the usual (sprite first).
+        /// Useful for those corner cases where we draw sprite over colour (eg. slider controls).
+        /// </summary>
+        protected internal bool DrawColourBeforeSprite { get; set; } 
 
         private Dictionary<Type, Component> components = new Dictionary<Type, Component>();
 

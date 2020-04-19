@@ -268,21 +268,15 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
         {
             foreach (var entity in entities.ToArray())
             {
-                MonoGameSprite monoGameSprite = null;
-                this.entitySprites.TryGetValue(entity, out monoGameSprite);
-                var sprite = entity.Get<SpriteComponent>();
-
-                if (monoGameSprite != null && sprite.IsVisible)
+                if (entity.DrawColourBeforeSprite)
                 {
-                    this.spriteBatch.Draw(monoGameSprite.Texture, new Vector2(entity.X + sprite.OffsetX, entity.Y + sprite.OffsetY), monoGameSprite.Region, Color.White);
+                    this.DrawColour(entity);
+                    this.DrawSprite(entity);
                 }
-
-                var colour = entity.Get<ColourComponent>();
-                if (colour != null)
+                else
                 {
-                    this.spriteBatch.Draw(whiteRectangle, 
-                        new Rectangle((int)entity.X + colour.OffsetX, (int)entity.Y + colour.OffsetY, colour.Width, colour.Height),
-                        BgrToRgba(colour.Colour, colour.Alpha));
+                    this.DrawSprite(entity);
+                    this.DrawColour(entity);
                 }
 
                 var text = entity.Get<TextLabelComponent>();
@@ -353,6 +347,29 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             }
 
             return sb.ToString();
+        }
+
+        private void DrawSprite(Entity entity)
+        {
+            MonoGameSprite monoGameSprite = null;
+            this.entitySprites.TryGetValue(entity, out monoGameSprite);
+            var sprite = entity.Get<SpriteComponent>();
+
+            if (monoGameSprite != null && sprite.IsVisible)
+            {
+                this.spriteBatch.Draw(monoGameSprite.Texture, new Vector2(entity.X + sprite.OffsetX, entity.Y + sprite.OffsetY), monoGameSprite.Region, Color.White);
+            }
+        }
+
+        private void DrawColour(Entity entity)
+        {
+            var colour = entity.Get<ColourComponent>();
+            if (colour != null)
+            {
+                this.spriteBatch.Draw(whiteRectangle, 
+                    new Rectangle((int)entity.X + colour.OffsetX, (int)entity.Y + colour.OffsetY, colour.Width, colour.Height),
+                    BgrToRgba(colour.Colour, colour.Alpha));
+            }
         }
 
         private void DrawTileMaps()

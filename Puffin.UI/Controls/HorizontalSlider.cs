@@ -25,6 +25,8 @@ namespace Puffin.UI.Controls
         public HorizontalSlider(bool isUiElement, string handleImageFileName, int barColourRgb, int width, int minValue, int maxValue)
         : base(isUiElement)
         {
+            this.DrawColourBeforeSprite = true;
+            
             if (string.IsNullOrWhiteSpace(handleImageFileName))
             {
                 throw new ArgumentException(nameof(handleImageFileName));
@@ -38,7 +40,7 @@ namespace Puffin.UI.Controls
                 throw new ArgumentException("Maximum value must be more than minimum value");
             }
 
-            this.Sprite(handleImageFileName).Colour(barColourRgb, width, BAR_THICKNESS)
+            this.Colour(barColourRgb, width, BAR_THICKNESS).Sprite(handleImageFileName)
             // Can't get sprite height, dunno how big it is ... just buffer.
             .Mouse(width + 100, BAR_THICKNESS + 50, (x, y) =>
             {
@@ -87,7 +89,7 @@ namespace Puffin.UI.Controls
             {
                 if (this.isDraggingHandle)
                 {
-                    var scene = Scene.LatestInstance;
+                    var scene = this.Scene;
                     var coordinates = isUiElement ? scene.UiMouseCoordinates : scene.MouseCoordinates;
                     var mouseX = coordinates.Item1;
 
