@@ -17,11 +17,6 @@ namespace Puffin.Core
     public class Scene : IDisposable
     {
         /// <summary>
-        /// The latest scene, or subscene, shown.
-        /// </summary>
-        public static Scene LatestInstance { get; private set; }
-
-        /// <summary>
         /// The last recorded FPS (frames per second). This is the number of draw calls per second.
         /// This value updates approximately every second.
         /// </summary>
@@ -83,7 +78,6 @@ namespace Puffin.Core
         /// </summary>
         public Scene()
         {
-            Scene.LatestInstance = this;
             this.EventBus.Subscribe(EventBusSignal.MouseClicked, (o) => this.OnMouseClick?.Invoke());
             this.EventBus.Subscribe(EventBusSignal.ActionPressed, (o) => this.OnActionPressed?.Invoke(o as Enum));
             this.EventBus.Subscribe(EventBusSignal.ActionReleased, (o) => this.OnActionReleased?.Invoke(o as Enum));
@@ -186,7 +180,6 @@ namespace Puffin.Core
         {
             this.HideSubScene();
             this.SubScene = subScene;
-            Scene.LatestInstance = subScene;
             this.EventBus.Broadcast(EventBusSignal.SubSceneShown, subScene);
         }
 
@@ -199,7 +192,6 @@ namespace Puffin.Core
             {
                 this.SubScene.Deinitialize();
                 this.SubScene = null;
-                Scene.LatestInstance = this;
             }
         }
         
