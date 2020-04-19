@@ -73,5 +73,23 @@ namespace Puffin.UI.UnitTests.Controls
             slider.Value = value;
             Assert.That(slider.Value, Is.EqualTo(max));
         }
+
+        [Test]
+        public void OnValueChangedCallsOnlyIfValueChanges()
+        {
+            // Arrange
+            var expectedValue = 17;
+            var actualValue = -99;
+            var slider = new HorizontalSlider(true, "back.png", 0xFFFFCC, 100, 0, 20);
+            slider.Value = 10;
+            slider.OnValueChanged((newValue) => actualValue = newValue);
+
+            // Act
+            slider.Value = 10; // no change
+            Assert.That(actualValue, Is.EqualTo(-99));
+
+            slider.Value = expectedValue;
+            Assert.That(actualValue, Is.EqualTo(expectedValue));
+        }
     }
 }

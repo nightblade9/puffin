@@ -13,6 +13,7 @@ namespace Puffin.UI.Controls
         private int value = 0;
         private const int BAR_THICKNESS = 12;
         private bool isDraggingHandle = false;
+        private Action<int> onValueChanged;
 
         /// <summary>
         /// Creates a horizontal slider of the specified size, at the specified position.
@@ -125,9 +126,18 @@ namespace Puffin.UI.Controls
                     value = this.maxValue;
                 }
 
-                this.value = value;
-                this.RepositionHandle();
+                if (value != this.value)
+                {
+                    this.onValueChanged?.Invoke(value);
+                    this.value = value;
+                    this.RepositionHandle();
+                }
             }
+        }
+
+        public void OnValueChanged(Action<int> callback)
+        {
+            this.onValueChanged = callback;
         }
 
         private void UpdateValueTo(int mouseX)
