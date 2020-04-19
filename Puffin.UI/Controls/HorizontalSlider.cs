@@ -17,8 +17,7 @@ namespace Puffin.UI.Controls
         /// <summary>
         /// Creates a horizontal slider of the specified size, at the specified position.
         /// The slider is made up of an image for the handle, with a <c>ColourComponent</c> instance for the slider bar.
-        /// Note that the slider bar is exactly the specified with, and the handle overflows by width/2 when it's at the
-        /// minimum or maximum value.
+        /// Note that the handle starts at the entity position, and the bar is offset to the right and down.
         /// <param name="width">The width of the slider</param>
         /// <param name="minValue">The minimum value of the slider</param>
         /// <param name="maxValue">The maximum value of the slider</param>
@@ -39,17 +38,30 @@ namespace Puffin.UI.Controls
             }
 
             this.Sprite(handleImageFileName).Colour(barColourRgb, width, BAR_THICKNESS)
-            .Mouse(width, BAR_THICKNESS, (x, y) =>
+            // Can't get sprite height, dunno how big it is ... just buffer.
+            .Mouse(width + 100, BAR_THICKNESS + 50, (x, y) =>
             {
-                float pixelsPerValue = this.width * 1f / this.maxValue;
                 var sprite = this.Get<SpriteComponent>();
+                var colour = this.Get<ColourComponent>();
+
+                var clickedOnHandle =
+                    x >= this.X + sprite.OffsetX && x <= this.X + sprite.OffsetX + sprite.Width &&
+                    y >= this.Y + sprite.OffsetY && y <= this.Y + sprite.OffsetY + sprite.Height;
+                
+                // Assume handle height
+                var clickedOnBar =
+                    x >= this.X + colour.OffsetX && x <= this.X + colour.OffsetX + colour.Width &&
+                    y >= this.Y + colour.OffsetY - (sprite.Height / 2) && y <= this.Y + colour.OffsetY + (sprite.Height / 2);
+
+                float pixelsPerValue = this.width * 1f / this.maxValue;
+
+                if (!clickedOnBar && !clickedOnHandle)
+                {
+                    return;
+                }
 
                 if (!isDraggingHandle)
                 {
-                    var clickedOnHandle =
-                        x >= this.X + sprite.OffsetX && x <= this.X + sprite.OffsetX + sprite.Width &&
-                        y >= this.Y + sprite.OffsetY && y <= this.Y + sprite.OffsetY + sprite.Height;
-                    
                     if (clickedOnHandle)
                     {
                         this.isDraggingHandle = true;
@@ -96,8 +108,10 @@ namespace Puffin.UI.Controls
             base.OnReady();
             var colour = this.Get<ColourComponent>();
             var sprite = this.Get<SpriteComponent>();
+
+            colour.OffsetX = sprite.Width / 2;
+            colour.OffsetY = (sprite.Height - BAR_THICKNESS) / 2;
             this.RepositionHandle();
-            sprite.OffsetY = -(sprite.Height - BAR_THICKNESS) / 2;
         }
 
         public int Value
@@ -131,7 +145,7 @@ namespace Puffin.UI.Controls
             var bar = this.Get<ColourComponent>();
             // 100 pixels, max value is 25, then ppv = 4
             float pixelsPerValue = this.width * 1f / this.maxValue;
-            handle.OffsetX = (int)((pixelsPerValue * this.value)) - (handle.Width / 2);
+            handle.OffsetX = (int)((pixelsPerValue * this.value));
         }
     }
 }
