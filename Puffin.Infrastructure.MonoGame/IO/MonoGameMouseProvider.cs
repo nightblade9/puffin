@@ -54,9 +54,13 @@ namespace Puffin.Infrastructure.MonoGame.IO
         {
             var mouseState = Mouse.GetState();
 
-            if (mouseState.LeftButton == ButtonState.Pressed && previousState.LeftButton != ButtonState.Pressed)
+            if (mouseState.LeftButton == ButtonState.Pressed && previousState.LeftButton == ButtonState.Released)
             {
-                this.eventBus.Broadcast(EventBusSignal.MouseClicked, null);
+                this.eventBus.Broadcast(EventBusSignal.MouseClicked);
+            }
+            else if (mouseState.LeftButton == ButtonState.Released && previousState.LeftButton == ButtonState.Pressed)
+            {
+                this.eventBus.Broadcast(EventBusSignal.MouseReleased);
             }
 
             this.previousState = mouseState;

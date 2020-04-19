@@ -1,4 +1,5 @@
 using System;
+using Puffin.Core;
 using Puffin.Core.Ecs;
 using Puffin.Core.Ecs.Components;
 
@@ -11,6 +12,7 @@ namespace Puffin.UI.Controls
         private readonly int width;
         private int value = 0;
         private const int BAR_THICKNESS = 12;
+        private bool isDraggingHandle = false;
 
         /// <summary>
         /// Creates a horizontal slider of the specified size, at the specified position.
@@ -37,12 +39,51 @@ namespace Puffin.UI.Controls
             }
 
             this.Sprite(handleImageFileName).Colour(barColourRgb, width, BAR_THICKNESS)
-            .Mouse((x, y) =>
+            .Mouse(width, BAR_THICKNESS, (x, y) =>
             {
                 float pixelsPerValue = this.width * 1f / this.maxValue;
-                this.value = (int)Math.Round((x - this.X) / pixelsPerValue);
-                this.RepositionHandle();
-            }, width, BAR_THICKNESS);
+                var sprite = this.Get<SpriteComponent>();
+
+                if (!isDraggingHandle)
+                {
+                    var clickedOnHandle =
+                        x >= this.X + sprite.OffsetX && x <= this.X + sprite.OffsetX + sprite.Width &&
+                        y >= this.Y + sprite.OffsetY && y <= this.Y + sprite.OffsetY + sprite.Height;
+                    
+                    if (clickedOnHandle)
+                    {
+                        this.isDraggingHandle = true;
+                        Console.WriteLine("click");
+                    }
+                    else
+                    {
+                        // Move slider to selected location
+                        this.updateValueTo(x);
+                    }
+                }
+                else
+                {
+                    this.updateValueTo(x);
+                }
+            },
+            () => {
+                this.isDraggingHandle = false;
+            });
+
+            this.OnUpdate(elapsed =>
+            {
+                if (this.isDraggingHandle)
+                {
+                    var scene = Scene.LatestInstance;
+                    var coordinates = isUiElement ? scene.UiMouseCoordinates : scene.MouseCoordinates;
+                    var mouseX = coordinates.Item1;
+
+                    if (mouseX >= this.X && mouseX <= this.X + this.Get<ColourComponent>().Width)
+                    {
+                        this.updateValueTo(mouseX);
+                    }
+                }
+            });
             
             this.minValue = minValue;
             this.maxValue = maxValue;
@@ -75,6 +116,13 @@ namespace Puffin.UI.Controls
                 this.value = value;
                 this.RepositionHandle();
             }
+        }
+
+        private void updateValueTo(int mouseX)
+        {
+            float pixelsPerValue = this.width * 1f / this.maxValue;
+            this.Value = (int)Math.Round((mouseX - this.X) / pixelsPerValue);
+            this.RepositionHandle();
         }
 
         private void RepositionHandle()

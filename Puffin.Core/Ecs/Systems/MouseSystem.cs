@@ -16,6 +16,7 @@ namespace Puffin.Core.Ecs.Systems
         {
             this.provider = mouseProvider;
             eventBus.Subscribe(EventBusSignal.MouseClicked, this.OnMouseClicked);
+            eventBus.Subscribe(EventBusSignal.MouseReleased, this.OnMouseReleased);
         }
 
         public void OnAddEntity(Entity entity)
@@ -61,6 +62,20 @@ namespace Puffin.Core.Ecs.Systems
                 if (clickedX >= entity.X && clickedY >= entity.Y && clickedX <= entity.X + mouse.Width && clickedY <= entity.Y + mouse.Height)
                 {
                     mouse.OnClickCallback.Invoke(clickedX, clickedY);
+                }
+            }
+        }
+
+        private void OnMouseReleased(object data)
+        {
+            // ToArray prevents concurrent modification exceptions when we remove an entity on release.
+            // Note that the performance is OK, since this is in response to an event; not every frame.
+            foreach (var entity in this.entities.ToArray())
+            {
+                var mouse = entity.Get<MouseComponent>();
+                if (mouse != null)
+                {
+                    mouse.OnReleaseCallback?.Invoke();
                 }
             }
         }

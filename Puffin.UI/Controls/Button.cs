@@ -23,7 +23,7 @@ namespace Puffin.UI.Controls
         {
             this.Sprite(imagePath);
             this.Label(text, textXOffset, textYOffset);
-            this.Mouse(onClick, SPRITE_WIDTH, SPRITE_HEIGHT);
+            this.Mouse(SPRITE_WIDTH, SPRITE_HEIGHT, onClick);
         }
     }
 }
