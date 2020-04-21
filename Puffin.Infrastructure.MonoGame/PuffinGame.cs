@@ -88,7 +88,6 @@ namespace Puffin.Infrastructure.MonoGame
         {
             this.currentScene?.Dispose();
             this.InitializeSceneSystems(s);
-
             this.currentScene = s;
         }
 

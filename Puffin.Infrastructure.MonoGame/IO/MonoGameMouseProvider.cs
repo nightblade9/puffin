@@ -65,5 +65,10 @@ namespace Puffin.Infrastructure.MonoGame.IO
 
             this.previousState = mouseState;
         }
+
+        public void Reset()
+        {
+            this.previousState = new MouseState();
+        }
     }
 }

@@ -6,5 +6,6 @@ namespace Puffin.Core.IO
     {
         void Update();
         bool IsActionDown(Enum action);
+        void Reset();
     }
 }
