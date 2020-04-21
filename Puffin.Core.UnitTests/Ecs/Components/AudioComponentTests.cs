@@ -46,7 +46,8 @@ namespace Puffin.Core.UnitTests.Ecs.Components
             var audio = new AudioComponent(e, "buzz.wav");
             scene.Add(e);
 
-            scene.EventBus.Subscribe(EventBusSignal.PlayAudio, (data) => {
+            scene.EventBus.Subscribe(EventBusSignal.PlayAudio, (data) =>
+            {
                 isCalled = true;
                 var actual = data as AudioComponent;
                 Assert.That(actual.Volume, Is.EqualTo(0.74f));
@@ -57,6 +58,25 @@ namespace Puffin.Core.UnitTests.Ecs.Components
             // Act
             audio.Play(0.74f, 0.3f);
 
+            Assert.That(isCalled, Is.True);
+        }
+
+        [Test]
+        public void StopBroadcastsStopEvent()
+        {
+            // Arrange
+            var scene = new Scene();
+            var isCalled = false;
+            var e = new Entity();
+            var audio = new AudioComponent(e, "buzz.wav");
+            scene.Add(e);
+
+            scene.EventBus.Subscribe(EventBusSignal.StopAudio, (data) => isCalled = true);
+            audio.Play(0.74f, 0.3f);
+
+            // Act
+            audio.Stop();
+            
             Assert.That(isCalled, Is.True);
         }
     }

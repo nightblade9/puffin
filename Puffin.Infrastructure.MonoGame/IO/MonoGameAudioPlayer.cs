@@ -12,10 +12,12 @@ namespace Puffin.Infrastructure.MonoGame
     {
         private List<Entity> entities = new List<Entity>();
         private IDictionary<AudioComponent, SoundEffect> entitySounds = new Dictionary<AudioComponent, SoundEffect>();
+        private IDictionary<AudioComponent, List<SoundEffectInstance>> soundInstances = new Dictionary<AudioComponent, List<SoundEffectInstance>>();
 
         public MonoGameAudioPlayer(EventBus eventBus)
         {
             eventBus.Subscribe(EventBusSignal.PlayAudio, this.Play);
+            eventBus.Subscribe(EventBusSignal.StopAudio, this.Stop);
         }
 
         public void AddEntity(Entity entity)
@@ -40,6 +42,17 @@ namespace Puffin.Infrastructure.MonoGame
 
         public void OnUpdate()
         {
+            // Trim dead/done sound effect instances
+            foreach (var kvp in soundInstances)
+            {
+                foreach (var instance in kvp.Value.ToArray())
+                {
+                    if (instance.State == SoundState.Stopped)
+                    {
+                        kvp.Value.Remove(instance);
+                    }
+                }
+            }
         }
 
         private static SoundEffect LoadSound(string fileName)
@@ -62,6 +75,24 @@ namespace Puffin.Infrastructure.MonoGame
             soundInstance.Volume =  audioComponent.Volume;
             //soundInstance.IsLooped = loop;
             soundInstance.Play();
+
+            if (!soundInstances.ContainsKey(audioComponent) || soundInstances[audioComponent] == null)
+            {
+                soundInstances[audioComponent] = new List<SoundEffectInstance>();
+            }
+            soundInstances[audioComponent].Add(soundInstance);
+        }
+
+        private void Stop(object data)
+        {
+            var audioComponent = data as AudioComponent;
+            if (soundInstances.ContainsKey(audioComponent) && soundInstances[audioComponent] != null)
+            {
+                foreach (var instance in soundInstances[audioComponent])
+                {
+                    instance.Stop();
+                }
+            }
         }
     }
 }

@@ -39,5 +39,13 @@ namespace Puffin.Core.Ecs.Components
             this.Pitch = pitch;
             this.Parent.Scene.EventBus.Broadcast(EventBusSignal.PlayAudio, this);
         }
+
+        /// <summary>
+        /// Stops all instances of the current sound effect that are playing.
+        /// </summary>
+        public void Stop()
+        {
+            this.Parent.Scene.EventBus.Broadcast(EventBusSignal.StopAudio, this);
+        }
     }
 }

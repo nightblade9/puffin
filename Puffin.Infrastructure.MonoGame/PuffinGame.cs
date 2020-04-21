@@ -32,18 +32,12 @@ namespace Puffin.Infrastructure.MonoGame
             { PuffinAction.Left, new List<Keys>() { Keys.A, Keys.Left } },
             { PuffinAction.Right, new List<Keys>() { Keys.D, Keys.Right } },
         };
-        
-        public string DefaultFont = "OpenSans";
-
-        internal static PuffinGame LatestInstance { get; private set; }
-
-        internal bool ShowCollisionAreas { get { return this.showCollisionAreas; } }
 
         /// <summary>
         /// Sets the game to run in full-screen mode (or not).
         /// This can be toggled at any time in-game.
         /// </summary>
-        protected bool IsFullScreen
+        public bool IsFullScreen
         {
             get
             { 
@@ -55,6 +49,12 @@ namespace Puffin.Infrastructure.MonoGame
                 this.graphics.ApplyChanges();
             }
         }
+        
+        public string DefaultFont = "OpenSans";
+
+        internal static PuffinGame LatestInstance { get; private set; }
+
+        internal bool ShowCollisionAreas { get { return this.showCollisionAreas; } }
 
         /// <summary>
         /// Set this to true to render collision areas as red transparent rectangles.
