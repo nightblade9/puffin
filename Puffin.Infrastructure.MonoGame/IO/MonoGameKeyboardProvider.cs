@@ -78,5 +78,10 @@ namespace Puffin.Infrastructure.MonoGame.IO
                 }   
             }
         }
+
+        public void Reset()
+        {
+            this.keysDown.Clear();
+        }
     }
 }

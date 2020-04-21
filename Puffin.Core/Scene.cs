@@ -193,6 +193,10 @@ namespace Puffin.Core
                 this.SubScene.Deinitialize();
                 this.SubScene = null;
             }
+
+            // Click-hold / keypress on the parent scene. If that triggers something on the child scene, NO, don't trigger.
+            this.keyboardProvider.Reset();
+            this.mouseProvider.Reset();
         }
         
         /// <summary>
