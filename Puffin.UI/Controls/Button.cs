@@ -15,7 +15,7 @@ namespace Puffin.UI.Controls
         /// </summary>
         /// <param name="text">The text label on the button (if any).</param>
         /// <param name="onClick">The callback to trigger when the player clicks on the button.</param>
-        public Button(bool isUiElement, string imagePath, int spriteWidth, int spriteHeight, string text, int textXOffset, int textYOffset, Action<int, int> onClick)
+        public Button(bool isUiElement, string imagePath, int spriteWidth, int spriteHeight, string text, int textXOffset, int textYOffset, Func<int, int, bool> onClick)
         : base(isUiElement)
         {
             // Get rid of sprite width/height once this.Sprite(...) is enough to get the sprite width/height

@@ -60,7 +60,7 @@ namespace Puffin.UI.Controls
 
                 if (!clickedOnBar && !clickedOnHandle)
                 {
-                    return;
+                    return false;
                 }
 
                 if (!isDraggingHandle)
@@ -80,6 +80,8 @@ namespace Puffin.UI.Controls
                 {
                     this.UpdateValueTo(x);
                 }
+
+                return true;
             },
             () => {
                 this.isDraggingHandle = false;

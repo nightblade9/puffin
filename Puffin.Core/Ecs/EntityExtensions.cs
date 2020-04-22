@@ -117,7 +117,7 @@ namespace Puffin.Core.Ecs
         /// Allows an entity to handle mouse events; the specified callback will be invoked on every click.
         /// The width and height define the clickable area (relative to the origin of the entity).
         /// </summary>
-        public static Entity Mouse(this Entity entity, int width, int height, Action<int, int> onClick, Action onRelease = null)
+        public static Entity Mouse(this Entity entity, int width, int height, Func<int, int, bool> onClick, Action onRelease = null)
         {
             if (width <= 0 || height <= 0)
             {

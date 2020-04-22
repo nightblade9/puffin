@@ -151,7 +151,8 @@ namespace Puffin.Core
         public virtual void Update(float elapsedSeconds)
         {
             this.keyboardProvider.Update();
-            this.mouseProvider.Update();
+            // Mouse provider is updated through mouse system, so we can coordinate and
+            // allow it to invoke general callbacks if an event was unhandled.
             this.tweenManager.Update(elapsedSeconds);
         }
 
@@ -196,7 +197,6 @@ namespace Puffin.Core
 
             // Click-hold / keypress on the parent scene. If that triggers something on the child scene, NO, don't trigger.
             this.keyboardProvider.Reset();
-            this.mouseProvider.Reset();
         }
         
         /// <summary>

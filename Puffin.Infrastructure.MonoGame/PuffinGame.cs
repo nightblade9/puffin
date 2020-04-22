@@ -168,7 +168,7 @@ namespace Puffin.Infrastructure.MonoGame
                 this.InitializeSceneSystems(subScene);
             });
 
-            var mouseProvider = new MonoGameMouseProvider(s.EventBus);
+            var mouseProvider = new MonoGameMouseProvider();
             var keyboardProvider = new MonoGameKeyboardProvider(s.EventBus);
             
             var drawingSurface = new MonoGameDrawingSurface(s.EventBus, this.GraphicsDevice, spriteBatch);

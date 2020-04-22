@@ -1,10 +1,8 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using Puffin.Core.Events;
 using Puffin.Core.IO;
 using Puffin.Infrastructure.MonoGame.Drawing;
 using System;
-using System.Linq;
 
 namespace Puffin.Infrastructure.MonoGame.IO
 {
@@ -13,14 +11,6 @@ namespace Puffin.Infrastructure.MonoGame.IO
     /// </summary>
     class MonoGameMouseProvider : IMouseProvider
     {
-        private MouseState previousState;
-        private readonly EventBus eventBus;
-
-        public MonoGameMouseProvider(EventBus eventBus)
-        {
-            this.eventBus = eventBus;
-        }
-
         // Mouse coordinates, taking into account the camera.
         public Tuple<int, int> MouseCoordinates
         {
@@ -50,25 +40,6 @@ namespace Puffin.Infrastructure.MonoGame.IO
             }
         }
 
-        public void Update()
-        {
-            var mouseState = Mouse.GetState();
-
-            if (mouseState.LeftButton == ButtonState.Pressed && previousState.LeftButton == ButtonState.Released)
-            {
-                this.eventBus.Broadcast(EventBusSignal.MouseClicked);
-            }
-            else if (mouseState.LeftButton == ButtonState.Released && previousState.LeftButton == ButtonState.Pressed)
-            {
-                this.eventBus.Broadcast(EventBusSignal.MouseReleased);
-            }
-
-            this.previousState = mouseState;
-        }
-
-        public void Reset()
-        {
-            this.previousState = new MouseState();
-        }
+        public bool IsLeftButtonDown => Mouse.GetState().LeftButton == ButtonState.Pressed;
     }
 }

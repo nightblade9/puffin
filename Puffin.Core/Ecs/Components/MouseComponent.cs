@@ -9,7 +9,7 @@ namespace Puffin.Core.Ecs.Components
     {
         // To avoid having an `Update` method on the component, we rely on events.
 
-        internal readonly Action<int, int> OnClickCallback;
+        internal readonly Func<int, int, bool> OnClickCallback;
         internal readonly Action OnReleaseCallback;
         // Clickable area width/height
         internal readonly int Width = 0;
@@ -19,7 +19,7 @@ namespace Puffin.Core.Ecs.Components
         /// Creates a mouse component (receives clicks and triggers a callback).
         /// Width and height indicate the clickable area (relative to the origin of the entity).
         /// </summary>
-        public MouseComponent(Entity parent, int width, int height, Action<int, int> onClickCallback, Action onReleaseCallback = null)
+        public MouseComponent(Entity parent, int width, int height, Func<int, int, bool> onClickCallback, Action onReleaseCallback = null)
         : base(parent)
         {
             this.Width = width;
