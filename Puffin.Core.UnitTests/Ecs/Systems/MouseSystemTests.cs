@@ -33,6 +33,7 @@ namespace Puffin.Core.UnitTests.Ecs
             var system = new MouseSystem(eventBus, mouseProvider.Object);
             system.OnAddEntity(entity);
             mouseProvider.Setup(m => m.MouseCoordinates).Returns(new Tuple<int, int>(clickedX, clickedY));
+            mouseProvider.Setup(m => m.IsLeftButtonDown).Returns(true);
 
             // Act
             eventBus.Broadcast(EventBusSignal.MouseClicked, null);
@@ -42,7 +43,7 @@ namespace Puffin.Core.UnitTests.Ecs
         }
 
         [Test]
-        public void OnClickCallbackFiresIfClickIsInBounds()
+        public void OnUpdateFiresCallbackIfClickIsInBounds()
         {
             // Arrange
             var mouseProvider = new Mock<IMouseProvider>();
@@ -56,16 +57,91 @@ namespace Puffin.Core.UnitTests.Ecs
                 Assert.That(x, Is.EqualTo(clickedX));
                 Assert.That(y, Is.EqualTo(clickedY));
                 callbackFired = true;
+                return true;
             });
             mouseProvider.Setup(m => m.MouseCoordinates).Returns(new Tuple<int, int>(clickedX, clickedY));
+            mouseProvider.Setup(m => m.IsLeftButtonDown).Returns(true);
             var system = new MouseSystem(eventBus, mouseProvider.Object);
             system.OnAddEntity(entity);
 
             // Act
-            eventBus.Broadcast(EventBusSignal.MouseClicked, null);
+            system.OnUpdate(TimeSpan.Zero);
             
             // Assert
             Assert.That(callbackFired, Is.True);
+        }
+
+        [Test]
+        public void OnUpdateBroadcastsMouseReleasedEvent()
+        {
+            var isCalledBack = false;
+
+            var eventBus = new EventBus();
+            eventBus.Subscribe(EventBusSignal.MouseReleased, (a) => isCalledBack = true);
+
+            var mouseProvider = new Mock<IMouseProvider>();
+            mouseProvider.Setup(m => m.IsLeftButtonDown).Returns(true);
+            var system = new MouseSystem(eventBus, mouseProvider.Object);
+            system.OnUpdate(TimeSpan.Zero);
+            mouseProvider.Setup(m => m.IsLeftButtonDown).Returns(false);
+            
+            // Act
+            system.OnUpdate(TimeSpan.Zero);
+
+            // Assert
+            Assert.That(isCalledBack, Is.True);
+        }
+
+        [Test]
+        public void OnUpdateBroadcastsMouseClickedIfEntityHandlersDontProcessEvent()
+        {
+            var isCalledBack = false;
+
+            var eventBus = new EventBus();
+            eventBus.Subscribe(EventBusSignal.MouseClicked, (a) => isCalledBack = true);
+
+            var mouseProvider = new Mock<IMouseProvider>();
+            mouseProvider.Setup(m => m.IsLeftButtonDown).Returns(true);
+            mouseProvider.Setup(m => m.MouseCoordinates).Returns(new Tuple<int, int>(30, 17));
+            
+            var system = new MouseSystem(eventBus, mouseProvider.Object);
+            // False: did not process the event
+            system.OnAddEntity(new Entity().Mouse(999, 999, (x, y) => false));
+            
+            // Act
+            system.OnUpdate(TimeSpan.Zero);
+
+            // Assert
+            Assert.That(isCalledBack, Is.True);
+        }
+
+        [Test]
+        public void OnUpdateDoesntBroadcastMouseClickedIfEntityHandlersProcessEvent()
+        {
+            var isCalledBack = false;
+            var globalCallback = false;
+
+            var eventBus = new EventBus();
+            eventBus.Subscribe(EventBusSignal.MouseClicked, (a) => globalCallback = true);
+
+            var mouseProvider = new Mock<IMouseProvider>();
+            mouseProvider.Setup(m => m.IsLeftButtonDown).Returns(true);
+            mouseProvider.Setup(m => m.MouseCoordinates).Returns(new Tuple<int, int>(30, 17));
+            
+            var system = new MouseSystem(eventBus, mouseProvider.Object);
+            // False: did not process the event
+            system.OnAddEntity(new Entity().Mouse(999, 999, (x, y) =>
+            {
+                isCalledBack = true;
+                return true;
+            }));
+            
+            // Act
+            system.OnUpdate(TimeSpan.Zero);
+
+            // Assert
+            Assert.That(isCalledBack, Is.True);
+            Assert.That(globalCallback, Is.False);
         }
 
         [Test]
