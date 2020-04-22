@@ -409,7 +409,7 @@ namespace Puffin.Core.UnitTests
         {
             var drawingSystem = new Mock<DrawingSystem>().Object;
             var scene = new Scene();
-            scene.Initialize(new ISystem[] { drawingSystem }, null, null);
+            scene.Initialize(new ISystem[] { drawingSystem }, null, new Mock<IKeyboardProvider>().Object);
             var subScene = new Scene();
             
             scene.ShowSubScene(subScene);
@@ -423,7 +423,7 @@ namespace Puffin.Core.UnitTests
             // Assert
             var drawingSystem = new Mock<DrawingSystem>().Object;
             var scene = new Scene();
-            scene.Initialize(new ISystem[] { drawingSystem }, null, null);
+            scene.Initialize(new ISystem[] { drawingSystem }, null, new Mock<IKeyboardProvider>().Object);
             var wrongSubScene = new Scene();
             var rightSubScene = new Scene();
             
@@ -440,7 +440,7 @@ namespace Puffin.Core.UnitTests
         {
             var drawingSystem = new Mock<DrawingSystem>().Object;
             var scene = new Scene();
-            scene.Initialize(new ISystem[] { drawingSystem }, null, null);
+            scene.Initialize(new ISystem[] { drawingSystem }, null, new Mock<IKeyboardProvider>().Object);
             var subScene = new Scene();
             scene.ShowSubScene(subScene);
             

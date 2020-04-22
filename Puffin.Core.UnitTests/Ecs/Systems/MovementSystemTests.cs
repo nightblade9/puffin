@@ -12,8 +12,6 @@ namespace Puffin.Core.UnitTests
     [TestFixture]
     public class MovementSystemTests
     {
-                
-        
         [Test]
         public void OnUpdateCallsOnUpdateOnFourWayComponents()
         {
@@ -50,7 +48,6 @@ namespace Puffin.Core.UnitTests
             // e2 doesn't have a movement component so it's at the start position
             Assert.That(e2.X, Is.EqualTo(0));
             Assert.That(e2.Y, Is.EqualTo(0));
-
         }
 
         [Test]
