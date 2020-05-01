@@ -166,6 +166,7 @@ namespace Puffin.Core
             {
                 entity.OnReadyAction?.Invoke();
             }
+            this.CalledReady = true;
         }
 
         public void TweenPosition(Entity entity, Tuple<float, float> startPosition, Tuple<float, float> endPosition, float durationSeconds, Action onTweenComplete)
@@ -182,6 +183,11 @@ namespace Puffin.Core
             this.HideSubScene();
             this.SubScene = subScene;
             this.EventBus.Broadcast(EventBusSignal.SubSceneShown, subScene);
+            
+            if (!subScene.CalledReady)
+            {
+                subScene.Ready();
+            }
         }
 
         /// <summary>
@@ -269,7 +275,6 @@ namespace Puffin.Core
 
             if (!this.CalledReady)
             {
-                CalledReady = true;
                 this.Ready();
             }
         }

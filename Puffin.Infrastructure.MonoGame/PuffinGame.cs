@@ -188,7 +188,6 @@ namespace Puffin.Infrastructure.MonoGame
 
             if (!s.CalledReady)
             {
-                s.CalledReady = true;
                 s.Ready();
             }
         }
