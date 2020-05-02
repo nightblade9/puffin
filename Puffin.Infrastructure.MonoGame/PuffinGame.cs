@@ -177,6 +177,7 @@ namespace Puffin.Infrastructure.MonoGame
                 if (data != null)
                 {
                     var subScene = data as Scene;
+                    subScene.Dispose();
                     this.InitializeSceneSystems(subScene.ParentScene);
                 }
             });
