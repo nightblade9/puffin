@@ -178,7 +178,11 @@ namespace Puffin.Infrastructure.MonoGame
                 {
                     var subScene = data as Scene;
                     subScene.Dispose();
-                    this.InitializeSceneSystems(subScene.ParentScene);
+                    // Reset all systems/etc. to point to the parent scene again
+                    var parentScene = subScene.ParentScene;
+                    parentScene.EventBus.Dispose();
+                    parentScene.EventBus = new EventBus();
+                    this.InitializeSceneSystems(parentScene);
                 }
             });
 

@@ -78,10 +78,7 @@ namespace Puffin.Core
         /// Creates a new, empty Scene instance.
         /// </summary>
         public Scene()
-        {
-            this.EventBus.Subscribe(EventBusSignal.MouseClicked, (o) => this.OnMouseClick?.Invoke());
-            this.EventBus.Subscribe(EventBusSignal.ActionPressed, (o) => this.OnActionPressed?.Invoke(o as Enum));
-            this.EventBus.Subscribe(EventBusSignal.ActionReleased, (o) => this.OnActionReleased?.Invoke(o as Enum));
+        {            
         }
 
         /// <summary>
@@ -264,6 +261,10 @@ namespace Puffin.Core
             
             this.mouseProvider = mouseProvider;
             this.keyboardProvider = keyboardProvider;
+
+            this.EventBus.Subscribe(EventBusSignal.MouseClicked, (o) => this.OnMouseClick?.Invoke());
+            this.EventBus.Subscribe(EventBusSignal.ActionPressed, (o) => this.OnActionPressed?.Invoke(o as Enum));
+            this.EventBus.Subscribe(EventBusSignal.ActionReleased, (o) => this.OnActionReleased?.Invoke(o as Enum));
 
             // If called after AddEntity, add entities we know about
             foreach (var entity in this.entities)
