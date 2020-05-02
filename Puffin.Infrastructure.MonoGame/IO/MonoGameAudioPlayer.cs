@@ -3,6 +3,7 @@ using Puffin.Core.Ecs;
 using Puffin.Core.Ecs.Components;
 using Puffin.Core.Events;
 using Puffin.Core.IO;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -13,6 +14,15 @@ namespace Puffin.Infrastructure.MonoGame
         private List<Entity> entities = new List<Entity>();
         private IDictionary<AudioComponent, SoundEffect> entitySounds = new Dictionary<AudioComponent, SoundEffect>();
         private IDictionary<AudioComponent, List<SoundEffectInstance>> soundInstances = new Dictionary<AudioComponent, List<SoundEffectInstance>>();
+
+        private static SoundEffect LoadSound(string fileName)
+        {
+             using (var stream = File.Open(fileName, FileMode.Open))
+            {
+                var soundEffect = SoundEffect.FromStream(stream);
+                return soundEffect;
+            }
+        }
 
         public MonoGameAudioPlayer(EventBus eventBus)
         {
@@ -55,21 +65,12 @@ namespace Puffin.Infrastructure.MonoGame
             }
         }
 
-        private static SoundEffect LoadSound(string fileName)
-        {
-             using (var stream = File.Open(fileName, FileMode.Open))
-            {
-                var soundEffect = SoundEffect.FromStream(stream);
-                return soundEffect;
-            }
-        }
-
-        // Mostly copied from https://stackoverflow.com/questions/35183043/how-do-i-play-a-sound-effect-on-monogame-for-android
         private void Play(object data)
         {
             var audioComponent = data as AudioComponent;
             var soundEffect = entitySounds[audioComponent];
             
+            // Mostly copied from https://stackoverflow.com/questions/35183043/how-do-i-play-a-sound-effect-on-monogame-for-android
             var soundInstance = soundEffect.CreateInstance();
             soundInstance.Pitch = audioComponent.Pitch;
             soundInstance.Volume =  audioComponent.Volume;

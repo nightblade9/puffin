@@ -1,3 +1,4 @@
+using System;
 using Puffin.Core.Ecs;
 
 namespace Puffin.Core.IO
