@@ -52,6 +52,7 @@ namespace Puffin.Core
         internal List<TileMap> TileMaps = new List<TileMap>();
         internal bool CalledReady = false;
         internal Scene SubScene; // the one and only sub-scene we can show
+        internal Scene ParentScene; // the parent scene, if we're a sub-scene
 
         // Break update calls that have long elapsed times into chunks of this many milliseconds.
         private readonly float MAX_UPDATE_INTERVAL_SECONDS = 0.150f;
@@ -180,6 +181,8 @@ namespace Puffin.Core
         /// </sumamary>
         public void ShowSubScene(Scene subScene)
         {
+            subScene.ParentScene = this;
+
             this.HideSubScene();
             this.SubScene = subScene;
             this.EventBus.Broadcast(EventBusSignal.SubSceneShown, subScene);
@@ -195,8 +198,13 @@ namespace Puffin.Core
         /// </summary>
         public virtual void HideSubScene()
         {
-            this.SubScene?.Deinitialize();
-            this.SubScene = null;
+            if (this.SubScene != null)
+            {
+                this.EventBus.Broadcast(EventBusSignal.SubSceneHidden, this.SubScene);
+                this.SubScene.Deinitialize();
+                this.SubScene.ParentScene = null; // Allow GC
+                this.SubScene = null;
+            }
 
             // Click-hold / keypress on the parent scene. If that triggers something on the child scene, NO, don't trigger.
             this.keyboardProvider.Reset();

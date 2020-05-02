@@ -451,6 +451,25 @@ namespace Puffin.Core.UnitTests
             Assert.That(scene.SubScene, Is.Null);
         }
 
+                [Test]
+        public void HideSubSceneBroadcastsHideEvent()
+        {
+            var isCalled = false;
+            var drawingSystem = new Mock<DrawingSystem>().Object;
+            var scene = new Scene();
+            scene.Initialize(new ISystem[] { drawingSystem }, null, new Mock<IKeyboardProvider>().Object);
+            var subScene = new Scene();
+            scene.ShowSubScene(subScene);
+            var bus = scene.EventBus;
+            bus.Subscribe(EventBusSignal.SubSceneHidden, (data) => isCalled = true);
+            
+            // Act
+            scene.HideSubScene();
+            
+            // Assert
+            Assert.That(isCalled, Is.True);
+        }
+
         [Test]
         public void ReadyCallsReadyOnEntities()
         {

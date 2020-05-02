@@ -168,6 +168,19 @@ namespace Puffin.Infrastructure.MonoGame
                 this.InitializeSceneSystems(subScene);
             });
 
+            // BUG: hiding a sub-scene didn't restore MonoGameDrawingSurface and friends,
+            // meaning we're using the old surface; which has an old list of
+            // entities/cameras, so the camera stuff gets messed up if the zoom
+            // is different (eg. main game zoom=3, options subscene zoom=1).
+            s.EventBus.Subscribe(EventBusSignal.SubSceneHidden, (data) =>
+            {
+                if (data != null)
+                {
+                    var subScene = data as Scene;
+                    this.InitializeSceneSystems(subScene.ParentScene);
+                }
+            });
+
             var mouseProvider = new MonoGameMouseProvider();
             var keyboardProvider = new MonoGameKeyboardProvider(s.EventBus);
             

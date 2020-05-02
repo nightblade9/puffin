@@ -10,6 +10,7 @@ namespace Puffin.Core.Events
         LabelFontChanged, // Font name/size changed, load/generate required font
         ActionPressed,
         ActionReleased,
-        SubSceneShown, // broadcast so we can init it properly
+        SubSceneShown, // broadcast so we can call init on it properly
+        SubSceneHidden,
     }
 }
