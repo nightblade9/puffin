@@ -52,7 +52,7 @@ namespace Puffin.Core
         internal List<TileMap> TileMaps = new List<TileMap>();
         internal bool CalledReady = false;
         internal Scene SubScene; // the one and only sub-scene we can show
-        internal Scene ParentScene; // the parent scene, if we're a sub-scene
+        internal protected Scene ParentScene; // the parent scene, if we're a sub-scene
 
         // Break update calls that have long elapsed times into chunks of this many milliseconds.
         private readonly float MAX_UPDATE_INTERVAL_SECONDS = 0.150f;
@@ -202,7 +202,6 @@ namespace Puffin.Core
             {
                 this.EventBus.Broadcast(EventBusSignal.SubSceneHidden, this.SubScene);
                 this.SubScene.Deinitialize();
-                this.SubScene.ParentScene = null; // Allow GC
                 this.SubScene = null;
             }
 
