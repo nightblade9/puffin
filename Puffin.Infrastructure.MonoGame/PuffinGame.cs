@@ -41,12 +41,12 @@ namespace Puffin.Infrastructure.MonoGame
         {
             get
             { 
-                return this.graphics.IsFullScreen;
+                return this.graphicsManager.IsFullScreen;
             }
             set
             {
-                this.graphics.IsFullScreen = value;
-                this.graphics.ApplyChanges();
+                this.graphicsManager.IsFullScreen = value;
+                this.graphicsManager.ApplyChanges();
             }
         }
         
@@ -56,12 +56,15 @@ namespace Puffin.Infrastructure.MonoGame
 
         internal bool ShowCollisionAreas { get { return this.showCollisionAreas; } }
 
+        internal readonly int GameWidth;
+        internal readonly int GameHeight;
+
         /// <summary>
         /// Set this to true to render collision areas as red transparent rectangles.
         /// </summary>
         protected bool showCollisionAreas = false;
 
-        private GraphicsDeviceManager graphics;
+        private GraphicsDeviceManager graphicsManager;
         private SpriteBatch spriteBatch;
         private Scene currentScene;
 
@@ -73,12 +76,15 @@ namespace Puffin.Infrastructure.MonoGame
         public PuffinGame(int gameWidth, int gameHeight)
         {
             PuffinGame.LatestInstance = this;
-            this.graphics = new GraphicsDeviceManager(this);
+            this.graphicsManager = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
-            this.graphics.PreferredBackBufferWidth = gameWidth;
-            this.graphics.PreferredBackBufferHeight = gameHeight;
+            this.GameWidth = gameWidth;
+            this.GameHeight = gameHeight;
+
+            this.graphicsManager.PreferredBackBufferWidth = gameWidth;
+            this.graphicsManager.PreferredBackBufferHeight = gameWidth;
         }
 
         /// <summary>
@@ -94,12 +100,12 @@ namespace Puffin.Infrastructure.MonoGame
         /// <summary>
         /// The display width of the main game window.
         /// </summary>
-        public int Width { get { return this.graphics.PreferredBackBufferWidth; } }
+        public int Width { get { return this.graphicsManager.PreferredBackBufferWidth; } }
 
         /// <summary>
         /// The display height of the main game window.
         /// </summary>
-        public int Height { get { return this.graphics.PreferredBackBufferHeight; } }
+        public int Height { get { return this.graphicsManager.PreferredBackBufferHeight; } }
 
         /// <summary>
         /// Called when your game is ready to run (graphics initialized, etc.)
