@@ -17,10 +17,11 @@ namespace Puffin.Infrastructure.MonoGame.IO
             get
             {
                 var camera = MonoGameDrawingSurface.LatestInstance.GetActiveCamera();
+                float maxScale = Math.Max(PuffinGame.LatestInstance.Scale.Item1, PuffinGame.LatestInstance.Scale.Item2);
                 if (camera != null)
                 {
                     var state = Mouse.GetState();
-                    var coordinates = CoordinateSpaces.ScreenToWorld(new Vector2(state.X, state.Y), camera.InverseMatrix);
+                    var coordinates = CoordinateSpaces.ScreenToWorld(new Vector2(state.X, state.Y), camera.InverseMatrix / maxScale);
                     return new Tuple<int, int>((int)coordinates.X, (int)coordinates.Y);
                 }
                 else
@@ -35,8 +36,9 @@ namespace Puffin.Infrastructure.MonoGame.IO
         {
             get
             {
+                float maxScale = Math.Max(PuffinGame.LatestInstance.Scale.Item1, PuffinGame.LatestInstance.Scale.Item2);
                 var state = Mouse.GetState();
-                return new Tuple<int, int>(state.X, state.Y);
+                return new Tuple<int, int>((int)(state.X / maxScale), (int)(state.Y / maxScale));
             }
         }
 

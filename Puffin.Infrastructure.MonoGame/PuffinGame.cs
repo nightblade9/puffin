@@ -81,16 +81,10 @@ namespace Puffin.Infrastructure.MonoGame
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
-            this.graphicsManager.PreferredBackBufferWidth = screenWidth;
-            this.graphicsManager.PreferredBackBufferHeight = screenHeight;
+            this.graphicsManager.PreferredBackBufferWidth = screenWidth > 0 ? screenWidth : gameWidth;
+            this.graphicsManager.PreferredBackBufferHeight = screenHeight > 0 ? screenHeight : gameHeight;
             this.GameWidth = gameWidth;
             this.GameHeight = gameHeight;
-
-            // // Scale input
-            // TouchPanel.DisplayWidth = 1366;
-            // TouchPanel.DisplayHeight = 768;
-            // // Scale mouse
-            // TouchPanel.EnableMouseTouchPoint = true;
         }
 
         /// <summary>
@@ -112,6 +106,12 @@ namespace Puffin.Infrastructure.MonoGame
         /// The display height of the main game window.
         /// </summary>
         public int Height { get { return this.graphicsManager.PreferredBackBufferHeight; } }
+
+        public Tuple<float, float> Scale { get { 
+            var scaleX = this.graphicsManager.PreferredBackBufferWidth * 1.0f / this.GameWidth;
+            var scaleY = this.graphicsManager.PreferredBackBufferHeight * 1.0f / this.GameHeight;
+            return new Tuple<float, float>(scaleX, scaleY);
+        } }
 
         /// <summary>
         /// Called when your game is ready to run (graphics initialized, etc.)
