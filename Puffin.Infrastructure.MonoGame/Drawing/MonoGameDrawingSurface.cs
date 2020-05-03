@@ -40,6 +40,8 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
         
         private readonly GraphicsDevice graphics;
         private readonly SpriteBatch spriteBatch;
+
+        // Draw to this surface, then stretch/shrink to draw to screen
         private readonly RenderTarget2D renderTarget;
 
         private Texture2D backgroundSprite;
@@ -69,7 +71,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             this.spriteBatch = spriteBatch;
             this.defaultFont = this.LoadFont(PuffinGame.LatestInstance.DefaultFont, 24);
 
-            this.renderTarget = new RenderTarget2D(this.graphics, PuffinGame.LatestInstance.Width, PuffinGame.LatestInstance.Height);
+            this.renderTarget = new RenderTarget2D(this.graphics, PuffinGame.LatestInstance.GameWidth, PuffinGame.LatestInstance.GameHeight);
 
             this.eventBus.Subscribe(EventBusSignal.LabelFontChanged, (data) =>
             {
@@ -209,8 +211,8 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
 
             this.graphics.SetRenderTarget(null);
             
-            Rectangle screenRectangle = new Rectangle(0, 0, PuffinGame.LatestInstance.Width, graphics.Viewport.Height);
-            Rectangle gameRectangle = new Rectangle(0, 0, PuffinGame.LatestInstance.GameWidth, PuffinGame.LatestInstance.GameHeight);
+            var screenRectangle = new Rectangle(0, 0, PuffinGame.LatestInstance.Width, PuffinGame.LatestInstance.Height);
+            var gameRectangle = new Rectangle(0, 0, PuffinGame.LatestInstance.GameWidth, PuffinGame.LatestInstance.GameHeight);
             spriteBatch.Begin();
             spriteBatch.Draw(renderTarget, screenRectangle, gameRectangle, Color.White);
             spriteBatch.End();
