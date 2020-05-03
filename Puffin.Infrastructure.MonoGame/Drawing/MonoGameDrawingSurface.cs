@@ -40,6 +40,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
         
         private readonly GraphicsDevice graphics;
         private readonly SpriteBatch spriteBatch;
+        private readonly RenderTarget2D renderTarget;
 
         private Texture2D backgroundSprite;
         // 1x1 white rectangle, used to draw colour components
@@ -67,6 +68,8 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             this.graphics = graphics;
             this.spriteBatch = spriteBatch;
             this.defaultFont = this.LoadFont(PuffinGame.LatestInstance.DefaultFont, 24);
+
+            this.renderTarget = new RenderTarget2D(this.graphics, PuffinGame.LatestInstance.Width, PuffinGame.LatestInstance.Height);
 
             this.eventBus.Subscribe(EventBusSignal.LabelFontChanged, (data) =>
             {
@@ -147,6 +150,8 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
 
         public void DrawAll(int backgroundColour, string backgroundImage = "", bool clearDisplay = true)
         {
+            this.graphics.SetRenderTarget(renderTarget);
+
             if (clearDisplay)
             {
                 this.graphics.Clear(BgrToRgba(backgroundColour));
@@ -201,6 +206,14 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
                 }
                 this.spriteBatch.End();
             }
+
+            this.graphics.SetRenderTarget(null);
+            
+            Rectangle screenRectangle = new Rectangle(0, 0, PuffinGame.LatestInstance.Width, graphics.Viewport.Height);
+            Rectangle gameRectangle = new Rectangle(0, 0, PuffinGame.LatestInstance.GameWidth, PuffinGame.LatestInstance.GameHeight);
+            spriteBatch.Begin();
+            spriteBatch.Draw(renderTarget, screenRectangle, gameRectangle, Color.White);
+            spriteBatch.End();
         }
 
         public MonoGameCamera GetActiveCamera()

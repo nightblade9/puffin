@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using System;
 using Puffin.Core.Events;
+using Microsoft.Xna.Framework.Input.Touch;
 
 namespace Puffin.Infrastructure.MonoGame
 {
@@ -58,7 +59,7 @@ namespace Puffin.Infrastructure.MonoGame
 
         internal readonly int GameWidth;
         internal readonly int GameHeight;
-
+        
         /// <summary>
         /// Set this to true to render collision areas as red transparent rectangles.
         /// </summary>
@@ -73,18 +74,23 @@ namespace Puffin.Infrastructure.MonoGame
         /// </summary>
         /// <param name="gameWidth">The width of the game window</param>
         /// <param name="gameHeight">The height of the game window</param>
-        public PuffinGame(int gameWidth, int gameHeight)
+        public PuffinGame(int gameWidth, int gameHeight, int screenWidth = 0, int screenHeight = 0)
         {
             PuffinGame.LatestInstance = this;
             this.graphicsManager = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
+            this.graphicsManager.PreferredBackBufferWidth = screenWidth;
+            this.graphicsManager.PreferredBackBufferHeight = screenHeight;
             this.GameWidth = gameWidth;
             this.GameHeight = gameHeight;
 
-            this.graphicsManager.PreferredBackBufferWidth = gameWidth;
-            this.graphicsManager.PreferredBackBufferHeight = gameWidth;
+            // // Scale input
+            // TouchPanel.DisplayWidth = 1366;
+            // TouchPanel.DisplayHeight = 768;
+            // // Scale mouse
+            // TouchPanel.EnableMouseTouchPoint = true;
         }
 
         /// <summary>
