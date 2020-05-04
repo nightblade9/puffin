@@ -169,6 +169,8 @@ namespace Puffin.Infrastructure.MonoGame
             {
                 this.currentScene?.SubScene?.OnDraw(gameTime.ElapsedGameTime, false);
             }
+
+            this.currentScene.FlushToScreen();
         }
 
         private void InitializeSceneSystems(Scene s)

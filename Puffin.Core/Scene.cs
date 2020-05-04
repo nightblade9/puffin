@@ -214,6 +214,11 @@ namespace Puffin.Core
             this.EventBus?.Dispose();
         }
 
+        internal void FlushToScreen()
+        {
+            this.drawingSystem.FlushToScreen();
+        }
+
         // "Macro" method, deliver updates in chunks of <= 150ms (MAX_UPDATE_INTERVAL_MILLISECONDS).
         // This gives our games more stability, especially with physics, or collision
         // detection with fast speeds and/or large velocities and/or intervals.

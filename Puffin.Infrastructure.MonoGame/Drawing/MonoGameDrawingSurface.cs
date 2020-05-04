@@ -42,7 +42,9 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
         private readonly SpriteBatch spriteBatch;
 
         // Draw to this surface, then stretch/shrink to draw to screen
-        private readonly RenderTarget2D renderTarget;
+        private readonly RenderTarget2D sceneRenderTarget;
+        // Sub-scenes are drawn here (on a transparent render target).
+        private readonly RenderTarget2D subSceneRenderTarget;
 
         private Texture2D backgroundSprite;
         // 1x1 white rectangle, used to draw colour components
@@ -71,20 +73,19 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             this.spriteBatch = spriteBatch;
             this.defaultFont = this.LoadFont(PuffinGame.LatestInstance.DefaultFont, 24);
 
-            this.renderTarget = new RenderTarget2D(this.graphics, PuffinGame.LatestInstance.GameWidth, PuffinGame.LatestInstance.GameHeight);
+            this.sceneRenderTarget = new RenderTarget2D(this.graphics, PuffinGame.LatestInstance.GameWidth, PuffinGame.LatestInstance.GameHeight);
+            this.subSceneRenderTarget = new RenderTarget2D(this.graphics, PuffinGame.LatestInstance.GameWidth, PuffinGame.LatestInstance.GameHeight);
 
             this.eventBus.Subscribe(EventBusSignal.LabelFontChanged, (data) =>
             {
                 this.LoadFontFor(data as TextLabelComponent);
             });
 
-            // Fix: when drawing subscenes, the background is black. This is because when drawing the parent scene,
-            // we call SetRenderTarget(null), which wipes the buffer black; for more details, see:
-            // https://gamedev.stackexchange.com/questions/90396/monogame-setrendertarget-is-wiping-the-backbuffer
-
-            // This solution works: don't clear the screen to black when we call SetRenderTarget(null). Note that
-            // this may cause a huge performance loss.
-            graphics.PresentationParameters.RenderTargetUsage = RenderTargetUsage.PreserveContents;
+            // Make sure renderTarget is always transparent. Otherwise, the contents will actually be solid black.
+            // That means when we draw the (empty) subscene render target, we get garbage on screen.
+            this.graphics.SetRenderTarget(subSceneRenderTarget);
+            this.graphics.Clear(Color.Transparent);
+            this.graphics.SetRenderTarget(null);
         }
 
         public void AddEntity(Entity entity)
@@ -158,14 +159,18 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             this.tileMapSprites.Remove(tileMap);
         }
 
+        /// <summary>
+        /// Draws all the entities, tilemaps, etc. to the appropriate render target - there's one for
+        /// scenes, and a different one for subscenes. Then later, a call to FlushToScreen draws them
+        /// in order, with transparent backgrounds on the subscene.
+        /// </summary>
         public void DrawAll(int backgroundColour, string backgroundImage = "", bool clearDisplay = true)
         {
-            // Make sure renderTarget is always transparent. Otherwise, the contents will actually be solid black.
-            this.graphics.SetRenderTarget(renderTarget);
-            this.graphics.Clear(Color.Transparent);
-
+            // Drawing a main/parent scene
             if (clearDisplay)
             {
+                this.graphics.SetRenderTarget(sceneRenderTarget);
+
                 this.graphics.Clear(BgrToRgba(backgroundColour));
                 if (!string.IsNullOrEmpty(backgroundImage) && this.backgroundSprite == null)
                 {
@@ -218,14 +223,22 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
                 }
                 this.spriteBatch.End();
             }
+        }
 
+        /// <summary>
+        /// We've finished drawng parent/child scenes to their appropriate render targets; now draw them
+        /// on-screen, in order. Note that this is necessary because <c>graphics.SetRenderTarget(null)</c>
+        /// clears what was previously drawn and fills the screen with black.
+        public void FlushToScreen()
+        {
             // Finished rendering to renderTarget, now scale to draw onto the screen
             this.graphics.SetRenderTarget(null);
             var screenRectangle = new Rectangle(0, 0, PuffinGame.LatestInstance.Width, PuffinGame.LatestInstance.Height);
             var gameRectangle = new Rectangle(0, 0, PuffinGame.LatestInstance.GameWidth, PuffinGame.LatestInstance.GameHeight);
             
             spriteBatch.Begin();
-            spriteBatch.Draw(renderTarget, screenRectangle, gameRectangle, Color.White);
+            spriteBatch.Draw(sceneRenderTarget, screenRectangle, gameRectangle, Color.White);
+            spriteBatch.Draw(subSceneRenderTarget, screenRectangle, gameRectangle, Color.White);
             spriteBatch.End();
         }
 

@@ -15,5 +15,6 @@ namespace Puffin.Core.Drawing
         void RemoveEntity(Entity entity);
         void AddTileMap(TileMap tileMap);
         void RemoveTileMap(TileMap tileMap);
+        void FlushToScreen();
     }
 }

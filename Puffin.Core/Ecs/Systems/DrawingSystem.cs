@@ -57,5 +57,10 @@ namespace Puffin.Core.Ecs.Systems
         {
             this.drawingSurface.DrawAll(backgroundColour, backgroundImage, clearDisplay);
         }
+
+        internal void FlushToScreen()
+        {
+            this.drawingSurface.FlushToScreen();
+        }
     }
 }
