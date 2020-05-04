@@ -152,8 +152,10 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
 
         public void DrawAll(int backgroundColour, string backgroundImage = "", bool clearDisplay = true)
         {
+            // Make sure renderTarget is always transparent. Otherwise, the contents will actually be solid black.
             this.graphics.SetRenderTarget(renderTarget);
-
+            this.graphics.Clear(Color.Transparent);
+            
             if (clearDisplay)
             {
                 this.graphics.Clear(BgrToRgba(backgroundColour));
@@ -209,12 +211,18 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
                 this.spriteBatch.End();
             }
 
+            // Finished rendering to renderTarget, now scale to draw onto the screen
             this.graphics.SetRenderTarget(null);
-            
             var screenRectangle = new Rectangle(0, 0, PuffinGame.LatestInstance.Width, PuffinGame.LatestInstance.Height);
             var gameRectangle = new Rectangle(0, 0, PuffinGame.LatestInstance.GameWidth, PuffinGame.LatestInstance.GameHeight);
+            
             spriteBatch.Begin();
             spriteBatch.Draw(renderTarget, screenRectangle, gameRectangle, Color.White);
+            spriteBatch.End();
+
+            ///// DEBUG: draw a little tiny renderTarget in the corner. Note that it's correctly transparent.
+            spriteBatch.Begin();
+            spriteBatch.Draw(renderTarget, new Rectangle(0, 0, 427, 245), gameRectangle, Color.White);
             spriteBatch.End();
         }
 
