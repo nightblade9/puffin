@@ -184,6 +184,14 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
                     this.spriteBatch.End();
                 }
             }
+            // Note: there's no "else" clause clearing the sub-scene buffer, because doing that
+            // here clears the content! If it turns out that this is important, we may need to
+            // add another call (all the way from PuffinGame down to here, like FlushToScreen)
+            // that explicitly clears both/all render targets.
+            
+            // As of writing, this appears to work because we always draw a full/filled parent
+            // scene first (background colour or sprite) so you won't notice the sub-scene buffer
+            // "bleeding" anything from not being cleared.
 
             var lastActiveCamera = this.cameras.LastOrDefault();
             MonoGameCamera camera = null;
