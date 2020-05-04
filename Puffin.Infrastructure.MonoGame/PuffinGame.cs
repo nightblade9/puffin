@@ -158,6 +158,8 @@ namespace Puffin.Infrastructure.MonoGame
         /// <summary>Overridden from MonoGame, please ignore.</summary>
         protected override void Draw(GameTime gameTime)
         {
+            base.Draw(gameTime);
+
             // Always draw parent because we clear drawing surface, wanna see parent
             // if there's a subscene.
             this.currentScene?.OnDraw(gameTime.ElapsedGameTime, true);
@@ -167,8 +169,6 @@ namespace Puffin.Infrastructure.MonoGame
             {
                 this.currentScene?.SubScene?.OnDraw(gameTime.ElapsedGameTime, false);
             }
-
-            base.Draw(gameTime);
         }
 
         private void InitializeSceneSystems(Scene s)

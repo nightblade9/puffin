@@ -77,6 +77,14 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             {
                 this.LoadFontFor(data as TextLabelComponent);
             });
+
+            // Fix: when drawing subscenes, the background is black. This is because when drawing the parent scene,
+            // we call SetRenderTarget(null), which wipes the buffer black; for more details, see:
+            // https://gamedev.stackexchange.com/questions/90396/monogame-setrendertarget-is-wiping-the-backbuffer
+
+            // This solution works: don't clear the screen to black when we call SetRenderTarget(null). Note that
+            // this may cause a huge performance loss.
+            graphics.PresentationParameters.RenderTargetUsage = RenderTargetUsage.PreserveContents;
         }
 
         public void AddEntity(Entity entity)
@@ -155,7 +163,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             // Make sure renderTarget is always transparent. Otherwise, the contents will actually be solid black.
             this.graphics.SetRenderTarget(renderTarget);
             this.graphics.Clear(Color.Transparent);
-            
+
             if (clearDisplay)
             {
                 this.graphics.Clear(BgrToRgba(backgroundColour));
@@ -218,11 +226,6 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             
             spriteBatch.Begin();
             spriteBatch.Draw(renderTarget, screenRectangle, gameRectangle, Color.White);
-            spriteBatch.End();
-
-            ///// DEBUG: draw a little tiny renderTarget in the corner. Note that it's correctly transparent.
-            spriteBatch.Begin();
-            spriteBatch.Draw(renderTarget, new Rectangle(0, 0, 427, 245), gameRectangle, Color.White);
             spriteBatch.End();
         }
 

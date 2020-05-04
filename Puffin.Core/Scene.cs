@@ -248,7 +248,12 @@ namespace Puffin.Core
 
         internal void OnDraw(TimeSpan elapsed, bool clearDisplay)
         {
-            drawsSinceLastFpsCount++;
+            if (clearDisplay)
+            {
+                // Actual draw, not a subscene draw
+                drawsSinceLastFpsCount++;
+            }
+            
             this.drawingSystem.OnDraw(elapsed, this.BackgroundColour, this.Background, clearDisplay);
         }
 
