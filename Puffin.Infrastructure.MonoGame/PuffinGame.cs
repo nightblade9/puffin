@@ -6,12 +6,10 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Puffin.Infrastructure.MonoGame.IO;
 using Puffin.Core.IO;
-using Ninject;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using System;
 using Puffin.Core.Events;
-using Microsoft.Xna.Framework.Input.Touch;
 
 namespace Puffin.Infrastructure.MonoGame
 {
@@ -46,6 +44,14 @@ namespace Puffin.Infrastructure.MonoGame
             }
             set
             {
+                if (value == true)
+                {
+                    this.SetScreenSize(this.GameWidth, this.GameHeight);
+                }
+                else
+                {
+                    this.SetScreenSize(this.screenWidth, this.screenHeight);
+                }
                 this.graphicsManager.IsFullScreen = value;
                 this.graphicsManager.ApplyChanges();
             }
@@ -68,6 +74,8 @@ namespace Puffin.Infrastructure.MonoGame
         private GraphicsDeviceManager graphicsManager;
         private SpriteBatch spriteBatch;
         private Scene currentScene;
+        private int screenWidth;
+        private int screenHeight;
 
         /// <summary>
         /// Creates a new game with the specified window size.
@@ -77,14 +85,34 @@ namespace Puffin.Infrastructure.MonoGame
         public PuffinGame(int gameWidth, int gameHeight, int screenWidth = 0, int screenHeight = 0)
         {
             PuffinGame.LatestInstance = this;
-            this.graphicsManager = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
-            IsMouseVisible = true;
-
-            this.graphicsManager.PreferredBackBufferWidth = screenWidth > 0 ? screenWidth : gameWidth;
-            this.graphicsManager.PreferredBackBufferHeight = screenHeight > 0 ? screenHeight : gameHeight;
             this.GameWidth = gameWidth;
-            this.GameHeight = gameHeight;
+            this.GameHeight = gameHeight;            
+
+            this.graphicsManager = new GraphicsDeviceManager(this);
+            this.Content.RootDirectory = "Content";
+            this.IsMouseVisible = true;
+
+            // Size to restore to after toggling out of full-screen mode
+            this.screenWidth = screenWidth > 0 ? screenWidth : gameWidth;
+            this.screenHeight = screenHeight > 0 ? screenHeight : gameHeight;
+
+            this.SetScreenSize(this.screenWidth, this.screenHeight);
+        }
+
+        /// <summary>
+        /// Sets the display (screen) size or window, scaling up/down to fit the game to screen.
+        /// Note that if you enter disporportionate settings, it will figure out and scale while
+        // preserving the original game aspect ratio.
+        /// </summary>
+        public void SetScreenSize(int width, int height)
+        {
+            // Fit as well as possible, scaling proportionally
+            var scaleX = 1f * width / this.GameWidth;
+            var scaleY = 1f * height / this.GameHeight;
+            float minScale = Math.Min(scaleX, scaleY);
+
+            this.graphicsManager.PreferredBackBufferWidth = (int)(minScale * this.GameWidth);
+            this.graphicsManager.PreferredBackBufferHeight = (int)(minScale * this.GameHeight);
         }
 
         /// <summary>
