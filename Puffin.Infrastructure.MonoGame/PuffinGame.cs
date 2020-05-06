@@ -58,14 +58,23 @@ namespace Puffin.Infrastructure.MonoGame
         }
         
         public string DefaultFont = "OpenSans";
-
+        
+        /// <summary>
+        /// The actual, full width of the game, in "virtual pixels" or at scale 1.0.
+        /// This is not the size drawn on-screen, which is <c>.Width</c>.
+        /// </summary>
+        public readonly int GameWidth;
+        
+        /// <summary>
+        /// The actual, full height of the game, in "virtual pixels" or at scale 1.0.
+        /// This is not the size drawn on-screen, which is <c>.Height</c>.
+        /// </summary>
+        public readonly int GameHeight;
+        
         internal static PuffinGame LatestInstance { get; private set; }
 
         internal bool ShowCollisionAreas { get { return this.showCollisionAreas; } }
 
-        internal readonly int GameWidth;
-        internal readonly int GameHeight;
-        
         /// <summary>
         /// Set this to true to render collision areas as red transparent rectangles.
         /// </summary>
