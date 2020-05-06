@@ -117,8 +117,8 @@ namespace Puffin.Infrastructure.MonoGame
 
         /// <summary>
         /// Sets the display (screen) size or window, scaling up/down to fit the game to screen.
-        /// Note that if you enter disporportionate settings, it will figure out and scale while
-        // preserving the original game aspect ratio.
+        /// Note that if you enter disporportionate settings, Puffin will scale while preserving
+        // the original game aspect ratio.
         /// </summary>
         public void SetScreenSize(int width, int height)
         {
@@ -129,6 +129,10 @@ namespace Puffin.Infrastructure.MonoGame
 
             this.graphicsManager.PreferredBackBufferWidth = (int)(minScale * this.GameWidth);
             this.graphicsManager.PreferredBackBufferHeight = (int)(minScale * this.GameHeight);
+            this.graphicsManager.ApplyChanges();
+
+            this.ScreenWidth = width;
+            this.ScreenHeight = height;
         }
 
         /// <summary>
