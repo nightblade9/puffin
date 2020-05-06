@@ -50,7 +50,7 @@ namespace Puffin.Infrastructure.MonoGame
                 }
                 else
                 {
-                    this.SetScreenSize(this.screenWidth, this.screenHeight);
+                    this.SetScreenSize(this.ScreenWidth, this.ScreenHeight);
                 }
                 this.graphicsManager.IsFullScreen = value;
                 this.graphicsManager.ApplyChanges();
@@ -70,6 +70,15 @@ namespace Puffin.Infrastructure.MonoGame
         /// This is not the size drawn on-screen, which is <c>.Height</c>.
         /// </summary>
         public readonly int GameHeight;
+
+        /// <summary>
+        /// The current width of the screen/window of the game.
+        /// </summary>
+        public int ScreenWidth { get; private set; }
+        /// <summary>
+        /// The current height of the screen/window of the game.
+        /// </summary>
+        public int ScreenHeight { get; private set; }
         
         internal static PuffinGame LatestInstance { get; private set; }
 
@@ -83,9 +92,7 @@ namespace Puffin.Infrastructure.MonoGame
         private GraphicsDeviceManager graphicsManager;
         private SpriteBatch spriteBatch;
         private Scene currentScene;
-        private int screenWidth;
-        private int screenHeight;
-
+        
         /// <summary>
         /// Creates a new game with the specified window size.
         /// </summary>
@@ -102,10 +109,10 @@ namespace Puffin.Infrastructure.MonoGame
             this.IsMouseVisible = true;
 
             // Size to restore to after toggling out of full-screen mode
-            this.screenWidth = screenWidth > 0 ? screenWidth : gameWidth;
-            this.screenHeight = screenHeight > 0 ? screenHeight : gameHeight;
+            this.ScreenWidth = screenWidth > 0 ? screenWidth : gameWidth;
+            this.ScreenHeight = screenHeight > 0 ? screenHeight : gameHeight;
 
-            this.SetScreenSize(this.screenWidth, this.screenHeight);
+            this.SetScreenSize(this.ScreenWidth, this.ScreenHeight);
         }
 
         /// <summary>
