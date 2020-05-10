@@ -46,7 +46,9 @@ namespace Puffin.Infrastructure.MonoGame
             {
                 if (value == true)
                 {
-                    this.SetScreenSize(this.GameWidth, this.GameHeight);
+                    // We're in windowed mode, use the full screen width/height
+                    // Source: https://stackoverflow.com/a/4149170
+                    this.SetScreenSize(GraphicsDevice.DisplayMode.Width, GraphicsDevice.DisplayMode.Height);
                 }
                 else
                 {
