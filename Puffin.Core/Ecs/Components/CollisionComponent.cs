@@ -7,10 +7,15 @@ namespace Puffin.Core.Ecs.Components
     /// </summary>
     public class CollisionComponent : Component
     {
+        /// <summary>The width of the collision component (collidable area).</summary>
         public readonly int Width;
+        /// <summary>The height of the collision component (collidable area).</summary>
         public readonly int Height;
+        /// <summary>The x-offset of the collision component relative to the origin of the entity.</summary>
         public readonly int XOffset;
+        /// <summary>The y-offset of the collision component relative to the origin of the entity.</summary>
         public readonly int YOffset;
+        
         internal readonly Action<Entity, string> onCollide;
 
         /// <summary>

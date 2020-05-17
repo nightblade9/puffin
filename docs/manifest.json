@@ -12,7 +12,7 @@
           "hash": "xYiCyCEHk9bDrYNEh3ihFg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -21,10 +21,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.CameraComponent.html",
-          "hash": "o7dxz8+vDzLMEa5foTqyPw=="
+          "hash": "gEWc1NFjG/lnVcARD5DKyA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -33,10 +33,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.CollisionComponent.html",
-          "hash": "GobJPPhYmDnp+vd1MYTfqA=="
+          "hash": "wX97S+6QqycdtMlbk8xkyA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -45,10 +45,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.ColourComponent.html",
-          "hash": "waXwgYfEx1bhP95KSuQS8w=="
+          "hash": "3qFSNGioLL44h+dG6tDH9Q=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -156,7 +156,7 @@
           "hash": "yfoSL+p+yLukSAmAWKhQmA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -180,7 +180,7 @@
           "hash": "3nFxGKtbHSaZg5JXdPCvHw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -240,7 +240,7 @@
           "hash": "2o5fiNOx7JUxBH1d5/uHjg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -276,7 +276,7 @@
           "hash": "+i+FK9qskyNnEw9jsJ9XdQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -288,7 +288,7 @@
           "hash": "TK54+hXbk97Dq+hmpPqKuw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -300,7 +300,7 @@
           "hash": "A6IXOfH8uC7jRlgEATBF4Q=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -312,7 +312,7 @@
           "hash": "4qHbGc2G5ELxIs08B0h+jQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -324,7 +324,7 @@
           "hash": "a3RzpwjhH0CnP0tnu3HmDQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -336,7 +336,7 @@
           "hash": "Ptd+AhXfStKDWEgNsiG6BA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -348,7 +348,7 @@
           "hash": "dYIHFujAPyMpULsuuk3WWg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -467,7 +467,7 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 29,
-          "skipped_file_count": 27
+          "skipped_file_count": 26
         },
         "TocDocumentProcessor": {
           "can_incremental": false,
