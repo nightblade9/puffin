@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class Entity
    ">
-    <meta name="generator" content="docfx 2.48.1.0">
+    <meta name="generator" content="docfx 2.51.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -83,6 +83,8 @@ Entities can only hold one component of each type.</p>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">Entity</span></div>
       <div class="level2"><a class="xref" href="Puffin.UI.Controls.Button.html">Button</a></div>
+      <div class="level2"><a class="xref" href="Puffin.UI.Controls.HorizontalProgressBar.html">HorizontalProgressBar</a></div>
+      <div class="level2"><a class="xref" href="Puffin.UI.Controls.HorizontalSlider.html">HorizontalSlider</a></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Puffin.Core.Ecs.html">Puffin.Core.Ecs</a></h6>
   <h6><strong>Assembly</strong>: Puffin.Core.dll</h6>
@@ -97,7 +99,7 @@ Entities can only hold one component of each type.</p>
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Ecs_Entity__ctor_System_Boolean_.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Entity.%23ctor(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/Entity.cs/#L51">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/Entity.cs/#L64">View Source</a>
   </span>
   <a id="Puffin_Core_Ecs_Entity__ctor_" data-uid="Puffin.Core.Ecs.Entity.#ctor*"></a>
   <h4 id="Puffin_Core_Ecs_Entity__ctor_System_Boolean_" data-uid="Puffin.Core.Ecs.Entity.#ctor(System.Boolean)">Entity(Boolean)</h4>
@@ -129,6 +131,68 @@ ignoring the camera).</p>
   </table>
   <h3 id="properties">Properties
   </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Ecs_Entity_DrawColourBeforeSprite.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Entity.DrawColourBeforeSprite%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/Entity.cs/#L54">View Source</a>
+  </span>
+  <a id="Puffin_Core_Ecs_Entity_DrawColourBeforeSprite_" data-uid="Puffin.Core.Ecs.Entity.DrawColourBeforeSprite*"></a>
+  <h4 id="Puffin_Core_Ecs_Entity_DrawColourBeforeSprite" data-uid="Puffin.Core.Ecs.Entity.DrawColourBeforeSprite">DrawColourBeforeSprite</h4>
+  <div class="markdown level1 summary"><p>Draw the colour entity under the sprite entity, instead of the usual (sprite first).
+Useful for those corner cases where we draw sprite over colour (eg. slider controls).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool DrawColourBeforeSprite { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Ecs_Entity_Scene.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Entity.Scene%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/Entity.cs/#L48">View Source</a>
+  </span>
+  <a id="Puffin_Core_Ecs_Entity_Scene_" data-uid="Puffin.Core.Ecs.Entity.Scene*"></a>
+  <h4 id="Puffin_Core_Ecs_Entity_Scene" data-uid="Puffin.Core.Ecs.Entity.Scene">Scene</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Scene Scene { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Puffin.Core.Scene.html">Scene</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Ecs_Entity_VelocityX.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Entity.VelocityX%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
@@ -260,7 +324,7 @@ ignoring the camera).</p>
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Ecs_Entity_Get__1.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Entity.Get%60%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/Entity.cs/#L80">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/Entity.cs/#L93">View Source</a>
   </span>
   <a id="Puffin_Core_Ecs_Entity_Get_" data-uid="Puffin.Core.Ecs.Entity.Get*"></a>
   <h4 id="Puffin_Core_Ecs_Entity_Get__1" data-uid="Puffin.Core.Ecs.Entity.Get``1">Get&lt;T&gt;()</h4>
@@ -270,6 +334,7 @@ ignoring the camera).</p>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public T Get&lt;T&gt;()
+
     where T : Component</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
@@ -304,10 +369,42 @@ ignoring the camera).</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Ecs_Entity_OnReady_System_Action_.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Entity.OnReady(System.Action)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/Entity.cs/#L115">View Source</a>
+  </span>
+  <a id="Puffin_Core_Ecs_Entity_OnReady_" data-uid="Puffin.Core.Ecs.Entity.OnReady*"></a>
+  <h4 id="Puffin_Core_Ecs_Entity_OnReady_System_Action_" data-uid="Puffin.Core.Ecs.Entity.OnReady(System.Action)">OnReady(Action)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void OnReady(Action action)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Action</span></td>
+        <td><span class="parametername">action</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Ecs_Entity_OnUpdate_System_Action_System_Single__.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Entity.OnUpdate(System.Action%7BSystem.Single%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/Entity.cs/#L97">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/Entity.cs/#L110">View Source</a>
   </span>
   <a id="Puffin_Core_Ecs_Entity_OnUpdate_" data-uid="Puffin.Core.Ecs.Entity.OnUpdate*"></a>
   <h4 id="Puffin_Core_Ecs_Entity_OnUpdate_System_Action_System_Single__" data-uid="Puffin.Core.Ecs.Entity.OnUpdate(System.Action{System.Single})">OnUpdate(Action&lt;Single&gt;)</h4>
@@ -343,7 +440,7 @@ milliseconds as an input.</p>
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Ecs_Entity_Remove__1.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Entity.Remove%60%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/Entity.cs/#L71">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/Entity.cs/#L84">View Source</a>
   </span>
   <a id="Puffin_Core_Ecs_Entity_Remove_" data-uid="Puffin.Core.Ecs.Entity.Remove*"></a>
   <h4 id="Puffin_Core_Ecs_Entity_Remove__1" data-uid="Puffin.Core.Ecs.Entity.Remove``1">Remove&lt;T&gt;()</h4>
@@ -353,6 +450,7 @@ milliseconds as an input.</p>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Remove&lt;T&gt;()
+
     where T : Component</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
@@ -375,7 +473,7 @@ milliseconds as an input.</p>
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Ecs_Entity_Set_Puffin_Core_Ecs_Components_Component_.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Entity.Set(Puffin.Core.Ecs.Components.Component)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/Entity.cs/#L60">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/Entity.cs/#L73">View Source</a>
   </span>
   <a id="Puffin_Core_Ecs_Entity_Set_" data-uid="Puffin.Core.Ecs.Entity.Set*"></a>
   <h4 id="Puffin_Core_Ecs_Entity_Set_Puffin_Core_Ecs_Components_Component_" data-uid="Puffin.Core.Ecs.Entity.Set(Puffin.Core.Ecs.Components.Component)">Set(Component)</h4>
@@ -421,7 +519,7 @@ component of this type, this new component replaces the old one.</p>
   </table>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
-      <a class="xref" href="Puffin.Core.Ecs.EntityExtensions.html#Puffin_Core_Ecs_EntityExtensions_Move_Puffin_Core_Ecs_Entity_System_Int32_System_Int32_">EntityExtensions.Move(Entity, Int32, Int32)</a>
+      <a class="xref" href="Puffin.Core.Ecs.EntityExtensions.html#Puffin_Core_Ecs_EntityExtensions_Move_Puffin_Core_Ecs_Entity_System_Single_System_Single_">EntityExtensions.Move(Entity, Single, Single)</a>
   </div>
   <div>
       <a class="xref" href="Puffin.Core.Ecs.EntityExtensions.html#Puffin_Core_Ecs_EntityExtensions_Audio_Puffin_Core_Ecs_Entity_System_String_">EntityExtensions.Audio(Entity, String)</a>
@@ -448,7 +546,7 @@ component of this type, this new component replaces the old one.</p>
       <a class="xref" href="Puffin.Core.Ecs.EntityExtensions.html#Puffin_Core_Ecs_EntityExtensions_Label_Puffin_Core_Ecs_Entity_System_String_System_Int32_System_Int32_">EntityExtensions.Label(Entity, String, Int32, Int32)</a>
   </div>
   <div>
-      <a class="xref" href="Puffin.Core.Ecs.EntityExtensions.html#Puffin_Core_Ecs_EntityExtensions_Mouse_Puffin_Core_Ecs_Entity_System_Action_System_Int32_System_Int32_">EntityExtensions.Mouse(Entity, Action, Int32, Int32)</a>
+      <a class="xref" href="Puffin.Core.Ecs.EntityExtensions.html#Puffin_Core_Ecs_EntityExtensions_Mouse_Puffin_Core_Ecs_Entity_System_Int32_System_Int32_System_Func_System_Int32_System_Int32_System_Boolean__System_Action_">EntityExtensions.Mouse(Entity, Int32, Int32, Func&lt;Int32, Int32, Boolean&gt;, Action)</a>
   </div>
   <div>
       <a class="xref" href="Puffin.Core.Ecs.EntityExtensions.html#Puffin_Core_Ecs_EntityExtensions_Overlap_Puffin_Core_Ecs_Entity_System_Int32_System_Int32_">EntityExtensions.Overlap(Entity, Int32, Int32)</a>
