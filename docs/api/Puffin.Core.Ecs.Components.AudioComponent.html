@@ -139,7 +139,8 @@ You should be able to play WAV files and OGG files.</p>
   </span>
   <a id="Puffin_Core_Ecs_Components_AudioComponent_Play_" data-uid="Puffin.Core.Ecs.Components.AudioComponent.Play*"></a>
   <h4 id="Puffin_Core_Ecs_Components_AudioComponent_Play_System_Single_System_Single_" data-uid="Puffin.Core.Ecs.Components.AudioComponent.Play(System.Single,System.Single)">Play(Single, Single)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Plays the audio file specified in <code>fileName</code> at the specified volume and pitch.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -158,12 +159,14 @@ You should be able to play WAV files and OGG files.</p>
       <tr>
         <td><span class="xref">System.Single</span></td>
         <td><span class="parametername">volume</span></td>
-        <td></td>
+        <td><p>A volume of 1.0 is 100%; a volume of 0 is 0% (completely muted).</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Single</span></td>
         <td><span class="parametername">pitch</span></td>
-        <td></td>
+        <td><p>A pitch of 0 is 100% (normal); -1 plays at half the pitch, 1 plays at double pitch.</p>
+</td>
       </tr>
     </tbody>
   </table>

@@ -12,7 +12,9 @@ namespace Puffin.Core.Ecs.Components
         public int OffsetX { get; set; }
         public int OffsetY { get; set; }
         
-        /// <summary>How transparent this component is; ranges from 0 (fully invisible) to 1 (fully visible).
+        /// <summary>
+        /// How transparent this component is; ranges from 0 (fully invisible) to 1 (fully visible).
+        /// </summary>
         public float Alpha { get; set; } = 1;
 
         /// <param name="rgb">The rectangle's colour, in the format 0xRRGGBB with hex values for each pair.</param>

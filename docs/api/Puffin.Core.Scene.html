@@ -99,7 +99,7 @@ to implement your game's logic. Also contains event for mouse-click and key-pres
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Scene__ctor.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L80">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L87">View Source</a>
   </span>
   <a id="Puffin_Core_Scene__ctor_" data-uid="Puffin.Core.Scene.#ctor*"></a>
   <h4 id="Puffin_Core_Scene__ctor" data-uid="Puffin.Core.Scene.#ctor">Scene()</h4>
@@ -360,11 +360,13 @@ This value updates approximately every second.</p>
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Scene_MouseCoordinates.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.MouseCoordinates%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L74">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L76">View Source</a>
   </span>
   <a id="Puffin_Core_Scene_MouseCoordinates_" data-uid="Puffin.Core.Scene.MouseCoordinates*"></a>
   <h4 id="Puffin_Core_Scene_MouseCoordinates" data-uid="Puffin.Core.Scene.MouseCoordinates">MouseCoordinates</h4>
-  <div class="markdown level1 summary"><p>The current mouse coordinates.</p>
+  <div class="markdown level1 summary"><p>The current mouse coordinates, from the perspective of the current camera (if one exists).
+eg. if your game is zoomed in 3x, (150, 51) in screen space returns (50, 17).
+This is useful to get things in &quot;game space&quot; irrespective of camera zoom.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -391,11 +393,13 @@ This value updates approximately every second.</p>
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Scene_UiMouseCoordinates.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.UiMouseCoordinates%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L75">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L82">View Source</a>
   </span>
   <a id="Puffin_Core_Scene_UiMouseCoordinates_" data-uid="Puffin.Core.Scene.UiMouseCoordinates*"></a>
   <h4 id="Puffin_Core_Scene_UiMouseCoordinates" data-uid="Puffin.Core.Scene.UiMouseCoordinates">UiMouseCoordinates</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The current mouse coordinates in screen space, irrespective of the current camera (if one exists).
+This is useful for manual checks for UI entities.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -423,7 +427,7 @@ This value updates approximately every second.</p>
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Scene_Add_Puffin_Core_Ecs_Entity_.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.Add(Puffin.Core.Ecs.Entity)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L87">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L94">View Source</a>
   </span>
   <a id="Puffin_Core_Scene_Add_" data-uid="Puffin.Core.Scene.Add*"></a>
   <h4 id="Puffin_Core_Scene_Add_Puffin_Core_Ecs_Entity_" data-uid="Puffin.Core.Scene.Add(Puffin.Core.Ecs.Entity)">Add(Entity)</h4>
@@ -456,7 +460,7 @@ This value updates approximately every second.</p>
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Scene_Add_Puffin_Core_Tiles_TileMap_.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.Add(Puffin.Core.Tiles.TileMap)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L123">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L130">View Source</a>
   </span>
   <a id="Puffin_Core_Scene_Add_" data-uid="Puffin.Core.Scene.Add*"></a>
   <h4 id="Puffin_Core_Scene_Add_Puffin_Core_Tiles_TileMap_" data-uid="Puffin.Core.Scene.Add(Puffin.Core.Tiles.TileMap)">Add(TileMap)</h4>
@@ -490,7 +494,7 @@ Note that tilemaps are drawn in the order added.</p>
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Scene_Dispose.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L212">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L223">View Source</a>
   </span>
   <a id="Puffin_Core_Scene_Dispose_" data-uid="Puffin.Core.Scene.Dispose*"></a>
   <h4 id="Puffin_Core_Scene_Dispose" data-uid="Puffin.Core.Scene.Dispose">Dispose()</h4>
@@ -506,7 +510,7 @@ Note that tilemaps are drawn in the order added.</p>
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Scene_HideSubScene.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.HideSubScene%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L196">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L207">View Source</a>
   </span>
   <a id="Puffin_Core_Scene_HideSubScene_" data-uid="Puffin.Core.Scene.HideSubScene*"></a>
   <h4 id="Puffin_Core_Scene_HideSubScene" data-uid="Puffin.Core.Scene.HideSubScene">HideSubScene()</h4>
@@ -522,7 +526,7 @@ Note that tilemaps are drawn in the order added.</p>
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Scene_IsActionDown_System_Enum_.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.IsActionDown(System.Enum)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L140">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L147">View Source</a>
   </span>
   <a id="Puffin_Core_Scene_IsActionDown_" data-uid="Puffin.Core.Scene.IsActionDown*"></a>
   <h4 id="Puffin_Core_Scene_IsActionDown_System_Enum_" data-uid="Puffin.Core.Scene.IsActionDown(System.Enum)">IsActionDown(Enum)</h4>
@@ -570,7 +574,7 @@ Note that tilemaps are drawn in the order added.</p>
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Scene_Ready.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.Ready%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L161">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L168">View Source</a>
   </span>
   <a id="Puffin_Core_Scene_Ready_" data-uid="Puffin.Core.Scene.Ready*"></a>
   <h4 id="Puffin_Core_Scene_Ready" data-uid="Puffin.Core.Scene.Ready">Ready()</h4>
@@ -587,7 +591,7 @@ This includes being able to change label font sizes.</p>
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Scene_Remove_Puffin_Core_Ecs_Entity_.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.Remove(Puffin.Core.Ecs.Entity)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L110">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L117">View Source</a>
   </span>
   <a id="Puffin_Core_Scene_Remove_" data-uid="Puffin.Core.Scene.Remove*"></a>
   <h4 id="Puffin_Core_Scene_Remove_Puffin_Core_Ecs_Entity_" data-uid="Puffin.Core.Scene.Remove(Puffin.Core.Ecs.Entity)">Remove(Entity)</h4>
@@ -620,7 +624,7 @@ This includes being able to change label font sizes.</p>
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Scene_Remove_Puffin_Core_Tiles_TileMap_.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.Remove(Puffin.Core.Tiles.TileMap)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L132">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L139">View Source</a>
   </span>
   <a id="Puffin_Core_Scene_Remove_" data-uid="Puffin.Core.Scene.Remove*"></a>
   <h4 id="Puffin_Core_Scene_Remove_Puffin_Core_Tiles_TileMap_" data-uid="Puffin.Core.Scene.Remove(Puffin.Core.Tiles.TileMap)">Remove(TileMap)</h4>
@@ -653,11 +657,13 @@ This includes being able to change label font sizes.</p>
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Scene_ShowSubScene_Puffin_Core_Scene_.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.ShowSubScene(Puffin.Core.Scene)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L179">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L190">View Source</a>
   </span>
   <a id="Puffin_Core_Scene_ShowSubScene_" data-uid="Puffin.Core.Scene.ShowSubScene*"></a>
   <h4 id="Puffin_Core_Scene_ShowSubScene_Puffin_Core_Scene_" data-uid="Puffin.Core.Scene.ShowSubScene(Puffin.Core.Scene)">ShowSubScene(Scene)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Sets and displays a sub-scene. This scene is rendered above the current scene.
+The current scene stops processing input and updates.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -685,11 +691,13 @@ This includes being able to change label font sizes.</p>
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Scene_TweenPosition_Puffin_Core_Ecs_Entity_System_Tuple_System_Single_System_Single__System_Tuple_System_Single_System_Single__System_Single_System_Action_.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.TweenPosition(Puffin.Core.Ecs.Entity%2CSystem.Tuple%7BSystem.Single%2CSystem.Single%7D%2CSystem.Tuple%7BSystem.Single%2CSystem.Single%7D%2CSystem.Single%2CSystem.Action)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L170">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L181">View Source</a>
   </span>
   <a id="Puffin_Core_Scene_TweenPosition_" data-uid="Puffin.Core.Scene.TweenPosition*"></a>
   <h4 id="Puffin_Core_Scene_TweenPosition_Puffin_Core_Ecs_Entity_System_Tuple_System_Single_System_Single__System_Tuple_System_Single_System_Single__System_Single_System_Action_" data-uid="Puffin.Core.Scene.TweenPosition(Puffin.Core.Ecs.Entity,System.Tuple{System.Single,System.Single},System.Tuple{System.Single,System.Single},System.Single,System.Action)">TweenPosition(Entity, Tuple&lt;Single, Single&gt;, Tuple&lt;Single, Single&gt;, Single, Action)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Tweens an entity from a start position to an end position over a period of time; optionally, invokes a callback when the tween completes.
+Note that this immediately moves the entity to the specified start position.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -737,7 +745,7 @@ This includes being able to change label font sizes.</p>
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Scene_Update_System_Single_.md&amp;value=---%0Auid%3A%20Puffin.Core.Scene.Update(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L149">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Scene.cs/#L156">View Source</a>
   </span>
   <a id="Puffin_Core_Scene_Update_" data-uid="Puffin.Core.Scene.Update*"></a>
   <h4 id="Puffin_Core_Scene_Update_System_Single_" data-uid="Puffin.Core.Scene.Update(System.Single)">Update(Single)</h4>

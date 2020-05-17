@@ -19,10 +19,10 @@ namespace Puffin.Core.Ecs.Components
         }
 
         /// <summary>
-        /// Plays the audio file specified in fileName` at the specified volume and pitch.
-        /// <param name="volume">A volume of 1.0 is 100%; a volume of 0 is 0% (completely muted).
-        /// <param name="pitch">A pitch of 0 is 100% (normal); -1 plays at half the pitch, 1 plays at double pitch.</param>
+        /// Plays the audio file specified in <c>fileName</c> at the specified volume and pitch.
         /// </summary>
+        /// <param name="volume">A volume of 1.0 is 100%; a volume of 0 is 0% (completely muted).</param>
+        /// <param name="pitch">A pitch of 0 is 100% (normal); -1 plays at half the pitch, 1 plays at double pitch.</param>
         public void Play(float volume = 1.0f, float pitch = 0f)
         {
             if (volume < 0 || volume > 1)

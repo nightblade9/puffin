@@ -19,6 +19,7 @@ namespace Puffin.UI.Controls
         /// Creates a horizontal slider of the specified size, at the specified position.
         /// The slider is made up of an image for the handle, with a <c>ColourComponent</c> instance for the slider bar.
         /// Note that the handle starts at the entity position, and the bar is offset to the right and down.
+        /// </summary>
         /// <param name="width">The width of the slider</param>
         /// <param name="minValue">The minimum value of the slider</param>
         /// <param name="maxValue">The maximum value of the slider</param>

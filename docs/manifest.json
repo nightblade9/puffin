@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.AudioComponent.html",
-          "hash": "ATnIp1/3J7wAYGQegBeR/w=="
+          "hash": "xYiCyCEHk9bDrYNEh3ihFg=="
         }
       },
       "is_incremental": false,
@@ -24,7 +24,7 @@
           "hash": "o7dxz8+vDzLMEa5foTqyPw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -36,7 +36,7 @@
           "hash": "GobJPPhYmDnp+vd1MYTfqA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -45,10 +45,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.ColourComponent.html",
-          "hash": "EugYr24c4P7YRatH6p1gsg=="
+          "hash": "waXwgYfEx1bhP95KSuQS8w=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -72,7 +72,7 @@
           "hash": "kXVB39RX3Kw0JwNn4jMucg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -84,7 +84,7 @@
           "hash": "3FBl0Pjpn/GyTwX0oDKRhA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -96,7 +96,7 @@
           "hash": "NkYT+ebQv7a1UeL0iGcicA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -108,7 +108,7 @@
           "hash": "SOq78qbOXumnQYdHgiOc6A=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -120,7 +120,7 @@
           "hash": "HZRvuht3LBMi9zbQXtXqqg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -132,7 +132,7 @@
           "hash": "A7sPeNFkWQJ2twrUSWaO6Q=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -153,7 +153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Entity.html",
-          "hash": "KwsROpMvwE+3Aaj4sfFDrw=="
+          "hash": "yfoSL+p+yLukSAmAWKhQmA=="
         }
       },
       "is_incremental": false,
@@ -165,10 +165,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.EntityExtensions.html",
-          "hash": "houcAGpVchniELRvnX2G5w=="
+          "hash": "qGUOiGAvj8kpKWxOgn9ywQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -192,7 +192,7 @@
           "hash": "P5iG+CgkWmQp4qBrEEUnGg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -204,7 +204,7 @@
           "hash": "1WqMYmE5cD3YykWohJDoTw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -237,7 +237,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Scene.html",
-          "hash": "LpfMmM0jwm1WjYaTdRkVBw=="
+          "hash": "2o5fiNOx7JUxBH1d5/uHjg=="
         }
       },
       "is_incremental": false,
@@ -285,7 +285,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Infrastructure.MonoGame.PuffinGame.html",
-          "hash": "jyLxuKgrVo8RvmP4H9pe5g=="
+          "hash": "TK54+hXbk97Dq+hmpPqKuw=="
         }
       },
       "is_incremental": false,
@@ -321,7 +321,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.UI.Controls.HorizontalProgressBar.html",
-          "hash": "37C6gThBmQRjKUcXgAaSgQ=="
+          "hash": "a3RzpwjhH0CnP0tnu3HmDQ=="
         }
       },
       "is_incremental": false,
@@ -333,7 +333,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.UI.Controls.HorizontalSlider.html",
-          "hash": "1vo6KCI4n8r9/E1fUdAJQg=="
+          "hash": "Ptd+AhXfStKDWEgNsiG6BA=="
         }
       },
       "is_incremental": false,
@@ -467,7 +467,7 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 29,
-          "skipped_file_count": 12
+          "skipped_file_count": 27
         },
         "TocDocumentProcessor": {
           "can_incremental": false,

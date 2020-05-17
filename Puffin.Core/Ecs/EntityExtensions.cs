@@ -234,7 +234,7 @@ namespace Puffin.Core.Ecs
         }
 
         /// <summary>
-        /// Adds a tween to an entity.
+        /// Adds a tween to an entity. Currently, only movement tweens are supported.
         /// </summary>
         /// <param name="entity">The entity to add the tween to.</param>
         /// <param name="startPosition">The position to move the entity to when the tween starts.</param>
