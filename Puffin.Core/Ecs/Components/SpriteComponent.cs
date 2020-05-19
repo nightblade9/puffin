@@ -22,9 +22,15 @@ namespace Puffin.Core.Ecs.Components
         public readonly int FrameHeight;
 
         /// <summary>
-        /// If false, doesn't display the sprite.
+        /// If false, doesn't display the sprite. See: <c>Alpha</c>
         /// </summary>
         public bool IsVisible = true;
+
+        /// <summary>
+        /// The alpha (transparency) of this sprite, ranging from 0 (invisible) to 1 (fully visible).
+        /// See <c>IsVisible</c>.
+        /// </summary>
+        public float Alpha = 1;
 
         // Actual image size, set on load
         public int Width { get; internal set; }

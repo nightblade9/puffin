@@ -169,7 +169,7 @@ namespace Puffin.Core
 
         public void TweenPosition(Entity entity, Tuple<float, float> startPosition, Tuple<float, float> endPosition, float durationSeconds, Action onTweenComplete)
         {
-            this.tweenManager.TweenPosition(entity, startPosition, endPosition, durationSeconds, onTweenComplete);
+            this.tweenManager.TweenPosition(entity, durationSeconds, startPosition, endPosition, 1, 1, onTweenComplete);
         }
 
         /// <summary>

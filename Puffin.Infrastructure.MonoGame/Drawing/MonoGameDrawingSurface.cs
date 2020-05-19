@@ -404,7 +404,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
 
             if (monoGameSprite != null && sprite.IsVisible)
             {
-                this.spriteBatch.Draw(monoGameSprite.Texture, new Vector2(entity.X + sprite.OffsetX, entity.Y + sprite.OffsetY), monoGameSprite.Region, Color.White);
+                this.spriteBatch.Draw(monoGameSprite.Texture, new Vector2(entity.X + sprite.OffsetX, entity.Y + sprite.OffsetY), monoGameSprite.Region, Color.White * sprite.Alpha);
             }
         }
 
