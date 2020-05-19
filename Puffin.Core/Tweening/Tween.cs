@@ -67,7 +67,7 @@ namespace Puffin.Core.Tweening
 
             this.Entity.X += this.Dx * (moveSeconds / this.DurationSeconds);
             this.Entity.Y += this.Dy * (moveSeconds / this.DurationSeconds);
-            this.Entity.Get<SpriteComponent>().Alpha += (this.DAlpha / this.DurationSeconds);
+            this.Entity.Get<SpriteComponent>().Alpha = this.StartAlpha + (this.DAlpha * this.runningForSeconds);
             // Original value, not the nerfed value, which might be 0
             this.runningForSeconds += elapsedSeconds;
         }
