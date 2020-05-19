@@ -69,9 +69,16 @@ namespace Puffin.Core
         private int drawsSinceLastFpsCount = 0;
 
         /// <summary>
-        /// The current mouse coordinates.
+        /// The current mouse coordinates, from the perspective of the current camera (if one exists).
+        /// eg. if your game is zoomed in 3x, (150, 51) in screen space returns (50, 17).
+        /// This is useful to get things in "game space" irrespective of camera zoom.
         /// </summary>
         public Tuple<int, int> MouseCoordinates { get { return this.mouseProvider.MouseCoordinates; }}
+
+        /// <summary>
+        /// The current mouse coordinates in screen space, irrespective of the current camera (if one exists).
+        /// This is useful for manual checks for UI entities.
+        /// </summary>
         public Tuple<int, int> UiMouseCoordinates { get { return this.mouseProvider.UiMouseCoordinates; }}
 
         /// <summary>
@@ -167,15 +174,19 @@ namespace Puffin.Core
             this.CalledReady = true;
         }
 
+        /// <summary>
+        /// Tweens an entity from a start position to an end position over a period of time; optionally, invokes a callback when the tween completes.
+        /// Note that this immediately moves the entity to the specified start position.
+        /// </summary>
         public void TweenPosition(Entity entity, Tuple<float, float> startPosition, Tuple<float, float> endPosition, float durationSeconds, Action onTweenComplete)
         {
             this.tweenManager.TweenPosition(entity, durationSeconds, startPosition, endPosition, 1, 1, onTweenComplete);
         }
 
         /// <summary>
-        /// Sets/displays a sub-scene. This scene is rendered above the current scene.
-        /// The current scene stops processing input/updates.
-        /// </sumamary>
+        /// Sets and displays a sub-scene. This scene is rendered above the current scene.
+        /// The current scene stops processing input and updates.
+        /// </summary>
         public void ShowSubScene(Scene subScene)
         {
             subScene.ParentScene = this;

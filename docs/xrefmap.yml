@@ -38,12 +38,12 @@ references:
   isSpec: "True"
   fullName: Puffin.Core.Ecs.Components.AudioComponent.AudioComponent
   nameWithType: AudioComponent.AudioComponent
-- uid: Puffin.Core.Ecs.Components.AudioComponent.Play(System.Single)
-  name: Play(Single)
-  href: api/Puffin.Core.Ecs.Components.AudioComponent.html#Puffin_Core_Ecs_Components_AudioComponent_Play_System_Single_
-  commentId: M:Puffin.Core.Ecs.Components.AudioComponent.Play(System.Single)
-  fullName: Puffin.Core.Ecs.Components.AudioComponent.Play(System.Single)
-  nameWithType: AudioComponent.Play(Single)
+- uid: Puffin.Core.Ecs.Components.AudioComponent.Play(System.Single,System.Single)
+  name: Play(Single, Single)
+  href: api/Puffin.Core.Ecs.Components.AudioComponent.html#Puffin_Core_Ecs_Components_AudioComponent_Play_System_Single_System_Single_
+  commentId: M:Puffin.Core.Ecs.Components.AudioComponent.Play(System.Single,System.Single)
+  fullName: Puffin.Core.Ecs.Components.AudioComponent.Play(System.Single, System.Single)
+  nameWithType: AudioComponent.Play(Single, Single)
 - uid: Puffin.Core.Ecs.Components.AudioComponent.Play*
   name: Play
   href: api/Puffin.Core.Ecs.Components.AudioComponent.html#Puffin_Core_Ecs_Components_AudioComponent_Play_
@@ -51,6 +51,19 @@ references:
   isSpec: "True"
   fullName: Puffin.Core.Ecs.Components.AudioComponent.Play
   nameWithType: AudioComponent.Play
+- uid: Puffin.Core.Ecs.Components.AudioComponent.Stop
+  name: Stop()
+  href: api/Puffin.Core.Ecs.Components.AudioComponent.html#Puffin_Core_Ecs_Components_AudioComponent_Stop
+  commentId: M:Puffin.Core.Ecs.Components.AudioComponent.Stop
+  fullName: Puffin.Core.Ecs.Components.AudioComponent.Stop()
+  nameWithType: AudioComponent.Stop()
+- uid: Puffin.Core.Ecs.Components.AudioComponent.Stop*
+  name: Stop
+  href: api/Puffin.Core.Ecs.Components.AudioComponent.html#Puffin_Core_Ecs_Components_AudioComponent_Stop_
+  commentId: Overload:Puffin.Core.Ecs.Components.AudioComponent.Stop
+  isSpec: "True"
+  fullName: Puffin.Core.Ecs.Components.AudioComponent.Stop
+  nameWithType: AudioComponent.Stop
 - uid: Puffin.Core.Ecs.Components.CameraComponent
   name: CameraComponent
   href: api/Puffin.Core.Ecs.Components.CameraComponent.html
@@ -167,6 +180,19 @@ references:
   isSpec: "True"
   fullName: Puffin.Core.Ecs.Components.ColourComponent.ColourComponent
   nameWithType: ColourComponent.ColourComponent
+- uid: Puffin.Core.Ecs.Components.ColourComponent.Alpha
+  name: Alpha
+  href: api/Puffin.Core.Ecs.Components.ColourComponent.html#Puffin_Core_Ecs_Components_ColourComponent_Alpha
+  commentId: P:Puffin.Core.Ecs.Components.ColourComponent.Alpha
+  fullName: Puffin.Core.Ecs.Components.ColourComponent.Alpha
+  nameWithType: ColourComponent.Alpha
+- uid: Puffin.Core.Ecs.Components.ColourComponent.Alpha*
+  name: Alpha
+  href: api/Puffin.Core.Ecs.Components.ColourComponent.html#Puffin_Core_Ecs_Components_ColourComponent_Alpha_
+  commentId: Overload:Puffin.Core.Ecs.Components.ColourComponent.Alpha
+  isSpec: "True"
+  fullName: Puffin.Core.Ecs.Components.ColourComponent.Alpha
+  nameWithType: ColourComponent.Alpha
 - uid: Puffin.Core.Ecs.Components.ColourComponent.Colour
   name: Colour
   href: api/Puffin.Core.Ecs.Components.ColourComponent.html#Puffin_Core_Ecs_Components_ColourComponent_Colour
@@ -304,12 +330,15 @@ references:
   commentId: T:Puffin.Core.Ecs.Components.MouseComponent
   fullName: Puffin.Core.Ecs.Components.MouseComponent
   nameWithType: MouseComponent
-- uid: Puffin.Core.Ecs.Components.MouseComponent.#ctor(Puffin.Core.Ecs.Entity,System.Action,System.Int32,System.Int32)
-  name: MouseComponent(Entity, Action, Int32, Int32)
-  href: api/Puffin.Core.Ecs.Components.MouseComponent.html#Puffin_Core_Ecs_Components_MouseComponent__ctor_Puffin_Core_Ecs_Entity_System_Action_System_Int32_System_Int32_
-  commentId: M:Puffin.Core.Ecs.Components.MouseComponent.#ctor(Puffin.Core.Ecs.Entity,System.Action,System.Int32,System.Int32)
-  fullName: Puffin.Core.Ecs.Components.MouseComponent.MouseComponent(Puffin.Core.Ecs.Entity, System.Action, System.Int32, System.Int32)
-  nameWithType: MouseComponent.MouseComponent(Entity, Action, Int32, Int32)
+- uid: Puffin.Core.Ecs.Components.MouseComponent.#ctor(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Func{System.Int32,System.Int32,System.Boolean},System.Action)
+  name: MouseComponent(Entity, Int32, Int32, Func<Int32, Int32, Boolean>, Action)
+  href: api/Puffin.Core.Ecs.Components.MouseComponent.html#Puffin_Core_Ecs_Components_MouseComponent__ctor_Puffin_Core_Ecs_Entity_System_Int32_System_Int32_System_Func_System_Int32_System_Int32_System_Boolean__System_Action_
+  commentId: M:Puffin.Core.Ecs.Components.MouseComponent.#ctor(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Func{System.Int32,System.Int32,System.Boolean},System.Action)
+  name.vb: MouseComponent(Entity, Int32, Int32, Func(Of Int32, Int32, Boolean), Action)
+  fullName: Puffin.Core.Ecs.Components.MouseComponent.MouseComponent(Puffin.Core.Ecs.Entity, System.Int32, System.Int32, System.Func<System.Int32, System.Int32, System.Boolean>, System.Action)
+  fullName.vb: Puffin.Core.Ecs.Components.MouseComponent.MouseComponent(Puffin.Core.Ecs.Entity, System.Int32, System.Int32, System.Func(Of System.Int32, System.Int32, System.Boolean), System.Action)
+  nameWithType: MouseComponent.MouseComponent(Entity, Int32, Int32, Func<Int32, Int32, Boolean>, Action)
+  nameWithType.vb: MouseComponent.MouseComponent(Entity, Int32, Int32, Func(Of Int32, Int32, Boolean), Action)
 - uid: Puffin.Core.Ecs.Components.MouseComponent.#ctor*
   name: MouseComponent
   href: api/Puffin.Core.Ecs.Components.MouseComponent.html#Puffin_Core_Ecs_Components_MouseComponent__ctor_
@@ -395,12 +424,64 @@ references:
   commentId: F:Puffin.Core.Ecs.Components.SpriteComponent.FrameWidth
   fullName: Puffin.Core.Ecs.Components.SpriteComponent.FrameWidth
   nameWithType: SpriteComponent.FrameWidth
+- uid: Puffin.Core.Ecs.Components.SpriteComponent.Height
+  name: Height
+  href: api/Puffin.Core.Ecs.Components.SpriteComponent.html#Puffin_Core_Ecs_Components_SpriteComponent_Height
+  commentId: P:Puffin.Core.Ecs.Components.SpriteComponent.Height
+  fullName: Puffin.Core.Ecs.Components.SpriteComponent.Height
+  nameWithType: SpriteComponent.Height
+- uid: Puffin.Core.Ecs.Components.SpriteComponent.Height*
+  name: Height
+  href: api/Puffin.Core.Ecs.Components.SpriteComponent.html#Puffin_Core_Ecs_Components_SpriteComponent_Height_
+  commentId: Overload:Puffin.Core.Ecs.Components.SpriteComponent.Height
+  isSpec: "True"
+  fullName: Puffin.Core.Ecs.Components.SpriteComponent.Height
+  nameWithType: SpriteComponent.Height
 - uid: Puffin.Core.Ecs.Components.SpriteComponent.IsVisible
   name: IsVisible
   href: api/Puffin.Core.Ecs.Components.SpriteComponent.html#Puffin_Core_Ecs_Components_SpriteComponent_IsVisible
   commentId: F:Puffin.Core.Ecs.Components.SpriteComponent.IsVisible
   fullName: Puffin.Core.Ecs.Components.SpriteComponent.IsVisible
   nameWithType: SpriteComponent.IsVisible
+- uid: Puffin.Core.Ecs.Components.SpriteComponent.OffsetX
+  name: OffsetX
+  href: api/Puffin.Core.Ecs.Components.SpriteComponent.html#Puffin_Core_Ecs_Components_SpriteComponent_OffsetX
+  commentId: P:Puffin.Core.Ecs.Components.SpriteComponent.OffsetX
+  fullName: Puffin.Core.Ecs.Components.SpriteComponent.OffsetX
+  nameWithType: SpriteComponent.OffsetX
+- uid: Puffin.Core.Ecs.Components.SpriteComponent.OffsetX*
+  name: OffsetX
+  href: api/Puffin.Core.Ecs.Components.SpriteComponent.html#Puffin_Core_Ecs_Components_SpriteComponent_OffsetX_
+  commentId: Overload:Puffin.Core.Ecs.Components.SpriteComponent.OffsetX
+  isSpec: "True"
+  fullName: Puffin.Core.Ecs.Components.SpriteComponent.OffsetX
+  nameWithType: SpriteComponent.OffsetX
+- uid: Puffin.Core.Ecs.Components.SpriteComponent.OffsetY
+  name: OffsetY
+  href: api/Puffin.Core.Ecs.Components.SpriteComponent.html#Puffin_Core_Ecs_Components_SpriteComponent_OffsetY
+  commentId: P:Puffin.Core.Ecs.Components.SpriteComponent.OffsetY
+  fullName: Puffin.Core.Ecs.Components.SpriteComponent.OffsetY
+  nameWithType: SpriteComponent.OffsetY
+- uid: Puffin.Core.Ecs.Components.SpriteComponent.OffsetY*
+  name: OffsetY
+  href: api/Puffin.Core.Ecs.Components.SpriteComponent.html#Puffin_Core_Ecs_Components_SpriteComponent_OffsetY_
+  commentId: Overload:Puffin.Core.Ecs.Components.SpriteComponent.OffsetY
+  isSpec: "True"
+  fullName: Puffin.Core.Ecs.Components.SpriteComponent.OffsetY
+  nameWithType: SpriteComponent.OffsetY
+- uid: Puffin.Core.Ecs.Components.SpriteComponent.Width
+  name: Width
+  href: api/Puffin.Core.Ecs.Components.SpriteComponent.html#Puffin_Core_Ecs_Components_SpriteComponent_Width
+  commentId: P:Puffin.Core.Ecs.Components.SpriteComponent.Width
+  fullName: Puffin.Core.Ecs.Components.SpriteComponent.Width
+  nameWithType: SpriteComponent.Width
+- uid: Puffin.Core.Ecs.Components.SpriteComponent.Width*
+  name: Width
+  href: api/Puffin.Core.Ecs.Components.SpriteComponent.html#Puffin_Core_Ecs_Components_SpriteComponent_Width_
+  commentId: Overload:Puffin.Core.Ecs.Components.SpriteComponent.Width
+  isSpec: "True"
+  fullName: Puffin.Core.Ecs.Components.SpriteComponent.Width
+  nameWithType: SpriteComponent.Width
 - uid: Puffin.Core.Ecs.Components.TextLabelComponent
   name: TextLabelComponent
   href: api/Puffin.Core.Ecs.Components.TextLabelComponent.html
@@ -420,6 +501,19 @@ references:
   isSpec: "True"
   fullName: Puffin.Core.Ecs.Components.TextLabelComponent.TextLabelComponent
   nameWithType: TextLabelComponent.TextLabelComponent
+- uid: Puffin.Core.Ecs.Components.TextLabelComponent.Colour
+  name: Colour
+  href: api/Puffin.Core.Ecs.Components.TextLabelComponent.html#Puffin_Core_Ecs_Components_TextLabelComponent_Colour
+  commentId: P:Puffin.Core.Ecs.Components.TextLabelComponent.Colour
+  fullName: Puffin.Core.Ecs.Components.TextLabelComponent.Colour
+  nameWithType: TextLabelComponent.Colour
+- uid: Puffin.Core.Ecs.Components.TextLabelComponent.Colour*
+  name: Colour
+  href: api/Puffin.Core.Ecs.Components.TextLabelComponent.html#Puffin_Core_Ecs_Components_TextLabelComponent_Colour_
+  commentId: Overload:Puffin.Core.Ecs.Components.TextLabelComponent.Colour
+  isSpec: "True"
+  fullName: Puffin.Core.Ecs.Components.TextLabelComponent.Colour
+  nameWithType: TextLabelComponent.Colour
 - uid: Puffin.Core.Ecs.Components.TextLabelComponent.FontName
   name: FontName
   href: api/Puffin.Core.Ecs.Components.TextLabelComponent.html#Puffin_Core_Ecs_Components_TextLabelComponent_FontName
@@ -446,6 +540,19 @@ references:
   isSpec: "True"
   fullName: Puffin.Core.Ecs.Components.TextLabelComponent.FontSize
   nameWithType: TextLabelComponent.FontSize
+- uid: Puffin.Core.Ecs.Components.TextLabelComponent.Outline(System.Int32,System.Int32)
+  name: Outline(Int32, Int32)
+  href: api/Puffin.Core.Ecs.Components.TextLabelComponent.html#Puffin_Core_Ecs_Components_TextLabelComponent_Outline_System_Int32_System_Int32_
+  commentId: M:Puffin.Core.Ecs.Components.TextLabelComponent.Outline(System.Int32,System.Int32)
+  fullName: Puffin.Core.Ecs.Components.TextLabelComponent.Outline(System.Int32, System.Int32)
+  nameWithType: TextLabelComponent.Outline(Int32, Int32)
+- uid: Puffin.Core.Ecs.Components.TextLabelComponent.Outline*
+  name: Outline
+  href: api/Puffin.Core.Ecs.Components.TextLabelComponent.html#Puffin_Core_Ecs_Components_TextLabelComponent_Outline_
+  commentId: Overload:Puffin.Core.Ecs.Components.TextLabelComponent.Outline
+  isSpec: "True"
+  fullName: Puffin.Core.Ecs.Components.TextLabelComponent.Outline
+  nameWithType: TextLabelComponent.Outline
 - uid: Puffin.Core.Ecs.Components.TextLabelComponent.Text
   name: Text
   href: api/Puffin.Core.Ecs.Components.TextLabelComponent.html#Puffin_Core_Ecs_Components_TextLabelComponent_Text
@@ -459,6 +566,19 @@ references:
   isSpec: "True"
   fullName: Puffin.Core.Ecs.Components.TextLabelComponent.Text
   nameWithType: TextLabelComponent.Text
+- uid: Puffin.Core.Ecs.Components.TextLabelComponent.WordWrap(System.Int32)
+  name: WordWrap(Int32)
+  href: api/Puffin.Core.Ecs.Components.TextLabelComponent.html#Puffin_Core_Ecs_Components_TextLabelComponent_WordWrap_System_Int32_
+  commentId: M:Puffin.Core.Ecs.Components.TextLabelComponent.WordWrap(System.Int32)
+  fullName: Puffin.Core.Ecs.Components.TextLabelComponent.WordWrap(System.Int32)
+  nameWithType: TextLabelComponent.WordWrap(Int32)
+- uid: Puffin.Core.Ecs.Components.TextLabelComponent.WordWrap*
+  name: WordWrap
+  href: api/Puffin.Core.Ecs.Components.TextLabelComponent.html#Puffin_Core_Ecs_Components_TextLabelComponent_WordWrap_
+  commentId: Overload:Puffin.Core.Ecs.Components.TextLabelComponent.WordWrap
+  isSpec: "True"
+  fullName: Puffin.Core.Ecs.Components.TextLabelComponent.WordWrap
+  nameWithType: TextLabelComponent.WordWrap
 - uid: Puffin.Core.Ecs.Entity
   name: Entity
   href: api/Puffin.Core.Ecs.Entity.html
@@ -478,6 +598,19 @@ references:
   isSpec: "True"
   fullName: Puffin.Core.Ecs.Entity.Entity
   nameWithType: Entity.Entity
+- uid: Puffin.Core.Ecs.Entity.DrawColourBeforeSprite
+  name: DrawColourBeforeSprite
+  href: api/Puffin.Core.Ecs.Entity.html#Puffin_Core_Ecs_Entity_DrawColourBeforeSprite
+  commentId: P:Puffin.Core.Ecs.Entity.DrawColourBeforeSprite
+  fullName: Puffin.Core.Ecs.Entity.DrawColourBeforeSprite
+  nameWithType: Entity.DrawColourBeforeSprite
+- uid: Puffin.Core.Ecs.Entity.DrawColourBeforeSprite*
+  name: DrawColourBeforeSprite
+  href: api/Puffin.Core.Ecs.Entity.html#Puffin_Core_Ecs_Entity_DrawColourBeforeSprite_
+  commentId: Overload:Puffin.Core.Ecs.Entity.DrawColourBeforeSprite
+  isSpec: "True"
+  fullName: Puffin.Core.Ecs.Entity.DrawColourBeforeSprite
+  nameWithType: Entity.DrawColourBeforeSprite
 - uid: Puffin.Core.Ecs.Entity.Get*
   name: Get
   href: api/Puffin.Core.Ecs.Entity.html#Puffin_Core_Ecs_Entity_Get_
@@ -494,6 +627,19 @@ references:
   fullName.vb: Puffin.Core.Ecs.Entity.Get(Of T)()
   nameWithType: Entity.Get<T>()
   nameWithType.vb: Entity.Get(Of T)()
+- uid: Puffin.Core.Ecs.Entity.OnReady(System.Action)
+  name: OnReady(Action)
+  href: api/Puffin.Core.Ecs.Entity.html#Puffin_Core_Ecs_Entity_OnReady_System_Action_
+  commentId: M:Puffin.Core.Ecs.Entity.OnReady(System.Action)
+  fullName: Puffin.Core.Ecs.Entity.OnReady(System.Action)
+  nameWithType: Entity.OnReady(Action)
+- uid: Puffin.Core.Ecs.Entity.OnReady*
+  name: OnReady
+  href: api/Puffin.Core.Ecs.Entity.html#Puffin_Core_Ecs_Entity_OnReady_
+  commentId: Overload:Puffin.Core.Ecs.Entity.OnReady
+  isSpec: "True"
+  fullName: Puffin.Core.Ecs.Entity.OnReady
+  nameWithType: Entity.OnReady
 - uid: Puffin.Core.Ecs.Entity.OnUpdate(System.Action{System.Single})
   name: OnUpdate(Action<Single>)
   href: api/Puffin.Core.Ecs.Entity.html#Puffin_Core_Ecs_Entity_OnUpdate_System_Action_System_Single__
@@ -526,6 +672,19 @@ references:
   fullName.vb: Puffin.Core.Ecs.Entity.Remove(Of T)()
   nameWithType: Entity.Remove<T>()
   nameWithType.vb: Entity.Remove(Of T)()
+- uid: Puffin.Core.Ecs.Entity.Scene
+  name: Scene
+  href: api/Puffin.Core.Ecs.Entity.html#Puffin_Core_Ecs_Entity_Scene
+  commentId: P:Puffin.Core.Ecs.Entity.Scene
+  fullName: Puffin.Core.Ecs.Entity.Scene
+  nameWithType: Entity.Scene
+- uid: Puffin.Core.Ecs.Entity.Scene*
+  name: Scene
+  href: api/Puffin.Core.Ecs.Entity.html#Puffin_Core_Ecs_Entity_Scene_
+  commentId: Overload:Puffin.Core.Ecs.Entity.Scene
+  isSpec: "True"
+  fullName: Puffin.Core.Ecs.Entity.Scene
+  nameWithType: Entity.Scene
 - uid: Puffin.Core.Ecs.Entity.Set(Puffin.Core.Ecs.Components.Component)
   name: Set(Component)
   href: api/Puffin.Core.Ecs.Entity.html#Puffin_Core_Ecs_Entity_Set_Puffin_Core_Ecs_Components_Component_
@@ -700,12 +859,15 @@ references:
   isSpec: "True"
   fullName: Puffin.Core.Ecs.EntityExtensions.Label
   nameWithType: EntityExtensions.Label
-- uid: Puffin.Core.Ecs.EntityExtensions.Mouse(Puffin.Core.Ecs.Entity,System.Action,System.Int32,System.Int32)
-  name: Mouse(Entity, Action, Int32, Int32)
-  href: api/Puffin.Core.Ecs.EntityExtensions.html#Puffin_Core_Ecs_EntityExtensions_Mouse_Puffin_Core_Ecs_Entity_System_Action_System_Int32_System_Int32_
-  commentId: M:Puffin.Core.Ecs.EntityExtensions.Mouse(Puffin.Core.Ecs.Entity,System.Action,System.Int32,System.Int32)
-  fullName: Puffin.Core.Ecs.EntityExtensions.Mouse(Puffin.Core.Ecs.Entity, System.Action, System.Int32, System.Int32)
-  nameWithType: EntityExtensions.Mouse(Entity, Action, Int32, Int32)
+- uid: Puffin.Core.Ecs.EntityExtensions.Mouse(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Func{System.Int32,System.Int32,System.Boolean},System.Action)
+  name: Mouse(Entity, Int32, Int32, Func<Int32, Int32, Boolean>, Action)
+  href: api/Puffin.Core.Ecs.EntityExtensions.html#Puffin_Core_Ecs_EntityExtensions_Mouse_Puffin_Core_Ecs_Entity_System_Int32_System_Int32_System_Func_System_Int32_System_Int32_System_Boolean__System_Action_
+  commentId: M:Puffin.Core.Ecs.EntityExtensions.Mouse(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Func{System.Int32,System.Int32,System.Boolean},System.Action)
+  name.vb: Mouse(Entity, Int32, Int32, Func(Of Int32, Int32, Boolean), Action)
+  fullName: Puffin.Core.Ecs.EntityExtensions.Mouse(Puffin.Core.Ecs.Entity, System.Int32, System.Int32, System.Func<System.Int32, System.Int32, System.Boolean>, System.Action)
+  fullName.vb: Puffin.Core.Ecs.EntityExtensions.Mouse(Puffin.Core.Ecs.Entity, System.Int32, System.Int32, System.Func(Of System.Int32, System.Int32, System.Boolean), System.Action)
+  nameWithType: EntityExtensions.Mouse(Entity, Int32, Int32, Func<Int32, Int32, Boolean>, Action)
+  nameWithType.vb: EntityExtensions.Mouse(Entity, Int32, Int32, Func(Of Int32, Int32, Boolean), Action)
 - uid: Puffin.Core.Ecs.EntityExtensions.Mouse*
   name: Mouse
   href: api/Puffin.Core.Ecs.EntityExtensions.html#Puffin_Core_Ecs_EntityExtensions_Mouse_
@@ -713,12 +875,12 @@ references:
   isSpec: "True"
   fullName: Puffin.Core.Ecs.EntityExtensions.Mouse
   nameWithType: EntityExtensions.Mouse
-- uid: Puffin.Core.Ecs.EntityExtensions.Move(Puffin.Core.Ecs.Entity,System.Int32,System.Int32)
-  name: Move(Entity, Int32, Int32)
-  href: api/Puffin.Core.Ecs.EntityExtensions.html#Puffin_Core_Ecs_EntityExtensions_Move_Puffin_Core_Ecs_Entity_System_Int32_System_Int32_
-  commentId: M:Puffin.Core.Ecs.EntityExtensions.Move(Puffin.Core.Ecs.Entity,System.Int32,System.Int32)
-  fullName: Puffin.Core.Ecs.EntityExtensions.Move(Puffin.Core.Ecs.Entity, System.Int32, System.Int32)
-  nameWithType: EntityExtensions.Move(Entity, Int32, Int32)
+- uid: Puffin.Core.Ecs.EntityExtensions.Move(Puffin.Core.Ecs.Entity,System.Single,System.Single)
+  name: Move(Entity, Single, Single)
+  href: api/Puffin.Core.Ecs.EntityExtensions.html#Puffin_Core_Ecs_EntityExtensions_Move_Puffin_Core_Ecs_Entity_System_Single_System_Single_
+  commentId: M:Puffin.Core.Ecs.EntityExtensions.Move(Puffin.Core.Ecs.Entity,System.Single,System.Single)
+  fullName: Puffin.Core.Ecs.EntityExtensions.Move(Puffin.Core.Ecs.Entity, System.Single, System.Single)
+  nameWithType: EntityExtensions.Move(Entity, Single, Single)
 - uid: Puffin.Core.Ecs.EntityExtensions.Move*
   name: Move
   href: api/Puffin.Core.Ecs.EntityExtensions.html#Puffin_Core_Ecs_EntityExtensions_Move_
@@ -875,19 +1037,12 @@ references:
   isSpec: "True"
   fullName: Puffin.Core.Events.EventBus.Dispose
   nameWithType: EventBus.Dispose
-- uid: Puffin.Core.Events.EventBus.LatestInstance
-  name: LatestInstance
-  href: api/Puffin.Core.Events.EventBus.html#Puffin_Core_Events_EventBus_LatestInstance
-  commentId: P:Puffin.Core.Events.EventBus.LatestInstance
-  fullName: Puffin.Core.Events.EventBus.LatestInstance
-  nameWithType: EventBus.LatestInstance
-- uid: Puffin.Core.Events.EventBus.LatestInstance*
-  name: LatestInstance
-  href: api/Puffin.Core.Events.EventBus.html#Puffin_Core_Events_EventBus_LatestInstance_
-  commentId: Overload:Puffin.Core.Events.EventBus.LatestInstance
-  isSpec: "True"
-  fullName: Puffin.Core.Events.EventBus.LatestInstance
-  nameWithType: EventBus.LatestInstance
+- uid: Puffin.Core.Events.EventBus.Id
+  name: Id
+  href: api/Puffin.Core.Events.EventBus.html#Puffin_Core_Events_EventBus_Id
+  commentId: F:Puffin.Core.Events.EventBus.Id
+  fullName: Puffin.Core.Events.EventBus.Id
+  nameWithType: EventBus.Id
 - uid: Puffin.Core.Events.EventBus.Subscribe(System.Enum,System.Action{System.Object})
   name: Subscribe(Enum, Action<Object>)
   href: api/Puffin.Core.Events.EventBus.html#Puffin_Core_Events_EventBus_Subscribe_System_Enum_System_Action_System_Object__
@@ -994,6 +1149,19 @@ references:
   isSpec: "True"
   fullName: Puffin.Core.Scene.Add
   nameWithType: Scene.Add
+- uid: Puffin.Core.Scene.Background
+  name: Background
+  href: api/Puffin.Core.Scene.html#Puffin_Core_Scene_Background
+  commentId: P:Puffin.Core.Scene.Background
+  fullName: Puffin.Core.Scene.Background
+  nameWithType: Scene.Background
+- uid: Puffin.Core.Scene.Background*
+  name: Background
+  href: api/Puffin.Core.Scene.html#Puffin_Core_Scene_Background_
+  commentId: Overload:Puffin.Core.Scene.Background
+  isSpec: "True"
+  fullName: Puffin.Core.Scene.Background
+  nameWithType: Scene.Background
 - uid: Puffin.Core.Scene.BackgroundColour
   name: BackgroundColour
   href: api/Puffin.Core.Scene.html#Puffin_Core_Scene_BackgroundColour
@@ -1013,6 +1181,12 @@ references:
   isSpec: "True"
   fullName: Puffin.Core.Scene.Dispose
   nameWithType: Scene.Dispose
+- uid: Puffin.Core.Scene.EventBus
+  name: EventBus
+  href: api/Puffin.Core.Scene.html#Puffin_Core_Scene_EventBus
+  commentId: F:Puffin.Core.Scene.EventBus
+  fullName: Puffin.Core.Scene.EventBus
+  nameWithType: Scene.EventBus
 - uid: Puffin.Core.Scene.Fps
   name: Fps
   href: api/Puffin.Core.Scene.html#Puffin_Core_Scene_Fps
@@ -1026,6 +1200,19 @@ references:
   isSpec: "True"
   fullName: Puffin.Core.Scene.Fps
   nameWithType: Scene.Fps
+- uid: Puffin.Core.Scene.HideSubScene
+  name: HideSubScene()
+  href: api/Puffin.Core.Scene.html#Puffin_Core_Scene_HideSubScene
+  commentId: M:Puffin.Core.Scene.HideSubScene
+  fullName: Puffin.Core.Scene.HideSubScene()
+  nameWithType: Scene.HideSubScene()
+- uid: Puffin.Core.Scene.HideSubScene*
+  name: HideSubScene
+  href: api/Puffin.Core.Scene.html#Puffin_Core_Scene_HideSubScene_
+  commentId: Overload:Puffin.Core.Scene.HideSubScene
+  isSpec: "True"
+  fullName: Puffin.Core.Scene.HideSubScene
+  nameWithType: Scene.HideSubScene
 - uid: Puffin.Core.Scene.IsActionDown(System.Enum)
   name: IsActionDown(Enum)
   href: api/Puffin.Core.Scene.html#Puffin_Core_Scene_IsActionDown_System_Enum_
@@ -1070,6 +1257,12 @@ references:
   commentId: F:Puffin.Core.Scene.OnMouseClick
   fullName: Puffin.Core.Scene.OnMouseClick
   nameWithType: Scene.OnMouseClick
+- uid: Puffin.Core.Scene.ParentScene
+  name: ParentScene
+  href: api/Puffin.Core.Scene.html#Puffin_Core_Scene_ParentScene
+  commentId: F:Puffin.Core.Scene.ParentScene
+  fullName: Puffin.Core.Scene.ParentScene
+  nameWithType: Scene.ParentScene
 - uid: Puffin.Core.Scene.Ready
   name: Ready()
   href: api/Puffin.Core.Scene.html#Puffin_Core_Scene_Ready
@@ -1102,6 +1295,19 @@ references:
   isSpec: "True"
   fullName: Puffin.Core.Scene.Remove
   nameWithType: Scene.Remove
+- uid: Puffin.Core.Scene.ShowSubScene(Puffin.Core.Scene)
+  name: ShowSubScene(Scene)
+  href: api/Puffin.Core.Scene.html#Puffin_Core_Scene_ShowSubScene_Puffin_Core_Scene_
+  commentId: M:Puffin.Core.Scene.ShowSubScene(Puffin.Core.Scene)
+  fullName: Puffin.Core.Scene.ShowSubScene(Puffin.Core.Scene)
+  nameWithType: Scene.ShowSubScene(Scene)
+- uid: Puffin.Core.Scene.ShowSubScene*
+  name: ShowSubScene
+  href: api/Puffin.Core.Scene.html#Puffin_Core_Scene_ShowSubScene_
+  commentId: Overload:Puffin.Core.Scene.ShowSubScene
+  isSpec: "True"
+  fullName: Puffin.Core.Scene.ShowSubScene
+  nameWithType: Scene.ShowSubScene
 - uid: Puffin.Core.Scene.TweenPosition(Puffin.Core.Ecs.Entity,System.Tuple{System.Single,System.Single},System.Tuple{System.Single,System.Single},System.Single,System.Action)
   name: TweenPosition(Entity, Tuple<Single, Single>, Tuple<Single, Single>, Single, Action)
   href: api/Puffin.Core.Scene.html#Puffin_Core_Scene_TweenPosition_Puffin_Core_Ecs_Entity_System_Tuple_System_Single_System_Single__System_Tuple_System_Single_System_Single__System_Single_System_Action_
@@ -1118,6 +1324,19 @@ references:
   isSpec: "True"
   fullName: Puffin.Core.Scene.TweenPosition
   nameWithType: Scene.TweenPosition
+- uid: Puffin.Core.Scene.UiMouseCoordinates
+  name: UiMouseCoordinates
+  href: api/Puffin.Core.Scene.html#Puffin_Core_Scene_UiMouseCoordinates
+  commentId: P:Puffin.Core.Scene.UiMouseCoordinates
+  fullName: Puffin.Core.Scene.UiMouseCoordinates
+  nameWithType: Scene.UiMouseCoordinates
+- uid: Puffin.Core.Scene.UiMouseCoordinates*
+  name: UiMouseCoordinates
+  href: api/Puffin.Core.Scene.html#Puffin_Core_Scene_UiMouseCoordinates_
+  commentId: Overload:Puffin.Core.Scene.UiMouseCoordinates
+  isSpec: "True"
+  fullName: Puffin.Core.Scene.UiMouseCoordinates
+  nameWithType: Scene.UiMouseCoordinates
 - uid: Puffin.Core.Scene.Update(System.Single)
   name: Update(Single)
   href: api/Puffin.Core.Scene.html#Puffin_Core_Scene_Update_System_Single_
@@ -1224,6 +1443,32 @@ references:
   isSpec: "True"
   fullName: Puffin.Core.Tiles.TileMap.Set
   nameWithType: TileMap.Set
+- uid: Puffin.Core.Tiles.TileMap.X
+  name: X
+  href: api/Puffin.Core.Tiles.TileMap.html#Puffin_Core_Tiles_TileMap_X
+  commentId: P:Puffin.Core.Tiles.TileMap.X
+  fullName: Puffin.Core.Tiles.TileMap.X
+  nameWithType: TileMap.X
+- uid: Puffin.Core.Tiles.TileMap.X*
+  name: X
+  href: api/Puffin.Core.Tiles.TileMap.html#Puffin_Core_Tiles_TileMap_X_
+  commentId: Overload:Puffin.Core.Tiles.TileMap.X
+  isSpec: "True"
+  fullName: Puffin.Core.Tiles.TileMap.X
+  nameWithType: TileMap.X
+- uid: Puffin.Core.Tiles.TileMap.Y
+  name: Y
+  href: api/Puffin.Core.Tiles.TileMap.html#Puffin_Core_Tiles_TileMap_Y
+  commentId: P:Puffin.Core.Tiles.TileMap.Y
+  fullName: Puffin.Core.Tiles.TileMap.Y
+  nameWithType: TileMap.Y
+- uid: Puffin.Core.Tiles.TileMap.Y*
+  name: Y
+  href: api/Puffin.Core.Tiles.TileMap.html#Puffin_Core_Tiles_TileMap_Y_
+  commentId: Overload:Puffin.Core.Tiles.TileMap.Y
+  isSpec: "True"
+  fullName: Puffin.Core.Tiles.TileMap.Y
+  nameWithType: TileMap.Y
 - uid: Puffin.Infrastructure.MonoGame
   name: Puffin.Infrastructure.MonoGame
   href: api/Puffin.Infrastructure.MonoGame.html
@@ -1236,12 +1481,12 @@ references:
   commentId: T:Puffin.Infrastructure.MonoGame.PuffinGame
   fullName: Puffin.Infrastructure.MonoGame.PuffinGame
   nameWithType: PuffinGame
-- uid: Puffin.Infrastructure.MonoGame.PuffinGame.#ctor(System.Int32,System.Int32)
-  name: PuffinGame(Int32, Int32)
-  href: api/Puffin.Infrastructure.MonoGame.PuffinGame.html#Puffin_Infrastructure_MonoGame_PuffinGame__ctor_System_Int32_System_Int32_
-  commentId: M:Puffin.Infrastructure.MonoGame.PuffinGame.#ctor(System.Int32,System.Int32)
-  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.PuffinGame(System.Int32, System.Int32)
-  nameWithType: PuffinGame.PuffinGame(Int32, Int32)
+- uid: Puffin.Infrastructure.MonoGame.PuffinGame.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)
+  name: PuffinGame(Int32, Int32, Int32, Int32)
+  href: api/Puffin.Infrastructure.MonoGame.PuffinGame.html#Puffin_Infrastructure_MonoGame_PuffinGame__ctor_System_Int32_System_Int32_System_Int32_System_Int32_
+  commentId: M:Puffin.Infrastructure.MonoGame.PuffinGame.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)
+  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.PuffinGame(System.Int32, System.Int32, System.Int32, System.Int32)
+  nameWithType: PuffinGame.PuffinGame(Int32, Int32, Int32, Int32)
 - uid: Puffin.Infrastructure.MonoGame.PuffinGame.#ctor*
   name: PuffinGame
   href: api/Puffin.Infrastructure.MonoGame.PuffinGame.html#Puffin_Infrastructure_MonoGame_PuffinGame__ctor_
@@ -1255,11 +1500,17 @@ references:
   commentId: F:Puffin.Infrastructure.MonoGame.PuffinGame.ActionToKeys
   fullName: Puffin.Infrastructure.MonoGame.PuffinGame.ActionToKeys
   nameWithType: PuffinGame.ActionToKeys
-- uid: Puffin.Infrastructure.MonoGame.PuffinGame.Draw(Microsoft.Xna.Framework.GameTime)
+- uid: Puffin.Infrastructure.MonoGame.PuffinGame.DefaultFont
+  name: DefaultFont
+  href: api/Puffin.Infrastructure.MonoGame.PuffinGame.html#Puffin_Infrastructure_MonoGame_PuffinGame_DefaultFont
+  commentId: F:Puffin.Infrastructure.MonoGame.PuffinGame.DefaultFont
+  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.DefaultFont
+  nameWithType: PuffinGame.DefaultFont
+- uid: Puffin.Infrastructure.MonoGame.PuffinGame.Draw(GameTime)
   name: Draw(GameTime)
-  href: api/Puffin.Infrastructure.MonoGame.PuffinGame.html#Puffin_Infrastructure_MonoGame_PuffinGame_Draw_Microsoft_Xna_Framework_GameTime_
-  commentId: M:Puffin.Infrastructure.MonoGame.PuffinGame.Draw(Microsoft.Xna.Framework.GameTime)
-  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.Draw(Microsoft.Xna.Framework.GameTime)
+  href: api/Puffin.Infrastructure.MonoGame.PuffinGame.html#Puffin_Infrastructure_MonoGame_PuffinGame_Draw_GameTime_
+  commentId: M:Puffin.Infrastructure.MonoGame.PuffinGame.Draw(GameTime)
+  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.Draw(GameTime)
   nameWithType: PuffinGame.Draw(GameTime)
 - uid: Puffin.Infrastructure.MonoGame.PuffinGame.Draw*
   name: Draw
@@ -1268,6 +1519,18 @@ references:
   isSpec: "True"
   fullName: Puffin.Infrastructure.MonoGame.PuffinGame.Draw
   nameWithType: PuffinGame.Draw
+- uid: Puffin.Infrastructure.MonoGame.PuffinGame.GameHeight
+  name: GameHeight
+  href: api/Puffin.Infrastructure.MonoGame.PuffinGame.html#Puffin_Infrastructure_MonoGame_PuffinGame_GameHeight
+  commentId: F:Puffin.Infrastructure.MonoGame.PuffinGame.GameHeight
+  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.GameHeight
+  nameWithType: PuffinGame.GameHeight
+- uid: Puffin.Infrastructure.MonoGame.PuffinGame.GameWidth
+  name: GameWidth
+  href: api/Puffin.Infrastructure.MonoGame.PuffinGame.html#Puffin_Infrastructure_MonoGame_PuffinGame_GameWidth
+  commentId: F:Puffin.Infrastructure.MonoGame.PuffinGame.GameWidth
+  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.GameWidth
+  nameWithType: PuffinGame.GameWidth
 - uid: Puffin.Infrastructure.MonoGame.PuffinGame.Height
   name: Height
   href: api/Puffin.Infrastructure.MonoGame.PuffinGame.html#Puffin_Infrastructure_MonoGame_PuffinGame_Height
@@ -1294,6 +1557,19 @@ references:
   isSpec: "True"
   fullName: Puffin.Infrastructure.MonoGame.PuffinGame.Initialize
   nameWithType: PuffinGame.Initialize
+- uid: Puffin.Infrastructure.MonoGame.PuffinGame.IsFullScreen
+  name: IsFullScreen
+  href: api/Puffin.Infrastructure.MonoGame.PuffinGame.html#Puffin_Infrastructure_MonoGame_PuffinGame_IsFullScreen
+  commentId: P:Puffin.Infrastructure.MonoGame.PuffinGame.IsFullScreen
+  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.IsFullScreen
+  nameWithType: PuffinGame.IsFullScreen
+- uid: Puffin.Infrastructure.MonoGame.PuffinGame.IsFullScreen*
+  name: IsFullScreen
+  href: api/Puffin.Infrastructure.MonoGame.PuffinGame.html#Puffin_Infrastructure_MonoGame_PuffinGame_IsFullScreen_
+  commentId: Overload:Puffin.Infrastructure.MonoGame.PuffinGame.IsFullScreen
+  isSpec: "True"
+  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.IsFullScreen
+  nameWithType: PuffinGame.IsFullScreen
 - uid: Puffin.Infrastructure.MonoGame.PuffinGame.LoadContent
   name: LoadContent()
   href: api/Puffin.Infrastructure.MonoGame.PuffinGame.html#Puffin_Infrastructure_MonoGame_PuffinGame_LoadContent
@@ -1320,6 +1596,58 @@ references:
   isSpec: "True"
   fullName: Puffin.Infrastructure.MonoGame.PuffinGame.Ready
   nameWithType: PuffinGame.Ready
+- uid: Puffin.Infrastructure.MonoGame.PuffinGame.Scale
+  name: Scale
+  href: api/Puffin.Infrastructure.MonoGame.PuffinGame.html#Puffin_Infrastructure_MonoGame_PuffinGame_Scale
+  commentId: P:Puffin.Infrastructure.MonoGame.PuffinGame.Scale
+  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.Scale
+  nameWithType: PuffinGame.Scale
+- uid: Puffin.Infrastructure.MonoGame.PuffinGame.Scale*
+  name: Scale
+  href: api/Puffin.Infrastructure.MonoGame.PuffinGame.html#Puffin_Infrastructure_MonoGame_PuffinGame_Scale_
+  commentId: Overload:Puffin.Infrastructure.MonoGame.PuffinGame.Scale
+  isSpec: "True"
+  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.Scale
+  nameWithType: PuffinGame.Scale
+- uid: Puffin.Infrastructure.MonoGame.PuffinGame.ScreenHeight
+  name: ScreenHeight
+  href: api/Puffin.Infrastructure.MonoGame.PuffinGame.html#Puffin_Infrastructure_MonoGame_PuffinGame_ScreenHeight
+  commentId: P:Puffin.Infrastructure.MonoGame.PuffinGame.ScreenHeight
+  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.ScreenHeight
+  nameWithType: PuffinGame.ScreenHeight
+- uid: Puffin.Infrastructure.MonoGame.PuffinGame.ScreenHeight*
+  name: ScreenHeight
+  href: api/Puffin.Infrastructure.MonoGame.PuffinGame.html#Puffin_Infrastructure_MonoGame_PuffinGame_ScreenHeight_
+  commentId: Overload:Puffin.Infrastructure.MonoGame.PuffinGame.ScreenHeight
+  isSpec: "True"
+  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.ScreenHeight
+  nameWithType: PuffinGame.ScreenHeight
+- uid: Puffin.Infrastructure.MonoGame.PuffinGame.ScreenWidth
+  name: ScreenWidth
+  href: api/Puffin.Infrastructure.MonoGame.PuffinGame.html#Puffin_Infrastructure_MonoGame_PuffinGame_ScreenWidth
+  commentId: P:Puffin.Infrastructure.MonoGame.PuffinGame.ScreenWidth
+  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.ScreenWidth
+  nameWithType: PuffinGame.ScreenWidth
+- uid: Puffin.Infrastructure.MonoGame.PuffinGame.ScreenWidth*
+  name: ScreenWidth
+  href: api/Puffin.Infrastructure.MonoGame.PuffinGame.html#Puffin_Infrastructure_MonoGame_PuffinGame_ScreenWidth_
+  commentId: Overload:Puffin.Infrastructure.MonoGame.PuffinGame.ScreenWidth
+  isSpec: "True"
+  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.ScreenWidth
+  nameWithType: PuffinGame.ScreenWidth
+- uid: Puffin.Infrastructure.MonoGame.PuffinGame.SetScreenSize(System.Int32,System.Int32)
+  name: SetScreenSize(Int32, Int32)
+  href: api/Puffin.Infrastructure.MonoGame.PuffinGame.html#Puffin_Infrastructure_MonoGame_PuffinGame_SetScreenSize_System_Int32_System_Int32_
+  commentId: M:Puffin.Infrastructure.MonoGame.PuffinGame.SetScreenSize(System.Int32,System.Int32)
+  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.SetScreenSize(System.Int32, System.Int32)
+  nameWithType: PuffinGame.SetScreenSize(Int32, Int32)
+- uid: Puffin.Infrastructure.MonoGame.PuffinGame.SetScreenSize*
+  name: SetScreenSize
+  href: api/Puffin.Infrastructure.MonoGame.PuffinGame.html#Puffin_Infrastructure_MonoGame_PuffinGame_SetScreenSize_
+  commentId: Overload:Puffin.Infrastructure.MonoGame.PuffinGame.SetScreenSize
+  isSpec: "True"
+  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.SetScreenSize
+  nameWithType: PuffinGame.SetScreenSize
 - uid: Puffin.Infrastructure.MonoGame.PuffinGame.showCollisionAreas
   name: showCollisionAreas
   href: api/Puffin.Infrastructure.MonoGame.PuffinGame.html#Puffin_Infrastructure_MonoGame_PuffinGame_showCollisionAreas
@@ -1339,11 +1667,11 @@ references:
   isSpec: "True"
   fullName: Puffin.Infrastructure.MonoGame.PuffinGame.ShowScene
   nameWithType: PuffinGame.ShowScene
-- uid: Puffin.Infrastructure.MonoGame.PuffinGame.Update(Microsoft.Xna.Framework.GameTime)
+- uid: Puffin.Infrastructure.MonoGame.PuffinGame.Update(GameTime)
   name: Update(GameTime)
-  href: api/Puffin.Infrastructure.MonoGame.PuffinGame.html#Puffin_Infrastructure_MonoGame_PuffinGame_Update_Microsoft_Xna_Framework_GameTime_
-  commentId: M:Puffin.Infrastructure.MonoGame.PuffinGame.Update(Microsoft.Xna.Framework.GameTime)
-  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.Update(Microsoft.Xna.Framework.GameTime)
+  href: api/Puffin.Infrastructure.MonoGame.PuffinGame.html#Puffin_Infrastructure_MonoGame_PuffinGame_Update_GameTime_
+  commentId: M:Puffin.Infrastructure.MonoGame.PuffinGame.Update(GameTime)
+  fullName: Puffin.Infrastructure.MonoGame.PuffinGame.Update(GameTime)
   nameWithType: PuffinGame.Update(GameTime)
 - uid: Puffin.Infrastructure.MonoGame.PuffinGame.Update*
   name: Update
@@ -1377,12 +1705,15 @@ references:
   commentId: T:Puffin.UI.Controls.Button
   fullName: Puffin.UI.Controls.Button
   nameWithType: Button
-- uid: Puffin.UI.Controls.Button.#ctor(System.String,System.Action)
-  name: Button(String, Action)
-  href: api/Puffin.UI.Controls.Button.html#Puffin_UI_Controls_Button__ctor_System_String_System_Action_
-  commentId: M:Puffin.UI.Controls.Button.#ctor(System.String,System.Action)
-  fullName: Puffin.UI.Controls.Button.Button(System.String, System.Action)
-  nameWithType: Button.Button(String, Action)
+- uid: Puffin.UI.Controls.Button.#ctor(System.Boolean,System.String,System.Int32,System.Int32,System.String,System.Int32,System.Int32,Func{System.Int32,System.Int32,System.Boolean})
+  name: Button(Boolean, String, Int32, Int32, String, Int32, Int32, Func<Int32, Int32, Boolean>)
+  href: api/Puffin.UI.Controls.Button.html#Puffin_UI_Controls_Button__ctor_System_Boolean_System_String_System_Int32_System_Int32_System_String_System_Int32_System_Int32_Func_System_Int32_System_Int32_System_Boolean__
+  commentId: M:Puffin.UI.Controls.Button.#ctor(System.Boolean,System.String,System.Int32,System.Int32,System.String,System.Int32,System.Int32,Func{System.Int32,System.Int32,System.Boolean})
+  name.vb: Button(Boolean, String, Int32, Int32, String, Int32, Int32, Func(Of Int32, Int32, Boolean))
+  fullName: Puffin.UI.Controls.Button.Button(System.Boolean, System.String, System.Int32, System.Int32, System.String, System.Int32, System.Int32, Func<System.Int32, System.Int32, System.Boolean>)
+  fullName.vb: Puffin.UI.Controls.Button.Button(System.Boolean, System.String, System.Int32, System.Int32, System.String, System.Int32, System.Int32, Func(Of System.Int32, System.Int32, System.Boolean))
+  nameWithType: Button.Button(Boolean, String, Int32, Int32, String, Int32, Int32, Func<Int32, Int32, Boolean>)
+  nameWithType.vb: Button.Button(Boolean, String, Int32, Int32, String, Int32, Int32, Func(Of Int32, Int32, Boolean))
 - uid: Puffin.UI.Controls.Button.#ctor*
   name: Button
   href: api/Puffin.UI.Controls.Button.html#Puffin_UI_Controls_Button__ctor_
@@ -1390,3 +1721,83 @@ references:
   isSpec: "True"
   fullName: Puffin.UI.Controls.Button.Button
   nameWithType: Button.Button
+- uid: Puffin.UI.Controls.HorizontalProgressBar
+  name: HorizontalProgressBar
+  href: api/Puffin.UI.Controls.HorizontalProgressBar.html
+  commentId: T:Puffin.UI.Controls.HorizontalProgressBar
+  fullName: Puffin.UI.Controls.HorizontalProgressBar
+  nameWithType: HorizontalProgressBar
+- uid: Puffin.UI.Controls.HorizontalProgressBar.#ctor(System.String,System.Int32,System.Int32,System.Int32,System.Int32)
+  name: HorizontalProgressBar(String, Int32, Int32, Int32, Int32)
+  href: api/Puffin.UI.Controls.HorizontalProgressBar.html#Puffin_UI_Controls_HorizontalProgressBar__ctor_System_String_System_Int32_System_Int32_System_Int32_System_Int32_
+  commentId: M:Puffin.UI.Controls.HorizontalProgressBar.#ctor(System.String,System.Int32,System.Int32,System.Int32,System.Int32)
+  fullName: Puffin.UI.Controls.HorizontalProgressBar.HorizontalProgressBar(System.String, System.Int32, System.Int32, System.Int32, System.Int32)
+  nameWithType: HorizontalProgressBar.HorizontalProgressBar(String, Int32, Int32, Int32, Int32)
+- uid: Puffin.UI.Controls.HorizontalProgressBar.#ctor*
+  name: HorizontalProgressBar
+  href: api/Puffin.UI.Controls.HorizontalProgressBar.html#Puffin_UI_Controls_HorizontalProgressBar__ctor_
+  commentId: Overload:Puffin.UI.Controls.HorizontalProgressBar.#ctor
+  isSpec: "True"
+  fullName: Puffin.UI.Controls.HorizontalProgressBar.HorizontalProgressBar
+  nameWithType: HorizontalProgressBar.HorizontalProgressBar
+- uid: Puffin.UI.Controls.HorizontalProgressBar.Value
+  name: Value
+  href: api/Puffin.UI.Controls.HorizontalProgressBar.html#Puffin_UI_Controls_HorizontalProgressBar_Value
+  commentId: P:Puffin.UI.Controls.HorizontalProgressBar.Value
+  fullName: Puffin.UI.Controls.HorizontalProgressBar.Value
+  nameWithType: HorizontalProgressBar.Value
+- uid: Puffin.UI.Controls.HorizontalProgressBar.Value*
+  name: Value
+  href: api/Puffin.UI.Controls.HorizontalProgressBar.html#Puffin_UI_Controls_HorizontalProgressBar_Value_
+  commentId: Overload:Puffin.UI.Controls.HorizontalProgressBar.Value
+  isSpec: "True"
+  fullName: Puffin.UI.Controls.HorizontalProgressBar.Value
+  nameWithType: HorizontalProgressBar.Value
+- uid: Puffin.UI.Controls.HorizontalSlider
+  name: HorizontalSlider
+  href: api/Puffin.UI.Controls.HorizontalSlider.html
+  commentId: T:Puffin.UI.Controls.HorizontalSlider
+  fullName: Puffin.UI.Controls.HorizontalSlider
+  nameWithType: HorizontalSlider
+- uid: Puffin.UI.Controls.HorizontalSlider.#ctor(System.Boolean,System.String,System.Int32,System.Int32,System.Int32,System.Int32)
+  name: HorizontalSlider(Boolean, String, Int32, Int32, Int32, Int32)
+  href: api/Puffin.UI.Controls.HorizontalSlider.html#Puffin_UI_Controls_HorizontalSlider__ctor_System_Boolean_System_String_System_Int32_System_Int32_System_Int32_System_Int32_
+  commentId: M:Puffin.UI.Controls.HorizontalSlider.#ctor(System.Boolean,System.String,System.Int32,System.Int32,System.Int32,System.Int32)
+  fullName: Puffin.UI.Controls.HorizontalSlider.HorizontalSlider(System.Boolean, System.String, System.Int32, System.Int32, System.Int32, System.Int32)
+  nameWithType: HorizontalSlider.HorizontalSlider(Boolean, String, Int32, Int32, Int32, Int32)
+- uid: Puffin.UI.Controls.HorizontalSlider.#ctor*
+  name: HorizontalSlider
+  href: api/Puffin.UI.Controls.HorizontalSlider.html#Puffin_UI_Controls_HorizontalSlider__ctor_
+  commentId: Overload:Puffin.UI.Controls.HorizontalSlider.#ctor
+  isSpec: "True"
+  fullName: Puffin.UI.Controls.HorizontalSlider.HorizontalSlider
+  nameWithType: HorizontalSlider.HorizontalSlider
+- uid: Puffin.UI.Controls.HorizontalSlider.OnValueChanged(Action{System.Int32})
+  name: OnValueChanged(Action<Int32>)
+  href: api/Puffin.UI.Controls.HorizontalSlider.html#Puffin_UI_Controls_HorizontalSlider_OnValueChanged_Action_System_Int32__
+  commentId: M:Puffin.UI.Controls.HorizontalSlider.OnValueChanged(Action{System.Int32})
+  name.vb: OnValueChanged(Action(Of Int32))
+  fullName: Puffin.UI.Controls.HorizontalSlider.OnValueChanged(Action<System.Int32>)
+  fullName.vb: Puffin.UI.Controls.HorizontalSlider.OnValueChanged(Action(Of System.Int32))
+  nameWithType: HorizontalSlider.OnValueChanged(Action<Int32>)
+  nameWithType.vb: HorizontalSlider.OnValueChanged(Action(Of Int32))
+- uid: Puffin.UI.Controls.HorizontalSlider.OnValueChanged*
+  name: OnValueChanged
+  href: api/Puffin.UI.Controls.HorizontalSlider.html#Puffin_UI_Controls_HorizontalSlider_OnValueChanged_
+  commentId: Overload:Puffin.UI.Controls.HorizontalSlider.OnValueChanged
+  isSpec: "True"
+  fullName: Puffin.UI.Controls.HorizontalSlider.OnValueChanged
+  nameWithType: HorizontalSlider.OnValueChanged
+- uid: Puffin.UI.Controls.HorizontalSlider.Value
+  name: Value
+  href: api/Puffin.UI.Controls.HorizontalSlider.html#Puffin_UI_Controls_HorizontalSlider_Value
+  commentId: P:Puffin.UI.Controls.HorizontalSlider.Value
+  fullName: Puffin.UI.Controls.HorizontalSlider.Value
+  nameWithType: HorizontalSlider.Value
+- uid: Puffin.UI.Controls.HorizontalSlider.Value*
+  name: Value
+  href: api/Puffin.UI.Controls.HorizontalSlider.html#Puffin_UI_Controls_HorizontalSlider_Value_
+  commentId: Overload:Puffin.UI.Controls.HorizontalSlider.Value
+  isSpec: "True"
+  fullName: Puffin.UI.Controls.HorizontalSlider.Value
+  nameWithType: HorizontalSlider.Value

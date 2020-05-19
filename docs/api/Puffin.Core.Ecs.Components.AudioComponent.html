@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class AudioComponent
    ">
-    <meta name="generator" content="docfx 2.48.1.0">
+    <meta name="generator" content="docfx 2.51.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -96,7 +96,7 @@ You should be able to play WAV files and OGG files.</p>
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Ecs_Components_AudioComponent__ctor_Puffin_Core_Ecs_Entity_System_String_.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Components.AudioComponent.%23ctor(Puffin.Core.Ecs.Entity%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/Components/AudioComponent.cs/#L14">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/Components/AudioComponent.cs/#L16">View Source</a>
   </span>
   <a id="Puffin_Core_Ecs_Components_AudioComponent__ctor_" data-uid="Puffin.Core.Ecs.Components.AudioComponent.#ctor*"></a>
   <h4 id="Puffin_Core_Ecs_Components_AudioComponent__ctor_Puffin_Core_Ecs_Entity_System_String_" data-uid="Puffin.Core.Ecs.Components.AudioComponent.#ctor(Puffin.Core.Ecs.Entity,System.String)">AudioComponent(Entity, String)</h4>
@@ -132,20 +132,19 @@ You should be able to play WAV files and OGG files.</p>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Ecs_Components_AudioComponent_Play_System_Single_.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Components.AudioComponent.Play(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Ecs_Components_AudioComponent_Play_System_Single_System_Single_.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Components.AudioComponent.Play(System.Single%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/Components/AudioComponent.cs/#L23">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/Components/AudioComponent.cs/#L26">View Source</a>
   </span>
   <a id="Puffin_Core_Ecs_Components_AudioComponent_Play_" data-uid="Puffin.Core.Ecs.Components.AudioComponent.Play*"></a>
-  <h4 id="Puffin_Core_Ecs_Components_AudioComponent_Play_System_Single_" data-uid="Puffin.Core.Ecs.Components.AudioComponent.Play(System.Single)">Play(Single)</h4>
-  <div class="markdown level1 summary"><p>Plays the audio file specified in fileName` at the specified pitch.
-A pitch of 1.0 is 100% (normal); -0.75 is 25% lower, 1.25 is 25% higher.</p>
+  <h4 id="Puffin_Core_Ecs_Components_AudioComponent_Play_System_Single_System_Single_" data-uid="Puffin.Core.Ecs.Components.AudioComponent.Play(System.Single,System.Single)">Play(Single, Single)</h4>
+  <div class="markdown level1 summary"><p>Plays the audio file specified in <code>fileName</code> at the specified volume and pitch.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Play(float pitch = 1F)</code></pre>
+    <pre><code class="lang-csharp hljs">public void Play(float volume = 1F, float pitch = 0F)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -159,11 +158,34 @@ A pitch of 1.0 is 100% (normal); -0.75 is 25% lower, 1.25 is 25% higher.</p>
     <tbody>
       <tr>
         <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">volume</span></td>
+        <td><p>A volume of 1.0 is 100%; a volume of 0 is 0% (completely muted).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
         <td><span class="parametername">pitch</span></td>
-        <td></td>
+        <td><p>A pitch of 0 is 100% (normal); -1 plays at half the pitch, 1 plays at double pitch.</p>
+</td>
       </tr>
     </tbody>
   </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Ecs_Components_AudioComponent_Stop.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Components.AudioComponent.Stop%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/Components/AudioComponent.cs/#L46">View Source</a>
+  </span>
+  <a id="Puffin_Core_Ecs_Components_AudioComponent_Stop_" data-uid="Puffin.Core.Ecs.Components.AudioComponent.Stop*"></a>
+  <h4 id="Puffin_Core_Ecs_Components_AudioComponent_Stop" data-uid="Puffin.Core.Ecs.Components.AudioComponent.Stop">Stop()</h4>
+  <div class="markdown level1 summary"><p>Stops all instances of the current sound effect that are playing.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Stop()</code></pre>
+  </div>
 </article>
           </div>
           
@@ -175,7 +197,7 @@ A pitch of 1.0 is 100% (normal); -0.75 is 25% lower, 1.25 is 25% higher.</p>
                     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Ecs_Components_AudioComponent.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Components.AudioComponent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/Components/AudioComponent.cs/#L9" class="contribution-link">View Source</a>
+                    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/Components/AudioComponent.cs/#L10" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

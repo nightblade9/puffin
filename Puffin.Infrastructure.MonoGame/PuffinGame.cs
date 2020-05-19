@@ -120,7 +120,7 @@ namespace Puffin.Infrastructure.MonoGame
         /// <summary>
         /// Sets the display (screen) size or window, scaling up/down to fit the game to screen.
         /// Note that if you enter disporportionate settings, Puffin will scale while preserving
-        // the original game aspect ratio.
+        /// the original game aspect ratio.
         /// </summary>
         public void SetScreenSize(int width, int height)
         {

@@ -45,6 +45,9 @@ namespace Puffin.Core.Ecs
         internal readonly bool IsUiElement = false;
         internal List<Action<float>> OnUpdateActions = new List<Action<float>>();
 
+        /// <summary>
+        /// The scene that contains this entity.
+        /// </summary>
         protected internal Scene Scene { get; set; }
         
         /// <summary>
