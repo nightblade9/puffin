@@ -232,7 +232,7 @@ namespace Puffin.Core.UnitTests.Ecs
             // Only way to test the tween is to see it in action
             var manager = new TweenManager();
             var isTweened = false;
-            var e = new Entity().Tween(new Tuple<float, float>(0, 0), new Tuple<float, float>(100, 100), 0.001f, () => isTweened = true);
+            var e = new Entity().Tween(0.001f, new Tuple<float, float>(0, 0), new Tuple<float, float>(100, 100), onTweenComplete: () => isTweened = true);
 
             manager.Update(1);
 

@@ -1,6 +1,8 @@
 using System;
 using NUnit.Framework;
 using Puffin.Core.Ecs;
+using Puffin.Core.Ecs.Components;
+using Puffin.Core.Tweening;
 
 namespace Puffin.Core.UnitTests.Tweening
 {
@@ -11,7 +13,7 @@ namespace Puffin.Core.UnitTests.Tweening
         public void ConstructorStartsTween()
         {
             var e = new Entity();
-            var tween = new Puffin.Core.Tweening.Tween(e, new Tuple<float, float>(50, 60), new Tuple<float, float>(60, 70), 1);
+            var tween = new Tween(e, 1, new Tuple<float, float>(50, 60), new Tuple<float, float>(60, 70));
             Assert.That(tween.IsRunning, Is.True);
         }
 
@@ -19,7 +21,7 @@ namespace Puffin.Core.UnitTests.Tweening
         public void StopAndStartStopAndStartTween()
         {
             var e = new Entity();
-            var tween = new Puffin.Core.Tweening.Tween(e, new Tuple<float, float>(50, 60), new Tuple<float, float>(60, 70), 1);
+            var tween = new Tween(e, 1, new Tuple<float, float>(50, 60), new Tuple<float, float>(60, 70));
             // Started
 
             tween.Stop();
@@ -33,7 +35,7 @@ namespace Puffin.Core.UnitTests.Tweening
         public void StartSetsEntityCoordinatesToStartPosition()
         {
             var e = new Entity().Move(999, 998);
-            var tween = new Puffin.Core.Tweening.Tween(e, new Tuple<float, float>(50, 60), new Tuple<float, float>(60, 70), 1);
+            var tween = new Tween(e, 1, new Tuple<float, float>(50, 60), new Tuple<float, float>(60, 70));
             tween.Stop();
 
             e.Move(-999, -999);
@@ -51,7 +53,7 @@ namespace Puffin.Core.UnitTests.Tweening
         {
             var e = new Entity().Move(999, 998);
             var isCalled = true;
-            var tween = new Puffin.Core.Tweening.Tween(e, new Tuple<float, float>(50, 60), new Tuple<float, float>(60, 70), 1, () => isCalled = true);
+            var tween = new Tween(e, 1, new Tuple<float, float>(50, 60), new Tuple<float, float>(60, 70), onTweenComplete: () => isCalled = true);
 
             // Act
             tween.Stop();
@@ -77,7 +79,7 @@ namespace Puffin.Core.UnitTests.Tweening
             const int expectedY = startY + (int)((stopY - startY) * elapsedPercent);
 
             var e = new Entity();
-            var tween = new Puffin.Core.Tweening.Tween(e, new Tuple<float, float>(startX, startY), new Tuple<float, float>(stopX, stopY), duration);
+            var tween = new Tween(e, duration, new Tuple<float, float>(startX, startY), new Tuple<float, float>(stopX, stopY));
 
             // Act
             tween.Update(elapsed);
@@ -91,7 +93,7 @@ namespace Puffin.Core.UnitTests.Tweening
         public void UpdateDoesntOvershootButMovesEntityToEndPosition()
         {
             var e = new Entity();
-            var tween = new Puffin.Core.Tweening.Tween(e, new Tuple<float, float>(0, 0), new Tuple<float, float>(-50, -40), 1);
+            var tween = new Tween(e, 1, new Tuple<float, float>(0, 0), new Tuple<float, float>(-50, -40));
 
             // Act
             tween.Update(2);
@@ -99,6 +101,27 @@ namespace Puffin.Core.UnitTests.Tweening
             // Assert
             Assert.That(e.X, Is.EqualTo(-50));
             Assert.That(e.Y, Is.EqualTo(-40));
+        }
+
+        [Test]
+        public void UpdateUpdatesAlphaToStartAndEndValues()
+        {
+            var e = new Entity().Sprite("Content/Images/PuffinBird.png");
+            var sprite = e.Get<SpriteComponent>();
+            sprite.Alpha = 0.219f;
+            
+            var tween = new Tween(e, 1, new Tuple<float, float>(0, 0), new Tuple<float, float>(0, 0), 1, 0);
+
+            // Act/Assert
+            tween.Update(0);
+            Assert.That(sprite.Alpha, Is.EqualTo(1)); // start value
+
+            tween.Update(0.75f);
+            Assert.AreEqual(sprite.Alpha, 0.25f, 0.01); // intermediate value
+
+            tween.Update(1);
+            Assert.That(sprite.Alpha, Is.EqualTo(0)); // final/overshot value
+
         }
     }
 }

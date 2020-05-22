@@ -16,7 +16,7 @@ namespace Puffin.Core.Tweening
         internal bool IsRunning = false;
         private float runningForSeconds = 0;
 
-        public Tween(Entity entity, float durationSeconds, Tuple<float, float> startPosition, Tuple<float, float> endPosition, float startAlpha, float endAlpha, Action onTweenComplete = null)
+        public Tween(Entity entity, float durationSeconds, Tuple<float, float> startPosition, Tuple<float, float> endPosition, float startAlpha = 1, float endAlpha = 1, Action onTweenComplete = null)
         {
             this.Entity = entity;
             this.DurationSeconds = durationSeconds;
@@ -41,7 +41,11 @@ namespace Puffin.Core.Tweening
                 this.IsRunning = true;
                 this.Entity.X = this.StartPosition.Item1;
                 this.Entity.Y = this.StartPosition.Item2;
-                this.Entity.Get<SpriteComponent>().Alpha = this.StartAlpha;
+                var sprite = this.Entity.Get<SpriteComponent>();
+                if (sprite != null)
+                {
+                    sprite.Alpha = this.StartAlpha;
+                }
                 this.runningForSeconds = 0;
             }
         }
@@ -62,14 +66,23 @@ namespace Puffin.Core.Tweening
             if (this.runningForSeconds + elapsedSeconds >= this.DurationSeconds)
             {
                 moveSeconds = this.DurationSeconds - this.runningForSeconds;
+                this.runningForSeconds = this.DurationSeconds;
                 this.Stop();
+            }
+            else
+            {
+                // Original value, not the nerfed value, which might be 0 after clamping
+                this.runningForSeconds += elapsedSeconds;
             }
 
             this.Entity.X += this.Dx * (moveSeconds / this.DurationSeconds);
             this.Entity.Y += this.Dy * (moveSeconds / this.DurationSeconds);
-            this.Entity.Get<SpriteComponent>().Alpha = this.StartAlpha + (this.DAlpha * this.runningForSeconds);
-            // Original value, not the nerfed value, which might be 0
-            this.runningForSeconds += elapsedSeconds;
+            
+            var sprite = this.Entity.Get<SpriteComponent>();
+            if (sprite != null)
+            {
+                sprite.Alpha = this.StartAlpha + (this.DAlpha * this.runningForSeconds);
+            }
         }
     }
 }
