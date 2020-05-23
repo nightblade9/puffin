@@ -1,8 +1,6 @@
 ﻿using System;
 using Moq;
 using NUnit.Framework;
-using Puffin.Core;
-using Puffin.Core.Ecs;
 using Puffin.Core.Ecs.Components;
 using Puffin.Core.Ecs.Systems;
 using Puffin.Core.Events;
