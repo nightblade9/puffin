@@ -9,7 +9,15 @@ namespace Puffin.Core.Ecs.Components
     public class SpriteComponent : Component
     {
         /// <summary>The image file of this component.</summary>
-        public readonly string FileName;
+        public string FileName
+        {
+            get { return this.fileName; }
+            set
+            {
+                this.fileName = value;
+                this.Parent.Scene?.EventBus.Broadcast(EventBusSignal.SpriteChanged, this);
+            }
+        }
 
         /// <summary>
         /// The width of a frame of the sprite (if it's a spritesheet), or zero if not a spritesheet.
@@ -39,6 +47,7 @@ namespace Puffin.Core.Ecs.Components
         public int OffsetY { get; set; }
 
         private int frameIndex = 0;
+        private string fileName;
 
         /// <summary>
         /// The frame index of the sprite; note that Puffin only currently supports a single row of frames.
