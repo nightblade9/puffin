@@ -46,5 +46,23 @@ namespace Puffin.Core.UnitTests.Ecs.Components
             // Assert
             Assert.That(called, Is.True);
         }
+
+        [Test]
+        public void ChangingFileNameTriggersSpriteChangedEvent()
+        {
+            var scene = new Scene();
+            SpriteComponent actual = null;
+            scene.EventBus.Subscribe(EventBusSignal.SpriteChanged, (s) => actual = s as SpriteComponent);
+            var e = new Entity();
+            var sprite = new SpriteComponent(e, "mushroom.png");
+            scene.Add(e);
+
+            // Act
+            sprite.FileName = "toadstool.png";
+
+            // Assert
+            Assert.That(actual, Is.Not.Null);
+            Assert.That(actual.FileName, Is.EqualTo("toadstool.png"));
+        }
     }
 }
