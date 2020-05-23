@@ -26,12 +26,14 @@ namespace Puffin.UI.UnitTests.Controls
         }
 
         [Test]
-        public void TogglingCheckedChangesSprite()
+        public void TogglingCheckedChangesSpriteAndInvokesToggle()
         {
-            var c = new Checkbox(false, "unchecked.png", "checked.png", 32, 32, "");
+            var callbackInvoked = false;
+            var c = new Checkbox(false, "unchecked.png", "checked.png", 32, 32, "", () => callbackInvoked = true);
             
             c.IsChecked = false;
             Assert.That(c.Get<SpriteComponent>().FileName, Is.EqualTo("unchecked.png"));
+            Assert.That(callbackInvoked, Is.True);
 
             c.IsChecked = true;
             Assert.That(c.Get<SpriteComponent>().FileName, Is.EqualTo("checked.png"));

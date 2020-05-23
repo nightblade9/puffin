@@ -17,17 +17,19 @@ namespace Puffin.UI.Controls
             {
                 this.isChecked = value;
                 this.Get<SpriteComponent>().FileName = this.isChecked ? this.checkedImage : this.uncheckedImage;
+                this.onToggle?.Invoke();
             }
         }
 
         private readonly string uncheckedImage;
         private readonly string checkedImage;
+        private readonly Action onToggle;
         private bool isChecked = false;
 
         /// <summary>
         /// Creates a new checkbox.
         /// </summary>
-        public Checkbox(bool isUiElement, string uncheckedImage, string checkedImage, int spriteWidth, int spriteHeight, string text)
+        public Checkbox(bool isUiElement, string uncheckedImage, string checkedImage, int spriteWidth, int spriteHeight, string text, Action onToggle = null)
         : base(isUiElement)
         {
             this.uncheckedImage = uncheckedImage;
@@ -41,6 +43,9 @@ namespace Puffin.UI.Controls
             });
             this.Label(text, spriteWidth + 8);
             this.IsChecked = true;
+
+            // Don't fire when we set IsChecked just above, could result in null pointer exception in user code
+            this.onToggle = onToggle;
         }
     }
 }
