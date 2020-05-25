@@ -138,6 +138,7 @@ namespace Puffin.Core
         /// </summary>
         public void Remove(TileMap tileMap)
         {
+            this.TileMaps.Remove(tileMap);
             this.drawingSystem.OnRemoveTileMap(tileMap);
         }
 
