@@ -87,6 +87,12 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
                 this.AddMonoGameSpriteFor(sprite.Parent);
             });
 
+            this.eventBus.Subscribe(EventBusSignal.TilesetSpriteChanged, (data) =>
+            {
+                var tilemap = data as TileMap;
+                this.AddTileMap(tilemap);
+            });
+
             // Make sure renderTarget is always transparent. Otherwise, the contents will actually be solid black.
             // That means when we draw the (empty) subscene render target, we get garbage on screen.
             this.graphics.SetRenderTarget(subSceneRenderTarget);

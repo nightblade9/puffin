@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using NUnit.Framework;
+using Puffin.Core.Events;
 using Puffin.Core.Tiles;
 
 namespace Puffin.Core.UnitTests.Tiles
@@ -126,6 +127,26 @@ namespace Puffin.Core.UnitTests.Tiles
             Assert.That(map.Get(2, 3), Is.Null);
             Assert.That(map.Get(3, 2), Is.Null);
             Assert.That(map.Get(3, 3), Is.Null);
+        }
+
+        [Test]
+        public void SetTileImageFileBroadcastsSpriteChangeEvent()
+        {
+            var scene = new Scene();
+            var tileMap = new TileMap(100, 100, "mines.png", 64, 64);
+            scene.Add(tileMap);
+            var eventBroadcast = false;
+
+            scene.EventBus.Subscribe(EventBusSignal.TilesetSpriteChanged, (t) => {
+                Assert.That(t, Is.EqualTo(tileMap));
+                eventBroadcast = true;
+            });
+
+            // Act
+            tileMap.TileImageFile = "mines-sepia.png";
+
+            // Assert
+            Assert.That(eventBroadcast, Is.True);
         }
     }
 }

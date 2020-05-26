@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Puffin.Core.Events;
 
 namespace Puffin.Core.Tiles
 {
@@ -12,18 +13,31 @@ namespace Puffin.Core.Tiles
     {
         public int X { get; set; }
         public int Y { get; set; }
-        internal readonly string TileImageFile;
+        public string TileImageFile {
+            get {
+                return this.imageFile;
+            }
+            set
+            {
+                this.imageFile = value;
+                this.Scene?.EventBus.Broadcast(EventBusSignal.TilesetSpriteChanged, this);
+            }
+        }
+
         internal readonly int MapWidth; // in tiles
         internal readonly int MapHeight; // in tiles
 
         internal readonly int TileWidth; // in pixels
         internal readonly int TileHeight; // in pixels
 
+        internal Scene Scene;
+
         // List of all tile definitions, indexed by name.
         private readonly IDictionary<string, TileDefinition> tileSet = new Dictionary<string, TileDefinition>();
     
         // (x, y) => tile name (eg. (13, 2) => grass). Null if empty/unset.
         private readonly string[,] tileData;
+        private string imageFile;
         
         /// <summary>
         /// Constructs a tilemap, given an image file name, and the size of a single tile.

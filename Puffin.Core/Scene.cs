@@ -129,6 +129,7 @@ namespace Puffin.Core
         /// </summary>
         public void Add(TileMap tileMap)
         {
+            tileMap.Scene = this;
             this.TileMaps.Add(tileMap);
             this.drawingSystem?.OnAddTileMap(tileMap);
         }
