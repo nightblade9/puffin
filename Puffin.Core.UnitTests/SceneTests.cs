@@ -451,7 +451,7 @@ namespace Puffin.Core.UnitTests
             Assert.That(scene.SubScene, Is.Null);
         }
 
-                [Test]
+        [Test]
         public void HideSubSceneBroadcastsHideEvent()
         {
             var isCalled = false;
@@ -511,6 +511,17 @@ namespace Puffin.Core.UnitTests
 
             // Assert.
             Assert.That(isReadyCalled, Is.True);
+        }
+
+        [Test]
+        public void AddTileMapAddsAndSetsScene()
+        {
+            var scene = new Scene();
+            var tileset = new TileMap(28, 10, "jungle.png", 64, 48);
+            
+            scene.Add(tileset);
+
+            Assert.That(tileset.Scene, Is.EqualTo(scene));
         }
 
         enum FakeAction

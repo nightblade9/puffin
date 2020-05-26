@@ -12,6 +12,7 @@ namespace Puffin.Core.Events
         ActionReleased,
         SubSceneShown, // Broadcast so we can call init on it properly
         SubSceneHidden,
-        SpriteChanged, // Sprite changed at runtime
+        SpriteChanged, // Sprite component's changed at runtime
+        TilesetSpriteChanged, // Tilemap's sprite changed at runtime
     }
 }
