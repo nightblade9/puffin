@@ -16,6 +16,13 @@ namespace Puffin.Core.Ecs.Components
         // If non-zero, word wrapping is ENABLED.
         internal int WordWrapWidth { get; set; } = 0;
 
+
+        /// <summary>
+        /// The alpha (transparency) of this text and its outline (if it has one), ranging from 0 (invisible) to 1 (fully visible).
+        /// See <c>IsVisible</c>.
+        /// </summary>
+        public float Alpha = 1;
+
         /// <summary>
         /// The filename of the font, relative to the game directory. Changing this immediately updates the font.
         /// </summary>
