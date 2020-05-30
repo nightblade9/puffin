@@ -31,7 +31,8 @@ namespace Puffin.Core.Tweening
         {
             var toRemove = new List<Tween>();
 
-            foreach (var tween in this.tweens)
+            // Copy to prevent concurrent exceptions
+            foreach (var tween in this.tweens.ToArray())
             {
                 if (tween.IsRunning)
                 {
