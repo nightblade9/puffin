@@ -15,7 +15,7 @@ namespace Puffin.Core.Tweening
             TweenManager.LatestInstance = this;
         }
 
-        public void TweenPosition(Entity entity, float durationSeconds, Tuple<float, float> startPosition, Tuple<float, float> endPosition, float startAlpha = 1, float endAlpha = 1, Action onTweenComplete = null)
+        public void Tween(Entity entity, float durationSeconds, Tuple<float, float> startPosition, Tuple<float, float> endPosition, float startAlpha = 1, float endAlpha = 1, Action onTweenComplete = null)
         {
             // Only one tween at a time, sorry mate
             var toRemove = this.tweens.Where(t => t.Entity == entity);

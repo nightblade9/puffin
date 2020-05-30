@@ -26,10 +26,10 @@ namespace Puffin.Core.UnitTests.Tweening
             var e = new Entity();
             bool isCalled = false;
 
-            manager.TweenPosition(e, 0, new System.Tuple<float, float>(0, 0), new System.Tuple<float, float>(100, 100));
+            manager.Tween(e, 0, new System.Tuple<float, float>(0, 0), new System.Tuple<float, float>(100, 100));
             
             // Act
-            manager.TweenPosition(e, 1, new System.Tuple<float, float>(50, 40), new System.Tuple<float, float>(45, 95), onTweenComplete: () => isCalled = true);
+            manager.Tween(e, 1, new System.Tuple<float, float>(50, 40), new System.Tuple<float, float>(45, 95), onTweenComplete: () => isCalled = true);
 
             // Assert
             // We can't directly check if the first tween is stopped; all we can do is observe the current position of the entity.
@@ -44,7 +44,7 @@ namespace Puffin.Core.UnitTests.Tweening
         {
             var manager = new TweenManager();
             var e = new Entity();
-            manager.TweenPosition(e, 10, new System.Tuple<float, float>(0, 0), new System.Tuple<float, float>(100, 200));
+            manager.Tween(e, 10, new System.Tuple<float, float>(0, 0), new System.Tuple<float, float>(100, 200));
 
             // Act
             manager.Update(1);
@@ -60,7 +60,7 @@ namespace Puffin.Core.UnitTests.Tweening
             // Test that it's not updated after removal
             var manager = new TweenManager();
             var e = new Entity();
-            manager.TweenPosition(e, 10, new System.Tuple<float, float>(0, 0), new System.Tuple<float, float>(100, 200));
+            manager.Tween(e, 10, new System.Tuple<float, float>(0, 0), new System.Tuple<float, float>(100, 200));
 
             // Act
             manager.Update(10);
