@@ -180,9 +180,18 @@ namespace Puffin.Core
         /// Tweens an entity from a start position to an end position over a period of time; optionally, invokes a callback when the tween completes.
         /// Note that this immediately moves the entity to the specified start position.
         /// </summary>
-        public void TweenPosition(Entity entity, Tuple<float, float> startPosition, Tuple<float, float> endPosition, float durationSeconds, Action onTweenComplete)
+        public void TweenPosition(Entity entity, Tuple<float, float> startPosition, Tuple<float, float> endPosition, float durationSeconds, Action onTweenComplete = null)
         {
-            this.tweenManager.TweenPosition(entity, durationSeconds, startPosition, endPosition, 1, 1, onTweenComplete);
+            this.tweenManager.Tween(entity, durationSeconds, startPosition, endPosition, 1, 1, onTweenComplete);
+        }
+
+        /// <summary>
+        /// Tween the alpha of an entity over a period of time. Note that this immediately sets the alpha to <c>startAlpha</c>.
+        /// </summary>
+        public void TweenAlpha(Entity entity, float startAlpha, float endAlpha, float durationSeconds, Action onTweenComplete = null)
+        {
+            var position = new Tuple<float, float>(entity.X, entity.Y);
+            this.tweenManager.Tween(entity, durationSeconds, position, position, startAlpha, endAlpha, onTweenComplete);
         }
 
         /// <summary>

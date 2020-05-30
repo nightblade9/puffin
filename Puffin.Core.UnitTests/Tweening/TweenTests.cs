@@ -106,21 +106,26 @@ namespace Puffin.Core.UnitTests.Tweening
         [Test]
         public void UpdateUpdatesAlphaToStartAndEndValues()
         {
-            var e = new Entity().Sprite("Content/Images/PuffinBird.png");
+            var e = new Entity().Sprite("Content/Images/PuffinBird.png").Label("~*~");
             var sprite = e.Get<SpriteComponent>();
             sprite.Alpha = 0.219f;
-            
+            var text = e.Get<TextLabelComponent>();
+            text.Alpha = 0.112f;
+
             var tween = new Tween(e, 1, new Tuple<float, float>(0, 0), new Tuple<float, float>(0, 0), 1, 0);
 
             // Act/Assert
             tween.Update(0);
             Assert.That(sprite.Alpha, Is.EqualTo(1)); // start value
+            Assert.That(text.Alpha, Is.EqualTo(1)); // start value
 
             tween.Update(0.75f);
             Assert.AreEqual(sprite.Alpha, 0.25f, 0.01); // intermediate value
+            Assert.AreEqual(text.Alpha, 0.25f, 0.01); // intermediate value
 
             tween.Update(1);
             Assert.That(sprite.Alpha, Is.EqualTo(0)); // final/overshot value
+            Assert.That(text.Alpha, Is.EqualTo(0)); // final/overshot value
 
         }
     }

@@ -83,6 +83,12 @@ namespace Puffin.Core.Tweening
             {
                 sprite.Alpha = this.StartAlpha + (this.DAlpha * this.runningForSeconds);
             }
+
+            var text = this.Entity.Get<TextLabelComponent>();
+            if (text != null)
+            {
+                text.Alpha = this.StartAlpha + (this.DAlpha * this.runningForSeconds);
+            }
         }
     }
 }
