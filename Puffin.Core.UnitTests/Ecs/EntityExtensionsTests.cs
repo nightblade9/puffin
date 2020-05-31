@@ -229,16 +229,22 @@ namespace Puffin.Core.UnitTests.Ecs
         [Test]
         public void TweenAddsInstanceToLatestTweenManager()
         {
-            // Only way to test the tween is to see it in action
-            var manager = new TweenManager();
+            // Only way to test the tween is to see it in action.
+            // Arrange
             var isTweened = false;
-            var e = new Entity().Tween(0.001f, new Tuple<float, float>(0, 0), new Tuple<float, float>(100, 100), onTweenComplete: () => isTweened = true);
+            var entity = new Entity();
+            var scene = new Scene();
+            scene.Initialize(new ISystem[] { new Mock<DrawingSystem>().Object }, new Mock<IMouseProvider>().Object, new Mock<IKeyboardProvider>().Object);
+            scene.Add(entity); // so e can reference scene tween manager
+            entity.Tween(0.001f, new Tuple<float, float>(0, 0), new Tuple<float, float>(100, 100), onTweenComplete: () => isTweened = true);
 
-            manager.Update(1);
+            // Act
+            scene.Update(1);
 
+            // Assert
             Assert.That(isTweened, Is.True);
-            Assert.That(e.X, Is.EqualTo(100));
-            Assert.That(e.Y, Is.EqualTo(100));
+            Assert.That(entity.X, Is.EqualTo(100));
+            Assert.That(entity.Y, Is.EqualTo(100));
         }
     }
 }

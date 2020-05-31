@@ -9,16 +9,6 @@ namespace Puffin.Core.UnitTests.Tweening
     public class TweenManagerTests
     {
         [Test]
-        public void ConstructorReplacesLatestInstance()
-        {
-            var t1 = new TweenManager();
-            Assert.That(TweenManager.LatestInstance, Is.EqualTo(t1));
-
-            var t2 = new TweenManager();
-            Assert.That(TweenManager.LatestInstance, Is.EqualTo(t2));
-        }
-
-        [Test]
         public void TweenPositionReplacesAndStopsTweenForThatEntity()
         {
             // Only way to test is to see who's updated
