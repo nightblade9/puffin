@@ -245,7 +245,7 @@ namespace Puffin.Core.Ecs
         /// <param name="onTweenComplete">An optional callback to invoke when the tween completes.</param>
         public static Entity Tween(this Entity entity, float durationSeconds, Tuple<float, float> startPosition, Tuple<float, float> endPosition, float startAlpha = 1,float endAlpha = 1, Action onTweenComplete = null)
         {
-            TweenManager.LatestInstance.Tween(entity, durationSeconds, startPosition, endPosition, startAlpha, endAlpha, onTweenComplete);
+            entity.Scene.TweenManager.Tween(entity, durationSeconds, startPosition, endPosition, startAlpha, endAlpha, onTweenComplete);
             return entity;
         }
 
