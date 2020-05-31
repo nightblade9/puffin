@@ -7,13 +7,7 @@ namespace Puffin.Core.Tweening
 {
     internal class TweenManager
     {
-        internal static TweenManager LatestInstance { get; set; }
         private List<Tween> tweens = new List<Tween>();
-
-        public TweenManager()
-        {
-            TweenManager.LatestInstance = this;
-        }
 
         public void Tween(Entity entity, float durationSeconds, Tuple<float, float> startPosition, Tuple<float, float> endPosition, float startAlpha = 1, float endAlpha = 1, Action onTweenComplete = null)
         {

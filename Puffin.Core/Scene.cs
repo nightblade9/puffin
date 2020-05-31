@@ -47,6 +47,7 @@ namespace Puffin.Core
         /// </summary>
         public Action<Enum> OnActionReleased;
         public EventBus EventBus = new EventBus();
+        internal TweenManager TweenManager = new TweenManager();
         
         // Drawn in the order added. Internal because needed for collision resolution.
         internal List<TileMap> TileMaps = new List<TileMap>();
@@ -62,7 +63,6 @@ namespace Puffin.Core
         private ISystem[] systems = new ISystem[0];
         private DrawingSystem drawingSystem;
         private List<Entity> entities = new List<Entity>();
-        private TweenManager tweenManager = new TweenManager();
 
         // A date and a number of draw calls to calculate FPS
         private DateTime lastFpsUpdate = DateTime.Now;
@@ -160,7 +160,7 @@ namespace Puffin.Core
             this.keyboardProvider.Update();
             // Mouse provider is updated through mouse system, so we can coordinate and
             // allow it to invoke general callbacks if an event was unhandled.
-            this.tweenManager.Update(elapsedSeconds);
+            this.TweenManager.Update(elapsedSeconds);
         }
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace Puffin.Core
         /// </summary>
         public void TweenPosition(Entity entity, Tuple<float, float> startPosition, Tuple<float, float> endPosition, float durationSeconds, Action onTweenComplete = null)
         {
-            this.tweenManager.Tween(entity, durationSeconds, startPosition, endPosition, 1, 1, onTweenComplete);
+            this.TweenManager.Tween(entity, durationSeconds, startPosition, endPosition, 1, 1, onTweenComplete);
         }
 
         /// <summary>
@@ -191,7 +191,7 @@ namespace Puffin.Core
         public void TweenAlpha(Entity entity, float startAlpha, float endAlpha, float durationSeconds, Action onTweenComplete = null)
         {
             var position = new Tuple<float, float>(entity.X, entity.Y);
-            this.tweenManager.Tween(entity, durationSeconds, position, position, startAlpha, endAlpha, onTweenComplete);
+            this.TweenManager.Tween(entity, durationSeconds, position, position, startAlpha, endAlpha, onTweenComplete);
         }
 
         /// <summary>
