@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class TileMap
    ">
-    <meta name="generator" content="docfx 2.51.0.0">
+    <meta name="generator" content="docfx 2.53.1.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,8 +73,14 @@
   
   <h1 id="Puffin_Core_Tiles_TileMap" data-uid="Puffin.Core.Tiles.TileMap" class="text-break">Class TileMap
   </h1>
-  <div class="markdown level0 summary"><p>A 2D tilemap. Contains a tileset (defined tiles) and a spritesheet, which it uses
-to render the tiles. Define some tiles, set some tiles, and they appear on-screen.</p>
+  <div class="markdown level0 summary"><p>A 2D tilemap. Contains a spritesheet and tile definitions, which it uses to render the tiles.
+Note that you can change the sprite at runtime, which is useful for multiple/similar tilesets that
+are visually different, but use the same set of base tiles (e.g. grass, tree, and water files).</p>
+<ul>
+<li>Create a new <code>TileMap</code> with a specified sprite.</li>
+<li><code>Define</code> some tiles by their tile indicies.</li>
+<li><code>Set</code> some tiles, and they appear on-screen.</li>
+</ul>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -95,7 +101,7 @@ to render the tiles. Define some tiles, set some tiles, and they appear on-scree
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Tiles_TileMap__ctor_System_Int32_System_Int32_System_String_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Puffin.Core.Tiles.TileMap.%23ctor(System.Int32%2CSystem.Int32%2CSystem.String%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Tiles/TileMap.cs/#L36">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Tiles/TileMap.cs/#L62">View Source</a>
   </span>
   <a id="Puffin_Core_Tiles_TileMap__ctor_" data-uid="Puffin.Core.Tiles.TileMap.#ctor*"></a>
   <h4 id="Puffin_Core_Tiles_TileMap__ctor_System_Int32_System_Int32_System_String_System_Int32_System_Int32_" data-uid="Puffin.Core.Tiles.TileMap.#ctor(System.Int32,System.Int32,System.String,System.Int32,System.Int32)">TileMap(Int32, Int32, String, Int32, Int32)</h4>
@@ -155,7 +161,7 @@ to render the tiles. Define some tiles, set some tiles, and they appear on-scree
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Tiles_TileMap_Item_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Puffin.Core.Tiles.TileMap.Item(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Tiles/TileMap.cs/#L87">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Tiles/TileMap.cs/#L113">View Source</a>
   </span>
   <a id="Puffin_Core_Tiles_TileMap_Item_" data-uid="Puffin.Core.Tiles.TileMap.Item*"></a>
   <h4 id="Puffin_Core_Tiles_TileMap_Item_System_Int32_System_Int32_" data-uid="Puffin.Core.Tiles.TileMap.Item(System.Int32,System.Int32)">Item[Int32, Int32]</h4>
@@ -205,14 +211,47 @@ to render the tiles. Define some tiles, set some tiles, and they appear on-scree
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Tiles_TileMap_TileImageFile.md&amp;value=---%0Auid%3A%20Puffin.Core.Tiles.TileMap.TileImageFile%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Tiles/TileMap.cs/#L28">View Source</a>
+  </span>
+  <a id="Puffin_Core_Tiles_TileMap_TileImageFile_" data-uid="Puffin.Core.Tiles.TileMap.TileImageFile*"></a>
+  <h4 id="Puffin_Core_Tiles_TileMap_TileImageFile" data-uid="Puffin.Core.Tiles.TileMap.TileImageFile">TileImageFile</h4>
+  <div class="markdown level1 summary"><p>The image used for the tileset's graphics. Note that changing this at runtime doesn't unset
+any definitions or alter any tiles. Useful for changing the tileset to a similar version.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string TileImageFile { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Tiles_TileMap_X.md&amp;value=---%0Auid%3A%20Puffin.Core.Tiles.TileMap.X%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Tiles/TileMap.cs/#L13">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Tiles/TileMap.cs/#L19">View Source</a>
   </span>
   <a id="Puffin_Core_Tiles_TileMap_X_" data-uid="Puffin.Core.Tiles.TileMap.X*"></a>
   <h4 id="Puffin_Core_Tiles_TileMap_X" data-uid="Puffin.Core.Tiles.TileMap.X">X</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The x-coordinate of the tile map on screen, in pixels.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -238,11 +277,12 @@ to render the tiles. Define some tiles, set some tiles, and they appear on-scree
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Tiles_TileMap_Y.md&amp;value=---%0Auid%3A%20Puffin.Core.Tiles.TileMap.Y%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Tiles/TileMap.cs/#L14">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Tiles/TileMap.cs/#L22">View Source</a>
   </span>
   <a id="Puffin_Core_Tiles_TileMap_Y_" data-uid="Puffin.Core.Tiles.TileMap.Y*"></a>
   <h4 id="Puffin_Core_Tiles_TileMap_Y" data-uid="Puffin.Core.Tiles.TileMap.Y">Y</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The y-coordinate of the tile map on screen, in pixels.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -270,7 +310,7 @@ to render the tiles. Define some tiles, set some tiles, and they appear on-scree
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Tiles_TileMap_Clear.md&amp;value=---%0Auid%3A%20Puffin.Core.Tiles.TileMap.Clear%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Tiles/TileMap.cs/#L96">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Tiles/TileMap.cs/#L122">View Source</a>
   </span>
   <a id="Puffin_Core_Tiles_TileMap_Clear_" data-uid="Puffin.Core.Tiles.TileMap.Clear*"></a>
   <h4 id="Puffin_Core_Tiles_TileMap_Clear" data-uid="Puffin.Core.Tiles.TileMap.Clear">Clear()</h4>
@@ -286,7 +326,7 @@ to render the tiles. Define some tiles, set some tiles, and they appear on-scree
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Tiles_TileMap_Define_System_String_System_Int32_System_Int32_System_Boolean_.md&amp;value=---%0Auid%3A%20Puffin.Core.Tiles.TileMap.Define(System.String%2CSystem.Int32%2CSystem.Int32%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Tiles/TileMap.cs/#L54">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Tiles/TileMap.cs/#L80">View Source</a>
   </span>
   <a id="Puffin_Core_Tiles_TileMap_Define_" data-uid="Puffin.Core.Tiles.TileMap.Define*"></a>
   <h4 id="Puffin_Core_Tiles_TileMap_Define_System_String_System_Int32_System_Int32_System_Boolean_" data-uid="Puffin.Core.Tiles.TileMap.Define(System.String,System.Int32,System.Int32,System.Boolean)">Define(String, Int32, Int32, Boolean)</h4>
@@ -339,7 +379,7 @@ Calling this twice with the same tile name will overwrite the previous definitio
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Tiles_TileMap_Get_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Puffin.Core.Tiles.TileMap.Get(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Tiles/TileMap.cs/#L74">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Tiles/TileMap.cs/#L100">View Source</a>
   </span>
   <a id="Puffin_Core_Tiles_TileMap_Get_" data-uid="Puffin.Core.Tiles.TileMap.Get*"></a>
   <h4 id="Puffin_Core_Tiles_TileMap_Get_System_Int32_System_Int32_" data-uid="Puffin.Core.Tiles.TileMap.Get(System.Int32,System.Int32)">Get(Int32, Int32)</h4>
@@ -392,7 +432,7 @@ Calling this twice with the same tile name will overwrite the previous definitio
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Tiles_TileMap_Set_System_Int32_System_Int32_System_String_.md&amp;value=---%0Auid%3A%20Puffin.Core.Tiles.TileMap.Set(System.Int32%2CSystem.Int32%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Tiles/TileMap.cs/#L62">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Tiles/TileMap.cs/#L88">View Source</a>
   </span>
   <a id="Puffin_Core_Tiles_TileMap_Set_" data-uid="Puffin.Core.Tiles.TileMap.Set*"></a>
   <h4 id="Puffin_Core_Tiles_TileMap_Set_System_Int32_System_Int32_System_String_" data-uid="Puffin.Core.Tiles.TileMap.Set(System.Int32,System.Int32,System.String)">Set(Int32, Int32, String)</h4>
@@ -441,7 +481,7 @@ Calling this twice with the same tile name will overwrite the previous definitio
                     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Tiles_TileMap.md&amp;value=---%0Auid%3A%20Puffin.Core.Tiles.TileMap%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Tiles/TileMap.cs/#L11" class="contribution-link">View Source</a>
+                    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Tiles/TileMap.cs/#L16" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

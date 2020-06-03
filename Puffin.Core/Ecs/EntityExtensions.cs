@@ -5,7 +5,7 @@ using Puffin.Core.Tweening;
 namespace Puffin.Core.Ecs
 {
     /// <summary>
-    /// Static extensions for Entity. You can chain them together, eg. Entity.Sprite("player.png").Move(200, 100);
+    /// Static extensions for Entity. You can chain them together, e.g. <c>Entity.Sprite("player.png").Move(200, 100);</c>
     /// </summary>
     public static class EntityExtensions
     {
@@ -81,7 +81,7 @@ namespace Puffin.Core.Ecs
         /// <summary>
         /// Adds a component which makes the entity move in four directions in response to the keyboard.
         /// By default, this responds to the WASD and arrow keys; you can change these bindings
-        /// by changing/adding more bindings in your PuffinGame instance.
+        /// by changing/adding more bindings in your <c>PuffinGame</c> subclass.
         /// Note that setting this overrides an entity's velocity.
         /// </summary>
         public static Entity FourWayMovement(this Entity entity, int speed)
@@ -103,7 +103,9 @@ namespace Puffin.Core.Ecs
         }
 
         /// <summary>
-        /// Adds a text display to an entity.
+        /// Adds a text display to an entity. You can <c>.Get</c> the <c>TextLabelComponent</c> back if you want
+        /// to set additional properties, such as the font used, or the font size. (The label will default to <c>OpenSans</c>,
+        /// which you can override by setting <c>DefaultFont</c> in your game class.)
         /// </summary>        
         /// <param name="offsetX">The X-offset of the label relative to the entity's origin</param>
         /// <param name="offsetY">The Y-offset of the label relative to the entity's origin</param>

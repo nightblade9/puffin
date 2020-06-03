@@ -46,13 +46,19 @@ namespace Puffin.Core
         /// A scene-wide on-action-key-released handler that fires whenever a key that maps to an action is just released.
         /// </summary>
         public Action<Enum> OnActionReleased;
-        public EventBus EventBus = new EventBus();
+
+        internal EventBus EventBus = new EventBus();
         internal TweenManager TweenManager = new TweenManager();
         
         // Drawn in the order added. Internal because needed for collision resolution.
         internal List<TileMap> TileMaps = new List<TileMap>();
         internal bool CalledReady = false;
         internal Scene SubScene; // the one and only sub-scene we can show
+        
+        /// <summary>
+        /// If this scene is a sub-scene, ParentScene is the owning/parent scene. Useful if nesting sub-scenes,
+        /// or dynamically changing the sub-scene to a different sub-scene.
+        /// </summary>
         internal protected Scene ParentScene; // the parent scene, if we're a sub-scene
 
         // Break update calls that have long elapsed times into chunks of this many milliseconds.

@@ -1,12 +1,13 @@
 namespace Puffin.Core.Ecs.Components
 {
+    /// <summary>
+    /// A component that allows you to zoom in or out. Note that entities that are flagged as <c>IsUiElement</c>
+    /// are not affected by zoom.
+    /// </summary>
     public class CameraComponent : Component
     {
-        // TODO: user can specify an entity to follow
-
         /// <summary>
         /// Sets the zoom of this camera, which displays all non-UI entities at the specified zoom.
-        /// Note that zoom affects tilesets, text/label components, etc.
         /// </summary>
         public float Zoom { get; set; }
         

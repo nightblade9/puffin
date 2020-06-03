@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "/home/nightblade/code/puffin/Puffin.Docs",
+  "source_base_path": "E:/Code/puffin/Puffin.Docs",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.AudioComponent.html",
-          "hash": "xYiCyCEHk9bDrYNEh3ihFg=="
+          "hash": "/H2z2uAsKpqYYJ/hc71o0A=="
         }
       },
       "is_incremental": true,
@@ -21,10 +21,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.CameraComponent.html",
-          "hash": "gEWc1NFjG/lnVcARD5DKyA=="
+          "hash": "olujL1QoA6WTuUOjWuBDqQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -33,10 +33,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.CollisionComponent.html",
-          "hash": "wX97S+6QqycdtMlbk8xkyA=="
+          "hash": "pwq1d6322jctgSbbps8Y+w=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -45,10 +45,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.ColourComponent.html",
-          "hash": "3qFSNGioLL44h+dG6tDH9Q=="
+          "hash": "bgftH/tCnnp5SNjSwPMs4w=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -57,10 +57,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.Component.html",
-          "hash": "KypVebyxvV5Yd+OmR2JcQQ=="
+          "hash": "md9nbZj0jvdhY4LBG/9PqQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -69,7 +69,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.FourWayMovementComponent.html",
-          "hash": "kXVB39RX3Kw0JwNn4jMucg=="
+          "hash": "ENOLq2UuB69v4eErprA2SA=="
         }
       },
       "is_incremental": true,
@@ -81,7 +81,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.KeyboardComponent.html",
-          "hash": "3FBl0Pjpn/GyTwX0oDKRhA=="
+          "hash": "Sa5kKFstjMTcuaaQg2U4ng=="
         }
       },
       "is_incremental": true,
@@ -93,7 +93,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.MouseComponent.html",
-          "hash": "NkYT+ebQv7a1UeL0iGcicA=="
+          "hash": "wfkeg0kZ0KbGBoMRQ9+naA=="
         }
       },
       "is_incremental": true,
@@ -105,7 +105,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.OverlapComponent.html",
-          "hash": "SOq78qbOXumnQYdHgiOc6A=="
+          "hash": "DirIOUELfuWa9kYApwWkmA=="
         }
       },
       "is_incremental": true,
@@ -117,7 +117,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.SpriteComponent.html",
-          "hash": "HZRvuht3LBMi9zbQXtXqqg=="
+          "hash": "GDCdJOV7DM9DFmkFhI1VEQ=="
         }
       },
       "is_incremental": true,
@@ -129,7 +129,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.TextLabelComponent.html",
-          "hash": "A7sPeNFkWQJ2twrUSWaO6Q=="
+          "hash": "YnjF1mBTxqqxYOaPPwSkpQ=="
         }
       },
       "is_incremental": true,
@@ -141,10 +141,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Components.html",
-          "hash": "ON2evtOGXGRdPdHbVllrsw=="
+          "hash": "L+NS7/90WT3/nnAwK+AyPg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -153,7 +153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.Entity.html",
-          "hash": "yfoSL+p+yLukSAmAWKhQmA=="
+          "hash": "Bqu1Vyv6YBDf4vX7gA1FqQ=="
         }
       },
       "is_incremental": true,
@@ -165,7 +165,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.EntityExtensions.html",
-          "hash": "qGUOiGAvj8kpKWxOgn9ywQ=="
+          "hash": "NdtuheV1rKQo6J1Tkl4bXA=="
         }
       },
       "is_incremental": true,
@@ -177,7 +177,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Ecs.html",
-          "hash": "3nFxGKtbHSaZg5JXdPCvHw=="
+          "hash": "2tscjPiz/xnLIbm/VNX7yw=="
         }
       },
       "is_incremental": true,
@@ -189,7 +189,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Events.EventBus.html",
-          "hash": "P5iG+CgkWmQp4qBrEEUnGg=="
+          "hash": "nkJDybb8/4tcXmx0fwdxpg=="
         }
       },
       "is_incremental": true,
@@ -201,7 +201,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Events.html",
-          "hash": "1WqMYmE5cD3YykWohJDoTw=="
+          "hash": "9HUWZQurH9TgH+myxdOjjg=="
         }
       },
       "is_incremental": true,
@@ -213,7 +213,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.IO.PuffinAction.html",
-          "hash": "g13KQYyumKEjOQC2D6bg+g=="
+          "hash": "szEjI+StciQOKi0jZAGTsQ=="
         }
       },
       "is_incremental": true,
@@ -225,7 +225,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.IO.html",
-          "hash": "iS31iS62skYAVXZrUt6z3Q=="
+          "hash": "EmQquRehq6aeatukH4bQlg=="
         }
       },
       "is_incremental": true,
@@ -237,10 +237,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Scene.html",
-          "hash": "2o5fiNOx7JUxBH1d5/uHjg=="
+          "hash": "UoCumskOlpEd7aSsXpoW7Q=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -249,10 +249,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Tiles.TileMap.html",
-          "hash": "s0lZUCMU5AUD0AL7KO1BpA=="
+          "hash": "aa6c/HsN6kf3m0vRDP2Sqg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -261,10 +261,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.Tiles.html",
-          "hash": "wptd/8XK8kEwZT03xtjyvQ=="
+          "hash": "DRF0xwuhQysxFJXYwB3k/A=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -273,10 +273,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Core.html",
-          "hash": "+i+FK9qskyNnEw9jsJ9XdQ=="
+          "hash": "jTT+OpjMO8ma4hNR1FtpAQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -285,7 +285,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Infrastructure.MonoGame.PuffinGame.html",
-          "hash": "TK54+hXbk97Dq+hmpPqKuw=="
+          "hash": "EzqBf0I1nSnhrCi/JsgTrw=="
         }
       },
       "is_incremental": true,
@@ -297,7 +297,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.Infrastructure.MonoGame.html",
-          "hash": "A6IXOfH8uC7jRlgEATBF4Q=="
+          "hash": "wNukk4mOXNZfQI7sQxRlLg=="
         }
       },
       "is_incremental": true,
@@ -309,7 +309,19 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.UI.Controls.Button.html",
-          "hash": "4qHbGc2G5ELxIs08B0h+jQ=="
+          "hash": "DkxgTIdLfSIoQf6GJoB3Sg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Puffin.UI.Controls.Checkbox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Puffin.UI.Controls.Checkbox.html",
+          "hash": "CSZhTLKnrgBBo0/mp04wjQ=="
         }
       },
       "is_incremental": true,
@@ -321,7 +333,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.UI.Controls.HorizontalProgressBar.html",
-          "hash": "a3RzpwjhH0CnP0tnu3HmDQ=="
+          "hash": "TxG0UJobubSL8G7+9VtISw=="
         }
       },
       "is_incremental": true,
@@ -333,7 +345,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.UI.Controls.HorizontalSlider.html",
-          "hash": "Ptd+AhXfStKDWEgNsiG6BA=="
+          "hash": "dArbTU3KiopuWDh6DeoNxA=="
         }
       },
       "is_incremental": true,
@@ -345,7 +357,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Puffin.UI.Controls.html",
-          "hash": "dYIHFujAPyMpULsuuk3WWg=="
+          "hash": "SmtkXfS56UiY5JF/rTZ6yQ=="
         }
       },
       "is_incremental": true,
@@ -357,7 +369,7 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "gI28dyb3AuB+Q7GNxSG80g=="
+          "hash": "HmCOwfKYEm8vf//LnP5D5g=="
         }
       },
       "is_incremental": true,
@@ -369,7 +381,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "Zz1MEoa6eBQkF5mfv7RN6g=="
+          "hash": "bzEbtirpJ7R+h39fAsqreg=="
         }
       },
       "is_incremental": false,
@@ -381,7 +393,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "o0ME4eC8/OSy9NB6ltGtjA=="
+          "hash": "L73DQ/qyhdMUB2e4l6DiaA=="
         }
       },
       "is_incremental": true,
@@ -405,7 +417,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/tutorials/creating_a_pushable_block.html",
-          "hash": "JW/DXwdp/LpE8UwBM6JfnA=="
+          "hash": "OTsuPhBEXFqxniGkXxar4Q=="
         }
       },
       "is_incremental": true,
@@ -417,7 +429,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/tutorials/tweening_entities.html",
-          "hash": "hNqDDsTV8Ew75/ziHkxgOg=="
+          "hash": "p/ivtFD3KvGCkM3Llj13Sw=="
         }
       },
       "is_incremental": true,
@@ -429,7 +441,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "wroC//iqPqrx2RiDsoXiLQ=="
+          "hash": "PI0Ck4Tl6TCFLj+gkV6Rkw=="
         }
       },
       "is_incremental": true,
@@ -466,8 +478,8 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 29,
-          "skipped_file_count": 26
+          "total_file_count": 30,
+          "skipped_file_count": 29
         },
         "TocDocumentProcessor": {
           "can_incremental": false,
