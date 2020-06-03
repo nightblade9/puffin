@@ -92,7 +92,7 @@ namespace Puffin.Infrastructure.MonoGame
         /// <summary>
         /// Set this to true to render collision areas as red transparent rectangles.
         /// </summary>
-        protected bool ShowCollisionAreas = false;
+        internal protected bool ShowCollisionAreas = false;
 
         private GraphicsDeviceManager graphicsManager;
         private SpriteBatch spriteBatch;
