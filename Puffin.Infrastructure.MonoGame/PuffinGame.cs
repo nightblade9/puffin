@@ -14,8 +14,9 @@ using Puffin.Core.Events;
 namespace Puffin.Infrastructure.MonoGame
 {
     /// <summary>
-    /// Manages scenes.  You can set the size and background colour of your game.
-    /// Subclass this to create the entry-point to your game.
+    /// Manages scenes.  Subclass this to creat the entry point for your game.
+    /// You can set the game-window size (in pixels) and background colour of your game, as well as the default font.
+    /// Make sure you have a TTF file in <c>Assets/Fonts</c> corresponding to the value in <c>DefaultFont</c>.
     /// </summary>
     public abstract class PuffinGame : Game
     {
@@ -58,7 +59,11 @@ namespace Puffin.Infrastructure.MonoGame
                 this.graphicsManager.ApplyChanges();
             }
         }
-        
+
+        /// <summary>
+        /// The default font which all <c>TextLabelComponent</c> instances use. Change this to set the font
+        /// for any labels game-wide that don't have a font explicitly set on them.
+        /// </summary>
         public string DefaultFont = "OpenSans";
         
         /// <summary>
@@ -84,12 +89,10 @@ namespace Puffin.Infrastructure.MonoGame
         
         internal static PuffinGame LatestInstance { get; private set; }
 
-        internal bool ShowCollisionAreas { get { return this.showCollisionAreas; } }
-
         /// <summary>
         /// Set this to true to render collision areas as red transparent rectangles.
         /// </summary>
-        protected bool showCollisionAreas = false;
+        protected bool ShowCollisionAreas = false;
 
         private GraphicsDeviceManager graphicsManager;
         private SpriteBatch spriteBatch;
@@ -148,15 +151,20 @@ namespace Puffin.Infrastructure.MonoGame
         }
 
         /// <summary>
-        /// The display width of the main game window.
+        /// The display width of the main game window, in pixels.
         /// </summary>
         public int Width { get { return this.graphicsManager.PreferredBackBufferWidth; } }
 
         /// <summary>
-        /// The display height of the main game window.
+        /// The display height of the main game window, in pixels.
         /// </summary>
         public int Height { get { return this.graphicsManager.PreferredBackBufferHeight; } }
 
+        /// <summary>
+        /// The scale of the game (1.0 = 1x). You can use this to upscale or downscale your game.
+        /// Note that the scaling process does not alias, and tries to use pixel-perfect rendering.
+        /// In full-screen mode, the results will be blackboxed and/or stretched to fit the user's display.
+        /// </summary>
         public Tuple<float, float> Scale { get { 
             var scaleX = this.graphicsManager.PreferredBackBufferWidth * 1.0f / this.GameWidth;
             var scaleY = this.graphicsManager.PreferredBackBufferHeight * 1.0f / this.GameHeight;
@@ -164,9 +172,7 @@ namespace Puffin.Infrastructure.MonoGame
         } }
 
         /// <summary>
-        /// Called when your game is ready to run (graphics initialized, etc.)
-        /// Implement this to add entities that load sprites, etc. for your game.
-        /// Make sure you call <c>base.Ready</c> if you override it.
+        /// Used internally, please ignore.
         /// </summary>
         virtual protected void Ready()
         {

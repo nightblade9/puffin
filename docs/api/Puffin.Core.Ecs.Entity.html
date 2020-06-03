@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class Entity
    ">
-    <meta name="generator" content="docfx 2.51.0.0">
+    <meta name="generator" content="docfx 2.53.1.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,9 +73,9 @@
   
   <h1 id="Puffin_Core_Ecs_Entity" data-uid="Puffin.Core.Ecs.Entity" class="text-break">Class Entity
   </h1>
-  <div class="markdown level0 summary"><p>An entity; it holds components, which dictate behaviour (eg. add a
-SpriteComponent to display a sprite wherever this entity is).
-Entities can only hold one component of each type.</p>
+  <div class="markdown level0 summary"><p>An entity (a bag of components). It holds components, which dictate behaviour (eg. add a
+<code>SpriteComponent</code> to display a sprite wherever this entity is). Entities can only hold
+one component of each type.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -83,6 +83,7 @@ Entities can only hold one component of each type.</p>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">Entity</span></div>
       <div class="level2"><a class="xref" href="Puffin.UI.Controls.Button.html">Button</a></div>
+      <div class="level2"><a class="xref" href="Puffin.UI.Controls.Checkbox.html">Checkbox</a></div>
       <div class="level2"><a class="xref" href="Puffin.UI.Controls.HorizontalProgressBar.html">HorizontalProgressBar</a></div>
       <div class="level2"><a class="xref" href="Puffin.UI.Controls.HorizontalSlider.html">HorizontalSlider</a></div>
   </div>
@@ -372,11 +373,14 @@ Useful for those corner cases where we draw sprite over colour (eg. slider contr
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Ecs_Entity_OnReady_System_Action_.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.Entity.OnReady(System.Action)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/Entity.cs/#L118">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/Entity.cs/#L123">View Source</a>
   </span>
   <a id="Puffin_Core_Ecs_Entity_OnReady_" data-uid="Puffin.Core.Ecs.Entity.OnReady*"></a>
   <h4 id="Puffin_Core_Ecs_Entity_OnReady_System_Action_" data-uid="Puffin.Core.Ecs.Entity.OnReady(System.Action)">OnReady(Action)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Assigns an action that should execute when the parent scene of this entity calls <code>Ready</code>.
+Useful for cases where you add a sprite and need to wait until it's initialized (width/height set)
+before positioning it, such as when positioning controls.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -408,7 +412,7 @@ Useful for those corner cases where we draw sprite over colour (eg. slider contr
   </span>
   <a id="Puffin_Core_Ecs_Entity_OnUpdate_" data-uid="Puffin.Core.Ecs.Entity.OnUpdate*"></a>
   <h4 id="Puffin_Core_Ecs_Entity_OnUpdate_System_Action_System_Single__" data-uid="Puffin.Core.Ecs.Entity.OnUpdate(System.Action{System.Single})">OnUpdate(Action&lt;Single&gt;)</h4>
-  <div class="markdown level1 summary"><p>Add a new action that should trigger every update (of game logic).
+  <div class="markdown level1 summary"><p>Assigns an action that should trigger every update (of game logic).
 Note that you may get several updates before we redraw everything.
 The action receives the elapsed time (since the last update) in
 milliseconds as an input.</p>
@@ -569,7 +573,7 @@ component of this type, this new component replaces the old one.</p>
       <a class="xref" href="Puffin.Core.Ecs.EntityExtensions.html#Puffin_Core_Ecs_EntityExtensions_Spritesheet_Puffin_Core_Ecs_Entity_System_String_System_Int32_System_Int32_System_Int32_">EntityExtensions.Spritesheet(Entity, String, Int32, Int32, Int32)</a>
   </div>
   <div>
-      <a class="xref" href="Puffin.Core.Ecs.EntityExtensions.html#Puffin_Core_Ecs_EntityExtensions_Tween_Puffin_Core_Ecs_Entity_System_Tuple_System_Single_System_Single__System_Tuple_System_Single_System_Single__System_Single_System_Action_">EntityExtensions.Tween(Entity, Tuple&lt;Single, Single&gt;, Tuple&lt;Single, Single&gt;, Single, Action)</a>
+      <a class="xref" href="Puffin.Core.Ecs.EntityExtensions.html#Puffin_Core_Ecs_EntityExtensions_Tween_Puffin_Core_Ecs_Entity_System_Single_System_Tuple_System_Single_System_Single__System_Tuple_System_Single_System_Single__System_Single_System_Single_System_Action_">EntityExtensions.Tween(Entity, Single, Tuple&lt;Single, Single&gt;, Tuple&lt;Single, Single&gt;, Single, Single, Action)</a>
   </div>
   <div>
       <a class="xref" href="Puffin.Core.Ecs.EntityExtensions.html#Puffin_Core_Ecs_EntityExtensions_Velocity_Puffin_Core_Ecs_Entity_System_Int32_System_Int32_">EntityExtensions.Velocity(Entity, Int32, Int32)</a>

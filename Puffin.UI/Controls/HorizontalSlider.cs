@@ -1,10 +1,15 @@
 using System;
-using Puffin.Core;
 using Puffin.Core.Ecs;
 using Puffin.Core.Ecs.Components;
 
 namespace Puffin.UI.Controls
 {
+    /// <summary>
+    /// The slider is made up of a sprite for the handle, with a <c>ColourComponent</c> instance for the slider bar.
+    /// The handle starts at the entity position, and the bar is offset to the right and down.
+    /// Note that this is just a pre-made collection of entities (sprite, colour, etc.).
+    /// You can still <c>Get</c> them and do things like set the slider bar colour.
+    /// </summary>
     public class HorizontalSlider : Entity
     {
         private readonly int minValue;
@@ -17,10 +22,11 @@ namespace Puffin.UI.Controls
 
         /// <summary>
         /// Creates a horizontal slider of the specified size, at the specified position.
-        /// The slider is made up of an image for the handle, with a <c>ColourComponent</c> instance for the slider bar.
-        /// Note that the handle starts at the entity position, and the bar is offset to the right and down.
         /// </summary>
-        /// <param name="width">The width of the slider</param>
+        /// <param name="isUiElement">True if this is a UI element (doesn't zoom with the camera).</param>
+        /// <param name="handleImageFileName">The filename for the value-handle image</param>
+        /// <param name="barColourRgb">The colour of the slider bar</param>
+        /// <param name="width">The width of the slider, in pixels</param>
         /// <param name="minValue">The minimum value of the slider</param>
         /// <param name="maxValue">The maximum value of the slider</param>
         public HorizontalSlider(bool isUiElement, string handleImageFileName, int barColourRgb, int width, int minValue, int maxValue)
@@ -118,6 +124,10 @@ namespace Puffin.UI.Controls
             this.width = width;
         }
 
+        /// <summary>
+        /// The value of the slider; must be between the minimum and maximum values specified in the constructor.
+        /// Changing this moves the handle appropriately along the slider bar, and calls the value-changed callback.
+        /// </summary>
         public int Value
         {
             get { return this.value; }
@@ -140,6 +150,10 @@ namespace Puffin.UI.Controls
             }
         }
 
+        /// <summary>
+        /// Sets a callback to invoke when the value of the slider changes, either by clicking/dragging in the UI,
+        /// or by changing the value programatically.
+        /// </summary>
         public void OnValueChanged(Action<int> callback)
         {
             this.onValueChanged = callback;

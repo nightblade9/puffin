@@ -4,26 +4,20 @@ using System.Collections.Generic;
 namespace Puffin.Core.Events
 {
     /// <summary>
-    /// An event bus; used internally by Puffin. You can use it to subscribe to and broadcast events.
-    /// Event buses life-cycles are tied to a specific scene; changing scene, creates a new event bus.
-    /// Events must be an enum type, and the callbacks must accept a single object as the data.
-    /// Note that the event bus is disposed and recreated whenever a scene changes.
+    /// An event bus, which allos you to subscribe to and broadcast events, including internal Puffin events
+    /// (such as the arrow keys being pressed).
+    /// - Event buses life-cycles are tied to a specific scene; changing scene, creates a new event bus.
+    /// - Events must be an enum type, and the callbacks must accept a single object as the data.
+    /// - Note that the event bus is disposed and recreated whenever a scene changes.
     /// </summary>
     public class EventBus : IDisposable
     {
-        private static int nextId = 1;
 
         // event name => callbacks. Each callback has an optional parameter (data).
         private IDictionary<Enum, List<Action<object>>> subscribers = new Dictionary<Enum, List<Action<object>>>();
-        public readonly int Id;
-
-        public EventBus()
-        {
-            this.Id = nextId++;
-        }
 
         /// <summary>
-        /// Broadcast a new event to all subscribers.
+        /// Broadcasts a new event to all subscribers of that event.
         /// </summary>
         /// <param name="signal">The enum value of the signal. Any enum works.</param>
         /// <param name="data">Any data to pass to subscribres (can be null).</param>

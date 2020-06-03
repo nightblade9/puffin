@@ -5,8 +5,8 @@ namespace Puffin.Core.Ecs.Components
 {
     /// <summary>
     /// Adds a component which makes the entity move in four directions in response to the keyboard.
-    /// By default, responds to the WASD and arrow keys; you can change these bindings
-    /// by changing/adding more bindings in your PuffinGame instance.
+    /// By default, responds to the <c>WASD</c> and arrow keys; you can change these bindings
+    /// by changing/adding more bindings in your <c>PuffinGame</c> subclass.
     /// Note that setting this component overrides an entity's velocity.
     /// </summary>
     public class FourWayMovementComponent : KeyboardComponent

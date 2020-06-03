@@ -73,6 +73,7 @@ namespace Puffin.Core.Ecs.Components
             }
         }
 
+        /// <summary>Creates a new sprite.</summary>
         public SpriteComponent(Entity parent, string fileName)
         : base(parent)
         {
@@ -80,7 +81,7 @@ namespace Puffin.Core.Ecs.Components
         }
 
         /// <summary>
-        /// Used to construct a spritesheet, by passing in the frame width/height.
+        /// Used to construct a spritesheet, where each frame has the specified width and height.
         /// </summary>
         public SpriteComponent(Entity parent, string spritesheetFileName, int frameWidth, int frameHeight, int frameIndex = 0)
         : this(parent, spritesheetFileName)

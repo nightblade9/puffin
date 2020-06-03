@@ -24,7 +24,8 @@ namespace Puffin.Core.Ecs.Components
         public float Alpha = 1;
 
         /// <summary>
-        /// The filename of the font, relative to the game directory. Changing this immediately updates the font.
+        /// The filename of the font, relative to the game directory. Changing this immediately updates the font. Defaults to
+        /// <c>PuffinGame.DefaultFont</c>, which is <c>OpenSans</c>.
         /// </summary>
         public string FontName { 
             get { return this.fontName; }

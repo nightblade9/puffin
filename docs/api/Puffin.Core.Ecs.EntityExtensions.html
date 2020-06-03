@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class EntityExtensions
    ">
-    <meta name="generator" content="docfx 2.51.0.0">
+    <meta name="generator" content="docfx 2.53.1.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,7 +73,7 @@
   
   <h1 id="Puffin_Core_Ecs_EntityExtensions" data-uid="Puffin.Core.Ecs.EntityExtensions" class="text-break">Class EntityExtensions
   </h1>
-  <div class="markdown level0 summary"><p>Static extensions for Entity. You can chain them together, eg. Entity.Sprite(&quot;player.png&quot;).Move(200, 100);</p>
+  <div class="markdown level0 summary"><p>Static extensions for Entity. You can chain them together, e.g. <code>Entity.Sprite(&quot;player.png&quot;).Move(200, 100);</code></p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -427,7 +427,7 @@ after resolving the collision.</p>
   <h4 id="Puffin_Core_Ecs_EntityExtensions_FourWayMovement_Puffin_Core_Ecs_Entity_System_Int32_" data-uid="Puffin.Core.Ecs.EntityExtensions.FourWayMovement(Puffin.Core.Ecs.Entity,System.Int32)">FourWayMovement(Entity, Int32)</h4>
   <div class="markdown level1 summary"><p>Adds a component which makes the entity move in four directions in response to the keyboard.
 By default, this responds to the WASD and arrow keys; you can change these bindings
-by changing/adding more bindings in your PuffinGame instance.
+by changing/adding more bindings in your <code>PuffinGame</code> subclass.
 Note that setting this overrides an entity's velocity.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -543,11 +543,13 @@ Note that setting this overrides an entity's velocity.</p>
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Ecs_EntityExtensions_Label_Puffin_Core_Ecs_Entity_System_String_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.EntityExtensions.Label(Puffin.Core.Ecs.Entity%2CSystem.String%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/EntityExtensions.cs/#L110">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/EntityExtensions.cs/#L112">View Source</a>
   </span>
   <a id="Puffin_Core_Ecs_EntityExtensions_Label_" data-uid="Puffin.Core.Ecs.EntityExtensions.Label*"></a>
   <h4 id="Puffin_Core_Ecs_EntityExtensions_Label_Puffin_Core_Ecs_Entity_System_String_System_Int32_System_Int32_" data-uid="Puffin.Core.Ecs.EntityExtensions.Label(Puffin.Core.Ecs.Entity,System.String,System.Int32,System.Int32)">Label(Entity, String, Int32, Int32)</h4>
-  <div class="markdown level1 summary"><p>Adds a text display to an entity.</p>
+  <div class="markdown level1 summary"><p>Adds a text display to an entity. You can <code>.Get</code> the <code>TextLabelComponent</code> back if you want
+to set additional properties, such as the font used, or the font size. (The label will default to <code>OpenSans</code>,
+which you can override by setting <code>DefaultFont</code> in your game class.)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -608,7 +610,7 @@ Note that setting this overrides an entity's velocity.</p>
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Ecs_EntityExtensions_Mouse_Puffin_Core_Ecs_Entity_System_Int32_System_Int32_System_Func_System_Int32_System_Int32_System_Boolean__System_Action_.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.EntityExtensions.Mouse(Puffin.Core.Ecs.Entity%2CSystem.Int32%2CSystem.Int32%2CSystem.Func%7BSystem.Int32%2CSystem.Int32%2CSystem.Boolean%7D%2CSystem.Action)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/EntityExtensions.cs/#L120">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/EntityExtensions.cs/#L122">View Source</a>
   </span>
   <a id="Puffin_Core_Ecs_EntityExtensions_Mouse_" data-uid="Puffin.Core.Ecs.EntityExtensions.Mouse*"></a>
   <h4 id="Puffin_Core_Ecs_EntityExtensions_Mouse_Puffin_Core_Ecs_Entity_System_Int32_System_Int32_System_Func_System_Int32_System_Int32_System_Boolean__System_Action_" data-uid="Puffin.Core.Ecs.EntityExtensions.Mouse(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Func{System.Int32,System.Int32,System.Boolean},System.Action)">Mouse(Entity, Int32, Int32, Func&lt;Int32, Int32, Boolean&gt;, Action)</h4>
@@ -735,7 +737,7 @@ The width and height define the clickable area (relative to the origin of the en
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Ecs_EntityExtensions_Overlap_Puffin_Core_Ecs_Entity_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.EntityExtensions.Overlap(Puffin.Core.Ecs.Entity%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/EntityExtensions.cs/#L136">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/EntityExtensions.cs/#L138">View Source</a>
   </span>
   <a id="Puffin_Core_Ecs_EntityExtensions_Overlap_" data-uid="Puffin.Core.Ecs.EntityExtensions.Overlap*"></a>
   <h4 id="Puffin_Core_Ecs_EntityExtensions_Overlap_Puffin_Core_Ecs_Entity_System_Int32_System_Int32_" data-uid="Puffin.Core.Ecs.EntityExtensions.Overlap(Puffin.Core.Ecs.Entity,System.Int32,System.Int32)">Overlap(Entity, Int32, Int32)</h4>
@@ -795,7 +797,7 @@ The width and height define the clickable area (relative to the origin of the en
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Ecs_EntityExtensions_Overlap_Puffin_Core_Ecs_Entity_System_Int32_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.EntityExtensions.Overlap(Puffin.Core.Ecs.Entity%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/EntityExtensions.cs/#L153">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/EntityExtensions.cs/#L155">View Source</a>
   </span>
   <a id="Puffin_Core_Ecs_EntityExtensions_Overlap_" data-uid="Puffin.Core.Ecs.EntityExtensions.Overlap*"></a>
   <h4 id="Puffin_Core_Ecs_EntityExtensions_Overlap_Puffin_Core_Ecs_Entity_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="Puffin.Core.Ecs.EntityExtensions.Overlap(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Int32,System.Int32)">Overlap(Entity, Int32, Int32, Int32, Int32)</h4>
@@ -867,7 +869,7 @@ The width and height define the clickable area (relative to the origin of the en
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Ecs_EntityExtensions_Overlap_Puffin_Core_Ecs_Entity_System_Int32_System_Int32_System_Int32_System_Int32_System_Action_System_Action_.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.EntityExtensions.Overlap(Puffin.Core.Ecs.Entity%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Action%2CSystem.Action)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/EntityExtensions.cs/#L208">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/EntityExtensions.cs/#L210">View Source</a>
   </span>
   <a id="Puffin_Core_Ecs_EntityExtensions_Overlap_" data-uid="Puffin.Core.Ecs.EntityExtensions.Overlap*"></a>
   <h4 id="Puffin_Core_Ecs_EntityExtensions_Overlap_Puffin_Core_Ecs_Entity_System_Int32_System_Int32_System_Int32_System_Int32_System_Action_System_Action_" data-uid="Puffin.Core.Ecs.EntityExtensions.Overlap(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Int32,System.Int32,System.Action,System.Action)">Overlap(Entity, Int32, Int32, Int32, Int32, Action, Action)</h4>
@@ -950,7 +952,7 @@ the mouse starts/stops overlapping this entity's overlap region.</p>
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Ecs_EntityExtensions_Overlap_Puffin_Core_Ecs_Entity_System_Int32_System_Int32_System_Int32_System_Int32_System_Action_Puffin_Core_Ecs_Entity__.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.EntityExtensions.Overlap(Puffin.Core.Ecs.Entity%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Action%7BPuffin.Core.Ecs.Entity%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/EntityExtensions.cs/#L171">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/EntityExtensions.cs/#L173">View Source</a>
   </span>
   <a id="Puffin_Core_Ecs_EntityExtensions_Overlap_" data-uid="Puffin.Core.Ecs.EntityExtensions.Overlap*"></a>
   <h4 id="Puffin_Core_Ecs_EntityExtensions_Overlap_Puffin_Core_Ecs_Entity_System_Int32_System_Int32_System_Int32_System_Int32_System_Action_Puffin_Core_Ecs_Entity__" data-uid="Puffin.Core.Ecs.EntityExtensions.Overlap(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Int32,System.Int32,System.Action{Puffin.Core.Ecs.Entity})">Overlap(Entity, Int32, Int32, Int32, Int32, Action&lt;Entity&gt;)</h4>
@@ -1028,7 +1030,7 @@ the mouse starts/stops overlapping this entity's overlap region.</p>
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Ecs_EntityExtensions_Overlap_Puffin_Core_Ecs_Entity_System_Int32_System_Int32_System_Int32_System_Int32_System_Action_Puffin_Core_Ecs_Entity__System_Action_Puffin_Core_Ecs_Entity__.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.EntityExtensions.Overlap(Puffin.Core.Ecs.Entity%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Action%7BPuffin.Core.Ecs.Entity%7D%2CSystem.Action%7BPuffin.Core.Ecs.Entity%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/EntityExtensions.cs/#L190">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/EntityExtensions.cs/#L192">View Source</a>
   </span>
   <a id="Puffin_Core_Ecs_EntityExtensions_Overlap_" data-uid="Puffin.Core.Ecs.EntityExtensions.Overlap*"></a>
   <h4 id="Puffin_Core_Ecs_EntityExtensions_Overlap_Puffin_Core_Ecs_Entity_System_Int32_System_Int32_System_Int32_System_Int32_System_Action_Puffin_Core_Ecs_Entity__System_Action_Puffin_Core_Ecs_Entity__" data-uid="Puffin.Core.Ecs.EntityExtensions.Overlap(Puffin.Core.Ecs.Entity,System.Int32,System.Int32,System.Int32,System.Int32,System.Action{Puffin.Core.Ecs.Entity},System.Action{Puffin.Core.Ecs.Entity})">Overlap(Entity, Int32, Int32, Int32, Int32, Action&lt;Entity&gt;, Action&lt;Entity&gt;)</h4>
@@ -1112,7 +1114,7 @@ the mouse starts/stops overlapping this entity's overlap region.</p>
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Ecs_EntityExtensions_Sprite_Puffin_Core_Ecs_Entity_System_String_.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.EntityExtensions.Sprite(Puffin.Core.Ecs.Entity%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/EntityExtensions.cs/#L221">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/EntityExtensions.cs/#L223">View Source</a>
   </span>
   <a id="Puffin_Core_Ecs_EntityExtensions_Sprite_" data-uid="Puffin.Core.Ecs.EntityExtensions.Sprite*"></a>
   <h4 id="Puffin_Core_Ecs_EntityExtensions_Sprite_Puffin_Core_Ecs_Entity_System_String_" data-uid="Puffin.Core.Ecs.EntityExtensions.Sprite(Puffin.Core.Ecs.Entity,System.String)">Sprite(Entity, String)</h4>
@@ -1165,7 +1167,7 @@ the mouse starts/stops overlapping this entity's overlap region.</p>
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Ecs_EntityExtensions_Spritesheet_Puffin_Core_Ecs_Entity_System_String_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.EntityExtensions.Spritesheet(Puffin.Core.Ecs.Entity%2CSystem.String%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/EntityExtensions.cs/#L230">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/EntityExtensions.cs/#L232">View Source</a>
   </span>
   <a id="Puffin_Core_Ecs_EntityExtensions_Spritesheet_" data-uid="Puffin.Core.Ecs.EntityExtensions.Spritesheet*"></a>
   <h4 id="Puffin_Core_Ecs_EntityExtensions_Spritesheet_Puffin_Core_Ecs_Entity_System_String_System_Int32_System_Int32_System_Int32_" data-uid="Puffin.Core.Ecs.EntityExtensions.Spritesheet(Puffin.Core.Ecs.Entity,System.String,System.Int32,System.Int32,System.Int32)">Spritesheet(Entity, String, Int32, Int32, Int32)</h4>
@@ -1230,19 +1232,19 @@ the mouse starts/stops overlapping this entity's overlap region.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Ecs_EntityExtensions_Tween_Puffin_Core_Ecs_Entity_System_Tuple_System_Single_System_Single__System_Tuple_System_Single_System_Single__System_Single_System_Action_.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.EntityExtensions.Tween(Puffin.Core.Ecs.Entity%2CSystem.Tuple%7BSystem.Single%2CSystem.Single%7D%2CSystem.Tuple%7BSystem.Single%2CSystem.Single%7D%2CSystem.Single%2CSystem.Action)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Ecs_EntityExtensions_Tween_Puffin_Core_Ecs_Entity_System_Single_System_Tuple_System_Single_System_Single__System_Tuple_System_Single_System_Single__System_Single_System_Single_System_Action_.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.EntityExtensions.Tween(Puffin.Core.Ecs.Entity%2CSystem.Single%2CSystem.Tuple%7BSystem.Single%2CSystem.Single%7D%2CSystem.Tuple%7BSystem.Single%2CSystem.Single%7D%2CSystem.Single%2CSystem.Single%2CSystem.Action)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/EntityExtensions.cs/#L244">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/EntityExtensions.cs/#L248">View Source</a>
   </span>
   <a id="Puffin_Core_Ecs_EntityExtensions_Tween_" data-uid="Puffin.Core.Ecs.EntityExtensions.Tween*"></a>
-  <h4 id="Puffin_Core_Ecs_EntityExtensions_Tween_Puffin_Core_Ecs_Entity_System_Tuple_System_Single_System_Single__System_Tuple_System_Single_System_Single__System_Single_System_Action_" data-uid="Puffin.Core.Ecs.EntityExtensions.Tween(Puffin.Core.Ecs.Entity,System.Tuple{System.Single,System.Single},System.Tuple{System.Single,System.Single},System.Single,System.Action)">Tween(Entity, Tuple&lt;Single, Single&gt;, Tuple&lt;Single, Single&gt;, Single, Action)</h4>
-  <div class="markdown level1 summary"><p>Adds a tween to an entity. Currently, only movement tweens are supported.</p>
+  <h4 id="Puffin_Core_Ecs_EntityExtensions_Tween_Puffin_Core_Ecs_Entity_System_Single_System_Tuple_System_Single_System_Single__System_Tuple_System_Single_System_Single__System_Single_System_Single_System_Action_" data-uid="Puffin.Core.Ecs.EntityExtensions.Tween(Puffin.Core.Ecs.Entity,System.Single,System.Tuple{System.Single,System.Single},System.Tuple{System.Single,System.Single},System.Single,System.Single,System.Action)">Tween(Entity, Single, Tuple&lt;Single, Single&gt;, Tuple&lt;Single, Single&gt;, Single, Single, Action)</h4>
+  <div class="markdown level1 summary"><p>Adds a tween to an entity. Currently, only movement and alpha tweens are supported.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static Entity Tween(this Entity entity, Tuple&lt;float, float&gt; startPosition, Tuple&lt;float, float&gt; endPosition, float durationSeconds, Action onTweenComplete = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public static Entity Tween(this Entity entity, float durationSeconds, Tuple&lt;float, float&gt; startPosition, Tuple&lt;float, float&gt; endPosition, float startAlpha = 1F, float endAlpha = 1F, Action onTweenComplete = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1261,6 +1263,12 @@ the mouse starts/stops overlapping this entity's overlap region.</p>
 </td>
       </tr>
       <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">durationSeconds</span></td>
+        <td><p>How long the tween should take, in seconds.</p>
+</td>
+      </tr>
+      <tr>
         <td><span class="xref">System.Tuple</span>&lt;<span class="xref">System.Single</span>, <span class="xref">System.Single</span>&gt;</td>
         <td><span class="parametername">startPosition</span></td>
         <td><p>The position to move the entity to when the tween starts.</p>
@@ -1274,8 +1282,14 @@ the mouse starts/stops overlapping this entity's overlap region.</p>
       </tr>
       <tr>
         <td><span class="xref">System.Single</span></td>
-        <td><span class="parametername">durationSeconds</span></td>
-        <td><p>How long the tween should take, in seconds.</p>
+        <td><span class="parametername">startAlpha</span></td>
+        <td><p>The alpha at the start of the tween (1 = fully opaque)</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">endAlpha</span></td>
+        <td><p>The alpha at the end of the tween (1 = fully opaque)</p>
 </td>
       </tr>
       <tr>
@@ -1306,7 +1320,7 @@ the mouse starts/stops overlapping this entity's overlap region.</p>
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Ecs_EntityExtensions_Velocity_Puffin_Core_Ecs_Entity_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Puffin.Core.Ecs.EntityExtensions.Velocity(Puffin.Core.Ecs.Entity%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/EntityExtensions.cs/#L253">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Ecs/EntityExtensions.cs/#L257">View Source</a>
   </span>
   <a id="Puffin_Core_Ecs_EntityExtensions_Velocity_" data-uid="Puffin.Core.Ecs.EntityExtensions.Velocity*"></a>
   <h4 id="Puffin_Core_Ecs_EntityExtensions_Velocity_Puffin_Core_Ecs_Entity_System_Int32_System_Int32_" data-uid="Puffin.Core.Ecs.EntityExtensions.Velocity(Puffin.Core.Ecs.Entity,System.Int32,System.Int32)">Velocity(Entity, Int32, Int32)</h4>

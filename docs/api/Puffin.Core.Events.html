@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Namespace Puffin.Core.Events
    ">
-    <meta name="generator" content="docfx 2.51.0.0">
+    <meta name="generator" content="docfx 2.53.1.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -78,10 +78,13 @@
     <h3 id="classes">Classes
   </h3>
       <h4><a class="xref" href="Puffin.Core.Events.EventBus.html">EventBus</a></h4>
-      <section><p>An event bus; used internally by Puffin. You can use it to subscribe to and broadcast events.
-Event buses life-cycles are tied to a specific scene; changing scene, creates a new event bus.
-Events must be an enum type, and the callbacks must accept a single object as the data.
-Note that the event bus is disposed and recreated whenever a scene changes.</p>
+      <section><p>An event bus, which allos you to subscribe to and broadcast events, including internal Puffin events
+(such as the arrow keys being pressed).</p>
+<ul>
+<li>Event buses life-cycles are tied to a specific scene; changing scene, creates a new event bus.</li>
+<li>Events must be an enum type, and the callbacks must accept a single object as the data.</li>
+<li>Note that the event bus is disposed and recreated whenever a scene changes.</li>
+</ul>
 </section>
 </article>
           </div>

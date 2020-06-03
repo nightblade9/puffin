@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Namespace Puffin.Core.Tiles
    ">
-    <meta name="generator" content="docfx 2.51.0.0">
+    <meta name="generator" content="docfx 2.53.1.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -78,8 +78,14 @@
     <h3 id="classes">Classes
   </h3>
       <h4><a class="xref" href="Puffin.Core.Tiles.TileMap.html">TileMap</a></h4>
-      <section><p>A 2D tilemap. Contains a tileset (defined tiles) and a spritesheet, which it uses
-to render the tiles. Define some tiles, set some tiles, and they appear on-screen.</p>
+      <section><p>A 2D tilemap. Contains a spritesheet and tile definitions, which it uses to render the tiles.
+Note that you can change the sprite at runtime, which is useful for multiple/similar tilesets that
+are visually different, but use the same set of base tiles (e.g. grass, tree, and water files).</p>
+<ul>
+<li>Create a new <code>TileMap</code> with a specified sprite.</li>
+<li><code>Define</code> some tiles by their tile indicies.</li>
+<li><code>Set</code> some tiles, and they appear on-screen.</li>
+</ul>
 </section>
 </article>
           </div>

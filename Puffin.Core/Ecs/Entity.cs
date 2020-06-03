@@ -5,9 +5,9 @@ using Puffin.Core.Ecs.Components;
 namespace Puffin.Core.Ecs
 {
     /// <summary>
-    /// An entity; it holds components, which dictate behaviour (eg. add a
-    /// SpriteComponent to display a sprite wherever this entity is).
-    /// Entities can only hold one component of each type.
+    /// An entity (a bag of components). It holds components, which dictate behaviour (eg. add a
+    /// <c>SpriteComponent</c> to display a sprite wherever this entity is). Entities can only hold
+    /// one component of each type.
     /// </summary>
     public class Entity
     {
@@ -105,7 +105,7 @@ namespace Puffin.Core.Ecs
         }
 
         /// <summary>
-        /// Add a new action that should trigger every update (of game logic).
+        /// Assigns an action that should trigger every update (of game logic).
         /// Note that you may get several updates before we redraw everything.
         /// The action receives the elapsed time (since the last update) in
         /// milliseconds as an input.
@@ -115,6 +115,11 @@ namespace Puffin.Core.Ecs
             this.OnUpdateActions.Add(action);
         }
 
+        /// <summary>
+        /// Assigns an action that should execute when the parent scene of this entity calls <c>Ready</c>.
+        /// Useful for cases where you add a sprite and need to wait until it's initialized (width/height set)
+        /// before positioning it, such as when positioning controls.
+        /// </summary>
         public void OnReady(Action action)
         {
             this.OnReadyAction = action;

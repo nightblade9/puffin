@@ -6,13 +6,25 @@ using Puffin.Core.Events;
 namespace Puffin.Core.Tiles
 {
     /// <summary>
-    /// A 2D tilemap. Contains a tileset (defined tiles) and a spritesheet, which it uses
-    /// to render the tiles. Define some tiles, set some tiles, and they appear on-screen.
+    /// A 2D tilemap. Contains a spritesheet and tile definitions, which it uses to render the tiles.
+    /// Note that you can change the sprite at runtime, which is useful for multiple/similar tilesets that
+    /// are visually different, but use the same set of base tiles (e.g. grass, tree, and water files).
+    /// - Create a new <c>TileMap</c> with a specified sprite.
+    /// - <c>Define</c> some tiles by their tile indicies.
+    /// - <c>Set</c> some tiles, and they appear on-screen.
     /// </summary>
     public class TileMap
     {
+        /// <summary>The x-coordinate of the tile map on screen, in pixels.</summary>
         public int X { get; set; }
+
+        /// <summary>The y-coordinate of the tile map on screen, in pixels.</summary>
         public int Y { get; set; }
+        
+        /// <summary>
+        /// The image used for the tileset's graphics. Note that changing this at runtime doesn't unset
+        /// any definitions or alter any tiles. Useful for changing the tileset to a similar version.
+        /// </summary>
         public string TileImageFile {
             get {
                 return this.imageFile;

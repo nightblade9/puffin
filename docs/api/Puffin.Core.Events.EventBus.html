@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class EventBus
    ">
-    <meta name="generator" content="docfx 2.51.0.0">
+    <meta name="generator" content="docfx 2.53.1.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,10 +73,13 @@
   
   <h1 id="Puffin_Core_Events_EventBus" data-uid="Puffin.Core.Events.EventBus" class="text-break">Class EventBus
   </h1>
-  <div class="markdown level0 summary"><p>An event bus; used internally by Puffin. You can use it to subscribe to and broadcast events.
-Event buses life-cycles are tied to a specific scene; changing scene, creates a new event bus.
-Events must be an enum type, and the callbacks must accept a single object as the data.
-Note that the event bus is disposed and recreated whenever a scene changes.</p>
+  <div class="markdown level0 summary"><p>An event bus, which allos you to subscribe to and broadcast events, including internal Puffin events
+(such as the arrow keys being pressed).</p>
+<ul>
+<li>Event buses life-cycles are tied to a specific scene; changing scene, creates a new event bus.</li>
+<li>Events must be an enum type, and the callbacks must accept a single object as the data.</li>
+<li>Note that the event bus is disposed and recreated whenever a scene changes.</li>
+</ul>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -94,54 +97,6 @@ Note that the event bus is disposed and recreated whenever a scene changes.</p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class EventBus : IDisposable</code></pre>
   </div>
-  <h3 id="constructors">Constructors
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Events_EventBus__ctor.md&amp;value=---%0Auid%3A%20Puffin.Core.Events.EventBus.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Events/EventBus.cs/#L20">View Source</a>
-  </span>
-  <a id="Puffin_Core_Events_EventBus__ctor_" data-uid="Puffin.Core.Events.EventBus.#ctor*"></a>
-  <h4 id="Puffin_Core_Events_EventBus__ctor" data-uid="Puffin.Core.Events.EventBus.#ctor">EventBus()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EventBus()</code></pre>
-  </div>
-  <h3 id="fields">Fields
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Events_EventBus_Id.md&amp;value=---%0Auid%3A%20Puffin.Core.Events.EventBus.Id%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Events/EventBus.cs/#L18">View Source</a>
-  </span>
-  <h4 id="Puffin_Core_Events_EventBus_Id" data-uid="Puffin.Core.Events.EventBus.Id">Id</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly int Id</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
@@ -149,11 +104,11 @@ Note that the event bus is disposed and recreated whenever a scene changes.</p>
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Events_EventBus_Broadcast_System_Enum_System_Object_.md&amp;value=---%0Auid%3A%20Puffin.Core.Events.EventBus.Broadcast(System.Enum%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Events/EventBus.cs/#L30">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Events/EventBus.cs/#L25">View Source</a>
   </span>
   <a id="Puffin_Core_Events_EventBus_Broadcast_" data-uid="Puffin.Core.Events.EventBus.Broadcast*"></a>
   <h4 id="Puffin_Core_Events_EventBus_Broadcast_System_Enum_System_Object_" data-uid="Puffin.Core.Events.EventBus.Broadcast(System.Enum,System.Object)">Broadcast(Enum, Object)</h4>
-  <div class="markdown level1 summary"><p>Broadcast a new event to all subscribers.</p>
+  <div class="markdown level1 summary"><p>Broadcasts a new event to all subscribers of that event.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -189,7 +144,7 @@ Note that the event bus is disposed and recreated whenever a scene changes.</p>
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Events_EventBus_Dispose.md&amp;value=---%0Auid%3A%20Puffin.Core.Events.EventBus.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Events/EventBus.cs/#L76">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Events/EventBus.cs/#L71">View Source</a>
   </span>
   <a id="Puffin_Core_Events_EventBus_Dispose_" data-uid="Puffin.Core.Events.EventBus.Dispose*"></a>
   <h4 id="Puffin_Core_Events_EventBus_Dispose" data-uid="Puffin.Core.Events.EventBus.Dispose">Dispose()</h4>
@@ -204,7 +159,7 @@ Note that the event bus is disposed and recreated whenever a scene changes.</p>
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Events_EventBus_Subscribe_System_Enum_System_Action_System_Object__.md&amp;value=---%0Auid%3A%20Puffin.Core.Events.EventBus.Subscribe(System.Enum%2CSystem.Action%7BSystem.Object%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Events/EventBus.cs/#L49">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Events/EventBus.cs/#L44">View Source</a>
   </span>
   <a id="Puffin_Core_Events_EventBus_Subscribe_" data-uid="Puffin.Core.Events.EventBus.Subscribe*"></a>
   <h4 id="Puffin_Core_Events_EventBus_Subscribe_System_Enum_System_Action_System_Object__" data-uid="Puffin.Core.Events.EventBus.Subscribe(System.Enum,System.Action{System.Object})">Subscribe(Enum, Action&lt;Object&gt;)</h4>
@@ -244,7 +199,7 @@ Note that the event bus is disposed and recreated whenever a scene changes.</p>
     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Events_EventBus_Unsubscribe_System_Enum_System_Action_System_Object__.md&amp;value=---%0Auid%3A%20Puffin.Core.Events.EventBus.Unsubscribe(System.Enum%2CSystem.Action%7BSystem.Object%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Events/EventBus.cs/#L64">View Source</a>
+    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Events/EventBus.cs/#L59">View Source</a>
   </span>
   <a id="Puffin_Core_Events_EventBus_Unsubscribe_" data-uid="Puffin.Core.Events.EventBus.Unsubscribe*"></a>
   <h4 id="Puffin_Core_Events_EventBus_Unsubscribe_System_Enum_System_Action_System_Object__" data-uid="Puffin.Core.Events.EventBus.Unsubscribe(System.Enum,System.Action{System.Object})">Unsubscribe(Enum, Action&lt;Object&gt;)</h4>
@@ -294,7 +249,7 @@ Note that the event bus is disposed and recreated whenever a scene changes.</p>
                     <a href="https://github.com/nightblade9/puffin/new/develop/apiSpec/new?filename=Puffin_Core_Events_EventBus.md&amp;value=---%0Auid%3A%20Puffin.Core.Events.EventBus%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Events/EventBus.cs/#L12" class="contribution-link">View Source</a>
+                    <a href="https://github.com/nightblade9/puffin/blob/develop/Puffin.Core/Events/EventBus.cs/#L13" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
