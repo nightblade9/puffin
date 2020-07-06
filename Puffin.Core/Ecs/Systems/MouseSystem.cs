@@ -82,7 +82,7 @@ namespace Puffin.Core.Ecs.Systems
                     // Not handled by any event handler so far; invoke the global ones.
                     if (!isHandled)
                     {
-                        this.eventBus.Broadcast(EventBusSignal.MouseClicked);
+                        this.eventBus.Broadcast(EventBusSignal.MouseClicked, clickType);
                     }                    
                 }
                 else if (!provider.IsButtonDown(clickType) && wasButtonDown[clickType])

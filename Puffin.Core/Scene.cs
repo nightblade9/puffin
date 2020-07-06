@@ -35,7 +35,7 @@ namespace Puffin.Core
         /// <summary>
         /// A scene-wide mouse-click handler that fires whever a mouse click event triggers (even if entities handle it).
         /// </summary>
-        public Action OnMouseClick;
+        public Action<ClickType> OnMouseClick;
 
         /// <summary>
         /// A scene-wide on-action-key-pressed handler that fires whenever a key that maps to an action is just pressed.
@@ -300,7 +300,7 @@ namespace Puffin.Core
             this.mouseProvider = mouseProvider;
             this.keyboardProvider = keyboardProvider;
 
-            this.EventBus.Subscribe(EventBusSignal.MouseClicked, (o) => this.OnMouseClick?.Invoke());
+            this.EventBus.Subscribe(EventBusSignal.MouseClicked, (o) => this.OnMouseClick?.Invoke((ClickType)o));
             this.EventBus.Subscribe(EventBusSignal.ActionPressed, (o) => this.OnActionPressed?.Invoke(o as Enum));
             this.EventBus.Subscribe(EventBusSignal.ActionReleased, (o) => this.OnActionReleased?.Invoke(o as Enum));
 
