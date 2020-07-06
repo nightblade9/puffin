@@ -6,6 +6,6 @@ namespace Puffin.Core.IO
     {
         Tuple<int, int> MouseCoordinates { get; }
         Tuple<int, int> UiMouseCoordinates { get; }
-        bool IsLeftButtonDown { get; }
+        bool IsButtonDown(ClickType clickType);
     }
 }

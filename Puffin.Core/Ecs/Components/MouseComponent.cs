@@ -1,4 +1,5 @@
 using System;
+using Puffin.Core.IO;
 
 namespace Puffin.Core.Ecs.Components
 {
@@ -8,9 +9,9 @@ namespace Puffin.Core.Ecs.Components
     public class MouseComponent : Component
     {
         // To avoid having an `Update` method on the component, we rely on events.
-
-        internal readonly Func<int, int, bool> OnClickCallback;
-        internal readonly Action OnReleaseCallback;
+        // Inputs: (x, y), ClickType
+        internal readonly Func<int, int, ClickType, bool> OnClickCallback;
+        internal readonly Action<ClickType> OnReleaseCallback;
         // Clickable area width/height
         internal readonly int Width = 0;
         internal readonly int Height = 0;
@@ -19,7 +20,7 @@ namespace Puffin.Core.Ecs.Components
         /// Creates a mouse component (receives clicks and triggers a callback).
         /// Width and height indicate the clickable area (relative to the origin of the entity).
         /// </summary>
-        public MouseComponent(Entity parent, int width, int height, Func<int, int, bool> onClickCallback, Action onReleaseCallback = null)
+        public MouseComponent(Entity parent, int width, int height, Func<int, int, ClickType, bool> onClickCallback, Action<ClickType> onReleaseCallback = null)
         : base(parent)
         {
             this.Width = width;
