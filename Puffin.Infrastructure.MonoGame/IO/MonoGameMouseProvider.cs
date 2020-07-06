@@ -42,6 +42,23 @@ namespace Puffin.Infrastructure.MonoGame.IO
             }
         }
 
-        public bool IsLeftButtonDown => Mouse.GetState().LeftButton == ButtonState.Pressed;
+        public bool IsButtonDown(ClickType clickType)
+        {
+            var mouseState = Mouse.GetState();
+            ButtonState buttonState;
+
+            switch (clickType) {
+                case ClickType.LeftClick:
+                    buttonState = mouseState.LeftButton;
+                    break;
+                case ClickType.RightClick:
+                    buttonState = mouseState.RightButton;
+                    break;
+                default:
+                    throw new InvalidOperationException($"Click type for {clickType} isn't supported yet");
+            }
+            
+            return buttonState == ButtonState.Pressed;
+        }
     }
 }

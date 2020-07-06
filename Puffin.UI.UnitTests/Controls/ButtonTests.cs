@@ -21,10 +21,10 @@ namespace Puffin.UI.UnitTests.Controls
             // Returns coordinates within the sprite (currently 128x48)
             mouseProvider.Setup(m => m.MouseCoordinates).Returns(new System.Tuple<int, int>(17, 32));
             mouseProvider.Setup(m => m.UiMouseCoordinates).Returns(new System.Tuple<int, int>(19, 30));
-            mouseProvider.Setup(m => m.IsLeftButtonDown).Returns(true);
+            mouseProvider.Setup(m => m.IsButtonDown(ClickType.LeftClick)).Returns(true);
 
             var clicked = false;
-            var button = new Button(true, "button.png", 50, 40, "click me!", 0, 0, (x, y) => clicked = true);
+            var button = new Button(true, "button.png", 50, 40, "click me!", 0, 0, (x, y, clickType) => clicked = true);
             var mouseSystem = new MouseSystem(eventBus, mouseProvider.Object);
             mouseSystem.OnAddEntity(button);
 

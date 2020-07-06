@@ -29,11 +29,11 @@ namespace Puffin.Core.UnitTests.Ecs
 
             var eventBus = new EventBus();
             var callbackFired = false;
-            var entity = new Entity().Move(20, 10).Mouse(32, 32, (x, y) => callbackFired = true);
+            var entity = new Entity().Move(20, 10).Mouse(32, 32, (x, y, clickType) => callbackFired = true);
             var system = new MouseSystem(eventBus, mouseProvider.Object);
             system.OnAddEntity(entity);
             mouseProvider.Setup(m => m.MouseCoordinates).Returns(new Tuple<int, int>(clickedX, clickedY));
-            mouseProvider.Setup(m => m.IsLeftButtonDown).Returns(true);
+            mouseProvider.Setup(m => m.IsButtonDown(ClickType.LeftClick)).Returns(true);
 
             // Act
             eventBus.Broadcast(EventBusSignal.MouseClicked, null);
@@ -43,7 +43,7 @@ namespace Puffin.Core.UnitTests.Ecs
         }
 
         [Test]
-        public void OnUpdateFiresCallbackIfClickIsInBounds()
+        public void OnUpdateFiresCallbackIfClickIsInBoundsAndMatchesClickType()
         {
             // Arrange
             var mouseProvider = new Mock<IMouseProvider>();
@@ -52,15 +52,16 @@ namespace Puffin.Core.UnitTests.Ecs
 
             var eventBus = new EventBus();
             var callbackFired = false;
-            var entity = new Entity().Move(77, 88).Mouse(32, 32, (x, y) => 
+            var entity = new Entity().Move(77, 88).Mouse(32, 32, (x, y, clickType) => 
             {
+                Assert.That(clickType, Is.EqualTo(ClickType.RightClick));
                 Assert.That(x, Is.EqualTo(clickedX));
                 Assert.That(y, Is.EqualTo(clickedY));
                 callbackFired = true;
                 return true;
             });
             mouseProvider.Setup(m => m.MouseCoordinates).Returns(new Tuple<int, int>(clickedX, clickedY));
-            mouseProvider.Setup(m => m.IsLeftButtonDown).Returns(true);
+            mouseProvider.Setup(m => m.IsButtonDown(ClickType.RightClick)).Returns(true);
             var system = new MouseSystem(eventBus, mouseProvider.Object);
             system.OnAddEntity(entity);
 
@@ -80,10 +81,10 @@ namespace Puffin.Core.UnitTests.Ecs
             eventBus.Subscribe(EventBusSignal.MouseReleased, (a) => isCalledBack = true);
 
             var mouseProvider = new Mock<IMouseProvider>();
-            mouseProvider.Setup(m => m.IsLeftButtonDown).Returns(true);
+            mouseProvider.Setup(m => m.IsButtonDown(ClickType.LeftClick)).Returns(true);
             var system = new MouseSystem(eventBus, mouseProvider.Object);
             system.OnUpdate(TimeSpan.Zero);
-            mouseProvider.Setup(m => m.IsLeftButtonDown).Returns(false);
+            mouseProvider.Setup(m => m.IsButtonDown(ClickType.LeftClick)).Returns(false);
             
             // Act
             system.OnUpdate(TimeSpan.Zero);
@@ -101,12 +102,12 @@ namespace Puffin.Core.UnitTests.Ecs
             eventBus.Subscribe(EventBusSignal.MouseClicked, (a) => isCalledBack = true);
 
             var mouseProvider = new Mock<IMouseProvider>();
-            mouseProvider.Setup(m => m.IsLeftButtonDown).Returns(true);
+            mouseProvider.Setup(m => m.IsButtonDown(ClickType.LeftClick)).Returns(true);
             mouseProvider.Setup(m => m.MouseCoordinates).Returns(new Tuple<int, int>(30, 17));
             
             var system = new MouseSystem(eventBus, mouseProvider.Object);
             // False: did not process the event
-            system.OnAddEntity(new Entity().Mouse(999, 999, (x, y) => false));
+            system.OnAddEntity(new Entity().Mouse(999, 999, (x, y, clickType) => false));
             
             // Act
             system.OnUpdate(TimeSpan.Zero);
@@ -125,12 +126,12 @@ namespace Puffin.Core.UnitTests.Ecs
             eventBus.Subscribe(EventBusSignal.MouseClicked, (a) => globalCallback = true);
 
             var mouseProvider = new Mock<IMouseProvider>();
-            mouseProvider.Setup(m => m.IsLeftButtonDown).Returns(true);
+            mouseProvider.Setup(m => m.IsButtonDown(ClickType.LeftClick)).Returns(true);
             mouseProvider.Setup(m => m.MouseCoordinates).Returns(new Tuple<int, int>(30, 17));
             
             var system = new MouseSystem(eventBus, mouseProvider.Object);
             // False: did not process the event
-            system.OnAddEntity(new Entity().Mouse(999, 999, (x, y) =>
+            system.OnAddEntity(new Entity().Mouse(999, 999, (x, y, clickType) =>
             {
                 isCalledBack = true;
                 return true;
@@ -152,7 +153,7 @@ namespace Puffin.Core.UnitTests.Ecs
 
             var eventBus = new EventBus();
             var callbackFired = false;
-            var entity = new Entity().Move(77, 88).Mouse(48, 48, (x, y) => callbackFired = true);
+            var entity = new Entity().Move(77, 88).Mouse(48, 48, (x, y, clickType) => callbackFired = true);
             mouseProvider.Setup(m => m.MouseCoordinates).Returns(new Tuple<int, int>(90, 90));
             var system = new MouseSystem(eventBus, mouseProvider.Object);
             system.OnAddEntity(entity);

@@ -1,7 +1,6 @@
 using Puffin.Core.Ecs;
 using Puffin.Core.Ecs.Components;
 using System;
-using System.IO;
 
 namespace Puffin.UI.Controls
 {
@@ -47,7 +46,8 @@ namespace Puffin.UI.Controls
             // Get rid of sprite width/height once this.Sprite(...) is enough to get the sprite width/height.
             // ALSO: use a spritesheet with two frames, that's easier to use.
             this.Sprite(checkedImage);
-            this.Mouse(spriteWidth, spriteHeight, (x, y) => {
+            // Left-click? Right-click? All good, it all toggles the checkbox.
+            this.Mouse(spriteWidth, spriteHeight, (x, y, clickType) => {
                 this.IsChecked = !this.IsChecked;
                 return false;
             });

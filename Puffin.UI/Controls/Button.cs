@@ -1,4 +1,5 @@
 using Puffin.Core.Ecs;
+using Puffin.Core.IO;
 using System;
 using System.IO;
 
@@ -22,7 +23,7 @@ namespace Puffin.UI.Controls
         /// <param name="textXOffset">The text label y-offset relative to the origin of the button entity.</param>
         /// <param name="textYOffset">The text label y-offset relative to the origin of the button entity.</param>
         /// <param name="onClick">The callback to trigger when the player clicks on the button.</param>
-        public Button(bool isUiElement, string imagePath, int spriteWidth, int spriteHeight, string text, int textXOffset, int textYOffset, Func<int, int, bool> onClick)
+        public Button(bool isUiElement, string imagePath, int spriteWidth, int spriteHeight, string text, int textXOffset, int textYOffset, Func<int, int, ClickType, bool> onClick)
         : base(isUiElement)
         {
             // Get rid of sprite width/height once this.Sprite(...) is enough to get the sprite width/height

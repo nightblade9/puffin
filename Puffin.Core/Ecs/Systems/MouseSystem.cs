@@ -4,6 +4,7 @@ using Puffin.Core.Events;
 using Puffin.Core.IO;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Puffin.Core.Ecs.Systems
 {
@@ -13,13 +14,18 @@ namespace Puffin.Core.Ecs.Systems
         private readonly EventBus eventBus;
         private readonly List<Entity> entities = new List<Entity>();
 
-        private bool wasLeftButtonDown = false;
+        private Dictionary<ClickType, bool> wasButtonDown = new Dictionary<ClickType, bool>();
         
         public MouseSystem(EventBus eventBus, IMouseProvider mouseProvider)
         {
             this.eventBus = eventBus;
             this.provider = mouseProvider;
             eventBus.Subscribe(EventBusSignal.MouseReleased, this.OnMouseReleased);
+
+            foreach (var clickType in Enum.GetValues(typeof(ClickType)).Cast<ClickType>())
+            {
+                wasButtonDown[clickType] = false;
+            }
         }
 
         public void OnAddEntity(Entity entity)
@@ -38,55 +44,59 @@ namespace Puffin.Core.Ecs.Systems
         public void OnUpdate(TimeSpan elapsed)
         {            
             var isHandled = false;
-
-            if (this.provider.IsLeftButtonDown && !wasLeftButtonDown)
+            var clickTypes = Enum.GetValues(typeof(ClickType)).Cast<ClickType>();
+            foreach (var clickType in clickTypes)
             {
-                foreach (var entity in this.entities)
+                if (this.provider.IsButtonDown(clickType) && !wasButtonDown[clickType])
                 {
-                    int clickedX;
-                    int clickedY;
-
-                    if (entity.IsUiElement)
+                    foreach (var entity in this.entities)
                     {
-                        clickedX = provider.UiMouseCoordinates.Item1;
-                        clickedY = provider.UiMouseCoordinates.Item2;
-                    }
-                    else
-                    {
-                        clickedX = provider.MouseCoordinates.Item1;
-                        clickedY = provider.MouseCoordinates.Item2;
+                        int clickedX;
+                        int clickedY;
+
+                        if (entity.IsUiElement)
+                        {
+                            clickedX = provider.UiMouseCoordinates.Item1;
+                            clickedY = provider.UiMouseCoordinates.Item2;
+                        }
+                        else
+                        {
+                            clickedX = provider.MouseCoordinates.Item1;
+                            clickedY = provider.MouseCoordinates.Item2;
+                        }
+
+                        var mouse = entity.Get<MouseComponent>();
+
+                        if (clickedX >= entity.X && clickedY >= entity.Y && clickedX <= entity.X + mouse.Width && clickedY <= entity.Y + mouse.Height)
+                        {
+                            isHandled |= mouse.OnClickCallback.Invoke(clickedX, clickedY, clickType);
+                            
+                        }
+
+                        if (isHandled)
+                        {
+                            break;
+                        }
                     }
 
-                    var mouse = entity.Get<MouseComponent>();
-
-                    if (clickedX >= entity.X && clickedY >= entity.Y && clickedX <= entity.X + mouse.Width && clickedY <= entity.Y + mouse.Height)
+                    // Not handled by any event handler so far; invoke the global ones.
+                    if (!isHandled)
                     {
-                        isHandled |= mouse.OnClickCallback.Invoke(clickedX, clickedY);
-                        
-                    }
-
-                    if (isHandled)
-                    {
-                        break;
-                    }
+                        this.eventBus.Broadcast(EventBusSignal.MouseClicked);
+                    }                    
+                }
+                else if (!provider.IsButtonDown(clickType) && wasButtonDown[clickType])
+                {
+                    this.eventBus.Broadcast(EventBusSignal.MouseReleased, clickType);
                 }
 
-                // Not handled by any event handler so far; invoke the global ones.
-                if (!isHandled)
-                {
-                    this.eventBus.Broadcast(EventBusSignal.MouseClicked);
-                }                    
+                this.wasButtonDown[clickType] = provider.IsButtonDown(clickType);
             }
-            else if (!provider.IsLeftButtonDown && wasLeftButtonDown)
-            {
-                this.eventBus.Broadcast(EventBusSignal.MouseReleased);
-            }
-
-            this.wasLeftButtonDown = provider.IsLeftButtonDown;
         }
 
         private void OnMouseReleased(object data)
         {
+            var clickType = (ClickType)data;
             // ToArray prevents concurrent modification exceptions when we remove an entity on release.
             // Note that the performance is OK, since this is in response to an event; not every frame.
             foreach (var entity in this.entities.ToArray())
@@ -94,7 +104,7 @@ namespace Puffin.Core.Ecs.Systems
                 var mouse = entity.Get<MouseComponent>();
                 if (mouse != null)
                 {
-                    mouse.OnReleaseCallback?.Invoke();
+                    mouse.OnReleaseCallback?.Invoke(clickType);
                 }
             }
         }

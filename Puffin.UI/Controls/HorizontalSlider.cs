@@ -48,8 +48,9 @@ namespace Puffin.UI.Controls
             }
 
             this.Colour(barColourRgb, width, BAR_THICKNESS).Sprite(handleImageFileName)
+            // Works for left/right/middle/etc. mouse clicks
             // Can't get sprite height, dunno how big it is ... just buffer.
-            .Mouse(width + 100, BAR_THICKNESS + 50, (x, y) =>
+            .Mouse(width + 100, BAR_THICKNESS + 50, (x, y, clickType) =>
             {
                 var sprite = this.Get<SpriteComponent>();
                 var colour = this.Get<ColourComponent>();
@@ -90,7 +91,7 @@ namespace Puffin.UI.Controls
 
                 return true;
             },
-            () => {
+            (clickTyoe) => {
                 this.isDraggingHandle = false;
             });
 
