@@ -1,7 +1,6 @@
 using System;
 using Puffin.Core.Ecs.Components;
 using Puffin.Core.IO;
-using Puffin.Core.Tweening;
 
 namespace Puffin.Core.Ecs
 {

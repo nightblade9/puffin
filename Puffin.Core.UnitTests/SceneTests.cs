@@ -180,10 +180,10 @@ namespace Puffin.Core.UnitTests
             scene.Initialize(
                 new ISystem[] { new DrawingSystem() },
                 new Mock<IMouseProvider>().Object, new Mock<IKeyboardProvider>().Object);
-            scene.OnMouseClick = () => called = true;
+            scene.OnMouseClick = (clickType) => called = true;
 
             // Act
-            scene.EventBus.Broadcast(EventBusSignal.MouseClicked);
+            scene.EventBus.Broadcast(EventBusSignal.MouseClicked, ClickType.LeftClick);
 
             // Assert
             Assert.That(called, Is.True);
