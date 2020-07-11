@@ -9,6 +9,20 @@ namespace Puffin.Core.UnitTests.Tweening
     [TestFixture]
     public class TweenTests
     {
+        [TestCase(-10)]
+        [TestCase(1.01f)]
+        public void ConstructorThrowsIfStartAlphaIsLessThanZeroOrMoreThanOne(float startAlpha)
+        {
+            Assert.Throws<ArgumentException>(() => new Tween(new Entity(), 1, new Tuple<float, float>(50, 60), new Tuple<float, float>(60, 70), startAlpha, 1));
+        }
+
+        [TestCase(-0.1f)]
+        [TestCase(10)]
+        public void ConstructorThrowsIfEndAlphaIsLessThanZeroOrMoreThanOne(float endAlpha)
+        {
+            Assert.Throws<ArgumentException>(() => new Tween(new Entity(), 1, new Tuple<float, float>(50, 60), new Tuple<float, float>(60, 70), 1, endAlpha));
+        }
+
         [Test]
         public void ConstructorStartsTween()
         {
@@ -112,21 +126,20 @@ namespace Puffin.Core.UnitTests.Tweening
             var text = e.Get<TextLabelComponent>();
             text.Alpha = 0.112f;
 
-            var tween = new Tween(e, 1, new Tuple<float, float>(0, 0), new Tuple<float, float>(0, 0), 1, 0);
+            var tween = new Tween(e, 5, new Tuple<float, float>(0, 0), new Tuple<float, float>(0, 0), 1, 0);
 
             // Act/Assert
             tween.Update(0);
             Assert.That(sprite.Alpha, Is.EqualTo(1)); // start value
             Assert.That(text.Alpha, Is.EqualTo(1)); // start value
 
-            tween.Update(0.75f);
-            Assert.AreEqual(sprite.Alpha, 0.25f, 0.01); // intermediate value
-            Assert.AreEqual(text.Alpha, 0.25f, 0.01); // intermediate value
+            tween.Update(4);
+            Assert.AreEqual(0.20f, sprite.Alpha, 0.01); // intermediate value
+            Assert.AreEqual(0.20f, text.Alpha, 0.01); // intermediate value
 
             tween.Update(1);
             Assert.That(sprite.Alpha, Is.EqualTo(0)); // final/overshot value
             Assert.That(text.Alpha, Is.EqualTo(0)); // final/overshot value
-
         }
     }
 }
