@@ -18,6 +18,15 @@ namespace Puffin.Core.Tweening
 
         public Tween(Entity entity, float durationSeconds, Tuple<float, float> startPosition, Tuple<float, float> endPosition, float startAlpha = 1, float endAlpha = 1, Action onTweenComplete = null)
         {
+            if (startAlpha < 0 || startAlpha > 1)
+            {
+                throw new ArgumentException($"startAlpha must be between 0 and 1");
+            }
+            if (endAlpha < 0 || endAlpha > 1)
+            {
+                throw new ArgumentException("endAlpha must be between 0 and 1");
+            }
+            
             this.Entity = entity;
             this.DurationSeconds = durationSeconds;
             this.StartPosition = startPosition;
@@ -32,7 +41,7 @@ namespace Puffin.Core.Tweening
         // Applied every frame, assumption is linear tween
         internal float Dx { get { return this.EndPosition.Item1 - this.StartPosition.Item1; } }
         internal float Dy { get { return this.EndPosition.Item2 - this.StartPosition.Item2; } }
-        internal float DAlpha { get { return this.EndAlpha - this.StartAlpha; } }
+        internal float DAlpha { get { return (this.EndAlpha - this.StartAlpha) / this.DurationSeconds; } }
 
         public void Start()
         {
