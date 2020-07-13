@@ -229,6 +229,13 @@ namespace Puffin.Infrastructure.MonoGame
             this.currentScene.FlushToScreen();
         }
 
+        override protected void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+            this.currentScene.OnDispose();
+            this.currentScene?.Dispose();
+        }
+
         private void InitializeSceneSystems(Scene s)
         {
             // Weird, can't go in constructor - no eventbus
