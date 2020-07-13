@@ -242,6 +242,11 @@ namespace Puffin.Core
             this.EventBus?.Dispose();
         }
 
+        virtual public void OnDispose()
+        {
+            
+        }
+
         internal void FlushToScreen()
         {
             this.drawingSystem.FlushToScreen();
