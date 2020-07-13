@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 using Puffin.Core.Ecs;
 using Puffin.Core.Ecs.Components;
 using Puffin.Core.Events;
@@ -13,6 +14,7 @@ namespace Puffin.Infrastructure.MonoGame
     {
         private List<Entity> entities = new List<Entity>();
         private IDictionary<AudioComponent, SoundEffect> entitySounds = new Dictionary<AudioComponent, SoundEffect>();
+        private IDictionary<AudioComponent, Song> entitySongs = new Dictionary<AudioComponent, Song>();
         private IDictionary<AudioComponent, List<SoundEffectInstance>> soundInstances = new Dictionary<AudioComponent, List<SoundEffectInstance>>();
 
         private static SoundEffect LoadSound(string fileName)
@@ -21,6 +23,16 @@ namespace Puffin.Infrastructure.MonoGame
             {
                 var soundEffect = SoundEffect.FromStream(stream);
                 return soundEffect;
+            }
+        }
+
+        private static Song LoadSong(string fileName)
+        {
+            var name = fileName.Substring(fileName.LastIndexOf(Path.DirectorySeparatorChar) + 1);
+            using (var stream = File.Open(fileName, FileMode.Open))
+            {
+                var song = Song.FromUri(name, new Uri(fileName, UriKind.Relative));
+                return song;
             }
         }
 
@@ -36,7 +48,16 @@ namespace Puffin.Infrastructure.MonoGame
             if (sound != null)
             {
                 this.entities.Add(entity);
-                this.entitySounds[sound] = LoadSound(sound.FileName);
+                if (sound.FileName.ToUpperInvariant().EndsWith(".MP3") || sound.FileName.ToUpperInvariant().EndsWith(".OGG"))
+                {
+                    // Assume Song instance
+                    this.entitySongs[sound] = LoadSong(sound.FileName);
+                }
+                else
+                {
+                    // SFX, assume SoundEffect
+                    this.entitySounds[sound] = LoadSound(sound.FileName);
+                }
             }
         }
 
