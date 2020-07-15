@@ -11,7 +11,17 @@ namespace Puffin.Core.Ecs.Components
     {
         internal readonly string FileName;
         internal float Pitch = 0;
-        internal float Volume = 0;
+        public float Volume { get {
+            return _volume;
+            }
+            set {
+                _volume = value;
+                this.Parent.Scene.EventBus.Broadcast(EventBusSignal.VolumeChanged, this);
+            }
+        }
+
+        private float _volume;
+
 
         public AudioComponent(Entity parent, string fileName) : base(parent)
         {
@@ -35,9 +45,9 @@ namespace Puffin.Core.Ecs.Components
                 throw new ArgumentException("Pitch must be in the range [-1..1].");
             }
 
+            this.Parent.Scene.EventBus.Broadcast(EventBusSignal.PlayAudio, this);
             this.Volume = volume;
             this.Pitch = pitch;
-            this.Parent.Scene.EventBus.Broadcast(EventBusSignal.PlayAudio, this);
         }
 
         /// <summary>
