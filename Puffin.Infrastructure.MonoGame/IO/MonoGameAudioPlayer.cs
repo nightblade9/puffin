@@ -40,6 +40,17 @@ namespace Puffin.Infrastructure.MonoGame
         {
             eventBus.Subscribe(EventBusSignal.PlayAudio, this.Play);
             eventBus.Subscribe(EventBusSignal.StopAudio, this.Stop);
+            eventBus.Subscribe(EventBusSignal.VolumeChanged, (data) => {
+                var audio = data as AudioComponent;
+                if (this.soundInstances.ContainsKey(audio))
+                {
+                    foreach (var instance in this.soundInstances[audio])
+                    {
+                        // TODO: changing one component shouldn't change all instances of the audio
+                        instance.Volume = audio.Volume;
+                    }
+                }
+            });
         }
 
         public void AddEntity(Entity entity)

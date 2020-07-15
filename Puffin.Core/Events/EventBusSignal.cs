@@ -14,5 +14,6 @@ namespace Puffin.Core.Events
         SubSceneHidden,
         SpriteChanged, // Sprite component's changed at runtime
         TilesetSpriteChanged, // Tilemap's sprite changed at runtime
+        VolumeChanged,
     }
 }
