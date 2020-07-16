@@ -19,7 +19,7 @@ namespace Puffin.Infrastructure.MonoGame
 
         private static SoundEffect LoadSound(string fileName)
         {
-             using (var stream = File.Open(fileName, FileMode.Open))
+            using (var stream = File.Open(fileName, FileMode.Open))
             {
                 var soundEffect = SoundEffect.FromStream(stream);
                 return soundEffect;
@@ -40,15 +40,20 @@ namespace Puffin.Infrastructure.MonoGame
         {
             eventBus.Subscribe(EventBusSignal.PlayAudio, this.Play);
             eventBus.Subscribe(EventBusSignal.StopAudio, this.Stop);
-            eventBus.Subscribe(EventBusSignal.VolumeChanged, (data) => {
+            eventBus.Subscribe(EventBusSignal.VolumeChanged, (data) =>
+            {
+                // Don't change volume if you didn't call Play. Just. Don't.
                 var audio = data as AudioComponent;
-                if (this.soundInstances.ContainsKey(audio))
+
+                if (!this.soundInstances.ContainsKey(audio))
                 {
-                    foreach (var instance in this.soundInstances[audio])
-                    {
-                        // TODO: changing one component shouldn't change all instances of the audio
-                        instance.Volume = audio.Volume;
-                    }
+                    throw new InvalidOperationException("Please call .Play() before adjusting volume.");
+                }
+
+                foreach (var instance in this.soundInstances[audio])
+                {
+                    // TODO: changing one component shouldn't change all instances of the audio
+                    instance.Volume = audio.Volume;
                 }
             });
         }
