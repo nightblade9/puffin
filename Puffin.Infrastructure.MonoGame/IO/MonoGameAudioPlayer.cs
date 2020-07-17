@@ -15,7 +15,6 @@ namespace Puffin.Infrastructure.MonoGame
         private List<Entity> entities = new List<Entity>();
         private IDictionary<AudioComponent, SoundEffect> entitySounds = new Dictionary<AudioComponent, SoundEffect>();
         private IDictionary<AudioComponent, Song> entitySongs = new Dictionary<AudioComponent, Song>();
-        private IDictionary<AudioComponent, List<SoundEffectInstance>> soundInstances = new Dictionary<AudioComponent, List<SoundEffectInstance>>();
 
         private static SoundEffect LoadSound(string fileName)
         {
@@ -44,17 +43,12 @@ namespace Puffin.Infrastructure.MonoGame
             {
                 // Don't change volume if you didn't call Play. Just. Don't.
                 var audio = data as AudioComponent;
-
-                if (!this.soundInstances.ContainsKey(audio))
+                var instance = audio.soundEffectInstance as SoundEffectInstance;
+                if (instance == null)
                 {
-                    throw new InvalidOperationException("Please call .Play() before adjusting volume.");
+                    throw new InvalidOperationException("We shouldn't be sending a volume-change event when the SFX didn't play yet!");
                 }
-
-                foreach (var instance in this.soundInstances[audio])
-                {
-                    // TODO: changing one component shouldn't change all instances of the audio
-                    instance.Volume = audio.Volume;
-                }
+                instance.Volume = audio.Volume;
             });
         }
 
@@ -89,17 +83,6 @@ namespace Puffin.Infrastructure.MonoGame
 
         public void OnUpdate()
         {
-            // Trim dead/done sound effect instances
-            foreach (var kvp in soundInstances)
-            {
-                foreach (var instance in kvp.Value.ToArray())
-                {
-                    if (instance.State == SoundState.Stopped)
-                    {
-                        kvp.Value.Remove(instance);
-                    }
-                }
-            }
         }
 
         private void Play(object data)
@@ -113,24 +96,14 @@ namespace Puffin.Infrastructure.MonoGame
             soundInstance.Volume =  audioComponent.Volume;
             soundInstance.IsLooped = audioComponent.ShouldLoop;
             soundInstance.Play();
-
-            if (!soundInstances.ContainsKey(audioComponent) || soundInstances[audioComponent] == null)
-            {
-                soundInstances[audioComponent] = new List<SoundEffectInstance>();
-            }
-            soundInstances[audioComponent].Add(soundInstance);
+            audioComponent.soundEffectInstance = soundInstance;
         }
 
         private void Stop(object data)
         {
             var audioComponent = data as AudioComponent;
-            if (soundInstances.ContainsKey(audioComponent) && soundInstances[audioComponent] != null)
-            {
-                foreach (var instance in soundInstances[audioComponent])
-                {
-                    instance.Stop();
-                }
-            }
+            var instance = audioComponent.soundEffectInstance as SoundEffectInstance;
+            instance.Stop(true);
         }
     }
 }

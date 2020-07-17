@@ -26,6 +26,11 @@ namespace Puffin.Core.Ecs.Components
         internal float Pitch = 0f;
         internal bool ShouldLoop = false;
 
+        /// Breaks the normal pattern of dictionary<component, implementation instance> because - for BGM - there's no way
+        /// to make this work. The MonoGameAudioPlayer gets recreated each scene/subscene, so we lose our instances.
+        /// Anyway, this is both architecturally wrong (core instance of infrastructure) and a smell, so fix it eventually.
+        internal object soundEffectInstance;
+
         private float _volume = 1.0f;
 
         public AudioComponent(Entity parent, string fileName, bool shouldLoop = false) : base(parent)
