@@ -46,7 +46,7 @@ namespace Puffin.Infrastructure.MonoGame
                 var instance = audio.soundEffectInstance as SoundEffectInstance;
                 if (instance == null)
                 {
-                    throw new InvalidOperationException("We shouldn't be sending a volume-change event when the SFX didn't play yet!");
+                    throw new InvalidOperationException("We shouldn't be sending a volume-changed event when the sound didn't play yet!");
                 }
                 instance.Volume = audio.Volume;
             });
