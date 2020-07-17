@@ -23,9 +23,9 @@ namespace Puffin.Core.Ecs
         /// Allows an entity to play an audio file (short or long), optionally at a modified pitch.
         /// You should be able to play WAV files and OGG files.
         /// </summary>
-        public static Entity Audio(this Entity entity, string audioFileName)
+        public static Entity Audio(this Entity entity, string audioFileName, bool shouldLoop = false)
         {
-            entity.Set(new AudioComponent(entity, audioFileName));
+            entity.Set(new AudioComponent(entity, audioFileName, shouldLoop));
             return entity;
         }
 

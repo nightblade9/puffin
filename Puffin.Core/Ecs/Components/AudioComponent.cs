@@ -24,11 +24,14 @@ namespace Puffin.Core.Ecs.Components
 
         internal readonly string FileName;
         internal float Pitch = 0f;
+        internal bool ShouldLoop = false;
+
         private float _volume = 1.0f;
 
-        public AudioComponent(Entity parent, string fileName) : base(parent)
+        public AudioComponent(Entity parent, string fileName, bool shouldLoop = false) : base(parent)
         {
             this.FileName = fileName;
+            this.ShouldLoop = shouldLoop;
         }
 
         /// <summary>
