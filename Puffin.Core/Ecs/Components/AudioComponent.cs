@@ -18,7 +18,12 @@ namespace Puffin.Core.Ecs.Components
             set
             {
                 _volume = value;
-                this.Parent.Scene.EventBus.Broadcast(EventBusSignal.VolumeChanged, this);
+
+                // Don't trigger if we didn't actually play audio yet, this changes the SFX instance's audio.
+                if (this.soundEffectInstance != null)
+                {
+                    this.Parent.Scene.EventBus.Broadcast(EventBusSignal.VolumeChanged, this);
+                }
             }
         }
 
