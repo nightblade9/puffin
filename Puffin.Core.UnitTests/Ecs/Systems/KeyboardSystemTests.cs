@@ -1,6 +1,5 @@
 using System;
 using Moq;
-using Ninject;
 using NUnit.Framework;
 using Puffin.Core.Ecs;
 using Puffin.Core.Ecs.Systems;
@@ -18,11 +17,8 @@ namespace Puffin.Core.UnitTests.Ecs
         {
             // Arrange
 
-            // Not used directly, just needs a binding
-            var provider = new Mock<IKeyboardProvider>();
-
             var eventBus = new EventBus();
-            var system = new KeyboardSystem(eventBus, provider.Object);
+            var system = new KeyboardSystem(eventBus);
 
             var isCalled = false;
             var entity = new Entity().Keyboard((e) => isCalled = true);
@@ -41,11 +37,8 @@ namespace Puffin.Core.UnitTests.Ecs
             // press, then release/assert
             // Arrange
 
-            // Not used directly, just needs a binding
-            var provider = new Mock<IKeyboardProvider>();
-
             var eventBus = new EventBus();
-            var system = new KeyboardSystem(eventBus, provider.Object);
+            var system = new KeyboardSystem(eventBus);
 
             var isCalled = false;
             var entity = new Entity().Keyboard(null, (e) => isCalled = true);
@@ -64,11 +57,8 @@ namespace Puffin.Core.UnitTests.Ecs
             // Same as press; just remove entity and then fire.
             // Arrange
 
-            // Not used directly, just needs a binding
-            var provider = new Mock<IKeyboardProvider>();
-
             var eventBus = new EventBus();
-            var system = new KeyboardSystem(eventBus, provider.Object);
+            var system = new KeyboardSystem(eventBus);
 
             var isCalled = false;
             var entity = new Entity().Keyboard((e) => isCalled = true);
@@ -87,8 +77,7 @@ namespace Puffin.Core.UnitTests.Ecs
         {
             // Arrange
             var eventBus = new EventBus();
-            var provider = new Mock<IKeyboardProvider>();
-            var system = new KeyboardSystem(eventBus, provider.Object);
+            var system = new KeyboardSystem(eventBus);
 
             var numCalls = 0;
             var entity = new Entity().Keyboard(onActionDown: (e) => numCalls++);
