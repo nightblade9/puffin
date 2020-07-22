@@ -56,7 +56,7 @@ namespace Puffin.Core.Ecs
         /// </summary>
         protected internal bool DrawColourBeforeSprite { get; set; } 
 
-        private Dictionary<Type, Component> components = new Dictionary<Type, Component>();
+        private readonly Dictionary<Type, Component> components = new Dictionary<Type, Component>();
 
 
         /// <summary>

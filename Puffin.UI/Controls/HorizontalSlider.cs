@@ -173,7 +173,7 @@ namespace Puffin.UI.Controls
             var bar = this.Get<ColourComponent>();
             // 100 pixels, max value is 25, then ppv = 4
             float pixelsPerValue = this.width * 1f / this.maxValue;
-            handle.OffsetX = (int)((pixelsPerValue * this.value));
+            handle.OffsetX = (int)(pixelsPerValue * this.value);
         }
     }
 }

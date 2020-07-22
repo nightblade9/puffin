@@ -14,7 +14,7 @@ namespace Puffin.Core.Events
     {
 
         // event name => callbacks. Each callback has an optional parameter (data).
-        private IDictionary<Enum, List<Action<object>>> subscribers = new Dictionary<Enum, List<Action<object>>>();
+        private readonly IDictionary<Enum, List<Action<object>>> subscribers = new Dictionary<Enum, List<Action<object>>>();
 
         /// <summary>
         /// Broadcasts a new event to all subscribers of that event.
@@ -68,6 +68,12 @@ namespace Puffin.Core.Events
         }
 
         public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
         {
             // Perhaps just being over-cautious here
             foreach (var signal in subscribers.Keys)

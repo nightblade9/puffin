@@ -6,9 +6,9 @@ namespace Puffin.Core.Ecs.Systems
 {
     class MovementSystem : ISystem
     {
-        private IList<Entity> entities = new List<Entity>();
-        private IList<Entity> collidables = new List<Entity>();
-        private Scene scene;
+        private readonly IList<Entity> entities = new List<Entity>();
+        private readonly IList<Entity> collidables = new List<Entity>();
+        private readonly Scene scene;
 
         public MovementSystem(Scene scene)
         {
@@ -101,7 +101,7 @@ namespace Puffin.Core.Ecs.Systems
                                 .Move(targetTileX * tileMap.TileWidth, targetTileY * tileMap.TileHeight)
                                 .Collide(tileMap.TileWidth, tileMap.TileHeight);
                             
-                            resolveAabbCollision(entity, collideAgainst, elapsed.TotalSeconds);
+                            resolveAabbCollision(entity, collideAgainst);
                         }
                     }
 
@@ -111,7 +111,7 @@ namespace Puffin.Core.Ecs.Systems
                         if (collidable != entity && collidable.Get<CollisionComponent>() != null)
                         {
                             var collideAgainstComponent = collidable.Get<CollisionComponent>();
-                            resolveAabbCollision(entity, collidable, elapsed.TotalSeconds);
+                            resolveAabbCollision(entity, collidable);
                         }
                     }
                 }
@@ -121,7 +121,7 @@ namespace Puffin.Core.Ecs.Systems
         // Checks for AABB collisions between entity (moving) and collideAgainst (hopefully not moving).
         // The output is to modify the IntendedMoveX/IntendedMoveY on entity so that it will be just at the point
         // of collision (stop right at the collision).
-        private static void resolveAabbCollision(Entity entity, Entity collideAgainst, double elapsedSeconds)
+        private static void resolveAabbCollision(Entity entity, Entity collideAgainst)
         {
             (var oldIntendedX, var oldIntendedY) = (entity.IntendedMoveDeltaX, entity.IntendedMoveDeltaY);
 
@@ -135,8 +135,6 @@ namespace Puffin.Core.Ecs.Systems
                 // to see how much we can move, and then move accordingly, resolving at whichever
                 // axis collides first by time (not whichever one is the smallest diff).
                 (float xDistance, float yDistance) = CalculateAabbDistanceTo(entity, collideAgainst);
-                //float xVelocity = (float)(entity.IntendedMoveDeltaX / elapsedSeconds);
-                //float yVelocity = (float)(entity.IntendedMoveDeltaY / elapsedSeconds);
                 (float xVelocity, float yVelocity) = (entity.VelocityX, entity.VelocityY);
                 float xAxisTimeToCollide = xVelocity != 0 ? Math.Abs(xDistance / xVelocity) : 0;
                 float yAxisTimeToCollide = yVelocity != 0 ? Math.Abs(yDistance / yVelocity) : 0;
