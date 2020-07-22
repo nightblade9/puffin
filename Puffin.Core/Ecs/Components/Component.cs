@@ -10,11 +10,11 @@ namespace Puffin.Core.Ecs.Components
     {
         internal readonly Entity Parent;
 
-        public Component(Entity parent)
+        protected Component(Entity parent)
         {
             if (parent == null)
             {
-                throw new NullReferenceException(nameof(parent));
+                throw new ArgumentNullException(nameof(parent));
             }
             
             this.Parent = parent;

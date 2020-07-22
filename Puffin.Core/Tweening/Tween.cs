@@ -11,7 +11,7 @@ namespace Puffin.Core.Tweening
         public Tuple<float, float> EndPosition { get; private set; }
         public float StartAlpha { get; private set; }
         public float EndAlpha { get; private set; }
-        private Action onTweenComplete;
+        private readonly Action onTweenComplete;
         public float DurationSeconds { get; private set; }
         internal bool IsRunning = false;
         private float runningForSeconds = 0;

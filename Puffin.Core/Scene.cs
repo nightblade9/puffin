@@ -68,7 +68,7 @@ namespace Puffin.Core
         private IKeyboardProvider keyboardProvider;
         private ISystem[] systems = new ISystem[0];
         private DrawingSystem drawingSystem;
-        private List<Entity> entities = new List<Entity>();
+        private readonly List<Entity> entities = new List<Entity>();
 
         // A date and a number of draw calls to calculate FPS
         private DateTime lastFpsUpdate = DateTime.Now;
@@ -238,6 +238,12 @@ namespace Puffin.Core
         /// Disposes the scene and the event bus (so entities can be garbage-collected).
         /// </summary>
         public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
         {
             this.EventBus?.Dispose();
         }

@@ -10,10 +10,10 @@ namespace Puffin.Core.Ecs.Systems
     /// </summary>
     class MouseOverlapSystem : ISystem
     {
-        private IList<Entity> entities = new List<Entity>();
+        private readonly IList<Entity> entities = new List<Entity>();
 
-        private IMouseProvider mouseProvider;
-        private IList<Entity> mouseCurrentlyOverlapping = new List<Entity>();
+        private readonly IMouseProvider mouseProvider;
+        private readonly IList<Entity> mouseCurrentlyOverlapping = new List<Entity>();
 
         public MouseOverlapSystem(IMouseProvider mouseProvider)
         {

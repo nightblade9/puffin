@@ -11,7 +11,6 @@ namespace Puffin.UI.Controls
     /// </summary>
     public class HorizontalProgressBar : Entity
     {
-        private const int barHeight = 16;
         private readonly int maxValue;
         private int value = 0;
 
