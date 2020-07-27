@@ -103,7 +103,10 @@ namespace Puffin.Infrastructure.MonoGame
         {
             var audioComponent = data as AudioComponent;
             var instance = audioComponent.soundEffectInstance as SoundEffectInstance;
-            instance.Stop(true);
+            // Instance may be null if it was never played / instantly stopped? This also appears to be null if OpenAL
+            // has an issue, e.g. prints out this error: 
+            // AL lib: (EE) SetChannelMap: Failed to match front-center channel (2) in channel map
+            instance?.Stop(true);
         }
     }
 }
