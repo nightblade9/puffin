@@ -215,12 +215,12 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
                 camera.Zoom = new Vector2(cameraComponent.Zoom, cameraComponent.Zoom);
             }
 
-            this.spriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: camera?.TransformationMatrix);
+            this.spriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: camera?.TransformationMatrix, blendState: BlendState.NonPremultiplied);
             this.DrawTileMaps();
             this.DrawEntities(this.entities);
             this.spriteBatch.End();
 
-            this.spriteBatch.Begin(samplerState: SamplerState.PointClamp);
+            this.spriteBatch.Begin(samplerState: SamplerState.PointClamp, blendState: BlendState.NonPremultiplied);
             this.DrawEntities(this.uiEntities);
             this.spriteBatch.End();
 
