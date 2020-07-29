@@ -69,5 +69,14 @@ namespace Puffin.UI.Controls
                 this.Get<ColourComponent>().Width = this.value;
             }
         }
+
+        public bool IsVisible
+        {
+            get { return this.Get<SpriteComponent>().IsVisible; }
+            set {
+                this.Get<SpriteComponent>().IsVisible = value;
+                this.Get<ColourComponent>().Alpha = IsVisible ? 1 : 0;
+            }
+        }
     }
 }
