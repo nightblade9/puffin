@@ -76,7 +76,6 @@ namespace Puffin.UI.Controls
                     if (clickedOnHandle)
                     {
                         this.isDraggingHandle = true;
-                        Console.WriteLine("click");
                     }
                     else
                     {
