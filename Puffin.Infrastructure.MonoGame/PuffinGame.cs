@@ -94,7 +94,7 @@ namespace Puffin.Infrastructure.MonoGame
         /// </summary>
         internal protected bool ShowCollisionAreas = false;
 
-        private GraphicsDeviceManager graphicsManager;
+        private readonly GraphicsDeviceManager graphicsManager;
         private SpriteBatch spriteBatch;
         private Scene currentScene;
         
