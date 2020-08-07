@@ -524,6 +524,20 @@ namespace Puffin.Core.UnitTests
             Assert.That(tileset.Scene, Is.EqualTo(scene));
         }
 
+        [Test]
+        public void SettingBackgroundBroadcastsEvent()
+        {
+            var sawEvent = "";
+            var scene = new Scene();
+            scene.EventBus.Subscribe(EventBusSignal.BackgroundSet, (data) => sawEvent = data.ToString());
+            
+            // Act
+            scene.Background = "skies.png";
+
+            // Assert
+            Assert.That(sawEvent, Is.EqualTo("skies.png"));
+        }
+
         enum FakeAction
         {
             Reset,
