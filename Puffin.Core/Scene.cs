@@ -30,7 +30,13 @@ namespace Puffin.Core
         /// <summary>
         /// The background image to render. Ignores camera, zoom, etc.
         /// </summary>
-        public string Background { get; set; }
+        public string Background { 
+            get { return this._background; }
+            set { 
+                this._background = value;
+                this.EventBus.Broadcast(EventBusSignal.BackgroundSet, _background);
+            }
+        }
 
         /// <summary>
         /// A scene-wide mouse-click handler that fires whever a mouse click event triggers (even if entities handle it).
@@ -73,6 +79,7 @@ namespace Puffin.Core
         // A date and a number of draw calls to calculate FPS
         private DateTime lastFpsUpdate = DateTime.Now;
         private int drawsSinceLastFpsCount = 0;
+        private string _background;
 
         /// <summary>
         /// The current mouse coordinates, from the perspective of the current camera (if one exists).

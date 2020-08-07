@@ -15,5 +15,6 @@ namespace Puffin.Core.Events
         SpriteChanged, // Sprite component's changed at runtime
         TilesetSpriteChanged, // Tilemap's sprite changed at runtime
         VolumeChanged,
+        BackgroundSet,
     }
 }
