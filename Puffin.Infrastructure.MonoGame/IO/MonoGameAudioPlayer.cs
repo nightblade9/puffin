@@ -14,15 +14,11 @@ namespace Puffin.Infrastructure.MonoGame
     internal class MonoGameAudioPlayer : IAudioPlayer, IDisposable
     {
         private List<Entity> entities = new List<Entity>();
-        // WAVs
-        private IDictionary<AudioComponent, SoundEffect> entitySounds = new Dictionary<AudioComponent, SoundEffect>();
-        // OGGs
-        private IDictionary<AudioComponent, Song> entitySongs = new Dictionary<AudioComponent, Song>();
-        // MP3s
-        private IDictionary<AudioComponent, WaveOutEvent> entityWaveOutEvents = new Dictionary<AudioComponent, WaveOutEvent>();
+        private IDictionary<AudioComponent, SoundEffect> entityWavs = new Dictionary<AudioComponent, SoundEffect>();
+        private IDictionary<AudioComponent, Song> entityOggs = new Dictionary<AudioComponent, Song>();
+        private IDictionary<AudioComponent, WaveOutEvent> entityMp3s = new Dictionary<AudioComponent, WaveOutEvent>();
 
-        // WAV files
-        private static SoundEffect LoadSound(string fileName)
+        private static SoundEffect LoadWavFile(string fileName)
         {
             using (var stream = File.Open(fileName, FileMode.Open))
             {
@@ -31,8 +27,7 @@ namespace Puffin.Infrastructure.MonoGame
             }
         }
 
-        // OGG files
-        private static Song LoadSong(string fileName)
+        private static Song LoadOggFile(string fileName)
         {
             using (var stream = File.Open(fileName, FileMode.Open))
             {
@@ -41,8 +36,7 @@ namespace Puffin.Infrastructure.MonoGame
             }
         }
 
-        // MP3 files
-        private static WaveOutEvent LoadWaveOutEvent(string fileName)
+        private static WaveOutEvent LoadMp3File(string fileName)
         {
             var reader = new Mp3FileReader(fileName);
             var waveOut = new WaveOutEvent();
@@ -58,12 +52,25 @@ namespace Puffin.Infrastructure.MonoGame
             {
                 // Don't change volume if you didn't call Play. Just. Don't.
                 var audio = data as AudioComponent;
-                var instance = audio.MonoGameAudioInstance as SoundEffectInstance;
-                if (instance == null)
+                if (audio == null)
                 {
                     throw new InvalidOperationException("We shouldn't be sending a volume-changed event when the sound didn't play yet!");
                 }
-                instance.Volume = audio.Volume;
+
+                var soundEffectInstance = audio.MonoGameAudioInstance as SoundEffectInstance;
+                if (soundEffectInstance != null)
+                {
+                    soundEffectInstance.Volume = audio.Volume;
+                }
+                else
+                {
+                    var songInstance = audio.MonoGameAudioInstance as WaveOutEvent;
+                    if (songInstance != null)
+                    {
+                        songInstance.Volume = audio.Volume;
+                    }
+                }
+                // Song doesn't have a Volume property, herp derp?
             });
         }
 
@@ -75,15 +82,15 @@ namespace Puffin.Infrastructure.MonoGame
                 this.entities.Add(entity);
                 if (sound.FileName.ToUpperInvariant().EndsWith(".MP3"))
                 {
-                    this.entityWaveOutEvents[sound] = LoadWaveOutEvent(sound.FileName);
+                    this.entityMp3s[sound] = LoadMp3File(sound.FileName);
                 }
                 else if (sound.FileName.ToUpperInvariant().EndsWith(".OGG"))
                 {
-                    this.entitySongs[sound] = LoadSong(sound.FileName);
+                    this.entityOggs[sound] = LoadOggFile(sound.FileName);
                 }
                 else
                 {
-                    this.entitySounds[sound] = LoadSound(sound.FileName);
+                    this.entityWavs[sound] = LoadWavFile(sound.FileName);
                 }
             }
         }
@@ -95,20 +102,20 @@ namespace Puffin.Infrastructure.MonoGame
 
             if (sound != null)
             {
-                if (entitySounds.ContainsKey(sound))
+                if (entityWavs.ContainsKey(sound))
                 {
-                    entitySounds.Remove(sound);
+                    entityWavs.Remove(sound);
                 }
-                else if (entitySongs.ContainsKey(sound))
+                else if (entityOggs.ContainsKey(sound))
                 {
-                    entitySongs.Remove(sound);
+                    entityOggs.Remove(sound);
                 }
-                else if (entityWaveOutEvents.ContainsKey(sound))
+                else if (entityMp3s.ContainsKey(sound))
                 {
-                    var waveOutEvent = entityWaveOutEvents[sound];
+                    var waveOutEvent = entityMp3s[sound];
                     waveOutEvent.Stop();
                     waveOutEvent.Dispose();
-                    entityWaveOutEvents.Remove(sound);
+                    entityMp3s.Remove(sound);
                 }
             }
         }
@@ -119,23 +126,29 @@ namespace Puffin.Infrastructure.MonoGame
         
         public void Dispose()
         {
-            foreach (var kvp in this.entityWaveOutEvents)
+            foreach (var kvp in this.entityMp3s)
             {
-                var waveOutEvent = this.entityWaveOutEvents[kvp.Key];
+                var waveOutEvent = this.entityMp3s[kvp.Key];
                 if (waveOutEvent != null)
                 {
                     waveOutEvent.Stop();
                     waveOutEvent.Dispose();
                 }
             }
+
+            MediaPlayer.Stop();
         }
 
         private void Play(object data)
         {
             var audioComponent = data as AudioComponent;
-            if (this.entityWaveOutEvents.ContainsKey(audioComponent))
+            if (this.entityMp3s.ContainsKey(audioComponent))
             {
                 this.PlayWaveOutEvent(audioComponent);
+            }
+            else if (this.entityOggs.ContainsKey(audioComponent))
+            {
+                this.PlaySong(audioComponent);
             }
             else
             {
@@ -145,12 +158,20 @@ namespace Puffin.Infrastructure.MonoGame
 
         private void PlayWaveOutEvent(AudioComponent audioComponent)
         {
-            this.entityWaveOutEvents[audioComponent].Play();
+            this.entityMp3s[audioComponent].Play();
+            audioComponent.MonoGameAudioInstance = this.entityMp3s[audioComponent];
+        }
+
+        private void PlaySong(AudioComponent audioComponent)
+        {
+            var song = this.entityOggs[audioComponent];
+            audioComponent.MonoGameAudioInstance = song;
+            MediaPlayer.Play(song);
         }
 
         private void PlaySoundEffect(AudioComponent audioComponent)
         {
-            var soundEffect = entitySounds[audioComponent];
+            var soundEffect = entityWavs[audioComponent];
             
             // Mostly copied from https://stackoverflow.com/questions/35183043/how-do-i-play-a-sound-effect-on-monogame-for-android
             var soundInstance = soundEffect.CreateInstance();
@@ -169,6 +190,15 @@ namespace Puffin.Infrastructure.MonoGame
             // has an issue, e.g. prints out this error: 
             // AL lib: (EE) SetChannelMap: Failed to match front-center channel (2) in channel map
             instance?.Stop(true);
+
+            var instance2 = audioComponent.MonoGameAudioInstance as Song;
+            if (instance2 != null)
+            {
+                MediaPlayer.Stop();
+            }
+
+            var instance3 = audioComponent.MonoGameAudioInstance as WaveOutEvent;
+            instance3?.Stop();
         }
     }
 }
