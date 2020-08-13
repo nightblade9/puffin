@@ -20,7 +20,7 @@ namespace Puffin.Core.Ecs.Components
                 _volume = value;
 
                 // Don't trigger if we didn't actually play audio yet, this changes the SFX instance's audio.
-                if (this.soundEffectInstance != null)
+                if (this.MonoGameAudioInstance != null)
                 {
                     this.Parent.Scene.EventBus.Broadcast(EventBusSignal.VolumeChanged, this);
                 }
@@ -34,7 +34,8 @@ namespace Puffin.Core.Ecs.Components
         /// Breaks the normal pattern of dictionary<component, implementation instance> because - for BGM - there's no way
         /// to make this work. The MonoGameAudioPlayer gets recreated each scene/subscene, so we lose our instances.
         /// Anyway, this is both architecturally wrong (core instance of infrastructure) and a smell, so fix it eventually.
-        internal object soundEffectInstance;
+        /// <summary>A SoundEffectInstance (.wav / SFX) or WaveOutEvent (MP3/OGG)
+        internal object MonoGameAudioInstance;
 
         private float _volume = 1.0f;
 
