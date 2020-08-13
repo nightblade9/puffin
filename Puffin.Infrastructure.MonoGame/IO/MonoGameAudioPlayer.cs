@@ -34,10 +34,9 @@ namespace Puffin.Infrastructure.MonoGame
         // OGG files
         private static Song LoadSong(string fileName)
         {
-            var name = fileName.Substring(fileName.LastIndexOf(Path.DirectorySeparatorChar) + 1);
             using (var stream = File.Open(fileName, FileMode.Open))
             {
-                var song = Song.FromUri(name, new Uri(fileName, UriKind.Relative));
+                var song = Song.FromUri(fileName, new Uri(fileName, UriKind.Relative));
                 return song;
             }
         }
