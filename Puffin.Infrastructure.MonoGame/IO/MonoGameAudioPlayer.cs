@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
+using NAudio.Wave;
 using Puffin.Core.Ecs;
 using Puffin.Core.Ecs.Components;
 using Puffin.Core.Events;
@@ -10,11 +11,11 @@ using System.IO;
 
 namespace Puffin.Infrastructure.MonoGame
 {
-    internal class MonoGameAudioPlayer : IAudioPlayer
+    internal class MonoGameAudioPlayer : IAudioPlayer, IDisposable
     {
         private List<Entity> entities = new List<Entity>();
         private IDictionary<AudioComponent, SoundEffect> entitySounds = new Dictionary<AudioComponent, SoundEffect>();
-        private IDictionary<AudioComponent, Song> entitySongs = new Dictionary<AudioComponent, Song>();
+        private IDictionary<AudioComponent, WaveOutEvent> entitySongs = new Dictionary<AudioComponent, WaveOutEvent>();
 
         private static SoundEffect LoadSound(string fileName)
         {
@@ -25,14 +26,18 @@ namespace Puffin.Infrastructure.MonoGame
             }
         }
 
-        private static Song LoadSong(string fileName)
+        private static WaveOutEvent LoadSong(string fileName)
         {
-            var name = fileName.Substring(fileName.LastIndexOf(Path.DirectorySeparatorChar) + 1);
-            using (var stream = File.Open(fileName, FileMode.Open))
-            {
-                var song = Song.FromUri(name, new Uri(fileName, UriKind.Relative));
-                return song;
-            }
+            // using (var stream = File.Open(fileName, FileMode.Open))
+            // {
+            //     var song = Song.FromUri(fileName, new Uri(fileName, UriKind.Relative));
+            //     return song;
+            // }
+
+            var reader = new Mp3FileReader(fileName);
+            var waveOut = new WaveOutEvent();
+            waveOut.Init(reader);
+            return waveOut;
         }
 
         public MonoGameAudioPlayer(EventBus eventBus)
@@ -75,19 +80,59 @@ namespace Puffin.Infrastructure.MonoGame
         {
             this.entities.Remove(entity);
             var sound = entity.Get<AudioComponent>();
-            if (sound != null && entitySounds.ContainsKey(sound))
+
+            if (sound != null)
             {
-                entitySounds.Remove(sound);
+                if (entitySounds.ContainsKey(sound))
+                {
+                    entitySounds.Remove(sound);
+                }
+                else if (entitySongs.ContainsKey(sound))
+                {
+                    entitySongs[sound].Stop();
+                    entitySongs[sound].Dispose();
+                    entitySongs.Remove(sound);
+                }
             }
         }
 
         public void OnUpdate()
         {
         }
+        
+        public void Dispose()
+        {
+            foreach (var kvp in this.entitySongs)
+            {
+                var song = this.entitySongs[kvp.Key];
+                if (song != null)
+                {
+                    song.Stop();
+                    song.Dispose();
+                }
+            }
+        }
 
         private void Play(object data)
         {
             var audioComponent = data as AudioComponent;
+            if (this.entitySongs.ContainsKey(audioComponent))
+            {
+                this.PlaySong(audioComponent);
+            }
+            else
+            {
+                this.PlaySoundEffect(audioComponent);
+            }
+        }
+
+        private void PlaySong(AudioComponent audioComponent)
+        {
+            this.entitySongs[audioComponent].Play();
+        }
+
+        private void PlaySoundEffect(AudioComponent audioComponent)
+        {
             var soundEffect = entitySounds[audioComponent];
             
             // Mostly copied from https://stackoverflow.com/questions/35183043/how-do-i-play-a-sound-effect-on-monogame-for-android
