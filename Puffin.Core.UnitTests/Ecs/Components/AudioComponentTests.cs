@@ -99,12 +99,12 @@ namespace Puffin.Core.UnitTests.Ecs.Components
         }
 
         [Test]
-        public void SettingVolumeDoesNotBroadcastsEventIfSoundEffectInstanceIsNull()
+        public void SettingVolumeDoesNotBroadcastsEventIfMonoGameAudioInstanceIsNull()
         {
             // Arrange
             var scene = new Scene();
             var e = new Entity().Audio("hi.ogg");
-            e.Get<AudioComponent>().soundEffectInstance = "Hi! MonoGame SoundEffectInstance instance here.";
+            e.Get<AudioComponent>().MonoGameAudioInstance = "Hi! MonoGame SoundEffectInstance instance here.";
             scene.Add(e);
             bool wasCalled = false;
 
