@@ -147,8 +147,10 @@ namespace Puffin.Infrastructure.MonoGame
 
         private void PlayWaveOutEvent(AudioComponent audioComponent)
         {
-            this.entityMp3s[audioComponent].Play();
-            audioComponent.MonoGameAudioInstance = this.entityMp3s[audioComponent];
+            var waveOutEvent = this.entityMp3s[audioComponent];
+            waveOutEvent.Volume = audioComponent.Volume;
+            waveOutEvent.Play();
+            audioComponent.MonoGameAudioInstance = waveOutEvent;
         }
 
         private void PlaySoundEffect(AudioComponent audioComponent)
