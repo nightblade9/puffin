@@ -9,6 +9,14 @@ namespace Puffin.Core.Ecs.Components
     /// </summary>
     public class AudioComponent : Component
     {
+        /// <summary>
+        /// Set to true to loop audio playback immediately upon completion.
+        /// </summary>
+        public bool ShouldLoop = false;
+
+        /// <summary>
+        /// Audio volume; ranges from 0 (total silence) to 1.0 (full wave audio volume).
+        /// </summary>
         public float Volume
         {
             get
@@ -29,7 +37,6 @@ namespace Puffin.Core.Ecs.Components
 
         internal readonly string FileName;
         internal float Pitch = 0f;
-        internal bool ShouldLoop = false;
 
         /// Breaks the normal pattern of dictionary<component, implementation instance> because - for BGM - there's no way
         /// to make this work. The MonoGameAudioPlayer gets recreated each scene/subscene, so we lose our instances.
