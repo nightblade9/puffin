@@ -451,6 +451,28 @@ namespace Puffin.Core.UnitTests
             Assert.That(scene.SubScene, Is.Null);
         }
 
+        // Fix a bug where hiding a subscene, resulted in a black background (null image instance, previously disposed)
+        [Test]
+        public void HideSubSceneBroadcastsBackgroundSetEvent()
+        {
+            var drawingSystem = new Mock<DrawingSystem>().Object;
+            var scene = new Scene();
+            var background = "content/images/geometric.png";
+            scene.Background = background;
+
+            scene.Initialize(new ISystem[] { drawingSystem }, null, new Mock<IKeyboardProvider>().Object);
+            var subScene = new Scene();
+            scene.ShowSubScene(subScene);
+            object backgroundSet = "";
+            scene.EventBus.Subscribe(EventBusSignal.BackgroundSet, (data) => backgroundSet = data);
+            
+            // Act
+            scene.HideSubScene();
+            
+            // Assert
+            Assert.That(backgroundSet, Is.EqualTo(background));
+        }
+
         [Test]
         public void HideSubSceneBroadcastsHideEvent()
         {
