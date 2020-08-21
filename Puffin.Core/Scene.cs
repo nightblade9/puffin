@@ -237,7 +237,10 @@ namespace Puffin.Core
                 this.SubScene = null;
 
                 // Fix a bug where the background disappears when you hide a subscene; reload the (disposed) instance
-                this.EventBus.Broadcast(EventBusSignal.BackgroundSet, this.Background);
+                if (!string.IsNullOrWhiteSpace(this.Background))
+                {
+                    this.EventBus.Broadcast(EventBusSignal.BackgroundSet, this.Background);
+                }
             }
 
             // Click-hold / keypress on the parent scene. If that triggers something on the child scene, NO, don't trigger.
