@@ -16,5 +16,6 @@ namespace Puffin.Core.Events
         TilesetSpriteChanged, // Tilemap's sprite changed at runtime
         VolumeChanged,
         BackgroundSet,
+        LabelTextChanged, // changed text, reculate width
     }
 }
