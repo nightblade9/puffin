@@ -125,6 +125,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
                 if (!this.entities.Contains(entity))
                 {
                     this.entities.Add(entity);
+                    this.UpdatePixelWidth(entity.Get<TextLabelComponent>());
                 }
             }
             if (entity.Get<ColourComponent>() != null && !this.entities.Contains(entity))
