@@ -78,7 +78,14 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
 
             this.eventBus.Subscribe(EventBusSignal.LabelFontChanged, (data) =>
             {
-                this.LoadFontFor(data as TextLabelComponent);
+                var label = data as TextLabelComponent;
+                this.LoadFontFor(label);
+                this.UpdatePixelWidth(label);
+            });
+
+            this.eventBus.Subscribe(EventBusSignal.LabelTextChanged, (data) =>
+            {
+                this.UpdatePixelWidth(data as TextLabelComponent);
             });
 
             this.eventBus.Subscribe(EventBusSignal.SpriteChanged, (data) =>
@@ -286,6 +293,12 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             {
                 texture.Dispose();
             }
+        }
+
+        private void UpdatePixelWidth(TextLabelComponent label)
+        {
+            var font = this.entityFonts[label.Parent];
+            label.WidthInPixels = font.MeasureString(label.Text).X;
         }
 
         private void AddMonoGameSpriteFor(Entity entity)
