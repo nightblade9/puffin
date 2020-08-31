@@ -14,7 +14,7 @@ namespace Puffin.Core.Ecs.Systems
         private readonly EventBus eventBus;
         private readonly List<Entity> entities = new List<Entity>();
 
-        private Dictionary<ClickType, bool> wasButtonDown = new Dictionary<ClickType, bool>();
+        private readonly Dictionary<ClickType, bool> wasButtonDown = new Dictionary<ClickType, bool>();
         
         public MouseSystem(EventBus eventBus, IMouseProvider mouseProvider)
         {

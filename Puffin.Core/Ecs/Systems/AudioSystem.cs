@@ -7,8 +7,8 @@ namespace Puffin.Core.Ecs.Systems
 {
     class AudioSystem : ISystem
     {
-        private IAudioPlayer audioPlayer;
-        private IList<Entity> entities = new List<Entity>();
+        private readonly IAudioPlayer audioPlayer;
+        private readonly IList<Entity> entities = new List<Entity>();
         
         public AudioSystem(IAudioPlayer audioPlayer)
         {

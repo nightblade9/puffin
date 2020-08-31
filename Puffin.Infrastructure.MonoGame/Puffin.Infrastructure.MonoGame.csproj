@@ -8,6 +8,7 @@
      <PackageReference Include="MonoGame.Framework.DesktopGL.Core" Version="3.7.0.7">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="NAudio" Version="1.10.0" />
      <PackageReference Include="SpriteFontPlus" Version="0.7.1.25" />
   </ItemGroup>
 
