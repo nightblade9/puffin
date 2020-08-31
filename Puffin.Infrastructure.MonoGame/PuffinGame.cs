@@ -94,7 +94,7 @@ namespace Puffin.Infrastructure.MonoGame
         /// </summary>
         internal protected bool ShowCollisionAreas = false;
 
-        private GraphicsDeviceManager graphicsManager;
+        private readonly GraphicsDeviceManager graphicsManager;
         private SpriteBatch spriteBatch;
         private Scene currentScene;
         
@@ -274,7 +274,7 @@ namespace Puffin.Infrastructure.MonoGame
                 new OverlapSystem(),
                 new MouseOverlapSystem(mouseProvider),
                 new MouseSystem(s.EventBus, mouseProvider),
-                new KeyboardSystem(s.EventBus, keyboardProvider),
+                new KeyboardSystem(s.EventBus),
                 new AudioSystem(new MonoGameAudioPlayer(s.EventBus)),
                 new DrawingSystem(drawingSurface),
             };

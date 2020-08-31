@@ -11,7 +11,6 @@ namespace Puffin.UI.Controls
     /// </summary>
     public class HorizontalProgressBar : Entity
     {
-        private const int barHeight = 16;
         private readonly int maxValue;
         private int value = 0;
 
@@ -68,6 +67,15 @@ namespace Puffin.UI.Controls
 
                 this.value = value;
                 this.Get<ColourComponent>().Width = this.value;
+            }
+        }
+
+        public bool IsVisible
+        {
+            get { return this.Get<SpriteComponent>().IsVisible; }
+            set {
+                this.Get<SpriteComponent>().IsVisible = value;
+                this.Get<ColourComponent>().Alpha = IsVisible ? 1 : 0;
             }
         }
     }

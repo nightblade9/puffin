@@ -9,7 +9,7 @@ namespace Puffin.Core.Ecs.Systems
     /// </summary>
     class OverlapSystem : ISystem
     {
-        private IList<Entity> entities = new List<Entity>();
+        private readonly IList<Entity> entities = new List<Entity>();
 
         public void OnAddEntity(Entity entity)
         {

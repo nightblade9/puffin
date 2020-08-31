@@ -78,7 +78,14 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
 
             this.eventBus.Subscribe(EventBusSignal.LabelFontChanged, (data) =>
             {
-                this.LoadFontFor(data as TextLabelComponent);
+                var label = data as TextLabelComponent;
+                this.LoadFontFor(label);
+                this.UpdatePixelWidth(label);
+            });
+
+            this.eventBus.Subscribe(EventBusSignal.LabelTextChanged, (data) =>
+            {
+                this.UpdatePixelWidth(data as TextLabelComponent);
             });
 
             this.eventBus.Subscribe(EventBusSignal.SpriteChanged, (data) =>
@@ -91,6 +98,11 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             {
                 var tilemap = data as TileMap;
                 this.AddTileMap(tilemap);
+            });
+
+            this.eventBus.Subscribe(EventBusSignal.BackgroundSet, (data) => 
+            {
+                this.backgroundSprite = LoadImage(data.ToString());
             });
 
             // Make sure renderTarget is always transparent. Otherwise, the contents will actually be solid black.
@@ -184,10 +196,6 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
                 this.graphics.SetRenderTarget(sceneRenderTarget);
 
                 this.graphics.Clear(BgrToRgba(backgroundColour));
-                if (!string.IsNullOrEmpty(backgroundImage) && this.backgroundSprite == null)
-                {
-                    this.backgroundSprite = LoadImage(backgroundImage);
-                }
                 
                 if (this.backgroundSprite != null)
                 {
@@ -215,12 +223,12 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
                 camera.Zoom = new Vector2(cameraComponent.Zoom, cameraComponent.Zoom);
             }
 
-            this.spriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: camera?.TransformationMatrix);
+            this.spriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: camera?.TransformationMatrix, blendState: BlendState.NonPremultiplied);
             this.DrawTileMaps();
             this.DrawEntities(this.entities);
             this.spriteBatch.End();
 
-            this.spriteBatch.Begin(samplerState: SamplerState.PointClamp);
+            this.spriteBatch.Begin(samplerState: SamplerState.PointClamp, blendState: BlendState.NonPremultiplied);
             this.DrawEntities(this.uiEntities);
             this.spriteBatch.End();
 
@@ -285,6 +293,12 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             {
                 texture.Dispose();
             }
+        }
+
+        private void UpdatePixelWidth(TextLabelComponent label)
+        {
+            var font = this.entityFonts[label.Parent];
+            label.WidthInPixels = font.MeasureString(label.Text).X;
         }
 
         private void AddMonoGameSpriteFor(Entity entity)

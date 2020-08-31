@@ -79,5 +79,42 @@ namespace Puffin.Core.UnitTests.Ecs.Components
             
             Assert.That(isCalled, Is.True);
         }
+
+        [Test]
+        public void SettingVolumeBroadcastsEventIfSoundEffectInstanceIsNotNull()
+        {
+            // Arrange
+            var scene = new Scene();
+            var e = new Entity().Audio("hi.ogg");
+            scene.Add(e);
+            bool wasCalled = false;
+
+            scene.EventBus.Subscribe(EventBusSignal.VolumeChanged, (data) => wasCalled = true);
+
+            // Act
+            e.Get<AudioComponent>().Volume = 0f;
+
+            // Assert
+            Assert.That(wasCalled, Is.False);
+        }
+
+        [Test]
+        public void SettingVolumeDoesNotBroadcastsEventIfMonoGameAudioInstanceIsNull()
+        {
+            // Arrange
+            var scene = new Scene();
+            var e = new Entity().Audio("hi.ogg");
+            e.Get<AudioComponent>().MonoGameAudioInstance = "Hi! MonoGame SoundEffectInstance instance here.";
+            scene.Add(e);
+            bool wasCalled = false;
+
+            scene.EventBus.Subscribe(EventBusSignal.VolumeChanged, (data) => wasCalled = true);
+
+            // Act
+            e.Get<AudioComponent>().Volume = 1.0f;
+
+            // Assert
+            Assert.That(wasCalled, Is.True);
+        }
     }
 }

@@ -7,7 +7,7 @@ namespace Puffin.Core.Ecs.Systems
 {
     class DrawingSystem : ISystem
     {
-        private IDrawingSurface drawingSurface;
+        private readonly IDrawingSurface drawingSurface;
         
         public DrawingSystem(IDrawingSurface drawingSurface)
         {

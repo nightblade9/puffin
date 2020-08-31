@@ -30,7 +30,13 @@ namespace Puffin.Core
         /// <summary>
         /// The background image to render. Ignores camera, zoom, etc.
         /// </summary>
-        public string Background { get; set; }
+        public string Background { 
+            get { return this._background; }
+            set { 
+                this._background = value;
+                this.EventBus.Broadcast(EventBusSignal.BackgroundSet, _background);
+            }
+        }
 
         /// <summary>
         /// A scene-wide mouse-click handler that fires whever a mouse click event triggers (even if entities handle it).
@@ -68,11 +74,12 @@ namespace Puffin.Core
         private IKeyboardProvider keyboardProvider;
         private ISystem[] systems = new ISystem[0];
         private DrawingSystem drawingSystem;
-        private List<Entity> entities = new List<Entity>();
+        private readonly List<Entity> entities = new List<Entity>();
 
         // A date and a number of draw calls to calculate FPS
         private DateTime lastFpsUpdate = DateTime.Now;
         private int drawsSinceLastFpsCount = 0;
+        private string _background;
 
         /// <summary>
         /// The current mouse coordinates, from the perspective of the current camera (if one exists).
@@ -228,6 +235,12 @@ namespace Puffin.Core
                 this.EventBus.Broadcast(EventBusSignal.SubSceneHidden, this.SubScene);
                 this.SubScene.Deinitialize();
                 this.SubScene = null;
+
+                // Fix a bug where the background disappears when you hide a subscene; reload the (disposed) instance
+                if (!string.IsNullOrWhiteSpace(this.Background))
+                {
+                    this.EventBus.Broadcast(EventBusSignal.BackgroundSet, this.Background);
+                }
             }
 
             // Click-hold / keypress on the parent scene. If that triggers something on the child scene, NO, don't trigger.
@@ -238,6 +251,12 @@ namespace Puffin.Core
         /// Disposes the scene and the event bus (so entities can be garbage-collected).
         /// </summary>
         public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
         {
             this.EventBus?.Dispose();
         }

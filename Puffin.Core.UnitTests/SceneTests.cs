@@ -451,6 +451,37 @@ namespace Puffin.Core.UnitTests
             Assert.That(scene.SubScene, Is.Null);
         }
 
+        // Fix a bug where hiding a subscene, resulted in a black background (null image instance, previously disposed)
+        [TestCase(true, "content/images/geometric.png")]
+        [TestCase(false, (string)null)]
+        [TestCase(false, "")]
+        [TestCase(false, "        ")]
+        public void HideSubSceneBroadcastsBackgroundSetEventIfBackgroundIsNotNull(bool expectEvent, string background)
+        {
+            var drawingSystem = new Mock<DrawingSystem>().Object;
+            var scene = new Scene();
+            scene.Background = background;
+
+            scene.Initialize(new ISystem[] { drawingSystem }, null, new Mock<IKeyboardProvider>().Object);
+            var subScene = new Scene();
+            scene.ShowSubScene(subScene);
+            object backgroundSet = null;
+            scene.EventBus.Subscribe(EventBusSignal.BackgroundSet, (data) => backgroundSet = data);
+            
+            // Act
+            scene.HideSubScene();
+            
+            // Assert
+            if (expectEvent)
+            {
+                Assert.That(backgroundSet, Is.EqualTo(background));
+            }
+            else
+            {
+                Assert.That(backgroundSet, Is.Null);
+            }
+        }
+
         [Test]
         public void HideSubSceneBroadcastsHideEvent()
         {
@@ -522,6 +553,20 @@ namespace Puffin.Core.UnitTests
             scene.Add(tileset);
 
             Assert.That(tileset.Scene, Is.EqualTo(scene));
+        }
+
+        [Test]
+        public void SettingBackgroundBroadcastsEvent()
+        {
+            var sawEvent = "";
+            var scene = new Scene();
+            scene.EventBus.Subscribe(EventBusSignal.BackgroundSet, (data) => sawEvent = data.ToString());
+            
+            // Act
+            scene.Background = "skies.png";
+
+            // Assert
+            Assert.That(sawEvent, Is.EqualTo("skies.png"));
         }
 
         enum FakeAction

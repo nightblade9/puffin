@@ -8,20 +8,35 @@ namespace Puffin.Core.Ecs.Components
     /// </summary>
     public class TextLabelComponent : Component
     {
-        public string Text { get; set; } = "";
+        public string Text
+        {
+            get
+            {
+                return _text;
+            }
+            set
+            {
+                _text = value;
+                this.Parent.Scene?.EventBus.Broadcast(EventBusSignal.LabelTextChanged, this);
+            }
+        }
         
-        internal int OutlineColour;
-        internal int OutlineThickness = 0;
-
-        // If non-zero, word wrapping is ENABLED.
-        internal int WordWrapWidth { get; set; } = 0;
-
-
         /// <summary>
         /// The alpha (transparency) of this text and its outline (if it has one), ranging from 0 (invisible) to 1 (fully visible).
         /// See <c>IsVisible</c>.
         /// </summary>
         public float Alpha = 1;
+
+        /// <summary>
+        /// The width in pixels, given the current font. May be zero if called too early.
+        /// </summary>
+        public float WidthInPixels { get; set; } = 0;
+
+        internal int OutlineColour;
+        internal int OutlineThickness = 0;
+
+        // If non-zero, word wrapping is ENABLED.
+        internal int WordWrapWidth { get; set; } = 0;
 
         /// <summary>
         /// The filename of the font, relative to the game directory. Changing this immediately updates the font. Defaults to
@@ -58,6 +73,7 @@ namespace Puffin.Core.Ecs.Components
 
         private string fontName;
         private int fontSize = 24;
+        private string _text = "";
 
         /// <summary>
         /// Creates a new text label; if not specified, the default font is 24pt OpenSans.
