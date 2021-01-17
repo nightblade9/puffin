@@ -30,6 +30,12 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
                 {
                     if (s == sprite)
                     {
+                        numColumns = texture.Width / sprite.FrameWidth;
+                        numRows = texture.Height / sprite.FrameHeight;
+                        xIndex = sprite.FrameIndex % numColumns;
+                        yIndex = sprite.FrameIndex / numColumns;
+
+                        Console.WriteLine($"Frame {sprite.FrameIndex}: Changed region to {xIndex}, {yIndex} out of {numColumns}, {numRows}. Texture is ...");
                         this.Region = new Rectangle(xIndex * sprite.FrameWidth, yIndex * sprite.FrameHeight, sprite.FrameWidth, sprite.FrameHeight);
                     }
                 });
