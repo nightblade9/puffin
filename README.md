@@ -13,7 +13,7 @@ Puffin is a cross-platform 2D C# game engine built on top of MonoGame. It ships 
 - 2D tilemaps
 - Fast AABB collision resolution for entities and tilemaps
 
-This project is currently under heavy development.
+This project is **no longer under active development.** The ECS architecture I used contains a major flaw: limiting entities to one of each component type (for performance reasons: look-up is O(1)) means it nearly impossible to make complex UI components with multiple images, and it lacks nesting entities within entities. To address these problems, I created a prototype in the [Puffin v2](https://github.com/nightblade9/puffin-v2) repository.
 
 # Why Use Puffin?
 
