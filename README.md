@@ -4,7 +4,7 @@
 
 Branch | Status
 ---|---
-`main` | [![Build Status](https://travis-ci.org/nightblade9/puffin.svg?branch=main)](https://travis-ci.org/nightblade9/puffin)
+`main` | [![Build Status](https://travis-ci.org/nightblade9/puffin-v1.svg?branch=main)](https://travis-ci.org/nightblade9/puffin-v1)
 
 Puffin is a cross-platform 2D C# game engine built on top of MonoGame. It ships with:
 
