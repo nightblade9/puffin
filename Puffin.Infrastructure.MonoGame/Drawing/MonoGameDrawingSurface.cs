@@ -21,8 +21,10 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
     {
         public static MonoGameDrawingSurface LatestInstance { get; private set; }
 
+        private const int DefaultFontSize = 24;
+
         private readonly EventBus eventBus;
-        private readonly SpriteFont defaultFont;
+        private SpriteFont defaultFont;
 
         private IList<Entity> entities = new List<Entity>();
         private IList<Entity> uiEntities = new List<Entity>();
@@ -71,7 +73,7 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
 
             this.graphics = graphics;
             this.spriteBatch = spriteBatch;
-            this.defaultFont = this.LoadFont(PuffinGame.LatestInstance.DefaultFont, 24);
+            this.LoadDefaultFont();
 
             this.sceneRenderTarget = new RenderTarget2D(this.graphics, PuffinGame.LatestInstance.GameWidth, PuffinGame.LatestInstance.GameHeight);
             this.subSceneRenderTarget = new RenderTarget2D(this.graphics, PuffinGame.LatestInstance.GameWidth, PuffinGame.LatestInstance.GameHeight);
@@ -293,6 +295,25 @@ namespace Puffin.Infrastructure.MonoGame.Drawing
             foreach (var texture in this.tileMapSprites.Values)
             {
                 texture.Dispose();
+            }
+        }
+
+        // Hackity-hack: don't talk back ...
+        public void LoadDefaultFont()
+        {
+            var previousDefault = this.defaultFont;
+
+            this.defaultFont = this.LoadFont(PuffinGame.LatestInstance.DefaultFont, DefaultFontSize);
+            
+            // For every entity using the previous default: use the new default.
+            
+            // TODO: herp derp previousDefault users only right? No way to tell, though ...
+            // BUG: this probably sets ALL things to the default font.
+            // For my game, I only use one font, so it Just Works.
+            this.allFonts.Clear(); // clear cached default (empty name)
+            foreach (var kvp in this.entityFonts)
+            {
+                this.LoadFontFor(kvp.Key.Get<TextLabelComponent>());
             }
         }
 

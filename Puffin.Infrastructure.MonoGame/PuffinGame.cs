@@ -64,8 +64,20 @@ namespace Puffin.Infrastructure.MonoGame
         /// The default font which all <c>TextLabelComponent</c> instances use. Change this to set the font
         /// for any labels game-wide that don't have a font explicitly set on them.
         /// </summary>
-        public string DefaultFont = "OpenSans";
-        
+        public string DefaultFont
+        {
+            get
+            {
+                return _defaultFont;
+            }
+            set
+            {
+                _defaultFont = value;
+                // HACKITY HACK
+                MonoGameDrawingSurface.LatestInstance?.LoadDefaultFont();
+            }
+        }
+
         /// <summary>
         /// The actual, full width of the game, in "virtual pixels" or at scale 1.0.
         /// This is not the size drawn on-screen, which is <c>.Width</c>.
@@ -97,6 +109,8 @@ namespace Puffin.Infrastructure.MonoGame
         private readonly GraphicsDeviceManager graphicsManager;
         private SpriteBatch spriteBatch;
         private Scene currentScene;
+
+        private string _defaultFont = "OpenSans";
         
         /// <summary>
         /// Creates a new game with the specified window size.
